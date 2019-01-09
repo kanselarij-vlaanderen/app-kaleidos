@@ -12,8 +12,8 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
-  match "/dossiers/*path" do
-    Proxy.forward conn, path, "http://resource/dossiers/"
+  match "/cases/*path" do
+    Proxy.forward conn, path, "http://resource/cases/"
   end
 
   match "/domains/*path" do
