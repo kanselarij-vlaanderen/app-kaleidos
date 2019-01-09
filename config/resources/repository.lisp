@@ -19,6 +19,7 @@
 (add-prefix "dcat" "http://www.w3.org/ns/dcat#")
 (add-prefix "dct" "http://purl.org/dc/terms/")
 (add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
+(add-prefix "prov-o" "http://www.w3.org/ns/prov#")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
