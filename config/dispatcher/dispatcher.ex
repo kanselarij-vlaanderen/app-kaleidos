@@ -12,15 +12,25 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
-  # In order to forward the 'themes' resource to the
-  # resource service, use the following forward rule.
-  #
-  # docker-compose stop; docker-compose rm; docker-compose up
-  # after altering this file.
-  #
-  # match "/themes/*path" do
-  #   Proxy.forward conn, path, "http://resource/themes/"
-  # end
+  match "/dossiers/*path" do
+    Proxy.forward conn, path, "http://resource/dossiers/"
+  end
+
+  match "/domains/*path" do
+    Proxy.forward conn, path, "http://resource/domains/"
+  end
+
+  match "/themes/*path" do
+    Proxy.forward conn, path, "http://resource/themes/"
+  end
+
+  match "/responsibilities/*path" do
+    Proxy.forward conn, path, "http://resource/responsibilities/"
+  end
+
+  match "/sessions/*path" do
+    Proxy.forward conn, path, "http://resource/sessions/"
+  end
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )

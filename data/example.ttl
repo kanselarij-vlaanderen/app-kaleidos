@@ -1,0 +1,70 @@
+@prefix vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#> .
+@prefix vo-org: <https://data.vlaanderen.be/ns/organisatie#> .
+@prefix vo-gen: <https://data.vlaanderen.be/ns/generiek#> .
+@prefix provo: <http://www.w3.org/ns/prov#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix vo: <http://localhost/vlaamse-overheid/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dossier: <http://localhost/vo/dossiers/> .
+@prefix thema: <http://localhost/vo/dossierthemas/> .
+@prefix dossiertype: <http://localhost/vo/dossiertypes/> .
+@prefix hoedanigheid: <http://localhost/vo/hoedanigheden/> .
+@prefix beleidsdomein: <http://localhost/vo/beleidsdomeinen/> .
+@prefix bevoegdheid: <http://localhost/vo/bevoegdheden/> .
+@prefix session: <http://localhost/vo/sessions/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+
+dossier:1 a dbpedia:Case ;
+    mu:uuid "1" ;
+    dct:title "example dossier"@nl ;
+    vo-besluit:korteTitel "example"@nl ;
+    vo-besluit:nummer "1"@nl ;
+    vo-besluit:opmerking "just an example"@nl ;
+    vo-besluit:gearchiveerd false ;
+    dct:created "2012-12-31T23:57:00"^^xsd:dateTime ;
+    vo-besluit:actieveOpenbaarheid false ;
+    vo-besluit:contact hoedanigheid:1 ;
+    vo-besluit:indiener hoedanigheid:1 ;
+    dct:creator hoedanigheid:1 ;
+    vo-besluit:bevoegde hoedanigheid:1 .
+    
+
+beleidsdomein:1 a ext:BeleidsDomein ;
+    mu:uuid "2" ;
+    skos:prefLabel "Voorbeeld domein"@nl .
+
+bevoegdheid:1 a ext:Bevoegdheid ;
+    mu:uuid "3" ;
+    skos:prefLabel "Voorbeeld bevoegdheid"@nl .
+
+thema:1 a ext:DossierThema ;
+    mu:uuid "4" ;
+    skos:prefLabel "voorbeeld thema"@nl .
+
+dossiertype:1 a ext:DossierType ;
+    mu:uuid "5" ;
+    skos:prefLabel "voorbeeld type"@nl .
+
+hoedanigheid:1 a vo-org:Hoedanigheid ;
+    mu:uuid "6" ;
+    skos:prefLabel "voorbeeld hoedanigheid"@nl ;
+    vo-org:beleidsDomein beleidsdomein:1 ;
+    vo-org:bevoegdheid bevoegdheid:1 .
+    
+session:1 a vo-besluit:Zitting ;
+    mu:uuid "7" ;
+    vo-gen:geplandeStart "2019-01-31T23:57:00"^^xsd:dateTime ;
+    vo-gen:startedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
+    vo-gen:endedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
+    vo-besluit:number "42" .
+

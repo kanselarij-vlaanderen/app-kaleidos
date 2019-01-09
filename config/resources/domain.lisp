@@ -7,61 +7,99 @@
 
 ;; Describe your resources here
 
-;; The general structure could be described like this:
-;;
-;; (define-resource <name-used-in-this-file> ()
-;;   :class <class-of-resource-in-triplestore>
-;;   :properties `((<json-property-name-one> <type-one> ,<triplestore-relation-one>)
-;;                 (<json-property-name-two> <type-two> ,<triplestore-relation-two>>))
-;;   :has-many `((<name-of-an-object> :via ,<triplestore-relation-to-objects>
-;;                                    :as "<json-relation-property>")
-;;               (<name-of-an-object> :via ,<triplestore-relation-from-objects>
-;;                                    :inverse t ; follow relation in other direction
-;;                                    :as "<json-relation-property>"))
-;;   :has-one `((<name-of-an-object :via ,<triplestore-relation-to-object>
-;;                                  :as "<json-relation-property>")
-;;              (<name-of-an-object :via ,<triplestore-relation-from-object>
-;;                                  :as "<json-relation-property>"))
-;;   :resource-base (s-url "<string-to-which-uuid-will-be-appended-for-uri-of-new-items-in-triplestore>")
-;;   :on-path "<url-path-on-which-this-resource-is-available>")
+(define-resource dossier ()
+  :class (s-prefix "dbpedia:Case")
+  :properties `((:public :boolean ,(s-prefix "vo-besluit:actieveOpenbaarheid"))
+                (:created :date ,(s-prefix "dct:created"))
+                (:archived :boolean ,(s-prefix "vo-besluit:gearchiveerd"))
+                (:shortTitle :string ,(s-prefix "vo-besluit:korteTitel"))
+                (:number :string ,(s-prefix "vo-besluit:nummer"))
+                (:remark :string ,(s-prefix "vo-besluit:opmerking"))
+                (:title :string ,(s-prefix "dct:title")))
+  :has-many `((thema :via ,(s-prefix "dct:subject")
+                     :as "thema")
+              (capacity :via ,(s-prefix "vo-besluit:bevoegde")
+                            :as "bevoegde"))
+  :has-one `((dossiertype :via ,(s-prefix "dct:type")
+                          :as "dossierType")
+             (capacity :via ,(s-prefix "vo-besluit:contact")
+                           :as "dossierType")
+             (capacity :via ,(s-prefix "vo-besluit:indiener")
+                       :as "indiener")
+             (capacity :via ,(s-prefix "dct:creator")
+                       :as "creator"))
+  :resource-base (s-url "http://localhost/vo/dossiers/")
+  :on-path "dossiers")
 
 
-;; An example setup with a catalog, dataset, themes would be:
-;;
-;; (define-resource catalog ()
-;;   :class (s-prefix "dcat:Catalog")
-;;   :properties `((:title :string ,(s-prefix "dct:title")))
-;;   :has-many `((dataset :via ,(s-prefix "dcat:dataset")
-;;                        :as "datasets"))
-;;   :resource-base (s-url "http://webcat.tmp.semte.ch/catalogs/")
-;;   :on-path "catalogs")
+(define-resource dossiertype ()
+  :class (s-prefix "ext:DossierType")
+  :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((dossier :via ,(s-prefix "dct:type")
+                       :inverse t
+                       :as "dossiers"))
+  :resource-base (s-url "http://localhost/vo/dossiertypes/")
+  :on-path "dossiertypes")
 
-;; (define-resource dataset ()
-;;   :class (s-prefix "dcat:Dataset")
-;;   :properties `((:title :string ,(s-prefix "dct:title"))
-;;                 (:description :string ,(s-prefix "dct:description")))
-;;   :has-one `((catalog :via ,(s-prefix "dcat:dataset")
-;;                       :inverse t
-;;                       :as "catalog"))
-;;   :has-many `((theme :via ,(s-prefix "dcat:theme")
-;;                      :as "themes"))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/datasets/")
-;;   :on-path "datasets")
+(define-resource theme ()
+  :class (s-prefix "ext:DossierThema")
+  :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((dossier :via ,(s-prefix "vo-besluit:dossierThema")
+                       :inverse t
+                       :as "dossiers"))
+  :resource-base (s-url "http://localhost/vo/dossierthemas/")
+  :on-path "themes")
 
-;; (define-resource distribution ()
-;;   :class (s-prefix "dcat:Distribution")
-;;   :properties `((:title :string ,(s-prefix "dct:title"))
-;;                 (:access-url :url ,(s-prefix "dcat:accessURL")))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/distributions/")
-;;   :on-path "distributions")
 
-;; (define-resource theme ()
-;;   :class (s-prefix "tfdcat:Theme")
-;;   :properties `((:pref-label :string ,(s-prefix "skos:prefLabel")))
-;;   :has-many `((dataset :via ,(s-prefix "dcat:theme")
-;;                        :inverse t
-;;                        :as "datasets"))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/themes/")
-;;   :on-path "themes")
+(define-resource capacity ()
+  :class (s-prefix "vo-org:Hoedanigheid")
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((theme :via ,(s-prefix "vo-besluit:dossierThema")
+                     :as "themes")
+              (dossier :via ,(s-prefix "vo-besluit:contact")
+                       :inverse t
+                       :as "contactFor")
+              (dossier :via ,(s-prefix "vo-besluit:bevoegde")
+                       :inverse t
+                       :as "responsibleFor")
+              (dossier :via ,(s-prefix "vo-besluit:indiener")
+                       :inverse t
+                       :as "submitted")
+              (dossier :via ,(s-prefix "dct:creator")
+                       :inverse t
+                       :as "creatorFor")
+              )
+  :has-one `((domain :via ,(s-prefix "vo-org:beleidsDomein")
+                            :as "domain")
+             (responsibility :via ,(s-prefix "vo-org:bevoegdheid")
+                          :as "responsibility"))
+  :resource-base (s-url "http://localhost/vo/capacities/")
+  :on-path "capacities")
 
-;;
+(define-resource domain ()
+  :class (s-prefix "ext:BeleidsDomein")
+  :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((capacity :via ,(s-prefix "vo-org:beleidsDomein")
+                            :inverse t
+                            :as "capacities"))
+  :resource-base (s-url "http://localhost/vo/beleidsdomeinen/")
+  :on-path "domains")
+
+(define-resource responsibility ()
+  :class (s-prefix "ext:Bevoegdheid")
+  :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((capacity :via ,(s-prefix "vo-besluit:bevoegdheid")
+                        :inverse t
+                        :as "capacities"))
+  :resource-base (s-url "http://localhost/vo/bevoegdheden/")
+  :on-path "responsibilities")
+
+
+(define-resource session ()
+  :class (s-prefix "vo-besluit:Zitting")
+  :properties `((:plannedStart :date ,(s-prefix "vo-gen:geplandeStart"))
+                (:startedAt :date ,(s-prefix "prov-o:startedAtTime"))
+                (:endedAt :date ,(s-prefix "prov-o:endedAtTime"))
+                (:number :string ,(s-prefix "vo-besluit:number")))
+  :resource-base (s-url "http://localhost/vo/zittingen/")
+  :on-path "sessions")

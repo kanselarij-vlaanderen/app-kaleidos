@@ -12,17 +12,13 @@
 ;; (s-url "http://purl.org/dc/terms/title")
 ;; as (s-prefix "dct:title")
 
-;; (add-prefix "dct" "http://purl.org/dc/terms/")
-
-
-;;;;;
-;; The following is the commented out version of those used in the
-;; commented out domain.lisp.
-
-;; (add-prefix "dcat" "http://www.w3.org/ns/dcat#")
-;; (add-prefix "dct" "http://purl.org/dc/terms/")
-;; (add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
-
+(add-prefix "vo-besluit" "https://data.vlaanderen.be/ns/besluitvorming#")
+(add-prefix "vo-org" "https://data.vlaanderen.be/ns/organisatie#")
+(add-prefix "vo-gen" "https://data.vlaanderen.be/ns/generiek#")
+(add-prefix "dbpedia" "http://dbpedia.org/ontology/")
+(add-prefix "dcat" "http://www.w3.org/ns/dcat#")
+(add-prefix "dct" "http://purl.org/dc/terms/")
+(add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
