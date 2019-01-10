@@ -101,5 +101,17 @@
                 (:startedAt :date ,(s-prefix "prov-o:startedAtTime"))
                 (:endedAt :date ,(s-prefix "prov-o:endedAtTime"))
                 (:number :string ,(s-prefix "vo-besluit:number")))
+  :has-many `((agenda :via ,(s-prefix "ext:agenda")
+                        :as "agendas"))
   :resource-base (s-url "http://localhost/vo/zittingen/")
   :on-path "sessions")
+
+
+(define-resource agenda ()
+  :class (s-prefix "vo-besluit:Agenda")
+  :properties `((:name :string ,(s-prefix "ext:naam"))
+                (:dateSent :date ,(s-prefix "prov-o:uitgestuurdOpDatum"))
+                (:final :boolean ,(s-prefix "prov-o:finaleVersie")))
+  :resource-base (s-url "http://localhost/vo/agendas/")
+  :on-path "agendas")
+
