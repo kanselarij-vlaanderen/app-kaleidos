@@ -23,6 +23,7 @@
 @prefix bevoegdheid: <http://localhost/vo/bevoegdheden/> .
 @prefix session: <http://localhost/vo/sessions/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix agenda: <http://localhost/vo/agendas/> .
 
 dossier:1 a dbpedia:Case ;
     mu:uuid "1" ;
@@ -70,5 +71,11 @@ session:1 a vo-besluit:Zitting ;
     vo-gen:geplandeStart "2019-01-31T23:57:00"^^xsd:dateTime ;
     vo-gen:startedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
     vo-gen:endedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
-    vo-besluit:number "42" .
-
+    vo-besluit:number "42" ;
+    ext:agenda agenda:1 .
+    
+agenda:1 a vo-besluit:Agenda ;
+    mu:uuid "8" ;
+    ext:naam "testName"@nl ;
+    prov-o:uitgestuurdOpDatum "2019-01-31T23:57:00"^^xsd:dateTime ;
+    prov-o:finaleVersie true . 
