@@ -16,6 +16,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dossier: <http://localhost/vo/dossiers/> .
+@prefix deeldossier: <http://localhost/vo/deeldossiers/> .
 @prefix thema: <http://localhost/vo/dossierthemas/> .
 @prefix dossiertype: <http://localhost/vo/dossiertypes/> .
 @prefix hoedanigheid: <http://localhost/vo/hoedanigheden/> .
@@ -37,8 +38,9 @@ dossier:1 a dbpedia:Case ;
     vo-besluit:contact hoedanigheid:1 ;
     vo-besluit:indiener hoedanigheid:1 ;
     dct:creator hoedanigheid:1 ;
-    vo-besluit:bevoegde hoedanigheid:1 .
-    
+    vo-besluit:bevoegde hoedanigheid:1 ;
+    ext:deeldossier deeldossier:666 .
+
 
 beleidsdomein:1 a ext:BeleidsDomein ;
     mu:uuid "2" ;
@@ -65,6 +67,13 @@ hoedanigheid:1 a vo-org:Hoedanigheid ;
     skos:prefLabel "voorbeeld hoedanigheid"@nl ;
     vo-org:beleidsDomein beleidsdomein:1 ;
     vo-org:bevoegdheid bevoegdheid:1 .
+
+deeldossier:666 a dbpedia:Case ;
+    mu:uuid "666" ;
+    dct:title "in functie van de 2de principiele goedkeuring"@nl ;
+    vo-besluit:korteTitel "ingediend"@nl ;
+    ext:dossier dossier:1 ;
+    dct:created "2012-12-31T23:57:00"^^xsd:dateTime .
     
 session:1 a vo-besluit:Zitting ;
     mu:uuid "7" ;

@@ -19,7 +19,9 @@
   :has-many `((thema :via ,(s-prefix "dct:subject")
                      :as "thema")
               (capacity :via ,(s-prefix "vo-besluit:bevoegde")
-                            :as "bevoegde"))
+                            :as "bevoegde")
+              (subcase :via ,(s-prefix  "ext:deeldossier")
+                     :as "subcases"))
   :has-one `((dossiertype :via ,(s-prefix "dct:type")
                           :as "dossierType")
              (capacity :via ,(s-prefix "vo-besluit:contact")
@@ -118,3 +120,15 @@
   :resource-base (s-url "http://localhost/vo/agendas/")
   :on-path "agendas")
 
+
+(define-resource subcase ()
+  :class (s-prefix "dbpedia:Case")
+  :properties `((:short-title :string ,(s-prefix "vo-besluit:korteTitel"))
+                (:number :string ,(s-prefix "vo-besluit:nummer"))
+                (:remark :string ,(s-prefix "vo-besluit:opmerking"))
+                (:title :string ,(s-prefix "dct:title")))
+  :has-one `((case :via ,(s-prefix "ext:dossier")
+                          :inverse t
+                          :as "case"))
+  :resource-base (s-url "http://localhost/vo/deeldossiers/")
+  :on-path "subcases")
