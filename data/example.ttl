@@ -51,6 +51,10 @@ thema:1 a ext:DossierThema ;
     mu:uuid "4" ;
     skos:prefLabel "voorbeeld thema"@nl .
 
+thema:2 a ext:DossierThema ;
+    mu:uuid "99" ;
+    skos:prefLabel "economie"@nl .
+
 dossiertype:1 a ext:DossierType ;
     mu:uuid "5" ;
     skos:prefLabel "voorbeeld type"@nl .
