@@ -112,6 +112,9 @@
   :properties `((:name :string ,(s-prefix "ext:naam"))
                 (:dateSent :date ,(s-prefix "prov-o:uitgestuurdOpDatum"))
                 (:final :boolean ,(s-prefix "prov-o:finaleVersie")))
+  :has-one `((session :via ,(s-prefix "vo-besluit:zitting")
+                      :inverse t
+                      :as "session"))
   :resource-base (s-url "http://localhost/vo/agendas/")
   :on-path "agendas")
 
