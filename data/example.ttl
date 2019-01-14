@@ -24,6 +24,9 @@
 @prefix session: <http://localhost/vo/sessions/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix agenda: <http://localhost/vo/agendas/> .
+@prefix agendapunt: <http://localhost/vo/agendapunten/> .
+@prefix opmerking: <http://localhost/vo/opmerkingen/> .
+
 
 dossier:1 a dbpedia:Case ;
     mu:uuid "1" ;
@@ -78,4 +81,18 @@ agenda:1 a vo-besluit:Agenda ;
     mu:uuid "8" ;
     ext:naam "testName"@nl ;
     prov-o:uitgestuurdOpDatum "2019-01-31T23:57:00"^^xsd:dateTime ;
-    prov-o:finaleVersie true . 
+    prov-o:finaleVersie true ;
+    ext:agendapunt agendapunt:1 .
+     
+agendapunt:1 a vo-besluit:AgendaPunt ;
+    mu:uuid "9" ;
+    ext:prioriteit "1"@nl ;
+    ext:volgordeVanToevoeging "1" ;
+    ext:uitgesteld false ;
+    ext:datumVanToevoeging "2019-01-31T23:57:00"^^xsd:dateTime ;
+    ext:opmerking opmerking:1 .
+
+opmerking:1 a vo-besluit:Opmerking ;
+    ext:text "ttesttext"@nl ;
+    ext:aangemaaktOp "2019-01-31T23:57:00"^^xsd:dateTime .
+
