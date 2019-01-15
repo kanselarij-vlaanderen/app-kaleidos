@@ -16,8 +16,8 @@
                 (:number :string ,(s-prefix "vo-besluit:nummer"))
                 (:remark :string ,(s-prefix "vo-besluit:opmerking"))
                 (:title :string ,(s-prefix "dct:title")))
-  :has-many `((thema :via ,(s-prefix "dct:subject")
-                     :as "thema")
+  :has-many `((theme :via ,(s-prefix "dct:subject")
+                     :as "themes")
               (capacity :via ,(s-prefix "vo-besluit:bevoegde")
                             :as "bevoegde")
               (subcase :via ,(s-prefix  "ext:deeldossier")
@@ -122,13 +122,25 @@
 
 
 (define-resource subcase ()
-  :class (s-prefix "dbpedia:Case")
+  :class (s-prefix "ext:SubCase")
   :properties `((:short-title :string ,(s-prefix "vo-besluit:korteTitel"))
                 (:number :string ,(s-prefix "vo-besluit:nummer"))
                 (:remark :string ,(s-prefix "vo-besluit:opmerking"))
                 (:title :string ,(s-prefix "dct:title")))
-  :has-one `((case :via ,(s-prefix "ext:dossier")
-                          :inverse t
-                          :as "case"))
+  :has-one `((case :via ,(s-prefix "ext:deeldossier")
+                   :inverse t
+                   :as "case"))
+  :resource-base (s-url "http://localhost/vo/deeldossiers/")
+  :on-path "subcases")
+
+(define-resource advice ()
+  :class (s-prefix "ext:Advice")
+  :properties `((:advice :string ,(s-prefix "vo-besluit:korteTitel"))
+                (:advice-request :string ,(s-prefix "vo-besluit:nummer"))
+                (:date-received :date ,(s-prefix "vo-besluit:opmerking"))
+                (:date-requested :date ,(s-prefix "dct:title")))
+  :has-one `((case :via ,(s-prefix "ext:deeldossier")
+                   :inverse t
+                   :as "case"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")
