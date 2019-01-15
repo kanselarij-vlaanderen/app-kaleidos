@@ -8,6 +8,7 @@
 /data/db/virtuoso.log
 /data/db/virtuoso.pxa
 /data/db/virtuoso.trx
+/session-number-service/node_modules
 
 
 .idea/

@@ -40,6 +40,18 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/agendas/"
   end
 
+  match "/agendaitems/*path" do
+    Proxy.forward conn, path, "http://resource/agendaitems/"
+  end
+
+  match "/comments/*path" do
+    Proxy.forward conn, path, "http://resource/comments/"
+  end
+
+  match "/*path" do
+    Proxy.forward conn, path, "http://session-number-service/"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
