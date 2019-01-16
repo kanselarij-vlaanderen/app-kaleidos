@@ -16,6 +16,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/cases/"
   end
 
+  match "/subcases/*path" do
+    Proxy.forward conn, path, "http://resource/subcases/"
+  end
+
   match "/domains/*path" do
     Proxy.forward conn, path, "http://resource/domains/"
   end
@@ -42,6 +46,10 @@ defmodule Dispatcher do
 
   match "/comments/*path" do
     Proxy.forward conn, path, "http://resource/comments/"
+  end
+
+  match "/capacities/*path" do
+    Proxy.forward conn, path, "http://resource/capacities/"
   end
 
   match "/*path" do

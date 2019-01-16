@@ -71,7 +71,7 @@ hoedanigheid:1 a vo-org:Hoedanigheid ;
     vo-org:beleidsDomein beleidsdomein:1 ;
     vo-org:bevoegdheid bevoegdheid:1 .
 
-deeldossier:666 a dbpedia:Case ;
+deeldossier:666 a ext:SubCase ;
     mu:uuid "666" ;
     dct:title "in functie van de 2de principiele goedkeuring"@nl ;
     vo-besluit:korteTitel "ingediend"@nl ;
