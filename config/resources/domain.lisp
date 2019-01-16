@@ -24,10 +24,10 @@
                      :as "subcases"))
   :has-one `((dossiertype :via ,(s-prefix "dct:type")
                           :as "dossierType")
-             (capacity :via ,(s-prefix "vo-besluit:contact")
-                           :as "dossierType")
              (capacity :via ,(s-prefix "vo-besluit:indiener")
                        :as "indiener")
+             (capacity :via ,(s-prefix "vo-besluit:contact")
+                       :as "contact")
              (capacity :via ,(s-prefix "dct:creator")
                        :as "creator"))
   :resource-base (s-url "http://localhost/vo/dossiers/")
@@ -60,7 +60,7 @@
                      :as "themes")
               (case :via ,(s-prefix "vo-besluit:contact")
                        :inverse t
-                       :as "contactFor")
+                       :as "contact")
               (case :via ,(s-prefix "vo-besluit:bevoegde")
                        :inverse t
                        :as "responsibleFor")
