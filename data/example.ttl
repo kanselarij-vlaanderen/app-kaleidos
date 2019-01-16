@@ -83,7 +83,7 @@ session:1 a vo-besluit:Zitting ;
     vo-gen:geplandeStart "2019-01-31T23:57:00"^^xsd:dateTime ;
     vo-gen:startedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
     vo-gen:endedAtTime "2019-01-31T23:57:00"^^xsd:dateTime ;
-    vo-besluit:number "42" ;
+    vo-besluit:number 42 ;
     ext:agenda agenda:1 .
     
 agenda:1 a vo-besluit:Agenda ;
