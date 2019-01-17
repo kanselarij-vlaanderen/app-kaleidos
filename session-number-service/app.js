@@ -16,11 +16,12 @@ app.get('/assignNewSessionNumbers', async function (req, res) {
     return new Date(a.plannedstart) - new Date(b.plannedstart);
   });
 
-  for (let i = 0; i < parseInt(sessions.length); i++) {
-    if (sessions[i] && sessions[i]) {
-      sessions[i].previousNumber = sessions[i].number;
-      sessions[i].number = i + beginNumber + 1;
+  for (let i = 0; i < sessions.length; i++) {
+    if (!sessions[i]) {
+      continue;
     }
+    sessions[i].previousNumber = sessions[i].number;
+    sessions[i].number = i + beginNumber + 1;
   }
 
   let updatedDate = await updateSessionNumbers(sessions);
@@ -39,13 +40,9 @@ async function getSessionCount() {
   vo-besluit:number ?number ;
   vo-gen:geplandeStart ?plannedstart .
   }`
-  let data = await new Promise((resolve, reject) => {
-    mu.query(query).then(sessionCount => {
-      resolve(sessionCount);
-    }).catch(error => {
-      reject(error);
-    });
-  })
+
+  let data = await mu.query(query);
+
   return data.results.bindings[0].nSessions.value;
 }
 
@@ -69,14 +66,7 @@ async function getAllSessions() {
   }
 }`
 
-  let data = await new Promise((resolve, reject) => {
-    mu.query(query).then(sessions => {
-      resolve(sessions);
-    }).catch(error => {
-      reject(error);
-    });
-  })
-
+  let data = await mu.query(query);
   const vars = data.head.vars;
 
   return data.results.bindings.map(binding => {
@@ -118,15 +108,7 @@ async function updateSessionNumbers(sessions) {
   }
   `
 
-  return await new Promise((resolve, reject) => {
-    mu.update(query).then(updatedSessions => {
-      console.log(updatedSessions);
-      resolve(updatedSessions);
-    }).catch(error => {
-      console.log('error: ', error)
-      reject(error);
-    });
-  })
+  return mu.update(query);
 }
 
 mu.app.use(mu.errorHandler);
