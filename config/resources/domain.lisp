@@ -102,7 +102,7 @@
   :properties `((:plannedstart :date ,(s-prefix "vo-gen:geplandeStart"))
                 (:started-at :date ,(s-prefix "prov-o:startedAtTime"))
                 (:ended-at :date ,(s-prefix "prov-o:endedAtTime"))
-                (:number :string ,(s-prefix "vo-besluit:number")))
+                (:number :number ,(s-prefix "vo-besluit:number")))
   :has-many `((agenda :via ,(s-prefix "ext:agenda")
                         :as "agendas")
               (subcase :via ,(s-prefix "ext:zitting")
