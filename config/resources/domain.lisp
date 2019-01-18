@@ -104,7 +104,10 @@
                 (:ended-at :date ,(s-prefix "prov-o:endedAtTime"))
                 (:number :string ,(s-prefix "vo-besluit:number")))
   :has-many `((agenda :via ,(s-prefix "ext:agenda")
-                        :as "agendas"))
+                        :as "agendas")
+              (subcase :via ,(s-prefix "ext:zitting")
+                       :inverse t
+                       :as "subcases"))
   :resource-base (s-url "http://localhost/vo/zittingen/")
   :on-path "sessions")
 
@@ -157,22 +160,13 @@
   :class (s-prefix "ext:SubCase")
   :properties `((:short-title :string ,(s-prefix "vo-besluit:korteTitel"))
                 (:number :string ,(s-prefix "vo-besluit:nummer"))
+                (:created :date ,(s-prefix "dct:created"))
                 (:remark :string ,(s-prefix "vo-besluit:opmerking"))
                 (:title :string ,(s-prefix "dct:title")))
   :has-one `((case :via ,(s-prefix "ext:deeldossier")
                    :inverse t
-                   :as "case"))
-  :resource-base (s-url "http://localhost/vo/deeldossiers/")
-  :on-path "subcases")
-
-(define-resource advice ()
-  :class (s-prefix "ext:Advice")
-  :properties `((:advice :string ,(s-prefix "vo-besluit:korteTitel"))
-                (:advice-request :string ,(s-prefix "vo-besluit:nummer"))
-                (:date-received :date ,(s-prefix "vo-besluit:opmerking"))
-                (:date-requested :date ,(s-prefix "dct:title")))
-  :has-one `((case :via ,(s-prefix "ext:deeldossier")
-                   :inverse t
-                   :as "case"))
+                   :as "case")
+             (session :via ,(s-prefix "ext:zitting")
+                   :as "session"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")
