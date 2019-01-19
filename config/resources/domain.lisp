@@ -121,8 +121,8 @@
                       :inverse t
                       :as "session"))
   :has-many `((agendaitem :via ,(s-prefix "ext:agendapunt")
-                          :as "agendaitems"))
-  :has-many `((comment :via ,(s-prefix "ext:opmerking")
+                          :as "agendaitems")
+             (comment :via ,(s-prefix "ext:opmerking")
                        :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendas/")
   :on-path "agendas")
@@ -136,7 +136,10 @@
                 (:date-added :date ,(s-prefix "ext:datumVanToevoeging")))
   :has-one `((agenda :via ,(s-prefix "ext:agendapunt")
                      :inverse t
-                     :as "agenda"))
+                     :as "agenda")
+            (subcase :via ,(s-prefix "vo-besluit:subcase")
+                     :inverse t
+                     :as "subcase"))
   :has-many `((comment :via ,(s-prefix "ext:opmerking")
                       :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendapunten/")
@@ -149,8 +152,8 @@
                 (:created-at :date ,(s-prefix "ext:aangemaaktOp")))
   :has-one `((agenda :via ,(s-prefix "ext:opmerking")
                      :inverse t
-                     :as "agenda"))
-  :has-one `((agendaitem :via ,(s-prefix "ext:opmerking")
+                     :as "agenda")
+            (agendaitem :via ,(s-prefix "ext:opmerking")
                      :inverse t
                      :as "agendaitem"))
   :resource-base (s-url "http://localhost/vo/opmerkingen/")
@@ -167,6 +170,9 @@
                    :inverse t
                    :as "case")
              (session :via ,(s-prefix "ext:zitting")
-                   :as "session"))
+                   :as "session")
+             (agendaitem :via ,(s-prefix "vo-besluit:subcase")
+                     :inverse t
+                     :as "agendaitem"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")
