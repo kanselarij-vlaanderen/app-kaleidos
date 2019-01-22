@@ -47,6 +47,9 @@ defmodule Dispatcher do
   match "/comments/*path" do
     Proxy.forward conn, path, "http://resource/comments/"
   end
+  match "/comments/*path" do
+    Proxy.forward conn, path, "http://resource/comments/"
+  end
 
   match "/capacities/*path" do
     Proxy.forward conn, path, "http://resource/capacities/"
