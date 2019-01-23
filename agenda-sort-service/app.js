@@ -6,109 +6,86 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json({ type: 'application/*+json' }))
 
-app.get('/assignNewSessionNumbers', async function (req, res) {
-  let countSessions = await getSessionCount();
+app.get('/', async (req, res) => {
 
-  let sessions = await getAllSessions();
-  let beginNumber = parseInt(countSessions) - sessions.length;
+  let agendaIds = req.query.agendaIds.split(',');
+  agendaIds = agendaIds.map(item => parseInt(item));
+  await sortByMinisterPriority(agendaIds);
 
-  sessions = sessions.sort((a, b) => {
-    return new Date(a.plannedstart) - new Date(b.plannedstart);
-  });
+  const hoedanigheden = await getHoedanigheden();
+  let ids = await hoedanigheden.map(item => item.bevoegdheid);
+  const bevoegdheden = await getBevoegdheden(ids);
 
-  for (let i = 0; i < sessions.length; i++) {
-    if (!sessions[i]) {
-      continue;
-    }
-    sessions[i].previousNumber = sessions[i].number;
-    sessions[i].number = i + beginNumber + 1;
-  }
+  res.send({ status: ok, statusCode: 200, body: { agendaIds, hoedanigheden, bevoegdheden } });
+});
 
-  let updatedDate = await updateSessionNumbers(sessions);
-  res.send({ status: ok, statusCode: 200, body: { sessions: sessions, updateMessage: updatedDate } });
-})
 
-async function getSessionCount() {
-  const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+const sortByMinisterPriority = async (agendaIds) => {
+  return agendaIds.sort((a, b) => a - b);
+};
 
-  select(count(distinct ?session) as ?nSessions) where {
-  ?session a vo-besluit:Zitting ;
-  mu:uuid ?uuid ;
-  vo-besluit:number ?number ;
-  vo-gen:geplandeStart ?plannedstart .
-  }`
+const getHoedanigheden = async () => {
 
-  let data = await mu.query(query);
+    const query = `
+      PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      
+      SELECT ?hoedanigheid ?bevoegdheid ?label WHERE {
+        GRAPH <http://mu.semte.ch/application> 
+        {
+        ?hoedanigheid a vo-org:Hoedanigheid ;
+        mu:uuid ?uuid ;
+        skos:prefLabel ?label ;
+        vo-org:bevoegdheid ?bevoegdheid .
+      }
+    }`;
 
-  return data.results.bindings[0].nSessions.value;
-}
+    let data = await mu.query(query);
+    const vars = data.head.vars;
 
-async function getAllSessions() {
-  let dateOfYesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date);
-  dateOfYesterday.setHours(23, 59, 59, 0);
+    return data.results.bindings.map(binding => {
+        let obj = {};
+        vars.forEach(varKey => {
+            obj[varKey] = binding[varKey].value;
+        });
+        return obj;
+    })
 
-  const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
-  
-  SELECT ?session ?plannedstart ?number WHERE {
-    GRAPH <http://mu.semte.ch/application> 
-    {
-    ?session a vo-besluit:Zitting ;
-    mu:uuid ?uuid ;
-    vo-gen:geplandeStart ?plannedstart ;
-    vo-besluit:number ?number .
-    FILTER(str(?plannedstart) > "${dateOfYesterday.toISOString()}")
-  }
-}`
+};
 
-  let data = await mu.query(query);
-  const vars = data.head.vars;
+const getBevoegdheden = async (uris) => {
 
-  return data.results.bindings.map(binding => {
-    let obj = {};
-    vars.forEach(varKey => {
-      obj[varKey] = binding[varKey].value;
-    });
-    return obj;
-  })
-}
+    const ids = uris.map(uri => uri.replace("http://localhost/vo/bevoegdheden/" , ""));
 
-async function updateSessionNumbers(sessions) {
-  let deleteString = "";
-  let insertString = "";
-  sessions.forEach(obj => {
-    deleteString = `${deleteString}
-     <${obj.session}> vo-besluit:number """${obj.previousNumber}"""^^xsd:decimal .
-    `
-    insertString = `${insertString}
-    <${obj.session}> vo-besluit:number """${obj.number}"""^^xsd:decimal .
-    `
-  })
+    const query = `
+      PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      
+      SELECT ?bevoegdheid ?uuid ?label WHERE {
+        GRAPH <http://mu.semte.ch/application> 
+        {
+        ?bevoegdheid a ext:Bevoegdheid ;
+        mu:uuid ?uuid ;
+        skos:prefLabel ?label .
+      }
+    }`;
 
-  const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  prefix vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
-  
-  DELETE DATA { 
-    GRAPH <http://mu.semte.ch/application> { 
-      ${deleteString}
-    } 
-  }
+    // FILTER(?uuid = ${ids})
 
-  INSERT DATA { 
-    GRAPH <http://mu.semte.ch/application> { 
-      ${insertString}
-    } 
-  }
-  `
+    let data = await mu.query(query);
+    const vars = data.head.vars;
 
-  return mu.update(query);
-}
+    return data.results.bindings.map(binding => {
+        let obj = {};
+        vars.forEach(varKey => {
+            obj[varKey] = binding[varKey].value;
+        });
+        return obj;
+    })
 
-mu.app.use(mu.errorHandler);
+};
+

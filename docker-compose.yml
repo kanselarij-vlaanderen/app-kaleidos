@@ -39,3 +39,11 @@ services:
       - db:database
     volumes:
       - ./session-number-service:/app
+  agenda-sort-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    links:
+      - db:database
+    volumes:
+      - ./agenda-sort-service:/app
