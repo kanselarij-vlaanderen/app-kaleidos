@@ -116,7 +116,8 @@
   :class (s-prefix "vo-besluit:Agenda")
   :properties `((:name :string ,(s-prefix "ext:naam"))
                 (:date-sent :date ,(s-prefix "prov-o:uitgestuurdOpDatum"))
-                (:final :boolean ,(s-prefix "prov-o:finaleVersie")))
+                (:final :boolean ,(s-prefix "prov-o:finaleVersie"))
+                (:locked :boolean ,(s-prefix "ext:goedgekeurd")))
   :has-one `((session :via ,(s-prefix "ext:agenda")
                       :inverse t
                       :as "session"))
