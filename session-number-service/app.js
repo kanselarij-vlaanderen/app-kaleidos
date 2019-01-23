@@ -1,10 +1,12 @@
 import mu from 'mu';
 import { ok } from 'assert';
 
+const cors = require('cors');
 const app = mu.app;
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.json({ type: 'application/*+json' }))
+app.use(cors());
+app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.get('/assignNewSessionNumbers', async function (req, res) {
   let countSessions = await getSessionCount();
@@ -26,7 +28,7 @@ app.get('/assignNewSessionNumbers', async function (req, res) {
 
   let updatedDate = await updateSessionNumbers(sessions);
   res.send({ status: ok, statusCode: 200, body: { sessions: sessions, updateMessage: updatedDate } });
-})
+});
 
 async function getSessionCount() {
   const query = `
