@@ -59,9 +59,9 @@ Insert {
 } WHERE {
     GRAPH <http://mu.semte.ch/application> {
   	?agenda a vo-besluit:Agenda ;
-  	mu:uuid "${oldId}" ;
-  	?agenda ext:agendapunt ?agendaitem ;
-        
+  	mu:uuid "${oldId}" .
+  	?agenda ext:agendapunt ?agendaitem .
+    
   	OPTIONAL { ?agendaitem mu:uuid ?olduuid } 
   	BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
   	BIND(IRI(CONCAT("http://localhost/vo/agendaitems/", ?uuid)) AS ?newURI) 
