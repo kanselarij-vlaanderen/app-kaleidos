@@ -44,7 +44,6 @@ async function getSessionCount() {
   }`
 
   let data = await mu.query(query);
-
   return data.results.bindings[0].nSessions.value;
 }
 

@@ -71,6 +71,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://session-number-service/"
   end
 
+  match "/agenda-approve/*path" do
+    Proxy.forward conn, path, "http://agenda-approve-service/"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end

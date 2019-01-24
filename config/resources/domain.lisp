@@ -123,7 +123,7 @@
                       :as "session"))
   :has-many `((agendaitem :via ,(s-prefix "ext:agendapunt")
                           :as "agendaitems")
-             (comment :via ,(s-prefix "ext:opmerking")
+              (comment :via ,(s-prefix "ext:opmerking")
                        :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendas/")
   :on-path "agendas")

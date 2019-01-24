@@ -30,9 +30,6 @@ services:
       - ./config/resources:/config
   session-number-service:
     image: semtech/mu-javascript-template
-    ports:
-      - 8888:80
-      - 9229:9229
     environment:
       NODE_ENV: "development"
     links:
@@ -47,3 +44,14 @@ services:
       - db:database
     volumes:
       - ./agenda-sort-service:/app
+  agenda-approve-service:
+    image: semtech/mu-javascript-template
+    ports:
+      - 8888:80
+      - 9229:9229
+    environment:
+      NODE_ENV: "development"
+    links:
+      - db:database
+    volumes:
+      - ./agenda-approve-service:/app
