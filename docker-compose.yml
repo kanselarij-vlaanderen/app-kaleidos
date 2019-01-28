@@ -28,6 +28,12 @@ services:
       - db:database
     volumes:
       - ./config/resources:/config
+  file:
+    image: semtech/mu-file-service:3.1.0
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
   session-number-service:
     image: semtech/mu-javascript-template
     environment:
