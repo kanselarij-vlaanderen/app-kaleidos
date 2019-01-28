@@ -4,11 +4,12 @@ import { ok } from 'assert';
 const app = mu.app;
 const bodyParser = require('body-parser');
 const repository = require('./repository');
+const cors = require('cors');
 
 const priorities = [
     {
         priority: 1,
-        responsibilities: ["Voorbeeld bevoegdheid", "Economie" ]
+        responsibilities: ["Voorbeeld bevoegdheid" ]
     },
     {
         priority: 2,
@@ -21,7 +22,7 @@ const priorities = [
 ];
 
 app.use(bodyParser.json({ type: 'application/*+json' }));
-
+app.use(cors());
 
 
 app.post('/', async (req, res) => {

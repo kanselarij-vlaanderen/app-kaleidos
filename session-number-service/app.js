@@ -108,7 +108,6 @@ async function updateSessionNumbers(sessions) {
     } 
   }
   `
-
   return mu.update(query);
 }
 
