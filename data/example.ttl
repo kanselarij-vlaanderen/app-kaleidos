@@ -32,6 +32,7 @@
 dossier:1 a dbpedia:Case ;
     mu:uuid "1" ;
     dct:title "example dossier"@nl ;
+
     vo-besluit:korteTitel "example"@nl ;
     vo-besluit:nummer "1"@nl ;
     vo-besluit:opmerking "just an example"@nl ;
@@ -41,8 +42,22 @@ dossier:1 a dbpedia:Case ;
     vo-besluit:contact hoedanigheid:1 ;
     vo-besluit:indiener hoedanigheid:1 ;
     dct:creator hoedanigheid:1 ;
-    vo-besluit:bevoegde hoedanigheid:1 ;
+    vo-besluit:bevoegde hoedanigheid:5C404178A6795C000A000001 ;
     ext:deeldossier deeldossier:666 .
+
+dossier:2 a dbpedia:Case ;
+    mu:uuid "123456789" ;
+    dct:title "Er moeten meer windmolens in Leuven komen"@nl ;
+    vo-besluit:korteTitel "Er moeten meer windmolens in Leuven komen"@nl ;
+    vo-besluit:nummer "1"@nl ;
+    vo-besluit:opmerking "Geen opmerking"@nl ;
+    vo-besluit:gearchiveerd false ;
+    dct:created "2012-12-31T23:57:00"^^xsd:dateTime ;
+    vo-besluit:actieveOpenbaarheid false ;
+    vo-besluit:contact hoedanigheid:1 ;
+    vo-besluit:indiener hoedanigheid:1 ;
+    dct:creator hoedanigheid:1 ;
+    vo-besluit:bevoegde hoedanigheid:1 .
 
 
 beleidsdomein:1 a ext:BeleidsDomein ;
@@ -51,7 +66,11 @@ beleidsdomein:1 a ext:BeleidsDomein ;
 
 bevoegdheid:1 a ext:Bevoegdheid ;
     mu:uuid "3" ;
-    skos:prefLabel "Voorbeeld bevoegdheid"@nl .
+    skos:prefLabel "Cultuur"@nl .
+
+bevoegdheid:5C404178A6795C000A0012001 a ext:Bevoegdheid ;
+    mu:uuid "5C404178A6795C000A0012001" ;
+    skos:prefLabel "Economie"@nl .
 
 thema:1 a ext:DossierThema ;
     mu:uuid "4" ;
@@ -67,9 +86,15 @@ dossiertype:1 a ext:DossierType ;
 
 hoedanigheid:1 a vo-org:Hoedanigheid ;
     mu:uuid "6" ;
-    skos:prefLabel "voorbeeld hoedanigheid"@nl ;
+    skos:prefLabel "Svekke Gatz"@nl ;
     vo-org:beleidsDomein beleidsdomein:1 ;
     vo-org:bevoegdheid bevoegdheid:1 .
+
+hoedanigheid:5C404178A6795C000A000001 a vo-org:Hoedanigheid ;
+    mu:uuid "5C404178A6795C000A000001" ;
+    skos:prefLabel "Hilde Crevits"@nl ;
+    vo-org:beleidsDomein beleidsdomein:1 ;
+    vo-org:bevoegdheid bevoegdheid:5C404178A6795C000A0012001 .
 
 deeldossier:666 a ext:SubCase ;
     mu:uuid "666" ;

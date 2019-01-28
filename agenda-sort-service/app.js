@@ -3,89 +3,78 @@ import { ok } from 'assert';
 
 const app = mu.app;
 const bodyParser = require('body-parser');
+const repository = require('./repository');
 
-app.use(bodyParser.json({ type: 'application/*+json' }))
+const priorities = [
+    {
+        priority: 1,
+        responsibilities: ["Voorbeeld bevoegdheid", "Economie" ]
+    },
+    {
+        priority: 2,
+        responsibilities: ["Cultuur", "Werk" ]
+    },
+    {
+        priority: 3,
+        responsibilities: ["Economie"]
+    }
+];
+
+app.use(bodyParser.json({ type: 'application/*+json' }));
+
+
 
 app.get('/', async (req, res) => {
 
-  let agendaIds = req.query.agendaIds.split(',');
-  agendaIds = agendaIds.map(item => parseInt(item));
-  await sortByMinisterPriority(agendaIds);
+  let agendaId = req.query.agendaId;
 
-  const hoedanigheden = await getHoedanigheden();
-  let ids = await hoedanigheden.map(item => item.bevoegdheid);
-  const bevoegdheden = await getBevoegdheden(ids);
+  try {
 
-  res.send({ status: ok, statusCode: 200, body: { agendaIds, hoedanigheden, bevoegdheden } });
+      const agendaItems = await repository.getMinistersWithBevoegdheidByAgendaId(agendaId);
+      const prioritizedAgendaItems = await sortAgendaItemsByResponsibilities(agendaItems);
+      await repository.updateAgendaItemPriority(prioritizedAgendaItems);
+
+      res.send({ status: ok, statusCode: 200, body: { items: prioritizedAgendaItems } });
+
+  }catch(error) {
+        res.send({ status: ok, statusCode: 500, body: { error } });
+  }
 });
 
-
-const sortByMinisterPriority = async (agendaIds) => {
-  return agendaIds.sort((a, b) => a - b);
+const sortAgendaItemsByResponsibilities = async (agendaItems) =>  {
+    const prioritizedItems = [];
+    for (let key in agendaItems){
+        const item = agendaItems[key];
+        let newPriority = await getHighestPriorityForAgendaItemConnections(item.connections);
+        if (!newPriority || newPriority === 9999) newPriority = item.priority;
+        item.newPriority = newPriority;
+        prioritizedItems.push(item);
+    }
+    prioritizedItems.sort((a, b) => {
+        return a.priority - b.priority;
+    });
+    return prioritizedItems;
 };
 
-const getHoedanigheden = async () => {
-
-    const query = `
-      PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
-      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-      PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
-      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      
-      SELECT ?hoedanigheid ?bevoegdheid ?label WHERE {
-        GRAPH <http://mu.semte.ch/application> 
-        {
-        ?hoedanigheid a vo-org:Hoedanigheid ;
-        mu:uuid ?uuid ;
-        skos:prefLabel ?label ;
-        vo-org:bevoegdheid ?bevoegdheid .
-      }
-    }`;
-
-    let data = await mu.query(query);
-    const vars = data.head.vars;
-
-    return data.results.bindings.map(binding => {
-        let obj = {};
-        vars.forEach(varKey => {
-            obj[varKey] = binding[varKey].value;
-        });
-        return obj;
-    })
-
+const getHighestPriorityForAgendaItemConnections = (connections) => {
+    let highestPriority = 9999;
+    let responsibilities = connections.map(item => item.responsibility);
+    for (let i = 0; i < responsibilities.length; i++){
+        const responsibility = responsibilities[i];
+        const priority = getPriorityByResponsibility(responsibility);
+        if (highestPriority > priority) highestPriority = priority;
+    }
+    return highestPriority;
 };
 
-const getBevoegdheden = async (uris) => {
-
-    const ids = uris.map(uri => uri.replace("http://localhost/vo/bevoegdheden/" , ""));
-
-    const query = `
-      PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-      PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
-      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      
-      SELECT ?bevoegdheid ?uuid ?label WHERE {
-        GRAPH <http://mu.semte.ch/application> 
-        {
-        ?bevoegdheid a ext:Bevoegdheid ;
-        mu:uuid ?uuid ;
-        skos:prefLabel ?label .
-      }
-    }`;
-
-    // FILTER(?uuid = ${ids})
-
-    let data = await mu.query(query);
-    const vars = data.head.vars;
-
-    return data.results.bindings.map(binding => {
-        let obj = {};
-        vars.forEach(varKey => {
-            obj[varKey] = binding[varKey].value;
-        });
-        return obj;
-    })
-
+const getPriorityByResponsibility = (responsibility) => {
+    let highestPriority = 9999;
+    for (let i = 0; i < priorities.length; i++){
+        const priority = priorities[i];
+        if (priority.responsibilities.indexOf(responsibility) !== -1 && highestPriority > priority.priority)
+            highestPriority = priority.priority;
+    }
+    return highestPriority;
 };
+
 
