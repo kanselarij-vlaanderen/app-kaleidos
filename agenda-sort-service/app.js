@@ -24,7 +24,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 
 
 
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
 
   let agendaId = req.query.agendaId;
 
