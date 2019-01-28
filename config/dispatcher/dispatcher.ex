@@ -57,10 +57,26 @@ defmodule Dispatcher do
 
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://agenda-sort-service/"
+  end 
+
+  match "/decisions/*path" do
+    Proxy.forward conn, path, "http://resource/decisions/"
+  end
+
+  match "/news-items/*path" do
+    Proxy.forward conn, path, "http://resource/news-items/"
   end
 
   match "/session-service/*path" do
     Proxy.forward conn, path, "http://session-number-service/"
+  end
+
+  match "/agenda-approve/*path" do
+    Proxy.forward conn, path, "http://agenda-approve-service/"
+  end
+
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
   end
 
   match _ do
