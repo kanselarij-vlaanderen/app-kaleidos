@@ -30,7 +30,7 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
       }`;
 
     let data = await mu.query(query);
-    const results = parseSparQlResults(data);
+    const results = parseSparqlResults(data);
     return parseMinistersWithBevoegdheden(results);
 };
 
@@ -61,7 +61,7 @@ const updateAgendaItemPriority = async (items) => {
      return mu.update(query);
 };
 
-const parseSparQlResults = (data) => {
+const parseSparqlResults = (data) => {
     const vars = data.head.vars;
     return data.results.bindings.map(binding => {
         let obj = {};
@@ -71,6 +71,8 @@ const parseSparQlResults = (data) => {
         return obj;
     })
 };
+
+// TODO Refactor naar functies in de plaats van grote blocks
 
 const parseMinistersWithBevoegdheden = (items) => {
     let agendaItems = {};

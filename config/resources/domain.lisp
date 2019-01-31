@@ -158,10 +158,7 @@
   :class (s-prefix "vo-besluit:Opmerking")
   :properties `((:text :string ,(s-prefix "ext:text"))
                 (:created-at :date ,(s-prefix "ext:aangemaaktOp")))
-  :has-one `((agenda :via ,(s-prefix "ext:opmerking")
-                     :inverse t
-                     :as "agenda")
-            (agendaitem :via ,(s-prefix "ext:opmerking")
+  :has-one `((agendaitem :via ,(s-prefix "ext:opmerking")
                      :inverse t
                      :as "agendaitem"))
   :resource-base (s-url "http://localhost/vo/opmerkingen/")
@@ -191,7 +188,7 @@
                 (:approved :boolean ,(s-prefix "ext:approved")))
   :resource-base (s-url "http://localhost/vo/decisions/")
   :has-one `((agendaitem :via ,(s-prefix "ext:givesRiseToDecision")
-                         :inverse  t
+                         :inverse t
                          :as "agenda-item"))
   :on-path "decisions")
 
