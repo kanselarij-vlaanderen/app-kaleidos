@@ -32,12 +32,12 @@
 dossier:1 a dbpedia:Case ;
     mu:uuid "1" ;
     dct:title "example dossier"@nl ;
-
     vo-besluit:korteTitel "example"@nl ;
     vo-besluit:nummer "1"@nl ;
     vo-besluit:opmerking "just an example"@nl ;
     vo-besluit:gearchiveerd false ;
-    dct:created "2012-12-31T23:57:00"^^xsd:dateTime ;
+    dct:created "2018-12-31T23:57:00"^^xsd:dateTime ;
+    dct:modified "2012-12-31T23:57:00"^^xsd:dateTime ;
     vo-besluit:actieveOpenbaarheid false ;
     vo-besluit:contact hoedanigheid:1 ;
     vo-besluit:indiener hoedanigheid:1 ;
@@ -53,6 +53,7 @@ dossier:2 a dbpedia:Case ;
     vo-besluit:opmerking "Geen opmerking"@nl ;
     vo-besluit:gearchiveerd false ;
     dct:created "2012-12-31T23:57:00"^^xsd:dateTime ;
+    dct:modified "2012-12-31T23:57:00"^^xsd:dateTime ;
     vo-besluit:actieveOpenbaarheid false ;
     vo-besluit:contact hoedanigheid:1 ;
     vo-besluit:indiener hoedanigheid:1 ;
