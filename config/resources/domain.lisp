@@ -106,11 +106,14 @@
                 (:number :number ,(s-prefix "vo-besluit:number"))
                 (:created :date ,(s-prefix "dct:created"))
                 (:modified :date ,(s-prefix "dct:modified")))
-  :has-many `((agenda :via ,(s-prefix "ext:agenda")
-                        :as "agendas")
-              (subcase :via ,(s-prefix "ext:zitting")
-                       :inverse t
-                       :as "subcases"))
+  :has-many `((agenda     :via ,(s-prefix "ext:agenda")
+                          :as "agendas")
+              (subcase    :via ,(s-prefix "ext:zitting")
+                          :inverse t
+                          :as "subcases")
+              (agendaitem :via ,(s-prefix "vo-besluit:zitting")
+                          :inverse t
+                          :as "post-poned-agenda-items"))
   :resource-base (s-url "http://localhost/vo/zittingen/")
   :on-path "sessions")
 
@@ -145,18 +148,20 @@
                 (:created :date ,(s-prefix "dct:created"))
                 (:modified :date ,(s-prefix "dct:modified"))
                 (:date-added :date ,(s-prefix "ext:datumVanToevoeging")))
-  :has-one `((agenda :via ,(s-prefix "ext:agendapunt")
-                     :inverse t
-                     :as "agenda")
-             (decision :via ,(s-prefix "ext:givesRiseToDecision")
-                       :as "decision")
+  :has-one `((agenda    :via ,(s-prefix "ext:agendapunt")
+                        :inverse t
+                        :as "agenda")
+             (decision  :via ,(s-prefix "ext:givesRiseToDecision")
+                        :as "decision")
              (news-item :via ,(s-prefix "ext:givesRiseToNewsItem")
-                       :as "news-item")
-             (subcase :via ,(s-prefix "vo-besluit:subcase")
-                      :inverse t
-                      :as "subcase"))
-  :has-many `((comment :via ,(s-prefix "ext:opmerking")
-                      :as "comments"))
+                        :as "news-item")
+             (subcase   :via ,(s-prefix "vo-besluit:subcase")
+                        :inverse t
+                        :as "subcase")
+             (session   :via ,(s-prefix "vo-besluit:zitting")
+                        :as "post-poned-to-session"))
+  :has-many `((comment  :via ,(s-prefix "ext:opmerking")
+                        :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendapunten/")
   :on-path "agendaitems")
 
