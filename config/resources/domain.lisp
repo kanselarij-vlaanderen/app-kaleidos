@@ -170,8 +170,7 @@
   :class (s-prefix "vo-besluit:Opmerking")
   :properties `((:text :string ,(s-prefix "ext:text"))
                 (:created :date ,(s-prefix "dct:created"))
-                (:modified :date ,(s-prefix "dct:modified"))
-                (:created-at :date ,(s-prefix "ext:aangemaaktOp")))
+                (:modified :date ,(s-prefix "dct:modified")))
   :has-one `((agendaitem :via ,(s-prefix "ext:opmerking")
                      :inverse t
                      :as "agendaitem"))
@@ -182,6 +181,7 @@
   :class (s-prefix "ext:SubCase")
   :properties `((:short-title :string ,(s-prefix "vo-besluit:korteTitel"))
                 (:number :string ,(s-prefix "vo-besluit:nummer"))
+                (:confidential :boolean ,(s-prefix "ext:vertrouwelijk"))
                 (:created :date ,(s-prefix "dct:created"))
                 (:modified :date ,(s-prefix "dct:modified"))
                 (:remark :string ,(s-prefix "vo-besluit:opmerking"))
