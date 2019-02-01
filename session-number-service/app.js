@@ -100,7 +100,7 @@ async function updateSessionNumbers(sessions) {
     GRAPH <http://mu.semte.ch/application> { 
       ${deleteString}
     } 
-  }
+  };
 
   INSERT DATA { 
     GRAPH <http://mu.semte.ch/application> { 
