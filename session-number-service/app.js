@@ -94,7 +94,7 @@ async function updateSessionNumbers(sessions) {
   const query = `
   PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  prefix vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
   
   DELETE DATA { 
     GRAPH <http://mu.semte.ch/application> { 
