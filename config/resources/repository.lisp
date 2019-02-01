@@ -24,6 +24,7 @@
 (add-prefix "nie" "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#")
 (add-prefix "dct" "http://purl.org/dc/terms/")
 (add-prefix "dbpedia" "http://dbpedia.org/ontology/")
+(add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
