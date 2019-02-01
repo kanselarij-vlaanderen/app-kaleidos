@@ -187,6 +187,9 @@
              (agendaitem :via ,(s-prefix "vo-besluit:subcase")
                      :inverse t
                      :as "agendaitem"))
+  :has-many `((document-version :via ,(s-prefix "ext:subcaseOfFileVersion")
+                                :inverse t
+                                :as "document-versions"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")
 
@@ -223,7 +226,22 @@
                 (:created :datetime ,(s-prefix "nfo:fileCreated")))
   :has-one `((file :via ,(s-prefix "nie:dataSource")
                    :inverse t
-                   :as "download"))
+                   :as "download")
+            (document-version :via ,(s-prefix "ext:file")
+                   :inverse t
+                   :as "document-version"))
   :resource-base (s-url "http://localhost/vo/files/")
   :features `(include-uri)
   :on-path "files")
+
+  (define-resource document-version ()
+  :class (s-prefix "ext:documentVersie")
+  :properties `((:version-number :string ,(s-prefix "ext:versieNummer"))
+                (:created :datetime ,(s-prefix "ext:versieAangemaakt")))
+  :has-one `((file   :via ,(s-prefix "ext:file")
+                     :as "file")
+            (subcase :via ,(s-prefix "ext:subcaseOfFileVersion")
+                     :as "subcase"))
+  :resource-base (s-url "http://localhost/vo/document-versions/")
+  :features `(include-uri)
+  :on-path "document-versions")
