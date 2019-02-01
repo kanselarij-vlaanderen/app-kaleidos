@@ -44,10 +44,11 @@ app.post('/', async (req, res) => {
 
 const sortAgendaItemsByResponsibilities = async (agendaItems) =>  {
     const prioritizedItems = [];
+
     for (let key in agendaItems){
         const item = agendaItems[key];
         let newPriority = await getHighestPriorityForAgendaItemConnections(item.connections);
-        if (!newPriority || newPriority === 9999) newPriority = item.priority;
+        if (!newPriority || newPriority === Number.MAX_SAFE_INTEGER) newPriority = item.priority;
         item.newPriority = newPriority;
         prioritizedItems.push(item);
     }
@@ -58,22 +59,27 @@ const sortAgendaItemsByResponsibilities = async (agendaItems) =>  {
 };
 
 const getHighestPriorityForAgendaItemConnections = (connections) => {
-    let highestPriority = 9999;
+    let highestPriority = Number.MAX_SAFE_INTEGER;
     let responsibilities = connections.map(item => item.responsibility);
+
     for (let i = 0; i < responsibilities.length; i++){
         const responsibility = responsibilities[i];
         const priority = getPriorityByResponsibility(responsibility);
-        if (highestPriority > priority) highestPriority = priority;
+        if (highestPriority > priority){
+            highestPriority = priority;
+        }
     }
+
     return highestPriority;
 };
 
 const getPriorityByResponsibility = (responsibility) => {
-    let highestPriority = 9999;
+    let highestPriority = Number.MAX_SAFE_INTEGER;
     for (let i = 0; i < priorities.length; i++){
         const priority = priorities[i];
-        if (priority.responsibilities.indexOf(responsibility) !== -1 && highestPriority > priority.priority)
+        if (priority.responsibilities.indexOf(responsibility) !== -1 && highestPriority > priority.priority) {
             highestPriority = priority.priority;
+        }
     }
     return highestPriority;
 };
