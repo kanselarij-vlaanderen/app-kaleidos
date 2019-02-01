@@ -63,6 +63,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/decisions/"
   end
 
+  match "/announcements/*path" do
+    Proxy.forward conn, path, "http://resource/announcements/"
+  end
+
   match "/news-items/*path" do
     Proxy.forward conn, path, "http://resource/news-items/"
   end
