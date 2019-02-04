@@ -257,6 +257,8 @@
   :class (s-prefix "ext:documentVersie")
   :properties `((:version-number :string ,(s-prefix "ext:versieNummer"))
                 (:created :datetime ,(s-prefix "ext:versieAangemaakt"))
+                (:identification-number :string ,(s-prefix "ext:idNumber"))
+                (:serial-number :string ,(s-prefix "ext:serieNummer"))
                 (:chosen-file-name :string ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file   :via ,(s-prefix "ext:file")
                      :as "file")
