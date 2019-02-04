@@ -114,7 +114,7 @@ session:1 a vo-besluit:Zitting ;
     
 agenda:1 a vo-besluit:Agenda ;
     mu:uuid "8" ;
-    ext:naam "testName"@nl ;
+    ext:naam "Ontwerpagenda"@nl ;
     prov-o:uitgestuurdOpDatum "2019-01-31T23:57:00"^^xsd:dateTime ;
     prov-o:finaleVersie true ;
     ext:agendapunt agendapunt:1 .
