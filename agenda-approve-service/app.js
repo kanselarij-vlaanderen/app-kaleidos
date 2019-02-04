@@ -15,7 +15,7 @@ app.post('/approveAgenda', async (req, res) => {
 
 	let newAgendaURI = await getNewAgendaURI(newAgendaId);
 	let agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI)
-	res.send({ status: ok, statusCode: 200, body: { agendaIds: { newAgendaId: newAgendaId, oldAgendaId: oldAgendaId }, agendaData: agendaData } });
+	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } });
 });
 
 async function getNewAgendaURI(newAgendaId) {

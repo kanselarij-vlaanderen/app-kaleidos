@@ -156,7 +156,6 @@
              (news-item :via ,(s-prefix "ext:givesRiseToNewsItem")
                         :as "news-item")
              (subcase   :via ,(s-prefix "vo-besluit:subcase")
-                        :inverse t
                         :as "subcase")
              (session   :via ,(s-prefix "vo-besluit:zitting")
                         :as "post-poned-to-session"))
