@@ -4,6 +4,7 @@ import { ok } from 'assert';
 import cors from 'cors';
 
 const app = mu.app;
+const moment = require('moment');
 const bodyParser = require('body-parser');
 
 app.use(cors())
@@ -12,18 +13,15 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 app.post('/approveAgenda', async (req, res) => {
 	const newAgendaId = req.body.newAgendaId;
 	const oldAgendaId = req.body.oldAgendaId;
-	const renameDocuments = req.body.renameDocuments; // boolean to rename the document-version names of an agenda.
+	const currentSessionDate = req.body.currentSessionDate;
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
-	let resultsAfterUpdates = undefined;
+	const data = await getDocumentsURISFromAgenda(newAgendaId);
 
-	if (renameDocuments) {
-		const data = await getDocumentsURISFromAgenda(newAgendaId);
-		const vars = data.head.vars;
-		const documentVersionsToChange = createDocumentVersionObjects(data, vars);
-		resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange);
-	}
+	const vars = data.head.vars;
+	const documentVersionsToChange = createDocumentVersionObjects(data, vars);
+	const resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange, currentSessionDate);
 
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData, resultsOfSerialNumbers: resultsAfterUpdates } });
 });
@@ -46,8 +44,6 @@ async function getNewAgendaURI(newAgendaId) {
 	return data.results.bindings[0].agenda.value;
 }
 
-// ?p => Predicate
-// ?o => Object
 async function copyAgendaItems(oldId, newUri) {
 	// SUBQUERY: Is needed to make sure the uuid isn't generated for every variable.
 	const query = `
@@ -102,7 +98,7 @@ async function getDocumentsURISFromAgenda(agendaId) {
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 	
-	SELECT ?documentURI ?documentName ?versionNumber ?idNr ?creationDate
+	SELECT ?documentURI ?documentName ?versionNumber ?idNr ?creationDate ?serialNumber
 		WHERE {
 			GRAPH <http://mu.semte.ch/application> {
 				?agenda a 	 vo-besluit:Agenda ;
@@ -113,7 +109,8 @@ async function getDocumentsURISFromAgenda(agendaId) {
                        ext:gekozenDocumentNaam  ?documentName ;
                        ext:versieNummer         ?versionNumber ;
                        ext:idNumber             ?idNr ;
-                       ext:versieAangemaakt     ?creationDate .
+											 ext:versieAangemaakt     ?creationDate .
+			OPTIONAL { ?documentURI ext:serieNummer  ?serialNumber . }
 		}        
 	}
 	`
@@ -124,37 +121,46 @@ function createDocumentVersionObjects(data, vars) {
 	const bindings = data.results.bindings;
 	let documentVersions = [];
 	for (let index = 0; index < bindings.length; index++) {
-		let documentVersionObject = {};
-		vars.forEach(varKey => {
-			documentVersionObject[varKey] = bindings[index][varKey].value;
-		});
-		documentVersions.push(documentVersionObject);
+		if(!bindings[index].serialNumber) {
+			let documentVersionObject = {};
+			vars.forEach(varKey => {
+				if(varKey != 'serialNumber') {
+					documentVersionObject[varKey] = bindings[index][varKey].value;
+				}
+			});
+			documentVersions.push(documentVersionObject);
+		}
 	}
 	return documentVersions;
 }
 
-async function updateSerialNumbersOfDocumentVersions(documents) {
+async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDate) {
 	let insertString = "";
 
 	documents.forEach(document => {
 		const numberToAssignToDocument = createIdNumberOfCertainLength(document.idNr);
+		// TODO: BIS/TRES/... 
 		insertString = `${insertString}
-    	<${document.documentURI}> ext:serieNummer VR${document.creationDate}_${numberToAssignToDocument}_BIS" .
+    	<${document.documentURI}> ext:serieNummer "VR${moment(currentSessionDate).format('YYYYMMDD')}_${numberToAssignToDocument}_BIS" .
     `
 	})
 
 	const queryString = `
+		PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+		PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+		PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
 		INSERT DATA { 
 			GRAPH <http://mu.semte.ch/application> { 
 				${insertString}
 			}
 		}`
 
-	return await mu.query(queryString).catch(err => { console.error(err) });
+	return await mu.update(queryString).catch(err => { console.error(err) });
 }
 
-function createIdNumberOfCertainLength(nrToEdit, length = 4) {
-	const numberLength = nrToEdit.toString().length;
+function createIdNumberOfCertainLength(numberToEdit, length = 4) {
+	const numberLength = numberToEdit.toString().length;
 	const lengthDiff = length - numberLength;
 
 	let zeroStringToAdd = "";
@@ -162,7 +168,7 @@ function createIdNumberOfCertainLength(nrToEdit, length = 4) {
 		zeroStringToAdd += "0";
 	}
 
-	return zeroStringToAdd + nrToEdit;
+	return zeroStringToAdd + numberToEdit;
 }
 
 mu.app.use(mu.errorHandler);

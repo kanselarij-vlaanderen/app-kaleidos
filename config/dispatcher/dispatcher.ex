@@ -83,8 +83,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
- match "/document-versions/*path" do
+  match "/document-versions/*path" do
     Proxy.forward conn, path, "http://resource/document-versions/"
+  end
+
+  match "/documents/*path" do
+    Proxy.forward conn, path, "http://resource/documents/"
   end
 
   match _ do
