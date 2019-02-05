@@ -55,6 +55,11 @@ const sortAgendaItemsByResponsibilities = async (agendaItems) =>  {
     prioritizedItems.sort((a, b) => {
         return a.priority - b.priority;
     });
+
+    for (let i = 0; i < prioritizedItems.length; i++){
+        prioritizedItems[i].priority = i + 1;
+    }
+
     return prioritizedItems;
 };
 
