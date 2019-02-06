@@ -17,22 +17,21 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
           {
             agenda:${agendaId} ext:agendapunt ?agendapunt .
             ?agendapunt mu:uuid ?uuid .
-            ?agendapunt ext:prioriteit ?priority .
-            ?subcase vo-besluit:subcase ?agendapunt . 
+            OPTIONAL { ?agendapunt ext:prioriteit ?priority . }
+            ?agendapunt vo-besluit:subcase ?subcase . 
             ?case ext:deeldossier ?subcase ;
                   vo-besluit:bevoegde ?hoedanigheid .
             ?hoedanigheid skos:prefLabel ?minister ; 
                           mu:uuid ?ministerId ;
                           vo-org:bevoegdheid ?bevoegdheid .
             ?bevoegdheid skos:prefLabel ?responsibility
-
            }
       }`;
 
     let data = await mu.query(query);
     const results = parseSparqlResults(data);
     return parseMinistersWithBevoegdheden(results);
-};
+}
 
 
 const updateAgendaItemPriority = async (items) => {
@@ -66,7 +65,9 @@ const parseSparqlResults = (data) => {
     return data.results.bindings.map(binding => {
         let obj = {};
         vars.forEach(varKey => {
-            obj[varKey] = binding[varKey].value;
+            if (binding[varKey]){
+                obj[varKey] = binding[varKey].value;
+            }
         });
         return obj;
     })
@@ -92,6 +93,11 @@ const parseMinistersWithBevoegdheden = (items) => {
 
         }else {
 
+            if (agendaItem.priority){
+                agendaItem.priority = parseInt(agendaItem.priority);
+            }else {
+                agendaItem.priority = 999;
+            }
             agendaItem.priority = parseInt(agendaItem.priority);
             agendaItem.connections = [{
                 ministerId: agendaItem.ministerId,

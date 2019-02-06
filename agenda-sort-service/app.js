@@ -32,7 +32,9 @@ app.post('/', async (req, res) => {
   try {
 
       const agendaItems = await repository.getMinistersWithBevoegdheidByAgendaId(agendaId);
+      console.log(agendaItems);
       const prioritizedAgendaItems = await sortAgendaItemsByResponsibilities(agendaItems);
+      console.log(prioritizedAgendaItems);
       await repository.updateAgendaItemPriority(prioritizedAgendaItems);
 
       res.send({ status: ok, statusCode: 200, body: { items: prioritizedAgendaItems } });
@@ -55,10 +57,6 @@ const sortAgendaItemsByResponsibilities = async (agendaItems) =>  {
     prioritizedItems.sort((a, b) => {
         return a.priority - b.priority;
     });
-
-    for (let i = 0; i < prioritizedItems.length; i++){
-        prioritizedItems[i].priority = i + 1;
-    }
 
     return prioritizedItems;
 };
