@@ -87,7 +87,7 @@ dossiertype:1 a ext:DossierType ;
 
 hoedanigheid:1 a vo-org:Hoedanigheid ;
     mu:uuid "6" ;
-    skos:prefLabel "Svekke Gatz"@nl ;
+    skos:prefLabel "Sven Gatz"@nl ;
     vo-org:beleidsDomein beleidsdomein:1 ;
     vo-org:bevoegdheid bevoegdheid:1 .
 
