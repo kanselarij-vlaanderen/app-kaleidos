@@ -110,9 +110,8 @@
               (subcase    :via ,(s-prefix "ext:zitting")
                           :inverse t
                           :as "subcases")
-              (agendaitem :via ,(s-prefix "vo-besluit:zitting")
-                          :inverse t
-                          :as "post-poned-agenda-items"))
+              (agendaitem :via ,(s-prefix "ext:uitgesteldeAgendaItem")
+                          :as "postponed-agendaitems"))
   :resource-base (s-url "http://localhost/vo/zittingen/")
   :on-path "sessions")
 
@@ -157,8 +156,9 @@
                                 :as "news-item")
              (subcase           :via       ,(s-prefix "vo-besluit:subcase")
                                 :as "subcase")
-             (session           :via       ,(s-prefix "vo-besluit:zitting")
-                                :as "post-poned-to-session"))
+             (session           :via       ,(s-prefix "ext:uitgesteldeAgendaItem")
+                                :inverse t
+                                :as "postponed-to-session"))
   :has-many `((comment          :via       ,(s-prefix "ext:opmerking")
                                 :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendapunten/")
