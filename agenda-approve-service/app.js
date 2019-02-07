@@ -23,7 +23,7 @@ app.post('/approveAgenda', async (req, res) => {
 	const documentVersionsToChange = createDocumentVersionObjects(data, vars);
 	const resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange, currentSessionDate);
 
-	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData, resultsOfSerialNumbers: resultsAfterUpdates } });
+	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
 async function getNewAgendaURI(newAgendaId) {
@@ -144,7 +144,10 @@ async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDa
     	<${document.documentURI}> ext:serieNummer "VR${moment(currentSessionDate).format('YYYYMMDD')}_${numberToAssignToDocument}_BIS" .
     `
 	})
-
+	if(!insertString.includes('ext:serieNummer')) {
+		console.error('InsertString is not defined. We cannot insert items.')
+		return undefined;
+	}
 	const queryString = `
 		PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
 		PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -154,8 +157,9 @@ async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDa
 			GRAPH <http://mu.semte.ch/application> { 
 				${insertString}
 			}
-		}`
-
+		}
+	`
+	
 	return await mu.update(queryString).catch(err => { console.error(err) });
 }
 
