@@ -139,7 +139,7 @@
   :class (s-prefix "vo-besluit:AgendaPunt")
   :properties `((:priority      :string   ,(s-prefix "ext:prioriteit"))
                 (:order-added   :number   ,(s-prefix "ext:volgordeVanToevoeging"))
-                (:extended      :boolean  ,(s-prefix "ext:uitgesteld"))
+                (:postponed     :boolean  ,(s-prefix "ext:uitgesteld"))
                 (:for-press     :boolean  ,(s-prefix "ext:forPress"))
                 (:formally-ok   :boolean  ,(s-prefix "ext:formallyOk"))
                 (:record        :string   ,(s-prefix "ext:record"))
@@ -271,12 +271,12 @@
                                :inverse t
                                :as "case")
              (session          :via     ,(s-prefix "ext:zitting")
-                               :as "session")
-             (agendaitem       :via     ,(s-prefix "vo-besluit:subcase")
-                               :inverse t
-                               :as "agendaitem"))
+                               :as "session"))
   :has-many `((document        :via    ,(s-prefix "vo-besluit:subcase")
                                :inverse t
-                               :as "documents"))
+                               :as "documents")
+              (agendaitem       :via     ,(s-prefix "vo-besluit:subcase")
+                               :inverse t
+                               :as "agendaitem"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")
