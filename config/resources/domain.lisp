@@ -110,9 +110,8 @@
               (subcase    :via ,(s-prefix "ext:zitting")
                           :inverse t
                           :as "subcases")
-              (agendaitem :via ,(s-prefix "vo-besluit:zitting")
-                          :inverse t
-                          :as "post-poned-agenda-items"))
+              (agendaitem :via ,(s-prefix "ext:uitgesteldeAgendaItem")
+                          :as "postponed-agendaitems"))
   :resource-base (s-url "http://localhost/vo/zittingen/")
   :on-path "sessions")
 
@@ -140,7 +139,7 @@
   :class (s-prefix "vo-besluit:AgendaPunt")
   :properties `((:priority      :string   ,(s-prefix "ext:prioriteit"))
                 (:order-added   :number   ,(s-prefix "ext:volgordeVanToevoeging"))
-                (:extended      :boolean  ,(s-prefix "ext:uitgesteld"))
+                (:postponed     :boolean  ,(s-prefix "ext:uitgesteld"))
                 (:for-press     :boolean  ,(s-prefix "ext:forPress"))
                 (:formally-ok   :boolean  ,(s-prefix "ext:formallyOk"))
                 (:record        :string   ,(s-prefix "ext:record"))
@@ -157,8 +156,9 @@
                                 :as "news-item")
              (subcase           :via       ,(s-prefix "vo-besluit:subcase")
                                 :as "subcase")
-             (session           :via       ,(s-prefix "vo-besluit:zitting")
-                                :as "post-poned-to-session"))
+             (session           :via       ,(s-prefix "ext:uitgesteldeAgendaItem")
+                                :inverse t
+                                :as "postponed-to-session"))
   :has-many `((comment          :via       ,(s-prefix "ext:opmerking")
                                 :as "comments"))
   :resource-base (s-url "http://localhost/vo/agendapunten/")
@@ -233,7 +233,8 @@
 (define-resource document ()
   :class (s-prefix "ext:Document")
   :properties `((:created        :datetime  ,(s-prefix "ext:documentAangemaakt"))
-                (:public         :boolean   ,(s-prefix "ext:publiekBeschikbaar")))
+                (:public         :boolean   ,(s-prefix "ext:publiekBeschikbaar"))
+                (:document-type   :string    ,(s-prefix "ext:documentType")))
   :has-many `((document-version  :via       ,(s-prefix "ext:documentVersie")
                                  :as "document-versions"))
   :has-one `((subcase            :via       ,(s-prefix "vo-besluit:subcase")
@@ -271,12 +272,12 @@
                                :inverse t
                                :as "case")
              (session          :via     ,(s-prefix "ext:zitting")
-                               :as "session")
-             (agendaitem       :via     ,(s-prefix "vo-besluit:subcase")
-                               :inverse t
-                               :as "agendaitem"))
+                               :as "session"))
   :has-many `((document        :via    ,(s-prefix "vo-besluit:subcase")
                                :inverse t
-                               :as "documents"))
+                               :as "documents")
+              (agendaitem       :via     ,(s-prefix "vo-besluit:subcase")
+                               :inverse t
+                               :as "agendaitem"))
   :resource-base (s-url "http://localhost/vo/deeldossiers/")
   :on-path "subcases")

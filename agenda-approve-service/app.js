@@ -17,13 +17,13 @@ app.post('/approveAgenda', async (req, res) => {
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
-	const data = await getDocumentsURISFromAgenda(newAgendaId);
+	// const data = await getDocumentsURISFromAgenda(newAgendaId);
 
-	const vars = data.head.vars;
-	const documentVersionsToChange = createDocumentVersionObjects(data, vars);
-	const resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange, currentSessionDate);
+	// const vars = data.head.vars;
+	// const documentVersionsToChange = createDocumentVersionObjects(data, vars);
+	// const resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange, currentSessionDate);
 
-	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData, resultsOfSerialNumbers: resultsAfterUpdates } });
+	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
 async function getNewAgendaURI(newAgendaId) {
@@ -89,7 +89,7 @@ async function copyAgendaItems(oldId, newUri) {
 	}
 `
 
-	return await mu.query(query).catch(err => { console.error(err) });
+	return await mu.update(query).catch(err => { console.error(err) });
 }
 
 async function getDocumentsURISFromAgenda(agendaId) {
@@ -144,7 +144,10 @@ async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDa
     	<${document.documentURI}> ext:serieNummer "VR${moment(currentSessionDate).format('YYYYMMDD')}_${numberToAssignToDocument}_BIS" .
     `
 	})
-
+	if(!insertString.includes('ext:serieNummer')) {
+		console.error('InsertString is not defined. We cannot insert items.')
+		return undefined;
+	}
 	const queryString = `
 		PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
 		PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -154,8 +157,9 @@ async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDa
 			GRAPH <http://mu.semte.ch/application> { 
 				${insertString}
 			}
-		}`
-
+		}
+	`
+	
 	return await mu.update(queryString).catch(err => { console.error(err) });
 }
 
