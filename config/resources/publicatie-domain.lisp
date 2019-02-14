@@ -8,7 +8,7 @@
                 (:type :uri ,(s-prefix "dct:type")) ;; NOTE: Status-code as human-readable URI
                 (:NUMAC :number ,(s-prefix "besluitvorming:NUMAC"))) ;; optional, NOTE: proposition to treat Publicaties in Belgisch staatsblad as ordinary publicaties (filter on NUMAC for retrieving publicaties belgisch staatsblad) NOTE: made up property-URI besluitvorming:NUMAC
   :has-one `((publication-state :via ,(s-prefix "ext:publicatieStatus") ;; NOTE: More specific relationship then besluitvorming:status as mu-cl-resources workaround
-                                "state")
+                                :as "state")
              (document-version :via ,(s-prefix "dct:hasPart")
                                :as "document-versions")
              (person :via ,(s-prefix "besluitvorming:heeftAanvrager") ;; NOTE: used persoon instead of agent
@@ -59,7 +59,10 @@
   :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: Type should be :date instead?
                 (:text :string ,(s-prefix "rdfs:comment")))
   :has-one `((person :via ,(s-prefix "dct:creator")
-                     :as "author"))
+                     :as "author")
+             (agendaitem :via ,(s-prefix "besluitvorming:opmerking")
+                         :inverse t
+                         :as "agendaitem"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Opmerking/")
   :features '(include-uri)
   :on-path "remarks")
