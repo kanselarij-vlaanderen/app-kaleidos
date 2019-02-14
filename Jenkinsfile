@@ -39,6 +39,8 @@ node {
 
 def imagePrune(containerName){
     try {
+        sh "pwd"
+        sh "ls"
         sh "docker image prune -f"
         sh "docker-compose stop"
     } catch(error){}

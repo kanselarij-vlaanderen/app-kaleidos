@@ -13,8 +13,8 @@ services:
       - default
       - backend
     environment:
-    - VIRTUAL_HOST=kaleidos-backend.kanselarij-dev.s.redpencil.io
-    - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=kaleidos-backend.kanselarij-dev.s.redpencil.io
+      - VIRTUAL_PORT=80
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     links:
