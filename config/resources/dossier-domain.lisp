@@ -89,7 +89,7 @@
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFaseCode")
                           :inverse t
                           :as "subcasephases")
-              (subcase-phase-code :via ,(s-prefix "skos:broader") ;; NOTE: tree structure for type-hierarchy (cfr codelist) TODO:karel why model this?
+              (subcase-phase-code :via ,(s-prefix "skos:broader") ;; NOTE: tree structure for type-hierarchy (cfr codelist)
                                         :inverse t
                                         :as "subphaseCodes"))
   :has-one `((subcase-phase-code :via ,(s-prefix "skos:broader")
@@ -117,7 +117,7 @@
                             :as "subcase")
              (consultation-type :via ,(s-prefix "dct:type")
                                :as "type")
-             ; (??? :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent? (mandataris/bestuursorgaan) TODO:karel
+             ; (??? :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent? (mandataris/bestuursorgaan) TODO:karel should be both person and organization
              ;                         :as "isGesteldAan")
              (person :via ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
                      :as "contactPerson")

@@ -9,11 +9,10 @@
   :class (s-prefix "mandaat:Mandaat")
   :properties `((:number-of-mandatees :number ,(s-prefix "mandaat:aantalHouders")))
   :has-one `((government-function :via ,(s-prefix "org:role")
-                       :as "function"))
-  ;; TODO:karel removed post
-  ;; :has-many `((bestuursorgaan :via ,(s-prefix "org:hasPost")
-  ;;                             :inverse t
-  ;;                             :as "bevat-in"))
+                                  :as "function")
+             (bestuursorgaan :via ,(s-prefix "org:hasPost")
+                             :inverse t
+                             :as "bevat-in"))
   :resource-base (s-url "http://data.lblod.info/id/mandaten/")
   :features '(include-uri)
   :on-path "mandates")
@@ -115,12 +114,3 @@
   :resource-base (s-url "http://data.lblod.info/id/identificatoren/")
   :features '(include-uri)
   :on-path "identifications")
-
-;; TODO:karel needed?
-(define-resource time-period ()
-  :class (s-prefix "dct:PeriodOfTime")
-  :properties `((:start :datetime ,(s-prefix "generiek:begin"))
-                (:end :datetime ,(s-prefix "generiek:einde")))
-  :resource-base (s-url "http://data.lblod.info/id/tijdsintervallen/")
-  :features '(include-uri)
-  :on-path "time-periods")

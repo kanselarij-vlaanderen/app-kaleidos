@@ -59,14 +59,16 @@
 ;   :features '(include-uri)
 ;   :on-path "mededelingen")
 
-;; TODO:karel why hasmany and why no meeting?
+
 (define-resource postponed ()
   :class (s-prefix "besluitvorming:Verdaagd")
-  :properties `((:new-date :datetime ,(s-prefix "besluitvorming:nieuweDatum")) ;; NOTE: Type should be :date instead?
-                (:postponed :boolean ,(s-prefix "besluitvorming:verdaagd")))
-  :has-many `((agendaitem :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                          :inverse t
-                          :as "agendaitems"))
+  :properties `((:postponed :boolean ,(s-prefix "besluitvorming:verdaagd")))
+  :has-one `((meeting :via ,(s-prefix "besluitvorming:nieuweDatum") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                      :inverse t
+                      :as "subcase")
+             (agendaitem :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
+                         :inverse t
+                         :as "agendaitems"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Verdaagd/")
   :features '(include-uri)
   :on-path "postponeds")
@@ -106,7 +108,7 @@
   :features '(include-uri)
   :on-path "decisions")
 
-;; TODO:karel don't need this?
+;; TODO:karel translate
 (define-resource bestuurseenheid ()
   :class (s-prefix "besluit:Bestuurseenheid")
   :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
@@ -188,14 +190,12 @@
   :has-many `((agenda      :via ,(s-prefix "besluit:isAangemaaktVoor")
                            :inverse t
                            :as "agendas"))
-  ;; :has-one `((subcase :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
-  ;;                           :inverse t
-  ;;                           :as "subcases")
-            ;;  (agenda :via ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt TODO:karel removed spurious agenda relation
-            ;;          :as "agenda")
-            ;;  (agenda :via ,(s-prefix "besluit:isAangemaaktVoor")
-            ;;          :inverse t
-            ;;          :as "createdFor"))
+  :has-one `((subcase :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
+                            :inverse t
+                            :as "subcases")
+             (agenda :via ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+                     :as "agenda"))
+
   :resource-base (s-url "http://data.lblod.info/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")

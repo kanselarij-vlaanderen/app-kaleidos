@@ -46,7 +46,7 @@
   :has-many `((document :via ,(s-prefix "ext:documentType")
                           :inverse t
                           :as "documenten")
-              (document-type :via ,(s-prefix "skos:broader") ;; NOTE: tree structure for type-hierarchy (cfr codelist) TODO:karel do we need to model this?
+              (document-type :via ,(s-prefix "skos:broader")
                              :inverse t
                              :as "subtypes"))
   :has-one `((document-type :via ,(s-prefix "skos:broader")
@@ -73,25 +73,25 @@
 
 (define-resource translation-state ()
   :class (s-prefix "besluitvorming:VertalingsaanvraagStatus") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
-  :properties `((:date :datetime ,(s-prefix "besluitvorming:statusdatum"))
-                (:value :uri ,(s-prefix "ext:vertalingsaanvraagStatusCode"))) ;; NOTE: Status-code as human-readable URI TODO:karel why a uri?
+  :properties `((:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks"))
   :has-one `((translation-request :via ,(s-prefix "ext:vertalingsaanvraagStatus") ;; NOTE: More specific relationship then besluitvorming:status as mu-cl-resources workaround
                                  :inverse t
-                                 :as "translationRequest"))
+                                 :as "translationRequest")
+             (translation-state-name :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
+                                     :inverse t
+                                     :as "value"))
   :resource-base (s-url "http://data.vlaanderen.be/id/VertalingsaanvraagStatus/")
   :features '(include-uri)
   :on-path "translation-states")
 
-;; TODO:karel not used
-(define-resource media-type ()
-  :class (s-prefix "ext:MediaTypeCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  :has-many `((document-version :via ,(s-prefix "ext:documentversie")
-                                :inverse t
-                                :as "documentVersions"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/MediaTypeCode/")
+(define-resource translation-state-name ()
+  :class (s-prefix "besluitvorming:VertalingsaanvraagStatusCode") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
+                                 :inverse t
+                                 :as "translation-states"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/VertalingsaanvraagStatusCode/")
   :features '(include-uri)
-  :on-path "media-types")
+  :on-path "translation-state-code")

@@ -6,9 +6,8 @@
                 (:rijksregister-nummer :string ,(s-prefix "dct:identifier")))
   :has-many `((account :via ,(s-prefix "foaf:account")
                        :as "account")
-              ;; TODO:karel removed
-              ;; (bestuurseenheid :via ,(s-prefix "foaf:member")
-              ;;                 :as "bestuurseenheden")
+              (bestuurseenheid :via ,(s-prefix "foaf:member")
+                              :as "bestuurseenheden")
              )
   :on-path "users"
 )
