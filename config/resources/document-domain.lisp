@@ -2,6 +2,7 @@
   :class (s-prefix "foaf:Document")
   :properties `((:archived :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
                 (:title :string ,(s-prefix "dct:title")) ;;string-set
+                (:created :datetime ,(s-prefix "dct:created"))
                 (:number-vp :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
                 (:number-vr :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
@@ -22,7 +23,7 @@
 (define-resource document-version ()
   :class (s-prefix "ext:DocumentVersie")
   :properties `((:version-number        :string   ,(s-prefix "ext:versieNummer"))
-                (:created               :datetime ,(s-prefix "ext:versieAangemaakt"))
+                (:created               :datetime ,(s-prefix "dct:created"))
                 (:identification-number :string   ,(s-prefix "ext:idNumber"))
                 (:serial-number         :string   ,(s-prefix "ext:serieNummer"))
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
