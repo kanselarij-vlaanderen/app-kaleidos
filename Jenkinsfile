@@ -41,18 +41,18 @@ node {
 
 def imagePrune(containerName, DRC_PATH){
     try {
-        sh "docker-compose --project-path=${DRC_PATH} down -v"
-        sh "docker-compose --project-path=${DRC_PATH} rm -f"
+        sh "docker-compose --project-directory=${DRC_PATH} down -v"
+        sh "docker-compose --project-directory=${DRC_PATH} rm -f"
     } catch(error){}
 }
 
 def imageBuild(containerName, tag, DRC_PATH){
-    sh "docker-compose --project-path=${DRC_PATH} build"
+    sh "docker-compose --project-directory=${DRC_PATH} build"
     echo "Image build complete"
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH){
-    sh "docker-compose --project-path=${DRC_PATH} up --build -d"
+    sh "docker-compose --project-directory=${DRC_PATH} up --build -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 
