@@ -1,10 +1,11 @@
 def CONTAINER_NAME=""
 def CONTAINER_TAG="latest"
 def HTTP_PORT="8081"
-def DRC_PATH = "/root/jenkins/workspace/be-kaleidos"
+
 
 node {
 
+  def DRC_PATH="/root/jenkins/workspace/be-kaleidos"
   env.NODEJS_HOME = "${tool 'node'}"
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
   currentBuild.result = 'SUCCESS'
