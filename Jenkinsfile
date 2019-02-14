@@ -39,6 +39,7 @@ node {
 
 def imagePrune(containerName){
     try {
+        sh "docker-compose stop"
         sh "docker-compose rm -f"
     } catch(error){}
 }
