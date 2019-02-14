@@ -35,7 +35,7 @@ services:
     links:
       - db:database
     volumes:
-      - ./config/resources:/config:Z
+      - ./config/resources:/config
   file:
     image: semtech/mu-file-service:3.1.0
     links:
