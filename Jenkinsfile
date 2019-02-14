@@ -1,6 +1,7 @@
 def CONTAINER_NAME=""
 def CONTAINER_TAG="latest"
 def HTTP_PORT="8081"
+def DRC_PATH = "/root/jenkins/workspace/be-kaleidos"
 
 node {
 
@@ -39,18 +40,18 @@ node {
 
 def imagePrune(containerName){
     try {
-        sh "docker-compose down -v"
-        sh "docker-compose rm -f"
+        sh "docker-compose --project-path=${DRC_PATH} down -v"
+        sh "docker-compose --project-path=${DRC_PATH} rm -f"
     } catch(error){}
 }
 
 def imageBuild(containerName, tag){
-    sh "docker-compose build"
+    sh "docker-compose --project-path=${DRC_PATH} build"
     echo "Image build complete"
 }
 
 def runApp(containerName, tag, httpPort){
-    sh "docker-compose up --build -d"
+    sh "docker-compose --project-path=${DRC_PATH} up --build -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 
