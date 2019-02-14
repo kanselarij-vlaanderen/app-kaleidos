@@ -12,5 +12,5 @@
 /agenda-sort-service/node_modules
 /agenda-approve-service/node_modules
 /data/files/*
-
+properties-to-add
 .idea/

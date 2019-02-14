@@ -12,66 +12,180 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
-  match "/cases/*path" do
-    Proxy.forward conn, path, "http://resource/cases/"
-  end
-
-  match "/subcases/*path" do
-    Proxy.forward conn, path, "http://resource/subcases/"
-  end
-
-  match "/domains/*path" do
-    Proxy.forward conn, path, "http://resource/domains/"
-  end
-
-  match "/themes/*path" do
-    Proxy.forward conn, path, "http://resource/themes/"
-  end
-
-  match "/responsibilities/*path" do
-    Proxy.forward conn, path, "http://resource/responsibilities/"
-  end
-
-  match "/sessions/*path" do
-    Proxy.forward conn, path, "http://resource/sessions/"
-  end
-
   match "/agendas/*path" do
     Proxy.forward conn, path, "http://resource/agendas/"
   end
-
   match "/agendaitems/*path" do
     Proxy.forward conn, path, "http://resource/agendaitems/"
   end
+  # match "/announcements/*path" do
+  #   Proxy.forward conn, path, "http://resource/announcements/"
+  # end
+  match "/postponed/*path" do
+    Proxy.forward conn, path, "http://resource/postponed/"
+  end
+  match "/decisions/*path" do
+    Proxy.forward conn, path, "http://resource/decisions/"
+  end
+  match "/bestuurseenheden/*path" do
+    Proxy.forward conn, path, "http://resource/bestuurseenheden/"
+  end
+  match "/werkingsgebieden/*path" do
+    Proxy.forward conn, path, "http://resource/werkingsgebieden/"
+  end
+  match "/bestuurseenheid-classificatie-codes/*path" do
+    Proxy.forward conn, path, "http://resource/bestuurseenheid-classificatie-codes/"
+  end
+  match "/bestuursorgaan-classificatie-codes/*path" do
+    Proxy.forward conn, path, "http://resource/bestuursorgaan-classificatie-codes/"
+  end
+  match "/meetings/*path" do
+    Proxy.forward conn, path, "http://resource/meetings/"
+  end
+  
+  match "/documents/*path" do
+    Proxy.forward conn, path, "http://resource/documents/"
+  end
 
-  match "/comments/*path" do
-    Proxy.forward conn, path, "http://resource/comments/"
+  match "/document-versions/*path" do
+    Proxy.forward conn, path, "http://resource/document-versions/"
   end
-  match "/comments/*path" do
-    Proxy.forward conn, path, "http://resource/comments/"
+  
+  match "/document-type-codes/*path" do
+    Proxy.forward conn, path, "http://resource/document-type-codes/"
+  end
+  match "/translaterequests/*path" do
+    Proxy.forward conn, path, "http://resource/translaterequests/"
+  end
+  match "/translaterequest-statusses/*path" do
+    Proxy.forward conn, path, "http://resource/translaterequest-statusses/"
+  end
+  match "/media-type-codes/*path" do
+    Proxy.forward conn, path, "http://resource/media-type-codes/"
+  end
+  
+  match "/cases/*path" do
+    Proxy.forward conn, path, "http://resource/cases/"
+  end
+  match "/case-types/*path" do
+    Proxy.forward conn, path, "http://resource/case-types/"
+  end
+  match "/subcases/*path" do
+    Proxy.forward conn, path, "http://resource/subcases/"
+  end
+  match "/procedurestap-fases/*path" do
+    Proxy.forward conn, path, "http://resource/procedurestap-fases/"
+  end
+  match "/procedurestap-fase-codes/*path" do
+    Proxy.forward conn, path, "http://resource/procedurestap-fase-codes/"
+  end
+  match "/vertrouwelijkheid-codes/*path" do
+    Proxy.forward conn, path, "http://resource/vertrouwelijkheid-codes/"
+  end
+  match "/consultation-requests/*path" do
+    Proxy.forward conn, path, "http://resource/consultation-requests/"
+  end
+  match "/consultation-types/*path" do
+    Proxy.forward conn, path, "http://resource/consultation-types/"
+  end
+  match "/consultation-responses/*path" do
+    Proxy.forward conn, path, "http://resource/consultation-responses/"
+  end
+  match "/consultation-response-codes/*path" do
+    Proxy.forward conn, path, "http://resource/consultation-response-codes/"
+  end
+  
+  match "/document-states/*path" do
+    Proxy.forward conn, path, "http://resource/document-states/"
+  end
+ 
+  match "/file-addresses/*path" do
+    Proxy.forward conn, path, "http://resource/file-addresses/"
+  end
+  
+  match "/births/*path" do
+    Proxy.forward conn, path, "http://resource/births/"
+  end
+  match "/mandates/*path" do
+    Proxy.forward conn, path, "http://resource/mandates/"
+  end
+  match "/government-functions/*path" do
+    Proxy.forward conn, path, "http://resource/government-functions/"
+  end
+  match "/mandatees/*path" do
+    Proxy.forward conn, path, "http://resource/mandatees/"
+  end
+  match "/mandatee-states/*path" do
+    Proxy.forward conn, path, "http://resource/mandatee-states/"
+  end
+  match "/government-domains/*path" do
+    Proxy.forward conn, path, "http://resource/government-domains/"
+  end
+  match "/responsibilities/*path" do
+    Proxy.forward conn, path, "http://resource/responsibilities/"
+  end
+  match "/persons/*path" do
+    Proxy.forward conn, path, "http://resource/persons/"
+  end
+  match "/genders/*path" do
+    Proxy.forward conn, path, "http://resource/genders/"
+  end
+  match "/identifications/*path" do
+    Proxy.forward conn, path, "http://resource/identifications/"
+  end
+  match "/time-periods/*path" do
+    Proxy.forward conn, path, "http://resource/time-periods/"
+  end
+  
+  match "/sites/*path" do
+    Proxy.forward conn, path, "http://resource/sites/"
+  end
+  match "/contact-points/*path" do
+    Proxy.forward conn, path, "http://resource/contact-points/"
+  end
+  match "/posts/*path" do
+    Proxy.forward conn, path, "http://resource/posts/"
+  end
+  match "/roles/*path" do
+    Proxy.forward conn, path, "http://resource/roles/"
+  end
+  match "/organizations/*path" do
+    Proxy.forward conn, path, "http://resource/organizations/"
+  end
+  
+  match "/publications/*path" do
+    Proxy.forward conn, path, "http://resource/publications/"
+  end
+  match "/publication-states/*path" do
+    Proxy.forward conn, path, "http://resource/publication-states/"
+  end
+  match "/publication-state-codes/*path" do
+    Proxy.forward conn, path, "http://resource/publication-state-codes/"
+  end
+  match "/remarks/*path" do
+    Proxy.forward conn, path, "http://resource/remarks/"
+  end
+  match "/newsletter-infos/*path" do
+    Proxy.forward conn, path, "http://resource/newsletter-infos/"
+  end
+  match "/themes/*path" do
+    Proxy.forward conn, path, "http://resource/themes/"
+  end
+  
+  match "/users/*path" do
+    Proxy.forward conn, path, "http://resource/users/"
+  end
+  match "/accounts/*path" do
+    Proxy.forward conn, path, "http://resource/accounts/"
   end
 
-  match "/capacities/*path" do
-    Proxy.forward conn, path, "http://resource/capacities/"
-  end
+
 
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://agenda-sort-service/"
   end 
 
-  match "/decisions/*path" do
-    Proxy.forward conn, path, "http://resource/decisions/"
-  end
-
-  match "/announcements/*path" do
-    Proxy.forward conn, path, "http://resource/announcements/"
-  end
-
-  match "/news-items/*path" do
-    Proxy.forward conn, path, "http://resource/news-items/"
-  end
-
-  match "/session-service/*path" do
+   match "/session-service/*path" do
     Proxy.forward conn, path, "http://session-number-service/"
   end
 
@@ -81,14 +195,6 @@ defmodule Dispatcher do
 
   match "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
-  end
-
-  match "/document-versions/*path" do
-    Proxy.forward conn, path, "http://resource/document-versions/"
-  end
-
-  match "/documents/*path" do
-    Proxy.forward conn, path, "http://resource/documents/"
   end
 
   match _ do
