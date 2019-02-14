@@ -22,15 +22,15 @@ node {
   try {
 
     stage("Image Prune"){
-      imagePrune(CONTAINER_NAME)
+      imagePrune(CONTAINER_NAME, DRC_PATH)
     }
 
     stage('Image Build'){
-      imageBuild(CONTAINER_NAME, CONTAINER_TAG)
+      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH)
     }
 
     stage('Run App'){
-      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT)
+      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH)
     }
   } catch (err) {
     currentBuild.result = 'FAILED'
@@ -39,19 +39,19 @@ node {
 
 }
 
-def imagePrune(containerName){
+def imagePrune(containerName, DRC_PATH){
     try {
         sh "docker-compose --project-path=${DRC_PATH} down -v"
         sh "docker-compose --project-path=${DRC_PATH} rm -f"
     } catch(error){}
 }
 
-def imageBuild(containerName, tag){
+def imageBuild(containerName, tag, DRC_PATH){
     sh "docker-compose --project-path=${DRC_PATH} build"
     echo "Image build complete"
 }
 
-def runApp(containerName, tag, httpPort){
+def runApp(containerName, tag, httpPort, DRC_PATH){
     sh "docker-compose --project-path=${DRC_PATH} up --build -d"
     echo "Application started on port: ${httpPort} (http)"
 }
