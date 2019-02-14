@@ -40,7 +40,6 @@ node {
 def imagePrune(containerName){
     try {
         sh "docker image prune -f"
-        sh "docker-compose stop"
     } catch(error){}
 }
 
@@ -50,7 +49,7 @@ def imageBuild(containerName, tag){
 }
 
 def runApp(containerName, tag, httpPort){
-    sh "docker-compose up -d -V"
+    sh "docker-compose up --build -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 
