@@ -50,7 +50,7 @@ defmodule Dispatcher do
   match "/document-versions/*path" do
     Proxy.forward conn, path, "http://resource/document-versions/"
   end
-  
+
   match "/document-type-codes/*path" do
     Proxy.forward conn, path, "http://resource/document-type-codes/"
   end
@@ -178,8 +178,6 @@ defmodule Dispatcher do
   match "/accounts/*path" do
     Proxy.forward conn, path, "http://resource/accounts/"
   end
-
-
 
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://agenda-sort-service/"

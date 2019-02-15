@@ -73,9 +73,9 @@
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
                 (:title :string ,(s-prefix "dct:title")))
-  :has-one `((decision :via ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
-                                :inverse t
-                                :as "decision"))
+  :has-one `((agendaitem :via ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
+                         :inverse t
+                         :as "agendaitem"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")
