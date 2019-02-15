@@ -14,7 +14,9 @@
                     :inverse t
                     :as "previous-version"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
-                          :as "contains"))
+                          :as "contains")
+             (announcement :via ,(s-prefix "ext:mededeling")
+                           :as "announcements"))
   :resource-base (s-url "http://data.lblod.info/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
@@ -46,21 +48,27 @@
   :has-many `((mandatee :via ,(s-prefix "besluit:heeftAanwezige")
                      :inverse t
                      :as "attendees")
-              ; (mededeling :via ,(s-prefix "?")
-              ;                    :inverse t
-              ;                    :as "mededelingen")
+              ;;  (mededeling :via ,(s-prefix "?")
+              ;;                     :inverse t
+              ;;                     :as "mededelingen")
               (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                       :as "remarks"))
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
 
-; (define-resource mededeling ()
-;   :class (s-prefix "ext:Mededeling") ;; NOTE: 
-;   :properties `((:? :? ,(s-prefix "?")))
-;   :resource-base (s-url "http://data.vlaanderen.be/id/Mededeling/")
-;   :features '(include-uri)
-;   :on-path "mededelingen")
+
+  (define-resource announcement ()
+  :class (s-prefix "vo-besluit:Mededeling")
+  :properties `((:title :string ,(s-prefix "ext:title"))
+                (:text :string ,(s-prefix "ext:text"))
+                (:created :date ,(s-prefix "ext:created"))
+                (:modified :date ,(s-prefix "ext:modified")))
+  :has-one `((agenda :via ,(s-prefix "ext:mededeling")
+                     :inverse t
+                     :as "agenda"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/Mededeling/")
+  :on-path "announcements")
 
 
 (define-resource postponed ()
