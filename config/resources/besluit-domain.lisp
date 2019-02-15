@@ -39,7 +39,10 @@
                       :as "decision")
              (agenda :via ,(s-prefix "dct:hasPart")
                      :inverse t
-                     :as "agenda"))
+                     :as "agenda")
+             (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                              :inverse t
+                              :as "newsletter-info"))
   :has-many `((mandatee :via ,(s-prefix "besluit:heeftAanwezige")
                      :inverse t
                      :as "attendees")
@@ -98,8 +101,8 @@
                          :as "agendaitem")
              (publication :via ,(s-prefix "besluitvorming:isGerealiseerdDoor")
                           :as "publication")
-             (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                              :as "newsletter-info")
+            ;;  (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+            ;;                   :as "newsletter-info")
              (document-type :via ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                             :as "type")
              (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
