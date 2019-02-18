@@ -48,9 +48,8 @@
   :has-many `((mandatee :via ,(s-prefix "besluit:heeftAanwezige")
                      :inverse t
                      :as "attendees")
-              ;;  (mededeling :via ,(s-prefix "?")
-              ;;                     :inverse t
-              ;;                     :as "mededelingen")
+              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
+                                 :as "government-domains")
               (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                       :as "remarks"))
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
@@ -119,77 +118,84 @@
   :features '(include-uri)
   :on-path "decisions")
 
-;; TODO:karel translate
-(define-resource bestuurseenheid ()
+(define-resource government-unit ()
   :class (s-prefix "besluit:Bestuurseenheid")
-  :properties `((:naam :string ,(s-prefix "skos:prefLabel")))
-  :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
-                             :as "werkingsgebied")
-             (bestuurseenheid-classificatie-code :via ,(s-prefix "besluit:classificatie")
-                                                 :as "classificatie")
-             (vestiging :via ,(s-prefix "org:hasPrimarySite")
-                        :as "primaire-site"))
-  :has-many `((contact-punt :via ,(s-prefix "schema:contactPoint")
+  :properties `((:name :string ,(s-prefix "skos:prefLabel")))
+  :has-one `((jurisdiction-area :via ,(s-prefix "besluit:werkingsgebied")
+                                   :as "area-of-jurisdiction")
+             (government-unit-classification-code :via ,(s-prefix "besluit:classificatie")
+                                                  :as "classification")
+             (site :via ,(s-prefix "org:hasPrimarySite")
+                   :as "primary-site"))
+  :has-many `((contact-point :via ,(s-prefix "schema:contactPoint")
                             :as "contactinfo")
-              (positie :via ,(s-prefix "org:hasPost")
-                       :as "posities")
-              (bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
-                              :inverse t
-                              :as "bestuursorganen"))
+              (post :via ,(s-prefix "org:hasPost")
+                    :as "posts")
+              (government-body :via ,(s-prefix "besluit:bestuurt")
+                               :inverse t
+                               :as "government-bodies"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
   :features '(include-uri)
-  :on-path "bestuurseenheden")
+  :on-path "government-units")
 
 ;; Unmodified from lblod/loket
-(define-resource werkingsgebied ()
+(define-resource jurisdiction-area ()
   :class (s-prefix "prov:Location")
-  :properties `((:naam :string ,(s-prefix "rdfs:label"))
-                (:niveau :string, (s-prefix "ext:werkingsgebiedNiveau")))
-  :has-many `((bestuurseenheid :via ,(s-prefix "besluit:werkingsgebied")
+  :properties `((:name :string ,(s-prefix "rdfs:label"))
+                (:level :string, (s-prefix "ext:werkingsgebiedNiveau")))
+  :has-many `((government-unit :via ,(s-prefix "besluit:werkingsgebied")
                                :inverse t
-                               :as "bestuurseenheid"))
+                               :as "government-units"))
   :resource-base (s-url "http://data.lblod.info/id/werkingsgebieden/")
   :features '(include-uri)
-  :on-path "werkingsgebieden")
+  :on-path "jurisdiction-areas")
 
 ;; Unmodified from lblod/loket
-(define-resource bestuurseenheid-classificatie-code ()
+(define-resource government-unit-classification-code ()
   :class (s-prefix "ext:BestuurseenheidClassificatieCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/")
   :features '(include-uri)
-  :on-path "bestuurseenheid-classificatie-codes")
+  :on-path "government-unit-classification-codes")
 
-;; Unmodified from lblod/loket
-(define-resource bestuursorgaan ()
+;; WARNING missing in lblod/loket
+(define-resource government-body-term ()
   :class (s-prefix "besluit:Bestuursorgaan")
-  :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
-                (:binding-einde :date ,(s-prefix "mandaat:bindingEinde"))
+  :properties `((:binding-end :date ,(s-prefix "mandaat:bindingEinde"))
                 (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
-  :has-one `((bestuurseenheid :via ,(s-prefix "besluit:bestuurt")
-                              :as "bestuurseenheid")
-             (bestuursorgaan-classificatie-code :via ,(s-prefix "besluit:classificatie")
-                                                :as "classificatie")
-             (bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
+  :has-one `((government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                              :as "is-tijdsspecialisatie-van"))
-  :has-many `((bestuursorgaan :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
-                              :inverse t
-                              :as "heeft-tijdsspecialisaties")
-              (mandaat :via ,(s-prefix "org:hasPost")
+  :has-many `((mandate :via ,(s-prefix "org:hasPost")
                        :as "bevat"))
   :resource-base (s-url "http://data.lblod.info/id/bestuursorganen/")
   :features '(include-uri)
-  :on-path "bestuursorganen")
+  :on-path "government-body-term")
+
 
 ;; Unmodified from lblod/loket
-(define-resource bestuursorgaan-classificatie-code ()
+(define-resource government-body ()
+  :class (s-prefix "besluit:Bestuursorgaan")
+  :properties `((:name :string ,(s-prefix "skos:prefLabel")))
+  :has-one `((government-unit :via ,(s-prefix "besluit:bestuurt")
+                              :as "government-unit")
+             (government-body-classification-code :via ,(s-prefix "besluit:classificatie")
+                                                  :as "classification"))
+  :has-many `((government-body-term :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
+                                    :inverse t
+                                    :as "has-terms"))
+  :resource-base (s-url "http://data.lblod.info/id/bestuursorganen/")
+  :features '(include-uri)
+  :on-path "government-bodies")
+
+;; Unmodified from lblod/loket
+(define-resource government-body-classification-code ()
   :class (s-prefix "ext:BestuursorgaanClassificatieCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/")
   :features '(include-uri)
-  :on-path "bestuursorgaan-classificatie-codes")
+  :on-path "government-body-classification-codes")
 
 (define-resource meeting ()
   :class (s-prefix "besluit:Zitting")
@@ -197,7 +203,7 @@
                 (:started-on :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number :number ,(s-prefix "adms:identifier"))
-                (:location :url ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' TODO:karel
+                (:location :url ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda      :via ,(s-prefix "besluit:isAangemaaktVoor")
                            :inverse t
                            :as "agendas"))

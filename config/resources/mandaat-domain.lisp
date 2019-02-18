@@ -10,13 +10,14 @@
   :properties `((:number-of-mandatees :number ,(s-prefix "mandaat:aantalHouders")))
   :has-one `((government-function :via ,(s-prefix "org:role")
                                   :as "function")
-             (bestuursorgaan :via ,(s-prefix "org:hasPost")
-                             :inverse t
-                             :as "bevat-in"))
+             (government-body-term :via ,(s-prefix "org:hasPost")
+                                   :inverse t
+                                   :as "bevat-in"))
   :resource-base (s-url "http://data.lblod.info/id/mandaten/")
   :features '(include-uri)
   :on-path "mandates")
 
+;; TODO:karel why do we need this?
 (define-resource government-function ()
   :class (s-prefix "ext:BestuursfunctieCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
@@ -71,7 +72,7 @@
   :features '(include-uri)
   :on-path "government-functions")
 
-(define-resource responsibility ()
+(define-resource jurisdiction ()
   :class (s-prefix "ext:BevoegdheidCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
