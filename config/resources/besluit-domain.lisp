@@ -29,7 +29,8 @@
                 (:priority :number ,(s-prefix "ext:priority"))
                 (:for-press :number ,(s-prefix "ext:forPress")) 
                 (:record :string ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
-                (:title-press :string ,(s-prefix "besluitvorming:titelPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+                (:title-press :string ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:text-press :string ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((postponed-to :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
                           :as "postponedTo")
              (agendaitem :via ,(s-prefix "besluit:aangebrachtNa")
