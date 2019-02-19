@@ -112,6 +112,12 @@
   :features '(include-uri)
   :on-path "confidentialities")
 
+(define-resource person-or-organization ()
+  :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
+  :properties `((:type :string ,(s-prefix "rdfs:type")))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
+  :features '(include-uri)
+  :on-path "person-or-organization")
 
 
 (define-resource consultation-request ()
@@ -123,8 +129,8 @@
                             :as "subcase")
              (consultation-type :via ,(s-prefix "dct:type")
                                :as "type")
-             ; (??? :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent? (mandataris/bestuursorgaan) TODO:karel should be both person and organization
-             ;                         :as "isGesteldAan")
+             (person-or-organization :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent? 
+                                     :as "isGesteldAan")
              (person :via ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
                      :as "contactPerson")
              (consultation-response :via ,(s-prefix "prov:generated") 
