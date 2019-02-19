@@ -8,31 +8,31 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
       PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-      PREFIX agenda: <http://localhost/vo/agendas/>
+      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX agenda: <http://data.lblod.info/id/agendas/>
+      PREFIX mandaat: <http://data.lblod.info/id/mandatarissen/>
+      PREFIX dct: <http://purl.org/dc/terms/>
       
-      SELECT ?uuid ?agendapunt ?priority ?ministerId ?minister ?responsibility 
+      SELECT ?uuid ?agendapunt ?mandateeId ?priority
         WHERE { 
           GRAPH <http://mu.semte.ch/application>
           {
-            agenda:${agendaId} ext:agendapunt ?agendapunt .
+            agenda:${agendaId} dct:hasPart ?agendapunt .
             ?agendapunt mu:uuid ?uuid .
-            OPTIONAL { ?agendapunt ext:prioriteit ?priority . }
-            ?agendapunt vo-besluit:subcase ?subcase . 
-            ?case ext:deeldossier ?subcase ;
-                  vo-besluit:bevoegde ?hoedanigheid .
-            ?hoedanigheid skos:prefLabel ?minister ; 
-                          mu:uuid ?ministerId ;
-                          vo-org:bevoegdheid ?bevoegdheid .
-            ?bevoegdheid skos:prefLabel ?responsibility
+            ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+            ?case dct:hasPart ?subcase .
+            OPTIONAL { ?case besluitvorming:heeftBevoegde ?mandatee . }
+            OPTIONAL { ?mandatee mu:uuid ?mandateeId . }
+            OPTIONAL { ?mandatee mandaat:rangorde ?priority . }
            }
       }`;
 
     let data = await mu.query(query);
     const results = parseSparqlResults(data);
-    return parseMinistersWithBevoegdheden(results);
+    return parseMandateeWithTheirMandatePriority(results);
 }
 
+// Still TODO
 
 const updateAgendaItemPriority = async (items) => {
 
@@ -73,9 +73,14 @@ const parseSparqlResults = (data) => {
     })
 };
 
-// TODO Refactor naar functies in de plaats van grote blocks
+/* TODO
+    Agendaitem can hold multiple mandatees.
+    The UUID is used as the key to gather all mandate priorities
+    Check if the code actually works ..
+    The parsers main job is to collect all mandates that are affiliated with an agendaitem in an array
+ */
 
-const parseMinistersWithBevoegdheden = (items) => {
+const parseMandateeWithTheirMandatePriority = (items) => {
     let agendaItems = {};
 
     for (let i = 0; i < items.length; i++){
@@ -85,30 +90,18 @@ const parseMinistersWithBevoegdheden = (items) => {
 
         if (agendaItems[uuid]){
 
-            agendaItems[uuid].connections.push({
-                ministerId: agendaItem.ministerId,
-                minister: agendaItem.minister,
-                responsibility: agendaItem.responsibility
+            agendaItems[uuid].mandates.push({
+                priority: agendaItem.priority,
+                mandateeId: agendaItem.mandateeId
             });
 
         }else {
 
-            if (agendaItem.priority){
-                agendaItem.priority = parseInt(agendaItem.priority);
-            }else {
-                agendaItem.priority = 999;
-            }
-            agendaItem.priority = parseInt(agendaItem.priority);
-            agendaItem.connections = [{
-                ministerId: agendaItem.ministerId,
-                minister: agendaItem.minister,
-                responsibility: agendaItem.responsibility
+            agendaItem.mandates = [{
+              priority: agendaItem.priority,
+              mandateeId: agendaItem.mandateeId
             }];
-            delete agendaItem.ministerId;
-            delete agendaItem.minister;
-            delete agendaItem.bevoegdOver;
             agendaItems[uuid] = agendaItem;
-
         }
 
     }

@@ -5,7 +5,10 @@
                 (:number :number ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:title :string ,(s-prefix "dct:title")))
   :has-one `((case-type :via ,(s-prefix "dct:type")
-                           :as "type"))
+                           :as "type")
+             (mandate :via ,(s-prefix "ext:hasMandate")
+                     :inverse t
+                     :as "mandate"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")
@@ -48,7 +51,10 @@
                       :as "decision")
              (case :via ,(s-prefix "dct:hasPart")
                      :inverse t
-                     :as "case"))
+                     :as "case")
+             (mandate :via ,(s-prefix "ext:hasMandate")
+                     :inverse t
+                     :as "mandate"))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFase")
                                    :as "phase")
               (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
