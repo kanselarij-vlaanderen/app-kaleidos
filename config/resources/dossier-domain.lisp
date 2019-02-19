@@ -5,10 +5,7 @@
                 (:number :number ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:title :string ,(s-prefix "dct:title")))
   :has-one `((case-type :via ,(s-prefix "dct:type")
-                           :as "type")
-             (mandate :via ,(s-prefix "ext:hasMandate")
-                     :inverse t
-                     :as "mandate"))
+                           :as "type"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
               (person :via ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
@@ -45,18 +42,13 @@
                       :as "decision")
              (case :via ,(s-prefix "dct:hasPart")
                      :inverse t
-                     :as "case")
-             (mandate :via ,(s-prefix "ext:hasMandate")
-                     :inverse t
-                     :as "mandate"))
+                     :as "case"))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFase")
                                    :as "phase")
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
               (persoon :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                        :as "heeftCreator")
-              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
-                        :as "mandatees")
               (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                         :as "mandatees")
               (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
