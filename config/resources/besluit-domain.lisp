@@ -157,34 +157,25 @@
   :features '(include-uri)
   :on-path "government-unit-classification-codes")
 
-;; WARNING missing in lblod/loket
-(define-resource government-body-term ()
-  :class (s-prefix "besluit:Bestuursorgaan")
-  :properties `((:binding-end :date ,(s-prefix "mandaat:bindingEinde"))
-                (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
-  :has-one `((government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
-                             :as "is-tijdsspecialisatie-van"))
-  :has-many `((mandate :via ,(s-prefix "org:hasPost")
-                       :as "bevat"))
-  :resource-base (s-url "http://data.lblod.info/id/bestuursorganen/")
-  :features '(include-uri)
-  :on-path "government-body-term")
-
-
-;; Unmodified from lblod/loket
 (define-resource government-body ()
   :class (s-prefix "besluit:Bestuursorgaan")
-  :properties `((:name :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:name :string ,(s-prefix "skos:prefLabel"))
+                (:binding-end :date ,(s-prefix "mandaat:bindingEinde"))
+                (:binding-start :date ,(s-prefix "mandaat:bindingStart")))
   :has-one `((government-unit :via ,(s-prefix "besluit:bestuurt")
                               :as "government-unit")
              (government-body-classification-code :via ,(s-prefix "besluit:classificatie")
-                                                  :as "classification"))
-  :has-many `((government-body-term :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
+                                                  :as "classification")
+             (government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
+                             :as "is-tijdsspecialisatie-van"))
+  :has-many `((government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
                                     :inverse t
-                                    :as "has-terms"))
+                                    :as "has-terms")
+              (mandate :via ,(s-prefix "org:hasPost")
+                       :as "bevat"))
   :resource-base (s-url "http://data.lblod.info/id/bestuursorganen/")
   :features '(include-uri)
-  :on-path "government-bodies")
+  :on-path "government-body")
 
 ;; Unmodified from lblod/loket
 (define-resource government-body-classification-code ()

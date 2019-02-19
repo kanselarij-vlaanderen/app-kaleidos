@@ -10,7 +10,7 @@
   :properties `((:number-of-mandatees :number ,(s-prefix "mandaat:aantalHouders")))
   :has-one `((government-function :via ,(s-prefix "org:role")
                                   :as "function")
-             (government-body-term :via ,(s-prefix "org:hasPost")
+             (government-body :via ,(s-prefix "org:hasPost")
                                    :inverse t
                                    :as "bevat-in"))
   :resource-base (s-url "http://data.lblod.info/id/mandaten/")
