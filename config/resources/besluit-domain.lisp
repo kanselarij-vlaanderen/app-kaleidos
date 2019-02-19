@@ -48,8 +48,6 @@
   :has-many `((mandatee :via ,(s-prefix "besluit:heeftAanwezige")
                      :inverse t
                      :as "attendees")
-              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
-                                 :as "government-domains")
               (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                       :as "remarks"))
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")

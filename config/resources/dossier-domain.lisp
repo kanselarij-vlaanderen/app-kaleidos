@@ -8,12 +8,6 @@
                            :as "type"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
-              (theme :via ,(s-prefix "dct:subject")
-                     :as "themes")
-              ; (persoon :via ,(s-prefix "?") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
-              ;                                     :as "heeftCreator")
-              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
-                        :as "mandatees")
               (person :via ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
                       :as "creators")
               (person :via ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
@@ -51,6 +45,16 @@
                      :as "case"))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFase")
                                    :as "phase")
+              (theme :via ,(s-prefix "dct:subject")
+                     :as "themes")
+              (persoon :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+                       :as "heeftCreator")
+              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+                        :as "mandatees")
+              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+                        :as "mandatees")
+              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
+                                 :as "government-domains")
               (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                                :as "confidentiality")
               (subcase :via ,(s-prefix "dct:relation")
