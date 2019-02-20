@@ -40,11 +40,12 @@
                 (:show-as-remark :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
   :has-one `((decision :via ,(s-prefix "ext:besluitHeeftProcedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                        :as "decision")
+             (subcase-phase :via ,(s-prefix "ext:procedurestapFase")
+                            :as "phase")
              (case   :via ,(s-prefix "dct:hasPart")
                      :inverse t
                      :as "case"))
-  :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFase")
-                                   :as "phase")
+  :has-many `(
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
               (persoon :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
