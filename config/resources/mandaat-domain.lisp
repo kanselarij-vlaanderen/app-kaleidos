@@ -32,26 +32,27 @@
                 (:start :datetime ,(s-prefix "mandaat:start"))
                 (:end :datetime ,(s-prefix "mandaat:einde"))
                 (:date-sworn-in :datetime ,(s-prefix "ext:datumEedaflegging"))
-                (:date-decree :datetime ,(s-prefix "ext:datumMinistrieelBesluit")))
+                (:date-decree :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
+                (:title :string ,(s-prefix “dct:title”)))
   :has-many `((mandatee :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                         :as "temporary-replacements")
               (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
-                                      :as "government-domains")
+                                 :as "government-domains")
               (decision :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
-                       :inverse t
-                       :as "decisions")
-              (case :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
-                       :inverse t
-                       :as "cases"))
-  :has-one `((mandate :via ,(s-prefix "org:holds")
-                      :as "holds")
-             (person :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
-                      :as "person")
-             (mandatee-status :via ,(s-prefix "mandaat:status")
-                                      :as "state"))
+                        :inverse t
+                        :as "decisions")
+              (case     :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+                        :inverse t
+                        :as "cases"))
+  :has-one `((mandate   :via ,(s-prefix "org:holds")
+                        :as "holds")
+             (person    :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
+                        :as "person")
+             (mandatee-state :via ,(s-prefix "mandaat:status")
+                              :as "state"))
   :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
   :features '(include-uri)
-  :on-path "madatees")
+  :on-path "mandatees")
 
 (define-resource mandatee-state ()
   :class (s-prefix "ext:MandatarisStatusCode")

@@ -31,8 +31,8 @@
                 (:record :string ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press :string ,(s-prefix "besluitvorming:titelPersagenda"))
                 (:text-press :string ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
-  :has-one `((postponed-to :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                          :as "postponedTo")
+  :has-one `((postponed :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
+                          :as "postponed-to")
              (agendaitem :via ,(s-prefix "besluit:aangebrachtNa")
                          :as "previousAgendaItem")
              (subcase :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
@@ -92,7 +92,6 @@
                 (:number-vp :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
                 (:number-vr :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: Inherited from Document
   :has-many `((mandatee :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
-                          :inverse t
                           :as "mandatees")
               (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
                                       :as "remarks")
