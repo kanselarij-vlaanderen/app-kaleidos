@@ -33,7 +33,7 @@
                 (:end :datetime ,(s-prefix "mandaat:einde"))
                 (:date-sworn-in :datetime ,(s-prefix "ext:datumEedaflegging"))
                 (:date-decree :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
-                (:title :string ,(s-prefix “dct:title”)))
+                (:title :string ,(s-prefix "dct:title")))
   :has-many `((mandatee :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
                         :as "temporary-replacements")
               (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
