@@ -44,6 +44,9 @@ services:
       - ./session-number-service:/app
   agenda-sort-service:
     image: semtech/mu-javascript-template
+    ports:
+      - "9230:9229"
+      - "8080:80"
     environment:
       NODE_ENV: "development"
     links:

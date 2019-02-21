@@ -26,7 +26,7 @@
   :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:formally-ok :boolean ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:retracted :boolean ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:priority :number ,(s-prefix "ext:priority"))
+                (:priority :number ,(s-prefix "ext:prioriteit"))
                 (:for-press :number ,(s-prefix "ext:forPress")) 
                 (:record :string ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press :string ,(s-prefix "besluitvorming:titelPersagenda"))

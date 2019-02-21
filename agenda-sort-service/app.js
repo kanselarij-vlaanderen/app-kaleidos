@@ -16,11 +16,9 @@ app.post('/', async (req, res) => {
 
   try {
 
-      // DONE but double check
       const agendaItems = await repository.getMinistersWithBevoegdheidByAgendaId(agendaId);
-      // TODO
       const prioritizedAgendaItems = await sortAgendaItemsByMandates(agendaItems);
-      // TODO
+      
       await repository.updateAgendaItemPriority(prioritizedAgendaItems);
       res.send({ status: ok, statusCode: 200, body: { items: prioritizedAgendaItems } });
 
@@ -30,33 +28,38 @@ app.post('/', async (req, res) => {
   }
 });
 
-// TODO Double check
-
 const sortAgendaItemsByMandates = async (agendaItems) =>  {
     const prioritizedItems = [];
 
     for (let key in agendaItems){
         const item = agendaItems[key];
-        let newPriority = await getHighestPriorityForAgendaItemMandates(item.mandates);
-        if (!newPriority || newPriority === Number.MAX_SAFE_INTEGER) newPriority = item.priority;
+        let newPriority = await getLowestPriorityForAgendaItemMandates(item.mandates);
+        if (!newPriority || newPriority === Number.MAX_SAFE_INTEGER){
+            newPriority = item.priority;
+        }
         item.newPriority = newPriority;
         prioritizedItems.push(item);
     }
     prioritizedItems.sort((a, b) => {
-        return a.priority - b.priority;
+        let priorityDiff = a.newPriority - b.newPriority;
+        if(priorityDiff == 0){
+           return a.mandates.length - b.mandates.length;
+        }else{
+            return priorityDiff;
+        }
     });
     for (let i = 0; i < prioritizedItems.length; i ++){
-        prioritizedItems[i].priority = i + 1;
+        prioritizedItems[i].newPriority = i + 1;
     }
 
     return prioritizedItems;
 };
 
-const getHighestPriorityForAgendaItemMandates = (mandates) => {
+const getLowestPriorityForAgendaItemMandates = (mandates) => {
     let highestPriority = Number.MAX_SAFE_INTEGER;
     let priorities = mandates.map(item => item.priority);
     if (priorities){
-      return Math.max(...priorities);
+      return Math.min(...priorities);
     }else {
         return highestPriority;
     }

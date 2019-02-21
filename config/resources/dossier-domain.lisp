@@ -75,6 +75,7 @@
 (define-resource subcase-phase () ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
   :class (s-prefix "ext:ProcedurestapFase") ;; NOTE: as well as skos:Concept
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
+                (:label :string ,(s-prefix "skos:prefLabel"))
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
   :has-many `((procedurestap :via ,(s-prefix "ext:procedurestapFase")
                           :inverse t

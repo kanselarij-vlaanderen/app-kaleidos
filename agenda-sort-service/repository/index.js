@@ -10,18 +10,18 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
       PREFIX agenda: <http://data.lblod.info/id/agendas/>
-      PREFIX mandaat: <http://data.lblod.info/id/mandatarissen/>
+      PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
       PREFIX dct: <http://purl.org/dc/terms/>
       
       SELECT ?uuid ?agendapunt ?mandateeId ?priority
         WHERE { 
           GRAPH <http://mu.semte.ch/application>
           {
-            agenda:${agendaId} dct:hasPart ?agendapunt .
+            ?agenda dct:hasPart ?agendapunt .
+            ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
-            ?case dct:hasPart ?subcase .
-            OPTIONAL { ?case besluitvorming:heeftBevoegde ?mandatee . }
+            OPTIONAL { ?subcase besluitvorming:heeftBevoegde ?mandatee . }
             OPTIONAL { ?mandatee mu:uuid ?mandateeId . }
             OPTIONAL { ?mandatee mandaat:rangorde ?priority . }
            }
@@ -32,12 +32,10 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
     return parseMandateeWithTheirMandatePriority(results);
 }
 
-// Still TODO
-
 const updateAgendaItemPriority = async (items) => {
 
     const oldPriorities = items.map(item =>
-        ` <${item.agendapunt}> ext:prioriteit ${item.priority} . 
+        ` <${item.agendapunt}> ext:prioriteit ?priority . 
         `).join(' ');
     const newPriorities = items.map(item =>
         ` <${item.agendapunt}> ext:prioriteit ${item.newPriority} .
@@ -46,11 +44,11 @@ const updateAgendaItemPriority = async (items) => {
     const query = `
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       
-      DELETE DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
-          ${oldPriorities}
-        } 
-      }
+      DELETE WHERE { 
+          GRAPH ?g {
+            ${oldPriorities}
+          }        
+      };
     
       INSERT DATA { 
         GRAPH <http://mu.semte.ch/application> { 
@@ -72,13 +70,6 @@ const parseSparqlResults = (data) => {
         return obj;
     })
 };
-
-/* TODO
-    Agendaitem can hold multiple mandatees.
-    The UUID is used as the key to gather all mandate priorities
-    Check if the code actually works ..
-    The parsers main job is to collect all mandates that are affiliated with an agendaitem in an array
- */
 
 const parseMandateeWithTheirMandatePriority = (items) => {
     let agendaItems = {};
