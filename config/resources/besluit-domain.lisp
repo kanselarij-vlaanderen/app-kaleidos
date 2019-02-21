@@ -1,7 +1,7 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued :datetime ,(s-prefix "dct:issued"))
-                (:isFinal :boolean ,(s-prefix "besluitvorming:finaleVersie"))
+                (:is-final :boolean ,(s-prefix "besluitvorming:finaleVersie"))
                 (:name    :string  ,(s-prefix "ext:agendaNaam"))
                 (:created :date    ,(s-prefix "ext:aangemaaktOp")))
   :has-one `(
