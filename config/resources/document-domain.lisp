@@ -29,7 +29,7 @@
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
-            (document                   :via      ,(s-prefix "ext:documentVersie")
+            (document                   :via      ,(s-prefix "besluitvorming:heeftVersie")
                                         :inverse t
                                         :as "document")
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
