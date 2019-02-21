@@ -28,13 +28,13 @@ app.post('/approveAgenda', async (req, res) => {
 
 async function getNewAgendaURI(newAgendaId) {
 	const query = `
- 	PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+ 	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
  	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
  	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
  	SELECT ?agenda WHERE {
   	GRAPH <http://mu.semte.ch/application> {
-   		?agenda a vo-besluit:Agenda ;
+   		?agenda a besluitvorming:Agenda ;
    		mu:uuid "${newAgendaId}" .
   	}
  	}
@@ -47,13 +47,14 @@ async function getNewAgendaURI(newAgendaId) {
 async function copyAgendaItems(oldId, newUri) {
 	// SUBQUERY: Is needed to make sure the uuid isn't generated for every variable.
 	const query = `
-	PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX dct: <http://purl.org/dc/terms/>
 
 	INSERT { 
 		GRAPH <http://mu.semte.ch/application> {
-    	<${newUri}> ext:agendapunt ?agendaitem .
+    	<${newUri}> dct:hasPart ?newURI .
     	?newURI ?p ?o .
     	?s ?p2 ?newURI .
     	?newURI mu:uuid ?newUuid
@@ -61,9 +62,9 @@ async function copyAgendaItems(oldId, newUri) {
 	} WHERE {
     { SELECT * { 
     		GRAPH <http://mu.semte.ch/application> {
-  				?agenda a vo-besluit:Agenda ;
+  				?agenda a besluitvorming:Agenda ;
   				mu:uuid "${oldId}" .
-  				?agenda ext:agendapunt ?agendaitem .
+  				?agenda dct:hasPart ?agendaitem .
     
   				OPTIONAL { ?agendaitem mu:uuid ?olduuid } 
   				BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
@@ -78,7 +79,7 @@ async function copyAgendaItems(oldId, newUri) {
 
     					OPTIONAL {
     						?s ?p2 ?agendaitem .
-      					FILTER(?p2 != ext:agendapunt)
+      					FILTER(?p2 != dct:hasPart)
     					}
 						}
 					}    
@@ -94,22 +95,23 @@ async function copyAgendaItems(oldId, newUri) {
 
 async function getDocumentsURISFromAgenda(agendaId) {
 	const query = `
-	PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX dct: <http://purl.org/dc/terms/>
 	
 	SELECT ?documentURI ?documentName ?versionNumber ?idNr ?creationDate ?serialNumber
 		WHERE {
 			GRAPH <http://mu.semte.ch/application> {
-				?agenda a 	 vo-besluit:Agenda ;
+				?agenda a 	 besluitvorming:Agenda ;
 										 mu:uuid "${agendaId}" ;
-										 ext:agendapunt ?agendaitems .
-				?agendaitems vo-besluit:subcase ?subcase . 
-				?documentURI 	 ext:subcaseOfFileVersion ?subcase ; 
-                       ext:gekozenDocumentNaam  ?documentName ;
+										 dct:hasPart ?agendaitems .
+				?subcase besluitvorming:isGeagendeerdVia ?agendaitems ;
+				         ext:bevatDocumentversie ?documentURI ; 
+				?documentURI 	 ext:gekozenDocumentNaam  ?documentName ;
                        ext:versieNummer         ?versionNumber ;
                        ext:idNumber             ?idNr ;
-											 ext:versieAangemaakt     ?creationDate .
+											 dct:created              ?creationDate .
 			OPTIONAL { ?documentURI ext:serieNummer  ?serialNumber . }
 		}        
 	}
@@ -149,7 +151,7 @@ async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDa
 		return undefined;
 	}
 	const queryString = `
-		PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+		PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 		PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 		PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
