@@ -21,8 +21,8 @@ defmodule Dispatcher do
   match "/announcements/*path" do
     Proxy.forward conn, path, "http://resource/announcements/"
   end
-  match "/postponed/*path" do
-    Proxy.forward conn, path, "http://resource/postponed/"
+  match "/postponeds/*path" do
+    Proxy.forward conn, path, "http://resource/postponeds/"
   end
   match "/decisions/*path" do
     Proxy.forward conn, path, "http://resource/decisions/"
