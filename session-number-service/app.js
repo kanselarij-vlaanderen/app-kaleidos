@@ -32,15 +32,13 @@ app.get('/assignNewSessionNumbers', async function (req, res) {
 
 async function getSessionCount() {
   const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
 
   select(count(distinct ?session) as ?nSessions) where {
-  ?session a vo-besluit:Zitting ;
+  ?session a besluit:Zitting ;
   mu:uuid ?uuid ;
-  vo-besluit:number ?number ;
-  vo-gen:geplandeStart ?plannedstart .
+  besluit:geplandeStart ?plannedstart .
   }`
 
   let data = await mu.query(query);
@@ -52,17 +50,15 @@ async function getAllSessions() {
   dateOfYesterday.setHours(23, 59, 59, 0);
 
   const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
   
-  SELECT ?session ?plannedstart ?number WHERE {
+  SELECT ?session ?plannedstart WHERE {
     GRAPH <http://mu.semte.ch/application> 
     {
-    ?session a vo-besluit:Zitting ;
+    ?session a besluit:Zitting ;
     mu:uuid ?uuid ;
-    vo-gen:geplandeStart ?plannedstart ;
-    vo-besluit:number ?number .
+    besluit:geplandeStart ?plannedstart .
     FILTER(str(?plannedstart) > "${dateOfYesterday.toISOString()}")
   }
 }`
@@ -84,23 +80,21 @@ async function updateSessionNumbers(sessions) {
   let insertString = "";
   sessions.forEach(obj => {
     deleteString = `${deleteString}
-     <${obj.session}> vo-besluit:number """${obj.previousNumber}"""^^xsd:decimal .
+     <${obj.session}> adms:identifier ?number .
     `
     insertString = `${insertString}
-    <${obj.session}> vo-besluit:number """${obj.number}"""^^xsd:decimal .
+    <${obj.session}> adms:identifier """${obj.number}"""^^xsd:decimal .
     `
   })
 
   const query = `
-  PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-  PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+  PREFIX adms: <http://www.w3.org/ns/adms#>
   
-  DELETE DATA { 
-    GRAPH <http://mu.semte.ch/application> { 
+  DELETE WHERE { 
+    GRAPH ?g { 
       ${deleteString}
     } 
-  }
+  };
 
   INSERT DATA { 
     GRAPH <http://mu.semte.ch/application> { 
