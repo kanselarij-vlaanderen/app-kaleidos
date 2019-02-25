@@ -34,7 +34,7 @@
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
-  :properties `((:shortTitle :string ,(s-prefix "dct:alternative"))
+  :properties `((:short-title :string ,(s-prefix "dct:alternative"))
                 (:title :string ,(s-prefix "dct:title"))
                 (:created :datetime ,(s-prefix "dct:created"))
                 (:show-as-remark :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
