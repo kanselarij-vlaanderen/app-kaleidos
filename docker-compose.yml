@@ -72,6 +72,16 @@ services:
       - db:database
     volumes:
       - ./agenda-approve-service:/app
+  minister-jurisdiction-service:
+    image: mikidi/mu-python-template:python3-port
+    ports:
+      - 8088:80
+    environment:
+      MODE: "development"
+    links:
+      - db:database
+    volumes:
+      - ./minister-jurisdiction-service:/app
 networks:
   proxy:
     external:
