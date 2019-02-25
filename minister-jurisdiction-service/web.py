@@ -10,7 +10,7 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Server is up and runningsS"
+    return "Server is up and running"
 
 
 @app.route('/templateExample/')
