@@ -8,22 +8,53 @@ from rdflib.namespace import Namespace
 app = flask.Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
     return "Server is up and running"
 
 
-@app.route('/templateExample/')
+@app.route('/templateExample/', methods=['GET'])
 def query():
     """Example query: Returns all the triples in the application graph in a JSON
     format."""
-    q =  " SELECT *"
-    q += " WHERE{"
-    q += "   GRAPH <http://mu.semte.ch/application> {"
-    q += "     ?s ?p ?o"
-    q += "   }"
-    q += " }"
+    q = """ 
+        SELECT *
+        WHERE {
+            GRAPH <http://mu.semte.ch/application> {
+                ?s ?p ?o
+            }
+        }
+    """
     return flask.jsonify(helpers.query(q))
+
+
+@app.route('/ministers/', methods=['GET'])
+def get_ministers():
+    q = """ 
+            PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+            PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+            PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            PREFIX adms: <http://www.w3.org/ns/adms#>
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+            SELECT *
+            WHERE {
+                GRAPH <http://mu.semte.ch/application> {
+                    ?mandatee a mandaat:Mandataris ;
+                    dct:title ?title ;
+                    mandaat:isBestuurlijkeAliasVan ?person .
+                    ?person foaf:familyName ?familyName ;
+                    foaf:firstName ?firstName             
+                }
+            }
+        """
+    data = helpers.query(q)
+    for item in data['results']['bindings']:
+        print(f"{item['firstName']['value']} {item['familyName']['value']} is {item['title']['value']}")
+    return flask.jsonify(data)
 
 
 """
@@ -51,4 +82,4 @@ if __name__ == '__main__':
     except Exception as e:
         helpers.log(str(e))
     debug = True if (os.environ.get('MODE') == "development") else False
-    app.run(debug=debug, host='0.0.0.0', port=80)
+    app.run(debug=debug, host='0.0.0.0', port=8089)
