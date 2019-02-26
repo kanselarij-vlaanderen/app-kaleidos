@@ -13,6 +13,16 @@ def home():
     return "Server is up and running"
 
 
+def parse_list_of_nested_dicts(input_list):
+    parsed_data = list()
+    for element in input_list:
+        parsed_element = dict()
+        for key in element.keys():
+            parsed_element[key] = element[key]['value']
+        parsed_data.append(parsed_element)
+    return parsed_data
+
+
 @app.route('/templateExample/', methods=['GET'])
 def query():
     """Example query: Returns all the triples in the application graph in a JSON
@@ -54,7 +64,128 @@ def get_ministers():
     data = helpers.query(q)
     for item in data['results']['bindings']:
         print(f"{item['firstName']['value']} {item['familyName']['value']} is {item['title']['value']}")
-    return flask.jsonify(data)
+    return flask.jsonify(data['results']['bindings'])
+
+
+@app.route("/domains/ministers")
+def get_ministers_for_domains():
+    q = """
+        PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        
+        SELECT *
+        WHERE {
+            GRAPH <http://mu.semte.ch/application> {
+                ?domain a ext:BeleidsdomeinCode ;
+                skos:prefLabel ?label ;
+                skos:scopeNote ?note .
+                ?mandatee mandaat:beleidsdomein ?domain .
+                ?mandatee mandaat:isBestuurlijkeAliasVan ?person .
+                ?person foaf:familyName ?familyName ;
+                foaf:firstName ?firstName
+            }
+        }
+    """
+    data = helpers.query(q)['results']['bindings']
+    return flask.jsonify(parse_list_of_nested_dicts(data))
+
+
+@app.route("/domain/mandatee", methods=['POST'])
+def get_mandatee_for_domain():
+    req = flask.request.json
+    domain = req['domain']
+    q = f"""
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        
+        SELECT *
+        WHERE {{
+            GRAPH <http://mu.semte.ch/application> {{
+                ?mandatee mandaat:beleidsdomein <{domain}> .
+                ?mandatee mandaat:isBestuurlijkeAliasVan ?person .
+                ?person foaf:familyName ?familyName ;
+                foaf:firstName ?firstName
+            }}
+        }}
+    """
+    return flask.jsonify(helpers.query(q))
+
+
+@app.route("/mandatee/domains", methods=['POST'])
+def get_domains_for_mandatee():
+    req = flask.request.json
+    mandatee = req['mandatee']
+    q = f"""
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    
+    SELECT *
+    WHERE {{
+        GRAPH <http://mu.semte.ch/application> {{
+            <{mandatee}> mandaat:beleidsdomein ?domain .
+            ?domain skos:prefLabel ?label
+        }}
+    }}
+    """
+    return flask.jsonify(helpers.query(q))
+
+
+@app.route("/domain/transfer", methods=['POST'])
+def transfer_domain():
+    req = flask.request.json
+    receiving_mandatee = req['receiving_mandatee']
+    domain = req['transferred_domain']
+    q = f"""
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            
+        DELETE WHERE {{
+            GRAPH <http://mu.semte.ch/application> {{
+                ?mandatee mandaat:beleidsdomein <{domain}> .            
+            }}
+        }}
+        
+        INSERT DATA {{ 
+            GRAPH <http://mu.semte.ch/application> {{ 
+                <{receiving_mandatee}> mandaat:beleidsdomein <{domain}> .
+            }}
+        }}
+    """
+    return flask.jsonify(helpers.query(q))
+
+
+"""
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+    
+SELECT *
+WHERE {
+   GRAPH <http://mu.semte.ch/application> {
+      ?procedure a dbpedia:UnitOfWork ;
+      dct:title ?title ;
+      besluitvorming:heeftBevoegde ?mandatee .
+      ?mandatee mandaat:isBestuurlijkeAliasVan ?person .
+      ?person foaf:familyName ?familyName ;
+      foaf:firstName ?firstName
+      
+   }
+}
+"""
 
 
 """
@@ -82,4 +213,4 @@ if __name__ == '__main__':
     except Exception as e:
         helpers.log(str(e))
     debug = True if (os.environ.get('MODE') == "development") else False
-    app.run(debug=debug, host='0.0.0.0', port=8089)
+    app.run(debug=debug, host='0.0.0.0', port=8088)
