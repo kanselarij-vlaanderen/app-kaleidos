@@ -5,7 +5,7 @@ def HTTP_PORT="8081"
 
 node {
 
-  def DRC_PATH="/root/jenkins_home/workspace/be-kaleidos"
+  def DRC_PATH="/root/jenkins/jenkins_home/workspace/backend"
   env.NODEJS_HOME = "${tool 'node'}"
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
   currentBuild.result = 'SUCCESS'
