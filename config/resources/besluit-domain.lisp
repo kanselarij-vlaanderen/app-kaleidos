@@ -14,7 +14,7 @@
                     :inverse t
                     :as "previous-version"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
-                          :as "contains")
+                          :as "agendaitems")
              (announcement :via ,(s-prefix "ext:mededeling")
                            :as "announcements"))
   :resource-base (s-url "http://data.lblod.info/id/agendas/")
@@ -74,10 +74,10 @@
   :properties `((:postponed :boolean ,(s-prefix "besluitvorming:verdaagd")))
   :has-one `((meeting :via ,(s-prefix "besluitvorming:nieuweDatum") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                       :inverse t
-                      :as "subcase")
+                      :as "meeting")
              (agendaitem :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
                          :inverse t
-                         :as "agendaitems"))
+                         :as "agendaitem"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Verdaagd/")
   :features '(include-uri)
   :on-path "postponeds")
@@ -195,13 +195,14 @@
                 (:location :url ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda      :via ,(s-prefix "besluit:isAangemaaktVoor")
                            :inverse t
-                           :as "agendas"))
+                           :as "agendas")
+             (postponed    :via ,(s-prefix "besluitvorming:nieuweDatum")
+                           :as "postponeds"))
   :has-one `((subcase :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                             :inverse t
                             :as "subcases")
              (agenda :via ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                      :as "agenda"))
-
   :resource-base (s-url "http://data.lblod.info/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")
