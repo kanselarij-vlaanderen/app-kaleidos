@@ -5,7 +5,7 @@ def HTTP_PORT="8081"
 
 node {
 
-  def DRC_PATH="/root/jenkins_home/workspace/be-kaleidos"
+  def DRC_PATH="/root/jenkins/jenkins_home/workspace/backend"
   env.NODEJS_HOME = "${tool 'node'}"
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
   currentBuild.result = 'SUCCESS'
@@ -22,7 +22,7 @@ node {
   try {
 
     stage("Image Prune"){
-      imagePrune(CONTAINER_NAME, DRC_PATH)
+      imagePrune(DRC_PATH)
     }
 
     stage('Image Build'){
@@ -39,7 +39,7 @@ node {
 
 }
 
-def imagePrune(containerName, DRC_PATH){
+def imagePrune(DRC_PATH){
     try {
         sh "docker-compose --project-directory=${DRC_PATH} down -v"
         sh "docker-compose --project-directory=${DRC_PATH} rm -f"
@@ -47,12 +47,12 @@ def imagePrune(containerName, DRC_PATH){
 }
 
 def imageBuild(containerName, tag, DRC_PATH){
-    //sh "docker-compose --project-directory=${DRC_PATH} build"
+    sh "docker-compose --project-directory=${DRC_PATH} build"
     echo "Image build complete"
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH){
-    //sh "docker-compose --project-directory=${DRC_PATH} up --build -d"
+    sh "docker-compose --project-directory=${DRC_PATH} up -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 
