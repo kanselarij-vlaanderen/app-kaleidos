@@ -21,6 +21,8 @@ services:
       - resource:resource
     volumes:
       - ./config/dispatcher:/config
+    networks:
+      - backend
   db:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
@@ -30,18 +32,24 @@ services:
       - "8890:8890"
     volumes:
       - ./data/db:/data
+    networks:
+      - backend
   resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
       - db:database
     volumes:
       - ./config/resources:/config
+    networks:
+      - backend
   file:
     image: semtech/mu-file-service:3.1.0
     links:
       - db:database
     volumes:
       - ./data/files:/share
+    networks:
+      - backend
   session-number-service:
     image: semtech/mu-javascript-template
     environment:
@@ -50,6 +58,8 @@ services:
       - db:database
     volumes:
       - ./session-number-service:/app
+    networks:
+      - backend
   agenda-sort-service:
     image: semtech/mu-javascript-template
     ports:
@@ -61,6 +71,8 @@ services:
       - db:database
     volumes:
       - ./agenda-sort-service:/app
+    networks:
+      - backend
   agenda-approve-service:
     image: semtech/mu-javascript-template
     ports:
@@ -72,6 +84,10 @@ services:
       - db:database
     volumes:
       - ./agenda-approve-service:/app
+    networks:
+      - backend
+
+
 networks:
   proxy:
     external:
