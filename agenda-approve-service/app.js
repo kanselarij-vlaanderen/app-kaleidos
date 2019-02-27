@@ -59,34 +59,32 @@ async function copyAgendaItems(oldId, newUri) {
     	?s ?p2 ?newURI .
     	?newURI mu:uuid ?newUuid
 		}
-	} WHERE {
-    { SELECT * { 
-    		GRAPH <http://mu.semte.ch/application> {
-  				?agenda a besluitvorming:Agenda ;
-  				mu:uuid "${oldId}" .
-  				?agenda dct:hasPart ?agendaitem .
-    
-  				OPTIONAL { ?agendaitem mu:uuid ?olduuid } 
-  				BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
-					BIND(IRI(CONCAT("http://localhost/vo/agendaitems/", ?uuid)) AS ?newURI) 
+	} WHERE { { SELECT * WHERE {
+    GRAPH <http://mu.semte.ch/application> {
+  		?agenda a besluitvorming:Agenda ;
+			mu:uuid "${oldId}" .
+			?agenda dct:hasPart ?agendaitem .
 
-					{ SELECT ?agendaitem ?p ?o ?s ?p2 
-						WHERE {
-    					OPTIONAL {
-      					?agendaitem ?p ?o .
-    						FILTER(?p != mu:uuid)
-    					}
+			OPTIONAL { ?agendaitem mu:uuid ?olduuid } 
+			BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
+			BIND(IRI(CONCAT("http://localhost/vo/agendaitems/", ?uuid)) AS ?newURI)
 
-    					OPTIONAL {
-    						?s ?p2 ?agendaitem .
-      					FILTER(?p2 != dct:hasPart)
-    					}
-						}
-					}    
+			OPTIONAL { 
+				SELECT ?agendaitem ?p ?o
+				WHERE {
+					?agendaitem ?p ?o .
+					FILTER(?p != mu:uuid)
 				}
-			} 
-		}
-		BIND(STRAFTER(STR(?newURI), "http://localhost/vo/agendaitems/") AS ?newUuid)
+			}
+			OPTIONAL { 
+				SELECT ?agendaitem ?s ?p2 
+				WHERE {
+					?s ?p2 ?agendaitem .
+					FILTER(?p2 != dct:hasPart)
+				}
+			}    
+		} } }
+		BIND(STRAFTER(STR(?newURI), "http://localhost/vo/agendaitems/") AS ?newUuid) 
 	}
 `
 
