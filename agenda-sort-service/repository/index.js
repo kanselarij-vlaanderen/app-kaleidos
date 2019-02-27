@@ -1,6 +1,6 @@
 import mu from 'mu';
 
-const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
+const getAgendaPriorities = async (agendaId) => {
 
     const query = `
       PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
@@ -13,32 +13,40 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
       PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
       PREFIX dct: <http://purl.org/dc/terms/>
       
-      SELECT ?uuid ?agendapunt ?mandateeId ?priority
+      SELECT ?uuid ?agendapunt MIN(?priority) AS ?priority COUNT(DISTINCT(?mandatee)) AS ?mandateeCount
         WHERE { 
           GRAPH <http://mu.semte.ch/application>
           {
             ?agenda dct:hasPart ?agendapunt .
-            ?agenda mu:uuid "${agendaId}" .
+            ?agenda mu:uuid "5C764EA79CCEFE000C000012" .
             ?agendapunt mu:uuid ?uuid .
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
-            OPTIONAL { ?subcase besluitvorming:heeftBevoegde ?mandatee . }
-            OPTIONAL { ?mandatee mu:uuid ?mandateeId . }
-            OPTIONAL { ?mandatee mandaat:rangorde ?priority . }
+            OPTIONAL { 
+                ?subcase besluitvorming:heeftBevoegde ?mandatee . 
+                ?mandatee mu:uuid ?mandateeId .
+                ?mandatee mandaat:rangorde ?priority .
+                ?mandatee mandaat:start ?start .
+                FILTER(?start < NOW())
+                OPTIONAL {
+                   ?mandatee mandaat:eind ?end .
+                   FILTER(?end > NOW())
+                }
+            }
            }
-      }`;
+      } GROUP BY ?uuid ?agendapunt`;
 
     let data = await mu.query(query);
     const results = parseSparqlResults(data);
-    return parseMandateeWithTheirMandatePriority(results);
+    return parsePriorityResults(results);
 }
 
 const updateAgendaItemPriority = async (items) => {
 
     const oldPriorities = items.map(item =>
-        ` <${item.agendapunt}> ext:prioriteit ?priority . 
+        ` <${item.uri}> ext:prioriteit ?priority . 
         `).join(' ');
     const newPriorities = items.map(item =>
-        ` <${item.agendapunt}> ext:prioriteit ${item.newPriority} .
+        ` <${item.uri}> ext:prioriteit ${item.priority} .
         `).join(' ');
 
     const query = `
@@ -71,34 +79,27 @@ const parseSparqlResults = (data) => {
     })
 };
 
-const parseMandateeWithTheirMandatePriority = (items) => {
+const parsePriorityResults = (items) => {
     let agendaItems = {};
 
-    for (let i = 0; i < items.length; i++){
-
-        const agendaItem = items[i];
+    items.map((agendaItem) => {
         const uuid = agendaItem.uuid;
+        agendaItem.priority = agendaItem.priority || Number.MAX_SAFE_INTEGER;
 
         if (agendaItems[uuid]){
-
-            agendaItems[uuid].mandates.push({
-                priority: agendaItem.priority,
-                mandateeId: agendaItem.mandateeId
-            });
-
+            agendaItems[uuid].mandatePriority = Math.min(agendaItems[uuid].mandatePriority, agendaItem.priority);
         }else {
-
-            agendaItem.mandates = [{
-              priority: agendaItem.priority,
-              mandateeId: agendaItem.mandateeId
-            }];
-            agendaItems[uuid] = agendaItem;
+            agendaItems[uuid] = {
+                uuid: uuid,
+                uri: agendaItem.agendapunt,
+                mandatePriority: agendaItem.priority,
+                mandateeCount: agendaItem.mandateeCount
+            }
         }
-
-    }
-    return agendaItems;
+    });
+    return Object.values(agendaItems); 
 };
 
 module.exports = {
-    getMinistersWithBevoegdheidByAgendaId, updateAgendaItemPriority
+    getAgendaPriorities, updateAgendaItemPriority
 };
