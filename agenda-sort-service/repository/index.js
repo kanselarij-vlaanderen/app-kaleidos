@@ -18,7 +18,7 @@ const getAgendaPriorities = async (agendaId) => {
           GRAPH <http://mu.semte.ch/application>
           {
             ?agenda dct:hasPart ?agendapunt .
-            ?agenda mu:uuid "5C764EA79CCEFE000C000012" .
+            ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
             OPTIONAL { 
