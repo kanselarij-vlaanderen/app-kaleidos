@@ -3,7 +3,8 @@
   :properties `((:created :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
                 (:shortTitle :string ,(s-prefix "dct:alternative"))
                 (:number :number ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
-                (:title :string ,(s-prefix "dct:title")))
+                (:title :string ,(s-prefix "dct:title"))
+                (:policy-level :string ,(s-prefix "ext:beleidsNiveau")))
   :has-one `((case-type :via ,(s-prefix "dct:type")
                            :as "type"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
@@ -34,7 +35,7 @@
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
-  :properties `((:shortTitle :string ,(s-prefix "dct:alternative"))
+  :properties `((:short-title :string ,(s-prefix "dct:alternative"))
                 (:title :string ,(s-prefix "dct:title"))
                 (:created :datetime ,(s-prefix "dct:created"))
                 (:show-as-remark :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
