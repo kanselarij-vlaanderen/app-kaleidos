@@ -52,7 +52,7 @@
                        :as "heeftCreator")
               (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                         :as "mandatees")
-              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
+              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
                                  :as "government-domains")
               (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                                :as "confidentiality")
