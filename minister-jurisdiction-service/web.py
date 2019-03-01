@@ -161,34 +161,61 @@ def transfer_domain():
     return flask.jsonify(helpers.query(q))
 
 
-@app.route("/generate/domain-for-subcases", methods=['GET'])
-def generate_domain_links():
+@app.route("/transfer/procedures", methods=['POST'])
+def add_mandate_to_open_subcases():
+    req = flask.request.json
+    old_mandatee = req['old_mandatee']
+    open_cases = select_distict_open_subcases_for_mandate(old_mandatee)
+    new_mandatee = req['new_mandatee']
+    for subcase in open_cases:
+        q = f"""
+            PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+            
+            INSERT DATA {{
+                GRAPH <http://mu.semte.ch/application> {{
+                    <{subcase}> besluitvorming:heeftBevoegde <{new_mandatee}> .
+                }}
+            }}
+        """
+        helpers.query(q)
+    return flask.jsonify(open_cases)
+
+
+def select_distict_open_subcases_for_mandate(old_mandatee):
     q = f"""
-        PREFIX core: <http://mu.semte.ch/vocabularies/core/>
         PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-        PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+        PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        PREFIX adms: <http://www.w3.org/ns/adms#>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX dbpedia: <http://dbpedia.org/ontology/>
-        PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
         
-        SELECT *
+        SELECT DISTINCT ?subcase
         WHERE {{
            GRAPH <http://mu.semte.ch/application> {{
+              ?mandatee a mandaat:Mandataris .
+              FILTER(?mandatee = <{old_mandatee}>)
+              ?mandatee mandaat:start ?startdate .
+              ?mandatee mandaat:einde ?enddate .
+              ?mandatee mandaat:beleidsdomein ?mandateedomain .
+        
               ?case a besluitvorming:Consultatievraag .
               ?case dct:hasPart ?subcase .
-              ?subcase besluitvorming:heeftBevoegde ?mandatee .
-              ?mandatee mandaat:beleidsdomein ?domain .
+              ?subcase mandaat:beleidsdomein ?domain .
+              ?subcase dct:created ?created .
+              FILTER (?created > ?startdate)
+              FILTER (?created < ?enddate)
+              FILTER (?mandateedomain = ?domain)
+              OPTIONAL {{
+                   ?subcase besluitvorming:isGeagendeerdVia ?agenda .
+                   OPTIONAL {{
+                        ?agenda ext:accepted ?accepted .
+                   }}           
+              }}
+              FILTER (! BOUND(?accepted) || STR(?accepted) != "true") 
            }}
         }}
     """
     data = helpers.query(q)['results']['bindings']
-    for element in data:
-        print(f"<{element['subcase']['value']}> mandaat:beleidsdomein <{element['domain']['value']}> .")
-    return flask.jsonify(data)
+    return [x['subcase']['value'] for x in data]
 
 
 """
