@@ -10,60 +10,44 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
 
 
-app.post('/', async (req, res) => {
-
-  let agendaId = req.query.agendaId;
-
-  try {
-
-      const agendaItems = await repository.getMinistersWithBevoegdheidByAgendaId(agendaId);
-      const prioritizedAgendaItems = await sortAgendaItemsByMandates(agendaItems);
-      
-      await repository.updateAgendaItemPriority(prioritizedAgendaItems);
-      res.send({ status: ok, statusCode: 200, body: { items: prioritizedAgendaItems } });
-
-  }catch(error) {
-      console.error(error);
-      res.send({ status: ok, statusCode: 500, body: { error } });
-  }
+app.post('/', (req, res) => {
+  return handleSortRequest(req, res);
 });
 
-const sortAgendaItemsByMandates = async (agendaItems) =>  {
-    const prioritizedItems = [];
+app.get('/', (req, res) => {
+    return handleSortRequest(req, res, true);
+  });
+  
+const handleSortRequest = async (req, res, queryOnly) => {
+    let agendaId = req.query.agendaId;
 
-    for (let key in agendaItems){
-        const item = agendaItems[key];
-        let newPriority = await getLowestPriorityForAgendaItemMandates(item.mandates);
-        if (!newPriority || newPriority === Number.MAX_SAFE_INTEGER){
-            newPriority = item.priority;
+    try {
+  
+        const agendaItems = await repository.getAgendaPriorities(agendaId);
+        const prioritizedAgendaItems = await sortAgendaItemsByMandates(agendaItems);
+        if(!queryOnly){
+            await repository.updateAgendaItemPriority(prioritizedAgendaItems);
         }
-        item.newPriority = newPriority;
-        prioritizedItems.push(item);
+        res.send({ status: ok, statusCode: 200, body: { items: prioritizedAgendaItems } });
+  
+    }catch(error) {
+        console.error(error);
+        res.send({ status: ok, statusCode: 500, body: { error } });
     }
-    prioritizedItems.sort((a, b) => {
-        let priorityDiff = a.newPriority - b.newPriority;
+};
+
+const sortAgendaItemsByMandates = async (agendaItems) =>  {
+    agendaItems.sort((a, b) => {
+        let priorityDiff = a.mandatePriority - b.mandatePriority;
         if(priorityDiff == 0){
-           return a.mandates.length - b.mandates.length;
+           return a.mandateeCount - b.mandateeCount;
         }else{
             return priorityDiff;
         }
     });
-    for (let i = 0; i < prioritizedItems.length; i ++){
-        prioritizedItems[i].newPriority = i + 1;
+    for (let i = 0; i < agendaItems.length; i ++){
+        agendaItems[i].priority = i + 1;
     }
 
-    return prioritizedItems;
+    return agendaItems;
 };
-
-const getLowestPriorityForAgendaItemMandates = (mandates) => {
-    let highestPriority = Number.MAX_SAFE_INTEGER;
-    let priorities = mandates.map(item => item.priority);
-    if (priorities){
-      return Math.min(...priorities);
-    }else {
-        return highestPriority;
-    }
-
-};
-
-
