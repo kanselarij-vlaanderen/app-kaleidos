@@ -24,7 +24,7 @@
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/")
   :features '(include-uri)
-  :on-path "gorvernment-functions")
+  :on-path "government-functions")
 
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
@@ -71,7 +71,7 @@
                         :as "mandatees"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BeleidsdomeinCode/")
   :features '(include-uri)
-  :on-path "government-functions")
+  :on-path "government-domains")
 
 (define-resource jurisdiction ()
   :class (s-prefix "ext:BevoegdheidCode")
