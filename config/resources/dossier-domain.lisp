@@ -49,7 +49,7 @@
   :has-many `(
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
-              (persoon :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+              (person :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                        :as "heeftCreator")
               (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                         :as "mandatees")
