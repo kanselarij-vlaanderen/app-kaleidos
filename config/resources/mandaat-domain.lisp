@@ -100,7 +100,7 @@
                      :as "gender"))
   :resource-base (s-url "http://data.lblod.info/id/personen/")
   :features '(include-uri)
-  :on-path "persons")
+  :on-path "people")
 
 (define-resource gender ()
   :class (s-prefix "ext:GeslachtCode")
