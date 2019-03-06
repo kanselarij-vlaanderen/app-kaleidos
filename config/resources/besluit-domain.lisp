@@ -3,7 +3,8 @@
   :properties `((:issued :datetime ,(s-prefix "dct:issued"))
                 (:is-final :boolean ,(s-prefix "besluitvorming:finaleVersie"))
                 (:name    :string  ,(s-prefix "ext:agendaNaam"))
-                (:created :date    ,(s-prefix "ext:aangemaaktOp")))
+                (:created :date    ,(s-prefix "ext:aangemaaktOp"))
+                (:is-accepted :boolean ,(s-prefix "ext:accepted")))
   :has-one `(
             ;; (meeting :via ,(s-prefix "besluitvorming:behandelt") ;; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
             ;;           :inverse t

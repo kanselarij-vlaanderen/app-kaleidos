@@ -29,7 +29,7 @@
              (organization :via ,(s-prefix "org:hasPost")
                            :inverse t
                            :as "organization"))
-  :has-many `((persoon :via ,(s-prefix "org:heldBy")
+  :has-many `((person :via ,(s-prefix "org:heldBy")
                        :as "wordt-ingevuld-door"))
   :resource-base (s-url "http://data.lblod.info/id/positie/")
   :features '(include-uri)
