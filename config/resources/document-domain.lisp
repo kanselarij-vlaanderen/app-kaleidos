@@ -34,7 +34,10 @@
                                         :as "document")
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
-                                        :as "subcase"))
+                                        :as "subcase")
+            (announcement                    :via ,(s-prefix "ext:mededelingBevatDocumentversie")
+                                        :inverse t
+                                        :as "announcement"))
   :resource-base (s-url "http://localhost/vo/document-versions/")
   :features `(include-uri)
   :on-path "document-versions")

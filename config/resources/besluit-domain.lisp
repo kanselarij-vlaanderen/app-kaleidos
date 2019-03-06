@@ -65,6 +65,8 @@
   :has-one `((agenda :via ,(s-prefix "ext:mededeling")
                      :inverse t
                      :as "agenda"))
+  :has-many `((document-version :via ,(s-prefix "ext:mededelingBevatDocumentversie")
+                                 :as "document-versions"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Mededeling/")
   :on-path "announcements")
 
