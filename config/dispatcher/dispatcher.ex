@@ -124,8 +124,8 @@ defmodule Dispatcher do
   match "/responsibilities/*path" do
     Proxy.forward conn, path, "http://resource/responsibilities/"
   end
-  match "/persons/*path" do
-    Proxy.forward conn, path, "http://resource/persons/"
+  match "/people/*path" do
+    Proxy.forward conn, path, "http://resource/people/"
   end
   match "/genders/*path" do
     Proxy.forward conn, path, "http://resource/genders/"

@@ -1,0 +1,73 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/application> {
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/035e8fb7-fda0-43f3-aa7a-1de8f4bd690f> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/04845280-ffbf-464e-adb1-3e95f307e292> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/30759b8c-f664-4c1f-baf2-b622d2267dca> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/45634554-23de-40e5-af02-f2f83326fae0> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/c7f968de-eb40-4b7f-81ae-8e8b02199d34> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1E3FA87E00008000001> mandaat:beleidsdomein <http://example.com/beleidsdomein/da9e2c77-a203-4400-85af-69c54a0d9315> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/035e8fb7-fda0-43f3-aa7a-1de8f4bd690f> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/04845280-ffbf-464e-adb1-3e95f307e292> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/30759b8c-f664-4c1f-baf2-b622d2267dca> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/45634554-23de-40e5-af02-f2f83326fae0> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/c7f968de-eb40-4b7f-81ae-8e8b02199d34> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/da9e2c77-a203-4400-85af-69c54a0d9315> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/035e8fb7-fda0-43f3-aa7a-1de8f4bd690f> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/04845280-ffbf-464e-adb1-3e95f307e292> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/30759b8c-f664-4c1f-baf2-b622d2267dca> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/45634554-23de-40e5-af02-f2f83326fae0> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/c7f968de-eb40-4b7f-81ae-8e8b02199d34> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/da9e2c77-a203-4400-85af-69c54a0d9315> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/0efe0f01-d5e2-4de7-ba1b-8fba27e2f812> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/c076b4ea-901a-4fcd-b4b5-a28166b02674> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/c658f47b-3225-434d-845a-b10e8e92101f> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/cb83eb04-371a-432d-90fe-0714855cc8c0> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/0efe0f01-d5e2-4de7-ba1b-8fba27e2f812> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/c076b4ea-901a-4fcd-b4b5-a28166b02674> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/c658f47b-3225-434d-845a-b10e8e92101f> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/cb83eb04-371a-432d-90fe-0714855cc8c0> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566988BA1AC000800000C> mandaat:beleidsdomein <http://example.com/beleidsdomein/fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/10e423bc-8ab6-493f-bd80-2f38f4d2ad90> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/2169d4a7-d92a-430c-a885-c09ac337eb03> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/3090f2b7-c4f8-4057-8d82-b9da2841f441> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/785367fa-4c55-4ce5-8c17-7d93aebcc507> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/cadda6f0-56ef-42d0-bae2-482f8f67e9d4> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/10e423bc-8ab6-493f-bd80-2f38f4d2ad90> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/2169d4a7-d92a-430c-a885-c09ac337eb03> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/3090f2b7-c4f8-4057-8d82-b9da2841f441> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/785367fa-4c55-4ce5-8c17-7d93aebcc507> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7566868BA1AC000800000B> mandaat:beleidsdomein <http://example.com/beleidsdomein/cadda6f0-56ef-42d0-bae2-482f8f67e9d4> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/34c7bfb0-1cca-41a3-a211-357401b45b86> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/44eaa91e-5752-4d6b-8c3c-d56a0e191787> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/a92a3b48-7dce-410f-880a-42d6a38f566c> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/cfdc5216-40e0-4158-97f8-cce4fd53b9d5> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/e2e1d575-bfd2-4984-adac-eacc921fad0d> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/2096bcd2-9c1d-4744-998b-91312ae081d6> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/2ea48f88-f692-44fc-83c0-2fba063a1219> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/2fd432bb-149f-4522-90e3-b136b3dcc399> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/70f1a8ed-c119-49e3-abb7-991a2c0528d4> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/846c09cb-a728-41d4-a99c-d19d4edf3ac8> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/93db03cf-0ef6-404b-87db-77614d512046> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/c01caec5-05cd-4305-8b7f-52d8ca8a827e> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C7567B08BA1AC0008000017> mandaat:beleidsdomein <http://example.com/beleidsdomein/ce2d100a-5795-4f57-8172-bcab03f62b46> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/2096bcd2-9c1d-4744-998b-91312ae081d6> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/2ea48f88-f692-44fc-83c0-2fba063a1219> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/2fd432bb-149f-4522-90e3-b136b3dcc399> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/70f1a8ed-c119-49e3-abb7-991a2c0528d4> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/846c09cb-a728-41d4-a99c-d19d4edf3ac8> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/93db03cf-0ef6-404b-87db-77614d512046> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/c01caec5-05cd-4305-8b7f-52d8ca8a827e> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E210FA87E00008000003> mandaat:beleidsdomein <http://example.com/beleidsdomein/ce2d100a-5795-4f57-8172-bcab03f62b46> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/3b5eb980-1524-47ce-b138-c8788dd462fc> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/a3c66612-ec16-4f1f-8424-f9c328ef9c27> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/b956158e-c5af-47a5-98e9-c6ca5a68c653> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/bb3a9418-f3c1-46a2-ab77-55cca92c0dd1> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/d48d3469-798a-4749-842f-adc964547a9b> .
+        <http://data.vlaanderen.be/id/Procedurestap/5C77E1F9FA87E00008000002> mandaat:beleidsdomein <http://example.com/beleidsdomein/dd7147d2-f998-484e-ac0a-347df591bb0a> .
+    }
+}

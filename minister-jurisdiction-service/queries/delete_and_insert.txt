@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE WHERE {
+     GRAPH <http://mu.semte.ch/application> {
+          <http://data.lblod.info/id/agendas/5C652A6C8CA829000C000002> ext:accepted ?o .
+     }
+}
+
+INSERT DATA {
+     GRAPH <http://mu.semte.ch/application> {
+          <http://data.lblod.info/id/agendas/5C652A6C8CA829000C000002> ext:accepted "false"^^xsd:boolean .
+     }
+}
+

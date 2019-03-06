@@ -24,7 +24,7 @@
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/")
   :features '(include-uri)
-  :on-path "gorvernment-functions")
+  :on-path "government-functions")
 
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
@@ -71,7 +71,7 @@
                         :as "mandatees"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BeleidsdomeinCode/")
   :features '(include-uri)
-  :on-path "government-functions")
+  :on-path "government-domains")
 
 (define-resource jurisdiction ()
   :class (s-prefix "ext:BevoegdheidCode")
@@ -88,19 +88,21 @@
   :class (s-prefix "person:Person")
   :properties `((:last-name :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name :string ,(s-prefix "foaf:name"))
-                (:first-name :string ,(s-prefix "persoon:gebruikteVoornaam")))
+                (:first-name :string ,(s-prefix "foaf:firstName")))
   :has-many `((mandatee :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                         :inverse t
                         :as "mandatees"))
-  :has-one `((birth :via ,(s-prefix "persoon:heeftGeboorte")
-                    :as "birth")
-             (identifier :via ,(s-prefix "adms:identifier")
+  :has-one `(
+             ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
+             ;;      :as "birth")
+             (identification :via ,(s-prefix "ext:identifier")
                          :as "identifier")
-             (gender :via ,(s-prefix "persoon:geslacht")
-                     :as "gender"))
+             ;; (gender :via ,(s-prefix "persoon:geslacht")
+             ;;         :as "gender")
+             )
   :resource-base (s-url "http://data.lblod.info/id/personen/")
   :features '(include-uri)
-  :on-path "persons")
+  :on-path "people")
 
 (define-resource gender ()
   :class (s-prefix "ext:GeslachtCode")
@@ -112,7 +114,10 @@
 
 (define-resource identification ()
   :class (s-prefix "adms:Identifier")
-  :properties `((:identification :string ,(s-prefix "skos:notation"))) ;; TODO: should have a specific type
+  :properties `((:id-name :string ,(s-prefix "skos:notation"))) ;; TODO: should have a specific type
+  :has-one `((person :via ,(s-prefix "ext:identifier")
+                     :inverse t
+                     :as "personId"))
   :resource-base (s-url "http://data.lblod.info/id/identificatoren/")
   :features '(include-uri)
   :on-path "identifications")
