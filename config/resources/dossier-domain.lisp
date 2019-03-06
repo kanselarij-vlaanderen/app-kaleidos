@@ -61,7 +61,7 @@
                              :as "related-to")
               (document-version :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                :as "document-versions")
-              (consulation-request :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (consultation-request :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                    :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
                           :as "agendaitems")
@@ -78,7 +78,7 @@
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
                 (:label :string ,(s-prefix "skos:prefLabel"))
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
-  :has-many `((procedurestap :via ,(s-prefix "ext:procedurestapFase")
+  :has-many `((subcase :via ,(s-prefix "ext:procedurestapFase")
                           :inverse t
                           :as "subcases"))
   :has-one `((subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
