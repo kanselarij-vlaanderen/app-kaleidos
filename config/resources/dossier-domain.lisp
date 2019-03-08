@@ -1,7 +1,7 @@
 (define-resource case ()
   :class (s-prefix "besluitvorming:Consultatievraag")
   :properties `((:created :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
-                (:shortTitle :string ,(s-prefix "dct:alternative"))
+                (:short-title :string ,(s-prefix "dct:alternative"))
                 (:number :number ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:title :string ,(s-prefix "dct:title"))
                 (:policy-level :string ,(s-prefix "ext:beleidsNiveau")))
