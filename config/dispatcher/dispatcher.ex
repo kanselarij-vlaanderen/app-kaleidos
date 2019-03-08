@@ -181,7 +181,11 @@ defmodule Dispatcher do
 
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://agenda-sort-service/"
-  end 
+  end
+
+  match "/custom-subcases/*path" do
+    Proxy.forward conn, path, "http://custom-subcases-service/"
+  end
 
    match "/session-service/*path" do
     Proxy.forward conn, path, "http://session-number-service/"

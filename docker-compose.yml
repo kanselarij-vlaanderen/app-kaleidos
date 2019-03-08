@@ -61,6 +61,17 @@ services:
       - db:database
     volumes:
       - ./agenda-sort-service:/app
+  custom-subcases-service:
+    image: semtech/mu-javascript-template
+    ports:
+      - "9233:9229"
+      - "8092:80"
+    environment:
+      NODE_ENV: "development"
+    links:
+      - db:database
+    volumes:
+      - ./custom-subcases-service:/app
   agenda-approve-service:
     image: semtech/mu-javascript-template
     ports:
