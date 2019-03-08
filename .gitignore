@@ -11,6 +11,7 @@
 /session-number-service/node_modules
 /agenda-sort-service/node_modules
 /agenda-approve-service/node_modules
+/custom-subcases-service/node_modules
 /data/files/*
 properties-to-add
 .idea/
