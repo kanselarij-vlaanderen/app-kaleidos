@@ -12,14 +12,15 @@ app.use(cors());
 
 app.get('/', (req, res) => {
     return getPostponedSubcases(req, res, true);
-  });
+});
   
 const getPostponedSubcases = async (req, res) => {
 
     try {
   
         const subcases = await repository.getPostponedSubcases();
-        res.send({ status: ok, statusCode: 200, body: { items: subcases } });
+        res.header('Content-Type' , 'application/vnd.api+json' );
+        res.send({  data: subcases  });
   
     }catch(error) {
         console.error(error);

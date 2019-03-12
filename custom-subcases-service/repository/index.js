@@ -13,12 +13,12 @@ const getPostponedSubcases = async () => {
       PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
       PREFIX dct: <http://purl.org/dc/terms/>
       
-      SELECT ?uuid ?title ?created
+      SELECT ?id  
         WHERE { 
           GRAPH <http://mu.semte.ch/application>
           {
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt ;
-             mu:uuid ?uuid ;
+             mu:uuid ?id ;
              dct:title ?title ;
              dct:created ?created .
             ?agendapunt ext:heeftVerdaagd ?verdaagd .
@@ -26,7 +26,7 @@ const getPostponedSubcases = async () => {
       } GROUP BY ?subcase`;
 
     let data = await mu.query(query);
-    return parseSparqlResults(data);
+    return parseSparqlResults(data, 'subcases');
 }
 
 
@@ -39,7 +39,7 @@ const parseSparqlResults = (data) => {
                 obj[varKey] = binding[varKey].value;
             }
         });
-        return obj;
+        return obj.id;
     })
 };
 module.exports = {
