@@ -16,3 +16,4 @@
 properties-to-add
 .idea/
 /minister-jurisdiction-service/venv
+/minister-jurisdiction-service/__pycache__
