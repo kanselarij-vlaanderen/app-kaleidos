@@ -25,7 +25,7 @@ dudette:de843e19-de4a-4b0d-af5f-d5563709d23c a person:Person ;
 man:9cd9a969-0e8c-4f07-bacd-bd0c0b4cfc9c a mandaat:Mandataris ;
     mu:uuid "9cd9a969-0e8c-4f07-bacd-bd0c0b4cfc9c"  ;
     mandaat:rangorde 1 ;
-    dct:title "minister-president van de Vlaamse Regering" ;
+    dct:title "Minister-president van de Vlaamse Regering" ;
     mandaat:isBestuurlijkeAliasVan dudette:de843e19-de4a-4b0d-af5f-d5563709d23c ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
     mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;

@@ -6,7 +6,7 @@
 ;; after altering this file.
 
 (in-package :mu-cl-resources)
-
+(defparameter *cache-model-properties-p* nil)
 (defparameter *cache-count-queries* nil)
 (defparameter *supply-cache-headers-p* t
   "when non-nil, cache headers are supplied.  this works together with mu-cache.")
