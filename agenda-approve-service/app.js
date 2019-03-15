@@ -17,12 +17,8 @@ app.post('/approveAgenda', async (req, res) => {
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
-	// const data = await getDocumentsURISFromAgenda(newAgendaId);
-
-	// const vars = data.head.vars;
-	// const documentVersionsToChange = createDocumentVersionObjects(data, vars);
-	// const resultsAfterUpdates = await updateSerialNumbersOfDocumentVersions(documentVersionsToChange, currentSessionDate);
-
+	await ensureDocumentsHasSerialnumberForSession(oldAgendaId);
+	//await ensureSerialnumbersHaveName(oldAgendaId);
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
@@ -117,22 +113,41 @@ async function getDocumentsURISFromAgenda(agendaId) {
 	return await mu.query(query).catch(err => { console.error(err) });
 }
 
-function createDocumentVersionObjects(data, vars) {
-	const bindings = data.results.bindings;
-	let documentVersions = [];
-	for (let index = 0; index < bindings.length; index++) {
-		if(!bindings[index].serialNumber) {
-			let documentVersionObject = {};
-			vars.forEach(varKey => {
-				if(varKey != 'serialNumber') {
-					documentVersionObject[varKey] = bindings[index][varKey].value;
+function ensureDocumentsHasSerialnumberForSession(agendaId) {
+	const query = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+		
+	INSERT { 
+		GRAPH <http://mu.semte.ch/application> {
+     	?identifier ext:DocumentIdentifier ?versie.
+		  ?identifier mu:uuid ?newUUID.
+			?identifier ext:meeting ?session.
+	  }
+	} where {
+		{ SELECT * WHERE {
+			GRAPH <http://mu.semte.ch/application> {
+				?agenda a besluitvorming:Agenda.
+				?agenda mu:uuid "${agendaId}".
+			  ?agenda besluit:isAangemaaktVoor ?session.
+			  ?agenda <http://purl.org/dc/terms/hasPart> ?agendaitem.
+			  ?procedurestap besluitvorming:isGeagendeerdVia ?agendaitem.
+			  ?procedurestap ext:bevatDocumentversie ?versie.
+				FILTER NOT EXISTS { 
+				  ?versie ext:DocumentIdentifier ?identifier.
+					?identifier ext:meeting ?session.
 				}
-			});
-			documentVersions.push(documentVersionObject);
-		}
-	}
-	return documentVersions;
+				OPTIONAL {
+					?versie mu:uuid ?versionid.
+				}
+				BIND(IF(BOUND(?versionid), STRUUID(), STRUUID()) AS ?newUUID)
+		} } }
+		BIND(IRI(CONCAT("http://mu.semte.ch/vocabularies/ext/identifiers/",?newUUID)) AS ?identifier)
+	}`
 }
+
 
 async function updateSerialNumbersOfDocumentVersions(documents, currentSessionDate) {
 	let insertString = "";

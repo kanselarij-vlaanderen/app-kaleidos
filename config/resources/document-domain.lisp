@@ -26,7 +26,6 @@
   :properties `((:version-number        :string   ,(s-prefix "ext:versieNummer"))
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:identification-number :string   ,(s-prefix "ext:idNumber"))
-                (:serial-number         :string   ,(s-prefix "ext:serieNummer"))
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
@@ -39,9 +38,23 @@
             (announcement                    :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement"))
+  :has-many `((document-vo-identifier   :via ,(s-prefix "ext:documentVersion")
+                                        :as "identifiers"
+                                        :inverse t))
   :resource-base (s-url "http://localhost/vo/document-versions/")
   :features `(include-uri)
   :on-path "document-versions")
+
+(define-resource document-vo-identifier ()
+  :class (s-prefix "ext:DocumentIdentifier")
+  :properties `((:serial-number         :string   ,(s-prefix "ext:serieNummer")))
+  :has-one `((document-version          :via      ,(s-prefix "ext:documentVersion")
+                                        :as "version")
+            (meeting                    :via      ,(s-prefix "ext:meeting")
+                                        :as "meeting"))
+  :resource-base (s-url "http://localhost/vo/document-identifier/")
+  :features `(include-uri)
+  :on-path "document-identifier")
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
