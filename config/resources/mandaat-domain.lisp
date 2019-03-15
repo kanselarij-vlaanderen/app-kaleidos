@@ -28,14 +28,15 @@
 
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
-  :properties `((:priority :language-string ,(s-prefix "mandaat:rangorde"))
+  :properties `((:priority :string ,(s-prefix "mandaat:rangorde"))
                 (:start :datetime ,(s-prefix "mandaat:start"))
                 (:end :datetime ,(s-prefix "mandaat:einde"))
                 (:date-sworn-in :datetime ,(s-prefix "ext:datumEedaflegging"))
                 (:date-decree :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:title :string ,(s-prefix "dct:title")))
-  :has-many `((mandatee :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
-                        :as "temporary-replacements")
+  :has-many `(
+    ;; (mandatee :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
+    ;;                     :as "temporary-replacements")
               (government-domain :via ,(s-prefix "mandaat:beleidsdomein")
                                  :as "government-domains")
               (decision :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
@@ -43,7 +44,9 @@
                         :as "decisions")
               (case     :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                         :inverse t
-                        :as "cases"))
+                        :as "cases")
+              (meeting-record :via ,(s-prefix "ext:aanwezigen")
+                              :as "meetings-attended"))
   :has-one `((mandate   :via ,(s-prefix "org:holds")
                         :as "holds")
              (person    :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
@@ -86,20 +89,18 @@
 
 (define-resource person ()
   :class (s-prefix "person:Person")
-  :properties `((:last-name :string ,(s-prefix "foaf:familyName"))
-                (:alternative-name :string ,(s-prefix "foaf:name"))
-                (:first-name :string ,(s-prefix "foaf:firstName")))
-  :has-many `((mandatee :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
-                        :inverse t
-                        :as "mandatees"))
-  :has-one `(
-             ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
-             ;;      :as "birth")
-             (identification :via ,(s-prefix "ext:identifier")
-                         :as "identifier")
+  :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
+                (:alternative-name  :string ,(s-prefix "foaf:name"))
+                (:first-name        :string ,(s-prefix "foaf:firstName")))
+  :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
+                                    :inverse t
+                                    :as "mandatees"))
+  :has-one `((identification        :via    ,(s-prefix "ext:identifier")
+                                    :as "identifier"))
              ;; (gender :via ,(s-prefix "persoon:geslacht")
              ;;         :as "gender")
-             )
+             ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
+             ;;      :as "birth")
   :resource-base (s-url "http://data.lblod.info/id/personen/")
   :features '(include-uri)
   :on-path "people")
