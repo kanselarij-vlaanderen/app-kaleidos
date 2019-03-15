@@ -42,7 +42,9 @@ defmodule Dispatcher do
   match "/meetings/*path" do
     Proxy.forward conn, path, "http://resource/meetings/"
   end
-  
+  match "/meeting-records/*path" do
+    Proxy.forward conn, path, "http://resource/meeting-records/"
+  end
   match "/documents/*path" do
     Proxy.forward conn, path, "http://resource/documents/"
   end
@@ -63,7 +65,6 @@ defmodule Dispatcher do
   match "/media-type-codes/*path" do
     Proxy.forward conn, path, "http://resource/media-type-codes/"
   end
-  
   match "/cases/*path" do
     Proxy.forward conn, path, "http://resource/cases/"
   end

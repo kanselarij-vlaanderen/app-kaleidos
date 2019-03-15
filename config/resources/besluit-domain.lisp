@@ -24,34 +24,36 @@
 
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
-  :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
-                (:formally-ok :boolean ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
-                (:retracted :boolean ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:priority :number ,(s-prefix "ext:prioriteit"))
-                (:for-press :boolean ,(s-prefix "ext:forPress")) 
-                (:record :string ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
-                (:title-press :string ,(s-prefix "besluitvorming:titelPersagenda"))
-                (:text-press :string ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
-  :has-one `((postponed :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                          :as "postponed-to")
-             (agendaitem :via ,(s-prefix "besluit:aangebrachtNa")
-                         :as "previousAgendaItem")
-             (subcase :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                            :inverse t
-                            :as "subcase")
-             (decision :via ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                      :as "decision")
-             (agenda :via ,(s-prefix "dct:hasPart")
-                     :inverse t
-                     :as "agenda")
-             (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+  :properties `((:created     :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
+                (:formally-ok :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:retracted   :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
+                (:priority    :number   ,(s-prefix "ext:prioriteit"))
+                (:for-press   :boolean  ,(s-prefix "ext:forPress")) 
+                (:record      :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
+                (:title-press :string   ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:text-press  :string   ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+  :has-one `((postponed       :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
+                              :as "postponed-to")
+             (agendaitem      :via      ,(s-prefix "besluit:aangebrachtNa")
+                              :as "previousAgendaItem")
+             (subcase         :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
                               :inverse t
-                              :as "newsletter-info"))
-  :has-many `((mandatee :via ,(s-prefix "besluit:heeftAanwezige")
-                     :inverse t
-                     :as "attendees")
-              (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
-                      :as "remarks"))
+                              :as "subcase")
+             (decision        :via      ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                              :as "decision")
+             (agenda          :via      ,(s-prefix "dct:hasPart")
+                              :inverse t
+                              :as "agenda")
+             (newsletter-info :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                              :inverse t
+                              :as "newsletter-info")
+              (meeting-record :via     ,(s-prefix "ext:notulenVan")
+                              :as "meeting-record"))
+  :has-many `((mandatee       :via     ,(s-prefix "besluit:heeftAanwezige")
+                              :inverse t
+                              :as "attendees")
+              (remark         :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
+                              :as "remarks"))
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
@@ -192,20 +194,38 @@
 (define-resource meeting ()
   :class (s-prefix "besluit:Zitting")
   :properties `((:planned-start :datetime ,(s-prefix "besluit:geplandeStart")) 
-                (:started-on :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
-                (:ended-on :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
-                (:number :number ,(s-prefix "adms:identifier"))
-                (:location :url ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
-  :has-many `((agenda      :via ,(s-prefix "besluit:isAangemaaktVoor")
-                           :inverse t
-                           :as "agendas")
-             (postponed    :via ,(s-prefix "besluitvorming:nieuweDatum")
-                           :as "postponeds"))
-  :has-one `((subcase :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
-                            :inverse t
-                            :as "subcases")
-             (agenda :via ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
-                     :as "agenda"))
+                (:started-on    :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
+                (:ended-on      :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
+                (:number        :number   ,(s-prefix "adms:identifier"))
+                (:location      :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
+  :has-many `((agenda           :via      ,(s-prefix "besluit:isAangemaaktVoor")
+                                :inverse t
+                                :as "agendas")
+             (postponed         :via      ,(s-prefix "besluitvorming:nieuweDatum")
+                                :as "postponeds"))
+  :has-one `((subcase           :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
+                                :inverse t
+                                :as "subcases")
+             (agenda            :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+                                :as "agenda")
+             (meeting-record    :via      ,(s-prefix "ext:algemeneNotulen")
+                                :as "notes"))
   :resource-base (s-url "http://data.lblod.info/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")
+
+(define-resource meeting-record ()
+  :class (s-prefix "ext:Notule")
+  :properties `((:modified      :date     ,(s-prefix "ext:aangepast")) 
+                (:created       :date     ,(s-prefix "ext:aangemaaktOp"))
+                (:announcements :string   ,(s-prefix "ext:mededelingen"))
+                (:others        :string   ,(s-prefix "ext:varia"))
+                (:description   :string   ,(s-prefix "ext:description"))) 
+  :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
+                                :inverse t
+                                :as "meeting"))
+  :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
+                                :as "attendees"))
+  :resource-base (s-url "http://data.lblod.info/id/notulen/")
+  :features '(include-uri)
+  :on-path "meeting-records")
