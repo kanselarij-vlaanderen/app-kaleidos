@@ -41,8 +41,6 @@
                 (:show-as-remark :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
   :has-one `((decision :via ,(s-prefix "ext:besluitHeeftProcedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                        :as "decision")
-             (subcase-phase :via ,(s-prefix "ext:procedurestapFase")
-                            :as "phase")
              (case   :via ,(s-prefix "dct:hasPart")
                      :inverse t
                      :as "case"))
@@ -67,6 +65,8 @@
                           :as "agendaitems")
               (meeting :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                        :as "requestedForMeetings")
+              (subcase-phase :via ,(s-prefix "ext:subcaseProcedurestapFase")
+                              :as "phases")
               (remark :via ,(s-prefix "besluitvorming:opmerking") 
                       :as "remarks"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
@@ -78,7 +78,7 @@
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
                 (:label :string ,(s-prefix "skos:prefLabel"))
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
-  :has-many `((subcase :via ,(s-prefix "ext:procedurestapFase")
+  :has-many `((subcase :via ,(s-prefix "ext:subcaseProcedurestapFase")
                           :inverse t
                           :as "subcases"))
   :has-one `((subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
