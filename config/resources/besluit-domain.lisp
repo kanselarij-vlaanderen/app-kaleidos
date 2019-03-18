@@ -47,7 +47,7 @@
              (newsletter-info :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                               :inverse t
                               :as "newsletter-info")
-              (meeting-record :via     ,(s-prefix "ext:notulenVan")
+              (meeting-record :via      ,(s-prefix "ext:notulenVanAgendaPunt")
                               :as "meeting-record"))
   :has-many `((mandatee       :via     ,(s-prefix "besluit:heeftAanwezige")
                               :inverse t
@@ -223,7 +223,10 @@
                 (:description   :string   ,(s-prefix "ext:description"))) 
   :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
                                 :inverse t
-                                :as "meeting"))
+                                :as "meeting")
+             (agendaitem        :via      ,(s-prefix "ext:notulenVanAgendaPunt")
+                                :inverse t 
+                                :as "agendaitem"))
   :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
                                 :as "attendees"))
   :resource-base (s-url "http://data.lblod.info/id/notulen/")
