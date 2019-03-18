@@ -47,11 +47,15 @@
 
 (define-resource document-vo-identifier ()
   :class (s-prefix "ext:DocumentIdentifier")
-  :properties `((:serial-number         :string   ,(s-prefix "ext:serieNummer")))
+  :properties `((:serial-number         :string   ,(s-prefix "ext:serieNummer"))
+                (:version               :number   ,(s-prefix "ext:versieNummer")) ;; 1 for nothing, 2 for BIS, 3 for TER
+                (:title                 :string   ,(s-prefix "dct:title"))) ;; title so people can give their own name to this version if necessary
   :has-one `((document-version          :via      ,(s-prefix "ext:documentVersion")
                                         :as "version")
             (meeting                    :via      ,(s-prefix "ext:meeting")
-                                        :as "meeting"))
+                                        :as "meeting")
+            (subcase                    :via      ,(s-prefix "ext:procedurestap")
+                                        :as "procedurestap"))
   :resource-base (s-url "http://localhost/vo/document-identifier/")
   :features `(include-uri)
   :on-path "document-identifier")
