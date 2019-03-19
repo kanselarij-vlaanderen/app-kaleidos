@@ -1,22 +1,22 @@
 (define-resource document ()
   :class (s-prefix "foaf:Document")
-  :properties `((:archived :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
-                (:title :string ,(s-prefix "dct:title")) ;;string-set
-                (:description :string ,(s-prefix "ext:omschrijving")) ;;string-set
-                (:created :datetime ,(s-prefix "dct:created"))
-                (:number-vp :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
-                (:number-vr :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
-  :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
-                      :as "remarks") 
-              (document-version :via ,(s-prefix "besluitvorming:heeftVersie")
-                                :as "document-versions"))
-  :has-one `((decision :via ,(s-prefix "ext:besluitHeeftDocument") ;; NOTE: Relation to document instad of document-subclass
-                      :inverse t
-                      :as "decision")
-             (document-type :via ,(s-prefix "ext:documentType")
-                       :as "type")
-             (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                              :as "confidentiality"))
+  :properties `((:archived        :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
+                (:title           :string ,(s-prefix "dct:title")) ;;string-set
+                (:description     :string ,(s-prefix "ext:omschrijving")) ;;string-set
+                (:created         :datetime ,(s-prefix "dct:created"))
+                (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
+                (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
+  :has-many `((remark             :via ,(s-prefix "besluitvorming:opmerking")
+                                  :as "remarks") 
+              (document-version   :via ,(s-prefix "besluitvorming:heeftVersie")
+                                  :as "document-versions"))
+  :has-one `((decision            :via ,(s-prefix "ext:besluitHeeftDocument") ;; NOTE: Relation to document instad of document-subclass
+                                  :inverse t
+                                  :as "decision")
+             (document-type       :via ,(s-prefix "ext:documentType")
+                                  :as "type")
+             (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                                  :as "confidentiality"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Document/")
   :features '(include-uri)
   :on-path "documents")
