@@ -36,7 +36,7 @@
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
                                         :as "subcase")
-            (announcement                    :via ,(s-prefix "ext:mededelingBevatDocumentversie")
+            (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement"))
   :resource-base (s-url "http://localhost/vo/document-versions/")
@@ -45,16 +45,16 @@
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  :has-many `((document :via ,(s-prefix "ext:documentType")
-                          :inverse t
-                          :as "documenten")
-              (document-type :via ,(s-prefix "skos:broader")
-                             :inverse t
-                             :as "subtypes"))
-  :has-one `((document-type :via ,(s-prefix "skos:broader")
-                            :as "supertype"))
+  :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note        :string ,(s-prefix "skos:scopeNote")))
+  :has-many `((document             :via    ,(s-prefix "ext:documentType")
+                                    :inverse t
+                                    :as "documents")
+              (document-type        :via    ,(s-prefix "skos:broader")
+                                    :inverse t
+                                    :as "subtypes"))
+  :has-one `((document-type         :via    ,(s-prefix "skos:broader")
+                                    :as "supertype"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/DocumentTypeCode/")
   :features '(include-uri)
   :on-path "document-types")

@@ -53,6 +53,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/document-versions/"
   end
 
+  match "/document-types/*path" do
+    Proxy.forward conn, path, "http://resource/document-types/"
+  end
+
   match "/document-type-codes/*path" do
     Proxy.forward conn, path, "http://resource/document-type-codes/"
   end
