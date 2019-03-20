@@ -5,7 +5,7 @@ services:
     container_name: development-kaleidos_backend
     image: semtech/mu-identifier:1.5.0
     links:
-      - development-dispatcher:development-dispatcher
+      - development-dispatcher:dispatcher
     ports:
       - "${DISPATCHER_PORT}:80"
     networks:
@@ -18,7 +18,7 @@ services:
   development-dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     links:
-      - development-resource:development-resource
+      - development-resource:resource
     volumes:
       - ./config/dispatcher:/config
   development-database:
