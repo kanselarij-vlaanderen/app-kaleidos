@@ -15,22 +15,29 @@ node {
     def dockerHome = tool 'myDocker'
   }
 
+  def branch = 'master'
+
   stage('Checkout') {
-    checkout scm
+    def scmVars = checkout scm
+    def git_branch = scmVars.GIT_BRANCH
+
+    if (git_branch == 'origin/development'){
+      branch = 'development'
+    }
   }
 
   try {
 
     stage("Image Prune"){
-      imagePrune(DRC_PATH)
+      imagePrune(DRC_PATH, branch)
     }
 
     stage('Image Build'){
-      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH)
+      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH, branch)
     }
 
     stage('Run App'){
-      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH)
+      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH, branch)
     }
   } catch (err) {
     currentBuild.result = 'FAILED'
@@ -41,18 +48,18 @@ node {
 
 def imagePrune(DRC_PATH){
     try {
-        sh "docker-compose --project-directory=${DRC_PATH} down -v"
-        sh "docker-compose --project-directory=${DRC_PATH} rm -f"
+        sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} down -v"
+        sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f"
     } catch(error){}
 }
 
-def imageBuild(containerName, tag, DRC_PATH){
-    sh "docker-compose --project-directory=${DRC_PATH} build"
+def imageBuild(containerName, tag, DRC_PATH, branch){
+    sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} build"
     echo "Image build complete"
 }
 
-def runApp(containerName, tag, httpPort, DRC_PATH){
-    sh "docker-compose --project-directory=${DRC_PATH} up -d"
+def runApp(containerName, tag, httpPort, DRC_PATH, branch){
+    sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} up -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 
