@@ -52,23 +52,25 @@ async function getAllSessions() {
 }
 
 function updateSessionNumbers(sessions) {
-  let deleteString = "";
+  let toDelete = [];
   let insertString = "";
+
   sessions.forEach(obj => {
-    deleteString = `${deleteString}
-     <${obj.session}> adms:identifier ?o .
-    `
+    toDelete.push(`<${obj.session}>`);
     insertString = `${insertString}
     <${obj.session}> adms:identifier """${obj.number}"""^^xsd:decimal .
     `
   })
+
+  const deleteString = toDelete.join();
 
   const query = `
   PREFIX adms: <http://www.w3.org/ns/adms#>
   
   DELETE WHERE { 
     GRAPH <http://mu.semte.ch/application> { 
-      ${deleteString}
+      ?target adms:identifier ?o .
+      FILTER(?target IN (${deleteString}))
     } 
   };
 
