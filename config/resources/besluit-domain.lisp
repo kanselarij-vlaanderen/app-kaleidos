@@ -201,7 +201,10 @@
   :has-many `((agenda           :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                 :inverse t
                                 :as "agendas")
-             (postponed         :via      ,(s-prefix "besluitvorming:nieuweDatum")
+              (document-vo-identifier   :via ,(s-prefix "ext:meeting")
+                                        :as "identifiers"
+                                        :inverse t)
+              (postponed         :via      ,(s-prefix "besluitvorming:nieuweDatum")
                                 :as "postponeds"))
   :has-one `((subcase           :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                 :inverse t

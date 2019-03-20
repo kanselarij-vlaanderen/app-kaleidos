@@ -9,7 +9,6 @@ services:
     ports:
       - "8082:80"
     networks:
-      - proxy
       - default
       - backend
     environment:
@@ -94,8 +93,5 @@ services:
     volumes:
       - ./minister-jurisdiction-service:/app
 networks:
-  proxy:
-    external:
-      name: letsencrypt_default
   backend:
-    external: true
+    external: false
