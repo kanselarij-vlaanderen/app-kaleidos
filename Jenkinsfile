@@ -46,7 +46,7 @@ node {
 
 }
 
-def imagePrune(DRC_PATH){
+def imagePrune(DRC_PATH, branch){
     try {
         sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} down -v"
         sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f"
