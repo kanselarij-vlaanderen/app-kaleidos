@@ -51,9 +51,6 @@ services:
       - ./session-number-service:/app
   agenda-sort-service:
     image: semtech/mu-javascript-template
-    ports:
-      - "9230:9229"
-      - "8089:80"
     environment:
       NODE_ENV: "development"
     links:
@@ -62,9 +59,6 @@ services:
       - ./agenda-sort-service:/app
   custom-subcases-service:
     image: semtech/mu-javascript-template
-    ports:
-      - "9233:9229"
-      - "8092:80"
     environment:
       NODE_ENV: "development"
     links:
@@ -73,9 +67,6 @@ services:
       - ./custom-subcases-service:/app
   agenda-approve-service:
     image: semtech/mu-javascript-template
-    ports:
-      - 8888:80
-      - 9229:9229
     environment:
       NODE_ENV: "development"
     links:
@@ -84,8 +75,6 @@ services:
       - ./agenda-approve-service:/app
   minister-jurisdiction-service:
     image: mikidi/mu-python-template:python3-port
-    ports:
-      - 8088:80
     environment:
       MODE: "development"
     links:

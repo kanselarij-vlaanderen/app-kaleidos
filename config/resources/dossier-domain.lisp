@@ -81,7 +81,7 @@
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
                 (:label :string ,(s-prefix "skos:prefLabel"))
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
-  :has-many `((subcase :via ,(s-prefix "ext:subcaseProcedurestapFase")
+  :has-one `((subcase :via ,(s-prefix "ext:subcaseProcedurestapFase")
                           :inverse t
                           :as "subcases"))
   :has-one `((subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
