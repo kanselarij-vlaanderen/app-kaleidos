@@ -38,7 +38,7 @@
             (announcement                    :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement"))
-  :has-many `((document-vo-identifier   :via ,(s-prefix "ext:documentVersion")
+  :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
                                         :as "identifiers"
                                         :inverse t))
   :resource-base (s-url "http://localhost/vo/document-versions/")
@@ -48,17 +48,17 @@
 (define-resource document-vo-identifier ()
   :class (s-prefix "ext:DocumentIdentifier")
   :properties `((:serial-number         :string   ,(s-prefix "ext:serieNummer"))
-                (:version               :number   ,(s-prefix "ext:versieNummer")) ;; 1 for nothing, 2 for BIS, 3 for TER
+                (:version-number               :number   ,(s-prefix "ext:versieNummer")) ;; 1 for nothing, 2 for BIS, 3 for TER
                 (:title                 :string   ,(s-prefix "dct:title"))) ;; title so people can give their own name to this version if necessary
-  :has-one `((document-version          :via      ,(s-prefix "ext:documentVersion")
-                                        :as "version")
+  :has-one `((document-version          :via      ,(s-prefix "ext:identifiesVersion")
+                                        :as "document-version")
             (meeting                    :via      ,(s-prefix "ext:meeting")
                                         :as "meeting")
             (subcase                    :via      ,(s-prefix "ext:procedurestap")
-                                        :as "procedurestap"))
+                                        :as "subcase"))
   :resource-base (s-url "http://localhost/vo/document-identifier/")
   :features `(include-uri)
-  :on-path "document-identifier")
+  :on-path "document-vo-identifiers")
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
