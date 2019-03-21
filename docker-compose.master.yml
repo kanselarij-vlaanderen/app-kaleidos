@@ -9,6 +9,7 @@ services:
     ports:
       - "8082:80"
     networks:
+      - proxy
       - default
       - backend
     environment:
