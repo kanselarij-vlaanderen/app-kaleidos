@@ -8,11 +8,24 @@
 /data/db/virtuoso.log
 /data/db/virtuoso.pxa
 /data/db/virtuoso.trx
+
+# Virtuoso files /data/db
+/development-data/db/clean-logs.sh
+/development-data/db/*.log
+/development-data/db/virtuoso-temp.db
+/development-data/db/virtuoso.db
+/development-data/db/virtuoso.ini
+/development-data/db/virtuoso.lck
+/development-data/db/virtuoso.log
+/development-data/db/virtuoso.pxa
+/development-data/db/virtuoso.trx
+
 /session-number-service/node_modules
 /agenda-sort-service/node_modules
 /agenda-approve-service/node_modules
 /custom-subcases-service/node_modules
 /data/files/*
+/development-data/files/*
 properties-to-add
 .idea/
 /minister-jurisdiction-service/venv
