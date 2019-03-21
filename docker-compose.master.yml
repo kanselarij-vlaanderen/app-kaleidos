@@ -82,6 +82,13 @@ services:
       - db:database
     volumes:
       - ./minister-jurisdiction-service:/app
+
+
+
 networks:
+  proxy:
+    external:
+      name: letsencrypt_default
   backend:
-    external: false
+    external: true
+
