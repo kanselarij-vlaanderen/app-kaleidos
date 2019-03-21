@@ -43,7 +43,9 @@
                        :as "decision")
              (case   :via ,(s-prefix "dct:hasPart")
                      :inverse t
-                     :as "case"))
+                     :as "case")
+             (meeting :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
+                       :as "requested-for-meeting"))
   :has-many `(
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
@@ -66,8 +68,6 @@
                                    :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
                           :as "agendaitems")
-              (meeting :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
-                       :as "requestedForMeetings")
               (subcase-phase :via ,(s-prefix "ext:subcaseProcedurestapFase")
                               :as "phases")
               (remark :via ,(s-prefix "besluitvorming:opmerking") 

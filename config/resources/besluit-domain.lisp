@@ -193,23 +193,23 @@
 
 (define-resource meeting ()
   :class (s-prefix "besluit:Zitting")
-  :properties `((:planned-start :datetime ,(s-prefix "besluit:geplandeStart")) 
-                (:started-on    :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
-                (:ended-on      :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
-                (:number        :number   ,(s-prefix "adms:identifier"))
-                (:location      :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
-  :has-many `((agenda           :via      ,(s-prefix "besluit:isAangemaaktVoor")
-                                :inverse t
-                                :as "agendas")
+  :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart")) 
+                (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
+                (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
+                (:number                :number   ,(s-prefix "adms:identifier"))
+                (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
+  :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
+                                        :inverse t
+                                        :as "agendas")
               (document-vo-identifier   :via ,(s-prefix "ext:meeting")
                                         :as "identifiers"
                                         :inverse t)
-              (postponed         :via      ,(s-prefix "besluitvorming:nieuweDatum")
-                                :as "postponeds"))
-  :has-one `((subcase           :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
-                                :inverse t
-                                :as "subcases")
-             (agenda            :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+              (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
+                                        :as "postponeds")
+              (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
+                                        :inverse t
+                                        :as "requested-subcases"))
+  :has-one `((agenda            :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                 :as "agenda")
              (meeting-record    :via      ,(s-prefix "ext:algemeneNotulen")
                                 :as "notes"))
