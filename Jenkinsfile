@@ -48,18 +48,18 @@ node {
 
 def imagePrune(DRC_PATH, branch){
     try {
-        sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} down -v"
-        sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f"
+        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} down -v"
+        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f"
     } catch(error){}
 }
 
 def imageBuild(containerName, tag, DRC_PATH, branch){
-    sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} build"
+    sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} build"
     echo "Image build complete"
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
-    sh "env \$(cat .env.${branch}) docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} up -d"
+    sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} up -d"
     echo "Application started on port: ${httpPort} (http)"
 }
 

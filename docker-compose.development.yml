@@ -7,13 +7,13 @@ services:
     links:
       - development-dispatcher:dispatcher
     ports:
-      - "${DISPATCHER_PORT}:80"
+      - "8090:80"
     networks:
       - proxy
       - default
       - backend
     environment:
-      - VIRTUAL_HOST=kaleidos-backend.kanselarij-dev.s.redpencil.io
+      - VIRTUAL_HOST=dev-kaleidos-backend.kanselarij-dev.s.redpencil.io
       - VIRTUAL_PORT=80
   development-dispatcher:
     image: semtech/mu-dispatcher:1.1.2
@@ -27,7 +27,7 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     ports:
-      - "${DATABASE_PORT}:8890"
+      - "8900:8890"
     volumes:
       - ./data/db:/data
   development-resource:
