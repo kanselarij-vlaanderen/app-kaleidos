@@ -89,34 +89,34 @@
   
 (define-resource decision ()
   :class (s-prefix "besluit:Besluit") ;; NOTE: Took over all properties from document instead of subclassing (mu-cl-resources workaround)
-  :properties `((:description :string ,(s-prefix "eli:description"))
-                (:short-title :string ,(s-prefix "eli:title_short"))
-                (:approved :boolean ,(s-prefix "besluitvorming:goedgekeurd")) ;; NOTE: What is the URI of property 'goedgekeurd'? Made up besluitvorming:goedgekeurd
-                (:archived :boolean ,(s-prefix "besluitvorming:gearchiveerd")) ;; NOTE: Inherited from Document
-                (:title :string-set ,(s-prefix "dct:title")) ;; NOTE: Inherited from Document
-                (:number-vp :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
-                (:number-vr :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: Inherited from Document
-  :has-many `((mandatee :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
-                          :as "mandatees")
-              (remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
-                                      :as "remarks")
+  :properties `((:description   :string     ,(s-prefix "eli:description"))
+                (:short-title   :string     ,(s-prefix "eli:title_short"))
+                (:approved      :boolean    ,(s-prefix "besluitvorming:goedgekeurd")) ;; NOTE: What is the URI of property 'goedgekeurd'? Made up besluitvorming:goedgekeurd
+                (:archived      :boolean    ,(s-prefix "besluitvorming:gearchiveerd")) ;; NOTE: Inherited from Document
+                (:title         :string     ,(s-prefix "dct:title")) ;; NOTE: Inherited from Document
+                (:number-vp     :string     ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
+                (:number-vr     :string     ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: Inherited from Document
+  :has-many `((mandatee         :via        ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
+                                :as "mandatees")
+              (remark           :via        ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
+                                :as "remarks")
               ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
               ;           :as "heeft-versie")
               )
-  :has-one `((subcase :via ,(s-prefix "ext:besluitHeeftProcedurestap") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                            :inverse t
-                            :as "subcase")
-             (agendaitem :via ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                         :inverse t
-                         :as "agendaitem")
-             (publication :via ,(s-prefix "besluitvorming:isGerealiseerdDoor")
-                          :as "publication")
+  :has-one `((subcase           :via        ,(s-prefix "ext:besluitHeeftProcedurestap") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                                :inverse t
+                                :as "subcase")
+             (agendaitem        :via        ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                                :inverse t
+                                :as "agendaitem")
+             (publication       :via        ,(s-prefix "besluitvorming:isGerealiseerdDoor")
+                                :as "publication")
             ;;  (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
             ;;                   :as "newsletter-info")
-             (document-type :via ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
-                            :as "type")
-             (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
-                              :as "confidentiality"))
+             (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
+                                :as "type")
+             (confidentiality   :via        ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
+                                :as "confidentiality"))
   :resource-base (s-url "http://data.lblod.info/id/besluiten/")
   :features '(include-uri)
   :on-path "decisions")
