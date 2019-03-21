@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   identifier:
-    container_name: kaleidos_backend
+    container_name: production-kaleidos_backend
     image: semtech/mu-identifier:1.5.0
     links:
       - dispatcher:dispatcher
