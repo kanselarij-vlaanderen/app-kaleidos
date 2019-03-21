@@ -29,7 +29,7 @@ services:
     ports:
       - "8900:8890"
     volumes:
-      - ./data/db:/data
+      - ./development-data/db:/data
   development-resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
