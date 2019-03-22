@@ -3,7 +3,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
-theme:b589d7ba-1f26-46a0-9484-857a92fd54ae a ext:Thema ;
+theme:b589d7ba-1f26-46a0-9484-857a92fd54ae a ext:ThemaCode ;
   mu:uuid "b589d7ba-1f26-46a0-9484-857a92fd54ae" ;
   skos:prefLabel "Armoedebestrijding"@nl .
 theme:9c24c16e-4d84-413d-93f8-6498f8c93ad5 a ext:ThemaCode ;
