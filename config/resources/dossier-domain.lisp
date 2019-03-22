@@ -83,8 +83,8 @@
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
   :has-one `((subcase :via ,(s-prefix "ext:subcaseProcedurestapFase")
                           :inverse t
-                          :as "subcases"))
-  :has-one `((subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
+                          :as "subcase")
+             (subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
                        :as "code"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFase/")
   :features '(include-uri)
@@ -96,15 +96,15 @@
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFaseCode")
                           :inverse t
-                          :as "subcasephases")
+                          :as "subcase-phases")
               (subcase-phase-code :via ,(s-prefix "skos:broader") ;; NOTE: tree structure for type-hierarchy (cfr codelist)
                                         :inverse t
-                                        :as "subphaseCodes"))
+                                        :as "subphase-codes"))
   :has-one `((subcase-phase-code :via ,(s-prefix "skos:broader")
                                       :as "superphase"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFaseCode/")
   :features '(include-uri)
-  :on-path "subcase-phase-code")
+  :on-path "subcase-phase-codes")
   
 (define-resource confidentiality ()
   :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
