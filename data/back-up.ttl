@@ -643,7 +643,6 @@ ns4:ec5877b7-737b-4051-9b8b-abd177b61236	rdf:type	ns1:ProcedurestapFaseCode ;
 	ns10:alternative	"qwertyuiop" ;
 	ns1:wordtGetoondAlsMededeling	"false"^^ns9:boolean ;
 	ns8:heeftBevoegde	ns15:d3b0f8f7-9806-45a9-9d04-c9676049ff0b ;
-	ns8:isGeagendeerdVia	<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000018> ;
 	ns10:subject	<http://data.vlaanderen.be/id/concept/ThemaCode/5C77E1DD18BF140009000002> ;
 	ns16:beleidsdomein	ns17:cd4bfb6c-0958-420f-8ee8-c6b655099398 ,
 		<http://example.com/beleidsdomein/1b15ea14-aef1-4e9c-a552-b497a09ac7bf> ,
@@ -1314,14 +1313,6 @@ ns4:ec5877b7-737b-4051-9b8b-abd177b61236	rdf:type	ns1:ProcedurestapFaseCode ;
 <http://data.vlaanderen.be/id/concept/ProcedurestapFase/5C9098B07736190008000047>	rdf:type	ns1:ProcedurestapFase ;
 	ns2:uuid	"5C9098B07736190008000047" ;
 	skos:prefLabel	"Goedkeuring" .
-<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000018>	rdf:type	ns5:Agendapunt ;
-	ns2:uuid	"5C94B5B58178220008000018" ;
-	ns1:prioriteit	3 ;
-	ns1:forPress	"false"^^ns9:boolean ;
-	ns8:aanmaakdatum	"2019-03-22T10:15:17.599Z"^^xsd:dateTime ;
-	ns8:formeelOK	"false"^^ns9:boolean ;
-	ns8:ingetrokken	"false"^^ns9:boolean ;
-	ns8:titelPersagenda	"qwertyuiop" .
 <http://data.lblod.info/id/agendapunten/5C94B5B5817822000800001A>	rdf:type	ns5:Agendapunt ;
 	ns2:uuid	"5C94B5B5817822000800001A" ;
 	ns1:prioriteit	2 ;
@@ -2109,6 +2100,20 @@ ns4:ec5877b7-737b-4051-9b8b-abd177b61236	rdf:type	ns1:ProcedurestapFaseCode ;
 	ns11:fileSize	81045 ;
 	ns12:fileExtension	"pdf" ;
 	ns13:dataSource	<http://mu.semte.ch/services/file-service/files/5c94a7e4672bf2000b000002> .
+@prefix ns22:	<https://data.vlaanderen.be/ns/besluitvorming#> .
+<http://data.vlaanderen.be/id/Mededeling/5C94BE16817822000800001E>	rdf:type	ns22:Mededeling ;
+	ns2:uuid	"5C94BE16817822000800001E" ;
+	ns1:title	"Dit is een mededeling " ;
+	ns1:text	"Minister-president Bourgeois zal deelnemen aan de stratenloop van Diest.  " ;
+	ns1:created	"2019-03-22T10:51:02.359Z"^^xsd:date ;
+	ns1:modified	"2019-03-22T10:51:02.359Z"^^xsd:date .
+<http://data.lblod.info/id/agendas/5C94BE2D817822000800001F>	rdf:type	ns8:Agenda ;
+	ns2:uuid	"5C94BE2D817822000800001F" ;
+	ns8:finaleVersie	"false"^^ns9:boolean ;
+	ns1:agendaNaam	"Ontwerpagenda" ;
+	ns1:aangemaaktOp	"2019-03-22T10:51:25.488Z"^^xsd:date ;
+	ns5:isAangemaaktVoor	<http://data.lblod.info/id/zittingen/5C94B5208178220008000014> ;
+	ns1:accepted	"false"^^ns9:boolean .
 <http://data.vlaanderen.be/id/Dossier/5C76895FD327E40009000004>	ns10:created	"2019-02-27T12:58:07.706Z"^^xsd:dateTime ;
 	ns2:uuid	"5C76895FD327E40009000004" ;
 	ns10:title	"Ontwerp van besluit van de Vlaamse Regering tot wijziging van het besluit van de Vlaamse Regering van 25 juli 2014 tot bepaling van de bevoegdheden van de leden van de Vlaamse Regering, wat betreft de notificatie van de beslissingen van de Vlaamse Regering Definitieve goedkeuring" ;
@@ -2175,7 +2180,6 @@ ns4:ec5877b7-737b-4051-9b8b-abd177b61236	rdf:type	ns1:ProcedurestapFaseCode ;
 	ns1:versieNummer	1 ;
 	ns1:gekozenDocumentNaam	"Bestuursdecreet_Bijlage_Afdeling9.pdf" ;
 	ns1:file	<http://mu.semte.ch/services/file-service/files/5c768a516ba9b1000c00000a> .
-@prefix ns22:	<https://data.vlaanderen.be/ns/besluitvorming#> .
 <http://data.vlaanderen.be/id/Mededeling/5C76B33BD327E40009000026>	rdf:type	ns22:Mededeling ;
 	ns2:uuid	"5C76B33BD327E40009000026" ;
 	ns1:title	"test" ;
@@ -2448,13 +2452,19 @@ ns18:F2584F34-3B38-11E9-BF7F-FF4480EF4136	ns2:uuid	"F2584F34-3B38-11E9-BF7F-FF44
 <http://data.vlaanderen.be/id/Procedurestap/5C8FAC0B7736190008000002>	rdf:type	ns12:UnitOfWork ;
 	ns10:created	"2019-03-18T14:32:43.677Z"^^xsd:dateTime ;
 	ns2:uuid	"5C8FAC0B7736190008000002" ;
-	ns10:title	"Vizier 2030" ;
+	ns10:title	"Ontwerp \u2018VIZIER2030: Een 2030-doelstellingenkader voor Vlaanderen\u2019" ;
 	ns1:subcaseProcedurestapFase	<http://exampe.com/step/7b90b3a6-2787-4b41-8a1d-886fc5abbb33> ;
 	ns10:alternative	"Vizier 2030" ;
 	ns1:wordtGetoondAlsMededeling	"false"^^ns9:boolean ;
 	ns8:heeftBevoegde	<http://example.com/mandaat/9cd9a969-0e8c-4f07-bacd-bd0c0b4cfc9c> ;
-	ns8:isGeagendeerdVia	<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000016> ;
-	ns10:subject	<http://data.vlaanderen.be/id/concept/ThemaCode/5C77E1DD18BF140009000002> ;
+	ns10:subject	<http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/468a0327-bf5c-4042-a2b6-63b2ae68e47b> ,
+		<http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/4bd86c87-b611-495e-83ce-0fe4afdb3a4b> ,
+		<http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/299262b9-8ccb-4de7-a6a5-d4c7e9570dcf> ,
+		<http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/0d06460c-9bdb-4bac-95b5-42591f19bd08> ,
+		ns21:a4a6ae29-2eab-458b-bc08-2545d6cd80f7 ,
+		<http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/5bb1d678-9d28-456e-ba9d-0a627155e05b> ,
+		ns21:d134d8ef-3d09-42cb-812f-f0d762455aa4 ,
+		ns21:c2113906-72fa-40c4-84c4-3fa9317f337c ;
 	ns16:beleidsdomein	<http://example.com/beleidsdomein/5354cf04-1af4-4513-ad05-8bbe2e2e8904> ,
 		<http://example.com/beleidsdomein/673d1ac6-8d12-4839-ba67-c6334e634575> ,
 		<http://example.com/beleidsdomein/67e5b84d-4544-4931-a14f-b321d3d15f29> ,
@@ -2522,7 +2532,27 @@ ns18:F2584F34-3B38-11E9-BF7F-FF4480EF4136	ns2:uuid	"F2584F34-3B38-11E9-BF7F-FF44
 	ns10:title	"Projectoproep naschools openstellen van schoolsportinfrastructuur \u2013 Derde projectoproep" ;
 	ns10:alternative	"Schoolsportinfrastructuur" ;
 	ns1:wordtGetoondAlsMededeling	"false"^^ns9:boolean ;
-	ns8:isGeagendeerdVia	<http://data.lblod.info/id/agendapunten/5C94B5B6817822000800001C> ;
+	ns8:heeftBevoegde	<http://example.com/mandaat/6eb5292d-37a1-454f-b87e-3bbfacb23970> ,
+		ns15:dc811a22-ccab-4dba-b305-fa1ca2981a0c ;
+	ns16:beleidsdomein	ns17:fee58ed5-fb63-47a6-b412-ed47436a66a0 ,
+		ns17:f13abae1-4989-4f98-aaf4-c9d6d018f6e2 ,
+		ns17:dd7147d2-f998-484e-ac0a-347df591bb0a ,
+		ns17:d48d3469-798a-4749-842f-adc964547a9b ,
+		<http://example.com/beleidsdomein/0efb369e-2cd7-47e2-a77b-f2ae44299081> ,
+		<http://example.com/beleidsdomein/32c99161-e759-433d-9f94-ccccd9280237> ,
+		<http://example.com/beleidsdomein/0751a226-0643-4d79-a09c-3086e3366838> ,
+		<http://example.com/beleidsdomein/035e8fb7-fda0-43f3-aa7a-1de8f4bd690f> ,
+		<http://example.com/beleidsdomein/038a2cdd-e705-4d2e-b095-6a4ad63aa55c> ,
+		ns17:a015c82b-6ed3-4494-960a-d1e17a5e6b2d ,
+		<http://example.com/beleidsdomein/9198c35a-6b04-438a-90db-2dc5c79d7a00> ,
+		ns17:b956158e-c5af-47a5-98e9-c6ca5a68c653 ,
+		ns17:bb3a9418-f3c1-46a2-ab77-55cca92c0dd1 ,
+		ns17:a3c66612-ec16-4f1f-8424-f9c328ef9c27 ,
+		ns17:a56cd226-1725-4f9e-be8a-1e845fdf01b6 ,
+		<http://example.com/beleidsdomein/58aabc50-0990-49af-a990-772066406c6c> ,
+		<http://example.com/beleidsdomein/3b5eb980-1524-47ce-b138-c8788dd462fc> ,
+		<http://example.com/beleidsdomein/5bbc1c50-46af-4859-aa7a-2a8ff25dd70e> ,
+		<http://example.com/beleidsdomein/626d41c3-9106-41cf-9f9b-519df27353eb> ;
 	ns1:bevatDocumentversie	<http://localhost/vo/document-versions/5C94B42F8178220008000008> ,
 		<http://localhost/vo/document-versions/5C94B42F817822000800000A> ,
 		<http://localhost/vo/document-versions/5C94B42F8178220008000007> ,
@@ -3362,7 +3392,8 @@ ns21:b13636b5-ecc9-4528-87b7-624befd69ae8	rdf:type	ns1:ThemaCode ;
 ns21:b4a3a4cd-81fb-4298-8c50-cb5b75d3fc4a	rdf:type	ns1:ThemaCode ;
 	ns2:uuid	"b4a3a4cd-81fb-4298-8c50-cb5b75d3fc4a" ;
 	skos:prefLabel	"Internationaal Ondernemen "@nl .
-ns21:b589d7ba-1f26-46a0-9484-857a92fd54ae	rdf:type	ns1:Thema ;
+ns21:b589d7ba-1f26-46a0-9484-857a92fd54ae	rdf:type	ns1:ThemaCode ,
+		ns1:Thema ;
 	ns2:uuid	"b589d7ba-1f26-46a0-9484-857a92fd54ae" ;
 	skos:prefLabel	"Armoedebestrijding"@nl .
 ns21:b6348a8f-cdfc-45ee-b1ac-4018286ca99c	rdf:type	ns1:ThemaCode ;
@@ -3903,18 +3934,11 @@ ns21:fcc23cc1-da86-49c9-b08d-960a37f73348	rdf:type	ns1:ThemaCode ;
 <http://data.lblod.info/id/agendas/5C94B5208178220008000015>	rdf:type	ns8:Agenda ;
 	ns2:uuid	"5C94B5208178220008000015" ;
 	ns8:finaleVersie	"false"^^ns9:boolean ;
-	ns1:agendaNaam	"Ontwerpagenda" ;
+	ns1:agendaNaam	"A" ;
 	ns1:aangemaaktOp	"2019-03-22T10:12:48.877Z"^^xsd:date ;
 	ns5:isAangemaaktVoor	<http://data.lblod.info/id/zittingen/5C94B5208178220008000014> ;
-	ns10:hasPart	<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000018> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B5817822000800001A> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000016> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000017> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B58178220008000019> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B6817822000800001D> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B5817822000800001B> ,
-		<http://data.lblod.info/id/agendapunten/5C94B5B6817822000800001C> ;
-	ns1:accepted	"false"^^ns9:boolean .
+	ns1:accepted	"true"^^ns9:boolean ;
+	ns1:mededeling	<http://data.vlaanderen.be/id/Mededeling/5C94BE16817822000800001E> .
 <http://data.lblod.info/id/agendapunten/5C94B5B5817822000800001B>	rdf:type	ns5:Agendapunt ;
 	ns2:uuid	"5C94B5B5817822000800001B" ;
 	ns1:prioriteit	7 ;
