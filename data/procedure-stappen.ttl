@@ -5,13 +5,7 @@
 
 step:7b90b3a6-2787-4b41-8a1d-886fc5abbb33 a ext:ProcedurestapFaseCode ;
     mu:uuid "7b90b3a6-2787-4b41-8a1d-886fc5abbb33" ;
-    skos:prefLabel "principële goedkeuring" .
-step:23af3cfd-70a2-43b4-86fc-3d485b0b02a7 a ext:ProcedurestapFaseCode ;
-    mu:uuid "23af3cfd-70a2-43b4-86fc-3d485b0b02a7" ;
-    skos:prefLabel "2de principële goedkeuring" .
-step:b129bde4-e6cf-4d43-abbd-fd10ead7dd76 a ext:ProcedurestapFaseCode ;
-    mu:uuid "b129bde4-e6cf-4d43-abbd-fd10ead7dd76" ;
-    skos:prefLabel "herneming principële goedkeuring" .
+    skos:prefLabel "principiële goedkeuring" .
 step:6f7d1086-7c02-4a80-8c60-5690894f70fc a ext:ProcedurestapFaseCode ;
     mu:uuid "6f7d1086-7c02-4a80-8c60-5690894f70fc" ;
     skos:prefLabel "definitieve goedkeuring" .
