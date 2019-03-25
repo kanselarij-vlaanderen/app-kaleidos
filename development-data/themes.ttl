@@ -1,0 +1,146 @@
+@prefix theme: <http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+theme:b589d7ba-1f26-46a0-9484-857a92fd54ae a ext:Thema ;
+  mu:uuid "b589d7ba-1f26-46a0-9484-857a92fd54ae" ;
+  skos:prefLabel "Armoedebestrijding"@nl .
+theme:9c24c16e-4d84-413d-93f8-6498f8c93ad5 a ext:ThemaCode ;
+  mu:uuid "9c24c16e-4d84-413d-93f8-6498f8c93ad5" ;
+  skos:prefLabel "Begroting en financieën"@nl .
+theme:34a58abe-8963-4f4f-af56-d956468af1ed a ext:ThemaCode ;
+  mu:uuid "34a58abe-8963-4f4f-af56-d956468af1ed" ;
+  skos:prefLabel "Belastingen "@nl .
+theme:6a98c15c-f163-4d7e-97d9-0a30d90a9b6f a ext:ThemaCode ;
+  mu:uuid "6a98c15c-f163-4d7e-97d9-0a30d90a9b6f" ;
+  skos:prefLabel "Bestuurszaken"@nl .
+theme:fcc23cc1-da86-49c9-b08d-960a37f73348 a ext:ThemaCode ;
+  mu:uuid "fcc23cc1-da86-49c9-b08d-960a37f73348" ;
+  skos:prefLabel "Bodemgrond"@nl .
+theme:b63625e9-a157-4e4a-afbd-412d95016e40 a ext:ThemaCode ;
+  mu:uuid "b63625e9-a157-4e4a-afbd-412d95016e40" ;
+  skos:prefLabel "Bouwen"@nl .
+theme:e9882255-c65c-4c80-90ae-349e61a5558d a ext:ThemaCode ;
+  mu:uuid "e9882255-c65c-4c80-90ae-349e61a5558d" ;
+  skos:prefLabel "Brussel en Vlaamse rand"@nl .
+theme:f4f51361-d54d-489f-aa7b-d332539c9f5a a ext:ThemaCode ;
+  mu:uuid "f4f51361-d54d-489f-aa7b-d332539c9f5a" ;
+  skos:prefLabel "Buitenlands beleid"@nl .
+theme:3eeb103a-5db3-4eab-85f9-1d9aff22e46a a ext:ThemaCode ;
+  mu:uuid "3eeb103a-5db3-4eab-85f9-1d9aff22e46a" ;
+  skos:prefLabel "Criminaliteit"@nl .
+theme:922b13c4-937d-462a-b803-9d88a05d6041 a ext:ThemaCode ;
+  mu:uuid "922b13c4-937d-462a-b803-9d88a05d6041" ;
+  skos:prefLabel "Cultuur"@nl .
+theme:b13636b5-ecc9-4528-87b7-624befd69ae8 a ext:ThemaCode ;
+  mu:uuid "b13636b5-ecc9-4528-87b7-624befd69ae8" ;
+  skos:prefLabel "Dierenwelzijn"@nl .
+theme:3ce20c68-fef8-411b-ab80-a2606dba05e0 a ext:ThemaCode ;
+  mu:uuid "3ce20c68-fef8-411b-ab80-a2606dba05e0" ;
+  skos:prefLabel "Digitale agenda"@nl .
+theme:c2113906-72fa-40c4-84c4-3fa9317f337c a ext:ThemaCode ;
+  mu:uuid "c2113906-72fa-40c4-84c4-3fa9317f337c" ;
+  skos:prefLabel "Economie"@nl .
+theme:5b79cca1-b22e-4d21-bb84-d44e9bcb7589 a ext:ThemaCode ;
+  mu:uuid "5b79cca1-b22e-4d21-bb84-d44e9bcb7589" ;
+  skos:prefLabel "Energie"@nl .
+theme:5347943c-b77b-4d7e-8fc9-d0d29b5a09e3 a ext:ThemaCode ;
+  mu:uuid "5347943c-b77b-4d7e-8fc9-d0d29b5a09e3" ;
+  skos:prefLabel "Europese Instellingen"@nl .
+theme:359ef25d-9275-400e-af0d-d8ea5b40a4ae a ext:ThemaCode ;
+  mu:uuid "359ef25d-9275-400e-af0d-d8ea5b40a4ae" ;
+  skos:prefLabel "Gelijke kansen"@nl .
+theme:d45b8dde-2d0d-4c52-a439-df11e331046f a ext:ThemaCode ;
+  mu:uuid "d45b8dde-2d0d-4c52-a439-df11e331046f" ;
+  skos:prefLabel "Gezin"@nl .
+theme:b6348a8f-cdfc-45ee-b1ac-4018286ca99c a ext:ThemaCode ;
+  mu:uuid "b6348a8f-cdfc-45ee-b1ac-4018286ca99c" ;
+  skos:prefLabel "Inburgering en integratie"@nl .
+theme:3b064f88-d8fd-4a22-9000-5c8d0a4475f3 a ext:ThemaCode ;
+  mu:uuid "3b064f88-d8fd-4a22-9000-5c8d0a4475f3" ;
+  skos:prefLabel "Innovatie"@nl .
+theme:b4a3a4cd-81fb-4298-8c50-cb5b75d3fc4a a ext:ThemaCode ;
+  mu:uuid "b4a3a4cd-81fb-4298-8c50-cb5b75d3fc4a" ;
+  skos:prefLabel "Internationaal Ondernemen "@nl .
+theme:d389cc49-b443-462e-8b07-a084f5dea82f a ext:ThemaCode ;
+  mu:uuid "d389cc49-b443-462e-8b07-a084f5dea82f" ;
+  skos:prefLabel "Jeugd"@nl .
+theme:83128182-3f7d-467d-add2-b78f7ab09b5a a ext:ThemaCode ;
+  mu:uuid "83128182-3f7d-467d-add2-b78f7ab09b5a" ;
+  skos:prefLabel "Justitie"@nl .
+theme:0d06460c-9bdb-4bac-95b5-42591f19bd08 a ext:ThemaCode ;
+  mu:uuid "0d06460c-9bdb-4bac-95b5-42591f19bd08" ;
+  skos:prefLabel "Landbouw"@nl .
+theme:1bb4dc5e-c43c-4e8f-aace-6b79b42c4e95 a ext:ThemaCode ;
+  mu:uuid "1bb4dc5e-c43c-4e8f-aace-6b79b42c4e95" ;
+  skos:prefLabel "Klimaat"@nl .
+theme:4b7eaaaa-a83d-4ec5-97f3-ac2daaf4326d a ext:ThemaCode ;
+  mu:uuid "4b7eaaaa-a83d-4ec5-97f3-ac2daaf4326d" ;
+  skos:prefLabel "Media"@nl .
+theme:82ed3edd-ae9c-40e7-b5b6-fcfeb34b0fe7 a ext:ThemaCode ;
+  mu:uuid "82ed3edd-ae9c-40e7-b5b6-fcfeb34b0fe7" ;
+  skos:prefLabel "Milieu"@nl .
+theme:eb47601f-ef62-4d6c-95aa-e66145f406ea a ext:ThemaCode ;
+  mu:uuid "eb47601f-ef62-4d6c-95aa-e66145f406ea" ;
+  skos:prefLabel "Mobiliteit"@nl .
+theme:d134d8ef-3d09-42cb-812f-f0d762455aa4 a ext:ThemaCode ;
+  mu:uuid "d134d8ef-3d09-42cb-812f-f0d762455aa4" ;
+  skos:prefLabel "Onderwijs"@nl .
+theme:8df6b30f-177c-49fa-8b11-a15bcd2bf8f8 a ext:ThemaCode ;
+  mu:uuid "8df6b30f-177c-49fa-8b11-a15bcd2bf8f8" ;
+  skos:prefLabel "Onroerend erfgoed"@nl .
+theme:0d07255e-6deb-40d8-b5c1-12fe9d224a5c a ext:ThemaCode ;
+  mu:uuid "0d07255e-6deb-40d8-b5c1-12fe9d224a5c" ;
+  skos:prefLabel "Ontwikkelingssamenwerking"@nl .
+theme:d04900bc-af17-4d9c-ab3f-114e23da5844 a ext:ThemaCode ;
+  mu:uuid "d04900bc-af17-4d9c-ab3f-114e23da5844" ;
+  skos:prefLabel "Openbare Werken"@nl .
+theme:4bd86c87-b611-495e-83ce-0fe4afdb3a4b a ext:ThemaCode ;
+  mu:uuid "4bd86c87-b611-495e-83ce-0fe4afdb3a4b" ;
+  skos:prefLabel "Overheid"@nl .
+theme:7d6d527e-9750-4eef-b8dc-6fa1cee737bd a ext:ThemaCode ;
+  mu:uuid "7d6d527e-9750-4eef-b8dc-6fa1cee737bd" ;
+  skos:prefLabel "Ruimtelijke ordening"@nl .
+theme:39070ba6-abf0-494e-b943-c6c9e2efae8c a ext:ThemaCode ;
+  mu:uuid "39070ba6-abf0-494e-b943-c6c9e2efae8c" ;
+  skos:prefLabel "Sociale economie"@nl .
+theme:5bb1d678-9d28-456e-ba9d-0a627155e05b a ext:ThemaCode ;
+  mu:uuid "5bb1d678-9d28-456e-ba9d-0a627155e05b" ;
+  skos:prefLabel "Sport"@nl .
+theme:e96a1086-e183-4853-864d-93b6f493b43b a ext:ThemaCode ;
+  mu:uuid "e96a1086-e183-4853-864d-93b6f493b43b" ;
+  skos:prefLabel "Staatshervorming en communautaire aangelegenheden"@nl .
+theme:4d728121-5b1c-4952-a55c-d01fe3aaa46f a ext:ThemaCode ;
+  mu:uuid "4d728121-5b1c-4952-a55c-d01fe3aaa46f" ;
+  skos:prefLabel "Stedelijk beleid"@nl .
+theme:7186273c-9d70-43ce-bc86-b78874c763b6 a ext:ThemaCode ;
+  mu:uuid "7186273c-9d70-43ce-bc86-b78874c763b6" ;
+  skos:prefLabel "Toerisme"@nl .
+theme:299262b9-8ccb-4de7-a6a5-d4c7e9570dcf a ext:ThemaCode ;
+  mu:uuid "299262b9-8ccb-4de7-a6a5-d4c7e9570dcf" ;
+  skos:prefLabel "Visserij"@nl .
+theme:37795628-1096-4ee2-b44f-400c0a3e0f1c a ext:ThemaCode ;
+  mu:uuid "37795628-1096-4ee2-b44f-400c0a3e0f1c" ;
+  skos:prefLabel "Vlaanderen"@nl .
+theme:bb9d4525-93d3-44f3-90ff-810d4f1ae405 a ext:ThemaCode ;
+  mu:uuid "bb9d4525-93d3-44f3-90ff-810d4f1ae405" ;
+  skos:prefLabel "Volksgezondheid"@nl .
+theme:a4a6ae29-2eab-458b-bc08-2545d6cd80f7 a ext:ThemaCode ;
+  mu:uuid "a4a6ae29-2eab-458b-bc08-2545d6cd80f7" ;
+  skos:prefLabel "Vorming"@nl .
+theme:5c2d7c0e-e9b4-4681-be00-e73ebb0d104b a ext:ThemaCode ;
+  mu:uuid "5c2d7c0e-e9b4-4681-be00-e73ebb0d104b" ;
+  skos:prefLabel "Welzijn"@nl .
+theme:468a0327-bf5c-4042-a2b6-63b2ae68e47b a ext:ThemaCode ;
+  mu:uuid "468a0327-bf5c-4042-a2b6-63b2ae68e47b" ;
+  skos:prefLabel "Werk"@nl .
+theme:60df5f53-6e6e-4039-9654-28cf8e42619f a ext:ThemaCode ;
+  mu:uuid "60df5f53-6e6e-4039-9654-28cf8e42619f" ;
+  skos:prefLabel "Wetenschap"@nl .
+theme:5f5b20e0-91cd-44bf-abed-0b713de2ef00 a ext:ThemaCode ;
+  mu:uuid "5f5b20e0-91cd-44bf-abed-0b713de2ef00" ;
+  skos:prefLabel "Wonen"@nl .
+theme:becc31c9-ed8b-430f-ad61-9e4f9dd2c1bf a ext:ThemaCode ;
+  mu:uuid "becc31c9-ed8b-430f-ad61-9e4f9dd2c1bf" ;
+  skos:prefLabel "Zorg"@nl .

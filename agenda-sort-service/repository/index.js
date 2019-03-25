@@ -1,6 +1,6 @@
 import mu from 'mu';
 
-const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
+const getAgendaPriorities = async (agendaId) => {
 
     const query = `
       PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
@@ -8,50 +8,55 @@ const getMinistersWithBevoegdheidByAgendaId = async (agendaId) => {
       PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      PREFIX vo-besluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-      PREFIX agenda: <http://localhost/vo/agendas/>
+      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX agenda: <http://data.lblod.info/id/agendas/>
+      PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+      PREFIX dct: <http://purl.org/dc/terms/>
       
-      SELECT ?uuid ?agendapunt ?priority ?ministerId ?minister ?responsibility 
+      SELECT ?uuid ?agendapunt MIN(?priority) AS ?priority COUNT(DISTINCT(?mandatee)) AS ?mandateeCount
         WHERE { 
           GRAPH <http://mu.semte.ch/application>
           {
-            agenda:${agendaId} ext:agendapunt ?agendapunt .
+            ?agenda dct:hasPart ?agendapunt .
+            ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
-            ?agendapunt ext:prioriteit ?priority .
-            ?subcase vo-besluit:subcase ?agendapunt . 
-            ?case ext:deeldossier ?subcase ;
-                  vo-besluit:bevoegde ?hoedanigheid .
-            ?hoedanigheid skos:prefLabel ?minister ; 
-                          mu:uuid ?ministerId ;
-                          vo-org:bevoegdheid ?bevoegdheid .
-            ?bevoegdheid skos:prefLabel ?responsibility
-
+            ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+            OPTIONAL { 
+                ?subcase besluitvorming:heeftBevoegde ?mandatee . 
+                ?mandatee mu:uuid ?mandateeId .
+                ?mandatee mandaat:rangorde ?priority .
+                ?mandatee mandaat:start ?start .
+                FILTER(?start < NOW())
+                OPTIONAL {
+                   ?mandatee mandaat:eind ?end .
+                   FILTER(?end > NOW())
+                }
+            }
            }
-      }`;
+      } GROUP BY ?uuid ?agendapunt`;
 
     let data = await mu.query(query);
     const results = parseSparqlResults(data);
-    return parseMinistersWithBevoegdheden(results);
-};
-
+    return parsePriorityResults(results);
+}
 
 const updateAgendaItemPriority = async (items) => {
 
     const oldPriorities = items.map(item =>
-        ` <${item.agendapunt}> ext:prioriteit ${item.priority} . 
+        ` <${item.uri}> ext:prioriteit ?priority . 
         `).join(' ');
     const newPriorities = items.map(item =>
-        ` <${item.agendapunt}> ext:prioriteit ${item.newPriority} .
+        ` <${item.uri}> ext:prioriteit ${item.priority} .
         `).join(' ');
 
     const query = `
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       
-      DELETE DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
-          ${oldPriorities}
-        } 
-      }
+      DELETE WHERE { 
+          GRAPH ?g {
+            ${oldPriorities}
+          }        
+      };
     
       INSERT DATA { 
         GRAPH <http://mu.semte.ch/application> { 
@@ -66,49 +71,38 @@ const parseSparqlResults = (data) => {
     return data.results.bindings.map(binding => {
         let obj = {};
         vars.forEach(varKey => {
-            obj[varKey] = binding[varKey].value;
+            if (binding[varKey]){
+                obj[varKey] = binding[varKey].value;
+            }
         });
         return obj;
     })
 };
 
-// TODO Refactor naar functies in de plaats van grote blocks
-
-const parseMinistersWithBevoegdheden = (items) => {
+const parsePriorityResults = (items) => {
     let agendaItems = {};
 
-    for (let i = 0; i < items.length; i++){
-
-        const agendaItem = items[i];
+    items.map((agendaItem) => {
         const uuid = agendaItem.uuid;
+        agendaItem.priority = agendaItem.priority || Number.MAX_SAFE_INTEGER;
 
         if (agendaItems[uuid]){
-
-            agendaItems[uuid].connections.push({
-                ministerId: agendaItem.ministerId,
-                minister: agendaItem.minister,
-                responsibility: agendaItem.responsibility
-            });
-
+            agendaItems[uuid].mandatePriority = Math.min(agendaItems[uuid].mandatePriority, agendaItem.priority);
         }else {
-
-            agendaItem.priority = parseInt(agendaItem.priority);
-            agendaItem.connections = [{
-                ministerId: agendaItem.ministerId,
-                minister: agendaItem.minister,
-                responsibility: agendaItem.responsibility
-            }];
-            delete agendaItem.ministerId;
-            delete agendaItem.minister;
-            delete agendaItem.bevoegdOver;
-            agendaItems[uuid] = agendaItem;
-
+            agendaItems[uuid] = {
+                uuid: uuid,
+                uri: agendaItem.agendapunt,
+                mandatePriority: agendaItem.priority,
+                mandateeCount: agendaItem.mandateeCount
+            }
         }
-
-    }
-    return agendaItems;
+    });
+    return Object.values(agendaItems); 
 };
 
 module.exports = {
-    getMinistersWithBevoegdheidByAgendaId, updateAgendaItemPriority
+    getAgendaPriorities, updateAgendaItemPriority
 };
+
+
+
