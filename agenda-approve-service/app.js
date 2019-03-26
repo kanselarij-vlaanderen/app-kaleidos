@@ -22,8 +22,8 @@ app.post('/approveAgenda', async (req, res) => {
 
 	const codeURI = await getSubcasePhaseCode();
 	const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
-	createNewSubcasePhase();
-	checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
+
+	await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
@@ -44,7 +44,7 @@ async function getSubcasePhaseCode() {
           FILTER(UCASE(?label) = UCASE("geagendeerd"))  
 		}
 	}
-`	
+`
 	const data = await mu.query(query).catch(err => { console.error(err) });
 	return data.results.bindings[0].code.value;
 }
@@ -71,34 +71,45 @@ async function getSubcasePhasesOfAgenda(newAgendaId, codeURI) {
 								}	 
 		}
 	}
-`	
+`
 	const data = await mu.query(query).catch(err => { console.error(err) });
 	return data;
 }
 
 async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI) {
-	if(subcasePhasesOfAgenda) {
+	if (subcasePhasesOfAgenda) {
 		const parsedObjects = parseSparqlResults(subcasePhasesOfAgenda);
 
-		const uniqueSubcaseIds = [...new Set(parsedObjects.map((item) => item['subcase']))]; 
- 
-		console.log(uniqueSubcaseIds)
-		
-		// return Promise.all(
-		// 	// parsedObjects.find(async(parsedObject) => {
-		// 	// if(parsedObject.subcase && !parsedObject.phases) {
-		// 	// 	console.log('true')
-		// 	// 	// TODO INSERT phase INGEDIEND -> code
-				
-		// 	// } 
-		// 	// return parsedObject;
-		// }))
+		const uniqueSubcaseIds = [...new Set(parsedObjects.map((item) => item['subcase']))];
+
+		let subcaseListOfURIS = [];
+
+		await uniqueSubcaseIds.map((id) => {
+			const foundObject = parsedObjects.find((item) => item.subcase === id);
+			if (foundObject && foundObject.subcase && !foundObject.phases) {
+				subcaseListOfURIS.push(foundObject.subcase);
+			}
+			return id;
+		});
+		return await createNewSubcasesPhase(codeURI, subcaseListOfURIS)
 	}
 }
 
-async function createNewSubcasePhase(codeURI, subcaseURI) {
-	const newUUID = uuidv4();
-	const newURI = `http://data.vlaanderen.be/id/Procedurestap/${newUUID}`
+async function createNewSubcasesPhase(codeURI, subcaseListOfURIS) {
+	const listOfQueries = await subcaseListOfURIS.map((subcaseURI) => {
+		const newUUID = uuidv4();
+		const newURI = `http://data.vlaanderen.be/id/ProcedurestapFase/${newUUID}`;
+
+		return `
+		<${newURI}> a 	ext:SubcaseProcedurestapFase ;
+		mu:uuid "${newUUID}" ;
+		besluitvorming:statusdatum """${new Date().toISOString()}"""^^xsd:dateTime ;
+		ext:procedurestapFaseCode <${codeURI}> .
+		<${subcaseURI}> ext:subcaseProcedurestapFase <${newURI}> .
+		`
+	})
+
+	const insertString = listOfQueries.join(' ');
 	const query = `
 	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -110,16 +121,12 @@ async function createNewSubcasePhase(codeURI, subcaseURI) {
 		
 	INSERT DATA {
 	 GRAPH <http://mu.semte.ch/application> {
-					<${newURI}> ext:subcaseProcedurestapFase ?newPhase ;
-											mu:uuid "${newUUID}" ;
-					ext:procedurestapFaseCode <${codeURI}> ;
-					ext:subcaseProcedureStapFase <${subcaseURI}> ;
-					besluitvorming:statusdatum ${new Date()} .
+					${insertString}
 	 }
 	};
 `
 
-console.log(query);
+	return await mu.update(query).catch(err => { console.error(err) });
 }
 
 async function getNewAgendaURI(newAgendaId) {
