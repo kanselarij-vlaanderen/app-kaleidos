@@ -2,6 +2,7 @@
 import mu from 'mu';
 import { ok } from 'assert';
 import cors from 'cors';
+const uuidv4 = require('uuid/v4');
 
 const app = mu.app;
 const moment = require('moment');
@@ -13,14 +14,113 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 app.post('/approveAgenda', async (req, res) => {
 	const newAgendaId = req.body.newAgendaId;
 	const oldAgendaId = req.body.oldAgendaId;
-	const currentSessionDate = req.body.currentSessionDate;
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
 	await ensureDocumentsHasSerialnumberForSession(oldAgendaId);
 	await nameSerialNumbersForSession(oldAgendaId);
+
+	const codeURI = await getSubcasePhaseCode();
+	const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
+	createNewSubcasePhase();
+	checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
+
+async function getSubcasePhaseCode() {
+	const query = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	SELECT ?code  WHERE {
+		GRAPH <http://mu.semte.ch/application> {
+          ?phase  ext:procedurestapFaseCode    ?code .
+          ?code    skos:prefLabel               ?label .
+          FILTER(UCASE(?label) = UCASE("geagendeerd"))  
+		}
+	}
+`	
+	const data = await mu.query(query).catch(err => { console.error(err) });
+	return data.results.bindings[0].code.value;
+}
+
+async function getSubcasePhasesOfAgenda(newAgendaId, codeURI) {
+	const query = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	SELECT ?agenda ?agendaitem ?subcase ?phases WHERE {
+		GRAPH <http://mu.semte.ch/application> {
+				?agenda a besluitvorming:Agenda ;
+									mu:uuid "${newAgendaId}" .
+				?agenda   dct:hasPart ?agendaitem .
+				?subcase  besluitvorming:isGeagendeerdVia ?agendaitem .
+				OPTIONAL{ 
+					        ?subcase ext:subcaseProcedurestapFase ?phases . 
+									?phases  ext:procedurestapFaseCode <${codeURI}> . 
+								}	 
+		}
+	}
+`	
+	const data = await mu.query(query).catch(err => { console.error(err) });
+	return data;
+}
+
+async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI) {
+	if(subcasePhasesOfAgenda) {
+		const parsedObjects = parseSparqlResults(subcasePhasesOfAgenda);
+
+		const uniqueSubcaseIds = [...new Set(parsedObjects.map((item) => item['subcase']))]; 
+ 
+		console.log(uniqueSubcaseIds)
+		
+		// return Promise.all(
+		// 	// parsedObjects.find(async(parsedObject) => {
+		// 	// if(parsedObject.subcase && !parsedObject.phases) {
+		// 	// 	console.log('true')
+		// 	// 	// TODO INSERT phase INGEDIEND -> code
+				
+		// 	// } 
+		// 	// return parsedObject;
+		// }))
+	}
+}
+
+async function createNewSubcasePhase(codeURI, subcaseURI) {
+	const newUUID = uuidv4();
+	const newURI = `http://data.vlaanderen.be/id/Procedurestap/${newUUID}`
+	const query = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+		
+	INSERT DATA {
+	 GRAPH <http://mu.semte.ch/application> {
+					<${newURI}> ext:subcaseProcedurestapFase ?newPhase ;
+											mu:uuid "${newUUID}" ;
+					ext:procedurestapFaseCode <${codeURI}> ;
+					ext:subcaseProcedureStapFase <${subcaseURI}> ;
+					besluitvorming:statusdatum ${new Date()} .
+	 }
+	};
+`
+
+console.log(query);
+}
 
 async function getNewAgendaURI(newAgendaId) {
 	const query = `
@@ -85,7 +185,7 @@ async function copyAgendaItems(oldId, newUri) {
 `
 
 	return await mu.update(query).catch(err => { console.error(err) });
-} 
+}
 
 async function ensureDocumentsHasSerialnumberForSession(agendaId) {
 	const query = `
@@ -126,8 +226,8 @@ async function ensureDocumentsHasSerialnumberForSession(agendaId) {
 	return await mu.update(query).catch(err => { console.error(err) });
 }
 
-async function nameSerialNumbersForSession(agendaId){
-	const query=`PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+async function nameSerialNumbersForSession(agendaId) {
+	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
@@ -167,7 +267,7 @@ async function nameSerialNumbersForSession(agendaId){
 	let documentTypeMapping = await getDocumentTypesForDocsInAgenda(agendaId);
 	let uriToSerialnumbermapping = {};
 	agendaItemInfo.map((item) => {
-		let {identifiers, namedIdentifierCount} = item;
+		let { identifiers, namedIdentifierCount } = item;
 		namedIdentifierCount = parseInt(namedIdentifierCount) + 1;
 		identifiers = identifiers.split("|");
 		sortIdentifiersByType(identifiers, documentTypeMapping);
@@ -179,7 +279,7 @@ async function nameSerialNumbersForSession(agendaId){
 	await updateSerialNumbersOfDocumentVersions(uriToSerialnumbermapping);
 }
 
-function sortIdentifiersByType(identifiers, typeMapping){
+function sortIdentifiersByType(identifiers, typeMapping) {
 	let notaURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/9e5b1230-f3ad-438f-9c68-9d7b1b2d875d";
 	let besluitURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/4c7cfaf9-1d5f-4fdf-b7e9-b7ce5167e31a";
 	let ontwerpdecreetURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/f57a69b8-e4c1-468a-97ee-a516bb62c6b6";
@@ -189,7 +289,7 @@ function sortIdentifiersByType(identifiers, typeMapping){
 	scoreMapping[notaURI] = 1;
 	scoreMapping[besluitURI] = 2;
 	scoreMapping[ontwerpdecreetURI] = 2;
-	scoreMapping[decreetURI]= 2;
+	scoreMapping[decreetURI] = 2;
 
 	identifiers.sort((one, two) => {
 		let oneType = typeMapping[one];
@@ -198,12 +298,12 @@ function sortIdentifiersByType(identifiers, typeMapping){
 		oneScore = oneScore || 3;
 		let twoScore = twoType ? twoType[twoType] : 3;
 		twoScore = twoScore || 3;
-		return one < two? -1:1;
+		return one < two ? -1 : 1;
 	});
 	return identifiers;
 }
 
-async function getDocumentTypesForDocsInAgenda(agendaId){
+async function getDocumentTypesForDocsInAgenda(agendaId) {
 	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -225,7 +325,7 @@ async function getDocumentTypesForDocsInAgenda(agendaId){
 				?document ext:documentType ?type
 		}
 	}`;
-	let versieTypes = await mu.query(query).catch(err => {console.error(err); });
+	let versieTypes = await mu.query(query).catch(err => { console.error(err); });
 	versieTypes = parseSparqlResults(versieTypes);
 	let mapping = {};
 	versieTypes.map((tuple) => {
@@ -241,7 +341,7 @@ async function updateSerialNumbersOfDocumentVersions(serialnumberMap) {
 		insertString.push(`<${identifier}> ext:serieNummer "${serialnumberMap[identifier]}" .`);
 	})
 
-	if(insertString.length <= 0){
+	if (insertString.length <= 0) {
 		return;
 	}
 	insertString = insertString.join("\n");
@@ -255,7 +355,7 @@ async function updateSerialNumbersOfDocumentVersions(serialnumberMap) {
 			}
 		}
 	`
-	
+
 	return await mu.update(queryString).catch(err => { console.error(err) });
 }
 
@@ -274,13 +374,13 @@ function createIdNumberOfCertainLength(numberToEdit, length = 4) {
 const parseSparqlResults = (data) => {
 	const vars = data.head.vars;
 	return data.results.bindings.map(binding => {
-			let obj = {};
-			vars.forEach(varKey => {
-					if (binding[varKey]){
-							obj[varKey] = binding[varKey].value;
-					}
-			});
-			return obj;
+		let obj = {};
+		vars.forEach(varKey => {
+			if (binding[varKey]) {
+				obj[varKey] = binding[varKey].value;
+			}
+		});
+		return obj;
 	})
 };
 
