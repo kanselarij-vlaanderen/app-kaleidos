@@ -37,7 +37,7 @@ async function getSubcasePhaseCode() {
 	PREFIX dct: <http://purl.org/dc/terms/>
 	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 	
-	SELECT ?code  WHERE {
+	SELECT ?code WHERE {
 		GRAPH <http://mu.semte.ch/application> {
 					?code a ext:ProcedurestapFaseCode ;
                   skos:prefLabel ?label .
@@ -81,7 +81,7 @@ async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeU
 		const parsedObjects = parseSparqlResults(subcasePhasesOfAgenda);
 
 		const uniqueSubcaseIds = [...new Set(parsedObjects.map((item) => item['subcase']))];
-
+		console.log(uniqueSubcaseIds)
 		let subcaseListOfURIS = [];
 
 		await uniqueSubcaseIds.map((id) => {
@@ -99,9 +99,9 @@ async function createNewSubcasesPhase(codeURI, subcaseListOfURIS) {
 	const listOfQueries = await subcaseListOfURIS.map((subcaseURI) => {
 		const newUUID = uuidv4();
 		const newURI = `http://data.vlaanderen.be/id/ProcedurestapFase/${newUUID}`;
-
+		console.log(codeURI)
 		return `
-		<${newURI}> a 	ext:SubcaseProcedurestapFase ;
+		<${newURI}> a 	ext:ProcedurestapFase ;
 		mu:uuid "${newUUID}" ;
 		besluitvorming:statusdatum """${new Date().toISOString()}"""^^xsd:dateTime ;
 		ext:procedurestapFaseCode <${codeURI}> .
@@ -110,6 +110,7 @@ async function createNewSubcasesPhase(codeURI, subcaseListOfURIS) {
 	})
 
 	const insertString = listOfQueries.join(' ');
+	console.log(insertString);
 	const query = `
 	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -364,18 +365,6 @@ async function updateSerialNumbersOfDocumentVersions(serialnumberMap) {
 	`
 
 	return await mu.update(queryString).catch(err => { console.error(err) });
-}
-
-function createIdNumberOfCertainLength(numberToEdit, length = 4) {
-	const numberLength = numberToEdit.toString().length;
-	const lengthDiff = length - numberLength;
-
-	let zeroStringToAdd = "";
-	for (let index = 0; index < lengthDiff; index++) {
-		zeroStringToAdd += "0";
-	}
-
-	return zeroStringToAdd + numberToEdit;
 }
 
 const parseSparqlResults = (data) => {
