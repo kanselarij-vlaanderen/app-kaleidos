@@ -39,9 +39,9 @@ async function getSubcasePhaseCode() {
 	
 	SELECT ?code  WHERE {
 		GRAPH <http://mu.semte.ch/application> {
-          ?phase  ext:procedurestapFaseCode    ?code .
-          ?code    skos:prefLabel               ?label .
-          FILTER(UCASE(?label) = UCASE("geagendeerd"))  
+					?code a ext:ProcedurestapFaseCode ;
+                  skos:prefLabel ?label .
+           				FILTER(UCASE(?label) = UCASE("geagendeerd"))  
 		}
 	}
 `
