@@ -20,10 +20,10 @@ app.post('/approveAgenda', async (req, res) => {
 	await ensureDocumentsHasSerialnumberForSession(oldAgendaId);
 	await nameSerialNumbersForSession(oldAgendaId);
 
-	const codeURI = await getSubcasePhaseCode();
-	const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
+	// const codeURI = await getSubcasePhaseCode();
+	// const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
 
-	await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
+	// await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
