@@ -1,22 +1,22 @@
 (define-resource case ()
   :class (s-prefix "besluitvorming:Consultatievraag")
-  :properties `((:created :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
-                (:short-title :string ,(s-prefix "dct:alternative"))
-                (:number :number ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
-                (:title :string ,(s-prefix "dct:title"))
-                (:policy-level :string ,(s-prefix "ext:beleidsNiveau")))
-  :has-one `((case-type :via ,(s-prefix "dct:type")
-                           :as "type"))
-  :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
-                                      :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
-              (person :via ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
-                      :as "creators")
-              (person :via ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
-                      :as "contactPersons")
-              (subcase :via ,(s-prefix "dct:hasPart")
-                       :as "subcases")
-              (case :via ,(s-prefix "dct:relation")
-                       :as "related"))
+  :properties `((:created       :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
+                (:short-title   :string   ,(s-prefix "dct:alternative"))
+                (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
+                (:title         :string   ,(s-prefix "dct:title"))
+                (:policy-level  :string   ,(s-prefix "ext:beleidsNiveau")))
+  :has-one `((case-type         :via      ,(s-prefix "dct:type")
+                                :as "type"))
+  :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
+                                :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
+              (person           :via      ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
+                                :as "creators")
+              (person           :via      ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
+                                :as "contactPersons")
+              (subcase          :via      ,(s-prefix "dct:hasPart")
+                                :as "subcases")
+              (case             :via      ,(s-prefix "dct:relation")
+                                :as "related"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Dossier/")
   :features '(include-uri)
   :on-path "cases")
