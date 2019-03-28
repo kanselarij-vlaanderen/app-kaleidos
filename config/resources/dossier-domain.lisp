@@ -121,7 +121,6 @@
   :features '(include-uri)
   :on-path "person-or-organization")
 
-
 (define-resource consultation-request ()
   :class (s-prefix "besluitvorming:Consultatievraag")
   :properties `((:request :string ,(s-prefix "besluitvorming:aanvraag"))
@@ -153,7 +152,6 @@
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ConsultatieTypeCode/")
   :features '(include-uri)
   :on-path "consultation-types")
-
 
 (define-resource consultation-response ()
   :class (s-prefix "besluitvorming:Consultatie-antwoord")
