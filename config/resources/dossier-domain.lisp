@@ -47,6 +47,8 @@
              (meeting :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                        :as "requested-for-meeting"))
   :has-many `(
+              (approval     :via      ,(s-prefix "ext:procedurestapGoedkeuring")
+                            :as "approvals")
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
               (person :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent

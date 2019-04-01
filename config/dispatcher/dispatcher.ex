@@ -87,6 +87,9 @@ defmodule Dispatcher do
   match "/confidentialities/*path" do
     Proxy.forward conn, path, "http://resource/confidentialities/"
   end
+  match "/approvals/*path" do
+    Proxy.forward conn, path, "http://resource/approvals/"
+  end
   match "/consultation-requests/*path" do
     Proxy.forward conn, path, "http://resource/consultation-requests/"
   end

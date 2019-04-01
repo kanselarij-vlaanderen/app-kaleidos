@@ -59,6 +59,21 @@
   :on-path "agendaitems")
 
 
+  (define-resource approval ()
+  :class (s-prefix "ext:Goedkeuring")
+  :properties `((:approved  :string ,(s-prefix "ext:goedgekeurd"))
+                (:created   :date ,(s-prefix "ext:aangemaakt"))
+                (:modified  :date ,(s-prefix "ext:aangepast")))
+  :has-one `((subcase       :via ,(s-prefix "ext:procedurestapGoedkeuring")
+                            :inverse t
+                            :as "subcase")
+             (mandatee      :via ,(s-prefix "ext:goedkeuringen")
+                            :inverse t
+                            :as "mandatee"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/Goedkeuringen/")
+  :on-path "approvals")
+
+
   (define-resource announcement ()
   :class (s-prefix "vo-besluit:Mededeling")
   :properties `((:title :string ,(s-prefix "ext:title"))
