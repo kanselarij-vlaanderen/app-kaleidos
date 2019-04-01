@@ -19,11 +19,15 @@ app.post('/approveAgenda', async (req, res) => {
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
 	await ensureDocumentsHasSerialnumberForSession(oldAgendaId);
 	await nameSerialNumbersForSession(oldAgendaId);
-
-	const codeURI = await getSubcasePhaseCode();
-	const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
-
-	await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
+	try {
+		const codeURI = await getSubcasePhaseCode();
+		const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
+	
+		await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
+	} catch(e) {
+		console.log("something went wrong while assigning the code 'Geagendeerd' to the agendaitems", e);
+	}
+	
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
@@ -46,6 +50,7 @@ async function getSubcasePhaseCode() {
 	}
 `
 	const data = await mu.query(query).catch(err => { console.error(err) });
+	console.log(data);
 	return data.results.bindings[0].code.value;
 }
 
