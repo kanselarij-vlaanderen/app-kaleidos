@@ -3,6 +3,7 @@
   :properties `((:created       :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
+                (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:policy-level  :string   ,(s-prefix "ext:beleidsNiveau")))
   :has-one `((case-type         :via      ,(s-prefix "dct:type")
@@ -70,7 +71,7 @@
                           :as "agendaitems")
               (subcase-phase :via ,(s-prefix "ext:subcaseProcedurestapFase")
                               :as "phases")
-              (remark :via ,(s-prefix "besluitvorming:opmerking") 
+              (remark :via ,(s-prefix "besluitvorming:opmerking")
                       :as "remarks"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
   :features '(include-uri)
@@ -91,7 +92,7 @@
   :on-path "subcase-phases")
 
 (define-resource subcase-phase-code ()
-  :class (s-prefix "ext:ProcedurestapFaseCode") 
+  :class (s-prefix "ext:ProcedurestapFaseCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFaseCode")
@@ -105,7 +106,7 @@
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFaseCode/")
   :features '(include-uri)
   :on-path "subcase-phase-codes")
-  
+
 (define-resource confidentiality ()
   :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
@@ -130,11 +131,11 @@
                             :as "subcase")
              (consultation-type :via ,(s-prefix "dct:type")
                                :as "type")
-             (person-or-organization :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent? 
+             (person-or-organization :via ,(s-prefix "besluitvorming:isGesteldAan") ;; NOTE: shoudl be Agent?
                                      :as "isGesteldAan")
              (person :via ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
                      :as "contactPerson")
-             (consultation-response :via ,(s-prefix "prov:generated") 
+             (consultation-response :via ,(s-prefix "prov:generated")
                                     :as "response"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                       :as "remarks"))
@@ -163,7 +164,7 @@
                                    :inverse t
                                    :as "consultation-request"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
-                      :as "remarks") 
+                      :as "remarks")
               (document :via ,(s-prefix "dct:hasPart")
                         :as "documents"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Consultatievraag/")
