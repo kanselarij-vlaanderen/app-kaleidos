@@ -25,7 +25,6 @@
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created     :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
-                (:formally-ok :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:retracted   :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority    :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press   :boolean  ,(s-prefix "ext:forPress")) 
@@ -57,6 +56,21 @@
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
+
+
+  (define-resource approval ()
+  :class (s-prefix "ext:Goedkeuring")
+  :properties `((:approved  :string ,(s-prefix "ext:goedgekeurd"))
+                (:created   :date ,(s-prefix "ext:aangemaakt"))
+                (:modified  :date ,(s-prefix "ext:aangepast")))
+  :has-one `((subcase       :via ,(s-prefix "ext:procedurestapGoedkeuring")
+                            :inverse t
+                            :as "subcase")
+             (mandatee      :via ,(s-prefix "ext:goedkeuringen")
+                            :inverse t
+                            :as "mandatee"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/Goedkeuringen/")
+  :on-path "approvals")
 
 
   (define-resource announcement ()

@@ -35,43 +35,45 @@
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
-  :properties `((:short-title :string ,(s-prefix "dct:alternative"))
-                (:title :string ,(s-prefix "dct:title"))
-                (:created :datetime ,(s-prefix "dct:created"))
-                (:show-as-remark :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
-  :has-one `((decision :via ,(s-prefix "ext:besluitHeeftProcedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                       :as "decision")
-             (case   :via ,(s-prefix "dct:hasPart")
-                     :inverse t
-                     :as "case")
-             (meeting :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
-                       :as "requested-for-meeting"))
-  :has-many `(
-              (theme :via ,(s-prefix "dct:subject")
-                     :as "themes")
-              (person :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
-                       :as "heeftCreator")
-              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
-                        :as "mandatees")
-              (government-domain :via ,(s-prefix "mandaat:beleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
-                                 :as "government-domains")
-              (confidentiality :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                               :as "confidentiality")
-              (subcase :via ,(s-prefix "dct:relation")
-                             :as "related-to")
-              (document-version :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                               :as "document-versions")
+  :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
+                (:title               :string ,(s-prefix "dct:title"))
+                (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:created             :datetime ,(s-prefix "dct:created"))
+                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
+  :has-one `((decision                :via ,(s-prefix "ext:besluitHeeftProcedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "decision")
+             (case                    :via ,(s-prefix "dct:hasPart")
+                                      :inverse t
+                                      :as "case")
+             (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
+                                      :as "requested-for-meeting")
+             (confidentiality         :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                                      :as "confidentiality"))
+  :has-many `((approval               :via      ,(s-prefix "ext:procedurestapGoedkeuring")
+                                      :as "approvals")
+              (theme                  :via ,(s-prefix "dct:subject")
+                                      :as "themes")
+              (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+                                      :as "heeftCreator")
+              (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+                                      :as "mandatees")
+              (government-domain      :via ,(s-prefix "mandaat:beleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
+                                      :as "government-domains")
+              (subcase                :via ,(s-prefix "dct:relation")
+                                      :as "related-to")
+              (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "document-versions")
               (document-vo-identifier :via ,(s-prefix "ext:procedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                               :inverse t
-                               :as "document-identifiers")
-              (consultation-request :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                   :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
-              (agendaitem :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                          :as "agendaitems")
-              (subcase-phase :via ,(s-prefix "ext:subcaseProcedurestapFase")
-                              :as "phases")
-              (remark :via ,(s-prefix "besluitvorming:opmerking") 
-                      :as "remarks"))
+                                      :inverse t
+                                      :as "document-identifiers")
+              (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
+              (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
+                                      :as "agendaitems")
+              (subcase-phase          :via ,(s-prefix "ext:subcaseProcedurestapFase")
+                                      :as "phases")
+              (remark                 :via ,(s-prefix "besluitvorming:opmerking") 
+                                      :as "remarks"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
@@ -108,8 +110,14 @@
   
 (define-resource confidentiality ()
   :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote")))
+  ;; :has-many `((subcase        :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+  ;;                             :inverse t
+  ;;                             :as "subcases")
+  ;;             (document       :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+  ;;                             :inverse t
+  ;;                             :as "documents"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
   :features '(include-uri)
   :on-path "confidentialities")
