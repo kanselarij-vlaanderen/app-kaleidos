@@ -113,12 +113,12 @@
   :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote")))
-  ;; :has-many `((subcase        :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-  ;;                             :inverse t
-  ;;                             :as "subcases")
-  ;;             (document       :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-  ;;                             :inverse t
-  ;;                             :as "documents"))
+  :has-many `((subcase        :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                              :inverse t
+                              :as "subcases")
+              (document       :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                              :inverse t
+                              :as "documents"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
   :features '(include-uri)
   :on-path "confidentialities")
