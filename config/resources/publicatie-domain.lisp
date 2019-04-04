@@ -72,9 +72,13 @@
   :properties `((:text :string ,(s-prefix "besluitvorming:inhoud"))
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
+                (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
                 (:title :string ,(s-prefix "dct:title")))
   :has-one `((agendaitem :via ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
-                         :as "agendaitem"))
+                         :as "agendaitem")
+             (meeting    :via ,(s-prefix "ext:algemeneNieuwsbrief")
+                         :inverse t
+                         :as "meeting"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")

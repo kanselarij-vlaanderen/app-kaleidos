@@ -215,7 +215,7 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
                                         :as "agendas")
-              (document-vo-identifier   :via ,(s-prefix "ext:meeting")
+              (document-vo-identifier   :via      ,(s-prefix "ext:meeting")
                                         :as "identifiers"
                                         :inverse t)
               (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
@@ -223,10 +223,12 @@
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases"))
-  :has-one `((agenda            :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
-                                :as "agenda")
-             (meeting-record    :via      ,(s-prefix "ext:algemeneNotulen")
-                                :as "notes"))
+  :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+                                        :as "agenda")
+             (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
+                                        :as "notes")
+             (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
+                                        :as "newsletter"))
   :resource-base (s-url "http://data.lblod.info/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")

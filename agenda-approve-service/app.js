@@ -155,7 +155,7 @@ async function getNewAgendaURI(newAgendaId) {
 
 async function copyAgendaItems(oldId, newUri) {
 	// SUBQUERY: Is needed to make sure the uuid isn't generated for every variable.
-	const query = `
+	const createNewUris = `
 	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -164,8 +164,7 @@ async function copyAgendaItems(oldId, newUri) {
 	INSERT { 
 		GRAPH <http://mu.semte.ch/application> {
     	<${newUri}> dct:hasPart ?newURI .
-    	?newURI ?p ?o .
-    	?s ?p2 ?newURI .
+      ?newURI ext:replacesPrevious ?agendaitem .
     	?newURI mu:uuid ?newUuid
 		}
 	} WHERE { { SELECT * WHERE {
@@ -178,26 +177,40 @@ async function copyAgendaItems(oldId, newUri) {
 			BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
 			BIND(IRI(CONCAT("http://localhost/vo/agendaitems/", ?uuid)) AS ?newURI)
 
-			OPTIONAL { 
-				SELECT ?agendaitem ?p ?o
-				WHERE {
-					?agendaitem ?p ?o .
-					FILTER(?p != mu:uuid)
-				}
-			}
-			OPTIONAL { 
-				SELECT ?agendaitem ?s ?p2 
-				WHERE {
-					?s ?p2 ?agendaitem .
-					FILTER(?p2 != dct:hasPart)
-				}
-			}    
 		} } }
 		BIND(STRAFTER(STR(?newURI), "http://localhost/vo/agendaitems/") AS ?newUuid) 
-	}
-`
+	}`
+	
+	await mu.update(createNewUris).catch(err => { console.error(err) });
 
-	return await mu.update(query).catch(err => { console.error(err) });
+	const moveProperties = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+	INSERT { 
+		GRAPH <http://mu.semte.ch/application> {
+			?newURI ?p ?o .
+			?s ?p2 ?newURI .
+		}
+	} WHERE {
+		?newURI ext:replacesPrevious ?previousURI.
+		FILTER NOT EXISTS {
+			?newURI a besluit:Agendapunt .
+		}
+		OPTIONAL { 
+		?previousURI ?p ?o .
+		FILTER(?p != mu:uuid)
+		}
+		OPTIONAL { 
+			?s ?p2 ?previousURI .
+			FILTER(?p2 != dct:hasPart)
+		}
+	}`
+
+	return await mu.update(moveProperties).catch(err => { console.error(err) });
 }
 
 async function ensureDocumentsHasSerialnumberForSession(agendaId) {
