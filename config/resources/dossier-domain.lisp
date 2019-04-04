@@ -38,7 +38,7 @@
   :class (s-prefix "dbpedia:UnitOfWork")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
-                (:is-archived   :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
+                (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
