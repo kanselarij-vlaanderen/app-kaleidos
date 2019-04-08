@@ -63,6 +63,8 @@
              (agendaitem :via ,(s-prefix "besluitvorming:opmerking")
                          :inverse t
                          :as "agendaitem"))
+  :has-many `((remark    :via ,(s-prefix "ext:antwoorden")
+                         :as "answers"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Opmerking/")
   :features '(include-uri)
   :on-path "remarks")
