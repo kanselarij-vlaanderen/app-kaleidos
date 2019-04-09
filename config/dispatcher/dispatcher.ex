@@ -214,6 +214,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/alerts/"
   end
 
+  match "/alert-types/*path" do
+    Proxy.forward conn, path, "http://resource/alert-types"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
