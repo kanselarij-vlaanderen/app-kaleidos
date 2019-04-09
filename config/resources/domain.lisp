@@ -25,3 +25,5 @@
 (read-domain-file "organisatie-domain.lisp")
 (read-domain-file "publicatie-domain.lisp")
 (read-domain-file "users-domain.lisp")
+(read-domain-file "alerts-domain.lisp")
+

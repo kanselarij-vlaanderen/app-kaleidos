@@ -1,0 +1,10 @@
+(define-resource alert ()
+  :class (s-prefix "ext:SysteemNotificatie") ;; NOTE: as well as skos:Concept
+  :properties `((:begin-date :datetime ,(s-prefix "ext:beginDatum"))
+                (:end-date :datetime ,(s-prefix "ext:eindDatum"))
+								(:title :string ,(s-prefix "ext:titel"))
+								(:message :string ,(s-prefix "ext:bericht"))
+								(:type :string ,(s-prefix "ext:type")))
+  :resource-base (s-url "http://example.com/alert/")
+  :features '(include-uri)
+  :on-path "alerts")
