@@ -101,3 +101,9 @@ services:
       - database:database
     volumes:
       - ./minister-jurisdiction-service:/app
+  proxy:
+    image: nginx:1.13
+    volumes:
+      - ./config/proxy:/etc/nginx/conf.d
+    ports:
+      - "443:443"
