@@ -1,0 +1,17 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix conf: <http://example.com/confidentiality/id/> .
+
+conf:6ca49d86-d40f-46c9-bde3-a322aa7e5c8e a ext:VertrouwelijkheidCode ;
+    mu:uuid "6ca49d86-d40f-46c9-bde3-a322aa7e5c8e" ;
+    skos:prefLabel "Actief openbaar"@nl .
+conf:abe4c18d-13a9-45f0-8cdd-c493eabbbe29 a ext:VertrouwelijkheidCode ;
+    mu:uuid "abe4c18d-13a9-45f0-8cdd-c493eabbbe29" ;
+    skos:prefLabel "Beperkt openbaar"@nl .
+conf:d335f7e3-aefd-4f93-81a2-1629c2edafa3 a ext:VertrouwelijkheidCode ;
+    mu:uuid "d335f7e3-aefd-4f93-81a2-1629c2edafa3" ;
+    skos:prefLabel "Op aanvraag"@nl .
+conf:455dbd41-75a1-4883-a757-ccea1dfb6f67 a ext:VertrouwelijkheidCode ;
+    mu:uuid "455dbd41-75a1-4883-a757-ccea1dfb6f67" ;
+    skos:prefLabel "Vertrouwelijk"@nl .

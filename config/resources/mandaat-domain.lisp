@@ -46,7 +46,9 @@
                                   :inverse t
                                   :as "cases")
               (meeting-record     :via ,(s-prefix "ext:aanwezigen")
-                                  :as "meetings-attended"))
+                                  :as "meetings-attended")
+              (approval           :via ,(s-prefix "ext:goedkeuringen")
+                                  :as "approvals"))
   :has-one `((mandate             :via ,(s-prefix "org:holds")
                                   :as "holds")
              (person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")

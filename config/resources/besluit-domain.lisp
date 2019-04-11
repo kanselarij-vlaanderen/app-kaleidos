@@ -25,7 +25,6 @@
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created     :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
-                (:formally-ok :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:retracted   :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority    :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press   :boolean  ,(s-prefix "ext:forPress")) 
@@ -57,6 +56,21 @@
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
+
+
+  (define-resource approval ()
+  :class (s-prefix "ext:Goedkeuring")
+  :properties `((:approved  :string ,(s-prefix "ext:goedgekeurd"))
+                (:created   :date ,(s-prefix "ext:aangemaakt"))
+                (:modified  :date ,(s-prefix "ext:aangepast")))
+  :has-one `((subcase       :via ,(s-prefix "ext:procedurestapGoedkeuring")
+                            :inverse t
+                            :as "subcase")
+             (mandatee      :via ,(s-prefix "ext:goedkeuringen")
+                            :inverse t
+                            :as "mandatee"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/Goedkeuringen/")
+  :on-path "approvals")
 
 
   (define-resource announcement ()
@@ -201,7 +215,7 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
                                         :as "agendas")
-              (document-vo-identifier   :via ,(s-prefix "ext:meeting")
+              (document-vo-identifier   :via      ,(s-prefix "ext:meeting")
                                         :as "identifiers"
                                         :inverse t)
               (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
@@ -209,10 +223,12 @@
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases"))
-  :has-one `((agenda            :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
-                                :as "agenda")
-             (meeting-record    :via      ,(s-prefix "ext:algemeneNotulen")
-                                :as "notes"))
+  :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+                                        :as "agenda")
+             (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
+                                        :as "notes")
+             (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
+                                        :as "newsletter"))
   :resource-base (s-url "http://data.lblod.info/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")

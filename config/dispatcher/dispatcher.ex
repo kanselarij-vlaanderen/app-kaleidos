@@ -84,8 +84,11 @@ defmodule Dispatcher do
   match "/subcase-phase-codes/*path" do
     Proxy.forward conn, path, "http://resource/subcase-phase-codes/"
   end
-  match "/vertrouwelijkheid-codes/*path" do
-    Proxy.forward conn, path, "http://resource/vertrouwelijkheid-codes/"
+  match "/confidentialities/*path" do
+    Proxy.forward conn, path, "http://resource/confidentialities/"
+  end
+  match "/approvals/*path" do
+    Proxy.forward conn, path, "http://resource/approvals/"
   end
   match "/consultation-requests/*path" do
     Proxy.forward conn, path, "http://resource/consultation-requests/"
@@ -219,6 +222,14 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://login/sessions/"
   end
   
+  match "/alerts/*path" do
+    Proxy.forward conn, path, "http://resource/alerts/"
+  end
+
+  match "/alert-types/*path" do
+    Proxy.forward conn, path, "http://resource/alert-types"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
