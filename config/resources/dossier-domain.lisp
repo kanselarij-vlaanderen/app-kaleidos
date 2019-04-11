@@ -85,11 +85,14 @@
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
                 (:label :string ,(s-prefix "skos:prefLabel"))
                 (:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
-  :has-one `((subcase :via ,(s-prefix "ext:subcaseProcedurestapFase")
-                          :inverse t
-                          :as "subcase")
-             (subcase-phase-code :via ,(s-prefix "ext:procedurestapFaseCode")
-                       :as "code"))
+  :has-one `((subcase             :via ,(s-prefix "ext:subcaseProcedurestapFase")
+                                  :inverse t
+                                  :as "subcase")
+             (agendaitem          :via ,(s-prefix "ext:subcaseAgendapuntFase")
+                                  :inverse t
+                                  :as "agendaitem")
+             (subcase-phase-code  :via ,(s-prefix "ext:procedurestapFaseCode")
+                                  :as "code"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFase/")
   :features '(include-uri)
   :on-path "subcase-phases")
@@ -119,7 +122,10 @@
                               :as "subcases")
               (document       :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                               :inverse t
-                              :as "documents"))
+                              :as "documents")
+              (agendaitem      :via ,(s-prefix "besluitvorming:vertrouwelijkheidAgendapunt")
+                              :inverse t
+                              :as "agendaitems"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
   :features '(include-uri)
   :on-path "confidentialities")

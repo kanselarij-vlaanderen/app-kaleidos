@@ -24,35 +24,56 @@
 
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
-  :properties `((:created     :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
-                (:retracted   :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:priority    :number   ,(s-prefix "ext:prioriteit"))
-                (:for-press   :boolean  ,(s-prefix "ext:forPress")) 
-                (:record      :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
-                (:title-press :string   ,(s-prefix "besluitvorming:titelPersagenda"))
-                (:text-press  :string   ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
-  :has-one `((postponed       :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                              :as "postponed-to")
-             (agendaitem      :via      ,(s-prefix "besluit:aangebrachtNa")
-                              :as "previousAgendaItem")
-             (subcase         :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                              :inverse t
-                              :as "subcase")
-             (decision        :via      ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                              :as "decision")
-             (agenda          :via      ,(s-prefix "dct:hasPart")
-                              :inverse t
-                              :as "agenda")
-             (newsletter-info :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                              :inverse t
-                              :as "newsletter-info")
-              (meeting-record :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                              :as "meeting-record"))
-  :has-many `((mandatee       :via     ,(s-prefix "besluit:heeftAanwezige")
-                              :inverse t
-                              :as "attendees")
-              (remark         :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
-                              :as "remarks"))
+  :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
+                (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
+                (:priority            :number   ,(s-prefix "ext:prioriteit"))
+                (:for-press           :boolean  ,(s-prefix "ext:forPress")) 
+                (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
+                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
+                ;; Added properties from subcases
+                (:short-title         :string   ,(s-prefix "dct:alternative"))
+                (:title               :string   ,(s-prefix "dct:title"))
+                (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+  :has-one `((postponed               :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
+                                      :as "postponed-to")
+             (agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
+                                      :as "previousAgendaItem")
+             (subcase                 :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
+                                      :inverse t
+                                      :as "subcase")
+             (decision                :via      ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                                      :as "decision")
+             (agenda                  :via      ,(s-prefix "dct:hasPart")
+                                      :inverse t
+                                      :as "agenda")
+             (newsletter-info         :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                                      :inverse t
+                                      :as "newsletter-info")
+             (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
+                                      :as "meeting-record")
+             ;; Added has-one relations from subcases
+             (confidentiality         :via      ,(s-prefix "besluitvorming:vertrouwelijkheidAgendapunt")
+                                      :as "confidentiality"))
+  :has-many `((mandatee               :via     ,(s-prefix "besluit:heeftAanwezige")
+                                      :inverse t
+                                      :as "attendees")
+              (remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
+                                      :as "remarks")
+            ;; Added has-many relations from subcases
+              (approval               :via      ,(s-prefix "ext:AgendapuntGoedkeuring")
+                                      :as "approvals")
+              (theme                  :via      ,(s-prefix "dct:agendapuntSubject")
+                                      :as "themes")
+              (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
+                                      :as "mandatees")
+              (government-domain      :via      ,(s-prefix "mandaat:agendapuntBeleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
+                                      :as "government-domains")
+              (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "document-versions")
+              (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
+                                      :as "phases"))
   :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
@@ -68,7 +89,10 @@
                             :as "subcase")
              (mandatee      :via ,(s-prefix "ext:goedkeuringen")
                             :inverse t
-                            :as "mandatee"))
+                            :as "mandatee")
+             (agendaitem    :via ,(s-prefix "ext:agendapuntGoedkeuring")
+                            :inverse t
+                            :as "agendaitem"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Goedkeuringen/")
   :on-path "approvals")
 
