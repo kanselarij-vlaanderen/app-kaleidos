@@ -67,6 +67,14 @@ services:
       - db:database
     volumes:
       - ./agenda-approve-service:/app
+  close-meeting-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    links:
+      - db:database
+    volumes:
+      - ./close-meeting-service:/app
   minister-jurisdiction-service:
     image: mikidi/mu-python-template:python3-port
     environment:

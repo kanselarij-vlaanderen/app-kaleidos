@@ -27,7 +27,7 @@
   :properties `((:created     :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted   :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority    :number   ,(s-prefix "ext:prioriteit"))
-                (:for-press   :boolean  ,(s-prefix "ext:forPress")) 
+                (:for-press   :boolean  ,(s-prefix "ext:forPress"))
                 (:record      :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press :string   ,(s-prefix "besluitvorming:titelPersagenda"))
                 (:text-press  :string   ,(s-prefix "besluitvorming:tekstPersagenda"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
@@ -100,7 +100,7 @@
   :resource-base (s-url "http://data.vlaanderen.be/id/Verdaagd/")
   :features '(include-uri)
   :on-path "postponeds")
-  
+
 (define-resource decision ()
   :class (s-prefix "besluit:Besluit") ;; NOTE: Took over all properties from document instead of subclassing (mu-cl-resources workaround)
   :properties `((:description   :string     ,(s-prefix "eli:description"))
@@ -110,7 +110,7 @@
                 (:title         :string     ,(s-prefix "dct:title")) ;; NOTE: Inherited from Document
                 (:number-vp     :string     ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
                 (:number-vr     :string     ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: Inherited from Document
-  :has-many `((mandatee         :via        ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
+  :has-many `((mandatee         :via        ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit
                                 :as "mandatees")
               (remark           :via        ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
                                 :as "remarks")
@@ -207,10 +207,11 @@
 
 (define-resource meeting ()
   :class (s-prefix "besluit:Zitting")
-  :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart")) 
+  :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart"))
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number                :number   ,(s-prefix "adms:identifier"))
+                (:is-final              :boolean ,(s-prefix "besluitvorming:finaleZittingVersie"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
@@ -235,16 +236,16 @@
 
 (define-resource meeting-record ()
   :class (s-prefix "ext:Notule")
-  :properties `((:modified      :date     ,(s-prefix "ext:aangepast")) 
+  :properties `((:modified      :date     ,(s-prefix "ext:aangepast"))
                 (:created       :date     ,(s-prefix "ext:aangemaaktOp"))
                 (:announcements :string   ,(s-prefix "ext:mededelingen"))
                 (:others        :string   ,(s-prefix "ext:varia"))
-                (:description   :string   ,(s-prefix "ext:description"))) 
+                (:description   :string   ,(s-prefix "ext:description")))
   :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
                                 :inverse t
                                 :as "meeting")
              (agendaitem        :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                :inverse t 
+                                :inverse t
                                 :as "agendaitem"))
   :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
                                 :as "attendees"))

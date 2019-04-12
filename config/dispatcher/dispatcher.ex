@@ -102,15 +102,15 @@ defmodule Dispatcher do
   match "/consultation-response-codes/*path" do
     Proxy.forward conn, path, "http://resource/consultation-response-codes/"
   end
-  
+
   match "/document-states/*path" do
     Proxy.forward conn, path, "http://resource/document-states/"
   end
- 
+
   match "/file-addresses/*path" do
     Proxy.forward conn, path, "http://resource/file-addresses/"
   end
-  
+
   match "/births/*path" do
     Proxy.forward conn, path, "http://resource/births/"
   end
@@ -144,7 +144,7 @@ defmodule Dispatcher do
   match "/time-periods/*path" do
     Proxy.forward conn, path, "http://resource/time-periods/"
   end
-  
+
   match "/sites/*path" do
     Proxy.forward conn, path, "http://resource/sites/"
   end
@@ -160,7 +160,7 @@ defmodule Dispatcher do
   match "/organizations/*path" do
     Proxy.forward conn, path, "http://resource/organizations/"
   end
-  
+
   match "/publications/*path" do
     Proxy.forward conn, path, "http://resource/publications/"
   end
@@ -182,7 +182,7 @@ defmodule Dispatcher do
   match "/themes/*path" do
     Proxy.forward conn, path, "http://resource/themes/"
   end
-  
+
   match "/users/*path" do
     Proxy.forward conn, path, "http://resource/users/"
   end
@@ -216,6 +216,11 @@ defmodule Dispatcher do
 
   match "/alert-types/*path" do
     Proxy.forward conn, path, "http://resource/alert-types"
+  end
+
+  match "/close-meeting/*path" do
+    Proxy.forward conn, path, "http://close-meeting-service/"
+
   end
 
   match _ do
