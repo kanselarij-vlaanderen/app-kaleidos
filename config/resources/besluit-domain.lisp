@@ -62,7 +62,7 @@
               (remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                                       :as "remarks")
             ;; Added has-many relations from subcases
-              (approval               :via      ,(s-prefix "ext:AgendapuntGoedkeuring")
+              (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
               (theme                  :via      ,(s-prefix "dct:agendapuntSubject")
                                       :as "themes")
