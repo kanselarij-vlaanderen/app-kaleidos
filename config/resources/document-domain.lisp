@@ -35,6 +35,9 @@
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
                                         :as "subcase")
+            (agendaitem                 :via ,(s-prefix "ext:bevatAgendapuntDocumentversie")
+                                        :inverse t
+                                        :as "agendaitem")
             (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement"))
