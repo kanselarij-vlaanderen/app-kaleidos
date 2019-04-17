@@ -13,7 +13,10 @@
                      :as "created-for")
             (agenda :via ,(s-prefix "besluit:heeftAgenda")
                     :inverse t
-                    :as "previous-version"))
+                    :as "previous-version")
+            (file   :via ,(s-prefix "ext:getekendeNotule")
+                    :inverse t
+                    :as "file"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
                           :as "agendaitems")
              (announcement :via ,(s-prefix "ext:mededeling")
@@ -48,7 +51,7 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
-             (newsletter-info         :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+             (newsletter-info         :via      ,(s-prefix "ext:nieuwsbriefInfo") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                       :inverse t
                                       :as "newsletter-info")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
@@ -141,7 +144,7 @@
               ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
               ;           :as "heeft-versie")
               )
-  :has-one `((subcase           :via        ,(s-prefix "ext:besluitHeeftProcedurestap") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+  :has-one `((subcase           :via        ,(s-prefix "ext:procedurestapHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                 :inverse t
                                 :as "subcase")
              (agendaitem        :via        ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
