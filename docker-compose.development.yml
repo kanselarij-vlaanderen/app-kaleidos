@@ -20,7 +20,7 @@ services:
     links:
       - development-resource:resource
     volumes:
-      - ./config/development-dispatcher:/config
+      - ./config/development:/config
   development-database:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
