@@ -186,42 +186,30 @@ defmodule Dispatcher do
   match "/users/*path" do
     Proxy.forward conn, path, "http://resource/users/"
   end
-
-match "/accounts/*path" do
+  match "/accounts/*path" do
     Proxy.forward conn, path, "http://resource/accounts/"
   end
 
   match "/agenda-sort/*path" do
-    Proxy.forward conn, path, "http://agenda-sort-service/"
+    Proxy.forward conn, path, "http://development-agenda-sort-service/"
   end
 
   match "/custom-subcases/*path" do
-    Proxy.forward conn, path, "http://custom-subcases-service/"
+    Proxy.forward conn, path, "http://development-custom-subcases-service/"
   end
 
    match "/session-service/*path" do
-    Proxy.forward conn, path, "http://session-number-service/"
+    Proxy.forward conn, path, "http://development-session-number-service/"
   end
 
   match "/agenda-approve/*path" do
-    Proxy.forward conn, path, "http://agenda-approve-service/"
-  end
-
-  match "/account-groups/*path" do
-    Proxy.forward conn, path, "http://resource/account-groups/"
+    Proxy.forward conn, path, "http://development-agenda-approve-service/"
   end
 
   match "/files/*path" do
-    Proxy.forward conn, path, "http://file/files/"
+    Proxy.forward conn, path, "http://development-file/files/"
   end
 
-  match "/mock/sessions/*path" do
-    Proxy.forward conn, path, "http://mocklogin/sessions/"
-  end
-  match "/sessions/*path" do
-    Proxy.forward conn, path, "http://login/sessions/"
-  end
-  
   match "/alerts/*path" do
     Proxy.forward conn, path, "http://resource/alerts/"
   end
@@ -231,7 +219,7 @@ match "/accounts/*path" do
   end
 
   match "/close-meeting/*path" do
-    Proxy.forward conn, path, "http://close-meeting-service/"
+    Proxy.forward conn, path, "http://development-close-meeting-service/"
   end
 
   match _ do

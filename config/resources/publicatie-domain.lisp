@@ -63,6 +63,8 @@
              (agendaitem :via ,(s-prefix "besluitvorming:opmerking")
                          :inverse t
                          :as "agendaitem"))
+  :has-many `((remark    :via ,(s-prefix "ext:antwoorden")
+                         :as "answers"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Opmerking/")
   :features '(include-uri)
   :on-path "remarks")
@@ -72,9 +74,13 @@
   :properties `((:text :string ,(s-prefix "besluitvorming:inhoud"))
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
+                (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
                 (:title :string ,(s-prefix "dct:title")))
-  :has-one `((agendaitem :via ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
-                         :as "agendaitem"))
+  :has-one `((agendaitem :via ,(s-prefix "ext:nieuwsbriefInfo") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
+                         :as "agendaitem")
+             (meeting    :via ,(s-prefix "ext:algemeneNieuwsbrief")
+                         :inverse t
+                         :as "meeting"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")
@@ -87,7 +93,6 @@
   :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ThemaCode/")
   :features '(include-uri)
   :on-path "themes")

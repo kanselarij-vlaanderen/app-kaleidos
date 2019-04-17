@@ -1,0 +1,11 @@
+@prefix type: <http://example.com/alert-type/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+type:a7be8af1-05a3-42af-a03c-d7dd5a5b4047 a ext:SysteemNotificatieType ;
+    mu:uuid "a7be8af1-05a3-42af-a03c-d7dd5a5b4047" ;
+    skos:prefLabel "Waarschuwing" .
+type:bf501590-a672-4306-a971-148644a123ba a ext:SysteemNotificatieType ;
+    mu:uuid "bf501590-a672-4306-a971-148644a123ba" ;
+    skos:prefLabel "Dringend" .
