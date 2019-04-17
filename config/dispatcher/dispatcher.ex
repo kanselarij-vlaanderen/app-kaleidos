@@ -220,7 +220,6 @@ defmodule Dispatcher do
 
   match "/close-meeting/*path" do
     Proxy.forward conn, path, "http://close-meeting-service/"
-
   end
 
   match _ do
