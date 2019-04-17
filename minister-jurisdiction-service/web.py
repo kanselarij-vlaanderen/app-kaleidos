@@ -197,7 +197,7 @@ def select_distict_open_subcases_for_mandate(old_mandatee):
               ?mandatee mandaat:einde ?enddate .
               ?mandatee mandaat:beleidsdomein ?mandateedomain .
         
-              ?case a besluitvorming:Consultatievraag .
+              ?case a dbpedia:Case .
               ?case dct:hasPart ?subcase .
               ?subcase mandaat:beleidsdomein ?domain .
               ?subcase dct:created ?created .

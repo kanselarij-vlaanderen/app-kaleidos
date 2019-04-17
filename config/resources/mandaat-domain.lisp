@@ -37,18 +37,24 @@
   :has-many `(
     ;; (mandatee                  :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
     ;;                            :as "temporary-replacements")
-              (government-domain  :via ,(s-prefix "mandaat:beleidsdomein")
+             (government-domain   :via ,(s-prefix "mandaat:beleidsdomein")
                                   :as "government-domains")
-              (decision           :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
+             (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
                                   :inverse t
                                   :as "decisions")
-              (case               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+             (case                :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                   :inverse t
                                   :as "cases")
-              (meeting-record     :via ,(s-prefix "ext:aanwezigen")
+             (meeting-record      :via ,(s-prefix "ext:aanwezigen")
                                   :as "meetings-attended")
-              (approval           :via ,(s-prefix "ext:goedkeuringen")
-                                  :as "approvals"))
+             (approval            :via ,(s-prefix "ext:goedkeuringen")
+                                  :as "approvals")
+             (subcase             :via ,(s-prefix "besluitvorming:heeftBevoegde")
+                                  :inverse t
+                                  :as "subcases")
+             (agendaitem          :via ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt")
+                                  :inverse t
+                                  :as "agendaitems"))
   :has-one `((mandate             :via ,(s-prefix "org:holds")
                                   :as "holds")
              (person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
@@ -69,11 +75,14 @@
 
 (define-resource government-domain ()
   :class (s-prefix "ext:BeleidsdomeinCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
-  :has-many `((mandatee :via ,(s-prefix "mandaat:beleidsdomein")
-                        :inverse t
-                        :as "mandatees"))
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote")))
+  :has-many `((mandatee       :via ,(s-prefix "mandaat:beleidsdomein")
+                              :inverse t
+                              :as "mandatees")
+              (agendaitem     :via ,(s-prefix "mandaat:agendapuntBeleidsdomein")
+                              :inverse t
+                              :as "agendaitems"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/BeleidsdomeinCode/")
   :features '(include-uri)
   :on-path "government-domains")
