@@ -13,7 +13,7 @@ services:
     links:
       - resource:resource
     volumes:
-      - ./config/dispatcher:/config
+      - ./config/development:/config
   db:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
