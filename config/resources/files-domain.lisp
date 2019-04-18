@@ -16,6 +16,7 @@
                             :inverse t
                             :as "download")
              (agenda        :via ,(s-prefix "ext:getekendeNotule")
+                            :inverse t
                             :as "agenda"))
   :resource-base (s-url "http://data.lblod.info/files/")
   :features `(no-pagination-defaults include-uri)

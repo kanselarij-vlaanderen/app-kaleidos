@@ -15,7 +15,6 @@
                     :inverse t
                     :as "previous-version")
             (file   :via ,(s-prefix "ext:getekendeNotule")
-                    :inverse t
                     :as "file"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
                           :as "agendaitems")
