@@ -13,7 +13,7 @@ services:
     links:
       - resource:resource
     volumes:
-      - ./config/development:/config
+      - ./config/dispatcher:/config
   db:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
@@ -67,14 +67,6 @@ services:
       - db:database
     volumes:
       - ./agenda-approve-service:/app
-  close-meeting-service:
-    image: semtech/mu-javascript-template
-    environment:
-      NODE_ENV: "development"
-    links:
-      - db:database
-    volumes:
-      - ./close-meeting-service:/app
   minister-jurisdiction-service:
     image: mikidi/mu-python-template:python3-port
     environment:
