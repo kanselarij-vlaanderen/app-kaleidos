@@ -98,7 +98,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - db:database
+      - database:database
     volumes:
       - ./close-meeting-service:/app
   minister-jurisdiction-service:
