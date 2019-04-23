@@ -15,7 +15,6 @@
                     :inverse t
                     :as "previous-version")
             (file   :via ,(s-prefix "ext:getekendeNotule")
-                    :inverse t
                     :as "file"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
                           :as "agendaitems")
@@ -101,7 +100,7 @@
 
 
   (define-resource announcement ()
-  :class (s-prefix "vo-besluit:Mededeling")
+  :class (s-prefix "vobesluit:Mededeling")
   :properties `((:title :string ,(s-prefix "ext:title"))
                 (:text :string ,(s-prefix "ext:text"))
                 (:created :date ,(s-prefix "ext:created"))

@@ -12,11 +12,19 @@
 ;; (s-url "http://purl.org/dc/terms/title")
 ;; as (s-prefix "dct:title")
 
-(add-prefix "vo-besluit" "https://data.vlaanderen.be/ns/besluitvorming#")
-(add-prefix "vo-org" "https://data.vlaanderen.be/ns/organisatie#")
-(add-prefix "vo-gen" "https://data.vlaanderen.be/ns/generiek#")
+(add-prefix "vobesluit" "https://data.vlaanderen.be/ns/besluitvorming#")
+(add-prefix "voorg" "https://data.vlaanderen.be/ns/organisatie#")
+(add-prefix "vogen" "https://data.vlaanderen.be/ns/generiek#")
+(add-prefix "dbpedia" "http://dbpedia.org/ontology/")
 (add-prefix "dcat" "http://www.w3.org/ns/dcat#")
-(add-prefix "prov-o" "http://www.w3.org/ns/prov#")
+(add-prefix "dct" "http://purl.org/dc/terms/")
+(add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
+(add-prefix "provo" "http://www.w3.org/ns/prov#")
+(add-prefix "nfo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#")
+(add-prefix "nie" "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#")
+(add-prefix "dbpedia" "http://dbpedia.org/ontology/")
+(add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
+
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
 ;; the right predicates during development.  This should *not* be
@@ -24,9 +32,6 @@
 ;; the mu.semte.ch organisation indicates that it will not be used
 ;; by them and that it shouldn't be used for permanent URIs.
 
-
-
-(in-package :mu-cl-resources)
 
 (add-prefix "ext" "http://mu.semte.ch/vocabularies/ext/")
 (add-prefix "tmp" "http://mu.semte.ch/vocabularies/tmp/")

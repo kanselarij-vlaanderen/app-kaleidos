@@ -1,5 +1,3 @@
-;; (in-package :mu-cl-resources)
-
 ;;;;
 ;; NOTE
 ;; docker-compose stop; docker-compose rm; docker-compose up
@@ -24,6 +22,7 @@
 (read-domain-file "mandaat-domain.lisp")
 (read-domain-file "organisatie-domain.lisp")
 (read-domain-file "publicatie-domain.lisp")
+(read-domain-file "master-users-domain.lisp")
 (read-domain-file "users-domain.lisp")
 (read-domain-file "alerts-domain.lisp")
 
