@@ -25,7 +25,7 @@ services:
     links:
       - development-resource:resource
     volumes:
-      - ./config/development:/config
+      - ./config/development-dispatcher:/config
   database-with-auth:
     image: semtech/mu-authorization:0.2.0
     environment:
@@ -102,12 +102,6 @@ services:
       - development-database:database
     volumes:
       - ./minister-jurisdiction-service:/app
-  development-mocklogin:
-    build: mock-login-service
-    volumes:
-      - ./config/mocklogin:/config
-  development-login:
-    image: lblod/mock-login-service
 
 networks:
   proxy:
