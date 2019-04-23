@@ -42,7 +42,7 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     ports:
-      - 8890:8890
+      - 8900:8890
     volumes:
       - ./data/db:/data
       - ./config/db/:/opt/virtuoso-scripts
