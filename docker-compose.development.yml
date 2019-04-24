@@ -25,7 +25,7 @@ services:
     links:
       - development-resource:resource
     volumes:
-      - ./config/development-dispatcher:/config
+      - ./config/devdispatcher:/config
   database-with-auth:
     image: semtech/mu-authorization:0.2.0
     environment:
