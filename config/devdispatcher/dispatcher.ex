@@ -215,10 +215,10 @@ defmodule Dispatcher do
   end
 
   match "/mock/sessions/*path" do
-    Proxy.forward conn, path, "http://development-mocklogin:9999/sessions/"
+    Proxy.forward conn, path, "http://development-mocklogin/sessions/"
   end
   match "/sessions/*path" do
-    Proxy.forward conn, path, "http://development-login:9998/sessions/"
+    Proxy.forward conn, path, "http://development-login/sessions/"
   end
 
   match "/alerts/*path" do
