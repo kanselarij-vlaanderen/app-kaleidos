@@ -11,14 +11,14 @@ alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 defmodule Acl.UserGroups.Config do
   defp access_by_role( group_string ) do
     %AccessByQuery{
-      vars: ["session_group","session_role"],
+      vars: ["session_group"],
       query: sparql_query_for_access_role( group_string ) }
   end
 
   defp sparql_query_for_access_role( group_string ) do
     "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    SELECT ?session_group ?session_role WHERE {
+    SELECT ?session_group WHERE {
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role = \"#{group_string}\" )
@@ -33,7 +33,7 @@ defmodule Acl.UserGroups.Config do
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
     [
-      # // PUBLIC
+      # // PUBLIC TODO for now public is the same as privileged and privileged is therefore not created
       %GroupSpec{
         name: "public",
         useage: [:read],
@@ -42,133 +42,99 @@ defmodule Acl.UserGroups.Config do
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
             resource_types: [
-              "http://mu.semte.ch/vocabularies/validation/Execution",
-              "http://mu.semte.ch/vocabularies/validation/Validation",
-              "http://mu.semte.ch/vocabularies/validation/Error",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://dbpedia.org/ontology/Case",
-              "http://mu.semte.ch/vocabularies/ext/DossierType",
-              "http://mu.semte.ch/vocabularies/ext/DossierThema",
-              "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
-              "http://mu.semte.ch/vocabularies/ext/BeleidsDomein",
-              "http://mu.semte.ch/vocabularies/ext/Bevoegdheid",
-              "https://data.vlaanderen.be/ns/besluitvorming#Zitting",
-              "https://data.vlaanderen.be/ns/besluitvorming#Agenda",
-              "https://data.vlaanderen.be/ns/besluitvorming#Opmerking",
-              "http://mu.semte.ch/vocabularies/ext/SubCase",
-              "https://data.vlaanderen.be/ns/besluitvorming#Besluit",
-              "https://data.vlaanderen.be/ns/besluitvorming#KortBestek",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://xmlns.com/foaf/0.1/Person",
-              "http://xmlns.com/foaf/0.1/OnlineAccount"
+              "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
+              "http://data.vlaanderen.be/ns/besluit#Agendapunt", 
+              "http://data.vlaanderen.be/ns/besluit#Zitting",
+              "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",  
+              "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",     
+              "http://data.vlaanderen.be/ns/mandaat#Mandaat",              
+              "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",      
+              "http://data.vlaanderen.be/ns/mandaat#Mandataris",             
+              "http://www.w3.org/ns/person#Person",                           
+              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject", 
+              "http://mu.semte.ch/vocabularies/ext/DocumentVersie",                       
+              "http://data.vlaanderen.be/ns/besluitvorming#Consultatievraag",              
+              "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",                    
+              "http://xmlns.com/foaf/0.1/OnlineAccount",                                       
+              "http://xmlns.com/foaf/0.1/Person",                                               
+              "http://xmlns.com/foaf/0.1/Group",                                                 
+              "http://mu.semte.ch/vocabularies/ext/ThemaCode",                                    
+              "http://mu.semte.ch/vocabularies/ext/Thema",                                         
+              "http://mu.semte.ch/vocabularies/ext/Notule",                                         
+              "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",                           
+              "http://data.vlaanderen.be/ns/besluit#Besluit",                                         
+              "http://schema.org/Comment",                                                             
+              "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",                            
+              "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",                                     
+              "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode"
             ]
           } },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/public/",
-            constraint: %ResourceConstraint{
-              resource_types: [ "https://data.vlaanderen.be/ns/besluitvorming#AgendaPunt"],
-              predicates: %AllPredicates{
-                except: [
-                  "http://mu.semte.ch/vocabularies/ext/record" 
-                ] 
-              } 
-            } 
-          },            
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
             constraint: %ResourceFormatConstraint{
               resource_prefix: "http://mu.semte.ch/sessions/"
             } } ] },
-      %GroupSpec{
-        name: "public-wf",
-        useage: [:write, :read_for_write],
-        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [%GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://mu.semte.ch/vocabularies/validation/Execution",
-              "http://mu.semte.ch/vocabularies/validation/Validation",
-              "http://mu.semte.ch/vocabularies/validation/Error",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://dbpedia.org/ontology/Case",
-              "http://mu.semte.ch/vocabularies/ext/DossierType",
-              "http://mu.semte.ch/vocabularies/ext/DossierThema",
-              "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
-              "http://mu.semte.ch/vocabularies/ext/BeleidsDomein",
-              "http://mu.semte.ch/vocabularies/ext/Bevoegdheid",
-              "https://data.vlaanderen.be/ns/besluitvorming#Opmerking",
-              "http://mu.semte.ch/vocabularies/ext/SubCase",
-              "https://data.vlaanderen.be/ns/besluitvorming#Besluit",
-              "https://data.vlaanderen.be/ns/besluitvorming#KortBestek",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://xmlns.com/foaf/0.1/Person",
-              "http://xmlns.com/foaf/0.1/OnlineAccount"
-            ]
-          } 
-        },
-        %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/public/",
-            constraint: %ResourceConstraint{
-              resource_types: [ "https://data.vlaanderen.be/ns/besluitvorming#Agenda"],
-              predicates: %AllPredicates{
-                except: [
-                  "http://mu.semte.ch/vocabularies/ext/goedgekeurd" ] } } },
-        %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public/",
-          constraint: %ResourceConstraint{
-            resource_types: [ "https://data.vlaanderen.be/ns/besluitvorming#AgendaPunt"],
-            predicates: %AllPredicates{
-              except: [
-                "http://mu.semte.ch/vocabularies/ext/record",
-                "http://mu.semte.ch/vocabularies/ext/formallyOk"
-              ] 
-            } 
-          } 
-        }
-        ] 
-      },
       # // ORGANIZATION HAS POSSIBLY DUPLICATE USER DATA
-      %GroupSpec{
-        name: "org",
-        useage: [:read],
-        access: %AccessByQuery{
-          vars: ["session_group"],
-          query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-                  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-                  SELECT ?session_group ?session_role WHERE {
-                    <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group.
-                    }" },
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/organizations/",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://xmlns.com/foaf/0.1/Person",
-              "http://xmlns.com/foaf/0.1/OnlineAccount",
-              "http://www.w3.org/ns/adms#Identifier"
-            ] } } ] },
+      # %GroupSpec{
+      #   name: "org",
+      #   useage: [:read],
+      #   access: %AccessByQuery{
+      #     vars: ["session_group"],
+      #     query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      #             PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      #             SELECT ?session_group ?session_role WHERE {
+      #               <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group.
+      #               }" },
+      #   graphs: [ %GraphSpec{
+      #     graph: "http://mu.semte.ch/graphs/organizations/",
+      #     constraint: %ResourceConstraint{
+      #       resource_types: [
+      #         "http://xmlns.com/foaf/0.1/Person",
+      #         "http://xmlns.com/foaf/0.1/OnlineAccount",
+      #         "http://www.w3.org/ns/adms#Identifier"
+      #       ] } } ] },
 
       # // ORG-ADMIN
       %GroupSpec{
         name: "o-admin-all",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( "Kanselarij-admin" ),
+        access: access_by_role( "kanselarij" ),
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/organizations/",
           constraint: %ResourceConstraint{
             resource_types: [
-              "https://data.vlaanderen.be/ns/besluitvorming#Zitting",
-              "https://data.vlaanderen.be/ns/besluitvorming#AgendaPunt",
-              "https://data.vlaanderen.be/ns/besluitvorming#Agenda"
+              "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
+              "http://data.vlaanderen.be/ns/besluit#Agendapunt", 
+              "http://data.vlaanderen.be/ns/besluitvorming#Agenda",  
+              "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
+              "http://data.vlaanderen.be/ns/besluit#Zitting",
+              "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",  
+              "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",     
+              "http://data.vlaanderen.be/ns/mandaat#Mandaat",              
+              "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",      
+              "http://data.vlaanderen.be/ns/mandaat#Mandataris",             
+              "http://www.w3.org/ns/person#Person",                           
+              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject", 
+              "http://mu.semte.ch/vocabularies/ext/DocumentVersie",                       
+              "http://data.vlaanderen.be/ns/besluitvorming#Consultatievraag",              
+              "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",                    
+              "http://dbpedia.org/ontology/UnitOfWork",                                      
+              "http://xmlns.com/foaf/0.1/Document",                                           
+              "http://xmlns.com/foaf/0.1/OnlineAccount",                                       
+              "http://xmlns.com/foaf/0.1/Person",                                               
+              "http://xmlns.com/foaf/0.1/Group",                                                 
+              "http://mu.semte.ch/vocabularies/ext/ThemaCode",                                    
+              "http://mu.semte.ch/vocabularies/ext/Thema",                                         
+              "http://mu.semte.ch/vocabularies/ext/Notule",                                         
+              "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",                           
+              "http://data.vlaanderen.be/ns/besluit#Besluit",                                         
+              "http://schema.org/Comment",                                                             
+              "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",                            
+              "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",                                     
+              "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode"
             ] } },
         ] 
       },
-
-      # // USER HAS NO DATA
-      # this was moved to org instead.
-      # perhaps move some elements to public when needed for demo
-      # purposes.
-
 
       # // CLEANUP
       #
