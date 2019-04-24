@@ -218,7 +218,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://development-mocklogin/sessions/"
   end
   match "/sessions/*path" do
-    Proxy.forward conn, path, "http://login/sessions/"
+    Proxy.forward conn, path, "http://development-login/sessions/"
   end
 
   match "/alerts/*path" do
