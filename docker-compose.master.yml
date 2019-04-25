@@ -33,7 +33,7 @@ services:
   database-with-auth:
     image: semtech/mu-authorization:0.2.0
     environment:
-      MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
     volumes:
       - ./config/authorization:/config
     labels:
@@ -50,6 +50,9 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/db/:/opt/virtuoso-scripts
+    labels:
+      - "logging=true"
+    restart: always
     logging: *default-logging
     networks:
       - proxy
