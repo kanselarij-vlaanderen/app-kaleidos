@@ -26,6 +26,10 @@ services:
       - resource:resource
     volumes:
       - ./config/dispatcher:/config
+    networks:
+      - proxy
+      - default
+      - backend
   database-with-auth:
     image: semtech/mu-authorization:0.2.0
     environment:
