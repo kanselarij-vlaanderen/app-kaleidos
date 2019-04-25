@@ -45,7 +45,12 @@ services:
       - "8890:8890"
     volumes:
       - ./data/db:/data
+      - ./config/db/:/opt/virtuoso-scripts
     logging: *default-logging
+    networks:
+      - proxy
+      - default
+      - backend
   resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
