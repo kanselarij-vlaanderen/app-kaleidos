@@ -54,6 +54,10 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    networks:
+      - proxy
+      - default
+      - backend
   development-resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
