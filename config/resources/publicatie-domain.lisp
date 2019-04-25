@@ -75,7 +75,8 @@
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
                 (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
-                (:title :string ,(s-prefix "dct:title")))
+                (:title :string ,(s-prefix "dct:title"))
+                (:finished :boolean ,(s-prefix "ext:afgewerkt")))
   :has-one `((agendaitem :via ,(s-prefix "ext:nieuwsbriefInfo") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                          :as "agendaitem")
              (meeting    :via ,(s-prefix "ext:algemeneNieuwsbrief")
@@ -84,7 +85,9 @@
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")
-                     :as "themes"))
+                     :as "themes")
+              (document :via ,(s-prefix "ext:documentenVoorPublicatie")
+                     :as "documents"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Publicatie/")
   :features '(include-uri)
   :on-path "newsletter-infos")

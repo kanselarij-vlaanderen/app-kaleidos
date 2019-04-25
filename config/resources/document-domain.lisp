@@ -16,7 +16,10 @@
              (document-type       :via ,(s-prefix "ext:documentType")
                                   :as "type")
              (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                  :as "confidentiality"))
+                                  :as "confidentiality")
+             (newsletter-info     :via ,(s-prefix "ext:documentenVoorPublicatie")
+                                  :inverse t
+                                  :as "newsletter"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Document/")
   :features '(include-uri)
   :on-path "documents")
