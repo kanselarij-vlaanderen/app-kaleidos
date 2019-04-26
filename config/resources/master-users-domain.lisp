@@ -4,11 +4,11 @@
   :properties `((:first-name :string ,(s-prefix "foaf:firstName"))
                 (:last-name :string ,(s-prefix "foaf:familyName"))
                 (:rijksregister-nummer :string ,(s-prefix "dct:identifier")))
-  :has-many `((account :via ,(s-prefix "foaf:account")
-                       :as "account"))
-  :has-one `((account-group :via ,(s-prefix "foaf:member")
-                             :inverse t
-                             :as "group"))
+  :has-many `((account        :via ,(s-prefix "foaf:account")
+                              :as "account"))
+  :has-one `((account-group   :via ,(s-prefix "foaf:member")
+                              :inverse t
+                              :as "group"))
   :on-path "users"
 )
 
