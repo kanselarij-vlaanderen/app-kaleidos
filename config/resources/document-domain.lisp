@@ -10,16 +10,10 @@
                                   :as "remarks") 
               (document-version   :via ,(s-prefix "besluitvorming:heeftVersie")
                                   :as "document-versions"))
-  :has-one `((decision            :via ,(s-prefix "ext:besluitHeeftDocument") ;; NOTE: Relation to document instad of document-subclass
-                                  :inverse t
-                                  :as "decision")
-             (document-type       :via ,(s-prefix "ext:documentType")
+  :has-one `((document-type       :via ,(s-prefix "ext:documentType")
                                   :as "type")
              (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                  :as "confidentiality")
-             (newsletter-info     :via ,(s-prefix "ext:documentenVoorPublicatie")
-                                  :inverse t
-                                  :as "newsletter"))
+                                  :as "confidentiality"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/Document/")
   :features '(include-uri)
   :on-path "documents")
@@ -43,7 +37,13 @@
                                         :as "agendaitem")
             (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
-                                        :as "announcement"))
+                                        :as "announcement")
+            (newsletter-info     :via ,(s-prefix "ext:documentenVoorPublicatie")
+                                  :inverse t
+                                  :as "newsletter")
+             (decision            :via ,(s-prefix "ext:documentenVoorBeslissing")
+                                  :inverse t
+                                  :as "decision"))
   :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
                                         :as "identifiers"
                                         :inverse t))

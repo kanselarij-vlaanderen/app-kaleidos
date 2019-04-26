@@ -142,7 +142,8 @@
                                 :as "remarks")
               ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
               ;           :as "heeft-versie")
-              )
+              (document-version         :via ,(s-prefix "ext:documentenVoorBeslissing")
+                                :as "document-versions"))
   :has-one `((subcase           :via        ,(s-prefix "ext:procedurestapHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                 :inverse t
                                 :as "subcase")

@@ -86,8 +86,8 @@
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
               (theme :via ,(s-prefix "dct:subject")
                      :as "themes")
-              (document :via ,(s-prefix "ext:documentenVoorPublicatie")
-                     :as "documents"))
+              (document-version :via ,(s-prefix "ext:documentenVoorPublicatie")
+                     :as "document-versions"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Publicatie/")
   :features '(include-uri)
   :on-path "newsletter-infos")
