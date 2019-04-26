@@ -49,7 +49,7 @@ node {
 def imagePrune(DRC_PATH, branch){
     try {
         sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} down -v"
-        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f"
+        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} rm -f --remove-orphans"
     } catch(error){}
 }
 
@@ -59,7 +59,7 @@ def imageBuild(containerName, tag, DRC_PATH, branch){
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
-    sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} up -d"
+    sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH} up -d --force-recreate"
     echo "Application started on port: ${httpPort} (http)"
 }
 

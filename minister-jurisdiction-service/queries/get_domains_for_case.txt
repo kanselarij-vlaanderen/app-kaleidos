@@ -12,7 +12,7 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 SELECT *
 WHERE {
    GRAPH <http://mu.semte.ch/application> {
-      ?case a besluitvorming:Consultatievraag .
+      ?case a dbpedia:Case .
       ?case dct:hasPart ?subcase .
       ?subcase mandaat:beleidsdomein ?domain .
    }
