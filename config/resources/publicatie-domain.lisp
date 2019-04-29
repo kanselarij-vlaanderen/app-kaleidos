@@ -72,6 +72,7 @@
 (define-resource newsletter-info ()
   :class (s-prefix "besluitvorming:NieuwsbriefInfo") 
   :properties `((:text :string ,(s-prefix "besluitvorming:inhoud"))
+                (:richtext :string ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
                 (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
