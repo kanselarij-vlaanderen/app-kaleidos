@@ -190,6 +190,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/accounts/"
   end
 
+  match "/account-groups/*path" do
+    Proxy.forward conn, path, "http://resource/account-groups/"
+  end
+
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://development-agenda-sort-service/"
   end
