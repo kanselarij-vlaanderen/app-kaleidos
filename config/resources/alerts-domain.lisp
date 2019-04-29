@@ -6,7 +6,7 @@
 								(:message 		:string 	,(s-prefix "ext:bericht")))
   :has-one `((alert-type 			:via 			,(s-prefix "ext:type") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                          			:as "type"))
-  :resource-base (s-url "http://example.com/alert/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/alerts/")
   :features '(include-uri)
   :on-path "alerts")
 
@@ -14,6 +14,6 @@
   :class (s-prefix "ext:SysteemNotificatieType") ;; NOTE: as well as skos:Concept
   :properties `((:label 			:string 	,(s-prefix "skos:prefLabel"))
                 (:scope-note 	:string 	,(s-prefix "skos:scopeNote")))
-  :resource-base (s-url "http://example.com/alert-type/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/alert-types/")
   :features '(include-uri)
   :on-path "alert-types")

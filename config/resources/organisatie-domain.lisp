@@ -2,7 +2,7 @@
   :class (s-prefix "org:Site")
   :has-one `((contact-point :via ,(s-prefix "schema:contactPoint")
                             :as "contact-point"))
-  :resource-base (s-url "http://data.lblod.info/id/vestiging/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/vestigingen/")
   :features '(include-uri)
   :on-path "sites"
 )
@@ -17,7 +17,7 @@
                 (:telephone :string ,(s-prefix "schema:telephone"))
                 (:fax :string ,(s-prefix "schema:faxNumber"))
                 (:website :string ,(s-prefix "schema:url")))
-  :resource-base (s-url "http://data.lblod.info/id/contactpunt/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpunten/")
   :features '(include-uri)
   :on-path "contact-points"
 )
@@ -31,7 +31,7 @@
                            :as "organization"))
   :has-many `((person :via ,(s-prefix "org:heldBy")
                        :as "wordt-ingevuld-door"))
-  :resource-base (s-url "http://data.lblod.info/id/positie/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/posities/")
   :features '(include-uri)
   :on-path "posts"
 )
@@ -39,7 +39,7 @@
 (define-resource role ()
   :class (s-prefix "org:Role")
   :properties `((:label :string ,(s-prefix "skos:prefLabel")))
-  :resource-base (s-url "http://data.lblod.info/id/concept/bestuurseenheidRollen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuurseenheid-rollen/")
   :features '(include-uri)
   :on-path "roles"
 )
@@ -54,7 +54,7 @@
                              :as "contact-points")
               (post :via ,(s-prefix "org:hasPost")
                     :as "posts"))
-  :resource-base (s-url "http://data.lblod.info/id/organisaties/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/organisaties/")
   :features '(include-uri)
   :on-path "organizations"
 )
