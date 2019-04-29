@@ -25,6 +25,9 @@
 /agenda-approve-service/node_modules
 /custom-subcases-service/node_modules
 /close-meeting-service/node_modules
+
+node_modules/
+
 /data/files/*
 /development-data/files/*
 properties-to-add

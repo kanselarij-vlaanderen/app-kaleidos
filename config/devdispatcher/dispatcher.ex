@@ -190,6 +190,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/accounts/"
   end
 
+  match "/account-groups/*path" do
+    Proxy.forward conn, path, "http://resource/account-groups/"
+  end
+
   match "/agenda-sort/*path" do
     Proxy.forward conn, path, "http://development-agenda-sort-service/"
   end
@@ -208,6 +212,17 @@ defmodule Dispatcher do
 
   match "/files/*path" do
     Proxy.forward conn, path, "http://development-file/files/"
+  end
+
+  match "/roles/*path" do
+    Proxy.forward conn, path, "http://resource/roles/"
+  end
+
+  match "/mock/sessions/*path" do
+    Proxy.forward conn, path, "http://development-mocklogin/sessions/"
+  end
+  match "/sessions/*path" do
+    Proxy.forward conn, path, "http://development-login/sessions/"
   end
 
   match "/alerts/*path" do
