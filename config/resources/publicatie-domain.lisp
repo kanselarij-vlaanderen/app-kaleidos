@@ -88,7 +88,7 @@
                      :as "themes")
               (document-version :via ,(s-prefix "ext:documentenVoorPublicatie")
                      :as "document-versions"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicaties/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
   :features '(include-uri)
   :on-path "newsletter-infos")
 
