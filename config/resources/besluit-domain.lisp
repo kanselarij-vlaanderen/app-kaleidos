@@ -100,7 +100,7 @@
 
 
   (define-resource announcement ()
-  :class (s-prefix "vobesluit:Mededeling")
+  :class (s-prefix "besluitvorming:Mededeling")
   :properties `((:title :string ,(s-prefix "ext:title"))
                 (:text :string ,(s-prefix "ext:text"))
                 (:created :date ,(s-prefix "ext:created"))
