@@ -109,3 +109,11 @@ services:
       - database:database
     volumes:
       - ./minister-jurisdiction-service:/app
+  data-migration-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    links:
+      - database:database
+    volumes:
+      - ./data-migration-service:/app
