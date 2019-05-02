@@ -1,9 +1,10 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
-  :properties `((:issued :datetime ,(s-prefix "dct:issued"))
-                (:is-final :boolean ,(s-prefix "besluitvorming:finaleVersie"))
-                (:name    :string  ,(s-prefix "ext:agendaNaam"))
-                (:created :date    ,(s-prefix "ext:aangemaaktOp"))
+  :properties `((:issued      :datetime ,(s-prefix "dct:issued"))
+                (:is-final    :boolean ,(s-prefix "besluitvorming:finaleVersie"))
+                (:name        :string  ,(s-prefix "ext:agendaNaam"))
+                (:created     :date    ,(s-prefix "ext:aangemaaktOp"))
+                (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
                 (:is-accepted :boolean ,(s-prefix "ext:accepted")))
   :has-one `(
             ;; (meeting :via ,(s-prefix "besluitvorming:behandelt") ;; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
@@ -45,8 +46,6 @@
              (subcase                 :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
                                       :inverse t
                                       :as "subcase")
-             (decision                :via      ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                      :as "decision")
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
@@ -275,7 +274,11 @@
                                 :inverse t
                                 :as "agendaitem"))
   :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
-                                :as "attendees"))
+                                :as "attendees")
+              (document-version :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+                                :as "document-versions")
+              (document-version :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
+                                :as "signed-document-versions"))
   :resource-base (s-url "http://data.lblod.info/id/notulen/")
   :features '(include-uri)
   :on-path "meeting-records")
