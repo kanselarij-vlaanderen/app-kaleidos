@@ -4,25 +4,27 @@ const getRelatedSubCasesOfAgenda = async (agendaId) => {
 
     const query = `
       PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-        PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
-        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         
-    SELECT ?meeting ?agendapunt ?subcase ?decision ?retracted ?postponed ?archived ?concluded WHERE {
-            GRAPH <http://mu.semte.ch/application> {
-               ?agenda mu:uuid "${agendaId}" .
-           ?agenda dct:hasPart ?agendaitem .
-           ?subcase besluitvorming:isGeagendeerdVia ?agendapunt ;
-                    ext:isProcedurestapGearchiveerd ?archived ;
-                    besluitvorming:besloten ?concluded .
-               OPTIONAL { ?agenda besluit:isAangemaaktVoor ?meeting . }
-               OPTIONAL { ?agendapunt besluitvorming:ingetrokken ?retracted . }
-           OPTIONAL { ?subcase ext:procedurestapHeeftBesluit ?decision . }
-               OPTIONAL { ?agendapunt ext:heeftVerdaagd ?postponed . }
-          
-             } 
-        }`;
+    SELECT ?agendaitem ?subcase ?decision ?retracted ?postponed ?archived ?concluded WHERE {
+       GRAPH <http://mu.semte.ch/application> {
+           <http://data.lblod.info/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
+            ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
+            OPTIONAL { ?subcase ext:isProcedurestapGearchiveerd ?archived . }
+            OPTIONAL { ?subcase besluitvorming:besloten ?concluded . }
+            OPTIONAL { ?agendaitem besluitvorming:isGeagendeerdVia ?subcase . }
+            OPTIONAL { ?subcase ext:isProcedurestapGearchiveerd ?archived . }
+            OPTIONAL { ?subcase besluitvorming:besloten ?concluded . }
+            OPTIONAL { ?agendaitem besluitvorming:ingetrokken ?retracted . }
+            OPTIONAL { ?subcase ext:procedurestapHeeftBesluit ?decision . }
+            OPTIONAL { ?agendaitem ext:heeftVerdaagd ?postponed . }
+ 
+       } 
+    }
+`;
 
     let data = await mu.query(query);
     return parseSparqlResults(data);
@@ -53,7 +55,7 @@ const concludeSubCases = async (subcases) => {
           ${newPriorities}
         } 
       }`;
-    console.log('conclude')
+
     return mu.update(query);
 }
 

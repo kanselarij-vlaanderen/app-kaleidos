@@ -37,15 +37,12 @@ const handleCloseMeetingRequest = async (req, res) => {
       }, {}));
 
       const newSubcases = Object.values(subcases.reduce((items, item) => {
-        items[item.uri] = items[item.uri] || {uri : item.uri};
+        items[item.uri] = items[item.uri] || { uri : item.uri };
         return items;
       }, {}));
 
-      const postponedAgendaItems = await repository.retractAgendaItems(newAgendaitems);
-      const closed_subcases = await repository.concludeSubCases(newSubcases);
-
-      await repository.finaliseMeeting(meeting);
-
+      await repository.retractAgendaItems(newAgendaitems);
+      await repository.concludeSubCases(newSubcases);
       const updated_subcases = await repository.getRelatedSubCasesOfAgenda(agendaId);
       res.send({ status: ok, statusCode: 200, body: { originals, updated_subcases } });
     }catch(error) {
