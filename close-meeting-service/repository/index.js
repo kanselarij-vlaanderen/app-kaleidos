@@ -9,17 +9,18 @@ const getRelatedSubCasesOfAgenda = async (agendaId) => {
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
         PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         
-        SELECT ?meeting ?agendapunt ?uri ?decision ?retracted ?postponed ?archived ?concluded WHERE {
+    SELECT ?meeting ?agendapunt ?subcase ?decision ?retracted ?postponed ?archived ?concluded WHERE {
             GRAPH <http://mu.semte.ch/application> {
-               ?agenda dct:hasPart ?agendapunt .
                ?agenda mu:uuid "${agendaId}" .
+           ?agenda dct:hasPart ?agendaitem .
+           ?subcase besluitvorming:isGeagendeerdVia ?agendapunt ;
+                    ext:isProcedurestapGearchiveerd ?archived ;
+                    besluitvorming:besloten ?concluded .
                OPTIONAL { ?agenda besluit:isAangemaaktVoor ?meeting . }
                OPTIONAL { ?agendapunt besluitvorming:ingetrokken ?retracted . }
-               OPTIONAL { ?agendapunt ext:agendapuntHeeftBesluit ?decision . }
+           OPTIONAL { ?subcase ext:procedurestapHeeftBesluit ?decision . }
                OPTIONAL { ?agendapunt ext:heeftVerdaagd ?postponed . }
-               ?uri besluitvorming:isGeagendeerdVia ?agendapunt ;
-                        ext:isProcedurestapGearchiveerd ?archived ;
-                        besluitvorming:besloten ?concluded
+          
              } 
         }`;
 
@@ -29,8 +30,8 @@ const getRelatedSubCasesOfAgenda = async (agendaId) => {
 
 const concludeSubCases = async (subcases) => {
 
-    const oldPriorities = subcases.map(subcase =>
-      ` <${subcase.uri}> besluitvorming:besloten ?o . 
+    const oldPriorities = subcases.map((subcase, index) =>
+      ` <${subcase.uri}> besluitvorming:besloten ?o${index} . 
         `).join(' ');
     const newPriorities = subcases.map(subcase =>
       ` <${subcase.uri}> besluitvorming:besloten "true"^^xsd:boolean .
@@ -52,13 +53,14 @@ const concludeSubCases = async (subcases) => {
           ${newPriorities}
         } 
       }`;
+    console.log('conclude')
     return mu.update(query);
 }
 
 const retractAgendaItems = async (items) => {
 
-    const oldPriorities = items.map(agendaItem =>
-      ` <${agendaItem.uri}> besluitvorming:ingetrokken ?o . 
+    const oldPriorities = items.map((agendaItem, index) =>
+      ` <${agendaItem.uri}> besluitvorming:ingetrokken ?o${index} . 
         `).join(' ');
     const newPriorities = items.map(agendaItem =>
       ` <${agendaItem.uri}> besluitvorming:ingetrokken "true"^^xsd:boolean .
@@ -82,7 +84,6 @@ const retractAgendaItems = async (items) => {
       }`;
     return mu.update(query);
 }
-
 
 const parseSparqlResults = (data) => {
     const vars = data.head.vars;
@@ -117,6 +118,8 @@ const finaliseMeeting = (meeting) => {
           <${meeting}> besluitvorming:finaleZittingVersie "true"^^xsd:boolean .
         } 
       }`;
+      console.log('finalise')
+
     return mu.update(query);
 };
 
