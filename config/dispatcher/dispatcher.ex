@@ -221,7 +221,7 @@ match "/accounts/*path" do
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://login/sessions/"
   end
-  
+
   match "/alerts/*path" do
     Proxy.forward conn, path, "http://resource/alerts/"
   end
@@ -232,6 +232,11 @@ match "/accounts/*path" do
 
   match "/close-meeting/*path" do
     Proxy.forward conn, path, "http://close-meeting-service/"
+  end
+
+
+  match "/send-newsletter/*path" do
+    Proxy.forward conn, path, "http://mail-chimp-service/"
   end
 
   match _ do

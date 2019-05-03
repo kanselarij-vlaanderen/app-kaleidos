@@ -36,7 +36,7 @@
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
-  :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
+  :properties `((:short-title         :string ,(s-prefix "dct:alt ernative"))
                 (:title               :string ,(s-prefix "dct:title"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK

@@ -48,4 +48,4 @@ const seperateSubcasesWhenPostponed = async (subcases) => {
   const not_decided = subcases.filter(item => !item.decision);
   const decided = subcases.filter(item => item.decision);
   return { meeting, not_decided, decided };
-}
+};
