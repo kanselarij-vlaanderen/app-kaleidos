@@ -148,3 +148,11 @@ services:
       - ./config/proxy:/etc/nginx/conf.d
     ports:
       - "443:443"
+  data-migration-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    links:
+      - database:database
+    volumes:
+      - ./data-migration-service:/app
