@@ -3,6 +3,7 @@
   :properties `((:archived        :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
                 (:title           :string ,(s-prefix "dct:title")) ;;string-set
                 (:description     :string ,(s-prefix "ext:omschrijving")) ;;string-set
+                (:confidential    :boolean ,(s-prefix "ext:confidential")) ;;string-set
                 (:created         :datetime ,(s-prefix "dct:created"))
                 (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
                 (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
