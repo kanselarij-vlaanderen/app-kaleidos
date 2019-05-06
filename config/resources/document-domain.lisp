@@ -38,12 +38,18 @@
             (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement")
-            (newsletter-info     :via ,(s-prefix "ext:documentenVoorPublicatie")
-                                  :inverse t
-                                  :as "newsletter")
-             (decision            :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                  :inverse t
-                                  :as "decision"))
+            (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
+                                        :inverse t
+                                        :as "newsletter")
+             (decision                  :via ,(s-prefix "ext:documentenVoorBeslissing")
+                                        :inverse t
+                                        :as "decision")
+             (meeting-record            :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+                                        :inverse t
+                                        :as "meeting-record")
+             (decision                  :via ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
+                                        :inverse t
+                                        :as "signed-decision"))
   :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
                                         :as "identifiers"
                                         :inverse t))
