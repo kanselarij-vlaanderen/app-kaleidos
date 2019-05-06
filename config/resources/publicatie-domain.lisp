@@ -41,7 +41,8 @@
 (define-resource publication-state-code ()
   :class (s-prefix "ext:PublicatieStatusCode") ;; NOTE: as well as skos:Concept
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((publication-state :via ,(s-prefix "ext:publicatieStatusCode")
                           :inverse t
                           :as "publication-states")
@@ -95,7 +96,8 @@
 (define-resource theme ()
   :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ThemaCode/")
   :features '(include-uri)
   :on-path "themes")

@@ -13,7 +13,8 @@
 (define-resource alert-type ()
   :class (s-prefix "ext:SysteemNotificatieType") ;; NOTE: as well as skos:Concept
   :properties `((:label 			:string 	,(s-prefix "skos:prefLabel"))
-                (:scope-note 	:string 	,(s-prefix "skos:scopeNote")))
+                (:scope-note 	:string 	,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :resource-base (s-url "http://example.com/alert-type/")
   :features '(include-uri)
   :on-path "alert-types")

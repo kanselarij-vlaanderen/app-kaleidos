@@ -75,7 +75,8 @@
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note        :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note        :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document             :via    ,(s-prefix "ext:documentType")
                                     :inverse t
                                     :as "documents")
@@ -121,7 +122,8 @@
 
 (define-resource translation-state-name ()
   :class (s-prefix "besluitvorming:VertalingsaanvraagStatusCode") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
                                  :inverse t
                                  :as "translation-states"))

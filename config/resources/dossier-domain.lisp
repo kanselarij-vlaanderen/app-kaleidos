@@ -25,7 +25,8 @@
 (define-resource case-type ()
   :class (s-prefix "ext:DossierTypeCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((case :via ,(s-prefix "dct:type")
                        :inverse t
                        :as "cases"))
@@ -40,6 +41,7 @@
                 (:title               :string ,(s-prefix "dct:title"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:subcase-name        :string   ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:concluded           :boolean  ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
@@ -51,7 +53,9 @@
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                       :as "requested-for-meeting")
              (confidentiality         :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                      :as "confidentiality"))
+                                      :as "confidentiality")
+             (subcase-type            :via ,(s-prefix "dct:type")
+                                      :as "type"))
   :has-many `((approval               :via      ,(s-prefix "ext:procedurestapGoedkeuring")
                                       :as "approvals")
               (theme                  :via ,(s-prefix "dct:subject")
@@ -81,6 +85,18 @@
   :features '(include-uri)
   :on-path "subcases")
 
+(define-resource subcase-type () ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
+  :class (s-prefix "ext:ProcedurestapType") ;; NOTE: as well as skos:Concept
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-many `((subcase            :via ,(s-prefix "dct:type")
+                                  :inverse t
+                                  :as "subcases"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapType/")
+  :features '(include-uri)
+  :on-path "subcase-types")
+
 (define-resource subcase-phase () ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
   :class (s-prefix "ext:ProcedurestapFase") ;; NOTE: as well as skos:Concept
   :properties `((:remark :string ,(s-prefix "rdfs:comment"))
@@ -101,7 +117,8 @@
 (define-resource subcase-phase-code ()
   :class (s-prefix "ext:ProcedurestapFaseCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((subcase-phase :via ,(s-prefix "ext:procedurestapFaseCode")
                           :inverse t
                           :as "subcase-phases")
@@ -117,7 +134,8 @@
 (define-resource confidentiality ()
   :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note  :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((subcase        :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                               :inverse t
                               :as "subcases")
@@ -162,7 +180,8 @@
 (define-resource consultation-type ()
   :class (s-prefix "besluitvorming:Consultatietype")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((consultation-request :via ,(s-prefix "dct:type")
                           :inverse t
                           :as "requests"))
@@ -190,7 +209,8 @@
 (define-resource consultation-response-code ()
   :class (s-prefix "ext:Consultatie-uitkomstCode")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((consultation-response :via ,(s-prefix "besluitvorming:uitkomst")
                                      :inverse t
                                      :as "consultation-responses"))
