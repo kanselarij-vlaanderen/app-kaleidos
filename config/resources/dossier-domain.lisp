@@ -41,6 +41,7 @@
                 (:title               :string ,(s-prefix "dct:title"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:subcase-name        :string   ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:concluded           :boolean  ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
@@ -53,7 +54,7 @@
                                       :as "requested-for-meeting")
              (confidentiality         :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                                       :as "confidentiality")
-             (subcase-type            :via ,(s-prefix "ext:heeftProcedurestapType")
+             (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type"))
   :has-many `((approval               :via      ,(s-prefix "ext:procedurestapGoedkeuring")
                                       :as "approvals")
@@ -89,7 +90,7 @@
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((subcase            :via ,(s-prefix "ext:heeftProcedurestapType")
+  :has-many `((subcase            :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "subcases"))
   :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapType/")
