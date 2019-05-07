@@ -55,13 +55,13 @@ services:
   resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
-      - database-with-auth:database
+      - database:database
     volumes:
       - ./config/resources:/config
   file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - database-with-auth:database
+      - database:database
     volumes:
       - ./data/files:/share
   session-number-service:
@@ -154,5 +154,8 @@ services:
       NODE_ENV: "development"
     links:
       - database:database
+    ports:
+      - 8889:80
+      - 9229:9229
     volumes:
       - ./data-migration-service:/app

@@ -80,6 +80,36 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp unconfidential_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
+      "http://schema.org/Comment",
+      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
+      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
+      "http://mu.semte.ch/vocabularies/ext/Notule",
+      "http://mu.semte.ch/vocabularies/ext/ThemaCode",
+      "http://mu.semte.ch/vocabularies/ext/Thema",
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
+      "http://xmlns.com/foaf/0.1/OnlineAccount",
+      "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/Group",
+      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
+      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
+      "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode",
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
+      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      "http://www.w3.org/ns/person#Person",
+      "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType"
+    ]
+  end 
+
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
     # alter the quads to which the current query applies.  Quads are
@@ -124,7 +154,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types()
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
             } 
           } 
         ]
@@ -152,7 +182,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types()
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
             }
           },
         ]
@@ -165,7 +195,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() 
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
             } 
           },
         ] 
