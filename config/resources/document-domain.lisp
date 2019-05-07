@@ -39,12 +39,21 @@
             (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                         :inverse t
                                         :as "announcement")
-            (newsletter-info     :via ,(s-prefix "ext:documentenVoorPublicatie")
-                                  :inverse t
-                                  :as "newsletter")
-             (decision            :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                  :inverse t
-                                  :as "decision"))
+            (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
+                                        :inverse t
+                                        :as "newsletter")
+             (decision                  :via ,(s-prefix "ext:documentenVoorBeslissing")
+                                        :inverse t
+                                        :as "decision")
+             (meeting-record            :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+                                        :inverse t
+                                        :as "meeting-record")
+             (decision                  :via ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
+                                        :inverse t
+                                        :as "signed-decision"))
+  :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
+                                        :as "identifiers"
+                                        :inverse t))
   :resource-base (s-url "http://localhost/vo/document-versions/")
   :features `(include-uri)
   :on-path "document-versions")
@@ -52,7 +61,8 @@
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note        :string ,(s-prefix "skos:scopeNote")))
+                (:scope-note        :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document             :via    ,(s-prefix "ext:documentType")
                                     :inverse t
                                     :as "documents")
@@ -98,7 +108,8 @@
 
 (define-resource translation-state-name ()
   :class (s-prefix "besluitvorming:VertalingsaanvraagStatusCode") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:alt-label :string ,(s-prefix "skos:altLabel")))
   :has-many `((translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
                                  :inverse t
                                  :as "translation-states"))

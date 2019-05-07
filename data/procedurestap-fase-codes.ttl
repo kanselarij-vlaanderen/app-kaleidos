@@ -1,0 +1,15 @@
+@prefix step: <http://example.com/step/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+
+step:11a3de2c-f6b6-4efc-a166-8d60646af096 a ext:ProcedurestapFaseCode ;
+    mu:uuid "1b8beb08-1b05-4829-a2df-073647299695" ;
+    skos:prefLabel "Ingediend voor agendering" .
+step:3e6dba4f-5c3c-439a-993e-92348ec73642 a ext:ProcedurestapFaseCode ;
+    mu:uuid "a3cb866f-2565-4325-8bbd-5b9c59d93859" ;
+    skos:prefLabel "Geagendeerd" .
+step:529fb149-925d-4c38-9a58-99be349d05aa a ext:ProcedurestapFaseCode ;
+    mu:uuid "529fb149-925d-4c38-9a58-99be349d05aa" ;
+    skos:prefLabel "In behandeling" .

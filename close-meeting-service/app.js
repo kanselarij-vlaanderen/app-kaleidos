@@ -25,16 +25,24 @@ const handleCloseMeetingRequest = async (req, res) => {
 
       const originals = await repository.getRelatedSubCasesOfAgenda(agendaId);
       let { not_decided, decided, meeting } = await seperateSubcasesWhenPostponed(originals);
-
+      let subcases = [];
       const agendaItems = not_decided.map(item => {
+        subcases.push({uri: item.subcase});
         return { uri : item.agendapunt }
       });
 
-      const postponedAgendaItems = await repository.retractAgendaItems(agendaItems);
-      const closed_subcases = await repository.concludeSubCases(not_decided);
+      const newAgendaitems = Object.values(agendaItems.reduce((items, item) => {
+        items[item.uri] = items[item.uri] || {uri : item.uri};
+        return items;
+      }, {}));
 
-      await repository.finaliseMeeting(meeting);
+      const newSubcases = Object.values(subcases.reduce((items, item) => {
+        items[item.uri] = items[item.uri] || { uri : item.uri };
+        return items;
+      }, {}));
 
+      await repository.retractAgendaItems(newAgendaitems);
+      await repository.concludeSubCases(newSubcases);
       const updated_subcases = await repository.getRelatedSubCasesOfAgenda(agendaId);
       res.send({ status: ok, statusCode: 200, body: { originals, updated_subcases } });
     }catch(error) {
@@ -45,7 +53,9 @@ const handleCloseMeetingRequest = async (req, res) => {
 
 const seperateSubcasesWhenPostponed = async (subcases) => {
   const meeting = subcases[0].meeting;
+
   const not_decided = subcases.filter(item => !item.decision);
+
   const decided = subcases.filter(item => item.decision);
   return { meeting, not_decided, decided };
 }
