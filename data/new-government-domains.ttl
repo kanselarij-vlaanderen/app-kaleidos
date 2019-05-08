@@ -1,0 +1,165 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix beleidsveld: <http://data.kanselarij.vlaanderen.be/beleidsveld/id/> .
+@prefix kans: <http://data.kanselarij.vlaanderen.be/core/> .
+
+beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 a kans:Beleidsveld ;
+skos:prefLabel "Budgettair beleid" ;
+mu:uuid "80106fa7-3f9d-4313-b3e1-040bf0e07410" .
+beleidsveld:da9202a5-c504-4f2c-8865-055cf472b3e4 a kans:Beleidsveld ;
+skos:prefLabel "Fiscaliteit" ;
+mu:uuid "da9202a5-c504-4f2c-8865-055cf472b3e4" .
+beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3 a kans:Beleidsveld ;
+skos:prefLabel "Financiële operaties" ;
+mu:uuid "10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3" .
+beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e a kans:Beleidsveld ;
+skos:prefLabel "Boekhouding " ;
+mu:uuid "998b165e-3c6d-4722-bd1f-af3de421628e" .
+beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555 a kans:Beleidsveld ;
+skos:prefLabel "Ondersteuning Vlaamse Regering " ;
+mu:uuid "01f64f4e-d435-4f98-8260-7e1843bf1555" .
+beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6 a kans:Beleidsveld ;
+skos:prefLabel "Gelijke Kansen en Integratie en Inburgering" ;
+mu:uuid "ff815ebf-7a96-42be-90fc-88824854e6a6" .
+beleidsveld:624264fe-0e06-48c1-9e97-eeb4089f5971 a kans:Beleidsveld ;
+skos:prefLabel "Brussel" ;
+mu:uuid "624264fe-0e06-48c1-9e97-eeb4089f5971" .
+beleidsveld:0f693798-541d-49ee-b705-4643661402a2 a kans:Beleidsveld ;
+skos:prefLabel "Vlaamse Rand" ;
+mu:uuid "0f693798-541d-49ee-b705-4643661402a2" .
+beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 a kans:Beleidsveld ;
+skos:prefLabel "Binnenlands Bestuur en Stedenbeleid" ;
+mu:uuid "82883c33-57c8-4e67-9669-53ef7f960b51" .
+beleidsveld:32c9b7d9-6fe5-4e68-bd4f-0f895fadeb4c a kans:Beleidsveld ;
+skos:prefLabel "Rampenschade" ;
+mu:uuid "32c9b7d9-6fe5-4e68-bd4f-0f895fadeb4c" .
+beleidsveld:1a2aa428-d8c4-4fa1-aa1e-1c3851c382b2 a kans:Beleidsveld ;
+skos:prefLabel "Digitalisering" ;
+mu:uuid "1a2aa428-d8c4-4fa1-aa1e-1c3851c382b2" .
+beleidsveld:4d73b772-ccfa-4bd8-bd45-6722b1972a1a a kans:Beleidsveld ;
+skos:prefLabel "Bestuursrechtspraak" ;
+mu:uuid "4d73b772-ccfa-4bd8-bd45-6722b1972a1a" .
+beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 a kans:Beleidsveld ;
+skos:prefLabel "Interne dienstverlening Vlaamse overheid" ;
+mu:uuid "59e231ce-97d2-4576-a152-c2807eefa5b6" .
+beleidsveld:9bae7bf3-3851-4447-b457-5af1b0c82925 a kans:Beleidsveld ;
+skos:prefLabel "Werk" ;
+mu:uuid "9bae7bf3-3851-4447-b457-5af1b0c82925" .
+beleidsveld:c08ccb06-460f-4bb7-87d5-714a94c5186b a kans:Beleidsveld ;
+skos:prefLabel "Competenties" ;
+mu:uuid "c08ccb06-460f-4bb7-87d5-714a94c5186b" .
+beleidsveld:5de93340-ce1a-4886-8425-6c80bbe0351b a kans:Beleidsveld ;
+skos:prefLabel "Sociale economie" ;
+mu:uuid "5de93340-ce1a-4886-8425-6c80bbe0351b" .
+beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c a kans:Beleidsveld ;
+skos:prefLabel "Economie" ;
+mu:uuid "581845a0-0a25-4e43-89d6-7863572aeb6c" .
+beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 a kans:Beleidsveld ;
+skos:prefLabel "Wetenschappelijk onderzoek" ;
+mu:uuid "5a9c8b50-1d07-4bcb-9dd8-f1d041437a46" .
+beleidsveld:890bcc01-a3f2-40de-954b-92ea3d958784 a kans:Beleidsveld ;
+skos:prefLabel "Innovatie" ;
+mu:uuid "890bcc01-a3f2-40de-954b-92ea3d958784" .
+beleidsveld:106408c9-ec8e-42cf-9e8e-6a8e7ef537b1 a kans:Beleidsveld ;
+skos:prefLabel "Wetenschapscommunicatie" ;
+mu:uuid "106408c9-ec8e-42cf-9e8e-6a8e7ef537b1" .
+beleidsveld:e4dab90c-bb3a-47c5-abfc-802ddb55480d a kans:Beleidsveld ;
+skos:prefLabel "Landbouw en zeevisserij" ;
+mu:uuid "e4dab90c-bb3a-47c5-abfc-802ddb55480d" .
+beleidsveld:bc15da36-a7a3-46eb-9af6-d6a8a12b0ad1 a kans:Beleidsveld ;
+skos:prefLabel "Landbouw- en zeevisserijonderzoek" ;
+mu:uuid "bc15da36-a7a3-46eb-9af6-d6a8a12b0ad1" .
+beleidsveld:13842fbc-441c-46ca-a58d-f78a64eb8a93 a kans:Beleidsveld ;
+skos:prefLabel "Promotie landbouw, tuinbouw en zeevisserij" ;
+mu:uuid "13842fbc-441c-46ca-a58d-f78a64eb8a93" .
+beleidsveld:c48135d7-f235-460a-af3b-deb3954e6a32 a kans:Beleidsveld ;
+skos:prefLabel "Onroerend erfgoed" ;
+mu:uuid "c48135d7-f235-460a-af3b-deb3954e6a32" .
+beleidsveld:d1b93810-6066-4b0e-ad31-130c7ae838ac a kans:Beleidsveld ;
+skos:prefLabel "Omgeving en natuur" ;
+mu:uuid "d1b93810-6066-4b0e-ad31-130c7ae838ac" .
+beleidsveld:d185e71b-2a6f-49e5-b710-3d9f58ddf11b a kans:Beleidsveld ;
+skos:prefLabel "Klimaat" ;
+mu:uuid "d185e71b-2a6f-49e5-b710-3d9f58ddf11b" .
+beleidsveld:ea4c45da-a07d-49c9-92ab-16d0a0d4e37e a kans:Beleidsveld ;
+skos:prefLabel "Energie" ;
+mu:uuid "ea4c45da-a07d-49c9-92ab-16d0a0d4e37e" .
+beleidsveld:43b8de2e-61f9-4cf8-a018-9f3cc27f4103 a kans:Beleidsveld ;
+skos:prefLabel "Dierenwelzijn" ;
+mu:uuid "43b8de2e-61f9-4cf8-a018-9f3cc27f4103" .
+beleidsveld:2b0103aa-a3e8-4718-80f8-8de405966c57 a kans:Beleidsveld ;
+skos:prefLabel "Woonbeleid" ;
+mu:uuid "2b0103aa-a3e8-4718-80f8-8de405966c57" .
+beleidsveld:82208ea2-8371-4ed1-906f-5ae4c101caee a kans:Beleidsveld ;
+skos:prefLabel "Welzijnszorg" ;
+mu:uuid "82208ea2-8371-4ed1-906f-5ae4c101caee" .
+beleidsveld:d83bfbfd-5821-4cf3-85cc-c7201f9343a6 a kans:Beleidsveld ;
+skos:prefLabel "Gezondheids- en ouderenzorg" ;
+mu:uuid "d83bfbfd-5821-4cf3-85cc-c7201f9343a6" .
+beleidsveld:08249005-75e6-4791-ac7f-dbbb3a4d79c4 a kans:Beleidsveld ;
+skos:prefLabel "Jongeren" ;
+mu:uuid "08249005-75e6-4791-ac7f-dbbb3a4d79c4" .
+beleidsveld:bb23f5b3-8f56-4ebb-9201-bd085256f00a a kans:Beleidsveld ;
+skos:prefLabel "Kinderen" ;
+mu:uuid "bb23f5b3-8f56-4ebb-9201-bd085256f00a" .
+beleidsveld:72b6fc10-b729-40f3-9c03-9f7d55e076a7 a kans:Beleidsveld ;
+skos:prefLabel "Personen met een beperking" ;
+mu:uuid "72b6fc10-b729-40f3-9c03-9f7d55e076a7" .
+beleidsveld:4cd5d9d1-099b-437e-be1a-99c069469fcb a kans:Beleidsveld ;
+skos:prefLabel "Sociale bescherming" ;
+mu:uuid "4cd5d9d1-099b-437e-be1a-99c069469fcb" .
+beleidsveld:2731fdbe-592b-414c-8675-22a7b9d7b3bc a kans:Beleidsveld ;
+skos:prefLabel "Zorginfrastructuur" ;
+mu:uuid "2731fdbe-592b-414c-8675-22a7b9d7b3bc" .
+beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 a kans:Beleidsveld ;
+skos:prefLabel "Buitenlands beleid" ;
+mu:uuid "0db685d1-811f-49f9-a6fe-348aab08bba4" .
+beleidsveld:52e877e2-d342-4b0c-9835-74368a296d6c a kans:Beleidsveld ;
+skos:prefLabel "Ontwikkelingssamenwerking" ;
+mu:uuid "52e877e2-d342-4b0c-9835-74368a296d6c" .
+beleidsveld:35d0740c-2754-4ca3-a334-936401383bcf a kans:Beleidsveld ;
+skos:prefLabel "Toerisme" ;
+mu:uuid "35d0740c-2754-4ca3-a334-936401383bcf" .
+beleidsveld:e4d93deb-7e21-4838-b83d-da6b8c562723 a kans:Beleidsveld ;
+skos:prefLabel "Internationaal ondernemen" ;
+mu:uuid "e4d93deb-7e21-4838-b83d-da6b8c562723" .
+beleidsveld:fc405ce9-5535-440d-a121-5deacab67d28 a kans:Beleidsveld ;
+skos:prefLabel "Cultuur" ;
+mu:uuid "fc405ce9-5535-440d-a121-5deacab67d28" .
+beleidsveld:19c1626d-1172-48f9-81d7-368015eb3489 a kans:Beleidsveld ;
+skos:prefLabel "Jeugd" ;
+mu:uuid "19c1626d-1172-48f9-81d7-368015eb3489" .
+beleidsveld:4fbef468-55dd-4191-96bd-e0ac9e28aa91 a kans:Beleidsveld ;
+skos:prefLabel "Media" ;
+mu:uuid "4fbef468-55dd-4191-96bd-e0ac9e28aa91" .
+beleidsveld:114e5c23-e495-41b7-995c-bc390b5234a0 a kans:Beleidsveld ;
+skos:prefLabel "Sport" ;
+mu:uuid "114e5c23-e495-41b7-995c-bc390b5234a0" .
+beleidsveld:d5193292-bdc1-4c7d-ba0a-661219108801 a kans:Beleidsveld ;
+skos:prefLabel "Regionale luchthavens" ;
+mu:uuid "d5193292-bdc1-4c7d-ba0a-661219108801" .
+beleidsveld:8f23ea03-637f-4d4b-8135-7281a6358ab1 a kans:Beleidsveld ;
+skos:prefLabel "Gemeenschappelijk vervoer" ;
+mu:uuid "8f23ea03-637f-4d4b-8135-7281a6358ab1" .
+beleidsveld:b5eb0138-b286-473e-8f06-5647db7ac120 a kans:Beleidsveld ;
+skos:prefLabel "Verkeersbeleid" ;
+mu:uuid "b5eb0138-b286-473e-8f06-5647db7ac120" .
+beleidsveld:a84f868d-de05-4a62-b7eb-fc676479a6d2 a kans:Beleidsveld ;
+skos:prefLabel "Weginfrastructuur en wegverkeer" ;
+mu:uuid "a84f868d-de05-4a62-b7eb-fc676479a6d2" .
+beleidsveld:3ada201d-68dd-41a3-b0da-5a8ef27de879 a kans:Beleidsveld ;
+skos:prefLabel "Waterinfrastructuur en zeewezen" ;
+mu:uuid "3ada201d-68dd-41a3-b0da-5a8ef27de879" .
+beleidsveld:eddfc369-3b67-45a1-b0a2-d527a03c1ce1 a kans:Beleidsveld ;
+skos:prefLabel "Kleuter en leerplichtonderwijs" ;
+mu:uuid "eddfc369-3b67-45a1-b0a2-d527a03c1ce1" .
+beleidsveld:b2cdd186-bced-41af-9533-7e234996f16e a kans:Beleidsveld ;
+skos:prefLabel "Hoger onderwijs" ;
+mu:uuid "b2cdd186-bced-41af-9533-7e234996f16e" .
+beleidsveld:cd9b9d89-5757-448d-a887-10acfc67adfb a kans:Beleidsveld ;
+skos:prefLabel "Deeltijds kunstonderwijs en volwassenenonderwijs" ;
+mu:uuid "cd9b9d89-5757-448d-a887-10acfc67adfb" .
+beleidsveld:148a2622-b159-4bf7-b6f2-0ec8a5ce2194 a kans:Beleidsveld ;
+skos:prefLabel "Ondersteuning van het onderwijsveld" ;
+mu:uuid "148a2622-b159-4bf7-b6f2-0ec8a5ce2194" .

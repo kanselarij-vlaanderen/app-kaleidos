@@ -69,8 +69,6 @@
                                       :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (government-domain      :via      ,(s-prefix "mandaat:agendapuntBeleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
-                                      :as "government-domains")
               (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")

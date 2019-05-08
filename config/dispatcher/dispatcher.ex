@@ -132,6 +132,9 @@ defmodule Dispatcher do
   match "/government-domains/*path" do
     Proxy.forward conn, path, "http://resource/government-domains/"
   end
+  match "/ise-codes/*path" do
+    Proxy.forward conn, path, "http://resource/ise-codes/"
+  end
   match "/responsibilities/*path" do
     Proxy.forward conn, path, "http://resource/responsibilities/"
   end
