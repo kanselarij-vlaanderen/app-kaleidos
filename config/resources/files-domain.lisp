@@ -2,7 +2,7 @@
   :class (s-prefix "ext:DocumentStatus")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.lblod.info/document-statuses/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-statuses/")
   :features `(no-pagination-defaults include-uri)
   :on-path "document-states")
 
@@ -19,13 +19,6 @@
              (agenda        :via ,(s-prefix "ext:getekendeNotule")
                             :inverse t
                             :as "agenda"))
-  :resource-base (s-url "http://data.lblod.info/files/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/files/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")
-
-(define-resource file-address ()
-  :class (s-prefix "ext:FileAddress")
-  :properties `((:address :url ,(s-prefix "ext:fileAddress")))
-  :resource-base (s-url "http://data.lblod.info/file-addresses/")
-  :features `(no-pagination-defaults include-uri)
-  :on-path "file-addresses")

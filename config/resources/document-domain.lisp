@@ -14,7 +14,7 @@
                                   :as "type")
              (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                                   :as "confidentiality"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Document/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/documenten/")
   :features '(include-uri)
   :on-path "documents")
 
@@ -53,7 +53,7 @@
   :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
                                         :as "identifiers"
                                         :inverse t))
-  :resource-base (s-url "http://localhost/vo/document-versions/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")
 
@@ -85,7 +85,7 @@
                                     :as "subtypes"))
   :has-one `((document-type         :via    ,(s-prefix "skos:broader")
                                     :as "supertype"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/DocumentTypeCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-type-codes/")
   :features '(include-uri)
   :on-path "document-types")
 
@@ -101,7 +101,7 @@
                                   :as "states")
               (remark :via ,(s-prefix "besluitvorming:opmerking")
                       :as "remarks")) ;; NOTE: opmerkingEN would be more suitable?
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Vertalingsaanvraag/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/vertalingsaanvragen/")
   :features '(include-uri)
   :on-path "translation-requests")
 
@@ -116,7 +116,7 @@
              (translation-state-name :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
                                      :inverse t
                                      :as "value"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/VertalingsaanvraagStatus/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/vertalingsaanvraag-statussen/")
   :features '(include-uri)
   :on-path "translation-states")
 
@@ -127,6 +127,6 @@
   :has-many `((translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
                                  :inverse t
                                  :as "translation-states"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/VertalingsaanvraagStatusCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/vertalingsaanvraag-status-codes/")
   :features '(include-uri)
   :on-path "translation-state-code")

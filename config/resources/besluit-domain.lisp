@@ -21,7 +21,7 @@
                           :as "agendaitems")
              (announcement :via ,(s-prefix "ext:mededeling")
                            :as "announcements"))
-  :resource-base (s-url "http://data.lblod.info/id/agendas/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
 
@@ -75,7 +75,7 @@
                                       :as "document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
                                       :as "phases"))
-  :resource-base (s-url "http://data.lblod.info/id/agendapunten/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
   :features '(include-uri)
   :on-path "agendaitems")
 
@@ -94,12 +94,12 @@
              (agendaitem    :via ,(s-prefix "ext:agendapuntGoedkeuring")
                             :inverse t
                             :as "agendaitem"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Goedkeuringen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/goedkeuringen/")
   :on-path "approvals")
 
 
   (define-resource announcement ()
-  :class (s-prefix "vobesluit:Mededeling")
+  :class (s-prefix "besluitvorming:Mededeling")
   :properties `((:title :string ,(s-prefix "ext:title"))
                 (:text :string ,(s-prefix "ext:text"))
                 (:created :date ,(s-prefix "ext:created"))
@@ -109,7 +109,7 @@
                      :as "agenda"))
   :has-many `((document-version :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                  :as "document-versions"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Mededeling/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/mededelingen/")
   :on-path "announcements")
 
 
@@ -122,7 +122,7 @@
              (agendaitem :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
                          :inverse t
                          :as "agendaitem"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Verdaagd/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/verdaagden/")
   :features '(include-uri)
   :on-path "postponeds")
 
@@ -159,7 +159,7 @@
                                 :as "type")
              (confidentiality   :via        ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
                                 :as "confidentiality"))
-  :resource-base (s-url "http://data.lblod.info/id/besluiten/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
   :features '(include-uri)
   :on-path "decisions")
 
@@ -179,7 +179,7 @@
               (government-body :via ,(s-prefix "besluit:bestuurt")
                                :inverse t
                                :as "government-bodies"))
-  :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "government-units")
 
@@ -191,7 +191,7 @@
   :has-many `((government-unit :via ,(s-prefix "besluit:werkingsgebied")
                                :inverse t
                                :as "government-units"))
-  :resource-base (s-url "http://data.lblod.info/id/werkingsgebieden/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/werkingsgebieden/")
   :features '(include-uri)
   :on-path "jurisdiction-areas")
 
@@ -201,7 +201,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuurseenheid-classificatie-codes/")
   :features '(include-uri)
   :on-path "government-unit-classification-codes")
 
@@ -221,7 +221,7 @@
                                     :as "has-terms")
               (mandate :via ,(s-prefix "org:hasPost")
                        :as "bevat"))
-  :resource-base (s-url "http://data.lblod.info/id/bestuursorganen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuursorganen/")
   :features '(include-uri)
   :on-path "government-body")
 
@@ -231,7 +231,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuursorgaan-classificatie-codes/")
   :features '(include-uri)
   :on-path "government-body-classification-codes")
 
@@ -260,7 +260,7 @@
                                         :as "notes")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter"))
-  :resource-base (s-url "http://data.lblod.info/id/zittingen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")
 
@@ -281,6 +281,6 @@
                                 :as "attendees")
               (document-version :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                 :as "signed-document-versions"))
-  :resource-base (s-url "http://data.lblod.info/id/notulen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/notulen/")
   :features '(include-uri)
   :on-path "meeting-records")

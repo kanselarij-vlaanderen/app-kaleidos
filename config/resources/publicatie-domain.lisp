@@ -20,7 +20,7 @@
               (decision :via ,(s-prefix "besluitvorming:isGerealiseerdDoor")
                         :inverse t
                         :as "decisions"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Publicatie/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicaties/")
   :features '(include-uri)
   :on-path "publications")
   
@@ -34,7 +34,7 @@
                                     :as "state"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks")) ;; NOTE: opmerkingEN would be more suitable?
-  :resource-base (s-url "http://data.vlaanderen.be/id/PublicatieStatus/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-statussen/")
   :features '(include-uri)
   :on-path "publication-states")
 
@@ -51,7 +51,7 @@
                                       :as "substates"))
   :has-one `((publication-state-code :via ,(s-prefix "skos:broader")
                                      :as "superstate"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/PublicatieStatusCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-status-codes/")
   :features '(include-uri)
   :on-path "publication-state-codes")
 
@@ -66,13 +66,14 @@
                          :as "agendaitem"))
   :has-many `((remark    :via ,(s-prefix "ext:antwoorden")
                          :as "answers"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Opmerking/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
   :features '(include-uri)
   :on-path "remarks")
 
 (define-resource newsletter-info ()
   :class (s-prefix "besluitvorming:NieuwsbriefInfo") 
   :properties `((:text :string ,(s-prefix "besluitvorming:inhoud"))
+                (:richtext :string ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date :datetime ,(s-prefix "dct:issued"))
                 (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
@@ -89,7 +90,7 @@
                      :as "themes")
               (document-version :via ,(s-prefix "ext:documentenVoorPublicatie")
                      :as "document-versions"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Publicatie/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
   :features '(include-uri)
   :on-path "newsletter-infos")
 
@@ -98,6 +99,6 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ThemaCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
   :features '(include-uri)
   :on-path "themes")

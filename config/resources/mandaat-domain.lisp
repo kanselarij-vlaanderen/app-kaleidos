@@ -1,7 +1,7 @@
 (define-resource birth ()
   :class (s-prefix "persoon:Geboorte")
   :properties `((:date :date ,(s-prefix "persoon:datum")))
-  :resource-base (s-url "http://data.lblod.info/id/geboortes/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/geboortes/")
   :features '(include-uri)
   :on-path "geboortes")
 
@@ -13,7 +13,7 @@
              (government-body :via ,(s-prefix "org:hasPost")
                                    :inverse t
                                    :as "bevat-in"))
-  :resource-base (s-url "http://data.lblod.info/id/mandaten/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/mandaten/")
   :features '(include-uri)
   :on-path "mandates")
 
@@ -23,7 +23,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuursfunctie-codes/")
   :features '(include-uri)
   :on-path "government-functions")
 
@@ -62,7 +62,7 @@
                                   :as "person")
              (mandatee-state      :via ,(s-prefix "mandaat:status")
                                   :as "state"))
-  :resource-base (s-url "http://data.lblod.info/id/mandatarissen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/mandatarissen/")
   :features '(include-uri)
   :on-path "mandatees")
 
@@ -71,7 +71,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mandataris-status-codes/")
   :features '(include-uri)
   :on-path "madatee-states")
 
@@ -86,7 +86,7 @@
               (agendaitem     :via ,(s-prefix "mandaat:agendapuntBeleidsdomein")
                               :inverse t
                               :as "agendaitems"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/BeleidsdomeinCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsdomein-codes/")
   :features '(include-uri)
   :on-path "government-domains")
 
@@ -98,7 +98,7 @@
   :has-many `((mandatee :via ,(s-prefix "ext:bevoegdheid")
                         :inverse t
                         :as "mandatees"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/BevoegdheidCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bevoegdheid-codes/")
   :features '(include-uri)
   :on-path "responsibilities")
 
@@ -116,7 +116,7 @@
              ;;         :as "gender")
              ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
              ;;      :as "birth")
-  :resource-base (s-url "http://data.lblod.info/id/personen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/")
   :features '(include-uri)
   :on-path "people")
 
@@ -125,7 +125,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/GeslachtCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/geslacht-codes/")
   :features '(include-uri)
   :on-path "genders")
 
@@ -135,6 +135,6 @@
   :has-one `((person :via ,(s-prefix "ext:identifier")
                      :inverse t
                      :as "personId"))
-  :resource-base (s-url "http://data.lblod.info/id/identificatoren/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/identificatoren/")
   :features '(include-uri)
   :on-path "identifications")

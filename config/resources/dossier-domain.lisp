@@ -18,7 +18,7 @@
                                 :as "subcases")
               (case             :via      ,(s-prefix "dct:relation")
                                 :as "related"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Dossier/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
   :on-path "cases")
 
@@ -30,7 +30,7 @@
   :has-many `((case :via ,(s-prefix "dct:type")
                        :inverse t
                        :as "cases"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/DossierTypeCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/dossier-type-codes/")
   :features '(include-uri)
   :on-path "case-types")
 
@@ -81,7 +81,7 @@
                                       :as "phases")
               (remark                 :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "remarks"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")
 
@@ -93,7 +93,7 @@
   :has-many `((subcase            :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapType/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/procedurestap-type/")
   :features '(include-uri)
   :on-path "subcase-types")
 
@@ -110,7 +110,7 @@
                                   :as "agendaitem")
              (subcase-phase-code  :via ,(s-prefix "ext:procedurestapFaseCode")
                                   :as "code"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFase/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestap-fases/")
   :features '(include-uri)
   :on-path "subcase-phases")
 
@@ -127,7 +127,7 @@
                                         :as "subphase-codes"))
   :has-one `((subcase-phase-code :via ,(s-prefix "skos:broader")
                                       :as "superphase"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ProcedurestapFaseCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/procedurestap-fase-codes/")
   :features '(include-uri)
   :on-path "subcase-phase-codes")
 
@@ -145,14 +145,14 @@
               (agendaitem      :via ,(s-prefix "besluitvorming:vertrouwelijkheidAgendapunt")
                               :inverse t
                               :as "agendaitems"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/vertrouwelijkheid-codes/")
   :features '(include-uri)
   :on-path "confidentialities")
 
 (define-resource person-or-organization ()
   :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
   :properties `((:type :string ,(s-prefix "rdfs:type")))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/VertrouwelijkheidCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
   :features '(include-uri)
   :on-path "person-or-organization")
 
@@ -173,7 +173,7 @@
                                     :as "response"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                       :as "remarks"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Consultatievraag/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatievragen/")
   :features '(include-uri)
   :on-path "consultation-requests")
 
@@ -185,7 +185,7 @@
   :has-many `((consultation-request :via ,(s-prefix "dct:type")
                           :inverse t
                           :as "requests"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/ConsultatieTypeCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/consultatie-type-codes/")
   :features '(include-uri)
   :on-path "consultation-types")
 
@@ -202,7 +202,7 @@
                       :as "remarks")
               (document :via ,(s-prefix "dct:hasPart")
                         :as "documents"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Consultatievraag/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatievragen/")
   :features '(include-uri)
   :on-path "consultation-responses")
 
@@ -214,7 +214,7 @@
   :has-many `((consultation-response :via ,(s-prefix "besluitvorming:uitkomst")
                                      :inverse t
                                      :as "consultation-responses"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Consultatie-uitkomstCode/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/consultatie-uitkomst-codes/")
   :features '(include-uri)
   :on-path "consultation-response-codes")
 
