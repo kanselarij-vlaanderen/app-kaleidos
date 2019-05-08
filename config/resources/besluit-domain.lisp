@@ -1,7 +1,7 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued      :datetime ,(s-prefix "dct:issued"))
-                (:is-final    :boolean ,(s-prefix "besluitvorming:finaleVersie"))
+                (:is-final    :boolean ,(s-prefix "ext:finaleVersie"))
                 (:name        :string  ,(s-prefix "ext:agendaNaam"))
                 (:created     :date    ,(s-prefix "ext:aangemaaktOp"))
                 (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
@@ -241,7 +241,7 @@
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number                :number   ,(s-prefix "adms:identifier"))
-                (:is-final              :boolean ,(s-prefix "besluitvorming:finaleZittingVersie"))
+                (:is-final              :boolean ,(s-prefix "ext:finaleZittingVersie"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
