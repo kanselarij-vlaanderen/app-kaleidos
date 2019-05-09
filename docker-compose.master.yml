@@ -110,6 +110,14 @@ services:
       - db:database
     volumes:
       - ./minister-jurisdiction-service:/app
+  mail-chimp-service:
+    image: semtech/mu-javascript-template
+    environment:
+      MAILCHIMP_API: ${MAILCHIMP_API}
+    links:
+      - database:database
+    volumes:
+      - ./mail-chimp-service:/app
 
 
 

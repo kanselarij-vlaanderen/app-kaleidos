@@ -237,8 +237,14 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://close-meeting-service/"
   end
 
+<<<<<<< HEAD
   match "/migrate/*path" do
     Proxy.forward conn, path, "http://data-migration-service/"
+=======
+
+  match "/send-newsletter/*path" do
+    Proxy.forward conn, path, "http://mail-chimp-service/"
+>>>>>>> 181-mailchimp-service
   end
 
   match _ do

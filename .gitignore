@@ -35,3 +35,4 @@ properties-to-add
 /minister-jurisdiction-service/venv
 /minister-jurisdiction-service/__pycache__/*
 
+.env
