@@ -21,7 +21,7 @@ node {
   echo "${MAILCHIMP_API}"
 
   withCredentials([string(credentialsId: 'MAILCHIMP_API', variable: 'SECRET')]) {
-    MAILCHIMP_API ='$SECRET'
+    MAILCHIMP_API = '${SECRET}'
   }
 
   echo "${MAILCHIMP_API}"
