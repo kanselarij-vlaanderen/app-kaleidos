@@ -11,16 +11,6 @@ node {
   currentBuild.result = 'SUCCESS'
   boolean skipBuild = false
 
-  def MAILCHIMP_API = ''
-
-  withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
-    sh 'echo $MAILCHIMP_API'
-    MAILCHIMP_API = sh 'echo $MAILCHIMP_API'
-
-  }
-
-  echo "${MAILCHIMP_API}"
-
   stage('Initialize'){
     def dockerHome = tool 'myDocker'
   }
@@ -44,11 +34,11 @@ node {
     }
 
     stage('Image Build'){
-      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH, branch, MAILCHIMP_API)
+      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH, branch)
     }
 
     stage('Run App'){
-      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH, branch, MAILCHIMP_API)
+      runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH, branch)
     }
   } catch (err) {
     currentBuild.result = 'FAILED'
@@ -64,13 +54,18 @@ def imagePrune(DRC_PATH, branch){
     } catch(error){}
 }
 
-def imageBuild(containerName, tag, DRC_PATH, branch, MAILCHIMP_API){
-    sh "MAILCHIMP_API=${MAILCHIMP_API} docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} build"
+def imageBuild(containerName, tag, DRC_PATH, branch){
+    withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
+      sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} build"
+    }
     echo "Image build complete"
 }
 
-def runApp(containerName, tag, httpPort, DRC_PATH, branch, MAILCHIMP_API){
-    sh "MAILCHIMP_API=${MAILCHIMP_API} docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} up -d --force-recreate"
+def runApp(containerName, tag, httpPort, DRC_PATH, branch){
+  withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
+    sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} up -d --force-recreate"
+  }
+
     echo "Application started on port: ${httpPort} (http)"
 }
 
