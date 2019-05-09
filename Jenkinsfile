@@ -11,7 +11,8 @@ node {
   currentBuild.result = 'SUCCESS'
   boolean skipBuild = false
 
-  def MAILCHIMP_API = "${env.MAILCHIMP_API}"
+  def MAILCHIMP_API = env
+  echo "${MAILCHIMP_API}"
 
   stage('Initialize'){
     def dockerHome = tool 'myDocker'
