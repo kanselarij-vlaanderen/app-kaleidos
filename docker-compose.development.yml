@@ -115,7 +115,7 @@ services:
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
     links:
-      - database:database
+      - development-database:database
     volumes:
       - ./mail-chimp-service:/app
 
