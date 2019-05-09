@@ -20,7 +20,7 @@ node {
   def MAILCHIMP_API = "";
   echo "${MAILCHIMP_API}"
 
-  withCredentials([string(credentialsId: '${MAILCHIMP_API}', variable: 'SECRET')]) {
+  withCredentials([string(credentialsId: 'MAILCHIMP_API', variable: 'SECRET')]) {
     MAILCHIMP_API ='$SECRET'
   }
 
