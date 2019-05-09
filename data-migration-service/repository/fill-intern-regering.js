@@ -3,8 +3,7 @@ import moment from 'moment';
 import { removeInfoNotInTemp, addRelatedFiles, cleanup, fillOutDetailsOnVisibleItems, addAllRelatedDocuments, addAllRelatedToAgenda, addRelatedToAgendaItemAndSubcase } from './helpers';
 
 const tempGraph = `http://mu.semte.ch/temp/${mu.uuid()}`;
-//const adminGraph = `http://mu.semte.ch/graphs/organizations/kanselarij`;
-const adminGraph = `http://mu.semte.ch/application`;
+const adminGraph = `http://mu.semte.ch/graphs/organizations/kanselarij`;
 const targetGraph = `http://mu.semte.ch/graphs/organizations/kabinetten`;
 
 const addVisibleAgendas = () => {

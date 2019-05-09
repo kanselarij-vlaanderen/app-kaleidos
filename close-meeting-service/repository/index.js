@@ -1,4 +1,5 @@
 import mu from 'mu';
+const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 const getRelatedSubCasesOfAgenda = async (agendaId) => {
 
@@ -10,7 +11,7 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         
     SELECT ?agendaitem ?subcase ?decision ?retracted ?postponed ?archived ?concluded WHERE {
-       GRAPH <http://mu.semte.ch/application> {
+       GRAPH <${targetGraph}> {
            <http://data.lblod.info/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
             ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
             OPTIONAL { ?subcase ext:isProcedurestapGearchiveerd ?archived . }
@@ -51,7 +52,7 @@ const concludeSubCases = async (subcases) => {
       };
     
       INSERT DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
+        GRAPH <${targetGraph}> { 
           ${newPriorities}
         } 
       }`;
@@ -80,7 +81,7 @@ const retractAgendaItems = async (items) => {
       };
     
       INSERT DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
+        GRAPH <${targetGraph}> { 
           ${newPriorities}
         } 
       }`;
@@ -116,7 +117,7 @@ const finaliseMeeting = (meeting) => {
       };
     
       INSERT DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
+        GRAPH <${targetGraph}> { 
           <${meeting}> besluitvorming:finaleZittingVersie "true"^^xsd:boolean .
         } 
       }`;

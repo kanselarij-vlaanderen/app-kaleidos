@@ -1,4 +1,5 @@
 import mu from 'mu';
+const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 const getPostponedSubcases = async () => {
 
@@ -15,7 +16,7 @@ const getPostponedSubcases = async () => {
       
       SELECT ?id  
         WHERE { 
-          GRAPH <http://mu.semte.ch/application>
+          GRAPH <${targetGraph}>
           {
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt ;
              mu:uuid ?id ;

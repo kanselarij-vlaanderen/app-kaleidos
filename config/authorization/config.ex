@@ -149,7 +149,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read],
-        access: named_graph_access_by_role( "user", "user" ),
+        access: named_graph_access_by_role( "users", "users" ),
         graphs: [ 
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
@@ -195,7 +195,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+              resource_types: all_resource_types()
             } 
           },
         ] 

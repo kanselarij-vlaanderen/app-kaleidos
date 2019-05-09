@@ -1,4 +1,5 @@
 import mu from 'mu';
+const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 const getAgendaPriorities = async (agendaId) => {
 
@@ -15,7 +16,7 @@ const getAgendaPriorities = async (agendaId) => {
       
       SELECT ?uuid ?agendapunt MIN(?priority) AS ?priority COUNT(DISTINCT(?mandatee)) AS ?mandateeCount
         WHERE { 
-          GRAPH <http://mu.semte.ch/application>
+          GRAPH <${targetGraph}>
           {
             ?agenda dct:hasPart ?agendapunt .
             ?agenda mu:uuid "${agendaId}" .
@@ -59,7 +60,7 @@ const updateAgendaItemPriority = async (items) => {
       };
     
       INSERT DATA { 
-        GRAPH <http://mu.semte.ch/application> { 
+        GRAPH <${targetGraph}> { 
           ${newPriorities}
         } 
       }`;

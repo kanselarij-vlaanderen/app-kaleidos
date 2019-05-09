@@ -3,9 +3,8 @@ import moment from 'moment';
 import { removeInfoNotInTemp, notConfidentialFilter, addRelatedFiles, cleanup, fillOutDetailsOnVisibleItems, addRelatedToAgendaItemAndSubcase } from './helpers';
 
 const tempGraph = `http://mu.semte.ch/temp/${mu.uuid()}`;
-//const adminGraph = `http://mu.semte.ch/graphs/organizations/kanselarij`;
-const adminGraph = `http://mu.semte.ch/application`;
-const targetGraph = `http://mu.semte.ch/graphs/organizations/user`;
+const adminGraph = `http://mu.semte.ch/graphs/organizations/kanselarij`;
+const targetGraph = `http://mu.semte.ch/graphs/organizations/users`;
 
 const addVisibleAgendas = () => {
   // TODO can reduce the number of agendas examined using delta service

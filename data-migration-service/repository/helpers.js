@@ -36,7 +36,9 @@ const removeInfoNotInTemp = (tempGraph, targetGraph) => {
     }
   } where {
     GRAPH <${targetGraph}> {
-      ?s ?p ?o.
+			?s ?p ?o.
+			?s a ?type.
+
       FILTER NOT EXISTS {
         GRAPH <${tempGraph}> {
           ?s ?p ?o.

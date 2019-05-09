@@ -3,6 +3,7 @@ import mu from 'mu';
 import { ok } from 'assert';
 import cors from 'cors';
 const uuidv4 = require('uuid/v4');
+const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 const app = mu.app;
 const moment = require('moment');
@@ -42,7 +43,7 @@ async function getSubcasePhaseCode() {
 	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 	
 	SELECT ?code WHERE {
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
 					?code a ext:ProcedurestapFaseCode ;
                   skos:prefLabel ?label .
            				FILTER(UCASE(?label) = UCASE("geagendeerd"))  
@@ -65,7 +66,7 @@ async function getSubcasePhasesOfAgenda(newAgendaId, codeURI) {
 	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 	
 	SELECT ?agenda ?agendaitem ?subcase ?phases WHERE {
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
 				?agenda a besluitvorming:Agenda ;
 									mu:uuid "${newAgendaId}" .
 				?agenda   dct:hasPart ?agendaitem .
@@ -126,7 +127,7 @@ async function createNewSubcasesPhase(codeURI, subcaseListOfURIS) {
 	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 		
 	INSERT DATA {
-	 GRAPH <http://mu.semte.ch/application> {
+	 GRAPH <${targetGraph}> {
 					${insertString}
 	 }
 	};
@@ -142,7 +143,7 @@ async function getNewAgendaURI(newAgendaId) {
  	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
  	SELECT ?agenda WHERE {
-  	GRAPH <http://mu.semte.ch/application> {
+  	GRAPH <${targetGraph}> {
    		?agenda a besluitvorming:Agenda ;
    		mu:uuid "${newAgendaId}" .
   	}
@@ -162,13 +163,13 @@ async function copyAgendaItems(oldId, newUri) {
   PREFIX dct: <http://purl.org/dc/terms/>
 
 	INSERT { 
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
     	<${newUri}> dct:hasPart ?newURI .
       ?newURI ext:replacesPrevious ?agendaitem .
     	?newURI mu:uuid ?newUuid
 		}
 	} WHERE { { SELECT * WHERE {
-    GRAPH <http://mu.semte.ch/application> {
+    GRAPH <${targetGraph}> {
   		?agenda a besluitvorming:Agenda ;
 			mu:uuid "${oldId}" .
 			?agenda dct:hasPart ?agendaitem .
@@ -191,7 +192,7 @@ async function copyAgendaItems(oldId, newUri) {
 	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
 	INSERT { 
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
 			?newURI ?p ?o .
 			?s ?p2 ?newURI .
 		}
@@ -221,7 +222,7 @@ async function ensureDocumentsHasSerialnumberForSession(agendaId) {
 	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 		
 	INSERT { 
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
 			?identifier a ext:DocumentIdentifier .
      	?identifier ext:identifiesVersion ?versie .
 			?identifier mu:uuid ?newUUID .
@@ -231,7 +232,7 @@ async function ensureDocumentsHasSerialnumberForSession(agendaId) {
 	  }
 	} where {
 		{ SELECT * WHERE {
-			GRAPH <http://mu.semte.ch/application> {
+			GRAPH <${targetGraph}> {
 				?agenda a besluitvorming:Agenda .
 				?agenda mu:uuid "${agendaId}" .
 			  ?agenda besluit:isAangemaaktVoor ?session .
@@ -265,7 +266,7 @@ async function nameSerialNumbersForSession(agendaId) {
 					?agenda dct:hasPart ?agendaitem.
 					?procedurestap besluitvorming:isGeagendeerdVia ?agendaitem.
 		{ SELECT ?procedurestap GROUP_CONCAT(DISTINCT ?identifier;separator="|") as ?identifiers WHERE { 
-			GRAPH <http://mu.semte.ch/application> {
+			GRAPH <${targetGraph}> {
 				?identifier a ext:DocumentIdentifier .
 				?identifier ext:identifiesVersion ?versie.
 				?identifier ext:procedurestap ?procedurestap
@@ -275,7 +276,7 @@ async function nameSerialNumbersForSession(agendaId) {
 			}
 		} GROUP BY ?procedurestap }
 		{ SELECT ?procedurestap COUNT(DISTINCT(?identifier2)) AS ?namedIdentifierCount WHERE {
-				GRAPH <http://mu.semte.ch/application> {
+				GRAPH <${targetGraph}> {
 					?agenda a besluitvorming:Agenda.
 					?agenda mu:uuid "${agendaId}".
 					?agenda dct:hasPart ?agendaitem.
@@ -337,7 +338,7 @@ async function getDocumentTypesForDocsInAgenda(agendaId) {
 	PREFIX dct: <http://purl.org/dc/terms/>
 	
 	SELECT ?versie ?type WHERE {
-		GRAPH <http://mu.semte.ch/application> {
+		GRAPH <${targetGraph}> {
 			  ?agenda mu:uuid "${agendaId}".
 			  ?agenda dct:hasPart ?agendaitem.
 			  ?identifier ext:agendaitem ?agendaitem.
@@ -376,7 +377,7 @@ async function updateSerialNumbersOfDocumentVersions(serialnumberMap) {
 		PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 		INSERT DATA { 
-			GRAPH <http://mu.semte.ch/application> { 
+			GRAPH <${targetGraph}> { 
 				${insertString}
 			}
 		}
