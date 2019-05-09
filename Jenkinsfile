@@ -17,12 +17,11 @@ node {
   currentBuild.result = 'SUCCESS'
   boolean skipBuild = false
 
-  def MAILCHIMP_API = $MAILCHIMP_API;
-  echo "ENV mailchimp: ${env.MAILCHIMP_API}"
-  echo "MAILCHIMP_API: ${MAILCHIMP_API}"
+  def MAILCHIMP_API = ''
 
-  withCredentials([string(credentialsId: 'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
-    MAILCHIMP_API = $MAILCHIMP_API
+  withCredentials([string(credentialsId:  '${MAILCHIMP_API}', variable: 'MAILCHIMP_API')]) {
+    sh 'echo $MAILCHIMP_API'
+    MAILCHIMP_API = sh 'echo $MAILCHIMP_API'
 
   }
 
