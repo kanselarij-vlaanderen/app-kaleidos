@@ -1,8 +1,0 @@
-SELECT ?newsletter ?p ?o WHERE {
-             GRAPH <http://mu.semte.ch/application> {
-                ?agenda dct:hasPart ?agendapunt .
-                ?agenda mu:uuid "5CB718FB88D2DF0009000041" .
-                ?agendapunt ext:nieuwsbriefInfo ?newsletter .
-                ?newsletter ?p ?o
-              }
-         }
