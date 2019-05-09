@@ -10,20 +10,19 @@ const getNewsletterInfo = async (agendaId) => {
         PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
         PREFIX dbpedia: <http://dbpedia.org/ontology/>
         PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
         
-        SELECT ?planned_start ?uuid ?title ?text ?subtitle ?publicationDate ?publicationDocDate ?finished WHERE {
+        SELECT ?planned_start ?uuid ?title ?richtext ?text ?subtitle WHERE {
             GRAPH <http://mu.semte.ch/application> {
                <http://data.lblod.info/id/agendas/${agendaId}> besluit:isAangemaaktVoor ?meeting .
                ?meeting besluit:geplandeStart ?planned_start .
                <http://data.lblod.info/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
-               ?newsletter ext:nieuwsbriefInfo ?agendaitem . 
+               ?agendaitem prov:generated  ?newsletter . 
                OPTIONAL { ?newsletter mu:uuid ?uuid . }
                OPTIONAL { ?newsletter besluitvorming:inhoud ?text . }
+               OPTIONAL { ?newsletter ext:htmlInhoud ?richtext . }
                OPTIONAL { ?newsletter dbpedia:subtitle ?subtitle . }
-               OPTIONAL { ?newsletter dct:issued ?publicationDate . }
-               OPTIONAL { ?newsletter ext:issuedDocDate ?publicationDocDate . }
                OPTIONAL { ?newsletter dct:title ?title . }
-               OPTIONAL { ?newsletter ext:afgewerkt ?finished . }
              }
         }`;
     let data = await mu.query(query);

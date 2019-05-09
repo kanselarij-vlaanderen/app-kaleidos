@@ -12,6 +12,7 @@ const cors = require('cors');
 const Mailchimp = require('mailchimp-api-v3');
 const mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
 const moment = require('moment');
+moment.locale("nl");
 
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
@@ -42,7 +43,7 @@ const setNewsletter = async (req, res) => {
         throw new Error("no newsletters present");
       }
 
-      const planned_start = moment(newsletter[0].planned_start).format("dddd DD MMMM YYYY");
+      const planned_start = moment(newsletter[0].planned_start).format("dddd DD-MM-YYYY");
       const news_items_HTML =  await newsletter.map(item => getNewsItem(item));
       let html = await nieuwsbrief(news_items_HTML, planned_start);
 
