@@ -2,6 +2,12 @@ def CONTAINER_NAME=""
 def CONTAINER_TAG="latest"
 def HTTP_PORT="8081"
 
+properties([
+    parameters([
+        credentials(name: 'MAILCHIMP_API', credentialType: 'org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl', required: true)
+    ])
+])
+
 
 node {
 
@@ -11,12 +17,19 @@ node {
   currentBuild.result = 'SUCCESS'
   boolean skipBuild = false
 
-  def MAILCHIMP_API = env
+  def MAILCHIMP_API = "";
+  echo "${MAILCHIMP_API}"
+
+  withCredentials([string(credentialsId: '${MAILCHIMP_API}', variable: 'SECRET')]) {
+    MAILCHIMP_API ='$SECRET'
+  }
+
   echo "${MAILCHIMP_API}"
 
   stage('Initialize'){
     def dockerHome = tool 'myDocker'
   }
+
 
   def branch = 'master'
 
