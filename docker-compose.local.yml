@@ -32,6 +32,7 @@ services:
       LOG_DELTA_MESSAGES: "true"
       LOG_DELTA_CLIENT_COMMUNICATION: "true"
       LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+      DATABASE_COMPATIBILITY: "Virtuoso"
     volumes:
       - ./config/authorization:/config
     labels:
