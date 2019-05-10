@@ -25,6 +25,6 @@
 (read-domain-file "alerts-domain.lisp")
 (read-domain-file "master-users-domain.lisp")
 (read-domain-file "ise-domain.lisp")
-;; (read-domain-file "users-domain.lisp")
+(read-domain-file "users-domain.lisp")
 
 
