@@ -33,10 +33,6 @@ node {
       imagePrune(DRC_PATH, branch)
     }
 
-    stage('Image Build'){
-      imageBuild(CONTAINER_NAME, CONTAINER_TAG, DRC_PATH, branch)
-    }
-
     stage('Run App'){
       runApp(CONTAINER_NAME, CONTAINER_TAG, HTTP_PORT, DRC_PATH, branch)
     }
@@ -50,15 +46,8 @@ node {
 def imagePrune(DRC_PATH, branch){
     try {
         sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} down -v"
-        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} rm -f --remove-orphans"
+        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} rm -f "
     } catch(error){}
-}
-
-def imageBuild(containerName, tag, DRC_PATH, branch){
-    withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
-      sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} build"
-    }
-    echo "Image build complete"
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
