@@ -111,9 +111,7 @@ services:
     volumes:
       - ./minister-jurisdiction-service:/app
   development-mail-chimp-service:
-    build:
-      context: ./mail-chimp-service
-      dockerfile: Dockerfile
+    image: semtech/mu-javascript-template
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
       MODE: "development"
