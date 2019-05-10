@@ -112,7 +112,8 @@ services:
       - ./minister-jurisdiction-service:/app
   development-mail-chimp-service:
     build:
-      dockerfile: ./mail-chimp-service/Dockerfile
+      context: ./mail-chimp-service
+      dockerfile: Dockerfile
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
       MODE: "development"
