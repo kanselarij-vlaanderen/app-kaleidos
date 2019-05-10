@@ -62,7 +62,7 @@ def imageBuild(containerName, tag, DRC_PATH, branch){
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
-  withCredentials([string(credentialsId:  'MAILCHIMP', variable: 'MAILCHIMP_API')]) {
+  withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
     sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} up -d --force-recreate"
   }
 
