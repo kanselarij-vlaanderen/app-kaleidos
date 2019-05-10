@@ -51,8 +51,8 @@ def imagePrune(DRC_PATH, branch){
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
-  sh "ls -al"
   sh "ls ./mail-chimp-service -al"
+  sh "cat docker-compose.development.yml"
   withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
     sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml  up -d "
   }

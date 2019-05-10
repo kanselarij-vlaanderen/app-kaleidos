@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const repository = require('./repository');
 const cors = require('cors');
 
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
 const Mailchimp = require('mailchimp-api-v3');
