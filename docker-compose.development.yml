@@ -112,7 +112,7 @@ services:
       - ./minister-jurisdiction-service:/app
   development-mail-chimp-service:
     build:
-      context: ./mail-chimp-service
+      context: ./
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
       MODE: "development"
