@@ -1,13 +1,13 @@
 import mu from 'mu';
 import { ok } from 'assert';
 
-const dotenv = require('dotenv');
-dotenv.config();
-
 const app = mu.app;
 const bodyParser = require('body-parser');
 const repository = require('./repository');
 const cors = require('cors');
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Mailchimp = require('mailchimp-api-v3');
 const mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
