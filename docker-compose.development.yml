@@ -114,7 +114,7 @@ services:
     image: semtech/mu-javascript-template
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
-      MODE: "development"
+      NODE_ENV: "development"
     links:
       - development-database:database
     volumes:
