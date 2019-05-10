@@ -45,15 +45,15 @@ node {
 
 def imagePrune(DRC_PATH, branch){
     try {
-        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} down -v"
-        sh "docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} rm -f "
+        sh "docker-compose -f docker-compose.${branch}.yml down -v"
+        sh "docker-compose -f docker-compose.${branch}.yml  rm -f "
     } catch(error){}
 }
 
 def runApp(containerName, tag, httpPort, DRC_PATH, branch){
   sh "ls .${DRC_PATH}_${branch}"
   withCredentials([string(credentialsId:  'MAILCHIMP_API', variable: 'MAILCHIMP_API')]) {
-    sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml --project-directory=${DRC_PATH}_${branch} up -d --force-recreate"
+    sh "MAILCHIMP_API=$MAILCHIMP_API docker-compose -f docker-compose.${branch}.yml  up -d "
   }
 
     echo "Application started on port: ${httpPort} (http)"
