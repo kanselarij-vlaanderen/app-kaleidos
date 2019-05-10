@@ -28,91 +28,77 @@ man:9cd9a969-0e8c-4f07-bacd-bd0c0b4cfc9c a mandaat:Mandataris ;
     dct:title "Minister-president van de Vlaamse Regering" ;
     mandaat:isBestuurlijkeAliasVan dudette:de843e19-de4a-4b0d-af5f-d5563709d23c ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:ecb2a510-959f-4cf1-b8c3-a659a39dcf6e ;
-    mandaat:beleidsdomein domain:ff26e25e-580b-4ab5-bcba-4d99cb9af2ef ;
-    mandaat:beleidsdomein domain:ef070cf3-dc19-4a75-864f-57fb233b76b6 ;
-    mandaat:beleidsdomein domain:5354cf04-1af4-4513-ad05-8bbe2e2e8904 ;
-    mandaat:beleidsdomein domain:813ce02d-c22e-4d21-a3d6-7fcb4eeca227 ;
-    mandaat:beleidsdomein domain:18e4a558-5db8-41be-8cbf-644aec903262 ;
-    mandaat:beleidsdomein domain:6d4e0763-8cfc-4bb2-a85d-46ce5a7ab283 ;
-    mandaat:beleidsdomein domain:f0f6a6f9-097a-4348-8174-4ec62ab92de9 ;
-    mandaat:beleidsdomein domain:dbca990a-6989-4e57-bbb2-b183d5663c6a ;
-    mandaat:beleidsdomein domain:6cbf8f0f-b645-4cec-a951-35697f603988 ;
-    mandaat:beleidsdomein domain:c68536cf-1f24-4c46-8f24-1c6189ce542c ;
-    mandaat:beleidsdomein domain:c2a0712f-9f65-4172-9893-53efc552e2ea ;
-    mandaat:beleidsdomein domain:67e5b84d-4544-4931-a14f-b321d3d15f29 ;
-    mandaat:beleidsdomein domain:673d1ac6-8d12-4839-ba67-c6334e634575 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
 
-domain:ecb2a510-959f-4cf1-b8c3-a659a39dcf6e a ext:BeleidsdomeinCode ;
-    mu:uuid "ecb2a510-959f-4cf1-b8c3-a659a39dcf6e" ;
-    skos:prefLabel "het algemeen regeringsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:ecb2a510-959f-4cf1-b8c3-a659a39dcf6e a ext:BeleidsdomeinCode ;
+#     mu:uuid "ecb2a510-959f-4cf1-b8c3-a659a39dcf6e" ;
+#     skos:prefLabel "het algemeen regeringsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:ff26e25e-580b-4ab5-bcba-4d99cb9af2ef a ext:BeleidsdomeinCode ;
-    mu:uuid "ff26e25e-580b-4ab5-bcba-4d99cb9af2ef" ;
-    skos:prefLabel "het algemeen communicatiebeleid" ;
-    skos:scopeNote "TODO" .
+# domain:ff26e25e-580b-4ab5-bcba-4d99cb9af2ef a ext:BeleidsdomeinCode ;
+#     mu:uuid "ff26e25e-580b-4ab5-bcba-4d99cb9af2ef" ;
+#     skos:prefLabel "het algemeen communicatiebeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:ef070cf3-dc19-4a75-864f-57fb233b76b6 a ext:BeleidsdomeinCode ;
-    mu:uuid "ef070cf3-dc19-4a75-864f-57fb233b76b6" ;
-    skos:prefLabel "de interne audit van de Vlaamse administratie" ;
-    skos:scopeNote "TODO" .
+# domain:ef070cf3-dc19-4a75-864f-57fb233b76b6 a ext:BeleidsdomeinCode ;
+#     mu:uuid "ef070cf3-dc19-4a75-864f-57fb233b76b6" ;
+#     skos:prefLabel "de interne audit van de Vlaamse administratie" ;
+#     skos:scopeNote "TODO" .
     
-domain:5354cf04-1af4-4513-ad05-8bbe2e2e8904 a ext:BeleidsdomeinCode ;
-    mu:uuid "5354cf04-1af4-4513-ad05-8bbe2e2e8904" ;
-    skos:prefLabel "de gewestelijke aspecten in zake de overheidsopdrachten en de erkenning van aannemers" ;
-    skos:scopeNote "TODO" .
+# domain:5354cf04-1af4-4513-ad05-8bbe2e2e8904 a ext:BeleidsdomeinCode ;
+#     mu:uuid "5354cf04-1af4-4513-ad05-8bbe2e2e8904" ;
+#     skos:prefLabel "de gewestelijke aspecten in zake de overheidsopdrachten en de erkenning van aannemers" ;
+#     skos:scopeNote "TODO" .
     
-domain:813ce02d-c22e-4d21-a3d6-7fcb4eeca227 a ext:BeleidsdomeinCode ;
-    mu:uuid "813ce02d-c22e-4d21-a3d6-7fcb4eeca227" ;
-    skos:prefLabel "de financiële tegemoetkoming naar aanleiding van schade veroorzaakt door algemene rampen" ;
-    skos:scopeNote "TODO" .
+# domain:813ce02d-c22e-4d21-a3d6-7fcb4eeca227 a ext:BeleidsdomeinCode ;
+#     mu:uuid "813ce02d-c22e-4d21-a3d6-7fcb4eeca227" ;
+#     skos:prefLabel "de financiële tegemoetkoming naar aanleiding van schade veroorzaakt door algemene rampen" ;
+#     skos:scopeNote "TODO" .
     
-domain:18e4a558-5db8-41be-8cbf-644aec903262 a ext:BeleidsdomeinCode ;
-    mu:uuid "18e4a558-5db8-41be-8cbf-644aec903262" ;
-    skos:prefLabel "het reguleringsmanagement" ;
-    skos:scopeNote "TODO" .
+# domain:18e4a558-5db8-41be-8cbf-644aec903262 a ext:BeleidsdomeinCode ;
+#     mu:uuid "18e4a558-5db8-41be-8cbf-644aec903262" ;
+#     skos:prefLabel "het reguleringsmanagement" ;
+#     skos:scopeNote "TODO" .
     
-domain:6d4e0763-8cfc-4bb2-a85d-46ce5a7ab283 a ext:BeleidsdomeinCode ;
-    mu:uuid "6d4e0763-8cfc-4bb2-a85d-46ce5a7ab283" ;
-    skos:prefLabel "de gerechtelijke procedure voor onteigening ten algemenen nutte" ;
-    skos:scopeNote "TODO" .
+# domain:6d4e0763-8cfc-4bb2-a85d-46ce5a7ab283 a ext:BeleidsdomeinCode ;
+#     mu:uuid "6d4e0763-8cfc-4bb2-a85d-46ce5a7ab283" ;
+#     skos:prefLabel "de gerechtelijke procedure voor onteigening ten algemenen nutte" ;
+#     skos:scopeNote "TODO" .
     
-domain:f0f6a6f9-097a-4348-8174-4ec62ab92de9 a ext:BeleidsdomeinCode ;
-    mu:uuid "f0f6a6f9-097a-4348-8174-4ec62ab92de9" ;
-    skos:prefLabel "het buitenlands beleid en de Europese aangelegenheden" ;
-    skos:scopeNote "TODO" .
+# domain:f0f6a6f9-097a-4348-8174-4ec62ab92de9 a ext:BeleidsdomeinCode ;
+#     mu:uuid "f0f6a6f9-097a-4348-8174-4ec62ab92de9" ;
+#     skos:prefLabel "het buitenlands beleid en de Europese aangelegenheden" ;
+#     skos:scopeNote "TODO" .
     
-domain:dbca990a-6989-4e57-bbb2-b183d5663c6a a ext:BeleidsdomeinCode ;
-    mu:uuid "dbca990a-6989-4e57-bbb2-b183d5663c6a" ;
-    skos:prefLabel "de ontwikkelingssamenwerking" ;
-    skos:scopeNote "TODO" .
+# domain:dbca990a-6989-4e57-bbb2-b183d5663c6a a ext:BeleidsdomeinCode ;
+#     mu:uuid "dbca990a-6989-4e57-bbb2-b183d5663c6a" ;
+#     skos:prefLabel "de ontwikkelingssamenwerking" ;
+#     skos:scopeNote "TODO" .
     
-domain:6cbf8f0f-b645-4cec-a951-35697f603988 a ext:BeleidsdomeinCode ;
-    mu:uuid "6cbf8f0f-b645-4cec-a951-35697f603988" ;
-    skos:prefLabel "het afzet- en uitvoerbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:6cbf8f0f-b645-4cec-a951-35697f603988 a ext:BeleidsdomeinCode ;
+#     mu:uuid "6cbf8f0f-b645-4cec-a951-35697f603988" ;
+#     skos:prefLabel "het afzet- en uitvoerbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:c68536cf-1f24-4c46-8f24-1c6189ce542c a ext:BeleidsdomeinCode ;
-    mu:uuid "c68536cf-1f24-4c46-8f24-1c6189ce542c" ;
-    skos:prefLabel "het aantrekken van buitenlandse investeringen" ;
-    skos:scopeNote "TODO" .
+# domain:c68536cf-1f24-4c46-8f24-1c6189ce542c a ext:BeleidsdomeinCode ;
+#     mu:uuid "c68536cf-1f24-4c46-8f24-1c6189ce542c" ;
+#     skos:prefLabel "het aantrekken van buitenlandse investeringen" ;
+#     skos:scopeNote "TODO" .
     
-domain:c2a0712f-9f65-4172-9893-53efc552e2ea a ext:BeleidsdomeinCode ;
-    mu:uuid "c2a0712f-9f65-4172-9893-53efc552e2ea" ;
-    skos:prefLabel "controle op de handel in strategische goederen" ;
-    skos:scopeNote "TODO" .
+# domain:c2a0712f-9f65-4172-9893-53efc552e2ea a ext:BeleidsdomeinCode ;
+#     mu:uuid "c2a0712f-9f65-4172-9893-53efc552e2ea" ;
+#     skos:prefLabel "controle op de handel in strategische goederen" ;
+#     skos:scopeNote "TODO" .
     
-domain:67e5b84d-4544-4931-a14f-b321d3d15f29 a ext:BeleidsdomeinCode ;
-    mu:uuid "67e5b84d-4544-4931-a14f-b321d3d15f29" ;
-    skos:prefLabel "het onroerend erfgoed" ;
-    skos:scopeNote "TODO" .
+# domain:67e5b84d-4544-4931-a14f-b321d3d15f29 a ext:BeleidsdomeinCode ;
+#     mu:uuid "67e5b84d-4544-4931-a14f-b321d3d15f29" ;
+#     skos:prefLabel "het onroerend erfgoed" ;
+#     skos:scopeNote "TODO" .
     
-domain:673d1ac6-8d12-4839-ba67-c6334e634575 a ext:BeleidsdomeinCode ;
-    mu:uuid "673d1ac6-8d12-4839-ba67-c6334e634575" ;
-    skos:prefLabel "het protocol" ;
-    skos:scopeNote "TODO" .
+# domain:673d1ac6-8d12-4839-ba67-c6334e634575 a ext:BeleidsdomeinCode ;
+#     mu:uuid "673d1ac6-8d12-4839-ba67-c6334e634575" ;
+#     skos:prefLabel "het protocol" ;
+#     skos:scopeNote "TODO" .
     
 dudette:c2a7e1d0-40ba-47bf-b6be-0e4ab3725161 a person:Person ;
     mu:uuid "c2a7e1d0-40ba-47bf-b6be-0e4ab3725161" ;
@@ -126,79 +112,79 @@ man:6eb5292d-37a1-454f-b87e-3bbfacb23970 a mandaat:Mandataris ;
     dct:title "Vlaams minister voor onderwijs" ;
     mandaat:isBestuurlijkeAliasVan dudette:c2a7e1d0-40ba-47bf-b6be-0e4ab3725161 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:0751a226-0643-4d79-a09c-3086e3366838 ;
-    mandaat:beleidsdomein domain:a56cd226-1725-4f9e-be8a-1e845fdf01b6 ;
-    mandaat:beleidsdomein domain:32c99161-e759-433d-9f94-ccccd9280237 ;
-    mandaat:beleidsdomein domain:0efb369e-2cd7-47e2-a77b-f2ae44299081 ;
-    mandaat:beleidsdomein domain:f13abae1-4989-4f98-aaf4-c9d6d018f6e2 ;
-    mandaat:beleidsdomein domain:fee58ed5-fb63-47a6-b412-ed47436a66a0 ;
-    mandaat:beleidsdomein domain:038a2cdd-e705-4d2e-b095-6a4ad63aa55c ;
-    mandaat:beleidsdomein domain:626d41c3-9106-41cf-9f9b-519df27353eb ;
-    mandaat:beleidsdomein domain:58aabc50-0990-49af-a990-772066406c6c ;
-    mandaat:beleidsdomein domain:9198c35a-6b04-438a-90db-2dc5c79d7a00 ;
-    mandaat:beleidsdomein domain:a015c82b-6ed3-4494-960a-d1e17a5e6b2d ;
-    mandaat:beleidsdomein domain:5bbc1c50-46af-4859-aa7a-2a8ff25dd70e .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:0751a226-0643-4d79-a09c-3086e3366838 ;
+    # mandaat:beleidsdomein domain:a56cd226-1725-4f9e-be8a-1e845fdf01b6 ;
+    # mandaat:beleidsdomein domain:32c99161-e759-433d-9f94-ccccd9280237 ;
+    # mandaat:beleidsdomein domain:0efb369e-2cd7-47e2-a77b-f2ae44299081 ;
+    # mandaat:beleidsdomein domain:f13abae1-4989-4f98-aaf4-c9d6d018f6e2 ;
+    # mandaat:beleidsdomein domain:fee58ed5-fb63-47a6-b412-ed47436a66a0 ;
+    # mandaat:beleidsdomein domain:038a2cdd-e705-4d2e-b095-6a4ad63aa55c ;
+    # mandaat:beleidsdomein domain:626d41c3-9106-41cf-9f9b-519df27353eb ;
+    # mandaat:beleidsdomein domain:58aabc50-0990-49af-a990-772066406c6c ;
+    # mandaat:beleidsdomein domain:9198c35a-6b04-438a-90db-2dc5c79d7a00 ;
+    # mandaat:beleidsdomein domain:a015c82b-6ed3-4494-960a-d1e17a5e6b2d ;
+    # mandaat:beleidsdomein domain:5bbc1c50-46af-4859-aa7a-2a8ff25dd70e .
 
-domain:0751a226-0643-4d79-a09c-3086e3366838 a ext:BeleidsdomeinCode ;
-    mu:uuid "0751a226-0643-4d79-a09c-3086e3366838" ;
-    skos:prefLabel "het onderwijs" ;
-    skos:scopeNote "TODO" .
+# domain:0751a226-0643-4d79-a09c-3086e3366838 a ext:BeleidsdomeinCode ;
+#     mu:uuid "0751a226-0643-4d79-a09c-3086e3366838" ;
+#     skos:prefLabel "het onderwijs" ;
+#     skos:scopeNote "TODO" .
     
-domain:a56cd226-1725-4f9e-be8a-1e845fdf01b6 a ext:BeleidsdomeinCode ;
-    mu:uuid "a56cd226-1725-4f9e-be8a-1e845fdf01b6" ;
-    skos:prefLabel "het gebruik van de talen voor het onderwijs" ;
-    skos:scopeNote "TODO" .
+# domain:a56cd226-1725-4f9e-be8a-1e845fdf01b6 a ext:BeleidsdomeinCode ;
+#     mu:uuid "a56cd226-1725-4f9e-be8a-1e845fdf01b6" ;
+#     skos:prefLabel "het gebruik van de talen voor het onderwijs" ;
+#     skos:scopeNote "TODO" .
     
-domain:32c99161-e759-433d-9f94-ccccd9280237 a ext:BeleidsdomeinCode ;
-    mu:uuid "32c99161-e759-433d-9f94-ccccd9280237" ;
-    skos:prefLabel "de voorschoolse vorming in de peutertuinen" ;
-    skos:scopeNote "TODO" .
+# domain:32c99161-e759-433d-9f94-ccccd9280237 a ext:BeleidsdomeinCode ;
+#     mu:uuid "32c99161-e759-433d-9f94-ccccd9280237" ;
+#     skos:prefLabel "de voorschoolse vorming in de peutertuinen" ;
+#     skos:scopeNote "TODO" .
     
-domain:0efb369e-2cd7-47e2-a77b-f2ae44299081 a ext:BeleidsdomeinCode ;
-    mu:uuid "0efb369e-2cd7-47e2-a77b-f2ae44299081" ;
-    skos:prefLabel "de post- en parascolaire vorming" ;
-    skos:scopeNote "TODO" .
+# domain:0efb369e-2cd7-47e2-a77b-f2ae44299081 a ext:BeleidsdomeinCode ;
+#     mu:uuid "0efb369e-2cd7-47e2-a77b-f2ae44299081" ;
+#     skos:prefLabel "de post- en parascolaire vorming" ;
+#     skos:scopeNote "TODO" .
     
-domain:f13abae1-4989-4f98-aaf4-c9d6d018f6e2 a ext:BeleidsdomeinCode ;
-    mu:uuid "f13abae1-4989-4f98-aaf4-c9d6d018f6e2" ;
-    skos:prefLabel "de sociale promotie" ;
-    skos:scopeNote "TODO" .
+# domain:f13abae1-4989-4f98-aaf4-c9d6d018f6e2 a ext:BeleidsdomeinCode ;
+#     mu:uuid "f13abae1-4989-4f98-aaf4-c9d6d018f6e2" ;
+#     skos:prefLabel "de sociale promotie" ;
+#     skos:scopeNote "TODO" .
     
-domain:fee58ed5-fb63-47a6-b412-ed47436a66a0 a ext:BeleidsdomeinCode ;
-    mu:uuid "fee58ed5-fb63-47a6-b412-ed47436a66a0" ;
-    skos:prefLabel "de basiseducatie voor laaggeschoolde volwassenen" ;
-    skos:scopeNote "TODO" .
+# domain:fee58ed5-fb63-47a6-b412-ed47436a66a0 a ext:BeleidsdomeinCode ;
+#     mu:uuid "fee58ed5-fb63-47a6-b412-ed47436a66a0" ;
+#     skos:prefLabel "de basiseducatie voor laaggeschoolde volwassenen" ;
+#     skos:scopeNote "TODO" .
     
-domain:038a2cdd-e705-4d2e-b095-6a4ad63aa55c a ext:BeleidsdomeinCode ;
-    mu:uuid "038a2cdd-e705-4d2e-b095-6a4ad63aa55c" ;
-    skos:prefLabel "het volwassenenonderwijs" ;
-    skos:scopeNote "TODO" .
+# domain:038a2cdd-e705-4d2e-b095-6a4ad63aa55c a ext:BeleidsdomeinCode ;
+#     mu:uuid "038a2cdd-e705-4d2e-b095-6a4ad63aa55c" ;
+#     skos:prefLabel "het volwassenenonderwijs" ;
+#     skos:scopeNote "TODO" .
     
-domain:626d41c3-9106-41cf-9f9b-519df27353eb a ext:BeleidsdomeinCode ;
-    mu:uuid "626d41c3-9106-41cf-9f9b-519df27353eb" ;
-    skos:prefLabel "de structurele financiering van het wetenschappelijk onderzoek aan de" ;
-    skos:scopeNote "TODO" .
+# domain:626d41c3-9106-41cf-9f9b-519df27353eb a ext:BeleidsdomeinCode ;
+#     mu:uuid "626d41c3-9106-41cf-9f9b-519df27353eb" ;
+#     skos:prefLabel "de structurele financiering van het wetenschappelijk onderzoek aan de" ;
+#     skos:scopeNote "TODO" .
     
-domain:58aabc50-0990-49af-a990-772066406c6c a ext:BeleidsdomeinCode ;
-    mu:uuid "58aabc50-0990-49af-a990-772066406c6c" ;
-    skos:prefLabel "de studiefinanciering" ;
-    skos:scopeNote "TODO" .
+# domain:58aabc50-0990-49af-a990-772066406c6c a ext:BeleidsdomeinCode ;
+#     mu:uuid "58aabc50-0990-49af-a990-772066406c6c" ;
+#     skos:prefLabel "de studiefinanciering" ;
+#     skos:scopeNote "TODO" .
     
-domain:9198c35a-6b04-438a-90db-2dc5c79d7a00 a ext:BeleidsdomeinCode ;
-    mu:uuid "9198c35a-6b04-438a-90db-2dc5c79d7a00" ;
-    skos:prefLabel "de leerlingenbegeleiding met inbegrip van het medisch schooltoezicht" ;
-    skos:scopeNote "TODO" .
+# domain:9198c35a-6b04-438a-90db-2dc5c79d7a00 a ext:BeleidsdomeinCode ;
+#     mu:uuid "9198c35a-6b04-438a-90db-2dc5c79d7a00" ;
+#     skos:prefLabel "de leerlingenbegeleiding met inbegrip van het medisch schooltoezicht" ;
+#     skos:scopeNote "TODO" .
     
-domain:a015c82b-6ed3-4494-960a-d1e17a5e6b2d a ext:BeleidsdomeinCode ;
-    mu:uuid "a015c82b-6ed3-4494-960a-d1e17a5e6b2d" ;
-    skos:prefLabel "de coördinatie van het vormingsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:a015c82b-6ed3-4494-960a-d1e17a5e6b2d a ext:BeleidsdomeinCode ;
+#     mu:uuid "a015c82b-6ed3-4494-960a-d1e17a5e6b2d" ;
+#     skos:prefLabel "de coördinatie van het vormingsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:5bbc1c50-46af-4859-aa7a-2a8ff25dd70e a ext:BeleidsdomeinCode ;
-    mu:uuid "5bbc1c50-46af-4859-aa7a-2a8ff25dd70e" ;
-    skos:prefLabel "de stelsels van alternerend leren" ;
-    skos:scopeNote "TODO" .
+# domain:5bbc1c50-46af-4859-aa7a-2a8ff25dd70e a ext:BeleidsdomeinCode ;
+#     mu:uuid "5bbc1c50-46af-4859-aa7a-2a8ff25dd70e" ;
+#     skos:prefLabel "de stelsels van alternerend leren" ;
+#     skos:scopeNote "TODO" .
     
 dudette:ff3596bb-e814-4a46-83f3-2c03a7cd4e8c a person:Person ;
     mu:uuid "ff3596bb-e814-4a46-83f3-2c03a7cd4e8c" ;
@@ -212,37 +198,37 @@ man:90c9f6d0-34d4-427e-ad1e-298193ebeae6 a mandaat:Mandataris ;
     dct:title "Vlaams minister van Begroting, Financiën en Energie" ;
     mandaat:isBestuurlijkeAliasVan dudette:ff3596bb-e814-4a46-83f3-2c03a7cd4e8c ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:cadda6f0-56ef-42d0-bae2-482f8f67e9d4 ;
-    mandaat:beleidsdomein domain:2169d4a7-d92a-430c-a885-c09ac337eb03 ;
-    mandaat:beleidsdomein domain:3090f2b7-c4f8-4057-8d82-b9da2841f441 ;
-    mandaat:beleidsdomein domain:785367fa-4c55-4ce5-8c17-7d93aebcc507 ;
-    mandaat:beleidsdomein domain:10e423bc-8ab6-493f-bd80-2f38f4d2ad90 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:cadda6f0-56ef-42d0-bae2-482f8f67e9d4 ;
+    # mandaat:beleidsdomein domain:2169d4a7-d92a-430c-a885-c09ac337eb03 ;
+    # mandaat:beleidsdomein domain:3090f2b7-c4f8-4057-8d82-b9da2841f441 ;
+    # mandaat:beleidsdomein domain:785367fa-4c55-4ce5-8c17-7d93aebcc507 ;
+    # mandaat:beleidsdomein domain:10e423bc-8ab6-493f-bd80-2f38f4d2ad90 .
     
-domain:cadda6f0-56ef-42d0-bae2-482f8f67e9d4 a ext:BeleidsdomeinCode ;
-    mu:uuid "cadda6f0-56ef-42d0-bae2-482f8f67e9d4" ;
-    skos:prefLabel "de financiën en de begrotingen" ;
-    skos:scopeNote "TODO" .
+# domain:cadda6f0-56ef-42d0-bae2-482f8f67e9d4 a ext:BeleidsdomeinCode ;
+#     mu:uuid "cadda6f0-56ef-42d0-bae2-482f8f67e9d4" ;
+#     skos:prefLabel "de financiën en de begrotingen" ;
+#     skos:scopeNote "TODO" .
     
-domain:2169d4a7-d92a-430c-a885-c09ac337eb03 a ext:BeleidsdomeinCode ;
-    mu:uuid "2169d4a7-d92a-430c-a885-c09ac337eb03" ;
-    skos:prefLabel "de fiscaliteit" ;
-    skos:scopeNote "TODO" .
+# domain:2169d4a7-d92a-430c-a885-c09ac337eb03 a ext:BeleidsdomeinCode ;
+#     mu:uuid "2169d4a7-d92a-430c-a885-c09ac337eb03" ;
+#     skos:prefLabel "de fiscaliteit" ;
+#     skos:scopeNote "TODO" .
     
-domain:3090f2b7-c4f8-4057-8d82-b9da2841f441 a ext:BeleidsdomeinCode ;
-    mu:uuid "3090f2b7-c4f8-4057-8d82-b9da2841f441" ;
-    skos:prefLabel "de gewestelijke aspecten van het kredietbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:3090f2b7-c4f8-4057-8d82-b9da2841f441 a ext:BeleidsdomeinCode ;
+#     mu:uuid "3090f2b7-c4f8-4057-8d82-b9da2841f441" ;
+#     skos:prefLabel "de gewestelijke aspecten van het kredietbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:785367fa-4c55-4ce5-8c17-7d93aebcc507 a ext:BeleidsdomeinCode ;
-    mu:uuid "785367fa-4c55-4ce5-8c17-7d93aebcc507" ;
-    skos:prefLabel "de authentificering van de handelingen met een onroerend karakter" ;
-    skos:scopeNote "TODO" .
+# domain:785367fa-4c55-4ce5-8c17-7d93aebcc507 a ext:BeleidsdomeinCode ;
+#     mu:uuid "785367fa-4c55-4ce5-8c17-7d93aebcc507" ;
+#     skos:prefLabel "de authentificering van de handelingen met een onroerend karakter" ;
+#     skos:scopeNote "TODO" .
     
-domain:10e423bc-8ab6-493f-bd80-2f38f4d2ad90 a ext:BeleidsdomeinCode ;
-    mu:uuid "10e423bc-8ab6-493f-bd80-2f38f4d2ad90" ;
-    skos:prefLabel "het energiebeleid" ;
-    skos:scopeNote "TODO" .
+# domain:10e423bc-8ab6-493f-bd80-2f38f4d2ad90 a ext:BeleidsdomeinCode ;
+#     mu:uuid "10e423bc-8ab6-493f-bd80-2f38f4d2ad90" ;
+#     skos:prefLabel "het energiebeleid" ;
+#     skos:scopeNote "TODO" .
     
 dudette:e880971e-1fd8-41a0-9cdc-d195d18fe581 a person:Person ;
     mu:uuid "e880971e-1fd8-41a0-9cdc-d195d18fe581" ;
@@ -256,79 +242,79 @@ man:d3b0f8f7-9806-45a9-9d04-c9676049ff0b a mandaat:Mandataris ;
     dct:title "Vlaams minister van Binnenlands Bestuur, Inburgering, Wonen, Gelijke Kansen en Armoedebestrijding" ;
     mandaat:isBestuurlijkeAliasVan dudette:e880971e-1fd8-41a0-9cdc-d195d18fe581 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:abef292b-ed9d-46df-b2f7-c928f58e9cca ;
-    mandaat:beleidsdomein domain:787df7c5-0593-4c2a-9314-c54be4a6a95a ;
-    mandaat:beleidsdomein domain:300466e1-90f5-4bb4-8512-0384528c3e79 ;
-    mandaat:beleidsdomein domain:1b15ea14-aef1-4e9c-a552-b497a09ac7bf ;
-    mandaat:beleidsdomein domain:3506dbfd-ca13-4acd-a245-d0b86976ace0 ;
-    mandaat:beleidsdomein domain:cd4bfb6c-0958-420f-8ee8-c6b655099398 ;
-    mandaat:beleidsdomein domain:d55338f0-33ac-48f7-971d-3d5b919ac289 ;
-    mandaat:beleidsdomein domain:407bf9e1-ebdb-423f-a7b6-1d7966ed1449 ;
-    mandaat:beleidsdomein domain:432d9587-db63-414c-b7f1-cd8a33e6a3d2 ;
-    mandaat:beleidsdomein domain:6f987094-bd8e-43c5-855f-ca4be665bc9e ;
-    mandaat:beleidsdomein domain:2ecf4d31-b194-42b2-bba2-94bdfe6f43a6 ;
-    mandaat:beleidsdomein domain:4606fa47-ec65-4042-ac9e-2583f30b2663 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:abef292b-ed9d-46df-b2f7-c928f58e9cca ;
+    # mandaat:beleidsdomein domain:787df7c5-0593-4c2a-9314-c54be4a6a95a ;
+    # mandaat:beleidsdomein domain:300466e1-90f5-4bb4-8512-0384528c3e79 ;
+    # mandaat:beleidsdomein domain:1b15ea14-aef1-4e9c-a552-b497a09ac7bf ;
+    # mandaat:beleidsdomein domain:3506dbfd-ca13-4acd-a245-d0b86976ace0 ;
+    # mandaat:beleidsdomein domain:cd4bfb6c-0958-420f-8ee8-c6b655099398 ;
+    # mandaat:beleidsdomein domain:d55338f0-33ac-48f7-971d-3d5b919ac289 ;
+    # mandaat:beleidsdomein domain:407bf9e1-ebdb-423f-a7b6-1d7966ed1449 ;
+    # mandaat:beleidsdomein domain:432d9587-db63-414c-b7f1-cd8a33e6a3d2 ;
+    # mandaat:beleidsdomein domain:6f987094-bd8e-43c5-855f-ca4be665bc9e ;
+    # mandaat:beleidsdomein domain:2ecf4d31-b194-42b2-bba2-94bdfe6f43a6 ;
+    # mandaat:beleidsdomein domain:4606fa47-ec65-4042-ac9e-2583f30b2663 .
     
-domain:abef292b-ed9d-46df-b2f7-c928f58e9cca a ext:BeleidsdomeinCode ;
-    mu:uuid "abef292b-ed9d-46df-b2f7-c928f58e9cca" ;
-    skos:prefLabel "de binnenlandse aangelegenheden" ;
-    skos:scopeNote "TODO" .
+# domain:abef292b-ed9d-46df-b2f7-c928f58e9cca a ext:BeleidsdomeinCode ;
+#     mu:uuid "abef292b-ed9d-46df-b2f7-c928f58e9cca" ;
+#     skos:prefLabel "de binnenlandse aangelegenheden" ;
+#     skos:scopeNote "TODO" .
     
-domain:787df7c5-0593-4c2a-9314-c54be4a6a95a a ext:BeleidsdomeinCode ;
-    mu:uuid "787df7c5-0593-4c2a-9314-c54be4a6a95a" ;
-    skos:prefLabel "het beleid inzake onthaal en integratie van inwijkelingen" ;
-    skos:scopeNote "TODO" .
+# domain:787df7c5-0593-4c2a-9314-c54be4a6a95a a ext:BeleidsdomeinCode ;
+#     mu:uuid "787df7c5-0593-4c2a-9314-c54be4a6a95a" ;
+#     skos:prefLabel "het beleid inzake onthaal en integratie van inwijkelingen" ;
+#     skos:scopeNote "TODO" .
     
-domain:300466e1-90f5-4bb4-8512-0384528c3e79 a ext:BeleidsdomeinCode ;
-    mu:uuid "300466e1-90f5-4bb4-8512-0384528c3e79" ;
-    skos:prefLabel "de huisvesting" ;
-    skos:scopeNote "TODO" .
+# domain:300466e1-90f5-4bb4-8512-0384528c3e79 a ext:BeleidsdomeinCode ;
+#     mu:uuid "300466e1-90f5-4bb4-8512-0384528c3e79" ;
+#     skos:prefLabel "de huisvesting" ;
+#     skos:scopeNote "TODO" .
     
-domain:1b15ea14-aef1-4e9c-a552-b497a09ac7bf a ext:BeleidsdomeinCode ;
-    mu:uuid "1b15ea14-aef1-4e9c-a552-b497a09ac7bf" ;
-    skos:prefLabel "de sociale economie" ;
-    skos:scopeNote "TODO" .
+# domain:1b15ea14-aef1-4e9c-a552-b497a09ac7bf a ext:BeleidsdomeinCode ;
+#     mu:uuid "1b15ea14-aef1-4e9c-a552-b497a09ac7bf" ;
+#     skos:prefLabel "de sociale economie" ;
+#     skos:scopeNote "TODO" .
     
-domain:3506dbfd-ca13-4acd-a245-d0b86976ace0 a ext:BeleidsdomeinCode ;
-    mu:uuid "3506dbfd-ca13-4acd-a245-d0b86976ace0" ;
-    skos:prefLabel "het algemeen beleid inzake personeel en organisatieontwikkeling in de Vlaamse administratie" ;
-    skos:scopeNote "TODO" .
+# domain:3506dbfd-ca13-4acd-a245-d0b86976ace0 a ext:BeleidsdomeinCode ;
+#     mu:uuid "3506dbfd-ca13-4acd-a245-d0b86976ace0" ;
+#     skos:prefLabel "het algemeen beleid inzake personeel en organisatieontwikkeling in de Vlaamse administratie" ;
+#     skos:scopeNote "TODO" .
     
-domain:cd4bfb6c-0958-420f-8ee8-c6b655099398 a ext:BeleidsdomeinCode ;
-    mu:uuid "cd4bfb6c-0958-420f-8ee8-c6b655099398" ;
-    skos:prefLabel "het algemeen beleid inzake de facilitaire dienstverlening en het vastgoedbeheer in de Vlaamse" ;
-    skos:scopeNote "TODO" .
+# domain:cd4bfb6c-0958-420f-8ee8-c6b655099398 a ext:BeleidsdomeinCode ;
+#     mu:uuid "cd4bfb6c-0958-420f-8ee8-c6b655099398" ;
+#     skos:prefLabel "het algemeen beleid inzake de facilitaire dienstverlening en het vastgoedbeheer in de Vlaamse" ;
+#     skos:scopeNote "TODO" .
     
-domain:d55338f0-33ac-48f7-971d-3d5b919ac289 a ext:BeleidsdomeinCode ;
-    mu:uuid "d55338f0-33ac-48f7-971d-3d5b919ac289" ;
-    skos:prefLabel "het algemeen beleid inzake informatie- en communicatietechnologie in de Vlaamse administratie" ;
-    skos:scopeNote "TODO" .
+# domain:d55338f0-33ac-48f7-971d-3d5b919ac289 a ext:BeleidsdomeinCode ;
+#     mu:uuid "d55338f0-33ac-48f7-971d-3d5b919ac289" ;
+#     skos:prefLabel "het algemeen beleid inzake informatie- en communicatietechnologie in de Vlaamse administratie" ;
+#     skos:scopeNote "TODO" .
     
-domain:407bf9e1-ebdb-423f-a7b6-1d7966ed1449 a ext:BeleidsdomeinCode ;
-    mu:uuid "407bf9e1-ebdb-423f-a7b6-1d7966ed1449" ;
-    skos:prefLabel "het e-government" ;
-    skos:scopeNote "TODO" .
+# domain:407bf9e1-ebdb-423f-a7b6-1d7966ed1449 a ext:BeleidsdomeinCode ;
+#     mu:uuid "407bf9e1-ebdb-423f-a7b6-1d7966ed1449" ;
+#     skos:prefLabel "het e-government" ;
+#     skos:scopeNote "TODO" .
     
-domain:432d9587-db63-414c-b7f1-cd8a33e6a3d2 a ext:BeleidsdomeinCode ;
-    mu:uuid "432d9587-db63-414c-b7f1-cd8a33e6a3d2" ;
-    skos:prefLabel "het gelijkekansenbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:432d9587-db63-414c-b7f1-cd8a33e6a3d2 a ext:BeleidsdomeinCode ;
+#     mu:uuid "432d9587-db63-414c-b7f1-cd8a33e6a3d2" ;
+#     skos:prefLabel "het gelijkekansenbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:6f987094-bd8e-43c5-855f-ca4be665bc9e a ext:BeleidsdomeinCode ;
-    mu:uuid "6f987094-bd8e-43c5-855f-ca4be665bc9e" ;
-    skos:prefLabel "de coördinatie van het armoedebeleid" ;
-    skos:scopeNote "TODO" .
+# domain:6f987094-bd8e-43c5-855f-ca4be665bc9e a ext:BeleidsdomeinCode ;
+#     mu:uuid "6f987094-bd8e-43c5-855f-ca4be665bc9e" ;
+#     skos:prefLabel "de coördinatie van het armoedebeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:2ecf4d31-b194-42b2-bba2-94bdfe6f43a6 a ext:BeleidsdomeinCode ;
-    mu:uuid "2ecf4d31-b194-42b2-bba2-94bdfe6f43a6" ;
-    skos:prefLabel "de informatiemaatschappij, het structureren, opslaan, uitwisselen  en ontsluiten van informatie" ;
-    skos:scopeNote "TODO" .
+# domain:2ecf4d31-b194-42b2-bba2-94bdfe6f43a6 a ext:BeleidsdomeinCode ;
+#     mu:uuid "2ecf4d31-b194-42b2-bba2-94bdfe6f43a6" ;
+#     skos:prefLabel "de informatiemaatschappij, het structureren, opslaan, uitwisselen  en ontsluiten van informatie" ;
+#     skos:scopeNote "TODO" .
     
-domain:4606fa47-ec65-4042-ac9e-2583f30b2663 a ext:BeleidsdomeinCode ;
-    mu:uuid "4606fa47-ec65-4042-ac9e-2583f30b2663" ;
-    skos:prefLabel "de uitbouw van een geografische informatie infrastructuur" ;
-    skos:scopeNote "TODO" .
+# domain:4606fa47-ec65-4042-ac9e-2583f30b2663 a ext:BeleidsdomeinCode ;
+#     mu:uuid "4606fa47-ec65-4042-ac9e-2583f30b2663" ;
+#     skos:prefLabel "de uitbouw van een geografische informatie infrastructuur" ;
+#     skos:scopeNote "TODO" .
     
 dudette:8ac8eb8e-9916-44dd-9349-a976faf74766 a person:Person ;
     mu:uuid "8ac8eb8e-9916-44dd-9349-a976faf74766" ;
@@ -342,43 +328,43 @@ man:4be7d895-e5f1-4027-9032-c53e41f48d69 a mandaat:Mandataris ;
     dct:title "Vlaams minister van Mobiliteit, Openbare Werken, Vlaamse Rand, Toerisme en Dierenwelzijn" ;
     mandaat:isBestuurlijkeAliasVan dudette:8ac8eb8e-9916-44dd-9349-a976faf74766 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:c658f47b-3225-434d-845a-b10e8e92101f ;
-    mandaat:beleidsdomein domain:0efe0f01-d5e2-4de7-ba1b-8fba27e2f812 ;
-    mandaat:beleidsdomein domain:9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9 ;
-    mandaat:beleidsdomein domain:c076b4ea-901a-4fcd-b4b5-a28166b02674 ;
-    mandaat:beleidsdomein domain:cb83eb04-371a-432d-90fe-0714855cc8c0 ;
-    mandaat:beleidsdomein domain:fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:c658f47b-3225-434d-845a-b10e8e92101f ;
+    # mandaat:beleidsdomein domain:0efe0f01-d5e2-4de7-ba1b-8fba27e2f812 ;
+    # mandaat:beleidsdomein domain:9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9 ;
+    # mandaat:beleidsdomein domain:c076b4ea-901a-4fcd-b4b5-a28166b02674 ;
+    # mandaat:beleidsdomein domain:cb83eb04-371a-432d-90fe-0714855cc8c0 ;
+    # mandaat:beleidsdomein domain:fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1 .
 
-domain:c658f47b-3225-434d-845a-b10e8e92101f a ext:BeleidsdomeinCode ;
-    mu:uuid "c658f47b-3225-434d-845a-b10e8e92101f" ;
-    skos:prefLabel "het mobiliteitsbeleid, de openbare werken en het vervoer" ;
-    skos:scopeNote "TODO" .
+# domain:c658f47b-3225-434d-845a-b10e8e92101f a ext:BeleidsdomeinCode ;
+#     mu:uuid "c658f47b-3225-434d-845a-b10e8e92101f" ;
+#     skos:prefLabel "het mobiliteitsbeleid, de openbare werken en het vervoer" ;
+#     skos:scopeNote "TODO" .
     
-domain:0efe0f01-d5e2-4de7-ba1b-8fba27e2f812 a ext:BeleidsdomeinCode ;
-    mu:uuid "0efe0f01-d5e2-4de7-ba1b-8fba27e2f812" ;
-    skos:prefLabel "het vervoer van mindervaliden" ;
-    skos:scopeNote "TODO" .
+# domain:0efe0f01-d5e2-4de7-ba1b-8fba27e2f812 a ext:BeleidsdomeinCode ;
+#     mu:uuid "0efe0f01-d5e2-4de7-ba1b-8fba27e2f812" ;
+#     skos:prefLabel "het vervoer van mindervaliden" ;
+#     skos:scopeNote "TODO" .
     
-domain:9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9 a ext:BeleidsdomeinCode ;
-    mu:uuid "9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9" ;
-    skos:prefLabel "het verkeersveiligheidsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9 a ext:BeleidsdomeinCode ;
+#     mu:uuid "9ef3c33e-622b-4e02-b4ef-ecc0b3e971b9" ;
+#     skos:prefLabel "het verkeersveiligheidsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:c076b4ea-901a-4fcd-b4b5-a28166b02674 a ext:BeleidsdomeinCode ;
-    mu:uuid "c076b4ea-901a-4fcd-b4b5-a28166b02674" ;
-    skos:prefLabel "de coördinatie van het beleid met betrekking tot de Vlaamse Rand rond Brussel" ;
-    skos:scopeNote "TODO" .
+# domain:c076b4ea-901a-4fcd-b4b5-a28166b02674 a ext:BeleidsdomeinCode ;
+#     mu:uuid "c076b4ea-901a-4fcd-b4b5-a28166b02674" ;
+#     skos:prefLabel "de coördinatie van het beleid met betrekking tot de Vlaamse Rand rond Brussel" ;
+#     skos:scopeNote "TODO" .
     
-domain:cb83eb04-371a-432d-90fe-0714855cc8c0 a ext:BeleidsdomeinCode ;
-    mu:uuid "cb83eb04-371a-432d-90fe-0714855cc8c0" ;
-    skos:prefLabel "het toerisme" ;
-    skos:scopeNote "TODO" .
+# domain:cb83eb04-371a-432d-90fe-0714855cc8c0 a ext:BeleidsdomeinCode ;
+#     mu:uuid "cb83eb04-371a-432d-90fe-0714855cc8c0" ;
+#     skos:prefLabel "het toerisme" ;
+#     skos:scopeNote "TODO" .
     
-domain:fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1 a ext:BeleidsdomeinCode ;
-    mu:uuid "fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1" ;
-    skos:prefLabel "het dierenwelzijn" ;
-    skos:scopeNote "TODO" .
+# domain:fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1 a ext:BeleidsdomeinCode ;
+#     mu:uuid "fc08b8e4-edbe-4f82-9567-b5f23e6fbfa1" ;
+#     skos:prefLabel "het dierenwelzijn" ;
+#     skos:scopeNote "TODO" .
     
 dudette:ecb86a73-c11c-4228-bf36-976d83ed5c0d a person:Person ;
     mu:uuid "ecb86a73-c11c-4228-bf36-976d83ed5c0d" ;
@@ -392,37 +378,37 @@ man:9a70b95c-a1ba-40db-907c-c5395dfac60f a mandaat:Mandataris ;
     dct:title "Vlaams minister van Welzijn, Volksgezondheid en Gezin" ;
     mandaat:isBestuurlijkeAliasVan dudette:ecb86a73-c11c-4228-bf36-976d83ed5c0d ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 ;
-    mandaat:beleidsdomein domain:cfdc5216-40e0-4158-97f8-cce4fd53b9d5 ;
-    mandaat:beleidsdomein domain:a92a3b48-7dce-410f-880a-42d6a38f566c ;
-    mandaat:beleidsdomein domain:34c7bfb0-1cca-41a3-a211-357401b45b86 ;
-    mandaat:beleidsdomein domain:e2e1d575-bfd2-4984-adac-eacc921fad0d .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 ;
+    # mandaat:beleidsdomein domain:cfdc5216-40e0-4158-97f8-cce4fd53b9d5 ;
+    # mandaat:beleidsdomein domain:a92a3b48-7dce-410f-880a-42d6a38f566c ;
+    # mandaat:beleidsdomein domain:34c7bfb0-1cca-41a3-a211-357401b45b86 ;
+    # mandaat:beleidsdomein domain:e2e1d575-bfd2-4984-adac-eacc921fad0d .
 
-domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 a ext:BeleidsdomeinCode ;
-    mu:uuid "44eaa91e-5752-4d6b-8c3c-d56a0e191787" ;
-    skos:prefLabel "de bijstand aan personen" ;
-    skos:scopeNote "TODO" .
+# domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 a ext:BeleidsdomeinCode ;
+#     mu:uuid "44eaa91e-5752-4d6b-8c3c-d56a0e191787" ;
+#     skos:prefLabel "de bijstand aan personen" ;
+#     skos:scopeNote "TODO" .
     
-domain:cfdc5216-40e0-4158-97f8-cce4fd53b9d5 a ext:BeleidsdomeinCode ;
-    mu:uuid "cfdc5216-40e0-4158-97f8-cce4fd53b9d5" ;
-    skos:prefLabel "het gezondheidsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:cfdc5216-40e0-4158-97f8-cce4fd53b9d5 a ext:BeleidsdomeinCode ;
+#     mu:uuid "cfdc5216-40e0-4158-97f8-cce4fd53b9d5" ;
+#     skos:prefLabel "het gezondheidsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:a92a3b48-7dce-410f-880a-42d6a38f566c a ext:BeleidsdomeinCode ;
-    mu:uuid "a92a3b48-7dce-410f-880a-42d6a38f566c" ;
-    skos:prefLabel "de gezinsbijslagen" ;
-    skos:scopeNote "TODO" .
+# domain:a92a3b48-7dce-410f-880a-42d6a38f566c a ext:BeleidsdomeinCode ;
+#     mu:uuid "a92a3b48-7dce-410f-880a-42d6a38f566c" ;
+#     skos:prefLabel "de gezinsbijslagen" ;
+#     skos:scopeNote "TODO" .
     
-domain:34c7bfb0-1cca-41a3-a211-357401b45b86 a ext:BeleidsdomeinCode ;
-    mu:uuid "34c7bfb0-1cca-41a3-a211-357401b45b86" ;
-    skos:prefLabel "de justitiehuizen" ;
-    skos:scopeNote "TODO" .
+# domain:34c7bfb0-1cca-41a3-a211-357401b45b86 a ext:BeleidsdomeinCode ;
+#     mu:uuid "34c7bfb0-1cca-41a3-a211-357401b45b86" ;
+#     skos:prefLabel "de justitiehuizen" ;
+#     skos:scopeNote "TODO" .
     
-domain:e2e1d575-bfd2-4984-adac-eacc921fad0d a ext:BeleidsdomeinCode ;
-    mu:uuid "e2e1d575-bfd2-4984-adac-eacc921fad0d" ;
-    skos:prefLabel "het elektronisch toezicht" ;
-    skos:scopeNote "TODO" .
+# domain:e2e1d575-bfd2-4984-adac-eacc921fad0d a ext:BeleidsdomeinCode ;
+#     mu:uuid "e2e1d575-bfd2-4984-adac-eacc921fad0d" ;
+#     skos:prefLabel "het elektronisch toezicht" ;
+#     skos:scopeNote "TODO" .
 
 dudette:70d5ccab-0b57-4495-892d-3ca12029aff1 a person:Person ;
     mu:uuid "70d5ccab-0b57-4495-892d-3ca12029aff1" ;
@@ -436,54 +422,54 @@ man:dc811a22-ccab-4dba-b305-fa1ca2981a0c a mandaat:Mandataris ;
     dct:title "Vlaams minister van Werk, Economie, Innovatie en Sport" ;
     mandaat:isBestuurlijkeAliasVan dudette:70d5ccab-0b57-4495-892d-3ca12029aff1 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:a3c66612-ec16-4f1f-8424-f9c328ef9c27 ;
-    mandaat:beleidsdomein domain:d48d3469-798a-4749-842f-adc964547a9b ;
-    mandaat:beleidsdomein domain:3b5eb980-1524-47ce-b138-c8788dd462fc ;
-    mandaat:beleidsdomein domain:bb3a9418-f3c1-46a2-ab77-55cca92c0dd1 ;
-    mandaat:beleidsdomein domain:035e8fb7-fda0-43f3-aa7a-1de8f4bd690f ;
-    mandaat:beleidsdomein domain:dd7147d2-f998-484e-ac0a-347df591bb0a ;
-    mandaat:beleidsdomein domain:b956158e-c5af-47a5-98e9-c6ca5a68c653 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:a3c66612-ec16-4f1f-8424-f9c328ef9c27 ;
+    # mandaat:beleidsdomein domain:d48d3469-798a-4749-842f-adc964547a9b ;
+    # mandaat:beleidsdomein domain:3b5eb980-1524-47ce-b138-c8788dd462fc ;
+    # mandaat:beleidsdomein domain:bb3a9418-f3c1-46a2-ab77-55cca92c0dd1 ;
+    # mandaat:beleidsdomein domain:035e8fb7-fda0-43f3-aa7a-1de8f4bd690f ;
+    # mandaat:beleidsdomein domain:dd7147d2-f998-484e-ac0a-347df591bb0a ;
+    # mandaat:beleidsdomein domain:b956158e-c5af-47a5-98e9-c6ca5a68c653 .
     
-domain:cff65cc0-a140-4152-9118-3b46b116bd14 a ext:BeleidsdomeinCode ;
-    mu:uuid "cff65cc0-a140-4152-9118-3b46b116bd14" ;
-    skos:prefLabel "het tewerkstellingsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:cff65cc0-a140-4152-9118-3b46b116bd14 a ext:BeleidsdomeinCode ;
+#     mu:uuid "cff65cc0-a140-4152-9118-3b46b116bd14" ;
+#     skos:prefLabel "het tewerkstellingsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:a3c66612-ec16-4f1f-8424-f9c328ef9c27 a ext:BeleidsdomeinCode ;
-    mu:uuid "a3c66612-ec16-4f1f-8424-f9c328ef9c27" ;
-    skos:prefLabel "het gebruik van de talen voor de sociale betrekkingen" ;
-    skos:scopeNote "TODO" .
+# domain:a3c66612-ec16-4f1f-8424-f9c328ef9c27 a ext:BeleidsdomeinCode ;
+#     mu:uuid "a3c66612-ec16-4f1f-8424-f9c328ef9c27" ;
+#     skos:prefLabel "het gebruik van de talen voor de sociale betrekkingen" ;
+#     skos:scopeNote "TODO" .
     
-domain:d48d3469-798a-4749-842f-adc964547a9b a ext:BeleidsdomeinCode ;
-    mu:uuid "d48d3469-798a-4749-842f-adc964547a9b" ;
-    skos:prefLabel "de professionele vorming" ;
-    skos:scopeNote "TODO" .
+# domain:d48d3469-798a-4749-842f-adc964547a9b a ext:BeleidsdomeinCode ;
+#     mu:uuid "d48d3469-798a-4749-842f-adc964547a9b" ;
+#     skos:prefLabel "de professionele vorming" ;
+#     skos:scopeNote "TODO" .
     
-domain:3b5eb980-1524-47ce-b138-c8788dd462fc a ext:BeleidsdomeinCode ;
-    mu:uuid "3b5eb980-1524-47ce-b138-c8788dd462fc" ;
-    skos:prefLabel "de economie" ;
-    skos:scopeNote "TODO" .
+# domain:3b5eb980-1524-47ce-b138-c8788dd462fc a ext:BeleidsdomeinCode ;
+#     mu:uuid "3b5eb980-1524-47ce-b138-c8788dd462fc" ;
+#     skos:prefLabel "de economie" ;
+#     skos:scopeNote "TODO" .
     
-domain:bb3a9418-f3c1-46a2-ab77-55cca92c0dd1 a ext:BeleidsdomeinCode ;
-    mu:uuid "bb3a9418-f3c1-46a2-ab77-55cca92c0dd1" ;
-    skos:prefLabel "het wetenschapsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:bb3a9418-f3c1-46a2-ab77-55cca92c0dd1 a ext:BeleidsdomeinCode ;
+#     mu:uuid "bb3a9418-f3c1-46a2-ab77-55cca92c0dd1" ;
+#     skos:prefLabel "het wetenschapsbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:035e8fb7-fda0-43f3-aa7a-1de8f4bd690f a ext:BeleidsdomeinCode ;
-    mu:uuid "035e8fb7-fda0-43f3-aa7a-1de8f4bd690f" ;
-    skos:prefLabel "het technologisch innovatiebeleid" ;
-    skos:scopeNote "TODO" .
+# domain:035e8fb7-fda0-43f3-aa7a-1de8f4bd690f a ext:BeleidsdomeinCode ;
+#     mu:uuid "035e8fb7-fda0-43f3-aa7a-1de8f4bd690f" ;
+#     skos:prefLabel "het technologisch innovatiebeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:dd7147d2-f998-484e-ac0a-347df591bb0a a ext:BeleidsdomeinCode ;
-    mu:uuid "dd7147d2-f998-484e-ac0a-347df591bb0a" ;
-    skos:prefLabel "de lichamelijke opvoeding, de sport en het openluchtleven" ;
-    skos:scopeNote "TODO" .
+# domain:dd7147d2-f998-484e-ac0a-347df591bb0a a ext:BeleidsdomeinCode ;
+#     mu:uuid "dd7147d2-f998-484e-ac0a-347df591bb0a" ;
+#     skos:prefLabel "de lichamelijke opvoeding, de sport en het openluchtleven" ;
+#     skos:scopeNote "TODO" .
     
-domain:b956158e-c5af-47a5-98e9-c6ca5a68c653 a ext:BeleidsdomeinCode ;
-    mu:uuid "b956158e-c5af-47a5-98e9-c6ca5a68c653" ;
-    skos:prefLabel "de medisch verantwoorde sportbeoefening" ;
-    skos:scopeNote "TODO" .
+# domain:b956158e-c5af-47a5-98e9-c6ca5a68c653 a ext:BeleidsdomeinCode ;
+#     mu:uuid "b956158e-c5af-47a5-98e9-c6ca5a68c653" ;
+#     skos:prefLabel "de medisch verantwoorde sportbeoefening" ;
+#     skos:scopeNote "TODO" .
     
 dudette:69b9715c-05f4-4ea6-b00f-bfb1da587ca2 a person:Person ;
     mu:uuid "69b9715c-05f4-4ea6-b00f-bfb1da587ca2" ;
@@ -497,55 +483,55 @@ man:d4042972-6fee-4555-8c90-2c27270f42f8 a mandaat:Mandataris ;
     dct:title "Vlaams minister van Omgeving, Natuur en Landbouw" ;
     mandaat:isBestuurlijkeAliasVan dudette:69b9715c-05f4-4ea6-b00f-bfb1da587ca2 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:c01caec5-05cd-4305-8b7f-52d8ca8a827e ;
-    mandaat:beleidsdomein domain:2ea48f88-f692-44fc-83c0-2fba063a1219 ;
-    mandaat:beleidsdomein domain:ce2d100a-5795-4f57-8172-bcab03f62b46 ;
-    mandaat:beleidsdomein domain:2fd432bb-149f-4522-90e3-b136b3dcc399 ;
-    mandaat:beleidsdomein domain:846c09cb-a728-41d4-a99c-d19d4edf3ac8 ;
-    mandaat:beleidsdomein domain:70f1a8ed-c119-49e3-abb7-991a2c0528d4 ;
-    mandaat:beleidsdomein domain:2096bcd2-9c1d-4744-998b-91312ae081d6 ;
-    mandaat:beleidsdomein domain:93db03cf-0ef6-404b-87db-77614d512046 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:c01caec5-05cd-4305-8b7f-52d8ca8a827e ;
+    # mandaat:beleidsdomein domain:2ea48f88-f692-44fc-83c0-2fba063a1219 ;
+    # mandaat:beleidsdomein domain:ce2d100a-5795-4f57-8172-bcab03f62b46 ;
+    # mandaat:beleidsdomein domain:2fd432bb-149f-4522-90e3-b136b3dcc399 ;
+    # mandaat:beleidsdomein domain:846c09cb-a728-41d4-a99c-d19d4edf3ac8 ;
+    # mandaat:beleidsdomein domain:70f1a8ed-c119-49e3-abb7-991a2c0528d4 ;
+    # mandaat:beleidsdomein domain:2096bcd2-9c1d-4744-998b-91312ae081d6 ;
+    # mandaat:beleidsdomein domain:93db03cf-0ef6-404b-87db-77614d512046 .
 
-domain:c01caec5-05cd-4305-8b7f-52d8ca8a827e a ext:BeleidsdomeinCode ;
-    mu:uuid "c01caec5-05cd-4305-8b7f-52d8ca8a827e" ;
-    skos:prefLabel "het leefmilieu en het waterbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:c01caec5-05cd-4305-8b7f-52d8ca8a827e a ext:BeleidsdomeinCode ;
+#     mu:uuid "c01caec5-05cd-4305-8b7f-52d8ca8a827e" ;
+#     skos:prefLabel "het leefmilieu en het waterbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:2ea48f88-f692-44fc-83c0-2fba063a1219 a ext:BeleidsdomeinCode ;
-    mu:uuid "2ea48f88-f692-44fc-83c0-2fba063a1219" ;
-    skos:prefLabel "de landinrichting en het natuurbehoud" ;
-    skos:scopeNote "TODO" .
+# domain:2ea48f88-f692-44fc-83c0-2fba063a1219 a ext:BeleidsdomeinCode ;
+#     mu:uuid "2ea48f88-f692-44fc-83c0-2fba063a1219" ;
+#     skos:prefLabel "de landinrichting en het natuurbehoud" ;
+#     skos:scopeNote "TODO" .
     
-domain:ce2d100a-5795-4f57-8172-bcab03f62b46 a ext:BeleidsdomeinCode ;
-    mu:uuid "ce2d100a-5795-4f57-8172-bcab03f62b46" ;
-    skos:prefLabel "de natuurlijke rijkdommen" ;
-    skos:scopeNote "TODO" .
+# domain:ce2d100a-5795-4f57-8172-bcab03f62b46 a ext:BeleidsdomeinCode ;
+#     mu:uuid "ce2d100a-5795-4f57-8172-bcab03f62b46" ;
+#     skos:prefLabel "de natuurlijke rijkdommen" ;
+#     skos:scopeNote "TODO" .
     
-domain:2fd432bb-149f-4522-90e3-b136b3dcc399 a ext:BeleidsdomeinCode ;
-    mu:uuid "2fd432bb-149f-4522-90e3-b136b3dcc399" ;
-    skos:prefLabel "de ruimtelijke ordening" ;
-    skos:scopeNote "TODO" .
+# domain:2fd432bb-149f-4522-90e3-b136b3dcc399 a ext:BeleidsdomeinCode ;
+#     mu:uuid "2fd432bb-149f-4522-90e3-b136b3dcc399" ;
+#     skos:prefLabel "de ruimtelijke ordening" ;
+#     skos:scopeNote "TODO" .
     
-domain:846c09cb-a728-41d4-a99c-d19d4edf3ac8 a ext:BeleidsdomeinCode ;
-    mu:uuid "846c09cb-a728-41d4-a99c-d19d4edf3ac8" ;
-    skos:prefLabel "de landbouw" ;
-    skos:scopeNote "TODO" .
+# domain:846c09cb-a728-41d4-a99c-d19d4edf3ac8 a ext:BeleidsdomeinCode ;
+#     mu:uuid "846c09cb-a728-41d4-a99c-d19d4edf3ac8" ;
+#     skos:prefLabel "de landbouw" ;
+#     skos:scopeNote "TODO" .
     
-domain:70f1a8ed-c119-49e3-abb7-991a2c0528d4 a ext:BeleidsdomeinCode ;
-    mu:uuid "70f1a8ed-c119-49e3-abb7-991a2c0528d4" ;
-    skos:prefLabel "de land- en tuinbouwvorming" ;
-    skos:scopeNote "TODO" .
+# domain:70f1a8ed-c119-49e3-abb7-991a2c0528d4 a ext:BeleidsdomeinCode ;
+#     mu:uuid "70f1a8ed-c119-49e3-abb7-991a2c0528d4" ;
+#     skos:prefLabel "de land- en tuinbouwvorming" ;
+#     skos:scopeNote "TODO" .
     
-domain:2096bcd2-9c1d-4744-998b-91312ae081d6 a ext:BeleidsdomeinCode ;
-    mu:uuid "2096bcd2-9c1d-4744-998b-91312ae081d6" ;
-    skos:prefLabel "het afzet- en uitvoerbeleid van landbouw-, tuinbouw- en visserijproducten" ;
-    skos:scopeNote "TODO" .
+# domain:2096bcd2-9c1d-4744-998b-91312ae081d6 a ext:BeleidsdomeinCode ;
+#     mu:uuid "2096bcd2-9c1d-4744-998b-91312ae081d6" ;
+#     skos:prefLabel "het afzet- en uitvoerbeleid van landbouw-, tuinbouw- en visserijproducten" ;
+#     skos:scopeNote "TODO" .
     
-domain:93db03cf-0ef6-404b-87db-77614d512046 a ext:BeleidsdomeinCode ;
-    mu:uuid "93db03cf-0ef6-404b-87db-77614d512046" ;
-    skos:prefLabel "het plattelandsbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:93db03cf-0ef6-404b-87db-77614d512046 a ext:BeleidsdomeinCode ;
+#     mu:uuid "93db03cf-0ef6-404b-87db-77614d512046" ;
+#     skos:prefLabel "het plattelandsbeleid" ;
+#     skos:scopeNote "TODO" .
     
 dudette:9deaa1db-9cb8-4125-97e6-b4641fba803f a person:Person ;
     mu:uuid "9deaa1db-9cb8-4125-97e6-b4641fba803f" ;
@@ -559,35 +545,35 @@ man:24733906-ca93-4eeb-9e1f-18b3592500dd a mandaat:Mandataris ;
     dct:title "Vlaams minister van Cultuur, Media, Jeugd en Brussel" ;
     mandaat:isBestuurlijkeAliasVan dudette:9deaa1db-9cb8-4125-97e6-b4641fba803f ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    mandaat:beleidsdomein domain:45634554-23de-40e5-af02-f2f83326fae0 ;
-    mandaat:beleidsdomein domain:30759b8c-f664-4c1f-baf2-b622d2267dca ;
-    mandaat:beleidsdomein domain:da9e2c77-a203-4400-85af-69c54a0d9315 ;
-    mandaat:beleidsdomein domain:04845280-ffbf-464e-adb1-3e95f307e292 ;
-    mandaat:beleidsdomein domain:c7f968de-eb40-4b7f-81ae-8e8b02199d34 .
+    mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime .
+    # mandaat:beleidsdomein domain:45634554-23de-40e5-af02-f2f83326fae0 ;
+    # mandaat:beleidsdomein domain:30759b8c-f664-4c1f-baf2-b622d2267dca ;
+    # mandaat:beleidsdomein domain:da9e2c77-a203-4400-85af-69c54a0d9315 ;
+    # mandaat:beleidsdomein domain:04845280-ffbf-464e-adb1-3e95f307e292 ;
+    # mandaat:beleidsdomein domain:c7f968de-eb40-4b7f-81ae-8e8b02199d34 .
 
-domain:45634554-23de-40e5-af02-f2f83326fae0 a ext:BeleidsdomeinCode ;
-    mu:uuid "45634554-23de-40e5-af02-f2f83326fae0" ;
-    skos:prefLabel "de culturele aangelegenheden" ;
-    skos:scopeNote "TODO" .
+# domain:45634554-23de-40e5-af02-f2f83326fae0 a ext:BeleidsdomeinCode ;
+#     mu:uuid "45634554-23de-40e5-af02-f2f83326fae0" ;
+#     skos:prefLabel "de culturele aangelegenheden" ;
+#     skos:scopeNote "TODO" .
     
-domain:30759b8c-f664-4c1f-baf2-b622d2267dca a ext:BeleidsdomeinCode ;
-    mu:uuid "30759b8c-f664-4c1f-baf2-b622d2267dca" ;
-    skos:prefLabel "het mediabeleid" ;
-    skos:scopeNote "TODO" .
+# domain:30759b8c-f664-4c1f-baf2-b622d2267dca a ext:BeleidsdomeinCode ;
+#     mu:uuid "30759b8c-f664-4c1f-baf2-b622d2267dca" ;
+#     skos:prefLabel "het mediabeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:da9e2c77-a203-4400-85af-69c54a0d9315 a ext:BeleidsdomeinCode ;
-    mu:uuid "da9e2c77-a203-4400-85af-69c54a0d9315" ;
-    skos:prefLabel "de coördinatie van het kinderrechtenbeleid" ;
-    skos:scopeNote "TODO" .
+# domain:da9e2c77-a203-4400-85af-69c54a0d9315 a ext:BeleidsdomeinCode ;
+#     mu:uuid "da9e2c77-a203-4400-85af-69c54a0d9315" ;
+#     skos:prefLabel "de coördinatie van het kinderrechtenbeleid" ;
+#     skos:scopeNote "TODO" .
     
-domain:04845280-ffbf-464e-adb1-3e95f307e292 a ext:BeleidsdomeinCode ;
-    mu:uuid "04845280-ffbf-464e-adb1-3e95f307e292" ;
-    skos:prefLabel "de filmkeuring" ;
-    skos:scopeNote "TODO" .
+# domain:04845280-ffbf-464e-adb1-3e95f307e292 a ext:BeleidsdomeinCode ;
+#     mu:uuid "04845280-ffbf-464e-adb1-3e95f307e292" ;
+#     skos:prefLabel "de filmkeuring" ;
+#     skos:scopeNote "TODO" .
     
-domain:c7f968de-eb40-4b7f-81ae-8e8b02199d34 a ext:BeleidsdomeinCode ;
-    mu:uuid "c7f968de-eb40-4b7f-81ae-8e8b02199d34" ;
-    skos:prefLabel "de coördinatie van het beleid met betrekking tot Brussel-Hoofdstad" ;
-    skos:scopeNote "TODO" .
+# domain:c7f968de-eb40-4b7f-81ae-8e8b02199d34 a ext:BeleidsdomeinCode ;
+#     mu:uuid "c7f968de-eb40-4b7f-81ae-8e8b02199d34" ;
+#     skos:prefLabel "de coördinatie van het beleid met betrekking tot Brussel-Hoofdstad" ;
+#     skos:scopeNote "TODO" .
 
