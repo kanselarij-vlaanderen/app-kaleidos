@@ -28,8 +28,8 @@
   :has-many `(
     ;; (mandatee                  :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
     ;;                            :as "temporary-replacements")
-             (government-field    :via ,(s-prefix "ext:heeftBeleidsVeld")
-                                  :as "government-fields")
+             (ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+                                  :as "ise-codes")
              (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
                                   :inverse t
                                   :as "decisions")
@@ -82,9 +82,6 @@
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((mandatee           :via ,(s-prefix "ext:heeftBeleidsVeld")
-                                  :inverse t
-                                  :as "mandatees"))
   :has-one `((ise-code            :via    ,(s-prefix "ext:heeftIseCode")
                                   :inverse t
                                   :as "ise-code")
@@ -100,6 +97,10 @@
                 (:code            :string ,(s-prefix "skos:altLabel")))
   :has-one `((government-field    :via    ,(s-prefix "ext:heeftIseCode")
                                   :as "field"))
+  :has-many `((mandatee           :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+                                  :as "mandatees")
+              (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
+                                  :as "subcases"))
   :resource-base (s-url "http://data.lblod.info/ise-code/")
   :features `(no-pagination-defaults include-uri)
   :on-path "ise-codes")
