@@ -1,0 +1,865 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix ise: <http://data.kanselarij.vlaanderen.be/ise/id/> .
+@prefix kans: <http://data.kanselarij.vlaanderen.be/core/> .
+@prefix beleidsveld: <http://data.kanselarij.vlaanderen.be/beleidsveld/id/> .
+
+ise:58ca1a41-ac3d-48cb-a05b-d009d52c312a a kans:IseCode ;
+skos:prefLabel "Budgettair beleid" ;
+skos:altLabel "CC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "58ca1a41-ac3d-48cb-a05b-d009d52c312a" .
+
+ise:1617511c-14f3-4ea2-b7cc-5547ccefa3f1 a kans:IseCode ;
+skos:prefLabel "Fiscaliteit" ;
+skos:altLabel "CD" ;
+ext:heeftIseCode beleidsveld:da9202a5-c504-4f2c-8865-055cf472b3e4 ; 
+mu:uuid "1617511c-14f3-4ea2-b7cc-5547ccefa3f1" .
+
+ise:6122d6ae-bb50-486b-8904-9fc573806091 a kans:IseCode ;
+skos:prefLabel "Financiële operaties" ;
+skos:altLabel "CB" ;
+ext:heeftIseCode beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3 ; 
+mu:uuid "6122d6ae-bb50-486b-8904-9fc573806091" .
+
+ise:1c80fea7-3f21-4606-abbb-d03fedc36d88 a kans:IseCode ;
+skos:prefLabel "Boekhouding" ;
+skos:altLabel "CE" ;
+ext:heeftIseCode beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e ; 
+mu:uuid "1c80fea7-3f21-4606-abbb-d03fedc36d88" .
+
+ise:bb32e795-7e37-45da-8572-4c144b12a1d9 a kans:IseCode ;
+skos:prefLabel "Ondersteuning Vlaamse Regering" ;
+skos:altLabel "PB" ;
+ext:heeftIseCode beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555 ; 
+mu:uuid "bb32e795-7e37-45da-8572-4c144b12a1d9" .
+
+ise:3bedc880-2faa-4d47-b6cd-86d536a7c21e a kans:IseCode ;
+skos:prefLabel "Gelijke kansen" ;
+skos:altLabel "PC" ;
+ext:heeftIseCode beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6 ; 
+mu:uuid "3bedc880-2faa-4d47-b6cd-86d536a7c21e" .
+
+ise:28a1f79c-c547-41c7-934f-ae84c0b9d2cf a kans:IseCode ;
+skos:prefLabel "Integratie en Inburgering" ;
+skos:altLabel "PD" ;
+ext:heeftIseCode beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6 ; 
+mu:uuid "28a1f79c-c547-41c7-934f-ae84c0b9d2cf" .
+
+ise:a75d7a25-8e42-430f-9b8b-fd2461bb5d11 a kans:IseCode ;
+skos:prefLabel "Brussel" ;
+skos:altLabel "PE" ;
+ext:heeftIseCode beleidsveld:624264fe-0e06-48c1-9e97-eeb4089f5971 ; 
+mu:uuid "a75d7a25-8e42-430f-9b8b-fd2461bb5d11" .
+
+ise:beea2905-49e0-49f9-9255-321cc2c0bd73 a kans:IseCode ;
+skos:prefLabel "Vlaamse Rand" ;
+skos:altLabel "PF" ;
+ext:heeftIseCode beleidsveld:0f693798-541d-49ee-b705-4643661402a2 ; 
+mu:uuid "beea2905-49e0-49f9-9255-321cc2c0bd73" .
+
+ise:a21efbf5-e918-449d-b0bf-7582a1bbb7ea a kans:IseCode ;
+skos:prefLabel "Binnenlands bestuur" ;
+skos:altLabel "PG" ;
+ext:heeftIseCode beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 ; 
+mu:uuid "a21efbf5-e918-449d-b0bf-7582a1bbb7ea" .
+
+ise:52ee2f17-0ad1-4b04-81b4-d750d6da247a a kans:IseCode ;
+skos:prefLabel "Stedenbeleid" ;
+skos:altLabel "PH" ;
+ext:heeftIseCode beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 ; 
+mu:uuid "52ee2f17-0ad1-4b04-81b4-d750d6da247a" .
+
+ise:327185a2-37c9-4bf2-bf10-754ffdbb6bae a kans:IseCode ;
+skos:prefLabel "Audit Lokale besturen" ;
+skos:altLabel "PI" ;
+ext:heeftIseCode beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 ; 
+mu:uuid "327185a2-37c9-4bf2-bf10-754ffdbb6bae" .
+
+ise:49dc695f-06b3-4dde-9faf-4b4c1e961073 a kans:IseCode ;
+skos:prefLabel "Rampenschade" ;
+skos:altLabel "PM" ;
+ext:heeftIseCode beleidsveld:32c9b7d9-6fe5-4e68-bd4f-0f895fadeb4c ; 
+mu:uuid "49dc695f-06b3-4dde-9faf-4b4c1e961073" .
+
+ise:46e89825-33c4-46e6-bad9-e20856e25f65 a kans:IseCode ;
+skos:prefLabel "Digitalisering" ;
+skos:altLabel "PN" ;
+ext:heeftIseCode beleidsveld:1a2aa428-d8c4-4fa1-aa1e-1c3851c382b2 ; 
+mu:uuid "46e89825-33c4-46e6-bad9-e20856e25f65" .
+
+ise:abd0405f-0cb9-43c8-a06e-4db89fd0a864 a kans:IseCode ;
+skos:prefLabel "Bestuursrechtspraak" ;
+skos:altLabel "PL" ;
+ext:heeftIseCode beleidsveld:4d73b772-ccfa-4bd8-bd45-6722b1972a1a ; 
+mu:uuid "abd0405f-0cb9-43c8-a06e-4db89fd0a864" .
+
+ise:11347510-d91a-4bbb-aa1d-a60672671325 a kans:IseCode ;
+skos:prefLabel "Facilities" ;
+skos:altLabel "PP" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "11347510-d91a-4bbb-aa1d-a60672671325" .
+
+ise:7e612792-acdf-4694-91ee-a8820987c8c6 a kans:IseCode ;
+skos:prefLabel "Vastgoed" ;
+skos:altLabel "PQ" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "7e612792-acdf-4694-91ee-a8820987c8c6" .
+
+ise:af549e81-7d44-44f9-8ea3-df5308058c6d a kans:IseCode ;
+skos:prefLabel "ICT" ;
+skos:altLabel "PR" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "af549e81-7d44-44f9-8ea3-df5308058c6d" .
+
+ise:6b1ca224-29b7-4cd5-90b1-739a885ac11c a kans:IseCode ;
+skos:prefLabel "Overheidsopdrachten" ;
+skos:altLabel "PS" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "6b1ca224-29b7-4cd5-90b1-739a885ac11c" .
+
+ise:d7398a8c-37c3-428c-8551-9018f6cfd09e a kans:IseCode ;
+skos:prefLabel "HR " ;
+skos:altLabel "PT" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "d7398a8c-37c3-428c-8551-9018f6cfd09e" .
+
+ise:7b2e9fee-509f-42bd-b5b3-1d18e9bb2259 a kans:IseCode ;
+skos:prefLabel "Audit Vlaamse overheid" ;
+skos:altLabel "PU" ;
+ext:heeftIseCode beleidsveld:59e231ce-97d2-4576-a152-c2807eefa5b6 ; 
+mu:uuid "7b2e9fee-509f-42bd-b5b3-1d18e9bb2259" .
+
+ise:817de3af-ccec-4993-8b1c-31a38d0b6b26 a kans:IseCode ;
+ext:heeftIseCode beleidsveld:9bae7bf3-3851-4447-b457-5af1b0c82925 ; 
+mu:uuid "817de3af-ccec-4993-8b1c-31a38d0b6b26" ;
+skos:prefLabel "Duurzame arbeidsmarkt" .
+
+ise:678f0d01-b916-4685-93f5-2ee6fe3b6c1e a kans:IseCode ;
+skos:prefLabel "Activering" ;
+ext:heeftIseCode beleidsveld:9bae7bf3-3851-4447-b457-5af1b0c82925 ; 
+mu:uuid "678f0d01-b916-4685-93f5-2ee6fe3b6c1e" .
+
+ise:fb113282-1d6c-4337-bb83-81284a8ad0a7 a kans:IseCode ;
+ext:heeftIseCode beleidsveld:9bae7bf3-3851-4447-b457-5af1b0c82925 ; 
+mu:uuid "fb113282-1d6c-4337-bb83-81284a8ad0a7" ;
+skos:prefLabel "Eindeloopbaan" ;
+skos:altLabel "JD" .
+
+ise:38039ef3-703d-41b8-980a-47995d7d043d a kans:IseCode ;
+skos:prefLabel "Loopbanen" ;
+ext:heeftIseCode beleidsveld:9bae7bf3-3851-4447-b457-5af1b0c82925 ; 
+mu:uuid "38039ef3-703d-41b8-980a-47995d7d043d" .
+
+ise:08d19c5d-5499-4b83-b938-247e350f9ffe a kans:IseCode ;
+skos:prefLabel "Competenties" ;
+ext:heeftIseCode beleidsveld:c08ccb06-460f-4bb7-87d5-714a94c5186b ; 
+mu:uuid "08d19c5d-5499-4b83-b938-247e350f9ffe" ;
+skos:altLabel "JF" .
+
+ise:63a3e2f1-062e-4fcc-a9a9-fb7f264a52c8 a kans:IseCode ;
+skos:prefLabel "Activering" ;
+skos:altLabel "JC" ;
+ext:heeftIseCode beleidsveld:5de93340-ce1a-4886-8425-6c80bbe0351b ; 
+mu:uuid "63a3e2f1-062e-4fcc-a9a9-fb7f264a52c8" .
+
+ise:7e4655f1-4cda-4fde-b089-2cddc841c32b a kans:IseCode ;
+skos:prefLabel "Duurzame arbeidsmarkt" ;
+skos:altLabel "JG" ;
+ext:heeftIseCode beleidsveld:5de93340-ce1a-4886-8425-6c80bbe0351b ; 
+mu:uuid "7e4655f1-4cda-4fde-b089-2cddc841c32b" .
+
+ise:fd345fa4-d249-4b2f-ae6d-32d4ed8a6111 a kans:IseCode ;
+skos:prefLabel "Financiering ondernemingen" ;
+skos:altLabel "EB" ;
+ext:heeftIseCode beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c ; 
+mu:uuid "fd345fa4-d249-4b2f-ae6d-32d4ed8a6111" .
+
+ise:d4dec040-b43e-4a3b-9ab1-c475957eb5d6 a kans:IseCode ;
+skos:prefLabel "Ondernemerschap " ;
+skos:altLabel "EC" ;
+ext:heeftIseCode beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c ; 
+mu:uuid "d4dec040-b43e-4a3b-9ab1-c475957eb5d6" .
+
+ise:cb9b1372-1b1f-414e-b14a-3208c54bf2a1 a kans:IseCode ;
+skos:prefLabel "Groei-ondersteuning KMO's en groeibedrijven" ;
+skos:altLabel "ED" ;
+ext:heeftIseCode beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c ; 
+mu:uuid "cb9b1372-1b1f-414e-b14a-3208c54bf2a1" .
+
+ise:939d2313-87fa-4f6e-9e2e-c09c202a33da a kans:IseCode ;
+skos:prefLabel "Vergroening/ klimaat" ;
+skos:altLabel "EE" ;
+ext:heeftIseCode beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c ; 
+mu:uuid "939d2313-87fa-4f6e-9e2e-c09c202a33da" .
+
+ise:b7cb4399-c19e-4072-b3d6-6071379fef78 a kans:IseCode ;
+skos:prefLabel "Ruimtelijke Economie" ;
+skos:altLabel "EF" ;
+ext:heeftIseCode beleidsveld:581845a0-0a25-4e43-89d6-7863572aeb6c ; 
+mu:uuid "b7cb4399-c19e-4072-b3d6-6071379fef78" .
+
+ise:e438f0e1-32e1-4621-bf5a-843b48fcb0d5 a kans:IseCode ;
+skos:prefLabel "Algemeen fundamenteel wetenschappelijk onderzoek" ;
+skos:altLabel "EG" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "e438f0e1-32e1-4621-bf5a-843b48fcb0d5" .
+
+ise:e9def66c-709c-43e9-9d8d-e55266674316 a kans:IseCode ;
+skos:prefLabel "Domeinspecifiek fundamenteel wetenschappelijk onderzoek" ;
+skos:altLabel "EH" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "e9def66c-709c-43e9-9d8d-e55266674316" .
+
+ise:b1276d0e-7fc9-4264-8702-7fc82dfb4f92 a kans:IseCode ;
+skos:prefLabel "Strategisch basisonderzoek" ;
+skos:altLabel "EI" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "b1276d0e-7fc9-4264-8702-7fc82dfb4f92" .
+
+ise:2b2b678e-8c20-4fec-8c17-d19772480a99 a kans:IseCode ;
+skos:prefLabel "Onderzoeksinfrastructuur" ;
+skos:altLabel "EJ" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "2b2b678e-8c20-4fec-8c17-d19772480a99" .
+
+ise:4e82cac9-f935-4be6-915f-2c87ad927e44 a kans:IseCode ;
+skos:prefLabel "Post initieel onderwijs" ;
+skos:altLabel "EK" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "4e82cac9-f935-4be6-915f-2c87ad927e44" .
+
+ise:0120a95f-19a2-455d-8519-e9fc16489cf5 a kans:IseCode ;
+skos:prefLabel "Brugfunctie fundamenteel en toegepast onderzoek" ;
+skos:altLabel "EL" ;
+ext:heeftIseCode beleidsveld:5a9c8b50-1d07-4bcb-9dd8-f1d041437a46 ; 
+mu:uuid "0120a95f-19a2-455d-8519-e9fc16489cf5" .
+
+ise:2f14d95a-3164-4b81-99bc-f6c3c78a5030 a kans:IseCode ;
+skos:prefLabel "Valorisatie onderzoeksresultaten" ;
+skos:altLabel "EL" ;
+ext:heeftIseCode beleidsveld:890bcc01-a3f2-40de-954b-92ea3d958784 ; 
+mu:uuid "2f14d95a-3164-4b81-99bc-f6c3c78a5030" .
+
+ise:bee48604-3449-46be-a63f-87a2ab465216 a kans:IseCode ;
+skos:prefLabel "Innovatiekracht ondernemingen" ;
+skos:altLabel "EN" ;
+ext:heeftIseCode beleidsveld:890bcc01-a3f2-40de-954b-92ea3d958784 ; 
+mu:uuid "bee48604-3449-46be-a63f-87a2ab465216" .
+
+ise:b7965978-231f-4a08-8b2b-69347cb8e234 a kans:IseCode ;
+skos:prefLabel "Wetenschapscommunicatie" ;
+skos:altLabel "EO" ;
+ext:heeftIseCode beleidsveld:106408c9-ec8e-42cf-9e8e-6a8e7ef537b1 ; 
+mu:uuid "b7965978-231f-4a08-8b2b-69347cb8e234" .
+
+ise:5eb93529-131e-4001-9071-b04b8a14b7b9 a kans:IseCode ;
+skos:prefLabel "Landbouwer en landbouwbedrijf" ;
+skos:altLabel "KB" ;
+ext:heeftIseCode beleidsveld:e4dab90c-bb3a-47c5-abfc-802ddb55480d ; 
+mu:uuid "5eb93529-131e-4001-9071-b04b8a14b7b9" .
+
+ise:0756bfdb-5ff1-4f2c-bd57-b5031cc09aac a kans:IseCode ;
+skos:prefLabel "Agrovoedingsketen en landbouwgerelateerde organisaties" ;
+skos:altLabel "KC" ;
+ext:heeftIseCode beleidsveld:e4dab90c-bb3a-47c5-abfc-802ddb55480d ; 
+mu:uuid "0756bfdb-5ff1-4f2c-bd57-b5031cc09aac" .
+
+ise:01b10630-2d9e-4bee-b517-1f8798f3ef99 a kans:IseCode ;
+skos:prefLabel "Visserij en aquacultuur" ;
+skos:altLabel "KD" ;
+ext:heeftIseCode beleidsveld:e4dab90c-bb3a-47c5-abfc-802ddb55480d ; 
+mu:uuid "01b10630-2d9e-4bee-b517-1f8798f3ef99" .
+
+ise:fb40fb97-2460-4605-a92c-754319c94ed7 a kans:IseCode ;
+skos:prefLabel "Landbouw- en zeevisserijonderzoek" ;
+skos:altLabel "KE" ;
+ext:heeftIseCode beleidsveld:e4dab90c-bb3a-47c5-abfc-802ddb55480d ; 
+mu:uuid "fb40fb97-2460-4605-a92c-754319c94ed7" .
+
+ise:b54c26b3-601e-43c5-9214-cedbc4189313 a kans:IseCode ;
+skos:prefLabel "Promotie landbouw, tuinbouw en zeevisserij" ;
+skos:altLabel "KF" ;
+ext:heeftIseCode beleidsveld:c48135d7-f235-460a-af3b-deb3954e6a32 ; 
+mu:uuid "b54c26b3-601e-43c5-9214-cedbc4189313" .
+
+ise:2e7232f6-c57d-4ed4-a461-97a5c90d8171 a kans:IseCode ;
+skos:prefLabel "Partnerschappen onroerenderfgoedzorg" ;
+skos:altLabel "QB" ;
+ext:heeftIseCode beleidsveld:c48135d7-f235-460a-af3b-deb3954e6a32 ; 
+mu:uuid "2e7232f6-c57d-4ed4-a461-97a5c90d8171" .
+
+ise:0028e5b2-63e0-43cb-ac63-985286d7515b a kans:IseCode ;
+skos:prefLabel "Kwaliteit onroerenderfgoed(zorg)" ;
+skos:altLabel "QC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "0028e5b2-63e0-43cb-ac63-985286d7515b" .
+
+ise:143ad0b5-6c4f-45ed-ac3e-8936fa38e706 a kans:IseCode ;
+skos:prefLabel "Water" ;
+skos:altLabel "QD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "143ad0b5-6c4f-45ed-ac3e-8936fa38e706" .
+
+ise:0635deef-c823-483f-a9b4-4257e04c07d0 a kans:IseCode ;
+skos:prefLabel "Bodem en ondergrond" ;
+skos:altLabel "QE" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "0635deef-c823-483f-a9b4-4257e04c07d0" .
+
+ise:13be8116-a7b7-4665-ab9f-1aac1cb8e5e3 a kans:IseCode ;
+skos:prefLabel "Natuur en biodiversiteit" ;
+skos:altLabel "QF" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "13be8116-a7b7-4665-ab9f-1aac1cb8e5e3" .
+
+ise:d491b5ff-c4d8-44e0-9549-05c855e5a123 a kans:IseCode ;
+skos:prefLabel "Plattelandsbeleid" ;
+skos:altLabel "QG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "d491b5ff-c4d8-44e0-9549-05c855e5a123" .
+
+ise:03f4a27a-6a92-45e2-9032-7c8c35fc3406 a kans:IseCode ;
+skos:prefLabel "Lucht" ;
+skos:altLabel "QH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "03f4a27a-6a92-45e2-9032-7c8c35fc3406" .
+
+ise:b25a7b6e-5131-4fd8-947c-2dcd213c7894 a kans:IseCode ;
+skos:prefLabel "Afval en materialen" ;
+skos:altLabel "QJ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "b25a7b6e-5131-4fd8-947c-2dcd213c7894" .
+
+ise:0d082a05-6707-47a9-92ca-8880b25c58df a kans:IseCode ;
+skos:prefLabel "Omgevingsbeleid ruimte en beleid" ;
+skos:altLabel "QN" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "0d082a05-6707-47a9-92ca-8880b25c58df" .
+
+ise:27e70927-f522-45eb-b987-cf0541ca21d1 a kans:IseCode ;
+skos:prefLabel "Klimaat" ;
+skos:altLabel "QI" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "27e70927-f522-45eb-b987-cf0541ca21d1" .
+
+ise:1de5de15-e7b5-4537-8db9-2931b63c4e79 a kans:IseCode ;
+skos:prefLabel "Energie" ;
+skos:altLabel "QK" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "1de5de15-e7b5-4537-8db9-2931b63c4e79" .
+
+ise:a2390577-fb2c-46c8-842f-03136701b8e3 a kans:IseCode ;
+skos:prefLabel "Dierenwelzijn" ;
+skos:altLabel "QM" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "a2390577-fb2c-46c8-842f-03136701b8e3" .
+
+ise:fa0f68ef-d605-4665-9470-82482cee9941 a kans:IseCode ;
+skos:prefLabel "Vraagzijde woningmarkt" ;
+skos:altLabel "QP" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "fa0f68ef-d605-4665-9470-82482cee9941" .
+
+ise:00d54db0-7627-4af7-addd-96075196c05f a kans:IseCode ;
+skos:prefLabel "Aanbodzijde woningmarkt" ;
+skos:altLabel "QQ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "00d54db0-7627-4af7-addd-96075196c05f" .
+
+ise:34a36747-4cc9-477b-9865-d2d1d30a88ff a kans:IseCode ;
+skos:prefLabel "Woningkwaliteit" ;
+skos:altLabel "QR" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "34a36747-4cc9-477b-9865-d2d1d30a88ff" .
+
+ise:920dd9f7-9fa1-4633-8ead-ecb97fe7fda4 a kans:IseCode ;
+skos:prefLabel "Juridische eerstelijnsbijstand" ;
+skos:altLabel "GG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "920dd9f7-9fa1-4633-8ead-ecb97fe7fda4" .
+
+ise:a69dc8e5-88ff-4d78-b2d0-3e2d4d9122dc a kans:IseCode ;
+skos:prefLabel "Justitiehuizen en elektronisch toezicht" ;
+skos:altLabel "GH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "a69dc8e5-88ff-4d78-b2d0-3e2d4d9122dc" .
+
+ise:6f20450e-455d-4ddb-afb8-dee90f7fe159 a kans:IseCode ;
+skos:prefLabel "Vlaams intersectoraal akkoord" ;
+skos:altLabel "?" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "6f20450e-455d-4ddb-afb8-dee90f7fe159" .
+
+ise:3a2a864b-4cb6-4e2a-86b8-b4814eb2fd54 a kans:IseCode ;
+skos:prefLabel "Welzijnswerk" ;
+skos:altLabel "GE" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "3a2a864b-4cb6-4e2a-86b8-b4814eb2fd54" .
+
+ise:325c969a-00a1-4d21-9916-5adfa393ea90 a kans:IseCode ;
+skos:prefLabel "Armoedebeleid" ;
+skos:altLabel "GC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "325c969a-00a1-4d21-9916-5adfa393ea90" .
+
+ise:a80fe6e6-7ef0-4b7f-a4ec-5612bfbe0d68 a kans:IseCode ;
+skos:prefLabel "Vrijwilligerswerk" ;
+skos:altLabel "GD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "a80fe6e6-7ef0-4b7f-a4ec-5612bfbe0d68" .
+
+ise:cf647014-e042-4923-a814-7b19c0a367de a kans:IseCode ;
+skos:prefLabel "Beleidsontwikkeling en -ondersteuning" ;
+skos:altLabel "GB" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "cf647014-e042-4923-a814-7b19c0a367de" .
+
+ise:d7fece6d-ed27-4da2-a551-2f182ba53f1c a kans:IseCode ;
+skos:prefLabel "Algemeen gezondheidsbeleid" ;
+skos:altLabel "GI" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "d7fece6d-ed27-4da2-a551-2f182ba53f1c" .
+
+ise:16c7eef2-c6dd-40cc-9dea-e81f7a6ebf41 a kans:IseCode ;
+skos:prefLabel "Gespecialiseerde zorg" ;
+skos:altLabel "GL" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "16c7eef2-c6dd-40cc-9dea-e81f7a6ebf41" .
+
+ise:d0a9e9f3-fc4a-4c55-b4f4-f12cf3a9c053 a kans:IseCode ;
+skos:prefLabel "Preventie" ;
+skos:altLabel "GJ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "d0a9e9f3-fc4a-4c55-b4f4-f12cf3a9c053" .
+
+ise:69b30222-aeb7-4636-a446-230de67da827 a kans:IseCode ;
+skos:prefLabel "Woonzorg en eerste lijn" ;
+skos:altLabel "GK" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "69b30222-aeb7-4636-a446-230de67da827" .
+
+ise:fffcd166-c83b-4c60-ba82-9567940f09e1 a kans:IseCode ;
+skos:prefLabel "Jongeren" ;
+skos:altLabel "GM" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "fffcd166-c83b-4c60-ba82-9567940f09e1" .
+
+ise:7ba5a8d7-1e61-4366-b3bf-e20306e0d62f a kans:IseCode ;
+skos:prefLabel "Kinderopvang" ;
+skos:altLabel "GN" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "7ba5a8d7-1e61-4366-b3bf-e20306e0d62f" .
+
+ise:e382225c-b26f-4c78-bd6a-b52408976300 a kans:IseCode ;
+skos:prefLabel "Preventieve gezinsondersteuning" ;
+skos:altLabel "GO" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "e382225c-b26f-4c78-bd6a-b52408976300" .
+
+ise:b0edc5b4-88aa-441a-818e-bfb40cf857e2 a kans:IseCode ;
+skos:prefLabel "Adoptie" ;
+skos:altLabel "GP" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "b0edc5b4-88aa-441a-818e-bfb40cf857e2" .
+
+ise:6a54e9fc-78b7-4a2d-a4cf-eddfb1728fb6 a kans:IseCode ;
+skos:prefLabel "Geïntegreerd gezinsbeleid" ;
+skos:altLabel "GU" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "6a54e9fc-78b7-4a2d-a4cf-eddfb1728fb6" .
+
+ise:40429adc-e1d9-4588-a021-69ddf93fb90c a kans:IseCode ;
+skos:prefLabel "Gezinsbijslagen" ;
+skos:altLabel "GQ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "40429adc-e1d9-4588-a021-69ddf93fb90c" .
+
+ise:732bf9ec-cde1-4e1b-9b77-387ac05df7c1 a kans:IseCode ;
+skos:prefLabel "Personen met een beperking" ;
+skos:altLabel "GR" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "732bf9ec-cde1-4e1b-9b77-387ac05df7c1" .
+
+ise:1f3d1379-336d-4c61-b41c-755f44d5e5e9 a kans:IseCode ;
+skos:prefLabel "Vlaamse sociale bescherming" ;
+skos:altLabel "GT" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "1f3d1379-336d-4c61-b41c-755f44d5e5e9" .
+
+ise:1cc7fadc-776a-4163-bffd-343421f5aaf1 a kans:IseCode ;
+skos:prefLabel "Vlaamse sociale bescherming zorgbudgetten" ;
+skos:altLabel "GW" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "1cc7fadc-776a-4163-bffd-343421f5aaf1" .
+
+ise:e692120a-3ebe-4094-85a6-0a78e1669b1e a kans:IseCode ;
+skos:prefLabel "Vlaamse sociale bescherming mobiliteit en hulpmiddelen" ;
+skos:altLabel "?" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "e692120a-3ebe-4094-85a6-0a78e1669b1e" .
+
+ise:bb977a8e-bedf-4bdc-9b64-7e6eb25b97c1 a kans:IseCode ;
+skos:prefLabel "Vlaamse sociale bescherming residentiële ouderenzorg" ;
+skos:altLabel "?" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "bb977a8e-bedf-4bdc-9b64-7e6eb25b97c1" .
+
+ise:bbcb221d-9969-4603-8217-ab20ecc7a617 a kans:IseCode ;
+skos:prefLabel "Zorginfrastructuur" ;
+skos:altLabel "?" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "bbcb221d-9969-4603-8217-ab20ecc7a617" .
+
+ise:01c7d456-9de3-499f-a54f-c87b69275302 a kans:IseCode ;
+skos:prefLabel "Internationale belangenbehartiging en vertegenwoordiging" ;
+skos:altLabel "DB" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "01c7d456-9de3-499f-a54f-c87b69275302" .
+
+ise:6880c89e-0b0c-41e4-8606-d73c5c2c14cc a kans:IseCode ;
+skos:prefLabel "Reputatiemanagement" ;
+skos:altLabel "DC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "6880c89e-0b0c-41e4-8606-d73c5c2c14cc" .
+
+ise:f8bde466-afac-4f1c-b14f-40ec370785e7 a kans:IseCode ;
+skos:prefLabel "Strategische goederen" ;
+skos:altLabel "DD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "f8bde466-afac-4f1c-b14f-40ec370785e7" .
+
+ise:68f84db5-14a9-489b-b9a4-2d4e3c5d9c86 a kans:IseCode ;
+skos:prefLabel "Ontwikkelingssamenwerking" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "68f84db5-14a9-489b-b9a4-2d4e3c5d9c86" .
+
+ise:ddffe22b-bcbe-4ea9-a135-fd3d073a5fda a kans:IseCode ;
+skos:prefLabel "Toerisme" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "ddffe22b-bcbe-4ea9-a135-fd3d073a5fda" .
+
+ise:22d263fa-b279-47cc-8691-0acf8b0bc8ef a kans:IseCode ;
+skos:prefLabel "Internationale economische belangenbehartiging en vertegenwoordiging" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "22d263fa-b279-47cc-8691-0acf8b0bc8ef" ;
+skos:altLabel "DF" .
+
+ise:7abf1d6d-6667-498e-8502-7194225e41ca a kans:IseCode ;
+skos:prefLabel "Financiële hefbomen internationalisering Vlaamse economie" ;
+skos:altLabel "DG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "7abf1d6d-6667-498e-8502-7194225e41ca" .
+
+ise:c15c3ef2-d4db-4db6-a7f7-e7678fb6cb07 a kans:IseCode ;
+skos:prefLabel "Partnerschappen internationalisering Vlaamse economie" ;
+skos:altLabel "DH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "c15c3ef2-d4db-4db6-a7f7-e7678fb6cb07" .
+
+ise:b95162e1-fcd2-4d92-8c9e-a2be54de5476 a kans:IseCode ;
+skos:prefLabel "Culturele organisaties" ;
+skos:altLabel "HC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "b95162e1-fcd2-4d92-8c9e-a2be54de5476" .
+
+ise:8408cbc0-f87c-475c-a63d-71c9b90407f7 a kans:IseCode ;
+skos:prefLabel "Culturele projecten" ;
+skos:altLabel "HD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "8408cbc0-f87c-475c-a63d-71c9b90407f7" .
+
+ise:fcd51fe7-6e9c-4250-825d-bf29cfb5c229 a kans:IseCode ;
+skos:prefLabel "Internationaal en interregionaal cultuurbeleid" ;
+skos:altLabel "HE" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "fcd51fe7-6e9c-4250-825d-bf29cfb5c229" .
+
+ise:1a4cb97b-5d0b-4bcd-8f7e-5e2a5797120f a kans:IseCode ;
+skos:prefLabel "Jeugdorganisaties" ;
+skos:altLabel "HF" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "1a4cb97b-5d0b-4bcd-8f7e-5e2a5797120f" .
+
+ise:4cf2b7ee-e60a-43b4-bf3b-6f8d8840494b a kans:IseCode ;
+skos:prefLabel "Jeugdprojecten" ;
+skos:altLabel "HG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "4cf2b7ee-e60a-43b4-bf3b-6f8d8840494b" .
+
+ise:28961620-6bf2-4ba9-8303-6bf9c00ac1e7 a kans:IseCode ;
+skos:prefLabel "Internationaal en interregionaal jeugdbeleid" ;
+skos:altLabel "HH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "28961620-6bf2-4ba9-8303-6bf9c00ac1e7" .
+
+ise:61be09bd-c552-4564-8a0e-88a9f6f57f98 a kans:IseCode ;
+skos:prefLabel "Mediaorganisaties" ;
+skos:altLabel "HI" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "61be09bd-c552-4564-8a0e-88a9f6f57f98" .
+
+ise:0c0d6077-da7d-4b38-8fd5-fd9fb5083794 a kans:IseCode ;
+skos:prefLabel "Mediaprojecten" ;
+skos:altLabel "HJ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "0c0d6077-da7d-4b38-8fd5-fd9fb5083794" .
+
+ise:59d7ad3e-8e4b-4aba-854e-f799c717e91f a kans:IseCode ;
+skos:prefLabel "Internationaal en interregionaal mediabeleid" ;
+skos:altLabel "HH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "59d7ad3e-8e4b-4aba-854e-f799c717e91f" .
+
+ise:d2af7e00-7284-4967-8e38-3f6e2e697c87 a kans:IseCode ;
+skos:prefLabel "Onafhankelijke toezichthouder" ;
+skos:altLabel "HL" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "d2af7e00-7284-4967-8e38-3f6e2e697c87" .
+
+ise:1da37564-8daa-468e-b88c-3e41bca6816c a kans:IseCode ;
+skos:prefLabel "Openbare omroep" ;
+skos:altLabel "HM" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "1da37564-8daa-468e-b88c-3e41bca6816c" .
+
+ise:fd2e5c4f-17e9-4878-8071-28438666f39b a kans:IseCode ;
+skos:prefLabel "Topsport" ;
+skos:altLabel "HQ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "fd2e5c4f-17e9-4878-8071-28438666f39b" .
+
+ise:247c0a08-4c8c-4bff-9261-ab80510f42f4 a kans:IseCode ;
+skos:prefLabel "Sport voor allen" ;
+skos:altLabel "HN" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "247c0a08-4c8c-4bff-9261-ab80510f42f4" .
+
+ise:a4a61725-3e0e-49d4-8dc5-7c71b53146a8 a kans:IseCode ;
+skos:prefLabel "Sportinfrastructuur" ;
+skos:altLabel "HO" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "a4a61725-3e0e-49d4-8dc5-7c71b53146a8" .
+
+ise:13c25c0f-a5a4-48cb-87a3-bf19c6a82b4a a kans:IseCode ;
+skos:prefLabel "Gezond en ethisch sporten" ;
+skos:altLabel "HP" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "13c25c0f-a5a4-48cb-87a3-bf19c6a82b4a" .
+
+ise:45950aa8-0e05-4651-8cd6-814f8d043766 a kans:IseCode ;
+skos:prefLabel "Anti-doping" ;
+skos:altLabel "HS" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "45950aa8-0e05-4651-8cd6-814f8d043766" .
+
+ise:10876195-e1be-4533-a8bc-9766b62c3521 a kans:IseCode ;
+skos:prefLabel "Internationaal en interregionaal sportbeleid" ;
+skos:altLabel "HR" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "10876195-e1be-4533-a8bc-9766b62c3521" .
+
+ise:03b0ae57-780a-42d1-9629-2009c4f91464 a kans:IseCode ;
+skos:prefLabel "Luchthavenbeleid" ;
+skos:altLabel "MB" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "03b0ae57-780a-42d1-9629-2009c4f91464" .
+
+ise:27504fda-95be-486f-bcdd-6ed2131a39ab a kans:IseCode ;
+skos:prefLabel "Uitbating regionale luchthavens" ;
+skos:altLabel "MC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "27504fda-95be-486f-bcdd-6ed2131a39ab" .
+
+ise:47358d3a-134d-4b08-a887-5e700b309434 a kans:IseCode ;
+skos:prefLabel "Luchthaveninfrastructuur" ;
+skos:altLabel "MD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "47358d3a-134d-4b08-a887-5e700b309434" .
+
+ise:226204a9-fb86-4c55-92ec-9e0855497824 a kans:IseCode ;
+skos:prefLabel "Basisbereikbaarheid " ;
+skos:altLabel "ME" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "226204a9-fb86-4c55-92ec-9e0855497824" .
+
+ise:b95d7f63-6f07-4911-9eef-c06d7fbd9d34 a kans:IseCode ;
+skos:prefLabel "Investeringen basisbereikbaarheid " ;
+skos:altLabel "MF" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "b95d7f63-6f07-4911-9eef-c06d7fbd9d34" .
+
+ise:b9a956c8-1219-4b69-a86a-f4361106bf4b a kans:IseCode ;
+skos:prefLabel "Kernnet" ;
+skos:altLabel "MG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "b9a956c8-1219-4b69-a86a-f4361106bf4b" .
+
+ise:67994126-5bf0-4032-99ea-c449f2f6e14a a kans:IseCode ;
+skos:prefLabel "Aanvullend net" ;
+skos:altLabel "MH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "67994126-5bf0-4032-99ea-c449f2f6e14a" .
+
+ise:ad4893d4-ad86-4d6e-a505-d628a2ad6094 a kans:IseCode ;
+skos:prefLabel "Vervoer op maat" ;
+skos:altLabel "MI" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "ad4893d4-ad86-4d6e-a505-d628a2ad6094" .
+
+ise:18c4400f-a9ee-47cd-aacc-37784597f6b7 a kans:IseCode ;
+skos:prefLabel "Treinnet" ;
+skos:altLabel "MJ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "18c4400f-a9ee-47cd-aacc-37784597f6b7" .
+
+ise:a721b002-09ba-43b5-8460-b3cd7ec11415 a kans:IseCode ;
+skos:prefLabel "Algemene beleidsondersteuning" ;
+skos:altLabel "MK" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "a721b002-09ba-43b5-8460-b3cd7ec11415" .
+
+ise:24e3aade-c8f8-474a-b055-7cbc0b79a923 a kans:IseCode ;
+skos:prefLabel "Algemeen mobiliteitsbeleid" ;
+skos:altLabel "ML" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "24e3aade-c8f8-474a-b055-7cbc0b79a923" .
+
+ise:af937068-6b63-4661-8178-66f79e5d72b2 a kans:IseCode ;
+skos:prefLabel "Combimobiliteit" ;
+skos:altLabel "MM" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "af937068-6b63-4661-8178-66f79e5d72b2" .
+
+ise:308c470b-f8ee-40fd-af9e-f616f5dab2b0 a kans:IseCode ;
+skos:prefLabel "Verkeersveiligheid" ;
+skos:altLabel "MN" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "308c470b-f8ee-40fd-af9e-f616f5dab2b0" .
+
+ise:7e6cdeeb-e934-4dc9-ae6f-8249c959ac9f a kans:IseCode ;
+skos:prefLabel "Verkeersbeleid" ;
+skos:altLabel "MO" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "7e6cdeeb-e934-4dc9-ae6f-8249c959ac9f" .
+
+ise:9db6ae14-0f52-43b6-abe8-31edb23e518c a kans:IseCode ;
+skos:prefLabel "Weginfrastructuur algemeen" ;
+skos:altLabel "MP" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "9db6ae14-0f52-43b6-abe8-31edb23e518c" .
+
+ise:78d77271-bec9-450f-a8cb-499de3f12bc2 a kans:IseCode ;
+skos:prefLabel "Onderhoud weginfrastructuur" ;
+skos:altLabel "MQ" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "78d77271-bec9-450f-a8cb-499de3f12bc2" .
+
+ise:4d5e2dc3-0ac1-407d-85d7-ea7937526daf a kans:IseCode ;
+skos:prefLabel "Investeringen weginfrastructuur" ;
+skos:altLabel "MR" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "4d5e2dc3-0ac1-407d-85d7-ea7937526daf" .
+
+ise:e51adb73-eab1-4659-8d66-8e28997a59ad a kans:IseCode ;
+skos:prefLabel "Haven- en waterbeleid" ;
+skos:altLabel "MS" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "e51adb73-eab1-4659-8d66-8e28997a59ad" .
+
+ise:f3e73176-f7fd-4bff-afd6-a88fe65e4d87 a kans:IseCode ;
+skos:prefLabel "Waterinfrastructuur algemeen" ;
+skos:altLabel "MT" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "f3e73176-f7fd-4bff-afd6-a88fe65e4d87" .
+
+ise:7cacc120-0d3e-4fdc-a441-b38593f788d5 a kans:IseCode ;
+skos:prefLabel "Onderhoud waterinfrastructuur" ;
+skos:altLabel "MU" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "7cacc120-0d3e-4fdc-a441-b38593f788d5" .
+
+ise:011cb936-67dd-4527-9fbc-6cb7c339e35c a kans:IseCode ;
+skos:prefLabel "Investeringen waterinfrastructuur" ;
+skos:altLabel "MV" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "011cb936-67dd-4527-9fbc-6cb7c339e35c" .
+
+ise:bca96b81-762f-4ffc-b9ba-671218bc6b24 a kans:IseCode ;
+skos:prefLabel "Scheepvaartverkeer" ;
+skos:altLabel "MW" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "bca96b81-762f-4ffc-b9ba-671218bc6b24" .
+
+ise:172a35ca-8c7e-4266-8e2f-94017107d8b4 a kans:IseCode ;
+skos:prefLabel "Waterinfrastructuur algemeen" ;
+skos:altLabel "MT" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "172a35ca-8c7e-4266-8e2f-94017107d8b4" .
+
+ise:99b3e57e-ae7c-4825-9aa4-666e78566714 a kans:IseCode ;
+skos:prefLabel "Onderhoud waterinfrastructuur" ;
+skos:altLabel "MU" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "99b3e57e-ae7c-4825-9aa4-666e78566714" .
+
+ise:f5dfdb0b-4162-438c-b0f4-3a90ff88710e a kans:IseCode ;
+skos:prefLabel "Investeringen waterinfrastructuur" ;
+skos:altLabel "MV" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "f5dfdb0b-4162-438c-b0f4-3a90ff88710e" .
+
+ise:aa8c930b-7501-451c-a997-2ab91b1704ae a kans:IseCode ;
+skos:prefLabel "Scheepvaartverkeer" ;
+skos:altLabel "MW" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "aa8c930b-7501-451c-a997-2ab91b1704ae" .
+
+ise:57c32763-4c1b-4620-9bb6-5fd01c6132df a kans:IseCode ;
+skos:prefLabel "Kleuter- en leerplichtonderwijs" ;
+skos:altLabel "FD" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "57c32763-4c1b-4620-9bb6-5fd01c6132df" .
+
+ise:20cbcbca-8e54-467e-b72b-bc8108572f0f a kans:IseCode ;
+skos:prefLabel "Hoger onderwijs" ;
+skos:altLabel "FE" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "20cbcbca-8e54-467e-b72b-bc8108572f0f" .
+
+ise:6794c446-9261-41dc-98dc-379a1312ed66 a kans:IseCode ;
+skos:prefLabel "Volwassenenonderwijs" ;
+skos:altLabel "FF" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "6794c446-9261-41dc-98dc-379a1312ed66" .
+
+ise:7ec1ccd7-b2c9-4213-a962-28fb2dc438db a kans:IseCode ;
+skos:prefLabel "Deeltijds kunstonderwijs" ;
+skos:altLabel "FC" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "7ec1ccd7-b2c9-4213-a962-28fb2dc438db" .
+
+ise:239a611d-ab35-42fd-b59b-b96bd32f17a2 a kans:IseCode ;
+skos:prefLabel "Onderwijsinfrastructuur" ;
+skos:altLabel "FB" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "239a611d-ab35-42fd-b59b-b96bd32f17a2" .
+
+ise:57f278f6-b88c-4124-80a8-df0b21f6b42e a kans:IseCode ;
+skos:prefLabel "Onderwijsinspectie" ;
+skos:altLabel "FI" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "57f278f6-b88c-4124-80a8-df0b21f6b42e" .
+
+ise:e1f93074-54b7-4c45-88b2-57bda1384737 a kans:IseCode ;
+skos:prefLabel "Ondersteuning onderwijsinstellingen en onderwijsveld" ;
+skos:altLabel "FG" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "e1f93074-54b7-4c45-88b2-57bda1384737" .
+
+ise:dc337ac7-a411-4eb4-838f-c97e66bc7304 a kans:IseCode ;
+skos:prefLabel "Studietoelagen" ;
+skos:altLabel "FH" ;
+ext:heeftIseCode beleidsveld:80106fa7-3f9d-4313-b3e1-040bf0e07410 ; 
+mu:uuid "dc337ac7-a411-4eb4-838f-c97e66bc7304" .

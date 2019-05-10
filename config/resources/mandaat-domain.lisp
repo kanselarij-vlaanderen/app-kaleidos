@@ -17,6 +17,7 @@
   :features '(include-uri)
   :on-path "mandates")
 
+<<<<<<< HEAD
 ;; TODO:karel why do we need this?
 (define-resource government-function ()
   :class (s-prefix "ext:BestuursfunctieCode")
@@ -27,6 +28,8 @@
   :features '(include-uri)
   :on-path "government-functions")
 
+=======
+>>>>>>> 1a41d76b569ab95221e16ade1f02f6d415629c00
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:priority        :string ,(s-prefix "mandaat:rangorde"))
@@ -38,8 +41,8 @@
   :has-many `(
     ;; (mandatee                  :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
     ;;                            :as "temporary-replacements")
-             (government-domain   :via ,(s-prefix "mandaat:beleidsdomein")
-                                  :as "government-domains")
+             (ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+                                  :as "ise-codes")
              (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
                                   :inverse t
                                   :as "decisions")
@@ -73,34 +76,47 @@
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mandataris-status-codes/")
   :features '(include-uri)
-  :on-path "madatee-states")
+  :on-path "mandatee-states")
 
-(define-resource government-domain ()
-  :class (s-prefix "ext:BeleidsdomeinCode")
-  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :has-many `((mandatee       :via ,(s-prefix "mandaat:beleidsdomein")
-                              :inverse t
-                              :as "mandatees")
-              (agendaitem     :via ,(s-prefix "mandaat:agendapuntBeleidsdomein")
-                              :inverse t
-                              :as "agendaitems"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsdomein-codes/")
+(define-resource government-domain () 
+  :class (s-prefix "kans:Beleidsdomein")
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-many `((government-field   :via ,(s-prefix "ext:heeftBeleidsDomein")
+                                  :inverse t
+                                  :as "government-fields"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsdomein/")
   :features '(include-uri)
   :on-path "government-domains")
 
-(define-resource jurisdiction ()
-  :class (s-prefix "ext:BevoegdheidCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :has-many `((mandatee :via ,(s-prefix "ext:bevoegdheid")
-                        :inverse t
-                        :as "mandatees"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bevoegdheid-codes/")
+(define-resource government-field () 
+  :class (s-prefix "kans:Beleidsveld")
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-one `((ise-code            :via    ,(s-prefix "ext:heeftIseCode")
+                                  :inverse t
+                                  :as "ise-code")
+            (government-domain    :via ,(s-prefix "ext:heeftBeleidsDomein")
+                                  :as "domain"))                
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsveld/")
   :features '(include-uri)
-  :on-path "responsibilities")
+  :on-path "government-fields")
+
+(define-resource ise-code ()
+  :class                                   (s-prefix "kans:IseCode")
+  :properties `((:name            :string ,(s-prefix "skos:prefLabel"))
+                (:code            :string ,(s-prefix "skos:altLabel")))
+  :has-one `((government-field    :via    ,(s-prefix "ext:heeftIseCode")
+                                  :as "field"))
+  :has-many `((mandatee           :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+                                  :as "mandatees")
+              (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
+                                  :as "subcases"))
+  :resource-base (s-url "http://data.lblod.info/ise-code/")
+  :features `(no-pagination-defaults include-uri)
+  :on-path "ise-codes")
 
 (define-resource person ()
   :class (s-prefix "person:Person")
