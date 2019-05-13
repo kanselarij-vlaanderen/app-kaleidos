@@ -120,6 +120,15 @@ services:
       - development-database:database
     volumes:
       - ./minister-jurisdiction-service:/app
+  development-mail-chimp-service:
+    image: semtech/mu-javascript-template
+    environment:
+      MAILCHIMP_API: ${MAILCHIMP_API}
+      NODE_ENV: "development"
+    links:
+      - development-database:database
+    volumes:
+      - ./mail-chimp-service:/app
 
 networks:
   proxy:

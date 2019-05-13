@@ -68,8 +68,6 @@
                                       :as "heeftCreator")
               (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (government-domain      :via ,(s-prefix "mandaat:beleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
-                                      :as "government-domains")
               (subcase                :via ,(s-prefix "dct:relation")
                                       :as "related-to")
               (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
@@ -81,8 +79,11 @@
               (subcase-phase          :via ,(s-prefix "ext:subcaseProcedurestapFase")
                                       :as "phases")
               (remark                 :via ,(s-prefix "besluitvorming:opmerking")
-                                      :as "remarks"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
+                                      :as "remarks")
+              (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
+                                      :inverse t
+                                      :as "ise-codes"))
+  :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
 

@@ -135,6 +135,15 @@ services:
       - database:database
     volumes:
       - ./close-meeting-service:/app
+  mail-chimp-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+      MAILCHIMP_API: ${MAILCHIMP_API}
+    links:
+      - database:database
+    volumes:
+      - ./mail-chimp-service:/app
   minister-jurisdiction-service:
     image: mikidi/mu-python-template:python3-port
     environment:

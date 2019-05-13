@@ -129,8 +129,14 @@ defmodule Dispatcher do
   match "/mandatee-states/*path" do
     Proxy.forward conn, path, "http://resource/mandatee-states/"
   end
+   match "/government-fields/*path" do
+    Proxy.forward conn, path, "http://resource/government-fields/"
+  end
   match "/government-domains/*path" do
     Proxy.forward conn, path, "http://resource/government-domains/"
+  end
+  match "/ise-codes/*path" do
+    Proxy.forward conn, path, "http://resource/ise-codes/"
   end
   match "/responsibilities/*path" do
     Proxy.forward conn, path, "http://resource/responsibilities/"
@@ -235,6 +241,10 @@ defmodule Dispatcher do
 
   match "/close-meeting/*path" do
     Proxy.forward conn, path, "http://development-close-meeting-service/"
+  end
+
+  match "/send-newsletter/*path" do
+    Proxy.forward conn, path, "http://development-mail-chimp-service/"
   end
 
   match _ do

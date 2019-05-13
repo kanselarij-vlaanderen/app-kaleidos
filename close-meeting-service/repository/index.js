@@ -22,7 +22,6 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
             OPTIONAL { ?agendaitem besluitvorming:ingetrokken ?retracted . }
             OPTIONAL { ?subcase ext:procedurestapHeeftBesluit ?decision . }
             OPTIONAL { ?agendaitem ext:heeftVerdaagd ?postponed . }
- 
        } 
     }
 `;

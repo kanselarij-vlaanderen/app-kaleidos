@@ -1,0 +1,39 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix beleidsdomein: <http://data.kanselarij.vlaanderen.be/Beleidsdomein/id/> .
+@prefix kans: <http://data.kanselarij.vlaanderen.be/core/> .
+
+beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06 a kans:Beleidsdomein ;
+skos:prefLabel "Financieën & begroting" ;
+mu:uuid "58c91fe9-8839-4653-9693-9a7df6885c06" .
+beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c a kans:Beleidsdomein ;
+skos:prefLabel "Kanselarij & bestuur" ;
+mu:uuid "22a39165-e17c-4a52-963a-9fa3d097907c" .
+beleidsdomein:a41f29a9-7781-4419-a821-fd3bd183c7ba a kans:Beleidsdomein ;
+skos:prefLabel "Werk & sociale economie" ;
+mu:uuid "a41f29a9-7781-4419-a821-fd3bd183c7ba" .
+beleidsdomein:e2ccf3f9-6b1f-4b32-9e76-501999c51788 a kans:Beleidsdomein ;
+skos:prefLabel "Economie, wetenschap & innovatie" ;
+mu:uuid "e2ccf3f9-6b1f-4b32-9e76-501999c51788" .
+beleidsdomein:98a3acec-51f2-4b6a-a1e1-6b6166d80d2e a kans:Beleidsdomein ;
+skos:prefLabel "Landbouw & visserij" ;
+mu:uuid "98a3acec-51f2-4b6a-a1e1-6b6166d80d2e" .
+beleidsdomein:5a0d6e96-061d-4d91-900d-173d138f79a4 a kans:Beleidsdomein ;
+skos:prefLabel "Omgeving" ;
+mu:uuid "5a0d6e96-061d-4d91-900d-173d138f79a4" .
+beleidsdomein:53af66e3-b055-4a74-9f24-03ea9def4e0c a kans:Beleidsdomein ;
+skos:prefLabel "Welzijn, vollksgezondheid & gezin" ;
+mu:uuid "53af66e3-b055-4a74-9f24-03ea9def4e0c" .
+beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 a kans:Beleidsdomein ;
+skos:prefLabel "Internationaal Vlaanderen" ;
+mu:uuid "50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2" .
+beleidsdomein:82535aaf-39ec-4b31-a181-f44241a65c93 a kans:Beleidsdomein ;
+skos:prefLabel "Cultuur, jeugd, sport & media" ;
+mu:uuid "82535aaf-39ec-4b31-a181-f44241a65c93" .
+beleidsdomein:be302e1b-f4d8-4212-a67d-bf992e6effcf a kans:Beleidsdomein ;
+skos:prefLabel "Mobiliteit & openbare werken" ;
+mu:uuid "be302e1b-f4d8-4212-a67d-bf992e6effcf" .
+beleidsdomein:cb105245-de9e-4d32-8ef9-519b832ed4f9 a kans:Beleidsdomein ;
+skos:prefLabel "Onderwijs & vorming" ;
+mu:uuid "cb105245-de9e-4d32-8ef9-519b832ed4f9" .

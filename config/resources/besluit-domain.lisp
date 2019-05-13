@@ -1,7 +1,7 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued      :datetime ,(s-prefix "dct:issued"))
-                (:is-final    :boolean ,(s-prefix "besluitvorming:finaleVersie"))
+                (:is-final    :boolean ,(s-prefix "ext:finaleVersie"))
                 (:name        :string  ,(s-prefix "ext:agendaNaam"))
                 (:created     :date    ,(s-prefix "ext:aangemaaktOp"))
                 (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
@@ -45,8 +45,8 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
-             (newsletter-info         :via      ,(s-prefix "ext:nieuwsbriefInfo") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                      :inverse t
+             (newsletter-info         :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
+                                      ;; :inverse t
                                       :as "newsletter-info")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
                                       :as "meeting-record"))
@@ -62,8 +62,6 @@
                                       :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (government-domain      :via      ,(s-prefix "mandaat:agendapuntBeleidsdomein")  ;; TODO Currently no domains linked to subcases, only mandatees
-                                      :as "government-domains")
               (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
@@ -234,7 +232,7 @@
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number                :number   ,(s-prefix "adms:identifier"))
-                (:is-final              :boolean ,(s-prefix "besluitvorming:finaleZittingVersie"))
+                (:is-final              :boolean ,(s-prefix "ext:finaleZittingVersie"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
