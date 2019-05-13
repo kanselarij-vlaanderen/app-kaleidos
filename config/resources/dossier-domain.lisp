@@ -43,6 +43,7 @@
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:subcase-name        :string   ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
+                (:modified             :datetime ,(s-prefix "dct:created"))
                 (:concluded           :boolean  ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
   :has-one `((decision                :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
