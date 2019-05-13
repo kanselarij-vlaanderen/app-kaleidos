@@ -170,9 +170,6 @@ defmodule Dispatcher do
   match "/publication-states/*path" do
     Proxy.forward conn, path, "http://resource/publication-states/"
   end
-  match "/document-vo-identifiers/*path" do
-    Proxy.forward conn, path, "http://resource/document-vo-identifiers/"
-  end
   match "/publication-state-codes/*path" do
     Proxy.forward conn, path, "http://resource/publication-state-codes/"
   end
@@ -224,7 +221,7 @@ match "/accounts/*path" do
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://login/sessions/"
   end
-  
+
   match "/alerts/*path" do
     Proxy.forward conn, path, "http://resource/alerts/"
   end
@@ -235,6 +232,10 @@ match "/accounts/*path" do
 
   match "/close-meeting/*path" do
     Proxy.forward conn, path, "http://close-meeting-service/"
+  end
+
+  match "/migrate/*path" do
+    Proxy.forward conn, path, "http://data-migration-service/"
   end
 
   match _ do

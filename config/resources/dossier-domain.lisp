@@ -5,8 +5,11 @@
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
+                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
                 (:policy-level  :string   ,(s-prefix "ext:beleidsNiveau")))
-  :has-one `((case-type         :via      ,(s-prefix "dct:type")
+  :has-one `((confidentiality   :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                                :as "confidentiality")
+             (case-type         :via      ,(s-prefix "dct:type")
                                 :as "type"))
   :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
                                 :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
@@ -40,6 +43,7 @@
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
+                (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:subcase-name        :string   ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
@@ -70,9 +74,6 @@
                                       :as "related-to")
               (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
-              (document-vo-identifier :via ,(s-prefix "ext:procedurestap") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :inverse t
-                                      :as "document-identifiers")
               (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")

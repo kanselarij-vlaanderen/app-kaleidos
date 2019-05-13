@@ -1,28 +1,18 @@
 import mu from 'mu';
-import { ok } from 'assert';
 
 const app = mu.app;
 const bodyParser = require('body-parser');
-const repository = require('./repository');
 const cors = require('cors');
+const cron = require('node-cron');
+
+const fillInterneOverheid = require('./repository/fill-intern-overheid');
+const fillInterneRegering = require('./repository/fill-intern-regering');
 
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
 
-
-app.post('/migrate', (req, res) => {
-  return migrateGraph(req, res);
+cron.schedule('* * * * *', async () => {
+  fillInterneOverheid.fillUp();
+  fillInterneRegering.fillUp();
+  
 });
-
-
-const migrateGraph = async (req, res) => {
-
-    try {
-
-      await repository.migrateGraph();
-
-    }catch(error) {
-        console.error(error);
-        res.send({ status: ok, statusCode: 500, body: { error } });
-    }
-};

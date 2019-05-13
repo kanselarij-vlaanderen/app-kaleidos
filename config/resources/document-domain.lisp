@@ -3,6 +3,7 @@
   :properties `((:archived        :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
                 (:title           :string ,(s-prefix "dct:title")) ;;string-set
                 (:description     :string ,(s-prefix "ext:omschrijving")) ;;string-set
+                (:confidential    :boolean ,(s-prefix "ext:vertrouwelijk")) ;;string-set
                 (:created         :datetime ,(s-prefix "dct:created"))
                 (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
                 (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
@@ -56,21 +57,6 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")
-
-(define-resource document-vo-identifier ()
-  :class (s-prefix "ext:DocumentIdentifier")
-  :properties `((:serial-number         :string   ,(s-prefix "ext:serieNummer"))
-                (:version-number               :number   ,(s-prefix "ext:versieNummer")) ;; 1 for nothing, 2 for BIS, 3 for TER
-                (:title                 :string   ,(s-prefix "dct:title"))) ;; title so people can give their own name to this version if necessary
-  :has-one `((document-version          :via      ,(s-prefix "ext:identifiesVersion")
-                                        :as "document-version")
-            (meeting                    :via      ,(s-prefix "ext:meeting")
-                                        :as "meeting")
-            (subcase                    :via      ,(s-prefix "ext:procedurestap")
-                                        :as "subcase"))
-  :resource-base (s-url "http://localhost/vo/document-identifier/")
-  :features `(include-uri)
-  :on-path "document-vo-identifiers")
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")

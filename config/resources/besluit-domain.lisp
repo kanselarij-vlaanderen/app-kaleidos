@@ -6,11 +6,7 @@
                 (:created     :date    ,(s-prefix "ext:aangemaaktOp"))
                 (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
                 (:is-accepted :boolean ,(s-prefix "ext:accepted")))
-  :has-one `(
-            ;; (meeting :via ,(s-prefix "besluitvorming:behandelt") ;; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
-            ;;           :inverse t
-            ;;           :as "meeting")
-            (meeting :via ,(s-prefix "besluit:isAangemaaktVoor")
+  :has-one `((meeting :via ,(s-prefix "besluit:isAangemaaktVoor")
                      :as "created-for")
             (agenda :via ,(s-prefix "besluit:heeftAgenda")
                     :inverse t
@@ -53,10 +49,7 @@
                                       :inverse t
                                       :as "newsletter-info")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                      :as "meeting-record")
-             ;; Added has-one relations from subcases
-             (confidentiality         :via      ,(s-prefix "besluitvorming:vertrouwelijkheidAgendapunt")
-                                      :as "confidentiality"))
+                                      :as "meeting-record"))
   :has-many `((mandatee               :via     ,(s-prefix "besluit:heeftAanwezige")
                                       :inverse t
                                       :as "attendees")
@@ -246,9 +239,6 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
                                         :as "agendas")
-              (document-vo-identifier   :via      ,(s-prefix "ext:meeting")
-                                        :as "identifiers"
-                                        :inverse t)
               (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
                                         :as "postponeds")
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
