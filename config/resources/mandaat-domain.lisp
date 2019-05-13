@@ -17,19 +17,6 @@
   :features '(include-uri)
   :on-path "mandates")
 
-<<<<<<< HEAD
-;; TODO:karel why do we need this?
-(define-resource government-function ()
-  :class (s-prefix "ext:BestuursfunctieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuursfunctie-codes/")
-  :features '(include-uri)
-  :on-path "government-functions")
-
-=======
->>>>>>> 1a41d76b569ab95221e16ade1f02f6d415629c00
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:priority        :string ,(s-prefix "mandaat:rangorde"))
