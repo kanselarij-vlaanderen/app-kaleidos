@@ -38,8 +38,9 @@ const addRelatedToAgenda = () => {
   PREFIX dct: <http://purl.org/dc/terms/>
   PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
   INSERT {
-    GRAPH <${tempGraph}> {
+    GRAPH <${tempGraph} {
       ?s a ?thing .
       ?subcase a dbpedia:UnitOfWork .
     }
@@ -49,9 +50,11 @@ const addRelatedToAgenda = () => {
     }
     GRAPH <${adminGraph}> {
       ?s a ?thing .
+      ?agenda dct:hasPart ?s.
+      ?subcase besluitvorming:isGeagendeerdVia ?s .
+        
       FILTER NOT EXISTS {
         ?s a besluit:AgendaPunt .
-        ?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
         ?subcase ext:procedurestapHeeftBesluit ?decision.
         FILTER NOT EXISTS {
           ?decision besluitvorming:goedgekeurd "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
@@ -59,7 +62,9 @@ const addRelatedToAgenda = () => {
       }
       { { ?s ?p ?agenda } UNION { ?agenda ?p ?s } }
       FILTER( ?thing NOT IN(besluitvorming:Agenda) )
-      ${notConfidentialFilter}
+
+    ${notConfidentialFilter}
+
 
     }
   }`;
