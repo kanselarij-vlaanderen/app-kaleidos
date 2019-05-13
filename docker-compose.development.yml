@@ -33,7 +33,7 @@ services:
   database-with-auth:
     image: semtech/mu-authorization:latest
     environment:
-      MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      MU_SPARQL_ENDPOINT: "http://development-database:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
       INSPECT_OUTGOING_SPARQL_QUERIES: "false"
       LOG_INCOMING_SPARQL_QUERIES: "true"
