@@ -13,3 +13,6 @@ step:3e6dba4f-5c3c-439a-993e-92348ec73642 a ext:ProcedurestapFaseCode ;
 step:529fb149-925d-4c38-9a58-99be349d05aa a ext:ProcedurestapFaseCode ;
     mu:uuid "529fb149-925d-4c38-9a58-99be349d05aa" ;
     skos:prefLabel "In behandeling" .
+step:4ea2c010-06c0-4594-966b-2cb9ed1e07b7 a ext:ProcedurestapFaseCode ;
+    mu:uuid "4ea2c010-06c0-4594-966b-2cb9ed1e07b7" ;
+    skos:prefLabel "Beslist" .
