@@ -42,12 +42,13 @@
   :class (s-prefix "dbpedia:UnitOfWork")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
-                (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
-                (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
+                (:is-archived         :boolean ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
-                (:subcase-name        :string   ,(s-prefix "ext:procedurestapNaam"))
+                (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
-                (:concluded           :boolean  ,(s-prefix "besluitvorming:besloten"))
+                (:modified            :datetime ,(s-prefix "ext:modified"))
+                (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
+                (:confidential           :boolean ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
   :has-one `((decision                :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "decision")
