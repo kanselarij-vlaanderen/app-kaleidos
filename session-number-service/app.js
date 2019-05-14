@@ -5,6 +5,7 @@ import moment from 'moment';
 const cors = require('cors');
 const app = mu.app;
 const bodyParser = require('body-parser');
+const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 app.use(cors());
 app.use(bodyParser.json({ type: 'application/*+json' }));
@@ -28,7 +29,7 @@ async function getAllSessions() {
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
   
   SELECT ?session WHERE {
-    GRAPH <http://mu.semte.ch/application> 
+    GRAPH <${targetGraph}> 
     {
       ?session a besluit:Zitting ;
       mu:uuid ?uuid ;
@@ -68,14 +69,14 @@ function updateSessionNumbers(sessions) {
   PREFIX adms: <http://www.w3.org/ns/adms#>
   
   DELETE WHERE { 
-    GRAPH <http://mu.semte.ch/application> { 
+    GRAPH <${targetGraph}> { 
       ?target adms:identifier ?o .
       FILTER(?target IN (${deleteString}))
     } 
   };
 
   INSERT DATA { 
-    GRAPH <http://mu.semte.ch/application> { 
+    GRAPH <${targetGraph}> { 
       ${insertString}
     } 
   }

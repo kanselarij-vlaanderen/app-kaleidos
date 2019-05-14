@@ -6,15 +6,23 @@
 step:7b90b3a6-2787-4b41-8a1d-886fc5abbb33 a ext:ProcedurestapType ;
     mu:uuid "7b90b3a6-2787-4b41-8a1d-886fc5abbb33" ;
     skos:prefLabel "principiële goedkeuring" .
+    
 step:6f7d1086-7c02-4a80-8c60-5690894f70fc a ext:ProcedurestapType ;
     mu:uuid "6f7d1086-7c02-4a80-8c60-5690894f70fc" ;
     skos:prefLabel "definitieve goedkeuring" .
+
 step:5e508d33-b52a-425e-8b13-13b53eebd9d9 a ext:ProcedurestapType ;
     mu:uuid "5e508d33-b52a-425e-8b13-13b53eebd9d9" ;
     skos:prefLabel "stemming parlement" .
+
 step:bdba2bbc-7af6-490b-98a8-433955cfe869 a ext:ProcedurestapType ;
     mu:uuid "bdba2bbc-7af6-490b-98a8-433955cfe869" ;
     skos:prefLabel "bekrachtiging Vlaamse Regering" .
+
 step:ec5877b7-737b-4051-9b8b-abd177b61236 a ext:ProcedurestapType ;
     mu:uuid "ec5877b7-737b-4051-9b8b-abd177b61236" ;
     skos:prefLabel "publicatie Belgisch Staatsblad" .
+
+step:343e05e1-24ca-4cfb-8708-048011c2b741 a ext:ProcedurestapType ;
+    mu:uuid "343e05e1-24ca-4cfb-8708-048011c2b741" ;
+    skos:prefLabel "In voorbereiding" .

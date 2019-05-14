@@ -20,9 +20,19 @@ services:
     volumes:
       - ./config/dispatcher:/config
   database-with-auth:
-    image: semtech/mu-authorization:0.2.0
+    image: semtech/mu-authorization:latest
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      INSPECT_INCOMING_SPARQL_QUERIES: "false"
+      LOG_ACCESS_RIGHTS: "true"
+      INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+      LOG_DELTA_MESSAGES: "true"
+      LOG_DELTA_CLIENT_COMMUNICATION: "true"
+      LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+      DATABASE_COMPATIBILITY: "Virtuoso"
     volumes:
       - ./config/authorization:/config
     labels:
@@ -46,13 +56,13 @@ services:
   resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./config/resources:/config
   file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./data/files:/share
   session-number-service:
@@ -92,7 +102,31 @@ services:
     volumes:
       - ./config/mocklogin:/config
   login:
-    image: lblod/mock-login-service
+    build: ../acmidm-login-service
+    ports:
+      - 8888:80
+      - 9228:9229
+    environment:
+      NODE_ENV: "development"
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
+      MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: "QXusM0aAmE8GOwA4-MyWQLXM-1Zb5bvnADUqB-srLRkaV9dXeAHtLhU_Zmne_HJKR4PMrW_84KtB2OKdrr0fBh8izGwl0MZu"
+      MU_APPLICATION_AUTH_ROLE_CLAIM: "dkb_kaleidos_rol_3d"
+      MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
+      DEBUG_LOG_TOKENSETS: "true"
+      LOG_SINK_URL: "http://sink"
+    logging: *default-logging
+    labels:
+      - "logging=true"
+  sink:
+    image: nginx:1.15.2
+    volumes:
+      - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
   close-meeting-service:
     image: semtech/mu-javascript-template
     environment:
@@ -118,11 +152,20 @@ services:
       - database:database
     volumes:
       - ./minister-jurisdiction-service:/app
+  proxy:
+    image: nginx:1.13
+    volumes:
+      - ./config/proxy:/etc/nginx/conf.d
+    ports:
+      - "443:443"
   data-migration-service:
     image: semtech/mu-javascript-template
     environment:
       NODE_ENV: "development"
     links:
       - database:database
+    ports:
+      - 8889:80
+      - 9229:9229
     volumes:
       - ./data-migration-service:/app

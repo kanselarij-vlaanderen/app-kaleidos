@@ -1,8 +1,8 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix beleidsdomein: <http://data.kanselarij.vlaanderen.be/Beleidsdomein/id/> .
-@prefix kans: <http://data.kanselarij.vlaanderen.be/core/> .
+@prefix beleidsdomein: <http://kanselarij.vo.data.gift/id/beleidsdomein/> .
+@prefix kans: <http://kanselarij.vo.data.gift/core/> .
 
 beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06 a kans:Beleidsdomein ;
 skos:prefLabel "Financieën & begroting" ;

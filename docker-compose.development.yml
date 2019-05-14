@@ -31,9 +31,19 @@ services:
       - default
       - backend
   database-with-auth:
-    image: semtech/mu-authorization:0.2.0
+    image: semtech/mu-authorization:latest
     environment:
-      MU_SPARQL_ENDPOINT: "http://development-database:8900/sparql"
+      MU_SPARQL_ENDPOINT: "http://development-database:8890/sparql"
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      INSPECT_INCOMING_SPARQL_QUERIES: "false"
+      LOG_ACCESS_RIGHTS: "true"
+      INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+      LOG_DELTA_MESSAGES: "true"
+      LOG_DELTA_CLIENT_COMMUNICATION: "true"
+      LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+      DATABASE_COMPATIBILITY: "Virtuoso"
     volumes:
       - ./config/authorization:/config
     labels:
@@ -61,13 +71,13 @@ services:
   development-resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
-      - development-database:database
+      - database-with-auth:database
     volumes:
       - ./config/resources:/config
   development-file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - development-database:database
+      - database-with-auth:database
     volumes:
       - ./data/files:/share
   development-session-number-service:
@@ -119,6 +129,14 @@ services:
       - development-database:database
     volumes:
       - ./mail-chimp-service:/app
+  data-migration-service:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    links:
+      - development-database:database
+    volumes:
+      - ./data-migration-service:/app
 
 networks:
   proxy:
