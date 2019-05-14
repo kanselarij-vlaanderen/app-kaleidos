@@ -1,17 +1,17 @@
-@prefix step: <http://example.com/step/> .
+@prefix kans: <http://kanselarij.vo.data.gift/id/dossier-types/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
-step:9bea7988-2550-481f-8113-696b17883e61 a ext:DossierTypeCode ;
+kans:9bea7988-2550-481f-8113-696b17883e61 a ext:DossierTypeCode ;
     mu:uuid "9bea7988-2550-481f-8113-696b17883e61" ;
-    skos:prefLabel "er beslissing op de minister Raad van de VR" .
-step:6334a6d2-4c01-440b-a884-fe583a14694d a ext:DossierTypeCode ;
+    skos:prefLabel "Beslissing op de minister Raad van de VR" .
+kans:6334a6d2-4c01-440b-a884-fe583a14694d a ext:DossierTypeCode ;
     mu:uuid "6334a6d2-4c01-440b-a884-fe583a14694d" ;
     skos:prefLabel "Besluit bij delegatie" .
-step:5fdf65f3-0732-4a36-b11c-c69b938c6626 a ext:DossierTypeCode ;
+kans:5fdf65f3-0732-4a36-b11c-c69b938c6626 a ext:DossierTypeCode ;
     mu:uuid "5fdf65f3-0732-4a36-b11c-c69b938c6626" ;
     skos:prefLabel "Ter mededeling" .
-step:91d7346e-aa77-497b-8127-75e554592598 a ext:DossierTypeCode ;
+kans:91d7346e-aa77-497b-8127-75e554592598 a ext:DossierTypeCode ;
     mu:uuid "91d7346e-aa77-497b-8127-75e554592598" ;
     skos:prefLabel "Persmededeling" .

@@ -11,8 +11,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix person: <http://www.w3.org/ns/person#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix iseCode: <http://data.kanselarij.vlaanderen.be/core/IseCode/> .
-
+@prefix iseCode: <http://kanselarij.vo.data.gift/id/ise/> .
 
 minister:1c2112c7-178f-482f-871c-d118bf9094e3 a mandaat:Mandaat ;
     mu:uuid "1c2112c7-178f-482f-871c-d118bf9094e3" ;

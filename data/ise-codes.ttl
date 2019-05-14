@@ -1,9 +1,9 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix ise: <http://data.kanselarij.vlaanderen.be/ise/id/> .
-@prefix kans: <http://data.kanselarij.vlaanderen.be/core/> .
-@prefix beleidsveld: <http://data.kanselarij.vlaanderen.be/beleidsveld/id/> .
+@prefix ise: <http://kanselarij.vo.data.gift/id/ise/> .
+@prefix kans: <http://kanselarij.vo.data.gift/core/> .
+@prefix beleidsveld: <http://kanselarij.vo.data.gift/id/beleidsveld/> .
 
 ise:58ca1a41-ac3d-48cb-a05b-d009d52c312a a kans:IseCode ;
   skos:prefLabel "Budgettair beleid" ;
