@@ -11,7 +11,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix person: <http://www.w3.org/ns/person#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix iseCode: <http://data.kanselarij.vlaanderen.be/core/IseCode> .
+@prefix iseCode: <http://data.kanselarij.vlaanderen.be/core/IseCode/> .
 
 
 minister:1c2112c7-178f-482f-871c-d118bf9094e3 a mandaat:Mandaat ;
@@ -207,7 +207,7 @@ man:90c9f6d0-34d4-427e-ad1e-298193ebeae6 a mandaat:Mandataris ;
     mu:uuid "90c9f6d0-34d4-427e-ad1e-298193ebeae6"  ;
     mandaat:rangorde 9 ;
     dct:title "Vlaams minister van Begroting, Financiën en Energie" ;
-    mandaat:isBestuurlijkeAliasVan IseCode:ff3596bb-e814-4a46-83f3-2c03a7cd4e8c ;
+    mandaat:isBestuurlijkeAliasVan dudette:ff3596bb-e814-4a46-83f3-2c03a7cd4e8c ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
     mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
     ext:heeftBevoegdeMandataris iseCode:58ca1a41-ac3d-48cb-a05b-d009d52c312a ;
@@ -414,11 +414,32 @@ man:9a70b95c-a1ba-40db-907c-c5395dfac60f a mandaat:Mandataris ;
     mandaat:isBestuurlijkeAliasVan dudette:ecb86a73-c11c-4228-bf36-976d83ed5c0d ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
     mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    # mandaat:beleidsdomein domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 ;
-    # mandaat:beleidsdomein domain:cfdc5216-40e0-4158-97f8-cce4fd53b9d5 ;
-    # mandaat:beleidsdomein domain:a92a3b48-7dce-410f-880a-42d6a38f566c ;
-    # mandaat:beleidsdomein domain:34c7bfb0-1cca-41a3-a211-357401b45b86 ;
-    # mandaat:beleidsdomein domain:e2e1d575-bfd2-4984-adac-eacc921fad0d .
+    ext:heeftBevoegdeMandataris iseCode:920dd9f7-9fa1-4633-8ead-ecb97fe7fda4 ;
+    ext:heeftBevoegdeMandataris iseCode:a69dc8e5-88ff-4d78-b2d0-3e2d4d9122dc ;
+    ext:heeftBevoegdeMandataris iseCode:6f20450e-455d-4ddb-afb8-dee90f7fe159 ;
+    ext:heeftBevoegdeMandataris iseCode:3a2a864b-4cb6-4e2a-86b8-b4814eb2fd54 ;
+    ext:heeftBevoegdeMandataris iseCode:325c969a-00a1-4d21-9916-5adfa393ea90 ;
+    ext:heeftBevoegdeMandataris iseCode:a80fe6e6-7ef0-4b7f-a4ec-5612bfbe0d68 ;
+    ext:heeftBevoegdeMandataris iseCode:cf647014-e042-4923-a814-7b19c0a367de ;
+    ext:heeftBevoegdeMandataris iseCode:d7fece6d-ed27-4da2-a551-2f182ba53f1c ;
+    ext:heeftBevoegdeMandataris iseCode:16c7eef2-c6dd-40cc-9dea-e81f7a6ebf41 ;
+    ext:heeftBevoegdeMandataris iseCode:d0a9e9f3-fc4a-4c55-b4f4-f12cf3a9c053 ;
+    ext:heeftBevoegdeMandataris iseCode:69b30222-aeb7-4636-a446-230de67da827 ;
+    ext:heeftBevoegdeMandataris iseCode:fffcd166-c83b-4c60-ba82-9567940f09e1 ;
+    ext:heeftBevoegdeMandataris iseCode:7ba5a8d7-1e61-4366-b3bf-e20306e0d62f ;
+    ext:heeftBevoegdeMandataris iseCode:e382225c-b26f-4c78-bd6a-b52408976300 ;
+    ext:heeftBevoegdeMandataris iseCode:b0edc5b4-88aa-441a-818e-bfb40cf857e2 ;
+    ext:heeftBevoegdeMandataris iseCode:6a54e9fc-78b7-4a2d-a4cf-eddfb1728fb6 ;
+    ext:heeftBevoegdeMandataris iseCode:40429adc-e1d9-4588-a021-69ddf93fb90c ;
+    ext:heeftBevoegdeMandataris iseCode:732bf9ec-cde1-4e1b-9b77-387ac05df7c1 ;
+    ext:heeftBevoegdeMandataris iseCode:1f3d1379-336d-4c61-b41c-755f44d5e5e9 ;
+    ext:heeftBevoegdeMandataris iseCode:1cc7fadc-776a-4163-bffd-343421f5aaf1 ;
+    ext:heeftBevoegdeMandataris iseCode:e692120a-3ebe-4094-85a6-0a78e1669b1e ;
+    ext:heeftBevoegdeMandataris iseCode:bb977a8e-bedf-4bdc-9b64-7e6eb25b97c1 ;
+    ext:heeftBevoegdeMandataris iseCode:bbcb221d-9969-4603-8217-ab20ecc7a617 .
+
+
+
 
 # domain:44eaa91e-5752-4d6b-8c3c-d56a0e191787 a ext:BeleidsdomeinCode ;
 #     mu:uuid "44eaa91e-5752-4d6b-8c3c-d56a0e191787" ;
@@ -458,29 +479,33 @@ man:dc811a22-ccab-4dba-b305-fa1ca2981a0c a mandaat:Mandataris ;
     mandaat:isBestuurlijkeAliasVan dudette:70d5ccab-0b57-4495-892d-3ca12029aff1 ;
     mandaat:start "2017-02-14T12:41:13Z"^^xsd:dateTime ;
     mandaat:einde "2020-02-14T12:41:13Z"^^xsd:dateTime ;
-    ext:heeftBevoegdeMandataris iseCode:920dd9f7-9fa1-4633-8ead-ecb97fe7fda4 ;
-    ext:heeftBevoegdeMandataris iseCode:a69dc8e5-88ff-4d78-b2d0-3e2d4d9122dc ;
-    ext:heeftBevoegdeMandataris iseCode:6f20450e-455d-4ddb-afb8-dee90f7fe159 ;
-    ext:heeftBevoegdeMandataris iseCode:3a2a864b-4cb6-4e2a-86b8-b4814eb2fd54 ;
-    ext:heeftBevoegdeMandataris iseCode:325c969a-00a1-4d21-9916-5adfa393ea90 ;
-    ext:heeftBevoegdeMandataris iseCode:a80fe6e6-7ef0-4b7f-a4ec-5612bfbe0d68 ;
-    ext:heeftBevoegdeMandataris iseCode:cf647014-e042-4923-a814-7b19c0a367de ;
-    ext:heeftBevoegdeMandataris iseCode:d7fece6d-ed27-4da2-a551-2f182ba53f1c ;
-    ext:heeftBevoegdeMandataris iseCode:16c7eef2-c6dd-40cc-9dea-e81f7a6ebf41 ;
-    ext:heeftBevoegdeMandataris iseCode:d0a9e9f3-fc4a-4c55-b4f4-f12cf3a9c053 ;
-    ext:heeftBevoegdeMandataris iseCode:69b30222-aeb7-4636-a446-230de67da827 ;
-    ext:heeftBevoegdeMandataris iseCode:fffcd166-c83b-4c60-ba82-9567940f09e1 ;
-    ext:heeftBevoegdeMandataris iseCode:7ba5a8d7-1e61-4366-b3bf-e20306e0d62f ;
-    ext:heeftBevoegdeMandataris iseCode:e382225c-b26f-4c78-bd6a-b52408976300 ;
-    ext:heeftBevoegdeMandataris iseCode:b0edc5b4-88aa-441a-818e-bfb40cf857e2 ;
-    ext:heeftBevoegdeMandataris iseCode:6a54e9fc-78b7-4a2d-a4cf-eddfb1728fb6 ;
-    ext:heeftBevoegdeMandataris iseCode:40429adc-e1d9-4588-a021-69ddf93fb90c ;
-    ext:heeftBevoegdeMandataris iseCode:732bf9ec-cde1-4e1b-9b77-387ac05df7c1 ;
-    ext:heeftBevoegdeMandataris iseCode:1f3d1379-336d-4c61-b41c-755f44d5e5e9 ;
-    ext:heeftBevoegdeMandataris iseCode:1cc7fadc-776a-4163-bffd-343421f5aaf1 ;
-    ext:heeftBevoegdeMandataris iseCode:e692120a-3ebe-4094-85a6-0a78e1669b1e ;
-    ext:heeftBevoegdeMandataris iseCode:bb977a8e-bedf-4bdc-9b64-7e6eb25b97c1 ;
-    ext:heeftBevoegdeMandataris iseCode:bbcb221d-9969-4603-8217-ab20ecc7a617 .
+    ext:heeftBevoegdeMandataris iseCode:817de3af-ccec-4993-8b1c-31a38d0b6b26 ;
+    ext:heeftBevoegdeMandataris iseCode:678f0d01-b916-4685-93f5-2ee6fe3b6c1e ;
+    ext:heeftBevoegdeMandataris iseCode:fb113282-1d6c-4337-bb83-81284a8ad0a7 ;
+    ext:heeftBevoegdeMandataris iseCode:38039ef3-703d-41b8-980a-47995d7d043d ;
+    ext:heeftBevoegdeMandataris iseCode:08d19c5d-5499-4b83-b938-247e350f9ffe ;
+    ext:heeftBevoegdeMandataris iseCode:fd345fa4-d249-4b2f-ae6d-32d4ed8a6111 ;
+    ext:heeftBevoegdeMandataris iseCode:d4dec040-b43e-4a3b-9ab1-c475957eb5d6 ;
+    ext:heeftBevoegdeMandataris iseCode:cb9b1372-1b1f-414e-b14a-3208c54bf2a1 ;
+    ext:heeftBevoegdeMandataris iseCode:939d2313-87fa-4f6e-9e2e-c09c202a33da ;
+    ext:heeftBevoegdeMandataris iseCode:b7cb4399-c19e-4072-b3d6-6071379fef78 ;
+    ext:heeftBevoegdeMandataris iseCode:e438f0e1-32e1-4621-bf5a-843b48fcb0d5 ;
+    ext:heeftBevoegdeMandataris iseCode:e9def66c-709c-43e9-9d8d-e55266674316 ;
+    ext:heeftBevoegdeMandataris iseCode:b1276d0e-7fc9-4264-8702-7fc82dfb4f92 ;
+    ext:heeftBevoegdeMandataris iseCode:2b2b678e-8c20-4fec-8c17-d19772480a99 ;
+    ext:heeftBevoegdeMandataris iseCode:4e82cac9-f935-4be6-915f-2c87ad927e44 ;
+    ext:heeftBevoegdeMandataris iseCode:0120a95f-19a2-455d-8519-e9fc16489cf5 ;
+    ext:heeftBevoegdeMandataris iseCode:2f14d95a-3164-4b81-99bc-f6c3c78a5030 ;
+    ext:heeftBevoegdeMandataris iseCode:bee48604-3449-46be-a63f-87a2ab465216 ;
+    ext:heeftBevoegdeMandataris iseCode:b7965978-231f-4a08-8b2b-69347cb8e234 ;
+    ext:heeftBevoegdeMandataris iseCode:fd2e5c4f-17e9-4878-8071-28438666f39b ;
+    ext:heeftBevoegdeMandataris iseCode:247c0a08-4c8c-4bff-9261-ab80510f42f4 ;
+    ext:heeftBevoegdeMandataris iseCode:a4a61725-3e0e-49d4-8dc5-7c71b53146a8 ;
+    ext:heeftBevoegdeMandataris iseCode:13c25c0f-a5a4-48cb-87a3-bf19c6a82b4a ;
+    ext:heeftBevoegdeMandataris iseCode:45950aa8-0e05-4651-8cd6-814f8d043766 ;
+    ext:heeftBevoegdeMandataris iseCode:10876195-e1be-4533-a8bc-9766b62c3521 .
+
+
 
 
 # domain:cff65cc0-a140-4152-9118-3b46b116bd14 a ext:BeleidsdomeinCode ;
