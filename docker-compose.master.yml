@@ -77,7 +77,7 @@ services:
   file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - development-database:database
+      - db:database
     volumes:
       - ./data/files:/share
   session-number-service:
