@@ -125,7 +125,7 @@ services:
     environment:
       MAILCHIMP_API: ${MAILCHIMP_API}
     links:
-      - database:database
+      - db:database
     volumes:
       - ./mail-chimp-service:/app
   data-migration-service:
