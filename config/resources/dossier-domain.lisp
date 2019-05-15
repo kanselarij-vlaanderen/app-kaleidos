@@ -42,6 +42,7 @@
   :class (s-prefix "dbpedia:UnitOfWork")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
+                (:subcase-identifier  :string ,(s-prefix "ext:procedurestapNummer"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
