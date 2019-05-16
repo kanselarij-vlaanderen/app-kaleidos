@@ -1,5 +1,7 @@
 import mu from 'mu';
 import { ok } from 'assert';
+import { createNewsLetter } from './html-renderer/NewsLetter'
+import { getNewsItem } from './html-renderer/NewsItem'
 
 const app = mu.app;
 const bodyParser = require('body-parser');
@@ -17,18 +19,13 @@ moment.locale("nl");
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
 
-import { createNewsLetter } from './html-renderer/NewsLetter'
-import { getNewsItem } from './html-renderer/NewsItem'
-
 app.post('/mails', (req, res) => {
   return sendNewsletter(req, res);
 });
 
-
 app.get('/', (req, res) => {
   return getMostRecentNewsletter(req, res);
 });
-
 
 const getMostRecentNewsletter = async (req, res) => {
 
@@ -51,10 +48,6 @@ const getMostRecentNewsletter = async (req, res) => {
     res.send({ status: ok, statusCode: 500, body: { error } });
   }
 };
-
-
-
-
 
 const sendNewsletter = async (req, res) => {
 

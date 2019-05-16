@@ -87,7 +87,7 @@
                          :as "meeting"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
                       :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
-              (theme :via ,(s-prefix "dct:subject")
+              (theme :via ,(s-prefix "ext:themesOfSubcase")
                      :as "themes")
               (document-version :via ,(s-prefix "ext:documentenVoorPublicatie")
                      :as "document-versions"))
@@ -97,9 +97,15 @@
 
 (define-resource theme ()
   :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
+  :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note    :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label     :string ,(s-prefix "skos:altLabel")))
+  :has-many `((newsletter-info  :via ,(s-prefix "ext:themesOfSubcase")
+                                :inverse t
+                                :as "newsletters")
+              (subcase          :via ,(s-prefix "dct:subject")
+                                :inverse t
+                                :as "subcases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
   :features '(include-uri)
   :on-path "themes")

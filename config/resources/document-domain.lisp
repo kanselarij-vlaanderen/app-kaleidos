@@ -23,7 +23,7 @@
   :class (s-prefix "ext:DocumentVersie")
   :properties `((:version-number        :string   ,(s-prefix "ext:versieNummer"))
                 (:created               :datetime ,(s-prefix "dct:created"))
-                (:identification-number :string   ,(s-prefix "ext:idNumber"))
+                (:number-vr             :string ,(s-prefix "besluitvorming:stuknummerVR")) 
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
@@ -51,9 +51,6 @@
              (decision                  :via ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
                                         :inverse t
                                         :as "signed-decision"))
-  :has-many `((document-vo-identifier   :via ,(s-prefix "ext:identifiesVersion")
-                                        :as "identifiers"
-                                        :inverse t))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")
