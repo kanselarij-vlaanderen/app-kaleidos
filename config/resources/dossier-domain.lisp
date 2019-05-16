@@ -84,7 +84,6 @@
               (remark                 :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
-                                      :inverse t
                                       :as "ise-codes"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
   :features '(include-uri)

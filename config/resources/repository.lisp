@@ -68,8 +68,7 @@
 (add-prefix "validation" "http://mu.semte.ch/vocabularies/validation/")
 
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
-(add-prefix "kans" "http://data.kanselarij.vlaanderen.be/core/")
-(add-prefix "ise" "http://data.kanselarij.vlaanderen.be/ise/id/")
+(add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
 
 
 ;;;;;
