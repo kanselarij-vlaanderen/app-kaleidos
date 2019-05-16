@@ -8,9 +8,11 @@
                 (:is-accepted :boolean ,(s-prefix "ext:accepted")))
   :has-one `((meeting :via ,(s-prefix "besluit:isAangemaaktVoor")
                      :as "created-for")
-            (agenda :via ,(s-prefix "besluit:heeftAgenda")
-                    :inverse t
+            (agenda :via ,(s-prefix "besluitvorming:heeftVorigeVersie")
                     :as "previous-version")
+            (agenda :via ,(s-prefix "besluitvorming:heeftVorigeVersie")
+                    :inverse t
+                    :as "next-version")
             (file   :via ,(s-prefix "ext:getekendeNotule")
                     :as "file"))
   :has-many `((agendaitem :via ,(s-prefix "dct:hasPart")
