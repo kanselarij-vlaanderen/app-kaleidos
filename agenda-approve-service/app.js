@@ -205,7 +205,7 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 			FILTER NOT EXISTS {
 				?document besluitvorming:stuknummerVR ?vrnumber .
 			}
-			{ SELECT COUNT(DISTINCT(?othervrnumber)) AS ?existingNumbers WHERE {
+			{ SELECT ?agendaItem COUNT(DISTINCT(?othervrnumber)) AS ?existingNumbers WHERE {
 				GRAPH <${targetGraph}> {
 					?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
 					?otherDocument besluitvorming:heeftVersie ?otherVersion .
@@ -228,7 +228,7 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 		let document = binding['document'].value;
 		let number = parseInt(binding['number'].value);
 		let date = moment(binding['zittingDate'].value);
-		let type = (binding['dossierType'].value || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
+		let type = (((binding['dossierType'] || {}).value) || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
 
 		if(previousAgendaItem != item){
 			previousAgendaItem = item;
