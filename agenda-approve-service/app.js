@@ -232,8 +232,8 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 		}
 		previousStartingIndex = previousStartingIndex + 1;
 		number = paddNumberWithZeros(number, 4);
-		month = paddNumberWithZeros(date.month(), 2);
-		day = paddNumberWithZeros(date.date(), 2);
+		let month = paddNumberWithZeros(date.month(), 2);
+		let day = paddNumberWithZeros(date.date(), 2);
 		triples.push(`<${document}> besluitvorming:stuknummerVR "VR ${date.year()} ${month}${day} ${type}.${number}/${previousStartingIndex}" .`);
 	});
 
