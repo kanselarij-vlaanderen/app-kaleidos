@@ -4,11 +4,11 @@
 ;; after altering this file.
 
 (in-package :mu-cl-resources)
-(defparameter *cache-model-properties-p* t)
-(defparameter *cache-count-queries* t)
+(defparameter *cache-model-properties-p* nil)
+(defparameter *cache-count-queries* nil)
 (defparameter *supply-cache-headers-p* t
   "when non-nil, cache headers are supplied.  this works together with mu-cache.")
-(setf *cache-model-properties-p* t)
+(setf *cache-model-properties-p* nil)
 (defparameter *include-count-in-paginated-responses* t
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
