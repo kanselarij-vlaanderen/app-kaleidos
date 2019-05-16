@@ -18,8 +18,11 @@ app.post('/approveAgenda', async (req, res) => {
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
-	await ensureDocumentsHasSerialnumberForSession(oldAgendaId);
-	await nameSerialNumbersForSession(oldAgendaId);
+	
+	await markAgendaItemsPartOfAgendaA(oldAgendaId);
+	await storeAgendaItemNumbers(oldAgendaId);
+	await nameDocumentsBasedOnAgenda(oldAgendaId);
+
 	try {
 		const codeURI = await getSubcasePhaseCode();
 		const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
@@ -80,6 +83,185 @@ async function getSubcasePhasesOfAgenda(newAgendaId, codeURI) {
 `
 	const data = await mu.query(query).catch(err => { console.error(err) });
 	return data;
+}
+
+async function markAgendaItemsPartOfAgendaA(agendaId) {
+	const query = `
+	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	INSERT {
+		GRAPH <${targetGraph}> {
+			?agendaItem ext:partOfFirstAgenda """true"""^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+		}
+	} WHERE {
+		GRAPH <${targetGraph}> {
+			?agenda a besluitvorming:Agenda .
+			?agenda mu:uuid "${agendaId}" .
+			FILTER NOT EXISTS {
+				?agenda besluitvorming:heeftVorigeVersie ?o.
+			}
+			?agenda dct:hasPart ?agendaItem .
+		}
+	}`;
+	return await mu.query(query).catch(err => { console.error(err) });
+};
+
+async function storeAgendaItemNumbers(agendaId){
+	const maxAgendaItemNumberSoFar = await getHighestAgendaItemNumber(agendaId);
+	let query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	SELECT ?agendaItem WHERE {
+		GRAPH <${targetGraph}> {
+			?agenda a besluitvorming:Agenda .
+			?agenda mu:uuid "${agendaId}".
+			?agenda dct:hasPart ?agendaItem .
+			OPTIONAL {
+				?agendaItem ext:prioriteit ?priority .
+			}
+			BIND(IF(BOUND(?priority), ?priority, 1000000) AS ?priorityOrMax)
+			FILTER NOT EXISTS {
+				?agendaItem ext:agendaItemNumber ?number .
+			}
+		}
+	} ORDER BY ?priorityOrMax`;
+	const sortedAgendaItemsToName = await mu.query(query).catch( err => { console.error(err) });
+	const triples = [];
+	sortedAgendaItemsToName.results.bindings.map((binding, index) => {
+		triples.push(`<${binding['agendaItem'].value}> ext:agendaItemNumber ${maxAgendaItemNumberSoFar + index} .`);
+	});
+
+	query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	INSERT DATA {
+		GRAPH <${targetGraph}> {
+			${triples.join("\n")}
+		}
+	}`;
+	await mu.query(query).catch( err => { console.log(err); })
+};
+
+async function getHighestAgendaItemNumber(agendaId){
+	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	SELECT MAX(?number) as ?max WHERE {
+		GRAPH <${targetGraph}> {
+			?agenda a besluitvorming:Agenda .
+			?agenda mu:uuid "${agendaId}" .			
+			?agenda dct:hasPart ?agendaItem .
+			?agendaItem ext:agendaItemNumber ?number .
+		}
+	} GROUP BY ?agenda`;
+	const response = await mu.query(query).catch(err => { console.error(err) });
+	return parseInt(((response.results.bindings[0] || {})['max'] || {}).value || 0);
+};
+
+async function nameDocumentsBasedOnAgenda(agendaId) {
+	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	
+	SELECT ?agendaItem ?existingNumbers ?document ?number ?zittingDate ?dossierType WHERE {
+		GRAPH <${targetGraph}> {
+			?agenda a besluitvorming:Agenda .
+			?agenda mu:uuid "${agendaId}" .
+			?agenda besluit:isAangemaaktVoor ?zitting .
+			?zitting besluit:geplandeStart ?zittingDate .
+			?agenda dct:hasPart ?agendaItem .
+			?agendaItem ext:bevatAgendapuntDocumentversie ?documentVersion .
+			?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
+			?case dct:hasPart ?subcase .
+			?case dct:type ?dossierType .
+			?document besluitvorming:heeftVersie ?documentVersion .
+			FILTER NOT EXISTS {
+				?document besluitvorming:stuknummerVR ?vrnumber .
+			}
+			{ SELECT COUNT(?othervrnumber) AS ?existingNumbers WHERE {
+				?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
+				?otherDocument besluitvorming:heeftVersie ?otherVersion .
+				OPTIONAL { ?otherDocument besluitvorming:stuknummerVR ?othervrnumber . }
+			} }
+			
+			?agendaItem ext:agendaItemNumber ?number.
+		}
+	} ORDER BY ?agendaItem
+	`;
+
+	const response = await mu.query(query).catch(err => { console.error(err) });
+	let previousAgendaItem = null;
+	let previousStartingIndex = 0;
+	let triples = [];
+	response.results.bindings.map((binding)=> {
+		let item = binding['agendaItem'].value;
+		let numbersSoFar = parseInt(binding['existingNumbers'].value) || 0;
+		let document = binding['document'].value;
+		let number = parseInt(binding['number'].value);
+		let date = moment(binding['zittingDate'].value);
+		let type = binding['dossierType'].value.indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
+
+		if(previousAgendaItem != item){
+			previousAgendaItem = item;
+			previousStartingIndex = numbersSoFar;
+		}
+		previousStartingIndex = previousStartingIndex + 1;
+		number = paddNumberWithZeros(number, 4);
+		month = paddNumberWithZeros(date.month(), 2);
+		day = paddNumberWithZeros(date.date(), 2);
+		triples.push(`<${document}> besluitvorming:stuknummerVR "VR ${date.year()} ${month}${day} ${type}.${number}/${previousStartingIndex}" .`);
+	});
+
+	if(triples.length < 1){
+		return;
+	}
+
+	await mu.query(`PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+	PREFIX dbpedia: <http://dbpedia.org/ontology/>
+	PREFIX dct: <http://purl.org/dc/terms/>
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+		
+	INSERT DATA {
+	 GRAPH <${targetGraph}> {
+					${triples.join("\n")}
+	 }
+	};`).catch(err => { console.error(err); });
+};
+
+function paddNumberWithZeros(number, length){
+	let string = "" + number;
+	while(string.length < length){
+		string = 0 + string;
+	}
+	return string;
 }
 
 async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI) {
@@ -165,7 +347,8 @@ async function copyAgendaItems(oldId, newUri) {
 	INSERT { 
 		GRAPH <${targetGraph}> {
     	<${newUri}> dct:hasPart ?newURI .
-      ?newURI ext:replacesPrevious ?agendaitem .
+			?newURI ext:replacesPrevious ?agendaitem .
+			<${newUri}> besluitvorming:heeftVorigeVersie ?agenda .
     	?newURI mu:uuid ?newUuid
 		}
 	} WHERE { { SELECT * WHERE {
@@ -212,178 +395,6 @@ async function copyAgendaItems(oldId, newUri) {
 	}`
 
 	return await mu.update(moveProperties).catch(err => { console.error(err) });
-}
-
-async function ensureDocumentsHasSerialnumberForSession(agendaId) {
-	const query = `
-	PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
-	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
-	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-		
-	INSERT { 
-		GRAPH <${targetGraph}> {
-			?identifier a ext:DocumentIdentifier .
-     	?identifier ext:identifiesVersion ?versie .
-			?identifier mu:uuid ?newUUID .
-			?identifier ext:versieNummer 1 .
-			?identifier ext:meeting ?session .
-			?identifier ext:procedurestap ?procedurestap .
-	  }
-	} where {
-		{ SELECT * WHERE {
-			GRAPH <${targetGraph}> {
-				?agenda a besluitvorming:Agenda .
-				?agenda mu:uuid "${agendaId}" .
-			  ?agenda besluit:isAangemaaktVoor ?session .
-			  ?agenda <http://purl.org/dc/terms/hasPart> ?agendaitem .
-			  ?procedurestap besluitvorming:isGeagendeerdVia ?agendaitem .
-			  ?procedurestap ext:bevatDocumentversie ?versie .
-				FILTER NOT EXISTS { 
-				  ?identifier ext:identifiesVersion ?versie .
-					?identifier ext:meeting ?session .
-				}
-				OPTIONAL {
-					?versie mu:uuid ?versionid .
-				}
-				BIND(IF(BOUND(?versionid), STRUUID(), STRUUID()) AS ?newUUID)
-		} } }
-		BIND(IRI(CONCAT("http://mu.semte.ch/vocabularies/ext/identifiers/",?newUUID)) AS ?identifier)
-	}`
-	return await mu.update(query).catch(err => { console.error(err) });
-}
-
-async function nameSerialNumbersForSession(agendaId) {
-	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
-	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
-	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-	PREFIX dct: <http://purl.org/dc/terms/>
-		
-	SELECT ?procedurestap ?identifiers ?namedIdentifierCount WHERE {
-					?agenda a besluitvorming:Agenda.
-					?agenda mu:uuid "${agendaId}".
-					?agenda dct:hasPart ?agendaitem.
-					?procedurestap besluitvorming:isGeagendeerdVia ?agendaitem.
-		{ SELECT ?procedurestap GROUP_CONCAT(DISTINCT ?identifier;separator="|") as ?identifiers WHERE { 
-			GRAPH <${targetGraph}> {
-				?identifier a ext:DocumentIdentifier .
-				?identifier ext:identifiesVersion ?versie.
-				?identifier ext:procedurestap ?procedurestap
-				FILTER NOT EXISTS {
-						?identifier ext:serialNumber ?number.
-				}
-			}
-		} GROUP BY ?procedurestap }
-		{ SELECT ?procedurestap COUNT(DISTINCT(?identifier2)) AS ?namedIdentifierCount WHERE {
-				GRAPH <${targetGraph}> {
-					?agenda a besluitvorming:Agenda.
-					?agenda mu:uuid "${agendaId}".
-					?agenda dct:hasPart ?agendaitem.
-					?procedurestap besluitvorming:isGeagendeerdVia ?agendaitem.
-					OPTIONAL {
-						?identifier2 a ext:DocumentIdentifier .
-						?identifier2 ext:procedurestap ?procedurestap.
-						?identifier2 ext:serialNumber ?number. 
-					}  
-				}                	
-		} GROUP BY ?procedurestap }
-	}`
-	let agendaItemInfo = await mu.query(query).catch(err => { console.error(err); });
-	agendaItemInfo = parseSparqlResults(agendaItemInfo);
-	let documentTypeMapping = await getDocumentTypesForDocsInAgenda(agendaId);
-	let uriToSerialnumbermapping = {};
-	agendaItemInfo.map((item) => {
-		let { identifiers, namedIdentifierCount } = item;
-		namedIdentifierCount = parseInt(namedIdentifierCount) + 1;
-		identifiers = identifiers.split("|");
-		sortIdentifiersByType(identifiers, documentTypeMapping);
-		identifiers.map((identifier, index) => {
-			let serialNumber = `${namedIdentifierCount + index}`;
-			uriToSerialnumbermapping[identifier] = serialNumber;
-		});
-	});
-	await updateSerialNumbersOfDocumentVersions(uriToSerialnumbermapping);
-}
-
-function sortIdentifiersByType(identifiers, typeMapping) {
-	let notaURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/9e5b1230-f3ad-438f-9c68-9d7b1b2d875d";
-	let besluitURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/4c7cfaf9-1d5f-4fdf-b7e9-b7ce5167e31a";
-	let ontwerpdecreetURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/f57a69b8-e4c1-468a-97ee-a516bb62c6b6";
-	let decreetURI = "http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/e4f73ddc-1ed6-4878-b9ed-ace55c0a8d64";
-
-	let scoreMapping = {};
-	scoreMapping[notaURI] = 1;
-	scoreMapping[besluitURI] = 2;
-	scoreMapping[ontwerpdecreetURI] = 2;
-	scoreMapping[decreetURI] = 2;
-
-	identifiers.sort((one, two) => {
-		let oneType = typeMapping[one];
-		let twoType = typeMapping[two];
-		let oneScore = oneType ? scoreMapping[oneType] : 3;
-		oneScore = oneScore || 3;
-		let twoScore = twoType ? twoType[twoType] : 3;
-		twoScore = twoScore || 3;
-		return one < two ? -1 : 1;
-	});
-	return identifiers;
-}
-
-async function getDocumentTypesForDocsInAgenda(agendaId) {
-	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
-	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> 
-	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-	PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-	PREFIX dct: <http://purl.org/dc/terms/>
-	
-	SELECT ?versie ?type WHERE {
-		GRAPH <${targetGraph}> {
-			  ?agenda mu:uuid "${agendaId}".
-			  ?agenda dct:hasPart ?agendaitem.
-			  ?identifier ext:agendaitem ?agendaitem.
-				?identifier a ext:DocumentIdentifier .
-				?identifier ext:identifiesVersion ?versie.
-				?identifier ext:meeting ?meeting.
-				FILTER NOT EXISTS {
-						?identifier ext:serialNumber ?number.
-				}
-				?document besluitvorming:heeftVersie ?versie.
-				?document ext:documentType ?type
-		}
-	}`;
-	let versieTypes = await mu.query(query).catch(err => { console.error(err); });
-	versieTypes = parseSparqlResults(versieTypes);
-	let mapping = {};
-	versieTypes.map((tuple) => {
-		mapping[tuple.versie] = tuple.type;
-	});
-	return mapping;
-}
-
-async function updateSerialNumbersOfDocumentVersions(serialnumberMap) {
-	let insertString = [];
-
-	Object.keys(serialnumberMap).map((identifier) => {
-		insertString.push(`<${identifier}> ext:serieNummer "${serialnumberMap[identifier]}" .`);
-	})
-
-	if (insertString.length <= 0) {
-		return;
-	}
-	insertString = insertString.join("\n");
-
-	const queryString = `
-		PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-
-		INSERT DATA { 
-			GRAPH <${targetGraph}> { 
-				${insertString}
-			}
-		}
-	`
-
-	return await mu.update(queryString).catch(err => { console.error(err) });
 }
 
 const parseSparqlResults = (data) => {

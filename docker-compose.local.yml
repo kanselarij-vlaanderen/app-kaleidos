@@ -55,6 +55,8 @@ services:
     logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.17.1
+    ports:
+      - 8881:80
     links:
       - database-with-auth:database
     volumes:
@@ -95,6 +97,8 @@ services:
     image: semtech/mu-javascript-template
     environment:
       NODE_ENV: "development"
+    ports:
+      - 9227:9229
     links:
       - database:database
     volumes:
