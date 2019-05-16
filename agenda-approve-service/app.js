@@ -228,11 +228,7 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 		let document = binding['document'].value;
 		let number = parseInt(binding['number'].value);
 		let date = moment(binding['zittingDate'].value);
-<<<<<<< HEAD
-		let type = binding['dossierType'].value.indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED" : "DOC";
-=======
-		let type = (((binding['dossierType'] || {}).value) || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
->>>>>>> c5e77d90f17e147cce85bf083768c0577a231a3e
+		let type = (((binding['dossierType'] || {}).value) || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED" : "DOC";
 
 		if (previousAgendaItem != item) {
 			previousAgendaItem = item;
