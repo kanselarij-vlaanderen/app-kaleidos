@@ -243,8 +243,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://development-close-meeting-service/"
   end
 
-  match "/send-newsletter/*path" do
-    Proxy.forward conn, path, "http://development-mail-chimp-service/"
+  match "/newsletter/*path" do
+    Proxy.forward conn, path, "http://development-newsletter-service/"
   end
 
   match _ do

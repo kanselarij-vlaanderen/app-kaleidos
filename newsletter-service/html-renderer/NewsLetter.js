@@ -1,4 +1,4 @@
-export default (news_items_HTML, planned_start) => {
+export const createNewsLetter = (news_items_HTML, planned_start) => {
 
 	return `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

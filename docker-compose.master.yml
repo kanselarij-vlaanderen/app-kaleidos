@@ -120,7 +120,7 @@ services:
       - db:database
     volumes:
       - ./minister-jurisdiction-service:/app
-  mail-chimp-service:
+  newsletter-service:
     image: semtech/mu-javascript-template
     environment:
       NODE_ENV: "development"
@@ -128,7 +128,7 @@ services:
     links:
       - db:database
     volumes:
-      - ./mail-chimp-service:/app
+      - ./newsletter-service:/app
   data-migration-service:
     image: semtech/mu-javascript-template
     environment:

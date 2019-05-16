@@ -17,19 +17,46 @@ moment.locale("nl");
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
 
-import nieuwsbrief from './nieuwsbrief'
+import { createNewsLetter } from './html-renderer/NewsLetter'
+import { getNewsItem } from './html-renderer/NewsItem'
+
+app.post('/mails', (req, res) => {
+  return sendNewsletter(req, res);
+});
 
 
 app.get('/', (req, res) => {
-  return setNewsletter(req, res);
-});
-
-app.post('/', (req, res) => {
-  return setNewsletter(req, res);
+  return getMostRecentNewsletter(req, res);
 });
 
 
-const setNewsletter = async (req, res) => {
+const getMostRecentNewsletter = async (req, res) => {
+
+  try {
+
+    const agendaId = req.query.agendaId;
+    if (!agendaId){
+      throw new Error("Request parameter agendaId can not be null");
+    }
+
+    let newsletter = await repository.getNewsletterInfo(agendaId);
+    if (!newsletter){
+      throw new Error("no newsletters present");
+    }
+
+    res.send({ newsletter })
+
+  }catch(error) {
+    console.error(error);
+    res.send({ status: ok, statusCode: 500, body: { error } });
+  }
+};
+
+
+
+
+
+const sendNewsletter = async (req, res) => {
 
     try {
 
@@ -45,7 +72,7 @@ const setNewsletter = async (req, res) => {
 
       const planned_start = moment(newsletter[0].planned_start).format("dddd DD-MM-YYYY");
       const news_items_HTML =  await newsletter.map(item => getNewsItem(item));
-      let html = await nieuwsbrief(news_items_HTML, planned_start);
+      let html = await createNewsLetter(news_items_HTML, planned_start);
 
       const template = {
         "name": `Nieuwsbrief ${planned_start}`,
@@ -87,28 +114,4 @@ const setNewsletter = async (req, res) => {
 };
 
 
-const getNewsItem = ({ title, subtitle, text }) => {
-  return `
-    <table mc:repeatable="content" mc:variant="Tekstblok met introtekst" width="100%" cellpadding="0" cellspacing="0" border="0">
-      <tr>
-        <td height="30" style="height:30px;line-height:0;">
 
-         </td>
-      </tr>
-      <tr>
-        <td style="padding:5px 0 15px 0;">
-          <font style="color:#333332;font-family:Calibri, Arial, sans-serif;font-size:26px;font-weight:600;line-height:26px;">${title}</font>
-          <p class="intro-text" style="color:#666666;font-family:Calibri, Arial, sans-serif;font-size:15px;line-height:20px;margin-top:5px;margin-bottom:0;">
-            ${subtitle}
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td style="color:#666666;font-family:Calibri, Arial, sans-serif;font-size:17px;line-height:26px;">
-          <p>${text}</p>
-        </td>
-      </tr>
-    </table>
-    
-  `
-};
