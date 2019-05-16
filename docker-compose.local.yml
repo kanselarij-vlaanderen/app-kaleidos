@@ -141,7 +141,7 @@ services:
       - database:database
     volumes:
       - ./close-meeting-service:/app
-  mail-chimp-service:
+  newsletter-service:
     image: semtech/mu-javascript-template
     environment:
       NODE_ENV: "development"
@@ -149,7 +149,7 @@ services:
     links:
       - database:database
     volumes:
-      - ./mail-chimp-service:/app
+      - ./newsletter-service:/app
   minister-jurisdiction-service:
     image: mikidi/mu-python-template:python3-port
     environment:

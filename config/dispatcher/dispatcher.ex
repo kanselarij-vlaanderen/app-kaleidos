@@ -240,8 +240,8 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://close-meeting-service/"
   end
 
-  match "/send-newsletter/*path" do
-    Proxy.forward conn, path, "http://mail-chimp-service/"
+  match "/newsletter/*path" do
+    Proxy.forward conn, path, "http://newsletter-service/"
   end
 
   match _ do

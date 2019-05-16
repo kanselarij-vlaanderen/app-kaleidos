@@ -197,16 +197,20 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 			?agenda dct:hasPart ?agendaItem .
 			?agendaItem ext:bevatAgendapuntDocumentversie ?documentVersion .
 			?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
-			?case dct:hasPart ?subcase .
-			?case dct:type ?dossierType .
+			OPTIONAL {
+			  ?case dct:hasPart ?subcase .
+				?case dct:type ?dossierType .
+			}
 			?document besluitvorming:heeftVersie ?documentVersion .
 			FILTER NOT EXISTS {
 				?document besluitvorming:stuknummerVR ?vrnumber .
 			}
-			{ SELECT COUNT(?othervrnumber) AS ?existingNumbers WHERE {
-				?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
-				?otherDocument besluitvorming:heeftVersie ?otherVersion .
-				OPTIONAL { ?otherDocument besluitvorming:stuknummerVR ?othervrnumber . }
+			{ SELECT ?agendaItem COUNT(DISTINCT(?othervrnumber)) AS ?existingNumbers WHERE {
+				GRAPH <${targetGraph}> {
+					?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
+					?otherDocument besluitvorming:heeftVersie ?otherVersion .
+					OPTIONAL { ?otherDocument besluitvorming:stuknummerVR ?othervrnumber . }
+				}
 			} }
 			
 			?agendaItem ext:agendaItemNumber ?number.
@@ -224,7 +228,11 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 		let document = binding['document'].value;
 		let number = parseInt(binding['number'].value);
 		let date = moment(binding['zittingDate'].value);
+<<<<<<< HEAD
 		let type = binding['dossierType'].value.indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED" : "DOC";
+=======
+		let type = (((binding['dossierType'] || {}).value) || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
+>>>>>>> c5e77d90f17e147cce85bf083768c0577a231a3e
 
 		if (previousAgendaItem != item) {
 			previousAgendaItem = item;
