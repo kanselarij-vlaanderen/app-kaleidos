@@ -40,7 +40,7 @@ const getNewsLetterByAgendaId = async (agendaId) => {
         
         SELECT ?planned_start ?uuid ?title ?richtext ?text ?subtitle WHERE {
             GRAPH <http://mu.semte.ch/application> {
-               <http://data.lblod.info/id/agendas/${agendaId}> besluit:isAangemaaktVoor ?meeting .
+               <http://kanselarij.vo.data.gift/id/agendas/${agendaId}> besluit:isAangemaaktVoor ?meeting .
                ?meeting besluit:geplandeStart ?planned_start .
                <http://data.lblod.info/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
                ?agendaitem prov:generated  ?newsletter . 
