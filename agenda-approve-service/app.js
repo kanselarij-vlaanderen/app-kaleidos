@@ -18,7 +18,7 @@ app.post('/approveAgenda', async (req, res) => {
 
 	const newAgendaURI = await getNewAgendaURI(newAgendaId);
 	const agendaData = await copyAgendaItems(oldAgendaId, newAgendaURI);
-	
+
 	await markAgendaItemsPartOfAgendaA(oldAgendaId);
 	await storeAgendaItemNumbers(oldAgendaId);
 	await nameDocumentsBasedOnAgenda(oldAgendaId);
@@ -26,12 +26,12 @@ app.post('/approveAgenda', async (req, res) => {
 	try {
 		const codeURI = await getSubcasePhaseCode();
 		const subcasePhasesOfAgenda = await getSubcasePhasesOfAgenda(newAgendaId, codeURI);
-	
+
 		await checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeURI);
-	} catch(e) {
+	} catch (e) {
 		console.log("something went wrong while assigning the code 'Geagendeerd' to the agendaitems", e);
 	}
-	
+
 	res.send({ status: ok, statusCode: 200, body: { agendaData: agendaData } }); // resultsOfSerialNumbers: resultsAfterUpdates
 });
 
@@ -112,7 +112,7 @@ async function markAgendaItemsPartOfAgendaA(agendaId) {
 	return await mu.query(query).catch(err => { console.error(err) });
 };
 
-async function storeAgendaItemNumbers(agendaId){
+async function storeAgendaItemNumbers(agendaId) {
 	const maxAgendaItemNumberSoFar = await getHighestAgendaItemNumber(agendaId);
 	let query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -136,7 +136,7 @@ async function storeAgendaItemNumbers(agendaId){
 			}
 		}
 	} ORDER BY ?priorityOrMax`;
-	const sortedAgendaItemsToName = await mu.query(query).catch( err => { console.error(err) });
+	const sortedAgendaItemsToName = await mu.query(query).catch(err => { console.error(err) });
 	const triples = [];
 	sortedAgendaItemsToName.results.bindings.map((binding, index) => {
 		triples.push(`<${binding['agendaItem'].value}> ext:agendaItemNumber ${maxAgendaItemNumberSoFar + index} .`);
@@ -155,10 +155,10 @@ async function storeAgendaItemNumbers(agendaId){
 			${triples.join("\n")}
 		}
 	}`;
-	await mu.query(query).catch( err => { console.log(err); })
+	await mu.query(query).catch(err => { console.log(err); })
 };
 
-async function getHighestAgendaItemNumber(agendaId){
+async function getHighestAgendaItemNumber(agendaId) {
 	const query = `PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 	PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -197,16 +197,20 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 			?agenda dct:hasPart ?agendaItem .
 			?agendaItem ext:bevatAgendapuntDocumentversie ?documentVersion .
 			?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
-			?case dct:hasPart ?subcase .
-			?case dct:type ?dossierType .
+			OPTIONAL {
+			  ?case dct:hasPart ?subcase .
+				?case dct:type ?dossierType .
+			}
 			?document besluitvorming:heeftVersie ?documentVersion .
 			FILTER NOT EXISTS {
 				?document besluitvorming:stuknummerVR ?vrnumber .
 			}
-			{ SELECT COUNT(?othervrnumber) AS ?existingNumbers WHERE {
-				?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
-				?otherDocument besluitvorming:heeftVersie ?otherVersion .
-				OPTIONAL { ?otherDocument besluitvorming:stuknummerVR ?othervrnumber . }
+			{ SELECT ?agendaItem COUNT(DISTINCT(?othervrnumber)) AS ?existingNumbers WHERE {
+				GRAPH <${targetGraph}> {
+					?agendaItem ext:bevatAgendapuntDocumentversie ?otherVersion .
+					?otherDocument besluitvorming:heeftVersie ?otherVersion .
+					OPTIONAL { ?otherDocument besluitvorming:stuknummerVR ?othervrnumber . }
+				}
 			} }
 			
 			?agendaItem ext:agendaItemNumber ?number.
@@ -218,15 +222,15 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 	let previousAgendaItem = null;
 	let previousStartingIndex = 0;
 	let triples = [];
-	response.results.bindings.map((binding)=> {
+	response.results.bindings.map((binding) => {
 		let item = binding['agendaItem'].value;
 		let numbersSoFar = parseInt(binding['existingNumbers'].value) || 0;
 		let document = binding['document'].value;
 		let number = parseInt(binding['number'].value);
 		let date = moment(binding['zittingDate'].value);
-		let type = binding['dossierType'].value.indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED": "DOC";
+		let type = (((binding['dossierType'] || {}).value) || "").indexOf("5fdf65f3-0732-4a36-b11c-c69b938c6626") > 0 ? "MED" : "DOC";
 
-		if(previousAgendaItem != item){
+		if (previousAgendaItem != item) {
 			previousAgendaItem = item;
 			previousStartingIndex = numbersSoFar;
 		}
@@ -237,7 +241,7 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 		triples.push(`<${document}> besluitvorming:stuknummerVR "VR ${date.year()} ${month}${day} ${type}.${number}/${previousStartingIndex}" .`);
 	});
 
-	if(triples.length < 1){
+	if (triples.length < 1) {
 		return;
 	}
 
@@ -256,9 +260,9 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 	};`).catch(err => { console.error(err); });
 };
 
-function paddNumberWithZeros(number, length){
+function paddNumberWithZeros(number, length) {
 	let string = "" + number;
-	while(string.length < length){
+	while (string.length < length) {
 		string = 0 + string;
 	}
 	return string;
@@ -364,7 +368,7 @@ async function copyAgendaItems(oldId, newUri) {
 		} } }
 		BIND(STRAFTER(STR(?newURI), "http://localhost/vo/agendaitems/") AS ?newUuid) 
 	}`
-	
+
 	await mu.update(createNewUris).catch(err => { console.error(err) });
 
 	const moveProperties = `
