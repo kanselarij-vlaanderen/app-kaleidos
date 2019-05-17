@@ -55,8 +55,6 @@ services:
     logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.17.1
-    ports:
-      - 8881:80
     links:
       - database-with-auth:database
     volumes:

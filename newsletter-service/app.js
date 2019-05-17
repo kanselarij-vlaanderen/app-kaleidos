@@ -1,12 +1,13 @@
 import mu from 'mu';
 import { ok } from 'assert';
-import { createNewsLetter } from './html-renderer/NewsLetter'
-import { getNewsItem } from './html-renderer/NewsItem'
 
 const app = mu.app;
 const bodyParser = require('body-parser');
 const repository = require('./repository');
 const cors = require('cors');
+
+const { createNewsLetter } = require('./html-renderer/NewsLetter')
+const { getNewsItem } = require('./html-renderer/NewsItem')
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -31,12 +32,9 @@ const getMostRecentNewsletter = async (req, res) => {
 
   try {
 
-    const agendaId = req.query.agendaId;
-    if (!agendaId){
-      throw new Error("Request parameter agendaId can not be null");
-    }
+    let { agendaId } = await repository.getAgendaWhereisMostRecentAndFinal();
+    const newsletter = await repository.getNewsLetterByAgendaId(agendaId);
 
-    let newsletter = await repository.getNewsletterInfo(agendaId);
     if (!newsletter){
       throw new Error("no newsletters present");
     }
@@ -58,7 +56,7 @@ const sendNewsletter = async (req, res) => {
         throw new Error("Request parameter agendaId can not be null");
       }
 
-      let newsletter = await repository.getNewsletterInfo(agendaId);
+      let newsletter = await repository.getNewsLetterByAgendaId(agendaId);
       if (!newsletter){
         throw new Error("no newsletters present");
       }

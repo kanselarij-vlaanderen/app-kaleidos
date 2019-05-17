@@ -1,7 +1,29 @@
 import mu from 'mu';
 
-const getNewsletterInfo = async (agendaId) => {
+const getAgendaWhereisMostRecentAndFinal = async (agendaId) => {
 
+    const query = `
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+        PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+        PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+        PREFIX dbpedia: <http://dbpedia.org/ontology/>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        
+        SELECT DISTINCT ?agenda ?p ?o WHERE {
+              GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+            ?s mu:uuid ?uuid; a besluit:Zitting .
+          OPTIONAL { ?agenda besluit:isAangemaaktVoor ?s }
+        OPTIONAL { ?agenda ?p ?o }
+        }
+        }`;
+    let data = await mu.query(query);
+    return parseSparqlResults(data);
+};
+
+const getNewsLetterByAgendaId = async (agendaId) => {
     const query = `
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -29,6 +51,7 @@ const getNewsletterInfo = async (agendaId) => {
     return parseSparqlResults(data);
 };
 
+
 const parseSparqlResults = (data) => {
     const vars = data.head.vars;
     return data.results.bindings.map(binding => {
@@ -46,10 +69,11 @@ const parseSparqlResults = (data) => {
 };
 
 
-
 module.exports = {
-    getNewsletterInfo
+    getNewsLetterByAgendaId,
+    getAgendaWhereisMostRecentAndFinal
 };
+
 
 
 

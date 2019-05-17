@@ -28,14 +28,14 @@
   :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority            :number   ,(s-prefix "ext:prioriteit"))
-                (:for-press           :boolean  ,(s-prefix "ext:forPress")) 
+                (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
                 (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
                 ;; Added properties from subcases
                 (:short-title         :string   ,(s-prefix "dct:alternative"))
                 (:title               :string   ,(s-prefix "dct:title"))
-                (:modified            :date   ,(s-prefix "ext:modified"))
+                (:modified            :datetime   ,(s-prefix "ext:modified"))
                 (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((postponed               :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
