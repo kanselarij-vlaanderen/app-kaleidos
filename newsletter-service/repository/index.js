@@ -38,11 +38,9 @@ const getNewsLetterByAgendaId = async (agendaId) => {
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
         
-        SELECT ?planned_start ?uuid ?title ?richtext ?text ?subtitle WHERE {
+        SELECT ?uuid ?title ?richtext ?text ?subtitle WHERE {
             GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-               <http://kanselarij.vo.data.gift/id/agendas/${agendaId}> besluit:isAangemaaktVoor ?meeting .
-               ?meeting besluit:geplandeStart ?planned_start .
-               <http://data.lblod.info/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
+               <http://kanselarij.vo.data.gift/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
                ?agendaitem prov:generated  ?newsletter . 
                OPTIONAL { ?newsletter mu:uuid ?uuid . }
                OPTIONAL { ?newsletter besluitvorming:inhoud ?text . }
