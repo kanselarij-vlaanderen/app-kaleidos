@@ -1,6 +1,6 @@
 import mu from 'mu';
 
-const getAgendaWhereisMostRecentAndFinal = async (agendaId) => {
+const getAgendaWhereisMostRecentAndFinal = async () => {
 
     const query = `
         PREFIX dct: <http://purl.org/dc/terms/>
@@ -12,13 +12,16 @@ const getAgendaWhereisMostRecentAndFinal = async (agendaId) => {
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
         
-        SELECT DISTINCT ?agenda ?p ?o WHERE {
-              GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        SELECT DISTINCT ?uuid ?date ?agenda_uuid ?agenda_date WHERE {
+            GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
             ?s mu:uuid ?uuid; a besluit:Zitting .
-          OPTIONAL { ?agenda besluit:isAangemaaktVoor ?s }
-        OPTIONAL { ?agenda ?p ?o }
-        }
-        }`;
+            ?s ext:finaleZittingVersie "true"^^xsd:boolean .
+            ?s besluit:geplandeStart ?date .
+            ?agenda besluit:isAangemaaktVoor ?s .
+            ?agenda ext:aangepastOp ?agenda_date .
+            ?agenda mu:uuid ?agenda_uuid .
+          }
+        } ORDER BY DESC(?date) DESC(?agenda_date) LIMIT 1`;
     let data = await mu.query(query);
     return parseSparqlResults(data);
 };
