@@ -11,6 +11,7 @@ const getAgendaWhereisMostRecentAndFinal = async () => {
         PREFIX dbpedia: <http://dbpedia.org/ontology/>
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
+        PREFIX xsd: <http://mu.semte.ch/vocabularies/typed-literals/>
         
         SELECT DISTINCT ?uuid ?date ?agenda_uuid ?agenda_date WHERE {
             GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
