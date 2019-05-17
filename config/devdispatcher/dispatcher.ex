@@ -239,10 +239,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/alert-types"
   end
 
-  match "/close-meeting/*path" do
-    Proxy.forward conn, path, "http://development-close-meeting-service/"
-  end
-
   match "/newsletter/*path" do
     Proxy.forward conn, path, "http://development-newsletter-service/"
   end

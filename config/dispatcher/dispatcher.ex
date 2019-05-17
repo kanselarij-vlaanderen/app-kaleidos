@@ -236,10 +236,6 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://resource/alert-types"
   end
 
-  match "/close-meeting/*path" do
-    Proxy.forward conn, path, "http://close-meeting-service/"
-  end
-
   match "/newsletter/*path" do
     Proxy.forward conn, path, "http://newsletter-service/"
   end

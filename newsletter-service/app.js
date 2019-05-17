@@ -35,7 +35,7 @@ const getMostRecentNewsletter = async (req, res) => {
     let { agendaId } = await repository.getAgendaWhereisMostRecentAndFinal();
     const newsletter = await repository.getNewsLetterByAgendaId(agendaId);
 
-    if (!newsletter){
+    if (! newsletter){
       throw new Error("no newsletters present");
     }
 
