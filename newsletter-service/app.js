@@ -32,7 +32,8 @@ const getMostRecentNewsletter = async (req, res) => {
 
   try {
 
-    let { agenda_uuid } = await repository.getAgendaWhereisMostRecentAndFinal();
+    let response = await repository.getAgendaWhereisMostRecentAndFinal();
+    const { agenda_uuid } = response[0];
     const newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
 
     if (! newsletter){
