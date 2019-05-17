@@ -33,14 +33,21 @@ const getMostRecentNewsletter = async (req, res) => {
   try {
 
     let response = await repository.getAgendaWhereisMostRecentAndFinal();
-    const { agenda_uuid } = response[0];
-    const newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
+    const { agenda_uuid } = response[0] || {};
 
-    if (! newsletter){
-      throw new Error("no newsletters present");
+    if (!agenda_uuid){
+      res.send({ status: ok, statusCode: 500, newsletter: [] });
+    }else {
+
+      const newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
+      if (! newsletter){
+        throw new Error("no newsletters present");
+      }
+      res.send({ newsletter })
+
     }
 
-    res.send({ newsletter })
+
 
   }catch(error) {
     console.error(error);
