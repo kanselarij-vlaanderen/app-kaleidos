@@ -76,7 +76,8 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType"
+      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
+      "http://kanselarij.vo.data.gift/core/IseCode"
     ]
   end
 
@@ -106,7 +107,8 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType"
+      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
+      "http://kanselarij.vo.data.gift/core/IseCode"
     ]
   end 
 

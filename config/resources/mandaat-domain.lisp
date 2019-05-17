@@ -100,6 +100,7 @@
   :has-many `((mandatee           :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "mandatees")
               (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
+                                  :inverse t
                                   :as "subcases"))
   :resource-base (s-url "http://data.lblod.info/ise-code/")
   :features `(no-pagination-defaults include-uri)
