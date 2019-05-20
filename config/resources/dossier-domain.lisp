@@ -14,7 +14,9 @@
                                 :as "policy-level")
              (meeting           :via      ,(s-prefix "ext:heeftBijbehorendeDossiers")
                                 :inverse t
-                                :as "related-meeting"))
+                                :as "related-meeting")
+             (submitter         :via      ,(s-prefix "ext:heeftIndiener")
+                                :as "submitter"))
   :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
                                 :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
               (person           :via      ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
@@ -58,7 +60,7 @@
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel")))
-  :has-many `((case            :via ,(s-prefix "ext:heeftBeleidsNiveau")
+  :has-many `((case           :via ,(s-prefix "ext:heeftIndiener")
                               :inverse t
                               :as "cases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/policy-level/")
