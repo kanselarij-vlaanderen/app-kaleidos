@@ -131,14 +131,6 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
-  close-meeting-service:
-    image: semtech/mu-javascript-template
-    environment:
-      NODE_ENV: "development"
-    links:
-      - database:database
-    volumes:
-      - ./close-meeting-service:/app
   newsletter-service:
     image: semtech/mu-javascript-template
     environment:
