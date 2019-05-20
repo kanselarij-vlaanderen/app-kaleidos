@@ -46,5 +46,6 @@ To be able to use the frontend you should upload all files listed below in the `
 - `procedurestap-fase-codes.ttl`
 - `procedurestap-types.ttl`
 - `themes.ttl`
+- `submitters.ttl`
 
 After doing this, you should be able to run the frontend without any troubles.
