@@ -63,9 +63,9 @@
   :has-many `((case           :via ,(s-prefix "ext:heeftIndiener")
                               :inverse t
                               :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/policy-level/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/submitter/")
   :features '(include-uri)
-  :on-path "policy-levels")
+  :on-path "submitters")
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")

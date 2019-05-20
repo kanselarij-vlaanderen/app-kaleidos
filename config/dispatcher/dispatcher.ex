@@ -81,6 +81,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/policy-levels/"
   end
 
+  match "/submitters/*path" do
+    Proxy.forward conn, path, "http://resource/submitters/"
+  end
+
   match "/subcases/*path" do
     Proxy.forward conn, path, "http://resource/subcases/"
   end
