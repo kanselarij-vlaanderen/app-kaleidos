@@ -1,0 +1,12 @@
+@prefix level: <http://kanselarij.vo.data.gift/id/concept/policy-level/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+level:c3edbd53-db3b-42d8-a18d-75b8a53ba741 a ext:BeleidsNiveau ;
+    mu:uuid "c3edbd53-db3b-42d8-a18d-75b8a53ba741" ;
+    skos:prefLabel "Vlaamse Regering" .
+
+level:6f771654-a8be-43e6-9fe5-7e17fed1cb9a a ext:BeleidsNiveau ;
+    mu:uuid "6f771654-a8be-43e6-9fe5-7e17fed1cb9a" ;
+    skos:prefLabel "Overlegcomité" .

@@ -5,12 +5,16 @@
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
-                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
-                (:policy-level  :string   ,(s-prefix "ext:beleidsNiveau")))
+                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
   :has-one `((confidentiality   :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
                                 :as "confidentiality")
              (case-type         :via      ,(s-prefix "dct:type")
-                                :as "type"))
+                                :as "type")
+             (policy-level      :via      ,(s-prefix "ext:heeftBeleidsNiveau")
+                                :as "policy-level")
+             (meeting           :via      ,(s-prefix "ext:heeftBijbehorendeDossiers")
+                                :inverse t
+                                :as "related-meeting"))
   :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
                                 :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
               (person           :via      ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
@@ -27,16 +31,39 @@
 
 (define-resource case-type ()
   :class (s-prefix "ext:DossierTypeCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :has-many `((case :via ,(s-prefix "dct:type")
-                       :inverse t
-                       :as "cases"))
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label   :string ,(s-prefix "skos:altLabel")))
+  :has-many `((case           :via ,(s-prefix "dct:type")
+                              :inverse t
+                              :as "cases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/dossier-type-codes/")
   :features '(include-uri)
   :on-path "case-types")
 
+(define-resource policy-level ()
+  :class (s-prefix "ext:BeleidsNiveau")
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label   :string ,(s-prefix "skos:altLabel")))
+  :has-many `((case            :via ,(s-prefix "ext:heeftBeleidsNiveau")
+                              :inverse t
+                              :as "cases"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/policy-level/")
+  :features '(include-uri)
+  :on-path "policy-levels")
+
+  (define-resource submitter ()
+  :class (s-prefix "ext:Indiener")
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label   :string ,(s-prefix "skos:altLabel")))
+  :has-many `((case            :via ,(s-prefix "ext:heeftBeleidsNiveau")
+                              :inverse t
+                              :as "cases"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/policy-level/")
+  :features '(include-uri)
+  :on-path "policy-levels")
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
