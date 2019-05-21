@@ -39,11 +39,33 @@ const getMostRecentNewsletter = async (req, res) => {
       res.send({ status: ok, statusCode: 500, newsletter: [] });
     }else {
 
-      const newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
+      let newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
       if (! newsletter){
         throw new Error("no newsletters present");
       }
-      res.send({ newsletter })
+
+      newsletter = newsletter.map(newsletter_item => {
+        let item = {};
+        item.id = newsletter_item.uuid;
+        item.webtitle = newsletter_item.title;
+        item.description = newsletter_item.richtext;
+        item.body = newsletter_item.text;
+        item.publication_date = newsletter_item.created;
+        item.modification_date = newsletter_item.modified;
+        item.type = "agenda_item";
+        if(item.remark){
+          item.agenda_item_type = "Opmerking"
+        }else {
+          item.agenda_item_type = "Beslissing"
+        }
+        return item;
+      });
+
+      res.send({
+        total : newsletter.length,
+        size : newsletter.length,
+        items : newsletter
+      })
 
     }
 
