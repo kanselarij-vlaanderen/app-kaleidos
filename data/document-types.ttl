@@ -1,140 +1,300 @@
-@prefix type: <http://http://data.vlaanderen.be/ns/besluitvorming/voc/besluit-type/> .
+@prefix type: <http://kanselarij.vo.data.gift/id/concept/document-type-codes/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
 type:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d a ext:DocumentTypeCode ;
  mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" ;
  skos:prefLabel "Nota"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Nota aan de Vlaamse Regering"@nl .
+
 type:ec2eae14-3824-42bc-82de-8c440af8c002 a ext:DocumentTypeCode ;
  mu:uuid "ec2eae14-3824-42bc-82de-8c440af8c002" ;
- skos:prefLabel "Memo"@nl ;
- skos:altLabel "Memorie van toelichting"@nl .
+ skos:prefLabel "MvT"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+
+ skos:altLabel "Memorie van Toelichting"@nl .
+
 type:4c7cfaf9-1d5f-4fdf-b7e9-b7ce5167e31a a ext:DocumentTypeCode ;
  mu:uuid "4c7cfaf9-1d5f-4fdf-b7e9-b7ce5167e31a" ;
- skos:prefLabel "Besluit"@nl ;
+ skos:prefLabel "BVR"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit van de Vlaamse Regering"@nl .
+
+type:127d9b17-e09e-4949-9e5d-94477d2cc0c2 a ext:DocumentTypeCode ;
+ mu:uuid "127d9b17-e09e-4949-9e5d-94477d2cc0c2" ;
+ skos:prefLabel "VOBVR"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Voorontwerp van BVR"@nl .
+
+type:4fc871d4-57a0-42e3-a143-0f9f1b4d0c87 a ext:DocumentTypeCode ;
+ mu:uuid "4fc871d4-57a0-42e3-a143-0f9f1b4d0c87" ;
+ skos:prefLabel "OBVR"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Ontwerp van BVR"@nl .
+
 type:f57a69b8-e4c1-468a-97ee-a516bb62c6b6 a ext:DocumentTypeCode ;
  mu:uuid "f57a69b8-e4c1-468a-97ee-a516bb62c6b6" ;
- skos:prefLabel "OntwerpDecreet"@nl ;
+ skos:prefLabel "OD"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Ontwerpdecreet van Vlaamse Regering"@nl .
+
+type:bc73cf00-ab4e-406c-a99b-2bfe2e03c5b0 a ext:DocumentTypeCode ;
+ mu:uuid "bc73cf00-ab4e-406c-a99b-2bfe2e03c5b0" ;
+ skos:prefLabel "VOD"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Voorontwerp van decreet"@nl .
+
 type:e4f73ddc-1ed6-4878-b9ed-ace55c0a8d64 a ext:DocumentTypeCode ;
  mu:uuid "e4f73ddc-1ed6-4878-b9ed-ace55c0a8d64" ;
  skos:prefLabel "Decreet"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Te bekrachtigen decreet"@nl .
+
 type:9b953596-38a4-4385-a320-2468fa43e2b2 a ext:DocumentTypeCode ;
  mu:uuid "9b953596-38a4-4385-a320-2468fa43e2b2" ;
- skos:prefLabel "MinB"@nl ;
+ skos:prefLabel "MB"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Ministerieel besluit"@nl .
+
 type:7a67e9b7-9ea1-4221-9705-56a50a20d74c a ext:DocumentTypeCode ;
  mu:uuid "7a67e9b7-9ea1-4221-9705-56a50a20d74c" ;
- skos:prefLabel "SamenAkk"@nl ;
+ skos:prefLabel "SWA"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Samenwerkingsakkoord"@nl .
+
+type:7b42c8da-1d08-4545-a35a-12c26e3087b3 a ext:DocumentTypeCode ;
+ mu:uuid "7b42c8da-1d08-4545-a35a-12c26e3087b3" ;
+ skos:prefLabel "SWO"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Samenwerkingsovereenkomst"@nl .
+
 type:5c6ecf8c-ae9d-44fc-9dac-216663ece43d a ext:DocumentTypeCode ;
  mu:uuid "5c6ecf8c-ae9d-44fc-9dac-216663ece43d" ;
  skos:prefLabel "Verslag"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Verslag aan de Regering"@nl .
+
+type:2e251bba-dd09-4f9d-9d8b-7787d47535f1 a ext:DocumentTypeCode ;
+ mu:uuid "2e251bba-dd09-4f9d-9d8b-7787d47535f1" ;
+ skos:prefLabel "Bijlage"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Bijlage"@nl .
+
 type:b0b797b6-8c90-4600-8c18-8934b5710b1c a ext:DocumentTypeCode ;
  mu:uuid "b0b797b6-8c90-4600-8c18-8934b5710b1c" ;
  skos:prefLabel "BijlageInfo"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Bijlage(n) ter informatie"@nl .
+
 type:e446b2ee-19f2-4eb5-9c7a-0401f7a4fe7b a ext:DocumentTypeCode ;
  mu:uuid "e446b2ee-19f2-4eb5-9c7a-0401f7a4fe7b" ;
  skos:prefLabel "BijlageNota"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Bijlage ter beslissing"@nl .
+
 type:9840201f-68ca-4a11-bfbe-a831a4f4a584 a ext:DocumentTypeCode ;
  mu:uuid "9840201f-68ca-4a11-bfbe-a831a4f4a584" ;
  skos:prefLabel "Mededeling"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Mededeling"@nl .
+
 type:62215dc3-08e2-43cd-9da4-92ba47239321 a ext:DocumentTypeCode ;
  mu:uuid "62215dc3-08e2-43cd-9da4-92ba47239321" ;
- skos:prefLabel "Omzendbr"@nl ;
+ skos:prefLabel "OMZ"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Omzendbrief"@nl .
+
 type:13297f2c-1f86-426a-833c-e51eeb01a50b a ext:DocumentTypeCode ;
  mu:uuid "13297f2c-1f86-426a-833c-e51eeb01a50b" ;
  skos:prefLabel "Overeenkomst"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Overeenkomst"@nl .
+
 type:62083fb2-e770-46c8-b4d0-87a8e5ae6fff a ext:DocumentTypeCode ;
  mu:uuid "62083fb2-e770-46c8-b4d0-87a8e5ae6fff" ;
  skos:prefLabel "PV"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Proces Verbaal"@nl .
-type:c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1 a ext:DocumentTypeCode ;
- mu:uuid "c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1" ;
- skos:prefLabel "IF"@nl ;
- skos:altLabel "Advies van Inspectie Financiën"@nl .
-type:97eb049e-2e2a-4bf1-97dd-96a9da72c421 a ext:DocumentTypeCode ;
- mu:uuid "97eb049e-2e2a-4bf1-97dd-96a9da72c421" ;
- skos:prefLabel "BA"@nl ;
- skos:altLabel "Begrotingsakkoord van de minister van begroting"@nl .
-type:bfb1675a-22c5-4425-b2a5-46d529184901 a ext:DocumentTypeCode ;
- mu:uuid "bfb1675a-22c5-4425-b2a5-46d529184901" ;
- skos:prefLabel "RVS"@nl ;
- skos:altLabel "Advies Raad van State"@nl .
-type:88be191e-4f83-4dc2-9e0f-6e8b08743fcf a ext:DocumentTypeCode ;
- mu:uuid "88be191e-4f83-4dc2-9e0f-6e8b08743fcf" ;
- skos:prefLabel "ABestuur"@nl ;
- skos:altLabel "Akkoord Bestuurszaken"@nl .
-type:5d945b51-aeba-4af3-b259-34a7e81d902b a ext:DocumentTypeCode ;
- mu:uuid "5d945b51-aeba-4af3-b259-34a7e81d902b" ;
- skos:prefLabel "Advies"@nl ;
- skos:altLabel "Advies"@nl .
+
+type:2b73f8e2-b1f8-4cbd-927f-30c91759f08b a ext:DocumentTypeCode ;
+ mu:uuid "2b73f8e2-b1f8-4cbd-927f-30c91759f08b" ;
+ skos:prefLabel "BF"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Beslissingsfiche"@nl .
+
+type:e149294e-a8b8-4c11-83ac-6d4c417b079b a ext:DocumentTypeCode ;
+ mu:uuid "e149294e-a8b8-4c11-83ac-6d4c417b079b" ;
+ skos:prefLabel "Notule"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Notule"@nl .
+
 type:550a8aff-de89-4952-8bc3-7c754c0b7c7d a ext:DocumentTypeCode ;
  mu:uuid "550a8aff-de89-4952-8bc3-7c754c0b7c7d" ;
  skos:prefLabel "Beleidsbrief"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Beleidsbrief"@nl .
+
 type:ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0 a ext:DocumentTypeCode ;
  mu:uuid "ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0" ;
  skos:prefLabel "Beleidsnota"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Beleidsnota"@nl .
+
+type:c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1 a ext:DocumentTypeCode ;
+ mu:uuid "c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1" ;
+ skos:prefLabel "IF"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Advies van Inspectie Financiën"@nl .
+
+type:97eb049e-2e2a-4bf1-97dd-96a9da72c421 a ext:DocumentTypeCode ;
+ mu:uuid "97eb049e-2e2a-4bf1-97dd-96a9da72c421" ;
+ skos:prefLabel "BA"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Begrotingsakkoord van de minister van begroting"@nl .
+
+type:bfb1675a-22c5-4425-b2a5-46d529184901 a ext:DocumentTypeCode ;
+ mu:uuid "bfb1675a-22c5-4425-b2a5-46d529184901" ;
+ skos:prefLabel "RvS"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Advies Raad van State"@nl .
+
+type:88be191e-4f83-4dc2-9e0f-6e8b08743fcf a ext:DocumentTypeCode ;
+ mu:uuid "88be191e-4f83-4dc2-9e0f-6e8b08743fcf" ;
+ skos:prefLabel "Aku BZ"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Akkoord Bestuurszaken"@nl .
+
+type:1755f5f3-9ea7-477e-85af-4fd8265747e9 a ext:DocumentTypeCode ;
+ mu:uuid "1755f5f3-9ea7-477e-85af-4fd8265747e9" ;
+ skos:prefLabel "Advies AgO"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Advies agentschap overheidspersoneel"@nl .
+
+type:5d945b51-aeba-4af3-b259-34a7e81d902b a ext:DocumentTypeCode ;
+ mu:uuid "5d945b51-aeba-4af3-b259-34a7e81d902b" ;
+ skos:prefLabel "Advies"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Advies"@nl .
+
+type:525fc3d7-1cd9-4628-9a15-2f03a1fed4e0 a ext:DocumentTypeCode ;
+ mu:uuid "525fc3d7-1cd9-4628-9a15-2f03a1fed4e0" ;
+ skos:prefLabel "Protocol"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Protocol"@nl .
+
+type:f252ddeb-581f-4122-8ebd-e740e74604f9 a ext:DocumentTypeCode ;
+ mu:uuid "f252ddeb-581f-4122-8ebd-e740e74604f9" ;
+ skos:prefLabel "Motie"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Motie"@nl .
+
+type:e76df7c2-addf-4712-acaa-9722473a0368 a ext:DocumentTypeCode ;
+ mu:uuid "e76df7c2-addf-4712-acaa-9722473a0368" ;
+ skos:prefLabel "Resolutie"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Resolutie"@nl .
+
 type:f1ab8f76-598b-4729-95eb-3419ceb52f02 a ext:DocumentTypeCode ;
  mu:uuid "f1ab8f76-598b-4729-95eb-3419ceb52f02" ;
  skos:prefLabel "Concept"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Conceptnota"@nl .
+
 type:984eb31f-d609-461d-b285-bd727853e437 a ext:DocumentTypeCode ;
  mu:uuid "984eb31f-d609-461d-b285-bd727853e437" ;
  skos:prefLabel "Groenboek"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Groenboek"@nl .
+
 type:0ffe6976-94d6-49f9-a248-db853477c187 a ext:DocumentTypeCode ;
  mu:uuid "0ffe6976-94d6-49f9-a248-db853477c187" ;
  skos:prefLabel "Witboek"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Witboek"@nl .
+
 type:52d8ce45-1954-48e7-9402-ac5ee3edbbc4 a ext:DocumentTypeCode ;
  mu:uuid "52d8ce45-1954-48e7-9402-ac5ee3edbbc4" ;
  skos:prefLabel "Visienota"@nl ;
- skos:altLabel "beperkte beleidsverklaring inzake een beleidskwestie"@nl .
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Visienota"@nl .
+
 type:0cb8f8e2-90cc-4a87-899f-092f41896573 a ext:DocumentTypeCode ;
  mu:uuid "0cb8f8e2-90cc-4a87-899f-092f41896573" ;
  skos:prefLabel "Errat"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Erratum"@nl .
+
 type:70db618b-2225-448e-bcf9-73992cc2b453 a ext:DocumentTypeCode ;
  mu:uuid "70db618b-2225-448e-bcf9-73992cc2b453" ;
  skos:prefLabel "Arrest"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Arrest"@nl .
+
 type:e36fbb8b-8adb-420d-9f89-9cbbe67b3b7d a ext:DocumentTypeCode ;
  mu:uuid "e36fbb8b-8adb-420d-9f89-9cbbe67b3b7d" ;
- skos:prefLabel "AG"@nl ;
+ skos:prefLabel "Besluit AG"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit van een administrateur-generaal"@nl .
+
 type:9c9463f9-d676-4875-aa5d-3793be199e48 a ext:DocumentTypeCode ;
  mu:uuid "9c9463f9-d676-4875-aa5d-3793be199e48" ;
- skos:prefLabel "SG"@nl ;
+ skos:prefLabel "Besluit SG"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit van een secretaris-generaal"@nl .
+
 type:ff80d8d0-d53d-44f8-9df2-20c10affb4d1 a ext:DocumentTypeCode ;
  mu:uuid "ff80d8d0-d53d-44f8-9df2-20c10affb4d1" ;
- skos:prefLabel "HA"@nl ;
+ skos:prefLabel "Besluit HA"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit Hoofd Agentschap"@nl .
+
 type:90d97b2d-7457-4abe-907b-de3740e04bac a ext:DocumentTypeCode ;
  mu:uuid "90d97b2d-7457-4abe-907b-de3740e04bac" ;
- skos:prefLabel "RVB"@nl ;
+ skos:prefLabel "Besluit RvB"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit Raad van Bestuur"@nl .
+
 type:1f222c66-bc07-4b29-9979-b351519e8f5d a ext:DocumentTypeCode ;
  mu:uuid "1f222c66-bc07-4b29-9979-b351519e8f5d" ;
- skos:prefLabel "AH"@nl ;
+ skos:prefLabel "Besluit AH"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Besluit Afdelingshoofd"@nl .
+
 type:9dffb0af-62ce-406a-8c47-892b7278b263 a ext:DocumentTypeCode ;
  mu:uuid "9dffb0af-62ce-406a-8c47-892b7278b263" ;
- skos:prefLabel "HD"@nl ;
- skos:altLabel "Besluit HoofdDepartement"@nl .
+ skos:prefLabel "Besluit HD"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+ skos:altLabel "Besluit Hoofd Departement"@nl .
+
 type:7abf48d7-c4b5-4968-8e17-cafa79ee70e3 a ext:DocumentTypeCode ;
  mu:uuid "7abf48d7-c4b5-4968-8e17-cafa79ee70e3" ;
  skos:prefLabel "Bericht"@nl ;
+ ext:isOverlegcomité "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
  skos:altLabel "Bericht"@nl .
+
+ type:c648aef1-baf7-4b69-aaa6-fe55f9112200 a ext:DocumentTypeCode ;
+ mu:uuid "c648aef1-baf7-4b69-aaa6-fe55f9112200" ;
+ skos:prefLabel "Agenda"@nl ;
+ ext:isOverlegcomité "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+
+ type:9ae6b6f7-a68c-418b-8cda-bad0c790ac0c a ext:DocumentTypeCode ;
+ mu:uuid "9ae6b6f7-a68c-418b-8cda-bad0c790ac0c" ;
+ skos:prefLabel "Beslissingsfiche"@nl ;
+ ext:isOverlegcomité "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+
+ type:d51a8ff5-0a14-49f3-a18b-90fcac8bc024 a ext:DocumentTypeCode ;
+ mu:uuid "d51a8ff5-0a14-49f3-a18b-90fcac8bc024" ;
+ skos:prefLabel "Documenten"@nl ;
+ ext:isOverlegcomité "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+
+ type:a0efbf40-0c4f-4e55-9620-8b03dcc93e2e a ext:DocumentTypeCode ;
+ mu:uuid "a0efbf40-0c4f-4e55-9620-8b03dcc93e2e" ;
+ skos:prefLabel "Notulen"@nl ;
+ ext:isOverlegcomité "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+
+ type:5a53a55b-6bfa-41ca-9656-9bd767b68d0f a ext:DocumentTypeCode ;
+ mu:uuid "5a53a55b-6bfa-41ca-9656-9bd767b68d0f" ;
+ skos:prefLabel "Varia"@nl ;
+ ext:isOverlegcomité "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .

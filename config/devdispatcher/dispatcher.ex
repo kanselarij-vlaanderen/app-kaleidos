@@ -75,6 +75,15 @@ defmodule Dispatcher do
   match "/case-types/*path" do
     Proxy.forward conn, path, "http://resource/case-types/"
   end
+
+  match "/case-types/*path" do
+    Proxy.forward conn, path, "http://resource/case-types/"
+  end
+
+  match "/submitters/*path" do
+    Proxy.forward conn, path, "http://resource/submitters/"
+  end
+
   match "/subcases/*path" do
     Proxy.forward conn, path, "http://resource/subcases/"
   end

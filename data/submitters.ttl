@@ -1,0 +1,28 @@
+@prefix submitter: <http://kanselarij.vo.data.gift/id/concept/submitter/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+submitter:7b5b77a5-0019-412b-a9f1-c81d06b195ad a ext:Indiener ;
+    mu:uuid "7b5b77a5-0019-412b-a9f1-c81d06b195ad" ;
+    skos:prefLabel "de Federale Regering" .
+
+submitter:17c8d413-48a5-4312-80f2-f2e8ab5e85bd a ext:Indiener ;
+    mu:uuid "17c8d413-48a5-4312-80f2-f2e8ab5e85bd" ;
+    skos:prefLabel "de Waalse regering" .
+
+submitter:eb3d4ea5-91ef-424b-bd64-bc1ba8db0bdd a ext:Indiener ;
+    mu:uuid "eb3d4ea5-91ef-424b-bd64-bc1ba8db0bdd" ;
+    skos:prefLabel "de Vlaamse Regering" .
+
+submitter:16b9063f-11b7-4fba-9ca2-2a4764433acf a ext:Indiener ;
+    mu:uuid "16b9063f-11b7-4fba-9ca2-2a4764433acf" ;
+    skos:prefLabel "de Regering van de Franse Gemeenschap" .
+
+submitter:1124b356-f752-48f0-8c44-7acaf308f24e a ext:Indiener ;
+    mu:uuid "1124b356-f752-48f0-8c44-7acaf308f24e" ;
+    skos:prefLabel "de Regering van de Duitse Gemeenschap" .
+
+submitter:e8e8dc4b-d7bc-4e96-9742-27a28226dafb a ext:Indiener ;
+    mu:uuid "e8e8dc4b-d7bc-4e96-9742-27a28226dafb" ;
+    skos:prefLabel "de Regering van het Brussels Hoofdstedelijk Gewest" .

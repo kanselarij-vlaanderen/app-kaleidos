@@ -61,7 +61,7 @@
             ;; Added has-many relations from subcases
               (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
-              (theme                  :via      ,(s-prefix "dct:agendapuntSubject")
+              (theme                  :via      ,(s-prefix "ext:agendapuntSubject")
                                       :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
@@ -244,7 +244,9 @@
                                         :as "postponeds")
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
-                                        :as "requested-subcases"))
+                                        :as "requested-subcases")
+              (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
+                                        :as "related-cases"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")

@@ -16,9 +16,36 @@ Next, alter the file `config/dispatcher.ex` based on the example that is there b
 
 ### Boot up the system
 
-Boot your microservices-enabled system using docker-compose.
+# This project has a different approach to start the compose.
 
-    cd /path/to/mu-project
-    docker-compose up
+We use 3 docker-compose.yml files to divide our environments.
+> docker-compose -f docker-compose.local.yml 
 
-You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`.
+Will connect your docker-compose command to the docker-compose.local.yml file. Once this is done you will be able to build and run the docker-compose locally by executing
+> docker-compose up -d
+
+
+You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`, to force your compose to stop, we use  `docker-compose kill`.
+
+# Data needed to run the frontend.
+
+All ttl files needed are located in the `/data` folder.
+
+To be able to use the frontend you should upload all files listed below in the `http://mu.semte.ch/graphs/public` and to `http://mu.semte.ch/graphs/organizations/kanselarij`
+
+- `alert-types.ttl`
+- `confidentiality.ttl`
+- `document-types.ttl`
+- `dossier-type-codes.ttl`
+- `government-domains.ttl`
+- `government-fields.ttl`
+- `ise-codes.ttl`
+- `ministers.ttl`
+- `mock-roles.ttl`
+- `policy-levels.ttl`
+- `procedurestap-fase-codes.ttl`
+- `procedurestap-types.ttl`
+- `themes.ttl`
+- `submitters.ttl`
+
+After doing this, you should be able to run the frontend without any troubles.
