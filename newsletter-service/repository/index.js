@@ -38,15 +38,19 @@ const getNewsLetterByAgendaId = async (agendaId) => {
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX prov: <http://www.w3.org/ns/prov#>
         
-        SELECT ?uuid ?title ?richtext ?text ?subtitle WHERE {
+        SELECT ?uuid ?title ?richtext ?text ?subtitle ?publication_date ?remark ?created ?modified WHERE {
             GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
                <http://kanselarij.vo.data.gift/id/agendas/${agendaId}> dct:hasPart ?agendaitem . 
                ?agendaitem prov:generated  ?newsletter . 
+               OPTIONAL { ?agendaitem ext:wordtGetoondAlsMededeling ?remark . }
+               OPTIONAL { ?agendaitem besluitvorming:aanmaakdatum ?created . }
+               OPTIONAL { ?agendaitem ext:modified ?modified . }
                OPTIONAL { ?newsletter mu:uuid ?uuid . }
                OPTIONAL { ?newsletter besluitvorming:inhoud ?text . }
                OPTIONAL { ?newsletter ext:htmlInhoud ?richtext . }
                OPTIONAL { ?newsletter dbpedia:subtitle ?subtitle . }
                OPTIONAL { ?newsletter dct:title ?title . }
+               OPTIONAL { ?newsletter dct:issued ?publication_date . }
              }
         }`;
     let data = await mu.query(query);
