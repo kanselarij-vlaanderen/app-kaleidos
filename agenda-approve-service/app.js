@@ -363,10 +363,10 @@ async function copyAgendaItems(oldId, newUri) {
 
 			OPTIONAL { ?agendaitem mu:uuid ?olduuid } 
 			BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?uuid)
-			BIND(IRI(CONCAT("http://localhost/vo/agendaitems/", ?uuid)) AS ?newURI)
+			BIND(IRI(CONCAT("http://kanselarij.vo.data.gift/id/agendapunten/", ?uuid)) AS ?newURI)
 
 		} } }
-		BIND(STRAFTER(STR(?newURI), "http://localhost/vo/agendaitems/") AS ?newUuid) 
+		BIND(STRAFTER(STR(?newURI), "http://kanselarij.vo.data.gift/id/agendapunten/") AS ?newUuid) 
 	}`
 
 	await mu.update(createNewUris).catch(err => { console.error(err) });
