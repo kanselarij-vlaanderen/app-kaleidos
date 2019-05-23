@@ -79,7 +79,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/concept/policy-level/",
-      "http://kanselarij.vo.data.gift/id/concept/submitter/"
+      "http://kanselarij.vo.data.gift/id/concept/submitter/",
+      "http://kanselarij.vo.data.gift/id/mandatarissen/"
     ]
   end
 
@@ -112,7 +113,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/concept/policy-level/",
-      "http://kanselarij.vo.data.gift/id/concept/submitter/"
+      "http://kanselarij.vo.data.gift/id/concept/submitter/",
+      "http://kanselarij.vo.data.gift/id/mandatarissen/"
     ]
   end 
 
