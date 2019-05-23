@@ -1,5 +1,5 @@
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix minister: <http://example.com/minister/> .
+@prefix minister: <http://kanselarij.vo.data.gift/id/mandatarissen/> .
 @prefix man: <http://example.com/mandaat/> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix domain: <http://example.com/beleidsdomein/> .

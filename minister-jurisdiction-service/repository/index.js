@@ -95,32 +95,15 @@ const getUniqueSubCaseWhereOpenByMandatee = async (mandatee) => {
         PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
-        SELECT DISTINCT ?subcase
-        WHERE {{
-           GRAPH <http://mu.semte.ch/application> {{
-              ?mandatee a mandaat:Mandataris .
-              FILTER(?mandatee = <${mandatee}>)
-              ?mandatee mandaat:start ?startdate .
-              ?mandatee mandaat:einde ?enddate .
-              ?mandatee mandaat:beleidsdomein ?mandateedomain .
-
-              ?case a dbpedia:Case .
-              ?case dct:hasPart ?subcase .
-              ?subcase mandaat:beleidsdomein ?domain .
-              ?subcase dct:created ?created .
-              FILTER (?created > ?startdate)
-              FILTER (?created < ?enddate)
-              FILTER (?mandateedomain = ?domain)
-              OPTIONAL {{
-                   ?subcase besluitvorming:isGeagendeerdVia ?agenda .
-                   OPTIONAL {{
-                        ?agenda ext:accepted ?accepted .
-                   }}
-              }}
-              FILTER (! BOUND(?accepted) || STR(?accepted) != "true")
-           }}
-        }}`;
+        SELECT * WHERE {
+           GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+              ?uri besluitvorming:heeftBevoegde <http://kanselarij.vo.data.gift/id/mandatarissen/${mandatee}> . 
+              ?uri besluitvorming:besloten "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+           }
+        }`;
     let data = await mu.query(query);
     return parseSparqlResults(data);
 };
@@ -163,17 +146,24 @@ const addMandateeToSubCase = async (receiving_mandatee, domain) => {
     return await mu.update(query).catch(err => { console.error(err) });
 };
 
-const setMandateeOnSubCase = async (open_sub_cases, new_mandatee) => {
+const setMandateeOnSubCase = async (open_sub_cases, new_mandatee, old_mandatee) => {
     for (let i = 0; i < open_sub_cases.length; i ++){
         const subcase = open_sub_cases[i];
-        await mu.update(`
+        console.log(subcase);
+        mu.update(`
         PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
-            INSERT DATA {{
-                GRAPH <http://mu.semte.ch/application> {{
-                   <${subcase}> besluitvorming:heeftBevoegde <${new_mandatee}> .
-            }}
-        }}`).catch(err => { console.error(err) });
+        DELETE WHERE {
+            GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+                <${subcase.uri}> besluitvorming:heeftBevoegde <http://kanselarij.vo.data.gift/id/mandatarissen/${old_mandatee}> .
+            }
+        }
+
+        INSERT {
+             GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+                   <${subcase.uri}> besluitvorming:heeftBevoegde <http://kanselarij.vo.data.gift/id/mandatarissen/${new_mandatee}> .
+            }
+        }`).catch(err => { console.error(err) });
     }
 };
 
