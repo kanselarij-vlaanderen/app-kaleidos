@@ -10,11 +10,6 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(cors());
 
 
-app.get('/ministers', (req, res) => {
-	return getMinisters(req, res);
-});
-
-
 app.get('/domains/ministers', (req, res) => {
 	return getMinistersForDomain(req, res);
 });
@@ -35,14 +30,6 @@ app.post('/transfer/procedures', (req, res) => {
 	return addMandateeToSubCase(req, res);
 });
 
-const getMinisters = async (req, res) => {
-	try {
-		return await repository.getMinisters();
-	}catch(error) {
-		console.error(error);
-		res.send({ status: ok, statusCode: 500, body: { error } });
-	}
-};
 
 const getMinistersForDomain = async (req, res) => {
 	try {
@@ -86,18 +73,17 @@ const setMandateeOnDomain = async (req, res) => {
 };
 
 const addMandateeToSubCase = async (req, res) => {
-
 	try {
 
-		let { old_mandatee, new_mandatee } = req.body;
-		const open_subcases = repository.getUniqueSubCaseWhereOpenByMandatee(old_mandatee);
-		return await repository.setMandateeOnSubCase(open_subcases, new_mandatee);
+		let new_mandatee = req.body.new_mandatee;
+		let old_mandatee = req.body.old_mandatee;
 
+		const open_subcases = await repository.getUniqueSubCaseWhereOpenByMandatee(old_mandatee);
+		console.log(open_subcases);
+		await repository.setMandateeOnSubCase(open_subcases, new_mandatee, old_mandatee);
+		res.send({ status: ok });
 	}catch(error) {
 		console.error(error);
 		res.send({ status: ok, statusCode: 500, body: { error } });
 	}
 };
-
-
-
