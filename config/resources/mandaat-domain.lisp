@@ -19,7 +19,7 @@
 
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
-  :properties `((:priority        :string ,(s-prefix "mandaat:rangorde"))
+  :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
                 (:start           :datetime ,(s-prefix "mandaat:start"))
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
                 (:date-sworn-in   :datetime ,(s-prefix "ext:datumEedaflegging"))

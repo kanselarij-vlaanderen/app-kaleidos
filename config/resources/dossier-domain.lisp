@@ -80,9 +80,7 @@
                 (:modified            :datetime ,(s-prefix "ext:modified"))
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
-  :has-one `((decision                :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "decision")
-             (case                    :via ,(s-prefix "dct:hasPart")
+  :has-one `((case                    :via ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "case")
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
@@ -112,7 +110,9 @@
               (remark                 :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
-                                      :as "ise-codes"))
+                                      :as "ise-codes")
+              (decision                :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "decisions"))
   :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
   :features '(include-uri)
   :on-path "subcases")

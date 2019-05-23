@@ -81,8 +81,7 @@ async function getSubcasePhasesOfAgenda(newAgendaId, codeURI) {
 		}
 	}
 `
-	const data = await mu.query(query).catch(err => { console.error(err) });
-	return data;
+	return await mu.query(query).catch(err => { console.error(err) });
 }
 
 async function markAgendaItemsPartOfAgendaA(agendaId) {
@@ -273,9 +272,10 @@ async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeU
 		const parsedObjects = parseSparqlResults(subcasePhasesOfAgenda);
 
 		const uniqueSubcaseIds = [...new Set(parsedObjects.map((item) => item['subcase']))];
-		console.log(uniqueSubcaseIds)
 		let subcaseListOfURIS = [];
-
+		if (uniqueSubcaseIds.length < 1) {
+			return;
+		}
 		await uniqueSubcaseIds.map((id) => {
 			const foundObject = parsedObjects.find((item) => item.subcase === id);
 			if (foundObject && foundObject.subcase && !foundObject.phases) {
@@ -288,10 +288,12 @@ async function checkForPhasesAndAssignMissingPhases(subcasePhasesOfAgenda, codeU
 }
 
 async function createNewSubcasesPhase(codeURI, subcaseListOfURIS) {
+	if (subcaseListOfURIS.length < 1) {
+		return;
+	}
 	const listOfQueries = await subcaseListOfURIS.map((subcaseURI) => {
 		const newUUID = uuidv4();
 		const newURI = `http://data.vlaanderen.be/id/ProcedurestapFase/${newUUID}`;
-		console.log(codeURI)
 		return `
 		<${newURI}> a 	ext:ProcedurestapFase ;
 		mu:uuid "${newUUID}" ;
