@@ -1,8 +1,32 @@
 import mu from 'mu';
 const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
-const getAgendaPriorities = async (agendaId) => {
+const getLastPriorityOfAgendaitemInAgenda = async (agendaId) => {
+    const query = `
+    PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+    PREFIX agenda: <http://data.lblod.info/id/agendas/>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX dct: <http://purl.org/dc/terms/>
 
+ 	SELECT MAX(?agendaitemPrio) AS ?maxPrio  WHERE {
+  	GRAPH <${targetGraph}> {
+   		?agenda a besluitvorming:Agenda ;
+   		mu:uuid "${agendaId}" .
+        ?agenda dct:hasPart ?agendaitem .
+        OPTIONAL {?agendaitem ext:prioriteit ?agendaitemPrio .}
+  	  }
+     }`;
+
+    let data = await mu.query(query);
+    return parseSparqlResults(data);
+}
+
+const getAgendaPriorities = async (agendaId) => {
     const query = `
       PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
       PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -21,7 +45,10 @@ const getAgendaPriorities = async (agendaId) => {
             ?agenda dct:hasPart ?agendapunt .
             ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
-            ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+                FILTER NOT EXISTS{
+                    ?agendapunt ext:prioriteit ?agendaitemPrio .
+                }
+                ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
             OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -43,28 +70,39 @@ const getAgendaPriorities = async (agendaId) => {
 
 const updateAgendaItemPriority = async (items) => {
 
-    const oldPriorities = items.map(item =>
-        ` <${item.uri}> ext:prioriteit ?priority . 
-        `).join(' ');
-    const newPriorities = items.map(item =>
-        ` <${item.uri}> ext:prioriteit ${item.priority} .
-        `).join(' ');
+    const oldPriorities = items.map(item => {
+        return ` <${item.uri}> ext:prioriteit ${item.priority} .`;
+    });
+
+    const newPriorities = items.map(item => {
+        if (!item.agendaitemPrio) {
+            return ` <${item.uri}> ext:prioriteit ${item.priority} .`;
+        }
+    });
+
+    console.log(oldPriorities);
+    console.log(newPriorities);
+    // return;
+    if (newPriorities.length < 1) {
+        return;
+    }
 
     const query = `
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
       
       DELETE WHERE { 
           GRAPH ?g {
-            ${oldPriorities}
+            ${oldPriorities.join(' ')}
           }        
       };
     
       INSERT DATA { 
         GRAPH <${targetGraph}> { 
-          ${newPriorities}
+          ${newPriorities.join(' ')}
         } 
       }`;
-     return mu.update(query);
+
+    return mu.update(query);
 };
 
 const parseSparqlResults = (data) => {
@@ -72,7 +110,7 @@ const parseSparqlResults = (data) => {
     return data.results.bindings.map(binding => {
         let obj = {};
         vars.forEach(varKey => {
-            if (binding[varKey]){
+            if (binding[varKey]) {
                 obj[varKey] = binding[varKey].value;
             }
         });
@@ -87,23 +125,21 @@ const parsePriorityResults = (items) => {
         const uuid = agendaItem.uuid;
         agendaItem.priority = agendaItem.priority || Number.MAX_SAFE_INTEGER;
 
-        if (agendaItems[uuid]){
+        if (agendaItems[uuid]) {
             agendaItems[uuid].mandatePriority = Math.min(agendaItems[uuid].mandatePriority, agendaItem.priority);
-        }else {
+        } else {
             agendaItems[uuid] = {
                 uuid: uuid,
                 uri: agendaItem.agendapunt,
+                agendaitemPrio: agendaItem.agendaitemPrio,
                 mandatePriority: agendaItem.priority,
                 mandateeCount: agendaItem.mandateeCount
             }
         }
     });
-    return Object.values(agendaItems); 
+    return Object.values(agendaItems);
 };
 
 module.exports = {
-    getAgendaPriorities, updateAgendaItemPriority
+    getAgendaPriorities, updateAgendaItemPriority, getLastPriorityOfAgendaitemInAgenda
 };
-
-
-
