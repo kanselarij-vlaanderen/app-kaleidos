@@ -13,8 +13,11 @@
                                   :as "document-versions"))
   :has-one `((document-type       :via ,(s-prefix "ext:documentType")
                                   :as "type")
-             (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                  :as "confidentiality"))
+            (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+                                  :as "confidentiality")
+            (decision             :via ,(s-prefix "ext:beslissingsfiche")
+                                  :inverse t
+                                  :as "signed-decision"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/documenten/")
   :features '(include-uri)
   :on-path "documents")
@@ -47,10 +50,7 @@
                                         :as "decision")
              (meeting-record            :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
-                                        :as "meeting-record")
-             (decision                  :via ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
-                                        :inverse t
-                                        :as "signed-decision"))
+                                        :as "meeting-record"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")
