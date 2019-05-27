@@ -136,9 +136,7 @@
               ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
               ;           :as "heeft-versie")
               (document-version :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                :as "document-versions")
-              (document-version :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorBeslissing")
-                                :as "signed-document-versions"))
+                                :as "document-versions"))
   :has-one `((subcase           :via        ,(s-prefix "ext:procedurestapHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                 :inverse t
                                 :as "subcase")
@@ -152,7 +150,9 @@
              (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                                 :as "type")
              (confidentiality   :via        ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
-                                :as "confidentiality"))
+                                :as "confidentiality")
+             (document          :via      ,(s-prefix "ext:beslissingsfiche")
+                                :as "signed-document"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
   :features '(include-uri)
   :on-path "decisions")

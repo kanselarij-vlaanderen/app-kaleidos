@@ -80,7 +80,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/case-types/"
   end
 
-  
+
   match "/policy-levels/*path" do
     Proxy.forward conn, path, "http://resource/policy-levels/"
   end
@@ -226,6 +226,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://development-session-number-service/"
   end
 
+   match "/minister-jurisdiction-service/*path" do
+    Proxy.forward conn, path, "http://development-minister-jurisdiction-service/"
+  end
+
   match "/agenda-approve/*path" do
     Proxy.forward conn, path, "http://development-agenda-approve-service/"
   end
@@ -255,6 +259,10 @@ defmodule Dispatcher do
 
   match "/newsletter/*path" do
     Proxy.forward conn, path, "http://development-newsletter-service/"
+  end
+
+  match "/minister-jurisdiction-service/*path" do
+    Proxy.forward conn, path, "http://minister-jurisdiction-service/"
   end
 
   match _ do

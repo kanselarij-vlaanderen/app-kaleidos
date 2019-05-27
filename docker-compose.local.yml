@@ -123,14 +123,6 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
-  sink:
-    image: nginx:1.15.2
-    volumes:
-      - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
-    restart: always
-    logging: *default-logging
-    labels:
-      - "logging=true"
   newsletter-service:
     image: semtech/mu-javascript-template
     environment:
@@ -141,19 +133,13 @@ services:
     volumes:
       - ./newsletter-service:/app
   minister-jurisdiction-service:
-    image: mikidi/mu-python-template:python3-port
+    image: semtech/mu-javascript-template
     environment:
-      MODE: "development"
+      NODE_ENV: "development"
     links:
       - database:database
     volumes:
       - ./minister-jurisdiction-service:/app
-  proxy:
-    image: nginx:1.13
-    volumes:
-      - ./config/proxy:/etc/nginx/conf.d
-    ports:
-      - "443:443"
   data-migration-service:
     image: semtech/mu-javascript-template
     environment:

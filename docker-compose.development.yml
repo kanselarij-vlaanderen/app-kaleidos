@@ -113,9 +113,9 @@ services:
     volumes:
       - ./agenda-approve-service:/app
   development-minister-jurisdiction-service:
-    image: mikidi/mu-python-template:python3-port
+    image: semtech/mu-javascript-template
     environment:
-      MODE: "development"
+      NODE_ENV: "development"
     links:
       - development-database:database
     volumes:
