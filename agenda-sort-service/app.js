@@ -53,3 +53,17 @@ const sortAgendaItemsByMandates = async (agendaItems, previousPrio) => {
 
     return agendaItems;
 };
+
+
+app.get('/new-filtering', async (req, res) => {
+
+    const sessionId = req.query.sessionId;
+    const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
+    const combinedAgendas = repository.reduceAgendaitemsToUniqueAgendas(agendaitems)
+    const uniqueAgendaItems = [];
+    console.log(agendaitems, combinedAgendas)
+    Object.values(combinedAgendas).map((item => uniqueAgendaItems.push(...item.items)));
+
+    console.log(uniqueAgendaItems)
+    res.send(uniqueAgendaItems);
+})
