@@ -54,16 +54,100 @@ const sortAgendaItemsByMandates = async (agendaItems, previousPrio) => {
     return agendaItems;
 };
 
-
 app.get('/new-filtering', async (req, res) => {
-
     const sessionId = req.query.sessionId;
-    const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
-    const combinedAgendas = repository.reduceAgendaitemsToUniqueAgendas(agendaitems)
-    const uniqueAgendaItems = [];
-    console.log(agendaitems, combinedAgendas)
-    Object.values(combinedAgendas).map((item => uniqueAgendaItems.push(...item.items)));
+    const currentAgendaID = req.query.selectedAgenda;
+    const agendaitemsOfSelectedAgenda = await repository.getAllAgendaItemsFromAgenda(currentAgendaID);
 
-    console.log(uniqueAgendaItems)
-    res.send(uniqueAgendaItems);
+    const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
+    const designAgendaItems = [];
+    agendaitems.map((item) => {
+        if (item.agendaName.toUpperCase() === "ONTWERPAGENDA") {
+            designAgendaItems.push(item);
+        }
+    });
+
+    console.log(designAgendaItems)
+    setAllMappedPropertiesToTheAgendaItems(agendaitems, agendaitemsOfSelectedAgenda);
+    const combinedAgendas = reduceAgendaitemsToUniqueAgendas(agendaitems);
+    const combinedAgendasWithAgendaitems = getGroupedAgendaitems(combinedAgendas);
+
+    res.send(combinedAgendasWithAgendaitems);
 })
+
+const reduceAgendaitemsPerTitle = (agendaitems) => {
+    return agendaitems.reduce((agendaItems, agendaitem) => {
+        agendaItems[agendaitem.groupTitle] = agendaItems[agendaitem.groupTitle] || { agendaitems: [] }
+        agendaItems[agendaitem.groupTitle].agendaitems.push(agendaitem);
+        return agendaItems;
+    }, {});
+}
+
+const reduceMandateesToUniqueSubcases = (agendaitems) => {
+    return agendaitems.reduce((agendaItems, agendaitem) => {
+        agendaItems[agendaitem.subcaseId] = agendaItems[agendaitem.subcaseId] || { mandatees: [] }
+        agendaItems[agendaitem.subcaseId].mandatees.push(agendaitem.title);
+        return agendaItems;
+    }, {});
+}
+
+const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
+    const subcaseIdsParsed = [];
+    return agendaitems.reduce((agendaItems, agendaitem) => {
+        agendaItems[agendaitem.agendaName] = agendaItems[agendaitem.agendaName] || { items: [] }
+        if (!subcaseIdsParsed.includes(agendaitem.subcase)) {
+            delete agendaitem.mandatee;
+            subcaseIdsParsed.push(agendaitem.subcase);
+            agendaItems[agendaitem.agendaName].items.push(agendaitem);
+        }
+
+        return agendaItems;
+    }, {});
+}
+
+
+
+const setAllMappedPropertiesToTheAgendaItems = (agendaitems, agendaitemsOfSelectedAgenda) => {
+    const mandatees = reduceMandateesToUniqueSubcases(agendaitems);
+    agendaitems.map((agendaitem) => {
+        agendaitem['mandatees'] = [...new Set(mandatees[agendaitem.subcaseId].mandatees)];
+        agendaitem['groupTitle'] = agendaitem['mandatees'].join(', ')
+        const foundAgendaItem = agendaitemsOfSelectedAgenda.find((agendaitemToCheck) => agendaitemToCheck.subcaseId === agendaitem.subcaseId);
+        if (foundAgendaItem) {
+            agendaitem['agendaitem_id'] = foundAgendaItem.id;
+        }
+    });
+}
+
+const getGroupedAgendaitems = (combinedAgendas) => {
+    return Object.entries(combinedAgendas).map((itemArray) => {
+        if (itemArray[1].items.length > 0) {
+            let obj = {
+                agendaName: itemArray[0],
+                groups: Object.entries(reduceAgendaitemsPerTitle(itemArray[1].items)).map((entry) => {
+                    return {
+                        title: entry[0],
+                        agendaitems: entry[1].agendaitems
+                    }
+                })
+            }
+
+            return obj;
+        }
+    }).filter((item) => item);
+}
+
+/*
+const filteredAgendaItems = await agendaitems.filter(agendaitem => {
+			if (agendaitem && agendaitem.id) {
+				const foundItem = agendaitemsFilteredPerAgenda.find(item => item.subcaseId === agendaitem.get('subcase.id'));
+				if (foundItem) {
+					if (!agendaitem.showAsRemark) {
+						agendaitem.set('agendaName', foundItem.agendaName);
+						agendaitem.set('foundPriority', agendaitem.priority);
+						return agendaitem;
+					}
+				}
+			}
+        });
+        **/

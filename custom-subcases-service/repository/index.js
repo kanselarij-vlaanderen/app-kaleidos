@@ -30,13 +30,12 @@ const getPostponedSubcases = async () => {
     return parseSparqlResults(data, 'subcases');
 }
 
-
 const parseSparqlResults = (data) => {
     const vars = data.head.vars;
     return data.results.bindings.map(binding => {
         let obj = {};
         vars.forEach(varKey => {
-            if (binding[varKey]){
+            if (binding[varKey]) {
                 obj[varKey] = binding[varKey].value;
             }
         });

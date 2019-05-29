@@ -153,7 +153,7 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX dct: <http://purl.org/dc/terms/>
        
-    SELECT ?subcaseId ?agendaName ?subcase ?mandatee  WHERE { 
+    SELECT ?subcaseId ?agendaName ?subcase ?title ?priority ?agendaitemPrio WHERE { 
            GRAPH <${targetGraph}>
            {
              ?meeting a besluit:Zitting ;
@@ -161,12 +161,14 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
              ?agendas   besluit:isAangemaaktVoor ?meeting .
              ?agendas   ext:agendaNaam ?agendaName .
              ?agendas   dct:hasPart ?agendaitem .
+             OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
              ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
              ?subcase   mu:uuid ?subcaseId .
  
               OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
+                ?mandatee dct:title ?title .
                 ?mandatee mandaat:rangorde ?priority .
                 ?mandatee mandaat:start ?start .
                 FILTER(?start < NOW())
@@ -176,33 +178,49 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
                 }
             }
          }
-       }  GROUP BY ?agendaName ?subcaseId ?subcase ?mandatee 
-       ORDER BY ASC(UCASE(str(?agendaName)))
+       }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?priority ?agendaitemPrio
+       ORDER BY ASC(UCASE(str(?agendaName))), ?subcaseId, ?priority
     `
 
     const data = await mu.query(query);
     return parseSparqlResults(data);
 }
 
-const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
-    const subcaseIdsParsed = [];
-    const combinedAgendas = agendaitems.reduce((items, item) => {
-
-        items[item.agendaName] = items[item.agendaName] || { items: [] }
-        if (!subcaseIdsParsed.includes(item.subcase)) {
-            subcaseIdsParsed.push(item.subcase);
-            items[item.agendaName].items.push(item);
+const getAllAgendaItemsFromAgenda = async (agendaId) => {
+    const query = `
+    PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+    PREFIX agenda: <http://data.lblod.info/id/agendas/>
+    PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+    PREFIX dct: <http://purl.org/dc/terms/>
+   
+    SELECT ?subcaseId ?id ?title  WHERE { 
+       GRAPH <${targetGraph}>
+       {
+         ?agenda a besluitvorming:Agenda ;
+                    mu:uuid "${agendaId}" .
+         ?agenda   ext:agendaNaam ?agendaName .
+         ?agenda   dct:hasPart ?agendaitem .
+         ?agendaitem mu:uuid ?id .
+         ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
+         ?subcase   mu:uuid ?subcaseId .
         }
-        return items;
-    }, {});
+    }
+    `;
 
-    return combinedAgendas;
+    const data = await mu.query(query);
+    return parseSparqlResults(data);
 }
 
 module.exports = {
     getAgendaPriorities,
     updateAgendaItemPriority,
     getLastPriorityOfAgendaitemInAgenda,
-    reduceAgendaitemsToUniqueAgendas,
+    getAllAgendaItemsFromAgenda,
     getAllAgendaitemsOfTheSessionWithAgendaName
 };
