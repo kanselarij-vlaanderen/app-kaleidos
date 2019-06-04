@@ -59,6 +59,7 @@
   :class (s-prefix "ext:DocumentTypeCode")
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note        :string ,(s-prefix "skos:scopeNote"))
+                (:priority          :number ,(s-prefix "ext:prioriteit"))
                 (:is-oc             :boolean ,(s-prefix "ext:isOverlegcomité"))
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document             :via    ,(s-prefix "ext:documentType")
