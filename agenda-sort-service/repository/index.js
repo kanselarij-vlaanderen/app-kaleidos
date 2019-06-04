@@ -80,9 +80,6 @@ const updateAgendaItemPriority = async (items) => {
         }
     });
 
-    console.log(oldPriorities);
-    console.log(newPriorities);
-    // return;
     if (newPriorities.length < 1) {
         return;
     }
@@ -153,14 +150,16 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX dct: <http://purl.org/dc/terms/>
        
-    SELECT ?subcaseId ?agendaName ?subcase ?title ?priority ?agendaitemPrio WHERE { 
+    SELECT ?subcaseId ?agendaId ?agendaName ?subcase ?title ?priority ?agendaitemPrio ?id WHERE { 
            GRAPH <${targetGraph}>
            {
              ?meeting a besluit:Zitting ;
                         mu:uuid "${sessionId}" .
              ?agendas   besluit:isAangemaaktVoor ?meeting .
              ?agendas   ext:agendaNaam ?agendaName .
+             ?agendas   mu:uuid    ?agendaId .
              ?agendas   dct:hasPart ?agendaitem .
+             ?agendaitem mu:uuid    ?id .
              OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
              ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
              ?subcase   mu:uuid ?subcaseId .
@@ -178,8 +177,8 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
                 }
             }
          }
-       }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?priority ?agendaitemPrio
-       ORDER BY ASC(UCASE(str(?agendaName))), ?subcaseId, ?priority
+       }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?agendaId ?priority ?agendaitemPrio
+       ORDER BY DESC(UCASE(str(?agendaName))), ?subcaseId, ?priority
     `
 
     const data = await mu.query(query);

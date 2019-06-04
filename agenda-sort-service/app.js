@@ -54,31 +54,41 @@ const sortAgendaItemsByMandates = async (agendaItems, previousPrio) => {
     return agendaItems;
 };
 
-app.get('/new-filtering', async (req, res) => {
+app.get('/sortedAgenda', async (req, res) => {
     const sessionId = req.query.sessionId;
     const currentAgendaID = req.query.selectedAgenda;
     const agendaitemsOfSelectedAgenda = await repository.getAllAgendaItemsFromAgenda(currentAgendaID);
 
     const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
-    const designAgendaItems = [];
-    agendaitems.map((item) => {
-        if (item.agendaName.toUpperCase() === "ONTWERPAGENDA") {
-            designAgendaItems.push(item);
+
+    let sortedAgendaitems = agendaitems.sort((a, b) => {
+        if (a.agendaName === "Ontwerpagenda") {
+            return 1;
         }
-    });
+        if (b.agendaName === "Ontwerpagenda") {
+            return 1;
+        }
 
-    console.log(designAgendaItems)
-    setAllMappedPropertiesToTheAgendaItems(agendaitems, agendaitemsOfSelectedAgenda);
-    const combinedAgendas = reduceAgendaitemsToUniqueAgendas(agendaitems);
+        if (a.agendaName < b.agendaName)
+            return -1;
+        if (a.agendaName > b.agendaName)
+            return 1;
+        return 0;
+    })
+
+    const changedAgendaItems = await setAllMappedPropertiesAndReturnSortedAgendaitems(sortedAgendaitems, agendaitemsOfSelectedAgenda, currentAgendaID);
+
+    const combinedAgendas = reduceAgendaitemsToUniqueAgendas(changedAgendaItems);
     const combinedAgendasWithAgendaitems = getGroupedAgendaitems(combinedAgendas);
-
     res.send(combinedAgendasWithAgendaitems);
 })
 
 const reduceAgendaitemsPerTitle = (agendaitems) => {
     return agendaitems.reduce((agendaItems, agendaitem) => {
-        agendaItems[agendaitem.groupTitle] = agendaItems[agendaitem.groupTitle] || { agendaitems: [] }
+        agendaItems[agendaitem.groupTitle] = agendaItems[agendaitem.groupTitle] || { agendaitems: [], foundPriority: 2147111111 }
         agendaItems[agendaitem.groupTitle].agendaitems.push(agendaitem);
+        agendaItems[agendaitem.groupTitle].foundPriority = Math.min(agendaItems[agendaitem.groupTitle].foundPriority, agendaitem.priority);
+
         return agendaItems;
     }, {});
 }
@@ -86,7 +96,10 @@ const reduceAgendaitemsPerTitle = (agendaitems) => {
 const reduceMandateesToUniqueSubcases = (agendaitems) => {
     return agendaitems.reduce((agendaItems, agendaitem) => {
         agendaItems[agendaitem.subcaseId] = agendaItems[agendaitem.subcaseId] || { mandatees: [] }
-        agendaItems[agendaitem.subcaseId].mandatees.push(agendaitem.title);
+
+        agendaItems[agendaitem.subcaseId].mandatees.push(
+            { title: agendaitem.title, priority: agendaitem.priority }
+        );
         return agendaItems;
     }, {});
 }
@@ -94,7 +107,8 @@ const reduceMandateesToUniqueSubcases = (agendaitems) => {
 const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
     const subcaseIdsParsed = [];
     return agendaitems.reduce((agendaItems, agendaitem) => {
-        agendaItems[agendaitem.agendaName] = agendaItems[agendaitem.agendaName] || { items: [] }
+
+        agendaItems[agendaitem.agendaName] = agendaItems[agendaitem.agendaName] || { items: [], agendaId: agendaitem.agendaId }
         if (!subcaseIdsParsed.includes(agendaitem.subcase)) {
             delete agendaitem.mandatee;
             subcaseIdsParsed.push(agendaitem.subcase);
@@ -105,17 +119,23 @@ const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
     }, {});
 }
 
-
-
-const setAllMappedPropertiesToTheAgendaItems = (agendaitems, agendaitemsOfSelectedAgenda) => {
+const setAllMappedPropertiesAndReturnSortedAgendaitems = (agendaitems, agendaitemsOfSelectedAgenda, currentAgendaID) => {
     const mandatees = reduceMandateesToUniqueSubcases(agendaitems);
-    agendaitems.map((agendaitem) => {
-        agendaitem['mandatees'] = [...new Set(mandatees[agendaitem.subcaseId].mandatees)];
-        agendaitem['groupTitle'] = agendaitem['mandatees'].join(', ')
+    return agendaitems.map((agendaitem) => {
+
+        const uniqueMandatees = getUniqueMandatees(mandatees[agendaitem.subcaseId].mandatees);
+        agendaitem['mandatees'] = uniqueMandatees;
+        const titles = uniqueMandatees.map((item) => item.title);
+        agendaitem['groupTitle'] = titles.join(', ');
+        agendaitem['priority'] = Math.min(...uniqueMandatees.map((item) => parseInt(item.priority)));
         const foundAgendaItem = agendaitemsOfSelectedAgenda.find((agendaitemToCheck) => agendaitemToCheck.subcaseId === agendaitem.subcaseId);
+        agendaitem['selectedAgendaId'] = currentAgendaID;
+
         if (foundAgendaItem) {
-            agendaitem['agendaitem_id'] = foundAgendaItem.id;
+            agendaitem['id'] = foundAgendaItem.id;
         }
+
+        return agendaitem;
     });
 }
 
@@ -124,12 +144,14 @@ const getGroupedAgendaitems = (combinedAgendas) => {
         if (itemArray[1].items.length > 0) {
             let obj = {
                 agendaName: itemArray[0],
+                agendaId: itemArray[1].agendaId,
                 groups: Object.entries(reduceAgendaitemsPerTitle(itemArray[1].items)).map((entry) => {
                     return {
                         title: entry[0],
-                        agendaitems: entry[1].agendaitems
+                        priority: entry[1].foundPriority,
+                        agendaitems: sortAgendaItemsByProperty(entry[1].agendaitems, 'priority')
                     }
-                })
+                }).sort((a, b) => a.priority - b.priority)
             }
 
             return obj;
@@ -137,17 +159,17 @@ const getGroupedAgendaitems = (combinedAgendas) => {
     }).filter((item) => item);
 }
 
-/*
-const filteredAgendaItems = await agendaitems.filter(agendaitem => {
-			if (agendaitem && agendaitem.id) {
-				const foundItem = agendaitemsFilteredPerAgenda.find(item => item.subcaseId === agendaitem.get('subcase.id'));
-				if (foundItem) {
-					if (!agendaitem.showAsRemark) {
-						agendaitem.set('agendaName', foundItem.agendaName);
-						agendaitem.set('foundPriority', agendaitem.priority);
-						return agendaitem;
-					}
-				}
-			}
-        });
-        **/
+const sortAgendaItemsByProperty = (agendaitems, property) => {
+    return agendaitems.sort((a, b) => (parseInt(b[property]) - (parseInt(a[property]))))
+}
+
+const getUniqueMandatees = (mandatees) => {
+    let uniqueMandatees = []
+    mandatees.map(mandatee => {
+        const foundMandatee = uniqueMandatees.find((mandateeToCheck) => mandatee.title === mandateeToCheck.title);
+        if (!foundMandatee) {
+            uniqueMandatees.push(mandatee)
+        }
+    });
+    return uniqueMandatees.sort((a, b) => parseInt(a.priority) - parseInt(b.priority));
+}
