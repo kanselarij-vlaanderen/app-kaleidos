@@ -68,6 +68,46 @@ const getAgendaPriorities = async (agendaId) => {
     return parsePriorityResults(results);
 }
 
+const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
+    const query = `
+      PREFIX vo-org: <https://data.vlaanderen.be/ns/organisatie#>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      PREFIX vo-gen: <https://data.vlaanderen.be/ns/generiek#> 
+      PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX agenda: <http://data.lblod.info/id/agendas/>
+      PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      
+      SELECT ?uuid ?agendapunt ?subcaseId MIN(?priority) AS ?priority COUNT(DISTINCT(?mandatee)) AS ?mandateeCount
+        WHERE { 
+          GRAPH <${targetGraph}>
+          {
+            ?agenda dct:hasPart ?agendapunt .
+            ?agenda mu:uuid "${agendaId}" .
+            ?agendapunt mu:uuid ?uuid .
+            ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+            ?subcaseId mu:uuid ?subcaseId .
+            OPTIONAL { 
+                ?subcase besluitvorming:heeftBevoegde ?mandatee . 
+                ?mandatee mu:uuid ?mandateeId .
+                ?mandatee mandaat:rangorde ?priority .
+                ?mandatee mandaat:start ?start .
+                FILTER(?start < NOW())
+                OPTIONAL {
+                   ?mandatee mandaat:eind ?end .
+                   FILTER(?end > NOW())
+                }
+            }
+           }
+      } GROUP BY ?uuid ?agendapunt`;
+
+    let data = await mu.query(query);
+    const results = parseSparqlResults(data);
+    return parsePriorityResults(results);
+}
+
 const updateAgendaItemPriority = async (items) => {
 
     const oldPriorities = items.map(item => {
@@ -221,5 +261,6 @@ module.exports = {
     updateAgendaItemPriority,
     getLastPriorityOfAgendaitemInAgenda,
     getAllAgendaItemsFromAgenda,
+    getAgendaPrioritiesWithoutFilter,
     getAllAgendaitemsOfTheSessionWithAgendaName
 };
