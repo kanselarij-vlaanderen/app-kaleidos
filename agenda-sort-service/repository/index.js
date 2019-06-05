@@ -218,7 +218,7 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
             }
          }
        }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?agendaId ?priority ?agendaitemPrio
-       ORDER BY DESC(UCASE(str(?agendaName))), ?subcaseId, ?priority
+       ORDER BY ASC(UCASE(str(?agendaName)))
     `
 
     const data = await mu.query(query);

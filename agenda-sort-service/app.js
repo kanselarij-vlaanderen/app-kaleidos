@@ -61,22 +61,9 @@ app.get('/sortedAgenda', async (req, res) => {
 
     const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
 
-    let sortedAgendaitems = agendaitems.sort((a, b) => {
-        if (a.agendaName === "Ontwerpagenda") {
-            return 1;
-        }
-        if (b.agendaName === "Ontwerpagenda") {
-            return 1;
-        }
 
-        if (a.agendaName < b.agendaName)
-            return -1;
-        if (a.agendaName > b.agendaName)
-            return 1;
-        return 0;
-    })
 
-    const changedAgendaItems = await setAllMappedPropertiesAndReturnSortedAgendaitems(sortedAgendaitems, agendaitemsOfSelectedAgenda, currentAgendaID);
+    const changedAgendaItems = await setAllMappedPropertiesAndReturnSortedAgendaitems(agendaitems, agendaitemsOfSelectedAgenda, currentAgendaID);
 
     const combinedAgendas = reduceAgendaitemsToUniqueAgendas(changedAgendaItems);
     const combinedAgendasWithAgendaitems = getGroupedAgendaitems(combinedAgendas);
@@ -90,7 +77,7 @@ const reduceAgendaitemsPerTitle = (agendaitems) => {
     return agendaitems.reduce((agendaItems, agendaitem) => {
         agendaItems[agendaitem.groupTitle] = agendaItems[agendaitem.groupTitle] || { agendaitems: [], foundPriority: 2147111111, mandatees: agendaitem.mandatees }
         agendaItems[agendaitem.groupTitle].agendaitems.push(agendaitem);
-        agendaItems[agendaitem.groupTitle].foundPriority = Math.min(agendaItems[agendaitem.groupTitle].foundPriority, agendaitem.priority);
+        agendaItems[agendaitem.groupTitle].foundPriority = Math.min(agendaItems[agendaitem.groupTitle].foundPriority, agendaitem.groupPriority);
 
         return agendaItems;
     }, {});
@@ -110,10 +97,8 @@ const reduceMandateesToUniqueSubcases = (agendaitems) => {
 const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
     const subcaseIdsParsed = [];
     return agendaitems.reduce((agendaItems, agendaitem) => {
-
         agendaItems[agendaitem.agendaName] = agendaItems[agendaitem.agendaName] || { items: [], agendaId: agendaitem.agendaId }
         if (!subcaseIdsParsed.includes(agendaitem.subcase)) {
-            delete agendaitem.mandatee;
             subcaseIdsParsed.push(agendaitem.subcase);
             agendaItems[agendaitem.agendaName].items.push(agendaitem);
         }
@@ -124,6 +109,7 @@ const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
 
 const setAllMappedPropertiesAndReturnSortedAgendaitems = (agendaitems, agendaitemsOfSelectedAgenda, currentAgendaID) => {
     const mandatees = reduceMandateesToUniqueSubcases(agendaitems);
+    console.log(agendaitems)
     return agendaitems.map((agendaitem) => {
         const uniqueMandatees = getUniqueMandatees(mandatees[agendaitem.subcaseId].mandatees);
         agendaitem['mandatees'] = uniqueMandatees;
@@ -136,9 +122,9 @@ const setAllMappedPropertiesAndReturnSortedAgendaitems = (agendaitems, agendaite
             priorities.map((priority) => {
                 minPriority += (priority / 1000);
             })
-            agendaitem['priority'] = minPriority;
+            agendaitem['groupPriority'] = minPriority;
         } else {
-            agendaitem['priority'] = minPriority;
+            agendaitem['groupPriority'] = minPriority;
         }
         const foundAgendaItem = agendaitemsOfSelectedAgenda.find((agendaitemToCheck) => agendaitemToCheck.subcaseId === agendaitem.subcaseId);
         agendaitem['selectedAgendaId'] = currentAgendaID;
@@ -196,9 +182,7 @@ async function setFoundPrioritiesToAllAgendaItemsOveral(combinedAgendasWithAgend
         const prioritizedAgendaItems = await sortAgendaItemsByMandates(itemsToPrioritise, 0);
         combinedAgenda.groups.map((group) => {
             group.agendaitems.map((agendaitem) => {
-                console.log(prioritizedAgendaItems)
                 const foundItem = prioritizedAgendaItems.find((prioritizedAgendaItem) => prioritizedAgendaItem.subcaseId === agendaitem.subcaseId);
-                console.log(foundItem)
                 if (foundItem) {
                     agendaitem.foundPrio = foundItem.priority;
                 }
