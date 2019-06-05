@@ -101,7 +101,7 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
                 }
             }
            }
-      } GROUP BY ?uuid ?agendapunt`;
+      } GROUP BY ?uuid ?agendapunt ?subcaseId`;
 
     let data = await mu.query(query);
     const results = parseSparqlResults(data);

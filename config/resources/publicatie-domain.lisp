@@ -58,39 +58,39 @@
 (define-resource remark ()
   :class (s-prefix "schema:Comment") ;; NOTE: instead of misusing 'rdfs:comment' property name as class name
   :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: Type should be :date instead?
-                (:text :string ,(s-prefix "rdfs:comment")))
-  :has-one `((user :via ,(s-prefix "dct:creator")
-                     :as "author")
-             (agendaitem :via ,(s-prefix "besluitvorming:opmerking")
-                         :inverse t
-                         :as "agendaitem"))
-  :has-many `((remark    :via ,(s-prefix "ext:antwoorden")
-                         :as "answers"))
+                (:text    :string   ,(s-prefix "rdfs:comment")))
+  :has-one `((user        :via      ,(s-prefix "dct:creator")
+                          :as "author")
+             (agendaitem  :via      ,(s-prefix "besluitvorming:opmerking")
+                          :inverse t
+                          :as "agendaitem"))
+  :has-many `((remark     :via      ,(s-prefix "ext:antwoorden")
+                          :as "answers"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
   :features '(include-uri)
   :on-path "remarks")
 
 (define-resource newsletter-info ()
   :class (s-prefix "besluitvorming:NieuwsbriefInfo") 
-  :properties `((:text :string ,(s-prefix "besluitvorming:inhoud"))
-                (:richtext :string ,(s-prefix "ext:htmlInhoud"))
-                (:subtitle :string ,(s-prefix "dbpedia:subtitle"))
-                (:publication-date :datetime ,(s-prefix "dct:issued"))
-                (:publication-doc-date :datetime ,(s-prefix "ext:issuedDocDate"))
-                (:title :string ,(s-prefix "dct:title"))
-                (:finished :boolean ,(s-prefix "ext:afgewerkt")))
-  :has-one `((agendaitem :via ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
-                         :inverse t
-                         :as "agendaitem")
-             (meeting    :via ,(s-prefix "ext:algemeneNieuwsbrief")
-                         :inverse t
-                         :as "meeting"))
-  :has-many `((remark :via ,(s-prefix "rdfs:comment")
-                      :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
-              (theme :via ,(s-prefix "ext:themesOfSubcase")
-                     :as "themes")
-              (document-version :via ,(s-prefix "ext:documentenVoorPublicatie")
-                     :as "document-versions"))
+  :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
+                (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
+                (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
+                (:publication-date      :datetime ,(s-prefix "dct:issued"))
+                (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
+                (:title                 :string   ,(s-prefix "dct:title"))
+                (:finished              :boolean  ,(s-prefix "ext:afgewerkt")))
+  :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
+                                        :inverse t
+                                        :as "subcase")
+             (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
+                                        :inverse t
+                                        :as "meeting"))
+  :has-many `((remark                   :via      ,(s-prefix "rdfs:comment")
+                                        :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
+              (theme                    :via      ,(s-prefix "ext:themesOfSubcase")
+                                        :as "themes")
+              (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
+                                        :as "document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
   :features '(include-uri)
   :on-path "newsletter-infos")
@@ -100,10 +100,10 @@
   :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note    :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label     :string ,(s-prefix "skos:altLabel")))
-  :has-many `((newsletter-info  :via ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfSubcase")
                                 :inverse t
                                 :as "newsletters")
-              (subcase          :via ,(s-prefix "dct:subject")
+              (subcase          :via    ,(s-prefix "dct:subject")
                                 :inverse t
                                 :as "subcases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")

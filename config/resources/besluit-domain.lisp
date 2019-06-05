@@ -48,9 +48,6 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
-             (newsletter-info         :via      ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                      ;; :inverse t
-                                      :as "newsletter-info")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
                                       :as "meeting-record"))
   :has-many `((mandatee               :via     ,(s-prefix "besluit:heeftAanwezige")
