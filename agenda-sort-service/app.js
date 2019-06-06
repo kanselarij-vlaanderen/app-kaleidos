@@ -61,14 +61,10 @@ app.get('/sortedAgenda', async (req, res) => {
 
     const agendaitems = await repository.getAllAgendaitemsOfTheSessionWithAgendaName(sessionId);
 
-
-
     const changedAgendaItems = await setAllMappedPropertiesAndReturnSortedAgendaitems(agendaitems, agendaitemsOfSelectedAgenda, currentAgendaID);
 
-    const combinedAgendas = reduceAgendaitemsToUniqueAgendas(changedAgendaItems);
-    const combinedAgendasWithAgendaitems = getGroupedAgendaitems(combinedAgendas);
-
-    await setFoundPrioritiesToAllAgendaItemsOveral(combinedAgendasWithAgendaitems);
+    const combinedAgendas = await reduceAgendaitemsToUniqueAgendas(changedAgendaItems);
+    const combinedAgendasWithAgendaitems = await getGroupedAgendaitems(combinedAgendas);
 
     res.send(combinedAgendasWithAgendaitems);
 })
@@ -109,8 +105,9 @@ const reduceAgendaitemsToUniqueAgendas = (agendaitems) => {
 
 const setAllMappedPropertiesAndReturnSortedAgendaitems = (agendaitems, agendaitemsOfSelectedAgenda, currentAgendaID) => {
     const mandatees = reduceMandateesToUniqueSubcases(agendaitems);
-    console.log(agendaitems)
+
     return agendaitems.map((agendaitem) => {
+
         const uniqueMandatees = getUniqueMandatees(mandatees[agendaitem.subcaseId].mandatees);
         agendaitem['mandatees'] = uniqueMandatees;
         const titles = uniqueMandatees.map((item) => item.title);
@@ -132,6 +129,7 @@ const setAllMappedPropertiesAndReturnSortedAgendaitems = (agendaitems, agendaite
         if (foundAgendaItem) {
             agendaitem['id'] = foundAgendaItem.id;
         }
+        agendaitem['foundPrio'] = agendaitem.agendaitemPrio;
 
         return agendaitem;
     });
@@ -173,21 +171,4 @@ const getUniqueMandatees = (mandatees) => {
         }
     });
     return uniqueMandatees.sort((a, b) => parseInt(a.priority) - parseInt(b.priority));
-}
-
-async function setFoundPrioritiesToAllAgendaItemsOveral(combinedAgendasWithAgendaitems) {
-    return await Promise.all(combinedAgendasWithAgendaitems.map(async (combinedAgenda) => {
-        const agendaId = combinedAgenda.agendaId;
-        const itemsToPrioritise = await repository.getAgendaPrioritiesWithoutFilter(agendaId);
-        const prioritizedAgendaItems = await sortAgendaItemsByMandates(itemsToPrioritise, 0);
-        combinedAgenda.groups.map((group) => {
-            group.agendaitems.map((agendaitem) => {
-                const foundItem = prioritizedAgendaItems.find((prioritizedAgendaItem) => prioritizedAgendaItem.subcaseId === agendaitem.subcaseId);
-                if (foundItem) {
-                    agendaitem.foundPrio = foundItem.priority;
-                }
-            });
-            group.agendaitems = group.agendaitems.sort((a, b) => a.foundPrio - b.foundPrio);
-        });
-    }));
 }

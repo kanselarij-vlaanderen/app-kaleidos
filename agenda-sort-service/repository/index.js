@@ -88,7 +88,7 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
             ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
-            ?subcaseId mu:uuid ?subcaseId .
+            ?subcase mu:uuid ?subcaseId .
             OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -161,7 +161,6 @@ const parsePriorityResults = (items) => {
     items.map((agendaItem) => {
         const uuid = agendaItem.uuid;
         agendaItem.priority = agendaItem.priority || Number.MAX_SAFE_INTEGER;
-
         if (agendaItems[uuid]) {
             agendaItems[uuid].mandatePriority = Math.min(agendaItems[uuid].mandatePriority, agendaItem.priority);
         } else {
@@ -169,6 +168,7 @@ const parsePriorityResults = (items) => {
                 uuid: uuid,
                 uri: agendaItem.agendapunt,
                 agendaitemPrio: agendaItem.agendaitemPrio,
+                subcaseId: agendaItem.subcaseId,
                 mandatePriority: agendaItem.priority,
                 mandateeCount: agendaItem.mandateeCount
             }
@@ -238,7 +238,7 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX dct: <http://purl.org/dc/terms/>
    
-    SELECT ?subcaseId ?id ?title  WHERE { 
+    SELECT ?subcaseId ?id ?title ?agendaitemPrio  WHERE { 
        GRAPH <${targetGraph}>
        {
          ?agenda a besluitvorming:Agenda ;
@@ -246,6 +246,7 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
          ?agenda   ext:agendaNaam ?agendaName .
          ?agenda   dct:hasPart ?agendaitem .
          ?agendaitem mu:uuid ?id .
+         OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
          ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
          ?subcase   mu:uuid ?subcaseId .
         }
