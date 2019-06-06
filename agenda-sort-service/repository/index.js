@@ -49,6 +49,8 @@ const getAgendaPriorities = async (agendaId) => {
                     ?agendapunt ext:prioriteit ?agendaitemPrio .
                 }
                 ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+                ?subcase ext:wordtGetoondAlsMededeling ?showAsRemark .
+                FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)    
             OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -60,6 +62,7 @@ const getAgendaPriorities = async (agendaId) => {
                    FILTER(?end > NOW())
                 }
             }
+                
            }
       } GROUP BY ?uuid ?agendapunt`;
 
@@ -89,6 +92,9 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
             ?agendapunt mu:uuid ?uuid .
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
             ?subcase mu:uuid ?subcaseId .
+            ?subcase ext:wordtGetoondAlsMededeling ?showAsRemark .
+            FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
+
             OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -100,6 +106,7 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
                    FILTER(?end > NOW())
                 }
             }
+            
            }
       } GROUP BY ?uuid ?agendapunt ?subcaseId`;
 
@@ -203,7 +210,8 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
              OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
              ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
              ?subcase   mu:uuid ?subcaseId .
- 
+             ?subcase   ext:wordtGetoondAlsMededeling ?showAsRemark .
+             FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
               OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -215,6 +223,7 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
                    ?mandatee mandaat:eind ?end .
                    FILTER(?end > NOW())
                 }
+             
             }
          }
        }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?agendaId ?priority ?agendaitemPrio
@@ -249,6 +258,9 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
          OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
          ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
          ?subcase   mu:uuid ?subcaseId .
+         ?subcase   ext:wordtGetoondAlsMededeling ?showAsRemark .
+
+         FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
         }
     }
     `;
