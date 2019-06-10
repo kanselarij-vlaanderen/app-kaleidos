@@ -2,7 +2,7 @@
   :class (s-prefix "ext:DocumentStatus")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-statuses/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-statussen/")
   :features `(no-pagination-defaults include-uri)
   :on-path "document-states")
 

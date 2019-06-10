@@ -53,7 +53,7 @@
   :has-many `((case            :via ,(s-prefix "ext:heeftBeleidsNiveau")
                               :inverse t
                               :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/policy-level/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsniveaus/")
   :features '(include-uri)
   :on-path "policy-levels")
 
@@ -65,7 +65,7 @@
   :has-many `((case           :via ,(s-prefix "ext:heeftIndiener")
                               :inverse t
                               :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/submitter/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/indieners/")
   :features '(include-uri)
   :on-path "submitters")
 
@@ -118,7 +118,7 @@
                                       :as "ise-codes")
               (decision               :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "decisions"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/Procedurestap/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")
 
@@ -130,7 +130,7 @@
   :has-many `((subcase            :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/procedurestap-type/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/procedurestap-types/")
   :features '(include-uri)
   :on-path "subcase-types")
 
@@ -239,7 +239,7 @@
                       :as "remarks")
               (document :via ,(s-prefix "dct:hasPart")
                         :as "documents"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatievragen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatie-antwoorden/")
   :features '(include-uri)
   :on-path "consultation-responses")
 
