@@ -67,6 +67,12 @@ services:
       - database-with-auth:database
     volumes:
       - ./data/files:/share
+  range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database:database
+    volumes:
+      - ./data/files:/share
   session-number-service:
     image: semtech/mu-javascript-template
     environment:

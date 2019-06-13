@@ -254,6 +254,10 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://newsletter-service/"
   end
 
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://range-file/files/" <> id <> "/download"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
