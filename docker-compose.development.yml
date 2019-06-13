@@ -83,7 +83,7 @@ services:
   development-range-file:
     image: mikidi/js-file-service:latest
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./data/files:/share
   development-session-number-service:
