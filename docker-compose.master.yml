@@ -83,7 +83,7 @@ services:
   range-file:
     image: mikidi/js-file-service:latest
     links:
-      - database:database
+      - db:database
     volumes:
       - ./data/files:/share
   session-number-service:
