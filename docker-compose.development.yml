@@ -80,6 +80,12 @@ services:
       - database-with-auth:database
     volumes:
       - ./data/files:/share
+  development-range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database:database
+    volumes:
+      - ./data/files:/share
   development-session-number-service:
     image: semtech/mu-javascript-template
     environment:
@@ -144,4 +150,3 @@ networks:
       name: letsencrypt_default
   backend:
     external: true
-

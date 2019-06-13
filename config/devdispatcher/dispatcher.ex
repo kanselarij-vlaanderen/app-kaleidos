@@ -265,6 +265,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://minister-jurisdiction-service/"
   end
 
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://development-range-file/files/" <> id <> "/download"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
