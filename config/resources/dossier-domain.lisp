@@ -5,9 +5,11 @@
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
                 (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
-                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-one `((confidentiality   :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                :as "confidentiality")
+                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))
+)
+  :has-one `((access-level   :via ,(s-prefix "ext:toegangsniveauVoorDossier")
+                                :as "access-level")
              (case-type         :via      ,(s-prefix "dct:type")
                                 :as "type")
              (policy-level      :via      ,(s-prefix "ext:heeftBeleidsNiveau")
@@ -79,14 +81,15 @@
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: supplementary addition to model
+                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) 
   :has-one `((case                    :via ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "case")
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                       :as "requested-for-meeting")
-             (confidentiality         :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                      :as "confidentiality")
+             (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
+                                      :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
              (newsletter-info         :via ,(s-prefix "prov:generated")
@@ -165,23 +168,23 @@
   :features '(include-uri)
   :on-path "subcase-phase-codes")
 
-(define-resource confidentiality ()
-  :class (s-prefix "ext:VertrouwelijkheidCode") ;; NOTE: as well as skos:Concept
+(define-resource access-level ()
+  :class (s-prefix "ext:ToegangsniveauCode") ;; NOTE: as well as skos:Concept
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :has-many `((subcase        :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+  :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")
-              (document       :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
+              (document       :via ,(s-prefix "ext:toegangsniveauVoorDocument")
                               :inverse t
                               :as "documents")
-              (agendaitem      :via ,(s-prefix "besluitvorming:vertrouwelijkheidAgendapunt")
+              (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                               :inverse t
                               :as "agendaitems"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/vertrouwelijkheid-codes/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/")
   :features '(include-uri)
-  :on-path "confidentialities")
+  :on-path "access-levels")
 
 (define-resource person-or-organization ()
   :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
