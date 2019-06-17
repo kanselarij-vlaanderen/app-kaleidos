@@ -227,6 +227,10 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://resource/account-groups/"
   end
 
+  match "/signatures/*path" do
+    Proxy.forward conn, path, "http://resource/signatures/"
+  end
+
   match "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end

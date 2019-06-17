@@ -80,7 +80,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/concept/policy-level/",
       "http://kanselarij.vo.data.gift/id/concept/submitter/",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/"
+      "http://kanselarij.vo.data.gift/id/mandatarissen/",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening"
     ]
   end
 

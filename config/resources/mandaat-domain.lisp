@@ -115,7 +115,10 @@
                                     :inverse t
                                     :as "mandatees"))
   :has-one `((identification        :via    ,(s-prefix "ext:identifier")
-                                    :as "identifier"))
+                                    :as "identifier")
+             (signature             :via    ,(s-prefix "ext:bevoegdePersoon")
+                                    :inverse t
+                                    :as "signature"))
              ;; (gender :via ,(s-prefix "persoon:geslacht")
              ;;         :as "gender")
              ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
@@ -142,3 +145,19 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/identificatoren/")
   :features '(include-uri)
   :on-path "identifications")
+
+  (define-resource signature ()
+  :class (s-prefix "ext:Handtekening")
+  :properties `((:name      :string     ,(s-prefix "ext:zichtbareNaam"))
+                (:function  :string     ,(s-prefix "ext:functie"))
+                (:is-active :boolean    ,(s-prefix "ext:isStandaard")))
+  :has-one `((person        :via        ,(s-prefix "ext:bevoegdePersoon")
+                            :as "person")
+             (file          :via        ,(s-prefix "ext:handtekening")
+                            :as "file"))
+  :has-many `((meeting      :via       ,(s-prefix "ext:heeftHandtekening")
+                            :inverse t
+                            :as "meetings"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/signatures/")
+  :features '(include-uri)
+  :on-path "signatures")
