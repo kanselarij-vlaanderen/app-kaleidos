@@ -143,9 +143,6 @@ services:
       - db:database
     volumes:
       - ./data-migration-service:/app
-
-
-
 networks:
   proxy:
     external:
