@@ -242,9 +242,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/roles/"
   end
 
+  match "/signatures/*path" do
+    Proxy.forward conn, path, "http://resource/signatures/"
+  end
+
   match "/mock/sessions/*path" do
     Proxy.forward conn, path, "http://development-mocklogin/sessions/"
   end
+
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://development-login/sessions/"
   end
