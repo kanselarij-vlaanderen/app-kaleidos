@@ -97,8 +97,8 @@ defmodule Dispatcher do
   match "/subcase-phase-codes/*path" do
     Proxy.forward conn, path, "http://resource/subcase-phase-codes/"
   end
-  match "/confidentialities/*path" do
-    Proxy.forward conn, path, "http://resource/confidentialities/"
+  match "/access-levels/*path" do
+    Proxy.forward conn, path, "http://resource/access-levels/"
   end
   match "/approvals/*path" do
     Proxy.forward conn, path, "http://resource/approvals/"
