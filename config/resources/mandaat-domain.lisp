@@ -73,7 +73,7 @@
   :has-many `((government-field   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :inverse t
                                   :as "government-fields"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsdomein/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsdomeinen/")
   :features '(include-uri)
   :on-path "government-domains")
 
@@ -87,7 +87,7 @@
                                   :as "ise-code")
             (government-domain    :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :as "domain"))                
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsveld/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsvelden/")
   :features '(include-uri)
   :on-path "government-fields")
 
@@ -102,7 +102,7 @@
               (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://data.lblod.info/ise-code/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/ise-codes/")
   :features `(no-pagination-defaults include-uri)
   :on-path "ise-codes")
 
