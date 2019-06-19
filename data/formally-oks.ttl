@@ -1,0 +1,16 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix formally-ok: <http://kanselarij.vo.data.gift/id/concept/goedkeurings-statussen/> .
+
+formally-ok:CC12A7DB-A73A-4589-9D53-F3C2F4A40636 a ext:FormeelOK ;
+    mu:uuid "CC12A7DB-A73A-4589-9D53-F3C2F4A40636" ;
+    skos:prefLabel "Formeel OK" .
+
+formally-ok:92705106-4A61-4C30-971A-55532633A9D6 a ext:FormeelOK ;
+    mu:uuid "92705106-4A61-4C30-971A-55532633A9D6" ;
+    skos:prefLabel "Formeel niet OK" .
+
+formally-ok:B72D1561-8172-466B-B3B6-FCC372C287D0 a ext:FormeelOK ;
+    mu:uuid "B72D1561-8172-466B-B3B6-FCC372C287D0" ;
+    skos:prefLabel "Nog niet formeel OK" .
