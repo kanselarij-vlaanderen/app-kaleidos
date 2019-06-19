@@ -146,8 +146,6 @@
             ;;                   :as "newsletter-info")
              (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                                 :as "type")
-             (confidentiality   :via        ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
-                                :as "confidentiality")
              (document          :via      ,(s-prefix "ext:beslissingsfiche")
                                 :as "signed-document"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
