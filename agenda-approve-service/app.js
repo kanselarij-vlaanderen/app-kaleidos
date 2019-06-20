@@ -195,10 +195,12 @@ async function nameDocumentsBasedOnAgenda(agendaId) {
 			?zitting besluit:geplandeStart ?zittingDate .
 			?agenda dct:hasPart ?agendaItem .
 			?agendaItem ext:bevatAgendapuntDocumentversie ?documentVersion .
-			?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
-			OPTIONAL {
+			OPTIONAL { 
+				?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
+			  OPTIONAL {
 			  ?case dct:hasPart ?subcase .
 				?case dct:type ?dossierType .
+				}
 			}
 			?document besluitvorming:heeftVersie ?documentVersion .
 			FILTER NOT EXISTS {
