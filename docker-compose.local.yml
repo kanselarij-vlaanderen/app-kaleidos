@@ -70,9 +70,17 @@ services:
   range-file:
     image: mikidi/js-file-service:latest
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./data/files:/share
+  document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+    ports:
+      - "8086:80"
   session-number-service:
     image: semtech/mu-javascript-template
     environment:

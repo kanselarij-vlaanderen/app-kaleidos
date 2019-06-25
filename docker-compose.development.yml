@@ -86,6 +86,12 @@ services:
       - database-with-auth:database
     volumes:
       - ./data/files:/share
+  development-document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
   development-session-number-service:
     image: semtech/mu-javascript-template
     environment:

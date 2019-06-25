@@ -12,12 +12,18 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
+  get "/document-versions/:id/convert" do
+    Proxy.forward conn, [], "http://development-document-conversion/convert-document-versions/" <> id
+  end
+
   match "/agendas/*path" do
     Proxy.forward conn, path, "http://resource/agendas/"
   end
+
   match "/agendaitems/*path" do
     Proxy.forward conn, path, "http://resource/agendaitems/"
   end
+
   match "/announcements/*path" do
     Proxy.forward conn, path, "http://resource/announcements/"
   end
@@ -79,7 +85,6 @@ defmodule Dispatcher do
   match "/case-types/*path" do
     Proxy.forward conn, path, "http://resource/case-types/"
   end
-
 
   match "/policy-levels/*path" do
     Proxy.forward conn, path, "http://resource/policy-levels/"
