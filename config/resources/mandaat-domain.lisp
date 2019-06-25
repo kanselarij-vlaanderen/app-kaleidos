@@ -17,6 +17,14 @@
   :features '(include-uri)
   :on-path "mandates")
 
+(define-resource government-function ()
+  :class (s-prefix "ext:BestuursfunctieCode")
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/bestuursfunctie-codes/")
+  :features '(include-uri)
+  :on-path "government-functions")
+
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
