@@ -1,13 +1,14 @@
 (define-resource document ()
   :class (s-prefix "foaf:Document")
   :properties `((:archived        :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
-                (:title           :string ,(s-prefix "dct:title")) ;;string-set
-                (:description     :string ,(s-prefix "ext:omschrijving")) ;;string-set
-                (:confidential    :boolean ,(s-prefix "ext:vertrouwelijk")) ;;string-set
+                (:title           :string ,(s-prefix "dct:title"))
+                (:description     :string ,(s-prefix "ext:omschrijving")) 
+                (:confidential    :boolean ,(s-prefix "ext:vertrouwelijk"))
                 (:created         :datetime ,(s-prefix "dct:created"))
                 (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) 
                 (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))
-                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) 
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))
+                (:for-cabinet     :boolean ,(s-prefix "ext:voorKabinetten"))) 
   :has-many `((remark             :via ,(s-prefix "besluitvorming:opmerking")
                                   :as "remarks") 
               (document-version   :via ,(s-prefix "besluitvorming:heeftVersie")
