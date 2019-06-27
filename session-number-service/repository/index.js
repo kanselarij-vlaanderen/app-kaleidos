@@ -22,7 +22,7 @@ const getAllSessions = async () => {
 	return parseSparqlResults(data);
 };
 
-const getClosestMeeting = async (date) => {
+const getClosestMeeting = async (date, sort, sign) => {
 	const query = `
   PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 	PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -38,10 +38,10 @@ const getClosestMeeting = async (date) => {
 			mu:uuid ?agenda_id ;
 			ext:agendaNaam ?agendaName ;
 			ext:aangemaaktOp ?creationDate .
-			FILTER(str(?plannedstart) < "${date.toISOString()}")
+			FILTER(str(?plannedstart) ${sign} "${date.toISOString()}")
     }
   }
-  ORDER BY DESC(?plannedstart) DESC(?creationDate)
+  ORDER BY ${sort}(?plannedstart) ${sort}(?creationDate)
 	LIMIT 1`
 
 	let data = await mu.query(query);
