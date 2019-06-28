@@ -77,6 +77,7 @@
                 (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
                 (:publication-date      :datetime ,(s-prefix "dct:issued"))
                 (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
+                (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt")))
   :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
