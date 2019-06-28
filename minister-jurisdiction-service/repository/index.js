@@ -1,4 +1,5 @@
 import mu from 'mu';
+import { querySudo, updateSudo } from '@lblod/mu-auth-sudo';
 
 const getMinisters = async () => {
 
@@ -22,7 +23,7 @@ const getMinisters = async () => {
                     foaf:firstName ?firstName
                 }
             }`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -51,7 +52,7 @@ const getMinistersForDomain = async () => {
                 foaf:firstName ?firstName
             }
         }`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -69,7 +70,7 @@ const getMandateeForDomain = async (domain) => {
                 foaf:firstName ?firstName
             }}
         }}`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -85,7 +86,7 @@ const getDomainsForMandatee = async (mandatee) => {
                 ?domain skos:prefLabel ?label
             }}
         }}`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -104,7 +105,7 @@ const getUniqueSubCaseWhereOpenByMandatee = async (mandatee) => {
               ?uri besluitvorming:besloten "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
            }
         }`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -124,7 +125,7 @@ const setMandateeOnDomain = async (receiving_mandatee, domain) => {
                 <${receiving_mandatee}> mandaat:beleidsdomein <${domain}> .
             }}
         }}`;
-    return await mu.update(query).catch(err => { console.error(err) });
+    return await updateSudo(query).catch(err => { console.error(err) });
 };
 
 const addMandateeToSubCase = async (receiving_mandatee, domain) => {
@@ -143,14 +144,14 @@ const addMandateeToSubCase = async (receiving_mandatee, domain) => {
                 <${receiving_mandatee}> mandaat:beleidsdomein <${domain}> .
             }}
         }}`;
-    return await mu.update(query).catch(err => { console.error(err) });
+    return await updateSudo(query).catch(err => { console.error(err) });
 };
 
 const setMandateeOnSubCase = async (open_sub_cases, new_mandatee, old_mandatee) => {
     for (let i = 0; i < open_sub_cases.length; i ++){
         const subcase = open_sub_cases[i];
         console.log(subcase);
-        mu.update(`
+        updateSudo(`
         PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
         DELETE WHERE {

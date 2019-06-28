@@ -1,5 +1,6 @@
 import mu from 'mu';
 const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
+import { querySudo } from '@lblod/mu-auth-sudo';
 
 const getPostponedSubcases = async () => {
 
@@ -26,7 +27,7 @@ const getPostponedSubcases = async () => {
            }
       } GROUP BY ?subcase`;
 
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data, 'subcases');
 }
 

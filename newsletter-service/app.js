@@ -13,7 +13,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const Mailchimp = require('mailchimp-api-v3');
-const mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
+//const mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
 const moment = require('moment');
 moment.locale("nl");
 

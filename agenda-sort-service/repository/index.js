@@ -1,4 +1,6 @@
 import mu from 'mu';
+import { querySudo, updateSudo } from '@lblod/mu-auth-sudo';
+
 const targetGraph = "http://mu.semte.ch/graphs/organizations/kanselarij";
 
 const getLastPriorityOfAgendaitemInAgenda = async (agendaId) => {
@@ -22,7 +24,7 @@ const getLastPriorityOfAgendaitemInAgenda = async (agendaId) => {
   	  }
      }`;
 
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 }
 
@@ -66,7 +68,7 @@ const getAgendaPriorities = async (agendaId) => {
            }
       } GROUP BY ?uuid ?agendapunt`;
 
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     const results = parseSparqlResults(data);
     return parsePriorityResults(results);
 }
@@ -110,7 +112,7 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
            }
       } GROUP BY ?uuid ?agendapunt ?subcaseId`;
 
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     const results = parseSparqlResults(data);
     return parsePriorityResults(results);
 }
@@ -146,7 +148,7 @@ const updateAgendaItemPriority = async (items) => {
         } 
       }`;
 
-    return mu.update(query);
+    return updateSudo(query);
 };
 
 const parseSparqlResults = (data) => {
@@ -230,7 +232,7 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
        ORDER BY ASC(UCASE(str(?agendaName)))
     `
 
-    const data = await mu.query(query);
+    const data = await querySudo(query);
     return parseSparqlResults(data);
 }
 
@@ -265,7 +267,7 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
     }
     `;
 
-    const data = await mu.query(query);
+    const data = await querySudo(query);
     return parseSparqlResults(data);
 }
 

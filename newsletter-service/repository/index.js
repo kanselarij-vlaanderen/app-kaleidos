@@ -1,4 +1,5 @@
 import mu from 'mu';
+import { querySudo } from '@lblod/mu-auth-sudo';
 
 const getAgendaWhereisMostRecentAndFinal = async () => {
 
@@ -23,7 +24,7 @@ const getAgendaWhereisMostRecentAndFinal = async () => {
             ?agenda mu:uuid ?agenda_uuid .
           }
         } ORDER BY DESC(?date) DESC(?agenda_date) LIMIT 1`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 
@@ -53,7 +54,7 @@ const getNewsLetterByAgendaId = async (agendaId) => {
                OPTIONAL { ?newsletter dct:issued ?publication_date . }
              }
         }`;
-    let data = await mu.query(query);
+    let data = await querySudo(query);
     return parseSparqlResults(data);
 };
 

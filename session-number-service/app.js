@@ -1,6 +1,7 @@
 import mu from 'mu';
 import { ok } from 'assert';
 import moment from 'moment';
+import { querySudo, updateSudo } from '@lblod/mu-auth-sudo';
 
 const cors = require('cors');
 const app = mu.app;
@@ -40,7 +41,7 @@ async function getAllSessions() {
   ORDER BY ASC(?plannedstart)
   LIMIT 366`
 
-  const data = await mu.query(query);
+  const data = await querySudo(query);
   const vars = data.head.vars;
 
   return data.results.bindings.map(binding => {
@@ -81,7 +82,7 @@ function updateSessionNumbers(sessions) {
     } 
   }
   `
-  return mu.update(query);
+  return updateSudo(query);
 }
 
 mu.app.use(mu.errorHandler);

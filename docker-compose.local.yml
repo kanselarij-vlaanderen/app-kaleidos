@@ -19,6 +19,10 @@ services:
       - resource:resource
     volumes:
       - ./config/dispatcher:/config
+
+    image: semtech/mu-delta-notifier
+    volumes:
+      - ./config/delta:/config
   database-with-auth:
     image: semtech/mu-authorization:latest
     environment:
@@ -37,9 +41,11 @@ services:
       - ./config/authorization:/config
     labels:
       - "logging=true"
-    restart: always
     logging: *default-logging
-  database:
+    links:
+      - deltanotifier:deltanotifier
+      - database:triplestore
+  database: 
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
       SPARQL_UPDATE: "true"
@@ -53,6 +59,30 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  musearch:
+    image: semtech/mu-search
+    links:
+      - elasticsearch:elasticsearch
+      - database-with-auth:db
+    volumes:
+      - ./config/elastic:/config
+      - ./data/files:/data
+  deltanotifier:
+    image: semtech/mu-delta-notifier
+    volumes:
+        - ./config/delta:/config
+  elasticsearch:
+    build: ./elasticsearch-image
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    environment:
+      TAKE_FILE_OWNERSHIP: /usr/share/elasticsearch/data
+      MAX_MAP_COUNT: 262144
+      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.2
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
   resource:
     image: semtech/mu-cl-resources:1.17.1
     links:
@@ -72,7 +102,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./session-number-service:/app
   agenda-sort-service:
@@ -80,7 +110,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./agenda-sort-service:/app
   custom-subcases-service:
@@ -88,7 +118,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./custom-subcases-service:/app
   agenda-approve-service:
@@ -98,7 +128,7 @@ services:
     ports:
       - 9227:9229
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./agenda-approve-service:/app
   mocklogin:
@@ -129,7 +159,7 @@ services:
       NODE_ENV: "development"
       MAILCHIMP_API: ${MAILCHIMP_API}
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./newsletter-service:/app
   minister-jurisdiction-service:
@@ -137,7 +167,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - database:database
+      - database-with-auth:database
     volumes:
       - ./minister-jurisdiction-service:/app
   data-migration-service:
@@ -145,7 +175,7 @@ services:
     environment:
       NODE_ENV: "development"
     links:
-      - database:database
+      - database-with-auth:database
     ports:
       - 8889:80
       - 9229:9229

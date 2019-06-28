@@ -1,5 +1,6 @@
 import mu from 'mu';
 import moment from 'moment';
+import { querySudo } from '@lblod/mu-auth-sudo';
 import { removeInfoNotInTemp, notConfidentialFilter, addRelatedFiles, cleanup, fillOutDetailsOnVisibleItems, addRelatedToAgendaItemAndSubcase } from './helpers';
 
 const tempGraph = `http://mu.semte.ch/temp/${mu.uuid()}`;
@@ -17,7 +18,7 @@ const addVisibleAgendas = () => {
     GRAPH <${tempGraph}> {
       ?s a besluitvorming:Agenda.
     }
-  } where {
+  } WHERE {
     GRAPH <${adminGraph}> {
       ?s a besluitvorming:Agenda.
       ?s ext:agendaNaam ?naam.
@@ -29,7 +30,7 @@ const addVisibleAgendas = () => {
       ?decision besluitvorming:goedgekeurd "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 const addRelatedToAgenda = () => {
   const query = `
@@ -40,11 +41,11 @@ const addRelatedToAgenda = () => {
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   PREFIX dbpedia: <http://dbpedia.org/ontology/>
   INSERT {
-    GRAPH <${tempGraph} {
+    GRAPH <${tempGraph}> {
       ?s a ?thing .
       ?subcase a dbpedia:UnitOfWork .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?agenda a besluitvorming:Agenda .
     }
@@ -68,7 +69,7 @@ const addRelatedToAgenda = () => {
 
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const addRelatedDocuments = () => {
@@ -86,7 +87,7 @@ const addRelatedDocuments = () => {
       ?s a ?thing .
       ?version a ?subthing .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?target a ?targetClass .
     }
@@ -108,7 +109,7 @@ const addRelatedDocuments = () => {
       }
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 

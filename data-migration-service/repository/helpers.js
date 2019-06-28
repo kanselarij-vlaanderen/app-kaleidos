@@ -1,5 +1,14 @@
 import mu from 'mu';
 
+const querySudo = function(query){
+  return mu.query(query, {
+    headers: {
+      'mu-auth-sudo': 'true'
+    },
+    timout: 10000000
+  });
+};
+
 const parseSparQlResults = (data, multiValueProperties = []) => {
 	const vars = data.head.vars;
 	return data.results.bindings.map(binding => {
@@ -46,7 +55,7 @@ const removeInfoNotInTemp = (tempGraph, targetGraph) => {
       }
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const notConfidentialFilter = `
@@ -70,7 +79,7 @@ const addRelatedFiles = (tempGraph, adminGraph) => {
       ?s a nfo:FileDataObject .
       ?second a nfo:FileDataObject .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?target a ?targetClass .
     }
@@ -83,14 +92,18 @@ const addRelatedFiles = (tempGraph, adminGraph) => {
       }
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const cleanup = (tempGraph) => {
   const query = `
 
-  DROP SILENT GRAPH <${tempGraph}>`;
-  return mu.query(query);
+  DELETE WHERE {
+    GRAPH <${tempGraph}> {
+      ?s ?p ?o .
+    }
+  }`; 
+  return querySudo(query);
 };
 
 const fillOutDetailsOnVisibleItems = (tempGraph, targetGraph, adminGraph) => {
@@ -116,7 +129,7 @@ const fillOutDetailsOnVisibleItems = (tempGraph, targetGraph, adminGraph) => {
       ?oo ?pp ?s.
       ?s ?p ?literalo.
     }
-  } where {
+  } WHERE {
     GRAPH <${adminGraph}> {
       ?s a ?thing.
       GRAPH <${tempGraph}> {
@@ -138,7 +151,7 @@ const fillOutDetailsOnVisibleItems = (tempGraph, targetGraph, adminGraph) => {
       }
     }    
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const addAllRelatedDocuments = (tempGraph, adminGraph) => {
@@ -156,7 +169,7 @@ const addAllRelatedDocuments = (tempGraph, adminGraph) => {
       ?s a ?thing .
       ?version a ?subthing .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?target a ?targetClass .
     }
@@ -176,7 +189,7 @@ const addAllRelatedDocuments = (tempGraph, adminGraph) => {
       }
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const addAllRelatedToAgenda = (tempGraph, adminGraph) => {
@@ -184,6 +197,7 @@ const addAllRelatedToAgenda = (tempGraph, adminGraph) => {
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX dct: <http://purl.org/dc/terms/>
   PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
   PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
   PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
   INSERT {
@@ -191,7 +205,7 @@ const addAllRelatedToAgenda = (tempGraph, adminGraph) => {
       ?s a ?thing .
       ?subcase a dbpedia:UnitOfWork .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?agenda a besluitvorming:Agenda .
     }
@@ -202,11 +216,11 @@ const addAllRelatedToAgenda = (tempGraph, adminGraph) => {
         ?subcase besluitvorming:isGeagendeerdVia ?agendaItem .
       }
       { { ?s ?p ?agenda } UNION { ?agenda ?p ?s } }
-      FILTER( ?thing NOT IN(besluitvorming:Agenda) )
+      FILTER( ?thing NOT IN (besluitvorming:Agenda) )
       ${notConfidentialFilter}
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 const addRelatedToAgendaItemAndSubcase = (tempGraph, adminGraph) => {
@@ -223,7 +237,7 @@ const addRelatedToAgendaItemAndSubcase = (tempGraph, adminGraph) => {
     GRAPH <${tempGraph}> {
       ?s a ?thing .
     }
-  } where {
+  } WHERE {
     GRAPH <${tempGraph}> {
       ?target a ?targetClass .
       FILTER(?targetClass IN (besluit:Agendapunt, dbpedia:UnitOfWork))
@@ -231,7 +245,7 @@ const addRelatedToAgendaItemAndSubcase = (tempGraph, adminGraph) => {
     GRAPH <${adminGraph}> {
       ?s a ?thing .
       { { ?s ?p ?target } UNION { ?target ?p ?s } }
-      FILTER( ?thing NOT IN(
+      FILTER( ?thing NOT IN (
         besluitvorming:Agenda, 
         besluit:AgendaItem,
         dbpedia:UnitOfWork,
@@ -242,7 +256,7 @@ const addRelatedToAgendaItemAndSubcase = (tempGraph, adminGraph) => {
 
     }
   }`;
-  return mu.query(query);
+  return querySudo(query);
 };
 
 module.exports = {

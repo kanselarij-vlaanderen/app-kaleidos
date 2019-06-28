@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "@lblod/mu-auth-sudo": "^0.2.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
