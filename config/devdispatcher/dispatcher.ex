@@ -264,7 +264,11 @@ defmodule Dispatcher do
   end
 
   match "/alert-types/*path" do
-    Proxy.forward conn, path, "http://resource/alert-types"
+    Proxy.forward conn, path, "http://resource/alert-types/"
+  end
+
+  match "/shortcuts/*path" do
+    Proxy.forward conn, path, "http://resource/shortcuts/"
   end
 
   match "/newsletter/*path" do

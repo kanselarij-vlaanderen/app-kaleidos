@@ -1,0 +1,382 @@
+@prefix shortcut: <http://kanselarij.vo.data.gift/id/concept/snelkoppelingen/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+shortcut:410C1A4A-7229-468E-AB1E-54F4D12719CB a ext:SnelKoppeling ;
+    mu:uuid "410C1A4A-7229-468E-AB1E-54F4D12719CB" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering bekrachtigt bovengenoemd decreet en beslist over te gaan tot de afkondiging ervan." ;
+		skos:prefLabel "decreet" .
+
+shortcut:5DCE2157-6F44-4B74-BC41-2336051F3A99 a ext:SnelKoppeling ;
+    mu:uuid "5DCE2157-6F44-4B74-BC41-2336051F3A99" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt ingetrokken." ;
+    skos:prefLabel "in" .
+
+shortcut:AEFAC1F8-08B5-45DB-BA7F-0259BF4523C5 a ext:SnelKoppeling ;
+    mu:uuid "AEFAC1F8-08B5-45DB-BA7F-0259BF4523C5" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van deze mededeling." ;
+    skos:prefLabel "med" .
+
+shortcut:B0B77BFC-F2D8-487F-B64F-D54DF89920DD a ext:SnelKoppeling ;
+    mu:uuid "B0B77BFC-F2D8-487F-B64F-D54DF89920DD" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van bovengenoemde motie." ;
+    skos:prefLabel "motie redenen" .
+
+shortcut:5CC7131B-7B9F-4B92-902A-829585F8A45D a ext:SnelKoppeling ;
+    mu:uuid "5CC7131B-7B9F-4B92-902A-829585F8A45D" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt goedgekeurd confer beslissingsfiche VR PV 2013/" ;
+    skos:prefLabel "nota" .
+
+shortcut:DF6CA7B5-6D3B-4EA4-A723-3ABB424BF5FB a ext:SnelKoppeling ;
+    mu:uuid "DF6CA7B5-6D3B-4EA4-A723-3ABB424BF5FB" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering hecht haar goedkeuring aan het verslag van de vergadering van " ;
+    skos:prefLabel "notulen" .
+
+shortcut:9B8F097E-0E65-4DBC-BCE3-013A1DA044C5 a ext:SnelKoppeling ;
+    mu:uuid "9B8F097E-0E65-4DBC-BCE3-013A1DA044C5" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van deze mededeling en van het bijgevoegde ontwerp van omzendbrief." ;
+    skos:prefLabel "omzendbrief" .
+
+shortcut:A1961439-33BF-4EA7-87F7-263EC3ABEC7C a ext:SnelKoppeling ;
+    mu:uuid "A1961439-33BF-4EA7-87F7-263EC3ABEC7C" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van bovengenoemde resolutie." ;
+    skos:prefLabel "resolutie" .
+
+shortcut:77A8B7A7-6168-4C66-950A-C2B25A81652A a ext:SnelKoppeling ;
+    mu:uuid "77A8B7A7-6168-4C66-950A-C2B25A81652A" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van bovengenoemd gemotiveerd subsidiari-teitsadvies." ;
+    skos:prefLabel "subadvies" .
+
+shortcut:C40BED6D-DFCA-4A79-912A-E6B64FE58B16 a ext:SnelKoppeling ;
+    mu:uuid "C40BED6D-DFCA-4A79-912A-E6B64FE58B16" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt ingetrokken." ;
+    skos:prefLabel "in" .
+
+shortcut:13C74E86-0227-43EE-96E9-1B0F9A2004FC a ext:SnelKoppeling ;
+    mu:uuid "13C74E86-0227-43EE-96E9-1B0F9A2004FC" ;
+		ext:type "minutes" ;
+		ext:beschrijving """Met toepassing van omzendbrief VR 2017/11 van 17 maart 2017 wordt overeen-gekomen dat betreffende de vraag van  2008 van de heer     i.v.m. “  ” een gecoör-dineerd antwoord verstrekt zal worden door de heer   , Vlaams minister, bevoegd voor  
+		<br/>
+		De andere Vlaamse ministers zullen, ieder wat hem of haar betreft, hun elementen van antwoord onverwijld aan de Vlaamse minister, bevoegd voor , overzenden.""" ;
+    skos:prefLabel "sv" .
+
+shortcut:E4499A96-4554-4E4F-A1B1-1A640AA375E8 a ext:SnelKoppeling ;
+    mu:uuid "E4499A96-4554-4E4F-A1B1-1A640AA375E8" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld." ;
+    skos:prefLabel "uit" .
+
+shortcut:C5994BB9-28B4-48BF-AB57-C7C605BECF8E a ext:SnelKoppeling ;
+    mu:uuid "C5994BB9-28B4-48BF-AB57-C7C605BECF8E" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld tot de volgende vergadering." ;
+    skos:prefLabel "uit1" .
+	
+shortcut:FC104EEB-8286-4859-87DF-09EBBDA46956 a ext:SnelKoppeling ;
+    mu:uuid "FC104EEB-8286-4859-87DF-09EBBDA46956" ;
+		ext:type "minutes" ;
+		ext:beschrijving "De volgende vergadering van de Vlaamse Regering heeft plaats op vrijdag  2013 om 10.00 uur op het kabinet van de minister-president van de Vlaamse Regering, Martelaarsplein 19 - 1000 BRUSSEL." ;
+    skos:prefLabel "volgende" .
+
+shortcut:AD7E0009-0B4E-453F-AA4E-9CCCDF3F6961 a ext:SnelKoppeling ;
+    mu:uuid "AD7E0009-0B4E-453F-AA4E-9CCCDF3F6961" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld tot na wederinschrijving." ;
+    skos:prefLabel "weder" .
+
+shortcut:6C0769FA-8E08-4D74-A4DA-F156191FE903 a ext:SnelKoppeling ;
+    mu:uuid "6C0769FA-8E08-4D74-A4DA-F156191FE903" ;
+		ext:type "decisions" ;
+		ext:beschrijving "Deze beslissingsfiche vervangt en vernietigt de beslissing VR PV 2014/  - punt die u eerder werd overgezonden" ;
+    skos:prefLabel "vervangt" .
+
+shortcut:BD81D5E8-74B9-4034-88FA-A96B47A9F052 a ext:SnelKoppeling ;
+    mu:uuid "BD81D5E8-74B9-4034-88FA-A96B47A9F052" ;
+		ext:type "decisions" ;
+		ext:beschrijving "De notificatie VR PV 2014/   - punt  wordt ingevolge de beslissing van de Vlaamse Regering van  2014 (zie VR PV 2014/   - punt ) vervangen door de volgende tekst:" ;
+    skos:prefLabel "vervangtnot" .
+
+shortcut:2A2CA257-7A0A-4F86-8CC2-2C9614B0D51A a ext:SnelKoppeling ;
+    mu:uuid "2A2CA257-7A0A-4F86-8CC2-2C9614B0D51A" ;
+		ext:type "decisions" ;
+		ext:beschrijving "Vlaamse Regering" ;
+    skos:prefLabel "VR" .
+
+shortcut:BD51E27A-06B3-43C3-8AA0-0DFF9B71A7C3 a ext:SnelKoppeling ;
+    mu:uuid "BD51E27A-06B3-43C3-8AA0-0DFF9B71A7C3" ;
+		ext:type "decisions" ;
+		ext:beschrijving "Rekening houdend met het bepaalde, geformuleerd in het akkoord van 2014 van de Vlaamse minister, bevoegd voor de begroting, beslist de Vlaamse Regering:" ;
+    skos:prefLabel "BAbep" .
+
+shortcut:6B653F82-AA45-40BB-A8E5-71D193ABDA38 a ext:SnelKoppeling ;
+    mu:uuid "6B653F82-AA45-40BB-A8E5-71D193ABDA38" ;
+		ext:type "decisions" ;
+		ext:beschrijving "Mits voldaan wordt aan de voorwaarde, geformuleerd in het akkoord van 2014 van de Vlaamse minister, bevoegd voor de begroting, beslist de Vlaamse Regering:" ;
+    skos:prefLabel "BAvw" .
+
+shortcut:6084D182-3E84-47F2-8CFC-52809FE1723D a ext:SnelKoppeling ;
+    mu:uuid "6084D182-3E84-47F2-8CFC-52809FE1723D" ;
+		ext:type "decisions" ;
+		ext:beschrijving """Mits voldaan wordt aan de voorwaarden, geformuleerd in het akkoord van 2014 van de Vlaamse minister, bevoegd voor de begroting, beslist de Vlaamse Regering:
+		</br>
+		Niettegenstaande het bepaalde geformuleerd in het schrijven van 28 juni 2016 van de Vlaamse minister, bevoegd voor de begroting, beslist de Vlaamse Regering:
+		<br/>
+		Mits het doorvoeren van een technisch nazicht""" ;
+    skos:prefLabel "BAvwn" .
+
+shortcut:B7E989E5-B698-42F4-A60C-34A6C79B20D1 a ext:SnelKoppeling ;
+    mu:uuid "B7E989E5-B698-42F4-A60C-34A6C79B20D1" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Milieu- en Natuurraad van Vlaanderen (Minaraad)" ;
+    skos:prefLabel "mina" .
+
+shortcut:B23C414C-3441-4103-BCE8-BC8DB5570688 a ext:SnelKoppeling ;
+    mu:uuid "B23C414C-3441-4103-BCE8-BC8DB5570688" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Strategische Adviesraad voor Landbouw en Visserij (SALV)" ;
+    skos:prefLabel "salv" .
+
+shortcut:163109CA-0DBB-49B8-A53F-79C1171715E5 a ext:SnelKoppeling ;
+    mu:uuid "163109CA-0DBB-49B8-A53F-79C1171715E5" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Strategische Adviesraad Welzijn, Gezondheid, Gezin (SAR WGG)" ;
+    skos:prefLabel "SAR WGG" .
+
+shortcut:B5EB098D-270E-4541-8CA0-CF9558EBF760 a ext:SnelKoppeling ;
+    mu:uuid "B5EB098D-270E-4541-8CA0-CF9558EBF760" ;
+		ext:type "decisions" ;
+		ext:beschrijving "Strategische AdviesRaad voor Cultuur, Jeugd, Sport en Media (SARC)" ;
+    skos:prefLabel "sarc" .
+
+shortcut:1796333F-7475-444A-A0EA-A59C4A28D384 a ext:SnelKoppeling ;
+    mu:uuid "1796333F-7475-444A-A0EA-A59C4A28D384" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Strategische Adviesraad voor Ruimtelijke Ordening - Onroerend Erfgoed (SARO)" ;
+    skos:prefLabel "saro" .
+
+shortcut:A4BC8680-EB1D-4BBE-9767-5550FDBD99C8 a ext:SnelKoppeling ;
+    mu:uuid "A4BC8680-EB1D-4BBE-9767-5550FDBD99C8" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Sociaal-Economische Raad van Vlaanderen (SERV)" ;
+    skos:prefLabel "serv" .
+
+shortcut:98A930E5-A566-441E-8F2E-9C31A98BFC83 a ext:SnelKoppeling ;
+    mu:uuid "98A930E5-A566-441E-8F2E-9C31A98BFC83" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de Vlaamse Adviesraad voor Bestuurszaken (VLABEST)" ;
+    skos:prefLabel "VLABEST" .
+
+shortcut:342465AA-7B74-4F94-B6E3-900398824763 a ext:SnelKoppeling ;
+    mu:uuid "342465AA-7B74-4F94-B6E3-900398824763" ;
+		ext:type "decisions" ;
+		ext:beschrijving '<u>de</u> minister-president van de Vlaamse Regering te verzoeken voornoemd voorontwerp van besluit op de agenda te plaatsen van een gemeenschappelijke vergadering van het sectorcomité X (onderwijs Vlaamse Gemeenschap) en de onderafdeling "Vlaamse Gemeenschap" van afdeling 2 van het comité voor de provinciale en plaatselijke overheidsdiensten' ;
+    skos:prefLabel "com10" .
+
+shortcut:1B6844F3-208C-4A6D-B556-406A5E76122C a ext:SnelKoppeling ;
+    mu:uuid "1B6844F3-208C-4A6D-B556-406A5E76122C" ;
+		ext:type "decisions" ;
+		ext:beschrijving "<u>de</u> minister-president van de Vlaamse Regering te verzoeken voornoemd voorontwerp van besluit op de agenda te plaatsen van een vergadering van het sectorcomité XVIII Vlaamse Gemeenschap - Vlaams Gewest" ;
+    skos:prefLabel "com18" .
+
+shortcut:4526D84C-1FBF-46F9-8EB9-38034BD3702E a ext:SnelKoppeling ;
+    mu:uuid "4526D84C-1FBF-46F9-8EB9-38034BD3702E" ;
+		ext:type "decisions" ;
+		ext:beschrijving "<u>op</u> de agenda te plaatsen van een vergadering van het gemeenschappelijk comité voor alle overheidsdiensten (comité A)" ;
+    skos:prefLabel "comA" .
+
+shortcut:4CCE2713-BA96-4378-9D47-175DBAD002F1 a ext:SnelKoppeling ;
+    mu:uuid "4CCE2713-BA96-4378-9D47-175DBAD002F1" ;
+		ext:type "decisions" ;
+		ext:beschrijving "<u>op</u> de agenda te plaatsen van een vergadering van het hoog overlegcomité Vlaamse Gemeenschap - Vlaams Gewest" ;
+    skos:prefLabel "HOC" .
+
+shortcut:45DF6ED4-8550-4103-843A-C05DAD198F08 a ext:SnelKoppeling ;
+    mu:uuid "45DF6ED4-8550-4103-843A-C05DAD198F08" ;
+		ext:type "decisions" ;
+		ext:beschrijving "<u>voornoemd</u> voorontwerp van besluit op de agenda te plaatsen van een vergadering van het overkoepelend onderhandelingscomité van het vrij gesubsidieerd onderwijs" ;
+    skos:prefLabel "OCond" .
+
+shortcut:D13EF335-776A-404D-9F25-B4EE2A3F2D82 a ext:SnelKoppeling ;
+    mu:uuid "D13EF335-776A-404D-9F25-B4EE2A3F2D82" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+		<li>haar principiële goedkeuring te hechten aan bovengenoemd voorontwerp van besluit/voorontwerp van decreet en aan de bijbehorende memorie van toelichting;</li>
+		<li>de Vlaamse minister, bevoegd voor  , te gelasten over voornoemd voorontwerp van besluit/voorontwerp van decreet het advies in te winnen van de Raad van State.</li>
+		</ol>""" ;
+    skos:prefLabel "rvs" .
+
+shortcut:73638B54-1F3C-46F9-91B6-55EC61A8F2A9 a ext:SnelKoppeling ;
+    mu:uuid "73638B54-1F3C-46F9-91B6-55EC61A8F2A9" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+		<li>
+		<u>haar</u> principiële goedkeuring te hechten aan bovengenoemd voorontwerp van besluit/voorontwerp van decreet en aan de bijbehorende memorie van toelichting;
+		</li>
+		<li>
+		<u>de</u> Vlaamse minister, bevoegd voor : 
+			<ol>
+				<li>
+				te machtigen te beoordelen of voornoemde onderhandelingen/voornoemd advies/voornoemde adviezen aanleiding kan/kunnen geven tot aanpassing van de heden door de Vlaamse Regering principieel goedgekeurd tekst,
+				</li>
+				<li>
+				te gelasten over voornoemd voorontwerp van besluit/decreet het advies in te winnen van de Raad van State, met verzoek om spoedbehandeling zoals bepaald in artikel 84, § 1, eerste lid, 3°, van de gecoördineerde wetten op de Raad van State (advies mee te delen binnen een termijn van vijf werkdagen) als de Vlaamse minister oordeelt dat voornoemde onderhandelingen/voornoemd advies/voornoemde adviezen geen aanleiding geeft/geven tot aanpassing van de heden door de Vlaamse Regering principieel goedgekeurde tekst.
+				</li>
+			</ol>
+		</li>
+		</ol>""" ;
+    skos:prefLabel "rvs5d" .
+
+shortcut:92FB316E-2919-4393-A49E-E9F402BF82B0 a ext:SnelKoppeling ;
+    mu:uuid "92FB316E-2919-4393-A49E-E9F402BF82B0" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+		<li>
+		<u>haar</u> principiële goedkeuring te hechten aan bovengenoemd voorontwerp van besluit/voorontwerp van decreet en aan de bijbehorende memorie van toelichting;
+		</li>
+		<li>
+		<u>de</u> Vlaamse minister, bevoegd voor : 
+			<ol>
+				<li>
+				te machtigen te beoordelen of voornoemde onderhandelingen/voornoemd advies/voornoemde adviezen aanleiding kan/kunnen geven tot aanpassing van de heden door de Vlaamse Regering principieel goedgekeurd tekst,
+				</li>
+				<li>
+				te gelasten over voornoemd voorontwerp van besluit/decreet het advies in te winnen van de Raad van State, met verzoek het advies mee te delen binnen een termijn van zestig dagen zoals bepaald in artikel 84, § 1, eerste lid, 1°, van de gecoördineerde wetten op de Raad van State als de Vlaamse minister oordeelt dat voornoemde onderhandelingen/voornoemd advies/voornoemde adviezen geen aanleiding geeft/geven tot aanpassing van de heden door de Vlaamse Regering principieel goedgekeurde tekst.
+				</li>
+			</ol>
+		</li>
+		</ol>""" ;
+    skos:prefLabel "rvs60d" .
+
+shortcut:F3776405-3D47-47F9-A233-B569E0D728EB a ext:SnelKoppeling ;
+    mu:uuid "F3776405-3D47-47F9-A233-B569E0D728EB" ;
+		ext:type "decisions" ;
+		ext:beschrijving "De Vlaamse Regering bekrachtigt bovengenoemd decreet en beslist over te gaan tot de afkondiging ervan." ;
+    skos:prefLabel "bekracht" .
+
+shortcut:C9EB2CC3-8D08-4B8E-8E48-83319462087C a ext:SnelKoppeling ;
+    mu:uuid "C9EB2CC3-8D08-4B8E-8E48-83319462087C" ;
+		ext:type "decisions" ;
+		ext:beschrijving "De Vlaamse Regering beslist:" ;
+    skos:prefLabel "beslis" .
+
+shortcut:5292C258-DD79-4ED9-BDC5-B7DA050F3B48 a ext:SnelKoppeling ;
+    mu:uuid "5292C258-DD79-4ED9-BDC5-B7DA050F3B48" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+		<li>
+		<u>haar</u> goedkeuring te hechten aan bovengenoemd ontwerp van beheersovereenkomst
+		</li>
+		<li>
+		<u>de</u> Vlaamse minister, bevoegd voor , te gelasten : 
+			<ol>
+				<li>
+				ter uitvoering van artikel  van het kaderdecreet Bestuurlijk Beleid van 18 juli 2003, voornoemde beheersovereenkomst, in naam van de Vlaamse Regering, mee te delen aan het Vlaams Parlement,
+				</li>
+				<li>
+				voornoemde beheersovereenkomst, in naam van de Vlaamse Regering, na het doorlopen van voornoemde procedure, te ondertekenen.
+				</li>
+			</ol>
+		</li>
+		</ol>""" ;
+    skos:prefLabel "bo" .
+
+shortcut:A653E9F2-253F-4B26-8F89-82BB2B833B8E a ext:SnelKoppeling ;
+    mu:uuid "A653E9F2-253F-4B26-8F89-82BB2B833B8E" ;
+		ext:type "decisions" ;
+		ext:beschrijving ", met dien verstande dat deze goedkeuring/beslissing geen enkel financieel of budgettair engagement inhoudt" ;
+    skos:prefLabel "cn" .
+
+shortcut:F1A51455-E972-412F-BB64-D3FD0F01A272 a ext:SnelKoppeling ;
+    mu:uuid "F1A51455-E972-412F-BB64-D3FD0F01A272" ;
+		ext:type "decisions" ;
+		ext:beschrijving "de minister-president van de Vlaamse Regering te gelasten de federale staatssecretaris/minister   van deze beslissing in kennis te stellen" ;
+    skos:prefLabel "fed" .
+
+shortcut:1065D0DC-EA69-4499-988F-F86F382209F3 a ext:SnelKoppeling ;
+    mu:uuid "1065D0DC-EA69-4499-988F-F86F382209F3" ;
+		ext:type "decisions" ;
+		ext:beschrijving "De Vlaamse Regering neemt akte van deze mededeling en hecht haar goedkeuring aan bovengenoemd ontwerpbesluit." ;
+    skos:prefLabel "fout" .
+
+shortcut:549F598E-114B-4912-9C9A-E01650079A4C a ext:SnelKoppeling ;
+    mu:uuid "549F598E-114B-4912-9C9A-E01650079A4C" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+			<li>haar goedkeuring te hechten aan bovengenoemd ontwerpdecreet en aan de bijbehorende memorie van toelichting;</li>
+			<li>de Vlaamse minister, bevoegd voor , te gelasten voornoemd ontwerpdecreet en de bijbehorende memorie van toelichting, in naam van de Vlaamse Regering, in te dienen bij het Vlaams Parlement.</li>
+		</ol>""" ;
+    skos:prefLabel "goed dec" .
+
+shortcut:69A3A806-6F56-47C6-8331-56431DD73A2C a ext:SnelKoppeling ;
+    mu:uuid "69A3A806-6F56-47C6-8331-56431DD73A2C" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+			<li>haar principiële goedkeuring te hechten aan bovengenoemd voorontwerp van besluit;</li>
+		</ol>""" ;
+    skos:prefLabel "prin bvr" .
+
+shortcut:9638F089-801A-48AE-B9B7-ABE5CBD974EC a ext:SnelKoppeling ;
+    mu:uuid "9638F089-801A-48AE-B9B7-ABE5CBD974EC" ;
+		ext:type "decisions" ;
+		ext:beschrijving "De Vlaamse Regering hecht haar goedkeuring aan bovengenoemd ontwerpbesluit." ;
+    skos:prefLabel "goed bvr" .
+
+shortcut:5A0E305A-7768-4814-8581-6E46EB4A1003 a ext:SnelKoppeling ;
+    mu:uuid "5A0E305A-7768-4814-8581-6E46EB4A1003" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+			<li>1.	haar principiële goedkeuring te hechten aan bovengenoemd voorontwerp van decreet en aan de bijbehorende memorie van toelichting;</li>
+		</ol>""" ;
+    skos:prefLabel "prin dec" .
+
+shortcut:ACA13A59-31A1-465E-81FF-316F62EAD54A a ext:SnelKoppeling ;
+    mu:uuid "ACA13A59-31A1-465E-81FF-316F62EAD54A" ;
+		ext:type "decisions" ;
+		ext:beschrijving """De Vlaamse Regering beslist:
+		<ol>
+			<li>strategische transformatiesteun voor een totaal bedrag van euro toe te kennen, zoals voorgesteld in punt  van bovengenoemde nota, en volgens de in deze nota geformuleerde modaliteiten;</li>
+			<li>de Vlaamse minister, bevoegd voor de economie, te belasten met de uitvoering  van deze beslissing.</li>
+		</ol>""" ;
+    skos:prefLabel "goed dec" .
+	
+shortcut:C883168C-7B7C-4CFA-80FC-3F4580C9EECC a ext:SnelKoppeling ;
+    mu:uuid "C883168C-7B7C-4CFA-80FC-3F4580C9EECC" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt ingetrokken." ;
+    skos:prefLabel "in" .
+
+shortcut:ECA83DA9-ECF4-4E3C-8F39-8B2D1561B1B4 a ext:SnelKoppeling ;
+    mu:uuid "ECA83DA9-ECF4-4E3C-8F39-8B2D1561B1B4" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld." ;
+    skos:prefLabel "uit" .
+
+shortcut:CF099B8F-2790-4484-91FD-CCEF38B0C682 a ext:SnelKoppeling ;
+    mu:uuid "CF099B8F-2790-4484-91FD-CCEF38B0C682" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld tot de volgende vergadering." ;
+    skos:prefLabel "uit1" .
+
+shortcut:ED5FC5D0-A6B4-4559-9B8C-E220C4625DD1 a ext:SnelKoppeling ;
+    mu:uuid "ED5FC5D0-A6B4-4559-9B8C-E220C4625DD1" ;
+		ext:type "minutes" ;
+		ext:beschrijving "Dit punt wordt uitgesteld tot na wederinschrijving." ;
+    skos:prefLabel "weder" .
