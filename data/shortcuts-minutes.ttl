@@ -380,3 +380,29 @@ shortcut:ED5FC5D0-A6B4-4559-9B8C-E220C4625DD1 a ext:SnelKoppeling ;
 		ext:type "minutes" ;
 		ext:beschrijving "Dit punt wordt uitgesteld tot na wederinschrijving." ;
     skos:prefLabel "weder" .
+
+# Subcase-names shortcuts
+shortcut:3175D772-4721-4541-846A-02B361C911D3 a ext:SnelKoppeling ;
+    mu:uuid "3175D772-4721-4541-846A-02B361C911D3" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op adviesaanvraag" .
+
+shortcut:96F0C94D-2610-4931-886D-BDA275006455 a ext:SnelKoppeling ;
+    mu:uuid "96F0C94D-2610-4931-886D-BDA275006455" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op adviesaanvragen" .
+
+shortcut:D3A6F17E-4850-4A36-BDF7-DD77B33A681C a ext:SnelKoppeling ;
+    mu:uuid "D3A6F17E-4850-4A36-BDF7-DD77B33A681C" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op onderhandelingen" .
+
+shortcut:B094ECE3-1B7C-443C-8F98-C5C3AE482ADD a ext:SnelKoppeling ;
+    mu:uuid "B094ECE3-1B7C-443C-8F98-C5C3AE482ADD" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op onderhandelingen en adviesaanvraag aan de Raad van State" .
+
+shortcut:AD871977-CCB4-4D3D-9FA7-42F32CB8483C a ext:SnelKoppeling ;
+    mu:uuid "AD871977-CCB4-4D3D-9FA7-42F32CB8483C" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op adviesaanvraag aan de Raad van State" .
