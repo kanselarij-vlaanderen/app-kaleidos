@@ -125,7 +125,9 @@
                 (:archived      :boolean    ,(s-prefix "besluitvorming:gearchiveerd")) ;; NOTE: Inherited from Document
                 (:title         :string     ,(s-prefix "dct:title")) ;; NOTE: Inherited from Document
                 (:number-vp     :string     ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
-                (:number-vr     :string     ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: Inherited from Document
+                (:number-vr     :string     ,(s-prefix "besluitvorming:stuknummerVR"))
+                (:richtext      :string   ,(s-prefix "ext:htmlInhoud")))
+) ;; NOTE: Inherited from Document
   :has-many `((mandatee         :via        ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit
                                 :as "mandatees")
               (remark           :via        ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
@@ -261,6 +263,7 @@
                 (:announcements :string   ,(s-prefix "ext:mededelingen"))
                 (:others        :string   ,(s-prefix "ext:varia"))
                 (:description   :string   ,(s-prefix "ext:description")))
+                (:richtext      :string   ,(s-prefix "ext:htmlInhoud")))
   :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
                                 :inverse t
                                 :as "meeting")
