@@ -45,12 +45,12 @@ const getAgendaPriorities = async (agendaId) => {
             ?agenda dct:hasPart ?agendapunt .
             ?agenda mu:uuid "${agendaId}" .
             ?agendapunt mu:uuid ?uuid .
-                FILTER NOT EXISTS{
-                    ?agendapunt ext:prioriteit ?agendaitemPrio .
-                }
-                ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
-                ?subcase ext:wordtGetoondAlsMededeling ?showAsRemark .
-                FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)    
+            FILTER NOT EXISTS{
+                ?agendapunt ext:prioriteit ?agendaitemPrio .
+            }
+            ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
+            ?subcase ext:wordtGetoondAlsMededeling ?showAsRemark .
+            FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)    
             OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
@@ -93,6 +93,7 @@ const getAgendaPrioritiesWithoutFilter = async (agendaId) => {
             ?subcase besluitvorming:isGeagendeerdVia ?agendapunt .
             ?subcase mu:uuid ?subcaseId .
             ?subcase ext:wordtGetoondAlsMededeling ?showAsRemark .
+
             FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
 
             OPTIONAL { 
@@ -200,9 +201,9 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
     SELECT ?subcaseId ?agendaId ?agendaName ?subcase ?title ?priority ?agendaitemPrio ?id WHERE { 
            GRAPH <${targetGraph}>
            {
-             ?meeting a besluit:Zitting ;
+            ?meeting a  besluit:Zitting ;
                         mu:uuid "${sessionId}" .
-             ?agendas   besluit:isAangemaaktVoor ?meeting .
+            ?agendas    besluit:isAangemaaktVoor ?meeting .
              ?agendas   ext:agendaNaam ?agendaName .
              ?agendas   mu:uuid    ?agendaId .
              ?agendas   dct:hasPart ?agendaitem .
@@ -210,9 +211,9 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
              OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
              ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
              ?subcase   mu:uuid ?subcaseId .
-             ?subcase   ext:wordtGetoondAlsMededeling ?showAsRemark .
+             ?agendaitem ext:wordtGetoondAlsMededeling ?showAsRemark .
              FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
-              OPTIONAL { 
+            OPTIONAL { 
                 ?subcase besluitvorming:heeftBevoegde ?mandatee . 
                 ?mandatee mu:uuid ?mandateeId .
                 ?mandatee dct:title ?title .
@@ -223,7 +224,6 @@ const getAllAgendaitemsOfTheSessionWithAgendaName = async (sessionId) => {
                    ?mandatee mandaat:eind ?end .
                    FILTER(?end > NOW())
                 }
-             
             }
          }
        }  GROUP BY ?agendaName ?subcaseId ?subcase ?title ?agendaId ?priority ?agendaitemPrio
@@ -247,7 +247,7 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
     PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
     PREFIX dct: <http://purl.org/dc/terms/>
    
-    SELECT ?subcaseId ?id ?title ?agendaitemPrio  WHERE { 
+    SELECT ?subcaseId ?id   WHERE { 
        GRAPH <${targetGraph}>
        {
          ?agenda a besluitvorming:Agenda ;
@@ -258,7 +258,7 @@ const getAllAgendaItemsFromAgenda = async (agendaId) => {
          OPTIONAL   { ?agendaitem ext:prioriteit ?agendaitemPrio . }
          ?subcase   besluitvorming:isGeagendeerdVia ?agendaitem .
          ?subcase   mu:uuid ?subcaseId .
-         ?subcase   ext:wordtGetoondAlsMededeling ?showAsRemark .
+         ?agendaitem ext:wordtGetoondAlsMededeling ?showAsRemark .
 
          FILTER(?showAsRemark ="false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>)
         }
