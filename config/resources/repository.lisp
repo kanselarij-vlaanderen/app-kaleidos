@@ -33,6 +33,7 @@
 
 
 (add-prefix "ext" "http://mu.semte.ch/vocabularies/ext/")
+(add-prefix "oc" "http://mu.semte.ch/vocabularies/ext/oc/")
 (add-prefix "tmp" "http://mu.semte.ch/vocabularies/tmp/")
 
 (add-prefix "besluit" "http://data.vlaanderen.be/ns/besluit#")
