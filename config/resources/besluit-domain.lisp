@@ -36,7 +36,7 @@
                 (:short-title         :string   ,(s-prefix "dct:alternative"))
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime   ,(s-prefix "ext:modified"))
-                (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:formally-ok         :uri  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((postponed               :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
                                       :as "postponed-to")
@@ -146,8 +146,6 @@
             ;;                   :as "newsletter-info")
              (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                                 :as "type")
-             (confidentiality   :via        ,(s-prefix "besluitvorming:vertrouwelijkheid") ;; NOTE: Inherited from Document
-                                :as "confidentiality")
              (document          :via      ,(s-prefix "ext:beslissingsfiche")
                                 :as "signed-document"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
@@ -249,7 +247,9 @@
              (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
                                         :as "notes")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
-                                        :as "newsletter"))
+                                        :as "newsletter")
+             (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
+                                        :as "signature"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")

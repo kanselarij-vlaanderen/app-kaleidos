@@ -12,12 +12,18 @@ defmodule Dispatcher do
   plug :match
   plug :dispatch
 
+  get "/document-versions/:id/convert" do
+    Proxy.forward conn, [], "http://development-document-conversion/convert-document-versions/" <> id
+  end
+
   match "/agendas/*path" do
     Proxy.forward conn, path, "http://resource/agendas/"
   end
+
   match "/agendaitems/*path" do
     Proxy.forward conn, path, "http://resource/agendaitems/"
   end
+
   match "/announcements/*path" do
     Proxy.forward conn, path, "http://resource/announcements/"
   end
@@ -79,7 +85,6 @@ defmodule Dispatcher do
   match "/case-types/*path" do
     Proxy.forward conn, path, "http://resource/case-types/"
   end
-
 
   match "/policy-levels/*path" do
     Proxy.forward conn, path, "http://resource/policy-levels/"
@@ -242,9 +247,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/roles/"
   end
 
+  match "/signatures/*path" do
+    Proxy.forward conn, path, "http://resource/signatures/"
+  end
+
   match "/mock/sessions/*path" do
     Proxy.forward conn, path, "http://development-mocklogin/sessions/"
   end
+
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://development-login/sessions/"
   end
@@ -263,6 +273,10 @@ defmodule Dispatcher do
 
   match "/minister-jurisdiction-service/*path" do
     Proxy.forward conn, path, "http://minister-jurisdiction-service/"
+  end
+
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://development-range-file/files/" <> id <> "/download"
   end
 
   match _ do

@@ -19,7 +19,7 @@ services:
       - resource:resource
     volumes:
       - ./config/dispatcher:/config
-
+  delta-notifier:
     image: semtech/mu-delta-notifier
     volumes:
       - ./config/delta:/config
@@ -42,6 +42,8 @@ services:
     labels:
       - "logging=true"
     logging: *default-logging
+    ports:
+      - "8891:80"
     links:
       - deltanotifier:deltanotifier
       - database:triplestore
@@ -61,6 +63,10 @@ services:
     logging: *default-logging
   musearch:
     image: semtech/mu-search
+    ports:
+      - "9201:80"
+    environment:
+      LOG_LEVEL: "debug"
     links:
       - elasticsearch:elasticsearch
       - database-with-auth:db
@@ -81,6 +87,8 @@ services:
       ES_JAVA_OPTS: "-Xms4g -Xmx4g"
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.2
+    ports:
+      - 5601:5601
     environment:
       ELASTICSEARCH_URL: "http://elasticsearch:9200"
   resource:
@@ -97,6 +105,20 @@ services:
       - database-with-auth:database
     volumes:
       - ./data/files:/share
+  range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+  document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+    ports:
+      - "8086:80"
   session-number-service:
     image: semtech/mu-javascript-template
     environment:

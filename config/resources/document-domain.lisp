@@ -1,20 +1,22 @@
 (define-resource document ()
   :class (s-prefix "foaf:Document")
   :properties `((:archived        :boolean ,(s-prefix "besluitvorming:gearchiveerd"))
-                (:title           :string ,(s-prefix "dct:title")) ;;string-set
-                (:description     :string ,(s-prefix "ext:omschrijving")) ;;string-set
-                (:confidential    :boolean ,(s-prefix "ext:vertrouwelijk")) ;;string-set
+                (:title           :string ,(s-prefix "dct:title"))
+                (:description     :string ,(s-prefix "ext:omschrijving")) 
+                (:confidential    :boolean ,(s-prefix "ext:vertrouwelijk"))
                 (:created         :datetime ,(s-prefix "dct:created"))
-                (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
-                (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))) ;; NOTE: What is the URI of property 'stuknummerVR'? Made up besluitvorming:stuknummerVR
+                (:number-vp       :string ,(s-prefix "besluitvorming:stuknummerVP")) 
+                (:number-vr       :string ,(s-prefix "besluitvorming:stuknummerVR"))
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))
+                (:for-cabinet     :boolean ,(s-prefix "ext:voorKabinetten"))) 
   :has-many `((remark             :via ,(s-prefix "besluitvorming:opmerking")
                                   :as "remarks") 
               (document-version   :via ,(s-prefix "besluitvorming:heeftVersie")
                                   :as "document-versions"))
   :has-one `((document-type       :via ,(s-prefix "ext:documentType")
                                   :as "type")
-            (confidentiality     :via ,(s-prefix "besluitvorming:vertrouwelijkheid")
-                                  :as "confidentiality")
+            (access-level     :via ,(s-prefix "ext:toegangsniveauVoorDocument")
+                                  :as "access-level")
             (decision             :via ,(s-prefix "ext:beslissingsfiche")
                                   :inverse t
                                   :as "signed-decision"))
@@ -30,6 +32,7 @@
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
+            (file                       :via      ,(s-prefix "ext:convertedFile")                            :as "converted-file")
             (document                   :via      ,(s-prefix "besluitvorming:heeftVersie")
                                         :inverse t
                                         :as "document")

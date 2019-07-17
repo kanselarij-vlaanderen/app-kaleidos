@@ -35,12 +35,12 @@ const getMostRecentNewsletter = async (req, res) => {
     let response = await repository.getAgendaWhereisMostRecentAndFinal();
     const { agenda_uuid } = response[0] || {};
 
-    if (!agenda_uuid){
+    if (!agenda_uuid) {
       res.send({ status: ok, statusCode: 500, newsletter: [] });
-    }else {
+    } else {
 
       let newsletter = await repository.getNewsLetterByAgendaId(agenda_uuid);
-      if (! newsletter){
+      if (!newsletter) {
         throw new Error("no newsletters present");
       }
 
@@ -53,25 +53,25 @@ const getMostRecentNewsletter = async (req, res) => {
         item.publication_date = newsletter_item.created;
         item.modification_date = newsletter_item.modified;
         item.type = "agenda_item";
-        if(item.remark){
+        if (item.remark) {
           item.agenda_item_type = "Opmerking"
-        }else {
+        } else {
           item.agenda_item_type = "Beslissing"
         }
         return item;
       });
 
       res.send({
-        total : newsletter.length,
-        size : newsletter.length,
-        items : newsletter
+        total: newsletter.length,
+        size: newsletter.length,
+        items: newsletter
       })
 
     }
 
 
 
-  }catch(error) {
+  } catch (error) {
     console.error(error);
     res.send({ status: ok, statusCode: 500, body: { error } });
   }
@@ -79,60 +79,57 @@ const getMostRecentNewsletter = async (req, res) => {
 
 const sendNewsletter = async (req, res) => {
 
-    try {
+  try {
 
-      const agendaId = req.query.agendaId;
-      if (!agendaId){
-        throw new Error("Request parameter agendaId can not be null");
-      }
-
-      let newsletter = await repository.getNewsLetterByAgendaId(agendaId);
-      if (!newsletter){
-        throw new Error("no newsletters present");
-      }
-
-      const planned_start = moment(newsletter[0].planned_start).format("dddd DD-MM-YYYY");
-      const news_items_HTML =  await newsletter.map(item => getNewsItem(item));
-      let html = await createNewsLetter(news_items_HTML, planned_start);
-
-      const template = {
-        "name": `Nieuwsbrief ${planned_start}`,
-        html
-      };
-
-      const created_template = await mailchimp.post({
-        path : '/templates',
-        body : template,
-      });
-
-      const { id } = created_template;
-      const campaign = {
-        "type": "regular",
-        "recipients": {
-          "list_id": "51ca8b6b84"
-        },
-        "settings": {
-          "subject_line": `Nieuwsbrief ${planned_start}`,
-          "preview_text": "",
-          "title": `Nieuwsbrief ${planned_start}`,
-          "from_name": "Tom Ploem",
-          "reply_to": "info@liskdiscovery.com",
-          "inline_css": true,
-          "template_id": id
-        }
-      };
-      await mailchimp.post({
-        path : '/campaigns',
-        body : campaign,
-      });
-
-      res.send({ campaign })
-
-    }catch(error) {
-        console.error(error);
-        res.send({ status: ok, statusCode: 500, body: { error } });
+    const agendaId = req.query.agendaId;
+    if (!agendaId) {
+      throw new Error("Request parameter agendaId can not be null");
     }
+
+    let newsletter = await repository.getNewsLetterByAgendaId(agendaId);
+    if (!newsletter) {
+      throw new Error("no newsletters present");
+    }
+
+    const planned_start = moment(newsletter[0].planned_start).format("dddd DD-MM-YYYY");
+    const news_items_HTML = await newsletter.map(item => getNewsItem(item));
+    let html = await createNewsLetter(news_items_HTML, planned_start);
+
+    const template = {
+      "name": `Nieuwsbrief ${planned_start}`,
+      html
+    };
+
+    const created_template = await mailchimp.post({
+      path: '/templates',
+      body: template,
+    });
+
+    const { id } = created_template;
+    const campaign = {
+      "type": "regular",
+      "recipients": {
+        "list_id": "51ca8b6b84"
+      },
+      "settings": {
+        "subject_line": `Nieuwsbrief ${planned_start}`,
+        "preview_text": "",
+        "title": `Nieuwsbrief ${planned_start}`,
+        "from_name": "Tom Ploem",
+        "reply_to": "info@liskdiscovery.com",
+        "inline_css": true,
+        "template_id": id
+      }
+    };
+    await mailchimp.post({
+      path: '/campaigns',
+      body: campaign,
+    });
+
+    res.send({ campaign })
+
+  } catch (error) {
+    console.error(error);
+    res.send({ status: ok, statusCode: 500, body: { error } });
+  }
 };
-
-
-

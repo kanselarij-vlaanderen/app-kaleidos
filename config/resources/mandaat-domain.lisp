@@ -17,6 +17,14 @@
   :features '(include-uri)
   :on-path "mandates")
 
+(define-resource government-function ()
+  :class (s-prefix "ext:BestuursfunctieCode")
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note :string ,(s-prefix "skos:scopeNote")))
+  :resource-base (s-url "http://data.vlaanderen.be/id/concept/bestuursfunctie-codes/")
+  :features '(include-uri)
+  :on-path "government-functions")
+
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
@@ -73,7 +81,7 @@
   :has-many `((government-field   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :inverse t
                                   :as "government-fields"))
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsdomein/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsdomeinen/")
   :features '(include-uri)
   :on-path "government-domains")
 
@@ -87,7 +95,7 @@
                                   :as "ise-code")
             (government-domain    :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :as "domain"))                
-  :resource-base (s-url "http://data.vlaanderen.be/id/concept/Beleidsveld/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsvelden/")
   :features '(include-uri)
   :on-path "government-fields")
 
@@ -102,7 +110,7 @@
               (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://data.lblod.info/ise-code/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/ise-codes/")
   :features `(no-pagination-defaults include-uri)
   :on-path "ise-codes")
 
@@ -115,7 +123,10 @@
                                     :inverse t
                                     :as "mandatees"))
   :has-one `((identification        :via    ,(s-prefix "ext:identifier")
-                                    :as "identifier"))
+                                    :as "identifier")
+             (signature             :via    ,(s-prefix "ext:bevoegdePersoon")
+                                    :inverse t
+                                    :as "signature"))
              ;; (gender :via ,(s-prefix "persoon:geslacht")
              ;;         :as "gender")
              ;; (birth :via ,(s-prefix "persoon:heeftGeboorte")
@@ -142,3 +153,20 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/identificatoren/")
   :features '(include-uri)
   :on-path "identifications")
+
+  (define-resource signature ()
+  :class (s-prefix "ext:Handtekening")
+  :properties `((:name      :string     ,(s-prefix "ext:zichtbareNaam"))
+                (:function  :string     ,(s-prefix "ext:functie"))
+                (:is-active :boolean    ,(s-prefix "ext:isStandaard"))
+                (:to-delete :string     ,(s-prefix "ext:toDelete")))
+  :has-one `((person        :via        ,(s-prefix "ext:bevoegdePersoon")
+                            :as "person")
+             (file          :via        ,(s-prefix "ext:handtekening")
+                            :as "file"))
+  :has-many `((meeting      :via       ,(s-prefix "ext:heeftHandtekening")
+                            :inverse t
+                            :as "meetings"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/signatures/")
+  :features '(include-uri)
+  :on-path "signatures")

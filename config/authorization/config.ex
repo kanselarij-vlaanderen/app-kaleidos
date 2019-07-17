@@ -22,7 +22,7 @@ defmodule Acl.UserGroups.Config do
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role = \"#{group_string}\" )
-    }"
+    } LIMIT 1"
   end
 
   defp named_graph_access_by_role( group_string, graph_name ) do
@@ -39,7 +39,7 @@ defmodule Acl.UserGroups.Config do
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role IN (\"#{group_string}\") )
-    }"
+    } LIMIT 1"
   end
 
   defp all_resource_types() do
@@ -80,7 +80,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/concept/policy-level/",
       "http://kanselarij.vo.data.gift/id/concept/submitter/",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/"
+      "http://kanselarij.vo.data.gift/id/mandatarissen/",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening"
     ]
   end
 

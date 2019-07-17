@@ -80,6 +80,18 @@ services:
       - database-with-auth:database
     volumes:
       - ./data/files:/share
+  development-range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+  development-document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
   development-session-number-service:
     image: semtech/mu-javascript-template
     environment:
@@ -137,11 +149,9 @@ services:
       - development-database:database
     volumes:
       - ./data-migration-service:/app
-
 networks:
   proxy:
     external:
       name: letsencrypt_default
   backend:
     external: true
-

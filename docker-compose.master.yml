@@ -77,7 +77,19 @@ services:
   file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - db:database
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+  range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+  document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
     volumes:
       - ./data/files:/share
   session-number-service:
@@ -137,13 +149,9 @@ services:
       - db:database
     volumes:
       - ./data-migration-service:/app
-
-
-
 networks:
   proxy:
     external:
       name: letsencrypt_default
   backend:
     external: true
-
