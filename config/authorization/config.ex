@@ -83,9 +83,9 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening"
-      "http://mu.semte.ch/vocabularies/ext/oc/Meeting"
-      "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem"
+      "http://mu.semte.ch/vocabularies/ext/Handtekening",
+      "http://mu.semte.ch/vocabularies/ext/oc/Meeting",
+      "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
       "http://mu.semte.ch/vocabularies/ext/oc/Case"
     ]
   end
