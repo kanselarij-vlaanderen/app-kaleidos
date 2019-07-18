@@ -270,6 +270,18 @@ match "/accounts/*path" do
     Proxy.forward conn, [], "http://range-file/files/" <> id <> "/download"
   end
 
+  match "/oc-meetings/*path" do
+    Proxy.forward conn, path, "http://resource/oc-meetings/"
+  end
+
+  match "/oc-agendaitems/*path" do
+    Proxy.forward conn, path, "http://resource/oc-agendaitems/"
+  end
+
+  match "/oc-cases/*path" do
+    Proxy.forward conn, path, "http://resource/oc-cases/"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
