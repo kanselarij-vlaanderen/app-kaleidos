@@ -111,11 +111,9 @@ services:
       - ./data/files:/share
     logging: *default-logging
   session-number-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/session-number-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./session-number-service:/app
     logging: *default-logging
   agenda-sort-service:
     image: kanselarij/agenda-sort-service
