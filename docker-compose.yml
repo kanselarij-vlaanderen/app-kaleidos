@@ -132,11 +132,9 @@ services:
       - ./custom-subcases-service:/app
     logging: *default-logging
   agenda-approve-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/agenda-approve-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./agenda-approve-service:/app
     logging: *default-logging
   mocklogin:
     build: mock-login-service
