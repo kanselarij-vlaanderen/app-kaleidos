@@ -18,3 +18,14 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/systeem-notificatie-types/")
   :features '(include-uri)
   :on-path "alert-types")
+
+(define-resource shortcut ()
+  :class (s-prefix "ext:SnelKoppeling") ;; NOTE: as well as skos:Concept
+  :properties `((:label 			:string 	,(s-prefix "skos:prefLabel"))
+                (:scope-note 	:string 	,(s-prefix "skos:scopeNote"))
+                (:alt-label   :string   ,(s-prefix "skos:altLabel"))
+                (:description :string   ,(s-prefix "ext:beschrijving"))
+                (:type        :string   ,(s-prefix "ext:type"))) ;; Type "agenda","minutes","decisions"...
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/snelkoppelingen/")
+  :features '(include-uri)
+  :on-path "shortcuts")

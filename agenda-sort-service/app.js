@@ -15,14 +15,22 @@ app.post('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    return handleSortRequest(req, res, true);
+    return handleSortRequest(req, res, true, false);
 });
 
-const handleSortRequest = async (req, res, queryOnly) => {
-    let agendaId = req.query.agendaId;
+app.get('/compared-sort', (req, res) => {
+    return handleSortRequest(req, res, true, true);
+});
 
+const handleSortRequest = async (req, res, queryOnly, withoutFilter) => {
+    let agendaId = req.query.agendaId;
     try {
-        const agendaItems = await repository.getAgendaPriorities(agendaId);
+        let agendaItems = [];
+        if (withoutFilter) {
+            agendaItems = await repository.getAgendaPrioritiesWithoutFilter(agendaId);
+        } else {
+            agendaItems = await repository.getAgendaPriorities(agendaId);
+        }
         const previousPrio = await repository.getLastPriorityOfAgendaitemInAgenda(agendaId);
         const prioritizedAgendaItems = await sortAgendaItemsByMandates(agendaItems, (previousPrio[0].maxPrio || 0));
 
