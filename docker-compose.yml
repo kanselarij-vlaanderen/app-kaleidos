@@ -118,11 +118,9 @@ services:
       - ./session-number-service:/app
     logging: *default-logging
   agenda-sort-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/agenda-sort-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./agenda-sort-service:/app
     logging: *default-logging
   custom-subcases-service:
     image: kanselarij/custom-subcases-service
