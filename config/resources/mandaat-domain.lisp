@@ -53,7 +53,10 @@
                                   :as "subcases")
              (agendaitem          :via ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt")
                                   :inverse t
-                                  :as "agendaitems"))
+                                  :as "agendaitems")
+             (subcase             :via ,(s-prefix "ext:indiener")
+                                  :inverse t
+                                  :as "requested-subcases"))
   :has-one `((mandate             :via ,(s-prefix "org:holds")
                                   :as "holds")
              (person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")

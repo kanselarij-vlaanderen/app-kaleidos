@@ -1,0 +1,100 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX user: <http://data.kanselarij.vlaanderen.be/id/gebruiker/>
+PREFIX account: <http://data.kanselarij.vlaanderen.be/id/account/>
+PREFIX group: <http://data.kanselarij.vlaanderen.be/id/group/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    user:kanselarij a foaf:Person ;
+        mu:uuid "6ca5b315-fd26-4ef6-9faf-2d8ce21e6c41" ;
+        foaf:firstName "Kanselarij" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:kanselarij .
+
+    account:kanselarij a foaf:OnlineAccount ;
+        mu:uuid "86930340-1be5-4d72-87af-affebfc5b281" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "1" .
+
+    group:kanselarij a foaf:Group, besluit:Bestuurseenheid ;
+        mu:uuid "50f4c79c-902d-4ad2-bca1-0f37a69f0c13" ;
+        dct:identifier "OVO001827" ;
+        foaf:name "kanselarij" ;
+        foaf:member user:kanselarij .
+
+    user:admin a foaf:Person ;
+        mu:uuid "beb58e49-5ea1-4824-9b7c-90ff189d914a" ;
+        foaf:firstName "Admin" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:admin .
+
+    account:admin a foaf:OnlineAccount ;
+        mu:uuid "f445824e-69d6-46ff-8803-718137ccbbad" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "0" .
+
+    group:admin a foaf:Group, besluit:Bestuurseenheid ;
+        mu:uuid "71c068e6-d2f0-43de-93ab-cd1e7156ac4b" ;
+        dct:identifier "ADMIN" ;
+        foaf:name "admin" ;
+        foaf:member user:admin .
+
+    user:user a foaf:Person ;
+        mu:uuid "5ab04d46-a578-4e13-802b-7ef0b53cb6bb" ;
+        foaf:firstName "User" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.01" ;
+        foaf:account account:user .
+
+    account:user a foaf:OnlineAccount ;
+        mu:uuid "5c57db0a-0d48-4d58-9de6-5603d3f5992e" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "2" .
+
+    group:user a foaf:Group ;
+        mu:uuid "450915b2-4c64-4b03-9caa-71180400f831" ;
+        foaf:name "users" ;
+        foaf:member user:user .
+
+
+    user:minister a foaf:Person ;
+        mu:uuid "75118ece-c201-4808-b746-696b921c63f1" ;
+        foaf:firstName "Minister" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:minister .
+
+    account:minister a foaf:OnlineAccount ;
+        mu:uuid "d8b2c243-8d17-4d0d-9194-9ed6a0b1b63a" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "3" .
+
+    group:minister a foaf:Group ;
+        mu:uuid "1cc0710c-1b28-4e23-b3ff-399c8089bc71" ;
+        foaf:name "minister" ;
+        foaf:member user:minister .
+
+
+    user:privileged a foaf:Person ;
+        mu:uuid "c228b8ff-bef2-4888-b403-7a1846e0d85c" ;
+        foaf:firstName "Privileged" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:privileged .
+
+    account:privileged a foaf:OnlineAccount ;
+        mu:uuid "0644e559-29b8-4c3c-8e93-3f48a3d8d4ca" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "4" .
+
+    group:privileged a foaf:Group ;
+        mu:uuid "3e824494-bbe7-45cf-aed8-5828970a10dc" ;
+        foaf:name "privileged" ;
+        foaf:member user:privileged .
+  }
+}

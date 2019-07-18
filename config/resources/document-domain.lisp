@@ -19,7 +19,10 @@
                                   :as "access-level")
             (decision             :via ,(s-prefix "ext:beslissingsfiche")
                                   :inverse t
-                                  :as "signed-decision"))
+                                  :as "signed-decision")
+            (meeting-record       :via ,(s-prefix "ext:getekendeNotulen")
+                                  :inverse t
+                                  :as "signed-minutes"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/documenten/")
   :features '(include-uri)
   :on-path "documents")
@@ -48,10 +51,10 @@
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-             (decision                  :via ,(s-prefix "ext:documentenVoorBeslissing")
+            (decision                   :via ,(s-prefix "ext:documentenVoorBeslissing")
                                         :inverse t
                                         :as "decision")
-             (meeting-record            :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+            (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
                                         :as "meeting-record"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
