@@ -184,3 +184,6 @@ services:
       - resource:backend
     restart: always
     logging: *default-logging
+  sink:
+    image: lblod/sink-service:1.0.0
+    logging: *default-logging
