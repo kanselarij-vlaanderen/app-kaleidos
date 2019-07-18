@@ -24,6 +24,12 @@ services:
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
+  migrations-service:
+    image: semtech/mu-migrations-service:0.5.0
+    links:
+      - database:database
+    volumes:
+      - ./config/migrations:/data/migrations
   delta-notifier:
     image: semtech/mu-delta-notifier
     volumes:
