@@ -125,11 +125,9 @@ services:
       - ./agenda-sort-service:/app
     logging: *default-logging
   custom-subcases-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/custom-subcases-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./custom-subcases-service:/app
     logging: *default-logging
   agenda-approve-service:
     image: kanselarij/agenda-approve-service
