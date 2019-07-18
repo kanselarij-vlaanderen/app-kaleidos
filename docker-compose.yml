@@ -68,23 +68,19 @@ services:
       - ./config/elastic:/config
       - ./data/files:/data
     logging: *default-logging
-  deltanotifier:
-    image: semtech/mu-delta-notifier
-    volumes:
-        - ./config/delta:/config
-    logging: *default-logging
   elasticsearch:
-    build: ./elasticsearch-image
+    image: semtech/mu-search-elastic-backend
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
-    environment:
-      TAKE_FILE_OWNERSHIP: /usr/share/elasticsearch/data
-      MAX_MAP_COUNT: 262144
-      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
     logging: *default-logging
   kibana:
     environment:
       ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    logging: *default-logging
+  deltanotifier:
+    image: semtech/mu-delta-notifier
+    volumes:
+        - ./config/delta:/config
     logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.17.1
