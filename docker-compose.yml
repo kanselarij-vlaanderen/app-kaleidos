@@ -163,11 +163,9 @@ services:
       - ./newsletter-service:/app
     logging: *default-logging
   minister-jurisdiction-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/minister-jurisdiction-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./minister-jurisdiction-service:/app
     logging: *default-logging
   data-migration-service:
     image: kanselarij/data-migration-service
