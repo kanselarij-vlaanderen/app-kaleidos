@@ -148,13 +148,9 @@ services:
       LOG_SINK_URL: "http://sink"
     logging: *default-logging
   newsletter-service:
-    image: semtech/mu-javascript-template
-    environment:
-      MAILCHIMP_API: ${MAILCHIMP_API}
+    image: kanselarij/newsletter-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./newsletter-service:/app
     logging: *default-logging
   minister-jurisdiction-service:
     image: kanselarij/minister-jurisdiction-service
