@@ -170,11 +170,9 @@ services:
       - ./minister-jurisdiction-service:/app
     logging: *default-logging
   data-migration-service:
-    image: semtech/mu-javascript-template
+    image: kanselarij/data-migration-service
     links:
       - database-with-auth:database
-    volumes:
-      - ./data-migration-service:/app
     logging: *default-logging
   cache:
     image: madnificent/mu-elixir-cache:0.1.0
