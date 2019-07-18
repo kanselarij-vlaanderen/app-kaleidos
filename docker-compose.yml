@@ -137,7 +137,7 @@ services:
       - database-with-auth:database
     logging: *default-logging
   mocklogin:
-    build: mock-login-service
+    image: kanselarij/mock-login-service
     volumes:
       - ./config/mocklogin:/config
     logging: *default-logging
