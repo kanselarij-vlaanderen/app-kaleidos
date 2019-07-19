@@ -2,7 +2,7 @@
   :class (s-prefix "oc:Meeting")
   :properties `((:started-at            :datetime ,(s-prefix "prov:startedAtTime")))
   :has-many `((oc-agendaitem            :via      ,(s-prefix "oc:agendaItem")
-                                        :as "agendas"))
+                                        :as "agenda-items"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/oc-zittingen/")
   :features '(include-uri)
   :on-path "oc-meetings")
