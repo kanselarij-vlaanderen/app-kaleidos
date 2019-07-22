@@ -6,19 +6,18 @@ services:
   dispatcher:
   delta-notifier:
   database-with-auth:
-    environment:
-      # MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
-      # LOG_OUTGOING_SPARQL_QUERIES: "true"
-      # INSPECT_OUTGOING_SPARQL_QUERIES: "false"
-      # LOG_INCOMING_SPARQL_QUERIES: "true"
-      # INSPECT_INCOMING_SPARQL_QUERIES: "false"
-      # LOG_ACCESS_RIGHTS: "true"
-      # INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
-      # LOG_DELTA_MESSAGES: "true"
-      # LOG_DELTA_CLIENT_COMMUNICATION: "true"
-      # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
-      # DATABASE_COMPATIBILITY: "Virtuoso"
-    ports:
+    # environment:
+    #   MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+    #   LOG_OUTGOING_SPARQL_QUERIES: "true"
+    #   INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+    #   LOG_INCOMING_SPARQL_QUERIES: "true"
+    #   INSPECT_INCOMING_SPARQL_QUERIES: "false"
+    #   LOG_ACCESS_RIGHTS: "true"
+    #   INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+    #   LOG_DELTA_MESSAGES: "true"
+    #   LOG_DELTA_CLIENT_COMMUNICATION: "true"
+    #   LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+    #   DATABASE_COMPATIBILITY: "Virtuoso"
   database:
     ports:
       - 8890:8890
@@ -27,12 +26,13 @@ services:
       - "9201:80"
     environment:
       LOG_LEVEL: "debug"
+      RACK_ENV: "development"
   deltanotifier:
   elasticsearch:
-    # environment:
-    #   TAKE_FILE_OWNERSHIP: /usr/share/elasticsearch/data
-    #   MAX_MAP_COUNT: 262144
-    #   ES_JAVA_OPTS: "-Xms4g -Xmx4g"
+    environment:
+      TAKE_FILE_OWNERSHIP: /usr/share/elasticsearch/data
+      MAX_MAP_COUNT: 262144
+      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
   kibana:
     ports:
       - 5601:5601
@@ -60,29 +60,15 @@ services:
     ports:
       - 9227:9229
   mocklogin:
+    image: kanselarij/mock-login-service
   login:
   newsletter-service:
-    environment:
-      NODE_ENV: "development"
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
   minister-jurisdiction-service:
     environment:
       NODE_ENV: "development"
   data-migration-service:
-    environment:
-      NODE_ENV: "development"
-    ports:
-      - 8889:80
-      - 9229:9229
-  data-migration-service:
-    image: semtech/mu-javascript-template
-    links:
-      - development-database:database
-    volumes:
-      - ./data-migration-service:/app
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
   cache:
-networks:
-  proxy:
-    external:
-      name: letsencrypt_default
-  backend:
-    external: true
