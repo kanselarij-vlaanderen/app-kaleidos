@@ -23,6 +23,7 @@
         "shortTitle" : "http://purl.org/dc/terms/alternative",
         "titlePress" : "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
         "textPress" : "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
+        "agendaId" : "^http://purl.org/dc/terms/hasPart",
         "mandateeName" : [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -49,8 +50,11 @@
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
           },
+          "agendaId":{
+            "type":"keyword"
+          },
           "title": {
-            "type": "text",
+            "type": "text", 
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
@@ -173,6 +177,24 @@
           "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
           "http://data.europa.eu/eli/ontology#description"
         ],
+        "creators" : [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandatees" : [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "sessionDates": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
+        ],
         "data": {
           "via" : [
             "http://purl.org/dc/terms/hasPart",
@@ -197,6 +219,19 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+           "creators": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandatees": {
+            "type": "date",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "sessionDates": {
+            "type": "date"
           }
         }
       }
