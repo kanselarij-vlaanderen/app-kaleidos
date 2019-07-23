@@ -31,6 +31,7 @@
 node_modules/
 
 /data/files/*
+/data/elasticsearch/
 /development-data/files/*
 properties-to-add
 .idea/
@@ -38,3 +39,4 @@ properties-to-add
 /minister-jurisdiction-service/__pycache__/*
 
 .env
+docker-compose.override.yml
