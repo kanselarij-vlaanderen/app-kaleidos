@@ -13,7 +13,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const Mailchimp = require('mailchimp-api-v3');
-const mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
+let mailchimp;
 const moment = require('moment');
 moment.locale("nl");
 
@@ -28,10 +28,13 @@ app.get('/', (req, res) => {
   return getMostRecentNewsletter(req, res);
 });
 
+const createMailchimpConnection = async () => {
+  mailchimp = new Mailchimp(process.env.MAILCHIMP_API);
+}
 const getMostRecentNewsletter = async (req, res) => {
-
+  
   try {
-
+    await createMailchimpConnection();
     let response = await repository.getAgendaWhereisMostRecentAndFinal();
     const { agenda_uuid } = response[0] || {};
 
@@ -80,7 +83,7 @@ const getMostRecentNewsletter = async (req, res) => {
 const sendNewsletter = async (req, res) => {
 
   try {
-
+    await createMailchimpConnection();
     const agendaId = req.query.agendaId;
     if (!agendaId) {
       throw new Error("Request parameter agendaId can not be null");
