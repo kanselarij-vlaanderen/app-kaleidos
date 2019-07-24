@@ -15,6 +15,9 @@
                 (:distribution-date   :date     ,(s-prefix "oc:distributionDate")))
   :has-one `((oc-case                 :via      ,(s-prefix "oc:case")
                                       :as "case")
+             (oc-meeting              :via      ,(s-prefix "oc:agendaItem")
+                                      :inverse t
+                                      :as "meeting")
              (file                    :via      ,(s-prefix "oc:meetingRecord")
                                       :as "meeting-record")
              (file                    :via     ,(s-prefix "oc:notification")
