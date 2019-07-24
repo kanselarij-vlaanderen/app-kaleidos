@@ -2,8 +2,9 @@ version: '3.4'
 services:
   identifier:
     ports:
-      - "8082:80"
+      - "80:80"
   dispatcher:
+  migrations-service:
   delta-notifier:
   proxy:
     image: nginx:1.13
@@ -27,22 +28,16 @@ services:
     #   DATABASE_COMPATIBILITY: "Virtuoso"
   database:
     ports:
-      - 8890:8890
+      - "8890:8890"
   musearch:
-    ports:
-      - "9201:80"
     environment:
       LOG_LEVEL: "debug"
       RACK_ENV: "development"
   deltanotifier:
   elasticsearch:
-    environment:
-      TAKE_FILE_OWNERSHIP: /usr/share/elasticsearch/data
-      MAX_MAP_COUNT: 262144
-      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
   kibana:
     ports:
-      - 5601:5601
+      - "5601:5601"
   resource:
     ports:
       - "8085:80"
@@ -50,22 +45,10 @@ services:
   range-file:
   document-conversion:
   session-number-service:
-    environment:
-      NODE_ENV: "development"
   agenda-sort-service:
-    environment:
-      NODE_ENV: "development"
   custom-subcases-service:
-    environment:
-      NODE_ENV: "development"
   custom-subcases-service:
-    environment:
-      NODE_ENV: "development"
   agenda-approve-service:
-    environment:
-      NODE_ENV: "development"
-    ports:
-      - 9227:9229
   mocklogin:
     image: kanselarij/mock-login-service
   login:
