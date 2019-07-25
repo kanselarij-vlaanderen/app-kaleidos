@@ -30,11 +30,6 @@ services:
       - database:database
     volumes:
       - ./config/migrations:/data/migrations
-  delta-notifier:
-    image: semtech/mu-delta-notifier
-    volumes:
-      - ./config/delta:/config
-    logging: *default-logging
   database-with-auth:
     image: semtech/mu-authorization:latest
     environment:

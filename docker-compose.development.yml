@@ -4,7 +4,7 @@ services:
     ports:
       - "8082:80"
   dispatcher:
-  delta-notifier:
+  deltanotifier:
   proxy:
     image: nginx:1.13
     volumes:
