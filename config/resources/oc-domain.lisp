@@ -13,7 +13,7 @@
                 (:sub-priority        :string   ,(s-prefix "oc:subPriority"))
                 (:subject             :string   ,(s-prefix "dct:subject"))
                 (:distribution-date   :date     ,(s-prefix "oc:distributionDate")))
-  :has-one `((oc-case                 :via      ,(s-prefix "oc:case")
+  :has-one `((oc-case                 :via      ,(s-prefix "oc:caseAgendaItem")
                                       :inverse t
                                       :as "case")
              (oc-meeting              :via      ,(s-prefix "oc:agendaItem")
@@ -34,7 +34,7 @@
 (define-resource oc-case ()
   :class (s-prefix "oc:Case")
   :properties `((:identifier          :string   ,(s-prefix "dct:identifier")))
-  :has-many `((oc-agendaitem          :via      ,(s-prefix "oc:case")
+  :has-many `((oc-agendaitem          :via      ,(s-prefix "oc:caseAgendaItem")
                                       :as "agenda-items"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/oc-dossiers/")
   :features `(include-uri)
