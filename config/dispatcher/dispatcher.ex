@@ -239,11 +239,11 @@ match "/accounts/*path" do
   end
 
   match "/files/*path" do
-    Proxy.forward conn, path, "http://file/files/"
+    Proxy.forward conn, path, "http://resource/files/"
   end
 
   match "/files/*path" do
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://file/files/"
   end
 
   match "/mock/sessions/*path" do
