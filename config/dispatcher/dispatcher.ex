@@ -238,12 +238,20 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://resource/signatures/"
   end
 
-  match "/files/*path" do
-    Proxy.forward conn, path, "http://resource/files/"
+  get "/files/:id/download" do
+    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
+  post "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
+  delete "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
   end
 
   match "/files/*path" do
-    Proxy.forward conn, path, "http://file/files/"
+    Proxy.forward conn, path, "http://resource/files/"
   end
 
   match "/mock/sessions/*path" do
