@@ -242,6 +242,10 @@ match "/accounts/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end
 
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://resource/files/"
+  end
+
   match "/mock/sessions/*path" do
     Proxy.forward conn, path, "http://mocklogin/sessions/"
   end
