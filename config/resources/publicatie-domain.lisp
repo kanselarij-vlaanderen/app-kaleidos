@@ -108,5 +108,5 @@
                                 :inverse t
                                 :as "subcases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
-  :features '(include-uri)
+  :features `(no-pagination-defaults include-uri)
   :on-path "themes")

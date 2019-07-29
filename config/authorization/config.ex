@@ -91,10 +91,12 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://mu.semte.ch/vocabularies/ext/oc/Meeting",
       "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
-      "http://mu.semte.ch/vocabularies/ext/oc/Case"
+      "http://mu.semte.ch/vocabularies/ext/oc/Case",
+      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
+      "http://kanselarij.vo.data.gift/core/Beleidsveld",
+      "http://www.w3.org/ns/person#Person"
     ]
   end
 
@@ -126,10 +128,11 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/id/concept/policy-level/",
-      "http://kanselarij.vo.data.gift/id/concept/submitter/",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd"
+      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
+      "http://kanselarij.vo.data.gift/core/Beleidsveld",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening",
+      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
+      "http://www.w3.org/ns/person#Person"
     ]
   end 
 

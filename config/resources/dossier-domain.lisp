@@ -183,7 +183,7 @@
                               :as "documents")
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                               :inverse t
-                              :as "agendaitems"))
+                              :as "cases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/")
   :features '(include-uri)
   :on-path "access-levels")
