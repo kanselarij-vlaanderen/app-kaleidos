@@ -70,8 +70,6 @@
 
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
 (add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
-(add-prefix "xsd" "http://www.w3.org/2001/XMLSchema#>" )
-
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
