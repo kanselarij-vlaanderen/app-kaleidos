@@ -4,8 +4,6 @@ services:
     ports:
       - "80:80"
   dispatcher:
-  migrations-service:
-  delta-notifier:
   proxy:
     image: nginx:1.13
     volumes:
