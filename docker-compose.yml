@@ -88,6 +88,8 @@ services:
     image: semtech/mu-cl-resources:1.17.1
     links:
       - database-with-auth:database
+    environment:
+      CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
       - ./config/resources:/config
     logging: *default-logging
