@@ -31,7 +31,7 @@ services:
     volumes:
       - ./config/migrations:/data/migrations
   database-with-auth:
-    image: semtech/mu-authorization:latest
+    image: semtech/mu-authorization:0.4.0
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -165,7 +165,7 @@ services:
       - database-with-auth:database
     logging: *default-logging
   cache:
-    image: madnificent/mu-elixir-cache:0.1.0
+    image: semtech/mu-cache:2.0.0
     links:
       - resource:backend
     restart: always
