@@ -71,7 +71,6 @@
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
 (add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
 
-
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for
 ;; the right predicates during development.  This should *not* be
