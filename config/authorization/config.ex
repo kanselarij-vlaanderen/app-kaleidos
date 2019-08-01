@@ -22,7 +22,7 @@ defmodule Acl.UserGroups.Config do
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role = \"#{group_string}\" )
-    }"
+    } LIMIT 1"
   end
 
   defp named_graph_access_by_role( group_string, graph_name ) do
@@ -39,7 +39,19 @@ defmodule Acl.UserGroups.Config do
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role IN (\"#{group_string}\") )
-    }"
+    } LIMIT 1"
+  end
+
+  defp direct_write_on_public( group_string ) do
+    %AccessByQuery{
+      vars: [],
+      query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      SELECT ?session_role WHERE {
+        <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
+                     ext:sessionRole ?session_role.
+        FILTER( ?session_role IN (\"#{group_string}\") )
+      } LIMIT 1" }
   end
 
   defp all_resource_types() do
@@ -63,16 +75,12 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://xmlns.com/foaf/0.1/OnlineAccount",
-      "http://xmlns.com/foaf/0.1/Person",
-      "http://xmlns.com/foaf/0.1/Group",
       "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
       "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
@@ -82,7 +90,13 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/id/concept/submitter/",
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd"
+      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
+      "http://mu.semte.ch/vocabularies/ext/oc/Meeting",
+      "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
+      "http://mu.semte.ch/vocabularies/ext/oc/Case",
+      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
+      "http://kanselarij.vo.data.gift/core/Beleidsveld",
+      "http://www.w3.org/ns/person#Person"
     ]
   end
 
@@ -114,10 +128,11 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/id/concept/policy-level/",
-      "http://kanselarij.vo.data.gift/id/concept/submitter/",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd"
+      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
+      "http://kanselarij.vo.data.gift/core/Beleidsveld",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening",
+      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
+      "http://www.w3.org/ns/person#Person"
     ]
   end 
 
@@ -171,6 +186,21 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
+        name: "o-admin-on-public",
+        useage: [:read, :write, :read_for_write],
+        access: direct_write_on_public( "admin" ),
+        graphs: [ %GraphSpec{
+          graph: "http://mu.semte.ch/graphs/public",
+          constraint: %ResourceConstraint{
+            resource_types: [
+              "http://www.w3.org/ns/person#Person",
+              "http://xmlns.com/foaf/0.1/OnlineAccount",
+              "http://xmlns.com/foaf/0.1/Person",
+              "http://xmlns.com/foaf/0.1/Group",
+            ] } },
+        ]
+      },
+      %GroupSpec{
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "admin", "admin" ),
@@ -178,14 +208,11 @@ defmodule Acl.UserGroups.Config do
           graph: "http://mu.semte.ch/graphs/organizations/",
           constraint: %ResourceConstraint{
             resource_types: [
-              "http://www.w3.org/ns/person#Person",                           
-              "http://xmlns.com/foaf/0.1/OnlineAccount",                                       
-              "http://xmlns.com/foaf/0.1/Person",                                               
-              "http://xmlns.com/foaf/0.1/Group",                                                 
+              "http://mu.semte.ch/vocabularies/ext/NotAThing",                                                 
             ] } },
         ] 
       },
-            %GroupSpec{
+      %GroupSpec{
         name: "o-kabinetten-read",
         useage: [:read],
         access: named_graph_access_by_role( "kabinet\", \"minister", "kabinetten" ),

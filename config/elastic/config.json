@@ -1,0 +1,240 @@
+{
+  "batch_size": 128,
+  "max_batches":0,
+  "automatic_index_updates" : true,
+  "eager_indexing_groups" : [[{"name" : "o-interne-overheid-read", "variables" : ["users"]}],
+                             [{"name" : "o-admin-roles", "variables" : ["admin"]}],
+                             [{"name" : "o-kabinetten-read", "variables" : ["kabinetten"]}],
+                             [{"name" : "o-kanselarij-all", "variables" : ["kanselarij"]}],
+                             [{"name" : "public", "variables" : []}],
+                             [{"name" : "read", "variables":[]}],
+                             [{"name" : "clean", "variables": []}]],
+  "attachments_path_base" : "/data/",
+  "eager_indexing_sparql_query" : false,
+  "additive_indexes": true,
+  "persist_indexes" : true,
+  "types": [
+    {
+      "type": "agendaitems",
+      "on_path": "agendaitems",
+      "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+      "properties": {
+        "title" : "http://purl.org/dc/terms/title",
+        "shortTitle" : "http://purl.org/dc/terms/alternative",
+        "titlePress" : "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
+        "textPress" : "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
+        "agendaId" : "^http://purl.org/dc/terms/hasPart",
+        "mandateeName" : [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "theme": [
+          "http://mu.semte.ch/vocabularies/ext/agendapuntSubject",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "data" : {
+          "via" : [
+            "http://mu.semte.ch/vocabularies/ext/bevatAgendapuntDocumentversie",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline" : "attachment"
+        }
+      },
+      "mappings": { //null
+        "properties": {
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "agendaId":{
+            "type":"keyword"
+          },
+          "title": {
+            "type": "text", 
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "shortTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "titlePress": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "textPress": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "theme": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          }
+        }
+      }
+    },
+    {
+      "type": "case",
+      "on_path": "cases",
+      "rdf_type": "http://dbpedia.org/ontology/Case",
+      "properties": {
+        "title" : "http://purl.org/dc/terms/title",
+        "creators" : [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandatees" : [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "sessionDates": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
+        ],
+        "subcaseTitle": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://purl.org/dc/terms/title"
+        ],
+        "subcaseSubTitle": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://purl.org/dc/terms/alternative"
+        ],
+        "data" : {
+          "via" : [
+            "http://purl.org/dc/terms/hasPart",
+            "http://mu.semte.ch/vocabularies/ext/bevatDocumentVersie",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline" : "attachment"
+        }
+      },
+      "mappings": {
+        "properties": {
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "creators": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandatees": {
+            "type": "date",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "sessionDates": {
+            "type": "date"
+          },
+          "subcaseTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "subcaseSubTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          }
+        }
+      }
+    },
+    {
+      "type": "caseByDecisionText",
+      "on_path": "casesByDecisionText",
+      "rdf_type": "http://dbpedia.org/ontology/Case",
+      "properties": {
+        "decisionText": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
+          "http://data.europa.eu/eli/ontology#description"
+        ],
+        "creators" : [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandatees" : [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "sessionDates": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
+        ],
+        "data": {
+          "via" : [
+            "http://purl.org/dc/terms/hasPart",
+            "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
+            "http://mu.semte.ch/vocabularies/ext/beslissingsFiche",
+            "http://data.vlaanderen.be/ns/besluitvorming#heeftVersie",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline" : "attachment"
+        }
+      },
+      "mappings": {
+        "properties": {
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "decisionText": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+           "creators": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandatees": {
+            "type": "date",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "sessionDates": {
+            "type": "date"
+          }
+        }
+      }
+    }
+  ]
+}

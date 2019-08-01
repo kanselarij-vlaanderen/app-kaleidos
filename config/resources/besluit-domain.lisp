@@ -213,7 +213,7 @@
                        :as "bevat"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuursorganen/")
   :features '(include-uri)
-  :on-path "government-body")
+  :on-path "government-bodies")
 
 ;; Unmodified from lblod/loket
 (define-resource government-body-classification-code ()

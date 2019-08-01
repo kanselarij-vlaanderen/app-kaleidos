@@ -1,1 +1,177 @@
-docker-compose.local.yml
+version: '3.4'
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+services:
+  frontend:
+    image: kanselarij/frontend-kaleidos:deployment
+    links:
+      - identifier:backend
+    restart: always
+    logging: *default-logging
+  identifier:
+    image: semtech/mu-identifier:1.7.0
+    links:
+      - dispatcher:dispatcher
+    logging: *default-logging
+  dispatcher:
+    image: semtech/mu-dispatcher:1.1.2
+    links:
+      - resource:resource
+    volumes:
+      - ./config/dispatcher:/config
+    logging: *default-logging
+  migrations-service:
+    image: semtech/mu-migrations-service:0.5.0
+    links:
+      - database:database
+    volumes:
+      - ./config/migrations:/data/migrations
+  database-with-auth:
+    image: semtech/mu-authorization:0.4.0
+    environment:
+      MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      # LOG_OUTGOING_SPARQL_QUERIES: "true"
+      # INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+      # LOG_INCOMING_SPARQL_QUERIES: "true"
+      # INSPECT_INCOMING_SPARQL_QUERIES: "false"
+      # LOG_ACCESS_RIGHTS: "true"
+      # INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+      # LOG_DELTA_MESSAGES: "true"
+      # LOG_DELTA_CLIENT_COMMUNICATION: "true"
+      # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+      DATABASE_COMPATIBILITY: "Virtuoso"
+    volumes:
+      - ./config/authorization:/config
+    links:
+      - deltanotifier:deltanotifier
+      - database:triplestore
+    logging: *default-logging
+  database: 
+    image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
+    environment:
+      SPARQL_UPDATE: "true"
+      DEFAULT_GRAPH: "http://mu.semte.ch/application"
+    volumes:
+      - ./data/db:/data
+      - ./config/db/:/opt/virtuoso-scripts
+    restart: always
+    logging: *default-logging
+  musearch:
+    image: semtech/mu-search
+    links:
+      - elasticsearch:elasticsearch
+      - database-with-auth:db
+    volumes:
+      - ./config/elastic:/config
+      - ./data/files:/data
+    logging: *default-logging
+  elasticsearch:
+    image: semtech/mu-search-elastic-backend
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    logging: *default-logging
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.2
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    logging: *default-logging
+  deltanotifier:
+    image: semtech/mu-delta-notifier
+    volumes:
+        - ./config/delta:/config
+    logging: *default-logging
+  resource:
+    image: semtech/mu-cl-resources:1.17.1
+    links:
+      - database-with-auth:database
+    environment:
+      CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+    volumes:
+      - ./config/resources:/config
+    logging: *default-logging
+  file:
+    image: semtech/mu-file-service:3.1.0
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+  range-file:
+    image: mikidi/js-file-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+  document-conversion:
+    image: kanselarij/document-conversion-service:latest
+    links:
+      - database-with-auth:database
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+  session-number-service:
+    image: kanselarij/session-number-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  agenda-sort-service:
+    image: kanselarij/agenda-sort-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  custom-subcases-service:
+    image: kanselarij/custom-subcases-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  agenda-approve-service:
+    image: kanselarij/agenda-approve-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  mocklogin:
+    image: kanselarij/mock-login-service
+    volumes:
+      - ./config/mocklogin:/config
+    logging: *default-logging
+  login:
+    image: kanselarij/acmidm-login-service
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
+      MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: "THIS IS OUR SECRET"
+      MU_APPLICATION_AUTH_ROLE_CLAIM: "dkb_kaleidos_rol_3d"
+      MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
+      DEBUG_LOG_TOKENSETS: "true"
+      LOG_SINK_URL: "http://sink"
+    logging: *default-logging
+  newsletter-service:
+    image: kanselarij/newsletter-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  minister-jurisdiction-service:
+    image: kanselarij/minister-jurisdiction-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  data-migration-service:
+    image: kanselarij/data-migration-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  cache:
+    image: semtech/mu-cache:2.0.0
+    links:
+      - resource:backend
+    restart: always
+    logging: *default-logging
+  sink:
+    image: lblod/sink-service:1.0.0
+    logging: *default-logging
