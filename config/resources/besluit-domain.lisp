@@ -231,7 +231,9 @@
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number                :number   ,(s-prefix "adms:identifier"))
-                (:is-final              :boolean ,(s-prefix "ext:finaleZittingVersie"))
+                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie"))
+                (:is-digital            :boolean  ,(s-prefix "ext:isElektronisch"))
+                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
                                         :inverse t
