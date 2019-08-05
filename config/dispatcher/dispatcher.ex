@@ -36,6 +36,18 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/cases/invalidate/"
   end
 
+  match "/oc-agendaitems/search/*path" do
+    Proxy.forward conn, path, "http://musearch/oc-agendaitems/search/"
+  end
+
+  match "/oc-agendaitems/index/*path" do
+    Proxy.forward conn, path, "http://musearch/oc-agendaitems/search/"
+  end
+
+  match "/oc-agendaitems/invalidate/*path" do
+    Proxy.forward conn, path, "http://musearch/oc-agendaitems/invalidate/"
+  end
+
   match "/musearch/settings/*path" do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
