@@ -54,7 +54,7 @@
             "type":"keyword"
           },
           "title": {
-            "type": "text", 
+            "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
@@ -232,6 +232,37 @@
           },
           "sessionDates": {
             "type": "date"
+          }
+        }
+      }
+    },
+    {
+      "type": "oc-agendaitem",
+      "on_path": "oc-agendaitems",
+      "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
+      "properties": {
+        "subject": "http://purl.org/dc/terms/subject",
+        "notification": {
+          "via" : [
+            "http://mu.semte.ch/vocabularies/ext/oc/notification",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline" : "attachment"
+        }
+      },
+      "mappings": {
+        "properties": {
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "subject": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }
