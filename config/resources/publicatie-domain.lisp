@@ -58,12 +58,15 @@
 (define-resource remark ()
   :class (s-prefix "schema:Comment") ;; NOTE: instead of misusing 'rdfs:comment' property name as class name
   :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: Type should be :date instead?
-                (:text    :string   ,(s-prefix "rdfs:comment")))
-  :has-one `((user        :via      ,(s-prefix "dct:creator")
-                          :as "author")
-             (agendaitem  :via      ,(s-prefix "besluitvorming:opmerking")
-                          :inverse t
-                          :as "agendaitem"))
+                (:text          :string   ,(s-prefix "rdfs:comment")))
+  :has-one `((user              :via      ,(s-prefix "dct:creator")
+                                :as "author")
+             (agendaitem        :via      ,(s-prefix "besluitvorming:opmerking")
+                                :inverse t
+                                :as "agendaitem")
+             (newsletter-info   :via      ,(s-prefix "ext:opmerkingen")
+                                :inverse t
+                                :as "newsletter-info"))
   :has-many `((remark     :via      ,(s-prefix "ext:antwoorden")
                           :as "answers"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
@@ -86,8 +89,8 @@
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting"))
-  :has-many `((remark                   :via      ,(s-prefix "rdfs:comment")
-                                        :as "remarks") ;; NOTE: opmerkingEN would be more suitable?
+  :has-many `((remark                   :via      ,(s-prefix "ext:opmerkingen")
+                                        :as "remarks")
               (theme                    :via      ,(s-prefix "ext:themesOfSubcase")
                                         :as "themes")
               (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
