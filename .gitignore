@@ -21,22 +21,17 @@
 /development-data/db/virtuoso.pxa
 /development-data/db/virtuoso.trx
 /development-data/files
-/session-number-service/node_modules
-/agenda-sort-service/node_modules
-/agenda-approve-service/node_modules
-/custom-subcases-service/node_modules
-/close-meeting-service/node_modules
-*/node_modules
-
-node_modules/
 
 /data/files/*
 /data/elasticsearch/
 /development-data/files/*
 properties-to-add
 .idea/
-/minister-jurisdiction-service/venv
-/minister-jurisdiction-service/__pycache__/*
 
 .env
 docker-compose.override.yml
+
+# Migrations
+config/migrations/*
+!config/migrations/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-*
+*sensitive*
