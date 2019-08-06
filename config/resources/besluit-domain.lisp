@@ -232,7 +232,7 @@
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:number                :number   ,(s-prefix "adms:identifier"))
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie"))
-                (:is-digital            :boolean  ,(s-prefix "ext:isElektronisch"))
+                (:kind                  :uri      ,(s-prefix "ext:aard"))
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
   :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
