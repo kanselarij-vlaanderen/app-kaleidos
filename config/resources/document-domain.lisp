@@ -35,7 +35,8 @@
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
-            (file                       :via      ,(s-prefix "ext:convertedFile")                            :as "converted-file")
+            (file                       :via      ,(s-prefix "ext:convertedFile")
+                                        :as "converted-file")
             (document                   :via      ,(s-prefix "besluitvorming:heeftVersie")
                                         :inverse t
                                         :as "document")
