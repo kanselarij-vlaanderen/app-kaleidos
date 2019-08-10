@@ -1,11 +1,3 @@
-(define-resource document-state ()
-  :class (s-prefix "ext:DocumentStatus")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-statussen/")
-  :features `(no-pagination-defaults include-uri)
-  :on-path "document-states")
-
 (define-resource file ()
   :class (s-prefix "nfo:FileDataObject")
   :properties `((:filename      :string     ,(s-prefix "nfo:fileName"))
