@@ -1,16 +1,16 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix kind: <http://kanselarij.vo.data.gift/id/concept/aarden/> .
+@prefix kind: <http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/> .
 
-kind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 a ext:Aard ;
+kind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 a ext:MinisterraadType ;
     mu:uuid "A5D6B7A8-2F9C-44B6-B3BE-98D80B426254" ;
     skos:prefLabel "Ministerraad" .
 
-kind:406F2ECA-524D-47DC-B889-651893135456 a ext:Aard ;
+kind:406F2ECA-524D-47DC-B889-651893135456 a ext:MinisterraadType ;
     mu:uuid "406F2ECA-524D-47DC-B889-651893135456" ;
     skos:prefLabel "Elektronische procedure" .
 
-kind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F a ext:Aard ;
+kind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F a ext:MinisterraadType ;
     mu:uuid "7D8E35BE-E5D1-494F-B5F9-51B07875B96F" ;
     skos:prefLabel "Bijzondere ministerraad" .
