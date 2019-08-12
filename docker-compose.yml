@@ -150,6 +150,7 @@ services:
       MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
+      MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
     logging: *default-logging
   newsletter-service:
     image: kanselarij/newsletter-service
