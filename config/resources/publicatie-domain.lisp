@@ -103,7 +103,8 @@
   :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
   :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note    :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label     :string ,(s-prefix "skos:altLabel")))
+                (:alt-label     :string ,(s-prefix "skos:altLabel"))
+                (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
   :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfSubcase")
                                 :inverse t
                                 :as "newsletters")
