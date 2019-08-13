@@ -35,7 +35,8 @@
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
-            (file                       :via      ,(s-prefix "ext:convertedFile")                            :as "converted-file")
+            (file                       :via      ,(s-prefix "ext:convertedFile")
+                                        :as "converted-file")
             (document                   :via      ,(s-prefix "besluitvorming:heeftVersie")
                                         :inverse t
                                         :as "document")
@@ -80,44 +81,10 @@
   :features '(include-uri)
   :on-path "document-types")
 
-
-(define-resource translation-request ()
-  :class (s-prefix "besluitvorming:Vertalingsaanvraag")
-  :properties `((:target-language :string ,(s-prefix "besluitvorming:doeltaal"))
-                (:expected-delivery-date :date ,(s-prefix "besluitvorming:verwachteOpleverdatum")))
-  :has-many `(
-              (document-version :via ,(s-prefix "prov:generated")
-                                :as "documentVersions")
-              (translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatus")
-                                  :as "states")
-              (remark :via ,(s-prefix "besluitvorming:opmerking")
-                      :as "remarks")) ;; NOTE: opmerkingEN would be more suitable?
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/vertalingsaanvragen/")
-  :features '(include-uri)
-  :on-path "translation-requests")
-
-(define-resource translation-state ()
-  :class (s-prefix "besluitvorming:VertalingsaanvraagStatus") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
-  :properties `((:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
-  :has-many `((remark :via ,(s-prefix "rdfs:comment")
-                      :as "remarks"))
-  :has-one `((translation-request :via ,(s-prefix "ext:vertalingsaanvraagStatus") ;; NOTE: More specific relationship then besluitvorming:status as mu-cl-resources workaround
-                                 :inverse t
-                                 :as "translationRequest")
-             (translation-state-name :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
-                                     :inverse t
-                                     :as "value"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/vertalingsaanvraag-statussen/")
-  :features '(include-uri)
-  :on-path "translation-states")
-
-(define-resource translation-state-name ()
-  :class (s-prefix "besluitvorming:VertalingsaanvraagStatusCode") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
+(define-resource document-state ()
+  :class (s-prefix "ext:DocumentStatus")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :has-many `((translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatusCode")
-                                 :inverse t
-                                 :as "translation-states"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/vertalingsaanvraag-status-codes/")
-  :features '(include-uri)
-  :on-path "translation-state-code")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-statussen/")
+  :features `(no-pagination-defaults include-uri)
+  :on-path "document-states")
