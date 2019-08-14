@@ -71,6 +71,10 @@ services:
     logging: *default-logging
   elasticsearch:
     image: semtech/mu-search-elastic-backend
+    container_name: elasticsearch
+    environment:
+      - cluster.initial_master_nodes=elasticsearch
+      - node.name=elasticsearch
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
