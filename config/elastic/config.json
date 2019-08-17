@@ -3,7 +3,7 @@
   "max_batches": 0,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
-                             [{"name": "o-interne-overheid-read", "variables" : ["users"]}],
+                             [{"name": "o-intern-overheid-read", "variables" : ["users"]}],
                              [{"name": "o-admin-roles", "variables" : ["admin"]}],
                              [{"name": "o-kabinetten-read", "variables" : ["kabinetten"]}],
                              [{"name": "o-kanselarij-all", "variables" : ["kanselarij"]}],
