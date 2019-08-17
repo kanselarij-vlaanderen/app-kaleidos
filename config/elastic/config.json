@@ -13,6 +13,25 @@
   "eager_indexing_sparql_query" : false,
   "additive_indexes": true,
   "persist_indexes" : true,
+  "default_settings" : {
+    "analysis": {
+      "analyzer": {
+        "dutchanalyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "dutchstemmer"
+          ]
+        }
+      },
+      "filter": {
+        "dutchstemmer": {
+          "type": "stemmer",
+          "name": "dutch"
+        }
+      }
+    }
+  },
   "types": [
     {
       "type": "agendaitems",
