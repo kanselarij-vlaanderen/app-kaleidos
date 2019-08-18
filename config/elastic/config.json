@@ -263,10 +263,9 @@
       "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
       "properties": {
         "subject": "http://purl.org/dc/terms/subject",
-        "notification": {
+        "data": {
           "via": [
             "http://mu.semte.ch/vocabularies/ext/oc/notification",
-            "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
