@@ -168,7 +168,7 @@
             "search_analyzer": "dutchanalyzer"
           },
           "mandatees": {
-            "type": "date",
+            "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
