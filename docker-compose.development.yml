@@ -45,7 +45,8 @@ services:
   session-number-service:
   agenda-sort-service:
   custom-subcases-service:
-  custom-subcases-service:
+  document-grouping-service:
+  file-bundling-service:
   agenda-approve-service:
   mocklogin:
     image: kanselarij/mock-login-service

@@ -180,3 +180,13 @@ services:
   sink:
     image: lblod/sink-service:1.0.0
     logging: *default-logging
+  file-bundling-service:
+    image: kanselarij/file-bundling-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  document-grouping-service:
+    image: kanselarij/document-grouping-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging

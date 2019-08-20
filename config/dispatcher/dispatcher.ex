@@ -266,6 +266,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://session-number-service/"
   end
 
+  match "/file-bundling-service/*path" do
+    Proxy.forward conn, path, "http://file-bundling-service/"
+  end
+
+   match "/document-grouping-service/*path" do
+    Proxy.forward conn, path, "http://document-grouping-service/"
+  end
+
   match "/agenda-approve/*path" do
     Proxy.forward conn, path, "http://agenda-approve-service/"
   end
