@@ -63,10 +63,7 @@
                                 :as "author")
              (agendaitem        :via      ,(s-prefix "besluitvorming:opmerking")
                                 :inverse t
-                                :as "agendaitem")
-             (newsletter-info   :via      ,(s-prefix "ext:opmerkingen")
-                                :inverse t
-                                :as "newsletter-info"))
+                                :as "agendaitem"))
   :has-many `((remark     :via      ,(s-prefix "ext:antwoorden")
                           :as "answers"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
@@ -82,16 +79,15 @@
                 (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
-                (:finished              :boolean  ,(s-prefix "ext:afgewerkt")))
+                (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
+                (:remark                :string   ,(s-prefix "ext:opmerking")))
   :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                                         :inverse t
                                         :as "subcase")
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting"))
-  :has-many `((remark                   :via      ,(s-prefix "ext:opmerkingen")
-                                        :as "remarks")
-              (theme                    :via      ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
                                         :as "themes")
               (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "document-versions"))
