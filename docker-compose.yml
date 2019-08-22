@@ -184,6 +184,8 @@ services:
     image: kanselarij/file-bundling-service
     links:
       - database-with-auth:database
+    volumes:
+      - ./data/files:/share
     logging: *default-logging
   document-grouping-service:
     image: kanselarij/document-grouping-service
