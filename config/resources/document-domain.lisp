@@ -7,6 +7,7 @@
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:number-vp             :string ,(s-prefix "besluitvorming:stuknummerVP")) 
                 (:number-vr             :string ,(s-prefix "besluitvorming:stuknummerVR"))
+                (:number-vr-original    :string ,(s-prefix "ext:stuknummerVROriginal"))
                 (:freeze-access-level   :boolean ,(s-prefix "ext:freezeAccessLevel"))
                 (:for-cabinet           :boolean ,(s-prefix "ext:voorKabinetten"))) 
   :has-many `((remark                   :via ,(s-prefix "besluitvorming:opmerking")
