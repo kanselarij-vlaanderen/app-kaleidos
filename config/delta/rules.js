@@ -30,5 +30,24 @@ export default [
       gracePeriod: 250,
       ignoreFromSelf: true
     }
-  }
+  },
+  {
+    match: {
+      // could match a little closer if we were to watch all properties of agendas
+      subject: {
+      }
+    },
+    callback: {
+      url: "http://yggdrasil/delta",
+      method: "POST"
+    },
+    options: {
+      resourceFormat: "v0.0.1",
+      gracePeriod: 10000,
+      ignoreFromSelf: true
+    }
+  },
+
+
+
 ];
