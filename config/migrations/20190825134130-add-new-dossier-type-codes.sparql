@@ -1,0 +1,30 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX casetype: <http://kanselarij.vo.data.gift/id/dossier-type-codes/>
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?oldcode owl:deprecated "true"^^mulit:boolean .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?oldcode a ext:DossierTypeCode .
+    }
+}
+;
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d a ext:DossierTypeCode ;
+      mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" ;
+      skos:prefLabel "Nota" .
+      
+      casetype:305E9678-8106-4C14-9BD6-60AE2032D794 a ext:DossierTypeCode ;
+      mu:uuid "305E9678-8106-4C14-9BD6-60AE2032D794" ;
+      skos:prefLabel "Mededeling" .    
+    }
+}

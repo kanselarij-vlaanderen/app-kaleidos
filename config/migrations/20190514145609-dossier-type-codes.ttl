@@ -3,9 +3,15 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
-kans:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d a ext:DossierTypeCode ;
-    mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" ;
-    skos:prefLabel "Nota" .
-kans:305E9678-8106-4C14-9BD6-60AE2032D794 a ext:DossierTypeCode ;
-    mu:uuid "305E9678-8106-4C14-9BD6-60AE2032D794" ;
-    skos:prefLabel "Mededeling" .
+kans:9bea7988-2550-481f-8113-696b17883e61 a ext:DossierTypeCode ;
+    mu:uuid "9bea7988-2550-481f-8113-696b17883e61" ;
+    skos:prefLabel "Beslissing op de minister Raad van de VR" .
+kans:6334a6d2-4c01-440b-a884-fe583a14694d a ext:DossierTypeCode ;
+    mu:uuid "6334a6d2-4c01-440b-a884-fe583a14694d" ;
+    skos:prefLabel "Besluit bij delegatie" .
+kans:5fdf65f3-0732-4a36-b11c-c69b938c6626 a ext:DossierTypeCode ;
+    mu:uuid "5fdf65f3-0732-4a36-b11c-c69b938c6626" ;
+    skos:prefLabel "Ter mededeling" .
+kans:91d7346e-aa77-497b-8127-75e554592598 a ext:DossierTypeCode ;
+    mu:uuid "91d7346e-aa77-497b-8127-75e554592598" ;
+    skos:prefLabel "Persmededeling" .
