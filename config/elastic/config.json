@@ -142,7 +142,7 @@
         "data": {
           "via": [
             "http://purl.org/dc/terms/hasPart",
-            "http://mu.semte.ch/vocabularies/ext/bevatDocumentVersie",
+            "http://mu.semte.ch/vocabularies/ext/bevatDocumentversie",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
