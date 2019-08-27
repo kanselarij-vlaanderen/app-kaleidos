@@ -37,7 +37,8 @@
   :class (s-prefix "ext:DossierTypeCode")
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label   :string ,(s-prefix "skos:altLabel")))
+                (:alt-label   :string ,(s-prefix "skos:altLabel"))
+                (:deprecated  :boolean ,(s-prefix "owl:deprecated")))
   :has-many `((case           :via ,(s-prefix "dct:type")
                               :inverse t
                               :as "cases"))
