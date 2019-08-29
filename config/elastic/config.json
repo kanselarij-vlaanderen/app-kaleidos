@@ -263,6 +263,10 @@
       "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
       "properties": {
         "subject": "http://purl.org/dc/terms/subject",
+        "sessionDate": [
+          "^http://mu.semte.ch/vocabularies/ext/oc/agendaItem",
+          "http://www.w3.org/ns/prov#startedAtTime"
+        ],
         "data": {
           "via": [
             "http://mu.semte.ch/vocabularies/ext/oc/notification",
@@ -283,6 +287,9 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "sessionDate": {
+            "type": "date"
           }
         }
       }
