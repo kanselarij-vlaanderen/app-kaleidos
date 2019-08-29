@@ -1,0 +1,100 @@
+PREFIX bestuursorganen: <http://kanselarij.vo.data.gift/id/bestuursorganen/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+
+DELETE {
+    GRAPH ?oldgraph {
+        ?oldgov ?p ?o.
+    }
+}
+WHERE {
+    GRAPH ?oldgraph {
+        ?oldgov a besluit:Bestuursorgaan ;
+            ?p ?o.
+    }
+}
+;
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        bestuursorganen:7b5b77a5-0019-412b-a9f1-c81d06b195ad a besluit:Bestuursorgaan ;
+            mu:uuid "7b5b77a5-0019-412b-a9f1-c81d06b195ad" ;
+            skos:prefLabel "de Federale Regering"@nl .
+
+        bestuursorganen:17c8d413-48a5-4312-80f2-f2e8ab5e85bd a besluit:Bestuursorgaan ;
+            mu:uuid "17c8d413-48a5-4312-80f2-f2e8ab5e85bd" ;
+            skos:prefLabel "de Waalse regering"@nl .
+
+        bestuursorganen:eb3d4ea5-91ef-424b-bd64-bc1ba8db0bdd a besluit:Bestuursorgaan ;
+            mu:uuid "eb3d4ea5-91ef-424b-bd64-bc1ba8db0bdd" ;
+            skos:prefLabel "de Vlaamse Regering"@nl .
+
+        bestuursorganen:16b9063f-11b7-4fba-9ca2-2a4764433acf a besluit:Bestuursorgaan ;
+            mu:uuid "16b9063f-11b7-4fba-9ca2-2a4764433acf" ;
+            skos:prefLabel "de Regering van de Franse Gemeenschap"@nl .
+
+        bestuursorganen:1124b356-f752-48f0-8c44-7acaf308f24e a besluit:Bestuursorgaan ;
+            mu:uuid "1124b356-f752-48f0-8c44-7acaf308f24e" ;
+            skos:prefLabel "de Regering van de Duitse Gemeenschap"@nl .
+
+        bestuursorganen:e8e8dc4b-d7bc-4e96-9742-27a28226dafb a besluit:Bestuursorgaan ;
+            mu:uuid "e8e8dc4b-d7bc-4e96-9742-27a28226dafb" ;
+            skos:prefLabel "de Regering van het Brussels Hoofdstedelijk Gewest"@nl .
+            
+        bestuursorganen:9bad22a8-4478-48a9-be4b-296f9bb1e523 a besluit:Bestuursorgaan ;
+            mu:uuid "9bad22a8-4478-48a9-be4b-296f9bb1e523" ;
+            skos:prefLabel "Vlaams Parlement"@nl .
+
+        bestuursorganen:124213d1-7627-42ea-8b7b-f18792a6b347 a besluit:Bestuursorgaan ; # Strict gezien een 'Overlegorgaan'
+            mu:uuid "124213d1-7627-42ea-8b7b-f18792a6b347" ;
+            skos:prefLabel "Overlegcomité"@nl .
+
+        bestuursorganen:12266ddb-55a4-4437-9a9d-0b6b8c502386 a besluit:Bestuursorgaan ;
+            mu:uuid "12266ddb-55a4-4437-9a9d-0b6b8c502386" ;
+            skos:prefLabel "Nationale Regering"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+            
+        bestuursorganen:02d2d3f3-7d97-4769-a335-ab2931796fbd a besluit:Bestuursorgaan ;
+            mu:uuid "02d2d3f3-7d97-4769-a335-ab2931796fbd" ;
+            skos:prefLabel "Brusselse Hoofdstedelijke Regering"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+            
+        bestuursorganen:e5949320-02ef-4746-bf82-8f53203870c5 a besluit:Bestuursorgaan ;
+            mu:uuid "e5949320-02ef-4746-bf82-8f53203870c5" ;
+            skos:prefLabel "Waalse Gewestregering"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:810a349b-cae8-4bc0-8061-70a70479d77e a besluit:Bestuursorgaan ;
+            mu:uuid "810a349b-cae8-4bc0-8061-70a70479d77e" ;
+            skos:prefLabel "Franse Gemeenschapsraad"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:b820fa3f-2397-42c3-916d-3ca15dcf870f a besluit:Bestuursorgaan ;
+            mu:uuid "b820fa3f-2397-42c3-916d-3ca15dcf870f" ;
+            skos:prefLabel "Vlaamse Executieve"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:beb7731a-23b6-49ed-8f0f-388b054e1300 a besluit:Bestuursorgaan ;
+            mu:uuid "beb7731a-23b6-49ed-8f0f-388b054e1300" ;
+            skos:prefLabel "Brusselse Hoofdstedelijke Executieve"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:f76d1f20-e7c5-4131-b6a3-b5384387ec02 a besluit:Bestuursorgaan ;
+            mu:uuid "f76d1f20-e7c5-4131-b6a3-b5384387ec02" ;
+            skos:prefLabel "Waalse Gewestexecutieve"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:42284acd-4362-4d2e-bba5-740aa38c4ec7 a besluit:Bestuursorgaan ;
+            mu:uuid "42284acd-4362-4d2e-bba5-740aa38c4ec7" ;
+            skos:prefLabel "Franse Gemeenschapsexecutieve"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+
+        bestuursorganen:9dd5b9a1-381c-4030-8d4a-d59487bac3ef a besluit:Bestuursorgaan ;
+            mu:uuid "9dd5b9a1-381c-4030-8d4a-d59487bac3ef" ;
+            skos:prefLabel "Executieve van de Duitstalige Gemeenschap"@nl ;
+            owl:deprecated "true"^^mulit:boolean .
+    }
+}

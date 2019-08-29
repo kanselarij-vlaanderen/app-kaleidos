@@ -1,8 +1,10 @@
 (define-resource oc-meeting ()
   :class (s-prefix "oc:Meeting")
-  :properties `((:started-at            :datetime ,(s-prefix "prov:startedAtTime")))
+  :properties `((:started-at            :datetime ,(s-prefix "prov:startedAtTime"))
+                (:extra-info            :string   ,(s-prefix "ext:extraInfo")))
   :has-many `((oc-agendaitem            :via      ,(s-prefix "oc:agendaItem")
                                         :as "agenda-items"))
+                                        
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/oc-zittingen/")
   :features '(include-uri)
   :on-path "oc-meetings")

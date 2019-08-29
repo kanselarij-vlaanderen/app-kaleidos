@@ -63,10 +63,7 @@
                                 :as "author")
              (agendaitem        :via      ,(s-prefix "besluitvorming:opmerking")
                                 :inverse t
-                                :as "agendaitem")
-             (newsletter-info   :via      ,(s-prefix "ext:opmerkingen")
-                                :inverse t
-                                :as "newsletter-info"))
+                                :as "agendaitem"))
   :has-many `((remark     :via      ,(s-prefix "ext:antwoorden")
                           :as "answers"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
@@ -82,16 +79,15 @@
                 (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
-                (:finished              :boolean  ,(s-prefix "ext:afgewerkt")))
+                (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
+                (:remark                :string   ,(s-prefix "ext:opmerking")))
   :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                                         :inverse t
                                         :as "subcase")
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting"))
-  :has-many `((remark                   :via      ,(s-prefix "ext:opmerkingen")
-                                        :as "remarks")
-              (theme                    :via      ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
                                         :as "themes")
               (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "document-versions"))
@@ -103,7 +99,8 @@
   :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
   :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note    :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label     :string ,(s-prefix "skos:altLabel")))
+                (:alt-label     :string ,(s-prefix "skos:altLabel"))
+                (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
   :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfSubcase")
                                 :inverse t
                                 :as "newsletters")
@@ -113,3 +110,17 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
   :features `(no-pagination-defaults include-uri)
   :on-path "themes")
+
+(define-resource mail-campaign ()
+  :class (s-prefix "ext:MailCampagne") 
+  :properties `((:campaign-id       :string   ,(s-prefix "ext:campagneId"))
+                (:campaign-web-id   :string   ,(s-prefix "ext:campagneWebId"))
+                (:archive-url       :string   ,(s-prefix "ext:voorbeeldUrl"))
+                (:sent              :boolean  ,(s-prefix "ext:isVerstuurd"))
+                (:sent-at           :datetime ,(s-prefix "ext:isVerstuurdOp")))
+  :has-many `((meeting              :via      ,(s-prefix "ext:heeftMailCampagnes")
+                                    :inverse t
+                                    :as "meetings"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mail-campaigns/")
+  :features `(no-pagination-defaults include-uri)
+  :on-path "mail-campaigns")

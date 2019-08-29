@@ -1,0 +1,15 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?code owl:deprecated "false"^^mulit:boolean .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?code a ext:DossierTypeCode .
+        FILTER NOT EXISTS { ?code owl:deprecated ?depr }
+    }
+}

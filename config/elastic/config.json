@@ -1,30 +1,51 @@
 {
   "batch_size": 128,
-  "max_batches":0,
-  "automatic_index_updates" : true,
-  "eager_indexing_groups" : [[{"name" : "o-interne-overheid-read", "variables" : ["users"]}],
-                             [{"name" : "o-admin-roles", "variables" : ["admin"]}],
-                             [{"name" : "o-kabinetten-read", "variables" : ["kabinetten"]}],
-                             [{"name" : "o-kanselarij-all", "variables" : ["kanselarij"]}],
-                             [{"name" : "public", "variables" : []}],
-                             [{"name" : "read", "variables":[]}],
-                             [{"name" : "clean", "variables": []}]],
-  "attachments_path_base" : "/data/",
-  "eager_indexing_sparql_query" : false,
+  "max_batches": 0,
+  "automatic_index_updates": true,
+  "eager_indexing_groups": [
+                             [{"name": "o-intern-overheid-read", "variables" : ["users"]}],
+                             [{"name": "o-admin-roles", "variables" : ["admin"]}],
+                             [{"name": "o-kabinetten-read", "variables" : ["kabinetten"]}],
+                             [{"name": "o-kanselarij-all", "variables" : ["kanselarij"]}],
+                             [{"name": "public", "variables" : []}],
+                             [{"name": "read", "variables":[]}],
+                             [{"name": "clean", "variables": []}]
+                           ],
+  "attachments_path_base": "/data/",
+  "eager_indexing_sparql_query": false,
   "additive_indexes": true,
-  "persist_indexes" : true,
+  "persist_indexes": true,
+  "default_settings": {
+    "analysis": {
+      "analyzer": {
+        "dutchanalyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "dutchstemmer"
+          ]
+        }
+      },
+      "filter": {
+        "dutchstemmer": {
+          "type": "stemmer",
+          "name": "dutch"
+        }
+      }
+    }
+  },
   "types": [
     {
       "type": "agendaitems",
       "on_path": "agendaitems",
       "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "properties": {
-        "title" : "http://purl.org/dc/terms/title",
-        "shortTitle" : "http://purl.org/dc/terms/alternative",
-        "titlePress" : "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
-        "textPress" : "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
-        "agendaId" : "^http://purl.org/dc/terms/hasPart",
-        "mandateeName" : [
+        "title": "http://purl.org/dc/terms/title",
+        "shortTitle": "http://purl.org/dc/terms/alternative",
+        "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
+        "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
+        "agendaId": "^http://purl.org/dc/terms/hasPart",
+        "mandateeName": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
@@ -33,16 +54,16 @@
           "http://mu.semte.ch/vocabularies/ext/agendapuntSubject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "data" : {
-          "via" : [
+        "data": {
+          "via": [
             "http://mu.semte.ch/vocabularies/ext/bevatAgendapuntDocumentversie",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
-          "attachment_pipeline" : "attachment"
+          "attachment_pipeline": "attachment"
         }
       },
-      "mappings": { //null
+      "mappings": {
         "properties": {
           "attachment.content": {
             "type": "text",
@@ -50,8 +71,8 @@
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
           },
-          "agendaId":{
-            "type":"keyword"
+          "agendaId": {
+            "type": "keyword"
           },
           "title": {
             "type": "text",
@@ -91,13 +112,13 @@
       "on_path": "cases",
       "rdf_type": "http://dbpedia.org/ontology/Case",
       "properties": {
-        "title" : "http://purl.org/dc/terms/title",
-        "creators" : [
+        "title": "http://purl.org/dc/terms/title",
+        "creators": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
-        "mandatees" : [
+        "mandatees": [
           "http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -118,14 +139,14 @@
           "http://purl.org/dc/terms/hasPart",
           "http://purl.org/dc/terms/alternative"
         ],
-        "data" : {
-          "via" : [
+        "data": {
+          "via": [
             "http://purl.org/dc/terms/hasPart",
-            "http://mu.semte.ch/vocabularies/ext/bevatDocumentVersie",
+            "http://mu.semte.ch/vocabularies/ext/bevatDocumentversie",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
-          "attachment_pipeline" : "attachment"
+          "attachment_pipeline": "attachment"
         }
       },
       "mappings": {
@@ -147,7 +168,7 @@
             "search_analyzer": "dutchanalyzer"
           },
           "mandatees": {
-            "type": "date",
+            "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
@@ -177,12 +198,12 @@
           "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
           "http://data.europa.eu/eli/ontology#description"
         ],
-        "creators" : [
+        "creators": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
-        "mandatees" : [
+        "mandatees": [
           "http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -196,15 +217,15 @@
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "data": {
-          "via" : [
+          "via": [
             "http://purl.org/dc/terms/hasPart",
             "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
-            "http://mu.semte.ch/vocabularies/ext/beslissingsFiche",
+            "http://mu.semte.ch/vocabularies/ext/beslissingsfiche",
             "http://data.vlaanderen.be/ns/besluitvorming#heeftVersie",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
-          "attachment_pipeline" : "attachment"
+          "attachment_pipeline": "attachment"
         }
       },
       "mappings": {
@@ -220,13 +241,13 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-           "creators": {
+          "creators": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
           "mandatees": {
-            "type": "date",
+            "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
@@ -242,13 +263,12 @@
       "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
       "properties": {
         "subject": "http://purl.org/dc/terms/subject",
-        "notification": {
-          "via" : [
+        "data": {
+          "via": [
             "http://mu.semte.ch/vocabularies/ext/oc/notification",
-            "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
-          "attachment_pipeline" : "attachment"
+          "attachment_pipeline": "attachment"
         }
       },
       "mappings": {
