@@ -79,7 +79,7 @@ services:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.4.2
+    image: docker.elastic.co/kibana/kibana:7.2.0
     environment:
       ELASTICSEARCH_URL: "http://elasticsearch:9200"
     logging: *default-logging
