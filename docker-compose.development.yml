@@ -51,13 +51,7 @@ services:
   mocklogin:
     image: kanselarij/mock-login-service
   login:
-    # environment:
-    #    NODE_ENV: "development"
-    # ports:
-    #   - 9229:9229
   newsletter-service:
-    entrypoint: "echo 'service disabled'"
-    restart: "no"
   minister-jurisdiction-service:
     environment:
       NODE_ENV: "development"

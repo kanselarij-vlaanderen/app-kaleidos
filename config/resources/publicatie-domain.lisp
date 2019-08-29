@@ -116,7 +116,8 @@
   :properties `((:campaign-id       :string   ,(s-prefix "ext:campagneId"))
                 (:campaign-web-id   :string   ,(s-prefix "ext:campagneWebId"))
                 (:archive-url       :string   ,(s-prefix "ext:voorbeeldUrl"))
-                (:send              :boolean  ,(s-prefix "ext:isVerstuurd")))
+                (:sent              :boolean  ,(s-prefix "ext:isVerstuurd"))
+                (:sent-at           :datetime ,(s-prefix "ext:isVerstuurdOp")))
   :has-many `((meeting              :via      ,(s-prefix "ext:heeftMailCampagnes")
                                     :inverse t
                                     :as "meetings"))
