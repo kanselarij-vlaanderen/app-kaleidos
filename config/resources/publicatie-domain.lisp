@@ -110,3 +110,16 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
   :features `(no-pagination-defaults include-uri)
   :on-path "themes")
+
+(define-resource mail-campaign ()
+  :class (s-prefix "ext:MailCampagne") 
+  :properties `((:campaign-id       :string   ,(s-prefix "ext:campagneId"))
+                (:campaign-web-id   :string   ,(s-prefix "ext:campagneWebId"))
+                (:archive-url       :string   ,(s-prefix "ext:voorbeeldUrl"))
+                (:send              :boolean  ,(s-prefix "ext:isVerstuurd")))
+  :has-many `((meeting              :via      ,(s-prefix "ext:heeftMailCampagnes")
+                                    :inverse t
+                                    :as "meetings"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mail-campaigns/")
+  :features `(no-pagination-defaults include-uri)
+  :on-path "mail-campaigns")
