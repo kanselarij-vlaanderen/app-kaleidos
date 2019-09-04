@@ -1,0 +1,38 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://mu.semte.ch/vocabularies/ext/Goedkeuring> a ext:PublicClass .
+    <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> a ext:PublicClass .
+    <http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/DocumentIdentifier> a ext:PublicClass .
+    <http://schema.org/Comment> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/DocumentTypeCode> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/ProcedurestapFase> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/Notule> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/ThemaCode> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/Thema> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType> a ext:PublicClass .
+    <http://xmlns.com/foaf/0.1/OnlineAccount> a ext:PublicClass .
+    <http://xmlns.com/foaf/0.1/Person> a ext:PublicClass .
+    <http://xmlns.com/foaf/0.1/Group> a ext:PublicClass .
+    <https://data.vlaanderen.be/ns/besluitvorming#Mededeling> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode> a ext:PublicClass .
+    <http://data.vlaanderen.be/ns/mandaat#Mandaat> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode> a ext:PublicClass .
+    <http://data.vlaanderen.be/ns/mandaat#Mandataris> a ext:PublicClass .
+    <http://www.w3.org/ns/person#Person> a ext:PublicClass .
+    <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/DossierTypeCode> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/SysteemNotificatie> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/ProcedurestapType> a ext:PublicClass .
+    <http://kanselarij.vo.data.gift/core/IseCode> a ext:PublicClass .
+    <http://kanselarij.vo.data.gift/core/Beleidsdomein> a ext:PublicClass .
+    <http://kanselarij.vo.data.gift/core/Beleidsveld> a ext:PublicClass .
+    <http://mu.semte.ch/vocabularies/ext/Handtekening> a ext:PublicClass .
+    <http://data.vlaanderen.be/ns/besluitvorming#Verdaagd> a ext:PublicClass .
+    <http://www.w3.org/ns/person#Person> a ext:PublicClass .
+  }
+}
+

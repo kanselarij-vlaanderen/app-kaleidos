@@ -89,7 +89,7 @@ services:
         - ./config/delta:/config
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.17.1
+    image: semtech/mu-cl-resources:1.18.0
     links:
       - database-with-auth:database
     environment:
