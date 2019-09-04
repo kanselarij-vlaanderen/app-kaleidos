@@ -54,6 +54,7 @@ defmodule Acl.UserGroups.Config do
       } LIMIT 1" }
   end
 
+  # TODO get this from the database?
   defp all_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
@@ -154,19 +155,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: [
-              "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",     
-              "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",      
-              "http://xmlns.com/foaf/0.1/OnlineAccount",                                       
-              "http://xmlns.com/foaf/0.1/Person",                                               
-              "http://xmlns.com/foaf/0.1/Group",                                                 
-              "http://mu.semte.ch/vocabularies/ext/ThemaCode",                                    
-              "http://mu.semte.ch/vocabularies/ext/Thema",                                         
-              "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",                           
-              "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",    
-              "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
-              "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode"
-            ]
+            resource_types: unconfidential_resource_types()
           } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -177,7 +166,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read],
-        access: named_graph_access_by_role( "users", "users" ),
+        access: named_graph_access_by_role( "privileged", "intern-overheid" ),
         graphs: [ 
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
@@ -203,6 +192,18 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
+        name: "o-kanselarij-on-public",
+        useage: [:read, :write, :read_for_write],
+        access: direct_write_on_public( "kanselarij" ),
+        graphs: [ %GraphSpec{
+          graph: "http://mu.semte.ch/graphs/public",
+          constraint: %ResourceConstraint{
+            resource_types: unconfidential_resource_types()
+          } },
+        ]
+      },
+
+      %GroupSpec{
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "admin", "admin" ),
@@ -215,9 +216,9 @@ defmodule Acl.UserGroups.Config do
         ] 
       },
       %GroupSpec{
-        name: "o-kabinetten-read",
+        name: "o-intern-regering-read",
         useage: [:read],
-        access: named_graph_access_by_role( "kabinet\", \"minister", "kabinetten" ),
+        access: named_graph_access_by_role( "kabinet\", \"minister", "intern-regering" ),
         graphs: [ 
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
