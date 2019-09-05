@@ -1,0 +1,22 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> .
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> .
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/> .
+PREFIX conf: <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/> .
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    conf:6ca49d86-d40f-46c9-bde3-a322aa7e5c8e skos:prefLabel "Actief openbaar"@nl .
+    conf:abe4c18d-13a9-45f0-8cdd-c493eabbbe29 skos:prefLabel "Beperkt openbaar"@nl .
+    conf:d335f7e3-aefd-4f93-81a2-1629c2edafa3 skos:prefLabel "Intern overheid"@nl .
+  }
+};
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    conf:6ca49d86-d40f-46c9-bde3-a322aa7e5c8e skos:prefLabel "Publiek"@nl .
+    conf:abe4c18d-13a9-45f0-8cdd-c493eabbbe29 skos:prefLabel "Intern Overheid"@nl .
+    conf:d335f7e3-aefd-4f93-81a2-1629c2edafa3 skos:prefLabel "Intern Regering"@nl .
+    
+  }
+};
+
