@@ -329,6 +329,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://minister-jurisdiction-service/"
   end
 
+  match "/user-management-service/*path" do
+    Proxy.forward conn, path, "http://user-management-service/"
+  end
+
   match "/alert-types/*path" do
     Proxy.forward conn, path, "http://cache/alert-types"
   end
