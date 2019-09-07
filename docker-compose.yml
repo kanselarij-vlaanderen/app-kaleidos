@@ -61,14 +61,19 @@ services:
     restart: always
     logging: *default-logging
   musearch:
-    image: semtech/mu-search:0.1.0
-    links:
+   image: semtech/mu-search:0.6.0-beta.2
+   links:
       - elasticsearch:elasticsearch
-      - database-with-auth:db
+      - database-with-auth:database
     volumes:
       - ./config/elastic:/config
       - ./data/files:/data
-    logging: *default-logging
+   environment:
+     NUMBER_OF_THREADS: 4
+     JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
+     LOG_LEVEL: "info"
+   logging: *default-logging
+   restart: always
   elasticsearch:
     image: semtech/mu-search-elastic-backend
     container_name: elasticsearch
@@ -78,6 +83,7 @@ services:
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
+    restart: always
   kibana:
     image: docker.elastic.co/kibana/kibana:7.2.0
     environment:
