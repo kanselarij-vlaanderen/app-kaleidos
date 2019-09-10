@@ -22,7 +22,7 @@ export default [
       }
     },
     callback: {
-      url: "http://resource/update",
+      url: "http://resource/.mu/delta",
       method: "POST"
     },
     options: {
