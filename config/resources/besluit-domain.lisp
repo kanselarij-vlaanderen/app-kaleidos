@@ -64,6 +64,8 @@
                                       :as "mandatees")
               (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
+              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "linked-document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
                                       :as "phases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
