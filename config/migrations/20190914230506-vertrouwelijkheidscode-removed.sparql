@@ -1,0 +1,12 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode> a ext:PublicClass .
+  }
+};
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode> a ext:PublicClass .
+  }
+};
