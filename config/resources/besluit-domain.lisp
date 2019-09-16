@@ -249,7 +249,9 @@
                                         :inverse t
                                         :as "requested-subcases")
               (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
-                                        :as "related-cases"))
+                                        :as "related-cases")
+              (document-version         :via      ,(s-prefix "ext:zittingDocumentversie")
+                                        :as "document-versions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
