@@ -67,7 +67,11 @@
                                         :inverse t
                                         :as "meeting-record")
             (access-level               :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
-                                        :as "access-level"))
+                                        :as "access-level")
+            (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
+                                        :inverse t
+                                        :as "meeting")  
+                                        )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")
