@@ -190,7 +190,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/government-functions/"
   end
   match "/government-bodies/*path" do
-    Proxy.forward conn, path, "http://resource/government-bodies/"
+    Proxy.forward conn, path, "http://cache/government-bodies/"
   end
   match "/mandatees/*path" do
     Proxy.forward conn, path, "http://cache/mandatees/"
@@ -311,7 +311,7 @@ defmodule Dispatcher do
   end
 
   match "/files/*path" do
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://cache/files/"
   end
 
   match "/mock/sessions/*path" do
@@ -346,19 +346,19 @@ defmodule Dispatcher do
   end
 
   match "/oc-meetings/*path" do
-    Proxy.forward conn, path, "http://resource/oc-meetings/"
+    Proxy.forward conn, path, "http://cache/oc-meetings/"
   end
 
   match "/oc-agendaitems/*path" do
-    Proxy.forward conn, path, "http://resource/oc-agendaitems/"
+    Proxy.forward conn, path, "http://cache/oc-agendaitems/"
   end
 
   match "/oc-cases/*path" do
-    Proxy.forward conn, path, "http://resource/oc-cases/"
+    Proxy.forward conn, path, "http://cache/oc-cases/"
   end
 
   match "/mail-campaigns/*path" do
-    Proxy.forward conn, path, "http://resource/mail-campaigns/"
+    Proxy.forward conn, path, "http://cache/mail-campaigns/"
   end
 
   match _ do
