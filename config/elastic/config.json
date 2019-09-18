@@ -122,7 +122,8 @@
           "http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/name"
+          "http://xmlns.com/foaf/0.1/firstName",
+          "http://xmlns.com/foaf/0.1/lastName"
         ],
         "sessionDates": [
           "http://purl.org/dc/terms/hasPart",
