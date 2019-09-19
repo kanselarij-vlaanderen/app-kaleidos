@@ -40,7 +40,7 @@ services:
       # INSPECT_INCOMING_SPARQL_QUERIES: "false"
       # LOG_ACCESS_RIGHTS: "true"
       # INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
-      # LOG_DELTA_MESSAGES: "true"
+      LOG_DELTA_MESSAGES: "true"
       # LOG_DELTA_CLIENT_COMMUNICATION: "true"
       # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       DATABASE_COMPATIBILITY: "Virtuoso"
@@ -158,6 +158,11 @@ services:
     logging: *default-logging
   newsletter-service:
     image: kanselarij/newsletter-service
+    links:
+      - database-with-auth:database
+    logging: *default-logging
+  user-management-service:
+    image: kanselarij/user-management-service
     links:
       - database-with-auth:database
     logging: *default-logging
