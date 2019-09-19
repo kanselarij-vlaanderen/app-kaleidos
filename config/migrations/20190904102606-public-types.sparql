@@ -9,7 +9,6 @@ INSERT DATA {
     <http://schema.org/Comment> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/DocumentTypeCode> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/ProcedurestapFase> a ext:PublicClass .
-    <http://mu.semte.ch/vocabularies/ext/Notule> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/ThemaCode> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/Thema> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType> a ext:PublicClass .
