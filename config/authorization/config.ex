@@ -163,7 +163,7 @@ defmodule Acl.UserGroups.Config do
       },
       %GroupSpec{
         name: "o-admin-on-public",
-        useage: [:read, :write, :read_for_write],
+        useage: [:write, :read_for_write],
         access: direct_write_on_public( "admin" ),
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
@@ -178,7 +178,7 @@ defmodule Acl.UserGroups.Config do
       },
       %GroupSpec{
         name: "o-kanselarij-on-public",
-        useage: [:read, :write, :read_for_write],
+        useage: [:write, :read_for_write],
         access: direct_write_on_public( "kanselarij" ),
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",

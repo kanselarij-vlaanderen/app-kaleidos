@@ -5,11 +5,9 @@
   "eager_indexing_groups": [
                              [{"name": "o-intern-overheid-read", "variables" : ["users"]}],
                              [{"name": "o-admin-roles", "variables" : ["admin"]}],
-                             [{"name": "o-kabinetten-read", "variables" : ["kabinetten"]}],
+                             [{"name": "o-intern-regering-read", "variables" : ["intern-regering"]}],
                              [{"name": "o-kanselarij-all", "variables" : ["kanselarij"]}],
-                             [{"name": "public", "variables" : []}],
-                             [{"name": "read", "variables":[]}],
-                             [{"name": "clean", "variables": []}]
+                             [{"name": "public", "variables" : []}]
                            ],
   "attachments_path_base": "/data/",
   "eager_indexing_sparql_query": false,
