@@ -63,9 +63,9 @@ services:
   musearch:
    image: semtech/mu-search:0.6.0-beta02
    links:
-      - elasticsearch:elasticsearch
       - database-with-auth:database
-    volumes:
+      - elasticsearch:elasticsearch
+   volumes:
       - ./config/elastic:/config
       - ./data/files:/data
    environment:
