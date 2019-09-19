@@ -9,21 +9,6 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
-  defp access_by_role( group_string ) do
-    %AccessByQuery{
-      vars: ["session_group"],
-      query: sparql_query_for_access_role( group_string ) }
-  end
-
-  defp sparql_query_for_access_role( group_string ) do
-    "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    SELECT ?session_group ?session_role WHERE {
-      <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                   ext:sessionRole ?session_role.
-      FILTER( ?session_role = \"#{group_string}\" )
-    } LIMIT 1"
-  end
 
   defp named_graph_access_by_role( group_string, graph_name ) do
     %AccessByQuery{
@@ -34,11 +19,13 @@ defmodule Acl.UserGroups.Config do
   defp named_sparql_query_for_access_role( group_string, graph_name ) do
     "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     SELECT ?name ?session_role WHERE {
       BIND(\"#{graph_name}\" AS ?name)
-      <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                   ext:sessionRole ?session_role.
-      FILTER( ?session_role IN (\"#{group_string}\") )
+      <SESSION_ID> session:account / ^foaf:account / ^foaf:member ?group .
+      BIND( STRAFTER(STR(?group), \"http://data.kanselarij.vlaanderen.be/id/group/\") AS ?session_role )
+      FILTER(?session_role IN (\"#{group_string}\") )
     } LIMIT 1"
   end
 
@@ -78,7 +65,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
-      "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode",
+      "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -120,7 +107,7 @@ defmodule Acl.UserGroups.Config do
       "http://xmlns.com/foaf/0.1/Group",
       "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
-      "http://mu.semte.ch/vocabularies/ext/VertrouwelijkheidCode",
+      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -137,7 +124,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne"
     ]
-  end 
+  end
 
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
@@ -167,13 +154,13 @@ defmodule Acl.UserGroups.Config do
         name: "o-intern-overheid-read",
         useage: [:read],
         access: named_graph_access_by_role( "privileged", "intern-overheid" ),
-        graphs: [ 
+        graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
               resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
-            } 
-          } 
+            }
+          }
         ]
       },
       %GroupSpec{
@@ -211,15 +198,15 @@ defmodule Acl.UserGroups.Config do
           graph: "http://mu.semte.ch/graphs/organizations/",
           constraint: %ResourceConstraint{
             resource_types: [
-              "http://mu.semte.ch/vocabularies/ext/NotAThing",                                                 
+              "http://mu.semte.ch/vocabularies/ext/NotAThing",
             ] } },
-        ] 
+        ]
       },
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read],
         access: named_graph_access_by_role( "kabinet\", \"minister", "intern-regering" ),
-        graphs: [ 
+        graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
@@ -232,14 +219,14 @@ defmodule Acl.UserGroups.Config do
         name: "o-kanselarij-all",
         useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "kanselarij\", \"minister president\", \"admin", "kanselarij" ),
-        graphs: [ 
+        graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
               resource_types: all_resource_types()
-            } 
+            }
           },
-        ] 
+        ]
       },
 
       # // CLEANUP

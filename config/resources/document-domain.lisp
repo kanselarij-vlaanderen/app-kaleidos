@@ -32,8 +32,9 @@
   :class (s-prefix "ext:DocumentVersie")
   :properties `((:version-number        :string   ,(s-prefix "ext:versieNummer"))
                 (:created               :datetime ,(s-prefix "dct:created"))
-                (:number-vr             :string   ,(s-prefix "besluitvorming:stuknummerVR")) 
-                (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam")))
+                (:number-vr             :string   ,(s-prefix "besluitvorming:stuknummerVR"))
+                (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam"))
+                (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk")))
   :has-one `((file                      :via      ,(s-prefix "ext:file")
                                         :as "file")
             (file                       :via      ,(s-prefix "ext:convertedFile")
@@ -44,7 +45,13 @@
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
                                         :as "subcase")
+            (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
+                                        :inverse t
+                                        :as "linked-subcase")
             (agendaitem                 :via ,(s-prefix "ext:bevatAgendapuntDocumentversie")
+                                        :inverse t
+                                        :as "agendaitem")
+            (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
                                         :inverse t
                                         :as "agendaitem")
             (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
@@ -58,7 +65,13 @@
                                         :as "decision")
             (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
-                                        :as "meeting-record"))
+                                        :as "meeting-record")
+            (access-level               :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
+                                        :as "access-level")
+            (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
+                                        :inverse t
+                                        :as "meeting")  
+                                        )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
   :features `(include-uri)
   :on-path "document-versions")

@@ -64,6 +64,8 @@
                                       :as "mandatees")
               (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
+              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "linked-document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
                                       :as "phases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
@@ -231,6 +233,8 @@
   :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart"))
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
+                (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
+                (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier"))
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie"))
                 (:kind                  :uri      ,(s-prefix "ext:aard"))
@@ -245,7 +249,9 @@
                                         :inverse t
                                         :as "requested-subcases")
               (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
-                                        :as "related-cases"))
+                                        :as "related-cases")
+              (document-version         :via      ,(s-prefix "ext:zittingDocumentversie")
+                                        :as "document-versions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")

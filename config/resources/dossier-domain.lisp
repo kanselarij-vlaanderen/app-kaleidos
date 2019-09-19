@@ -109,6 +109,8 @@
                                       :as "related-to")
               (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
+              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "linked-document-versions")
               (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
