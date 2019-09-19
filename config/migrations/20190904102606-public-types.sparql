@@ -4,7 +4,6 @@ INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
     <http://mu.semte.ch/vocabularies/ext/Goedkeuring> a ext:PublicClass .
     <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> a ext:PublicClass .
-    <http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/DocumentIdentifier> a ext:PublicClass .
     <http://schema.org/Comment> a ext:PublicClass .
     <http://mu.semte.ch/vocabularies/ext/DocumentTypeCode> a ext:PublicClass .

@@ -93,7 +93,6 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
