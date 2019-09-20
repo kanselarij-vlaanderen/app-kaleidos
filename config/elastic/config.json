@@ -6,6 +6,7 @@
                              [{"name": "o-intern-overheid-read", "variables" : ["intern-overheid"]}],
                              [{"name": "o-admin-roles", "variables" : ["admin"]}],
                              [{"name": "o-intern-regering-read", "variables" : ["intern-regering"]}],
+                             [{"name": "o-minister-read", "variables" : ["minister"]}],
                              [{"name": "o-kanselarij-all", "variables" : ["kanselarij"]}],
                              [{"name": "public", "variables" : []}]
                            ],
