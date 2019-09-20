@@ -1,0 +1,49 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX user: <http://data.kanselarij.vlaanderen.be/id/gebruiker/>
+PREFIX account: <http://data.kanselarij.vlaanderen.be/id/account/>
+PREFIX group: <http://data.kanselarij.vlaanderen.be/id/group/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    user:privileged a foaf:Person ;
+        mu:uuid "c228b8ff-bef2-4888-b403-7a1846e0d85c" ;
+        foaf:firstName "Privileged" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:privileged .
+
+    account:privileged a foaf:OnlineAccount ;
+        mu:uuid "0644e559-29b8-4c3c-8e93-3f48a3d8d4ca" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "4" .
+
+    group:privileged a foaf:Group ;
+        mu:uuid "3e824494-bbe7-45cf-aed8-5828970a10dc" ;
+        foaf:name "privileged" ;
+        foaf:member user:privileged .
+  }
+
+};
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    user:overheid a foaf:Person ;
+        mu:uuid "c228b8ff-bef2-4888-b403-7a1846e0d85c" ;
+        foaf:firstName "Overheid" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:overheid .
+
+    account:overheid a foaf:OnlineAccount ;
+        mu:uuid "0644e559-29b8-4c3c-8e93-3f48a3d8d4ca" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "4" .
+
+    group:overheid a foaf:Group ;
+        mu:uuid "3e824494-bbe7-45cf-aed8-5828970a10dc" ;
+        foaf:name "overheid" ;
+        foaf:member user:overheid .
+  }
+}
