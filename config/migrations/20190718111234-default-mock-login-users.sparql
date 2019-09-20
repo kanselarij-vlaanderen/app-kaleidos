@@ -96,5 +96,23 @@ INSERT DATA {
         mu:uuid "3e824494-bbe7-45cf-aed8-5828970a10dc" ;
         foaf:name "privileged" ;
         foaf:member user:privileged .
+
+    user:kabinet a foaf:Person ;
+        mu:uuid "deedeedb-bc89-4be3-85e3-20153f088688" ;
+        foaf:firstName "Kabinet" ;
+        foaf:familyName "Test" ;
+        dct:identifier "00.00.00-000.00" ;
+        foaf:account account:kabinet .
+
+    account:kabinet a foaf:OnlineAccount ;
+        mu:uuid "39fbd86f-45d2-41b3-ac21-485e8b285d0e" ;
+        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        dct:identifier "5" .
+
+    group:kabinet a foaf:Group ;
+        mu:uuid "7e8c0c9c-05ec-49fd-9e96-fc54ebf3f9eb" ;
+        foaf:name "kabinet" ;
+        foaf:member user:kabinet .
+
   }
 }

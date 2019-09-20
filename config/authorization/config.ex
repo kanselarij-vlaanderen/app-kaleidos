@@ -203,7 +203,20 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read],
-        access: named_graph_access_by_role( "kabinet\", \"minister", "intern-regering" ),
+        access: named_graph_access_by_role( "kabinet", "intern-regering" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+            }
+          },
+        ]
+      },
+      %GroupSpec{
+        name: "o-minister-read",
+        useage: [:read],
+        access: named_graph_access_by_role( "minister", "minister" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
