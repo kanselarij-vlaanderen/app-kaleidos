@@ -151,7 +151,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read],
-        access: named_graph_access_by_role( "privileged", "intern-overheid" ),
+        access: named_graph_access_by_role( "overheid", "intern-overheid" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
