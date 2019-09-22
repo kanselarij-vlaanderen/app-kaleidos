@@ -17,7 +17,7 @@ DELETE DATA {
 
     account:privileged a foaf:OnlineAccount ;
         mu:uuid "0644e559-29b8-4c3c-8e93-3f48a3d8d4ca" ;
-        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
         dct:identifier "4" .
 
     group:privileged a foaf:Group ;
@@ -38,7 +38,7 @@ INSERT DATA {
 
     account:overheid a foaf:OnlineAccount ;
         mu:uuid "0644e559-29b8-4c3c-8e93-3f48a3d8d4ca" ;
-        foaf:accountServiceHomepage "https://github.com/lblod/mock-login-service" ;
+        foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
         dct:identifier "4" .
 
     group:overheid a foaf:Group ;
