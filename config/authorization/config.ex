@@ -173,7 +173,7 @@ defmodule Acl.UserGroups.Config do
               "http://xmlns.com/foaf/0.1/OnlineAccount",
               "http://xmlns.com/foaf/0.1/Person",
               "http://xmlns.com/foaf/0.1/Group",
-            ] } },
+            ] ++ unconfidential_resource_types() } },
         ]
       },
       %GroupSpec{
