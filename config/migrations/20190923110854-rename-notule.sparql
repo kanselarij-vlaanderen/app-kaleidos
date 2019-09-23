@@ -1,0 +1,28 @@
+PREFIX type: <http://kanselarij.vo.data.gift/id/concept/document-type-codes/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    type:e149294e-a8b8-4c11-83ac-6d4c417b079b   skos:prefLabel ?l1 ;
+                                                skos:altLabel ?l2 .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    type:e149294e-a8b8-4c11-83ac-6d4c417b079b   skos:prefLabel ?l1 ;
+                                                skos:altLabel ?l2 .
+    }
+};
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+     type:e149294e-a8b8-4c11-83ac-6d4c417b079b   skos:prefLabel "Notulen"@nl ;
+                                                 skos:altLabel "Notulen"@nl .
+
+     type:90bf0f69-295f-4324-bed8-910c4016d895  a ext:DocumentTypeCode ;
+                                                mu:uuid "90bf0f69-295f-4324-bed8-910c4016d895" ;
+                                                skos:prefLabel "Agenda"@nl ;
+                                                ext:prioriteit 45 ;
+                                                skos:altLabel "Agenda"@nl .
+  }
+};
