@@ -37,7 +37,8 @@
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime   ,(s-prefix "ext:modified"))
                 (:formally-ok         :uri  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
-                (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+                (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
+                (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((postponed               :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
                                       :as "postponed-to")
              (agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
