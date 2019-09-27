@@ -14,26 +14,22 @@ services:
     logging: *default-logging
   identifier:
     image: semtech/mu-identifier:1.7.0
-    links:
-      - dispatcher:dispatcher
     logging: *default-logging
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
-    links:
-      - resource:resource
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
   migrations-service:
     image: semtech/mu-migrations-service:0.5.0
-    links:
-      - database:database
     volumes:
       - ./config/migrations:/data/migrations
-  database-with-auth:
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+  database:
     image: semtech/mu-authorization:0.5.0
     environment:
-      MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
       # INSPECT_OUTGOING_SPARQL_QUERIES: "false"
       # LOG_INCOMING_SPARQL_QUERIES: "true"
@@ -46,11 +42,8 @@ services:
       DATABASE_COMPATIBILITY: "Virtuoso"
     volumes:
       - ./config/authorization:/config
-    links:
-      - deltanotifier:deltanotifier
-      - database:triplestore
     logging: *default-logging
-  database: 
+  triplestore: 
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
       SPARQL_UPDATE: "true"
@@ -62,9 +55,6 @@ services:
     logging: *default-logging
   musearch:
    image: semtech/mu-search:0.6.0-beta02
-   links:
-      - database-with-auth:database
-      - elasticsearch:elasticsearch
    volumes:
       - ./config/elastic:/config
       - ./data/files:/data
@@ -96,8 +86,6 @@ services:
     logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.18.0
-    links:
-      - database-with-auth:database
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -105,44 +93,30 @@ services:
     logging: *default-logging
   file:
     image: semtech/mu-file-service:3.1.0
-    links:
-      - database-with-auth:database
     volumes:
       - ./data/files:/share
     logging: *default-logging
   range-file:
     image: mikidi/js-file-service:latest
-    links:
-      - database-with-auth:database
     volumes:
       - ./data/files:/share
     logging: *default-logging
   document-conversion:
     image: kanselarij/document-conversion-service:latest
-    links:
-      - database-with-auth:database
     volumes:
       - ./data/files:/share
     logging: *default-logging
   session-number-service:
     image: kanselarij/session-number-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   agenda-sort-service:
     image: kanselarij/agenda-sort-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   custom-subcases-service:
     image: kanselarij/custom-subcases-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   agenda-approve-service:
     image: kanselarij/agenda-approve-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   mocklogin:
     image: kanselarij/mock-login-service
@@ -164,27 +138,18 @@ services:
     logging: *default-logging
   newsletter-service:
     image: kanselarij/newsletter-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   user-management-service:
     image: kanselarij/user-management-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   minister-jurisdiction-service:
     image: kanselarij/minister-jurisdiction-service
-    links:
-      - database-with-auth:database
     logging: *default-logging
   yggdrasil:
     image: kanselarij/yggdrasil
     environment:
-      DIRECT_ENDPOINT: "http://direct-db:8890/sparql"
+      DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "true"
-    links:
-      - database-with-auth:database
-      - database:direct-db
     logging: *default-logging
   cache:
     image: semtech/mu-cache:2.0.0
@@ -197,13 +162,9 @@ services:
     logging: *default-logging
   file-bundling-service:
     image: kanselarij/file-bundling-service
-    links:
-      - database-with-auth:database
     volumes:
       - ./data/files:/share
     logging: *default-logging
   document-grouping-service:
     image: kanselarij/document-grouping-service
-    links:
-      - database-with-auth:database
     logging: *default-logging

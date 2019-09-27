@@ -8,21 +8,7 @@ services:
       - ./config/proxy:/etc/nginx/conf.d
     ports:
       - "443:443"
-  database-with-auth:
-    # image: semtech/mu-authorization:latest
-    # environment:
-    #   MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
-    #   LOG_OUTGOING_SPARQL_QUERIES: "true"
-    #   INSPECT_OUTGOING_SPARQL_QUERIES: "false"
-    #   LOG_INCOMING_SPARQL_QUERIES: "true"
-    #   INSPECT_INCOMING_SPARQL_QUERIES: "false"
-    #   LOG_ACCESS_RIGHTS: "true"
-    #   INSPECT_ACCESS_RIGHTS_PROCESSING: "false"
-    #   LOG_DELTA_MESSAGES: "false"
-    #   LOG_DELTA_CLIENT_COMMUNICATION: "false"
-    #   LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
-    #   DATABASE_COMPATIBILITY: "Virtuoso"
-  database:
+  triplestore:
     ports:
       - "8890:8890"
   musearch:
