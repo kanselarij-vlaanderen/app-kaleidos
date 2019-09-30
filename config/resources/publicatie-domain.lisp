@@ -80,6 +80,7 @@
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
+                (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
                 (:remark                :string   ,(s-prefix "ext:opmerking")))
   :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                                         :inverse t
