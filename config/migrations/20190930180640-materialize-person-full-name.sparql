@@ -1,0 +1,21 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+INSERT {
+  GRAPH ?g {
+    ?person foaf:name ?name .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?person a person:Person ;
+      foaf:familyName ?famname .
+    OPTIONAL {
+      ?person foaf:firstName ?firstname .
+    }
+    FILTER NOT EXISTS {
+      ?person foaf:name [] .
+    }
+    BIND(IF(BOUND(?firstname), CONCAT(?firstname, " ", ?famname), ?famname) AS ?name)
+  }
+}
