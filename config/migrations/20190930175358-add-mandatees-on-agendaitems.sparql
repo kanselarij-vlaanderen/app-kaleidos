@@ -1,0 +1,18 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+
+INSERT {
+    GRAPH ?g {
+        ?item besluitvorming:heeftBevoegdeVoorAgendapunt ?mandatees .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?subcase a dbpedia:UnitOfWork ;
+            besluitvorming:isGeagendeerdVia ?item ;
+            besluitvorming:heeftBevoegde ?mandatees .
+        ?item a besluit:Agendapunt .
+        FILTER NOT EXISTS { ?item besluitvorming:heeftBevoegdeVoorAgendapunt ?o }
+    }
+}
