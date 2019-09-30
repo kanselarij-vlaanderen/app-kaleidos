@@ -1,0 +1,20 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+INSERT {
+    GRAPH ?g {
+        ?nli ext:inNieuwsbrief ?finished .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?nli a besluitvorming:NieuwsbriefInfo ;
+            ext:afgewerkt ?finished .
+        FILTER NOT EXISTS { ?nli ext:inNieuwsbrief ?include }
+        OPTIONAL {
+            ?nli dct:issued ?issuedDate .
+            FILTER ( ?issuedDate < xsd:dateTime("2019-09-30T00:00:00Z")) # Extra safety, only affect legacy data
+        }
+    }
+}
