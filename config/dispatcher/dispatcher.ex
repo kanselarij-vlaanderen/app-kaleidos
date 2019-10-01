@@ -345,10 +345,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://newsletter-service/"
   end
 
-  get "/files/:id/download" do
-    Proxy.forward conn, [], "http://range-file/files/" <> id <> "/download"
-  end
-
   match "/oc-meetings/*path" do
     Proxy.forward conn, path, "http://cache/oc-meetings/"
   end
