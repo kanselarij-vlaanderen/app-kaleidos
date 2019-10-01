@@ -49,7 +49,7 @@
         ],
         "meetingId": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor"
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "mandateeName": [
