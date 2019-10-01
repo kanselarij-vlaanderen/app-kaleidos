@@ -47,6 +47,11 @@
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "meetingId": [
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor"
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeName": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -74,6 +79,9 @@
             "term_vector": "with_positions_offsets_payloads"
           },
           "agendaId": {
+            "type": "keyword"
+          },
+          "meetingId": {
             "type": "keyword"
           },
           "title": {
