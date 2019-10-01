@@ -43,7 +43,10 @@
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
         "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
-        "agendaId": "^http://purl.org/dc/terms/hasPart",
+        "agendaId": [
+          "^http://purl.org/dc/terms/hasPart",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeName": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
