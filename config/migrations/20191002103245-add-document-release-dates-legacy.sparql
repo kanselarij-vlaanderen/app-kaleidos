@@ -13,7 +13,7 @@ WHERE {
         ?meeting a besluit:Zitting ;
             besluit:geplandeStart ?plannedStart .
         FILTER ( ?plannedStart < xsd:dateTime("2019-10-02T00:00:00Z")) # Extra safety, only affect legacy data
-        FILTER NOT EXISTS { ?meeting ext:releasedDocuments ?plannedStart }
-        FILTER NOT EXISTS { ?meeting ext:releasedDecisions ?plannedStart }
+        FILTER NOT EXISTS { ?meeting ext:releasedDocuments [] }
+        FILTER NOT EXISTS { ?meeting ext:releasedDecisions [] }
     }
 }
