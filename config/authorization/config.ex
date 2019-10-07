@@ -92,7 +92,6 @@ defmodule Acl.UserGroups.Config do
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
-      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
