@@ -1,0 +1,46 @@
+PREFIX casetype: <http://kanselarij.vo.data.gift/id/dossier-type-codes/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d ?p ?o .
+    }
+    GRAPH ?g {
+      ?s ?p2 casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        casetype:1b6a6975-28e7-46b5-83fe-da37bb967db2 ?p ?o .
+    }
+    GRAPH ?g {
+      ?s ?p2 casetype:1b6a6975-28e7-46b5-83fe-da37bb967db2 .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d ?p ?o ;
+      mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" .
+    }
+    GRAPH ?g {
+      ?s ?p2 casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d .
+    }
+}
+
+;
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      casetype:1b6a6975-28e7-46b5-83fe-da37bb967db2 mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        casetype:1b6a6975-28e7-46b5-83fe-da37bb967db2 mu:uuid "1b6a6975-28e7-46b5-83fe-da37bb967db2" .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        casetype:1b6a6975-28e7-46b5-83fe-da37bb967db2 mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" .
+    }
+}
