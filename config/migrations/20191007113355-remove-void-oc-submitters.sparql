@@ -1,0 +1,22 @@
+PREFIX submitter: <http://kanselarij.vo.data.gift/id/concept/submitter/>
+
+DELETE {
+    GRAPH ?g {
+        ?submitter ?p ?o .
+        ?s ?p2 ?submitter .
+    } 
+}
+WHERE {
+    GRAPH ?g {
+        VALUES ?submitter {
+            submitter:7b5b77a5-0019-412b-a9f1-c81d06b195ad
+            submitter:17c8d413-48a5-4312-80f2-f2e8ab5e85bd
+            submitter:eb3d4ea5-91ef-424b-bd64-bc1ba8db0bdd
+            submitter:16b9063f-11b7-4fba-9ca2-2a4764433acf
+            submitter:1124b356-f752-48f0-8c44-7acaf308f24e
+            submitter:e8e8dc4b-d7bc-4e96-9742-27a28226dafb
+        }
+        ?submitter ?p ?o .
+        ?s ?p2 ?submitter .
+    } 
+}
