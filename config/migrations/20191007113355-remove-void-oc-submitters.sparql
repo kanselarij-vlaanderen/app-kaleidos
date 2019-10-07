@@ -17,6 +17,6 @@ WHERE {
             submitter:e8e8dc4b-d7bc-4e96-9742-27a28226dafb
         }
         ?submitter ?p ?o .
-        ?s ?p2 ?submitter .
+        OPTIONAL { ?s ?p2 ?submitter . }
     } 
 }

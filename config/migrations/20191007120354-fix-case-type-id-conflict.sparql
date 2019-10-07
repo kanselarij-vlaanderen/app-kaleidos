@@ -23,7 +23,7 @@ WHERE {
       mu:uuid "9e5b1230-f3ad-438f-9c68-9d7b1b2d875d" .
     }
     GRAPH ?g {
-      ?s ?p2 casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d .
+      OPTIONAL { ?s ?p2 casetype:9e5b1230-f3ad-438f-9c68-9d7b1b2d875d . }
     }
 }
 
