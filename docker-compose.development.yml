@@ -1,42 +1,68 @@
 version: '3.4'
 services:
+  frontend:
+    restart: "no"
   identifier:
+    restart: "no"
   dispatcher:
-  proxy:
-    image: nginx:1.13
-    volumes:
-      - ./config/proxy:/etc/nginx/conf.d
-    ports:
-      - "443:443"
+    restart: "no"
+  migrations-service:
+    restart: "no"
+  database:
+    restart: "no"
   triplestore:
     ports:
       - "8890:8890"
+    restart: "no"
   musearch:
-    environment:
-      LOG_LEVEL: "debug"
-      RACK_ENV: "development"
-  deltanotifier:
+    restart: "no"
   elasticsearch:
+    restart: "no"
   kibana:
+    image: docker.elastic.co/kibana/kibana:7.2.0
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    logging: *default-logging
     ports:
       - "5601:5601"
+    restart: "no"
+  deltanotifier:
+    restart: "no"
   resource:
+    restart: "no"
   file:
+    restart: "no"
   range-file:
+    restart: "no"
   document-conversion:
+    restart: "no"
   session-number-service:
+    restart: "no"
   agenda-sort-service:
+    restart: "no"
   custom-subcases-service:
-  document-grouping-service:
-  file-bundling-service:
+    restart: "no"
   agenda-approve-service:
+    restart: "no"
   mocklogin:
-    image: kanselarij/mock-login-service
+    restart: "no"
   login:
+    restart: "no"
   newsletter-service:
+    restart: "no"
+  user-management-service:
+    restart: "no"
   minister-jurisdiction-service:
     environment:
-      NODE_ENV: "development"
+      NODE_ENV: "development"      
+    restart: "no"
   yggdrasil:
-  user-management-service:
+    restart: "no"
   cache:
+    restart: "no"
+  sink:
+    restart: "no"
+  file-bundling-service:
+    restart: "no"
+  document-grouping-service:
+    restart: "no"

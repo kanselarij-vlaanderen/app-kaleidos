@@ -15,17 +15,20 @@ services:
   identifier:
     image: semtech/mu-identifier:1.7.0
     logging: *default-logging
+    restart: always
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
+    restart: always
   migrations-service:
     image: semtech/mu-migrations-service:0.5.0
     volumes:
       - ./config/migrations:/data/migrations
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+    restart: always
   database:
     image: semtech/mu-authorization:0.5.0
     environment:
@@ -43,6 +46,7 @@ services:
     volumes:
       - ./config/authorization:/config
     logging: *default-logging
+    restart: always
   triplestore: 
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
@@ -85,6 +89,7 @@ services:
     volumes:
         - ./config/delta:/config
     logging: *default-logging
+    restart: always
   resource:
     image: semtech/mu-cl-resources:1.18.0
     environment:
@@ -92,33 +97,41 @@ services:
     volumes:
       - ./config/resources:/config
     logging: *default-logging
+    restart: always
   file:
     image: semtech/mu-file-service:3.1.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
+    restart: always
   range-file:
     image: mikidi/js-file-service:latest
     volumes:
       - ./data/files:/share
     logging: *default-logging
+    restart: always
   document-conversion:
     image: kanselarij/document-conversion-service:latest
     volumes:
       - ./data/files:/share
     logging: *default-logging
+    restart: always
   session-number-service:
     image: kanselarij/session-number-service
     logging: *default-logging
+    restart: always
   agenda-sort-service:
     image: kanselarij/agenda-sort-service
     logging: *default-logging
+    restart: always
   custom-subcases-service:
     image: kanselarij/custom-subcases-service
     logging: *default-logging
+    restart: always
   agenda-approve-service:
     image: kanselarij/agenda-approve-service
     logging: *default-logging
+    restart: always
   mocklogin:
     image: kanselarij/mock-login-service
     volumes:
@@ -137,21 +150,26 @@ services:
       LOG_SINK_URL: "http://sink"
       MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
     logging: *default-logging
+    restart: always
   newsletter-service:
     image: kanselarij/newsletter-service
     logging: *default-logging
+    restart: always
   user-management-service:
     image: kanselarij/user-management-service
     logging: *default-logging
+    restart: always
   minister-jurisdiction-service:
     image: kanselarij/minister-jurisdiction-service
     logging: *default-logging
+    restart: always
   yggdrasil:
     image: kanselarij/yggdrasil
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "true"
     logging: *default-logging
+    restart: always
   cache:
     image: semtech/mu-cache:2.0.0
     links:
@@ -161,11 +179,14 @@ services:
   sink:
     image: lblod/sink-service:1.0.0
     logging: *default-logging
+    restart: always
   file-bundling-service:
     image: kanselarij/file-bundling-service
     volumes:
       - ./data/files:/share
     logging: *default-logging
+    restart: always
   document-grouping-service:
     image: kanselarij/document-grouping-service
     logging: *default-logging
+    restart: always
