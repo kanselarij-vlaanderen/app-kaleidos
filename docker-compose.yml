@@ -79,11 +79,6 @@ services:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
     restart: always
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.2.0
-    environment:
-      ELASTICSEARCH_URL: "http://elasticsearch:9200"
-    logging: *default-logging
   deltanotifier:
     image: semtech/mu-delta-notifier
     volumes:
