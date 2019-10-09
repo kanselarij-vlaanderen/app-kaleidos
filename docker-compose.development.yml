@@ -1,4 +1,11 @@
 version: '3.4'
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
 services:
   frontend:
     restart: "no"
@@ -16,6 +23,8 @@ services:
     restart: "no"
   musearch:
     restart: "no"
+    environment:
+      JRUBY_OPTIONS: ""
   elasticsearch:
     restart: "no"
   kibana:
