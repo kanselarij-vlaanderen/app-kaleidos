@@ -16,6 +16,8 @@ services:
     restart: "no"
   musearch:
     restart: "no"
+    environment:
+      JRUBY_OPTIONS: ""
   elasticsearch:
     restart: "no"
   kibana:
