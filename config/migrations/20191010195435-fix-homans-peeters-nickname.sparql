@@ -1,0 +1,41 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+    GRAPH ?g {
+        ?homans ext:nickName "Minister-president van de Vlaamse Regering" .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?homans ext:nickName "minister-president Liesbeth Homans" .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?homans a mandaat:Mandataris ;
+            mu:uuid "5D9B3D8EB158960008000011" ;
+            ext:nickName "Minister-president van de Vlaamse Regering" .
+    }
+}
+
+;
+
+DELETE {
+    GRAPH ?g {
+        ?peeters ext:nickName "Lydia Peeters, viceminister-president" .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?peeters ext:nickName "viceminister-president Lydia Peeters" .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?peeters a mandaat:Mandataris ;
+            mu:uuid "5D9B3DE5B158960008000012" ;
+            ext:nickName "Lydia Peeters, viceminister-president" .
+    }
+}
