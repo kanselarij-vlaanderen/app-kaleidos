@@ -16,7 +16,7 @@
                                         :as "document-versions"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocument") //deprecated
+             (access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;;deprecated
                                         :as "access-level")
              (decision                  :via ,(s-prefix "ext:beslissingsfiche")
                                         :inverse t
