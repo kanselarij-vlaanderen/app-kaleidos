@@ -6,7 +6,7 @@
                 (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
-                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel")) ;; deprecated
 )
   :has-one `((access-level   :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                                 :as "access-level")
@@ -83,7 +83,7 @@
                 (:modified            :datetime ,(s-prefix "ext:modified"))
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
-                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) 
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) ;; deprecated
   :has-one `((case                    :via ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "case")
