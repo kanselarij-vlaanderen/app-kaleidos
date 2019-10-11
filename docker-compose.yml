@@ -154,6 +154,7 @@ services:
     image: kanselarij/user-management-service
     logging: *default-logging
     restart: always
+    MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
   minister-jurisdiction-service:
     image: kanselarij/minister-jurisdiction-service
     logging: *default-logging
