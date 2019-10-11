@@ -168,7 +168,7 @@ services:
     logging: *default-logging
     restart: always
   cache:
-    image: semtech/mu-cache:2.0.0
+    image: semtech/mu-cache:latest
     links:
       - resource:backend
     restart: always
