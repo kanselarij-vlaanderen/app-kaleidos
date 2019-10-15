@@ -41,10 +41,10 @@ services:
     restart: "no"
   file:
     restart: "no"
-  range-file:
-    restart: "no"
-  document-conversion:
-    restart: "no"
+  # range-file:
+  #   restart: "no"
+  # document-conversion:
+  #   restart: "no"
   session-number-service:
     restart: "no"
   agenda-sort-service:

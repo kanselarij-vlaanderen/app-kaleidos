@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:latest
+    image: kanselarij/frontend-kaleidos:v1.0.0
     links:
       - identifier:backend
     restart: always
@@ -30,7 +30,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
     restart: always
   database:
-    image: semtech/mu-authorization:0.5.0
+    image: semtech/mu-authorization:0.6.0-beta.1
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -70,7 +70,7 @@ services:
    logging: *default-logging
    restart: always
   elasticsearch:
-    image: semtech/mu-search-elastic-backend
+    image: semtech/mu-search-elastic-backend:1.0.0
     container_name: elasticsearch
     environment:
       - cluster.initial_master_nodes=elasticsearch
@@ -80,13 +80,13 @@ services:
     logging: *default-logging
     restart: always
   deltanotifier:
-    image: semtech/mu-delta-notifier
+    image: semtech/mu-delta-notifier:0.1.0
     volumes:
         - ./config/delta:/config
     logging: *default-logging
     restart: always
   resource:
-    image: semtech/mu-cl-resources:1.18.0
+    image: semtech/mu-cl-resources:1.19.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -99,41 +99,41 @@ services:
       - ./data/files:/share
     logging: *default-logging
     restart: always
-  range-file:
-    image: mikidi/js-file-service:latest
-    volumes:
-      - ./data/files:/share
-    logging: *default-logging
-    restart: always
-  document-conversion:
-    image: kanselarij/document-conversion-service:latest
-    volumes:
-      - ./data/files:/share
-    logging: *default-logging
-    restart: always
+  # range-file:
+  #   image: mikidi/js-file-service:latest
+  #   volumes:
+  #     - ./data/files:/share
+  #   logging: *default-logging
+  #   restart: always
+  # document-conversion:
+  #   image: kanselarij/document-conversion-service:latest
+  #   volumes:
+  #     - ./data/files:/share
+  #   logging: *default-logging
+  #   restart: always
   session-number-service:
-    image: kanselarij/session-number-service
+    image: kanselarij/session-number-service:1.0.0
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service
+    image: kanselarij/agenda-sort-service:1.0.0
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service
+    image: kanselarij/custom-subcases-service:1.0.0
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service
+    image: kanselarij/agenda-approve-service:1.0.0
     logging: *default-logging
     restart: always
   mocklogin:
-    image: kanselarij/mock-login-service
+    image: kanselarij/mock-login-service:1.0.0
     volumes:
       - ./config/mocklogin:/config
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service
+    image: kanselarij/acmidm-login-service:1.0.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -147,28 +147,28 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service
+    image: kanselarij/newsletter-service:1.0.0
     logging: *default-logging
     restart: always
   user-management-service:
-    image: kanselarij/user-management-service
+    image: kanselarij/user-management-service:1.0.0
     logging: *default-logging
     restart: always
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
   minister-jurisdiction-service:
-    image: kanselarij/minister-jurisdiction-service
+    image: kanselarij/minister-jurisdiction-service:1.0.0
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil
+    image: kanselarij/yggdrasil:1.0.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "true"
     logging: *default-logging
     restart: always
   cache:
-    image: semtech/mu-cache:latest
+    image: semtech/mu-cache:2.0.1
     links:
       - resource:backend
     restart: always
@@ -178,12 +178,12 @@ services:
     logging: *default-logging
     restart: always
   file-bundling-service:
-    image: kanselarij/file-bundling-service
+    image: kanselarij/file-bundling-service:1.0.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
     restart: always
   document-grouping-service:
-    image: kanselarij/document-grouping-service
+    image: kanselarij/document-grouping-service:1.0.0
     logging: *default-logging
     restart: always
