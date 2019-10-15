@@ -57,6 +57,16 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
+        "mandateeFirstNames": [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/firstName"
+        ],
+        "mandateeFamilyNames": [
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
+        ],
         "theme": [
           "http://mu.semte.ch/vocabularies/ext/agendapuntSubject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -103,6 +113,16 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "mandateeFirstNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFamilyNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "theme": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -133,6 +153,18 @@
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandateeFirstNames": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/firstName"
+        ],
+        "mandateeFamilyNames": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
         ],
         "sessionDates": [
           "http://purl.org/dc/terms/hasPart",
@@ -182,6 +214,16 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "mandateeFirstNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFamilyNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "sessionDates": {
             "type": "date"
           },
@@ -218,6 +260,18 @@
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandateeFirstNames": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/firstName"
+        ],
+        "mandateeFamilyNames": [
+          "http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
         ],
         "sessionDates": [
           "http://purl.org/dc/terms/hasPart",
@@ -257,6 +311,16 @@
             "search_analyzer": "dutchanalyzer"
           },
           "mandatees": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFirstNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFamilyNames": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
