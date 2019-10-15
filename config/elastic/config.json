@@ -72,18 +72,6 @@
       },
       "mappings": {
         "properties": {
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
-          "agendaId": {
-            "type": "keyword"
-          },
-          "meetingId": {
-            "type": "keyword"
-          },
           "title": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -104,6 +92,12 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "agendaId": {
+            "type": "keyword"
+          },
+          "meetingId": {
+            "type": "keyword"
+          },
           "mandateeName": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -113,6 +107,12 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
           }
         }
       }
