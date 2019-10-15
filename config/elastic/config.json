@@ -43,6 +43,7 @@
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
         "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
+        "showAsAnnouncement": "http://mu.semte.ch/vocabularies/ext/wordtGetoondAlsMededeling",
         "agendaId": [
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -51,6 +52,11 @@
           "^http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "sessionDates": [
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "mandateeName": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
@@ -102,11 +108,17 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "showAsAnnouncement": {
+            "type": "keyword"
+          },
           "agendaId": {
             "type": "keyword"
           },
           "meetingId": {
             "type": "keyword"
+          },
+          "sessionDates": {
+            "type": "date"
           },
           "mandateeName": {
             "type": "text",
