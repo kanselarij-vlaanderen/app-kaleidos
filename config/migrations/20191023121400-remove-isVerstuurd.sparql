@@ -1,0 +1,12 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+    GRAPH ?g {
+       ?campaign ext:isVerstuurd ?is .
+    }
+}
+WHERE {
+    GRAPH ?g {
+       ?campaign a ext:MailCampagne ; ext:isVerstuurd ?is .
+    }
+}
