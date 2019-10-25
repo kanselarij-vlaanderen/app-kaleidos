@@ -59,7 +59,7 @@ services:
     restart: always
     logging: *default-logging
   musearch:
-   image: semtech/mu-search:0.6.0-beta02
+   image: semtech/mu-search:0.6.0-beta.5
    volumes:
       - ./config/elastic:/config
       - ./data/files:/data
@@ -133,7 +133,7 @@ services:
       - ./config/mocklogin:/config
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.0.0
+    image: kanselarij/acmidm-login-service:1.0.1
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -161,7 +161,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:1.0.0
+    image: kanselarij/yggdrasil:1.0.2
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "true"

@@ -11,7 +11,7 @@ export default [
     },
     options: {
       resourceFormat: "v0.0.0-genesis",
-      gracePeriod: 2000,
+      gracePeriod: 10000,
       ignoreFromSelf: true
     }
   },
