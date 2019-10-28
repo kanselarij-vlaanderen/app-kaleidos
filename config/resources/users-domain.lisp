@@ -3,7 +3,7 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/gebruikers/")
   :properties `((:first-name            :string   ,(s-prefix "foaf:firstName"))
                 (:last-name             :string   ,(s-prefix "foaf:familyName"))
-                (:rijksregister-nummer  :string   ,(s-prefix "dct:identifier")))
+                (:rijksregister-nummer  :string   ,(s-prefix "dct:identifier"))) ;; We don't receive this value right now
   :has-one `((account-group             :via      ,(s-prefix "foaf:member")
                                         :inverse t
                                         :as "group")

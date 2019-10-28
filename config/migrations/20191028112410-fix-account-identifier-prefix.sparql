@@ -1,0 +1,51 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX acmidm: <http://mu.semte.ch/vocabularies/ext/acmidm/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+
+INSERT { 
+    GRAPH ?g {
+        ?account dcterms:identifier ?o .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?account a foaf:OnlineAccount .
+        ?account <http://www.w3.org/ns/adms#identifier> ?o .
+    }
+}
+;
+
+DELETE {
+    GRAPH ?g {
+        ?account adms:identifier ?o .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?account a foaf:OnlineAccount .
+        ?account <http://www.w3.org/ns/adms#identifier> ?o .
+    }
+}
+;
+
+DELETE {  
+    GRAPH ?g {
+        ?onlineAccount ?p ?o .
+        ?s ?p2 ?onlineAccount .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?onlineAccount a foaf:OnlineAccount .
+        ?onlineAccount ?p ?o .
+        OPTIONAL {
+            ?s ?p2 ?onlineAccount .
+        }
+        FILTER NOT EXISTS { 
+            ?user foaf:account ?onlineAccount . 
+        }
+    }
+}
