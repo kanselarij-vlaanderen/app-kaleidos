@@ -1,0 +1,44 @@
+PREFIX  prov:  <http://www.w3.org/ns/prov#>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  dct:  <http://purl.org/dc/terms/>
+PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?newNewsletterInfo a besluitvorming:NieuwsbriefInfo ;
+              mu:uuid ?newUuid ;
+              dct:alternative ?subcaseShortTitle ;
+              dct:title ?subcaseTitle ;
+              ext:afgewerkt "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+              ext:inNieuwsbrief "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+        ?sub prov:generated ?newNewsletterInfo
+    }
+}
+WHERE {
+   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+       ?sub a dbpedia:UnitOfWork ;
+           ext:wordtGetoondAlsMededeling ?isRemark .
+       FILTER CONTAINS ( LCASE ( STR ( ?isRemark ) ) , LCASE ( """false""" ) ) .
+       FILTER NOT EXISTS {
+           ?sub prov:generated [] .
+       }
+       OPTIONAL {
+            ?sub dct:alternative ?subcaseShortTitle.
+       }
+       OPTIONAL {
+            ?sub  dct:title ?subcaseTitle .
+       }
+       {
+           SELECT ?newUuid ?newNewsletterInfo ?sub
+           WHERE {
+               ?sub a dbpedia:UnitOfWork .
+               OPTIONAL { ?sub mu:uuid ?olduuid  }
+               BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newUuid)
+               BIND (IRI(CONCAT("http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/", ?newUuid)) AS ?newNewsletterInfo)
+           }
+       }
+
+   }
+}
