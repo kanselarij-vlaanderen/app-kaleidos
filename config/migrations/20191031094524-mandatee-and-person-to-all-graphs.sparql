@@ -1,0 +1,18 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+INSERT {
+  GRAPH ?targetGraph {
+    ?mandatee ?p ?o.
+    ?person ?person_p ?person_o.
+  }
+} WHERE {
+  VALUES (?targetGraph) {
+    ( <http://mu.semte.ch/graphs/organizations/intern-overheid> ) ( <http://mu.semte.ch/graphs/organizations/intern-regering> ) ( <http://mu.semte.ch/graphs/organizations/minister> )
+  }
+  GRAPH ?g {
+    ?mandatee a mandaat:Mandataris.
+    ?mandatee ?p ?o.
+    ?mandatee mandaat:isBestuurlijkeAliasVan ?person.
+    ?person ?person_p ?person_o.
+  }
+}
