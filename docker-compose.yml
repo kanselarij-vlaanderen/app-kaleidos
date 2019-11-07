@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.0.5
+    image: kanselarij/frontend-kaleidos:1.0.6
     links:
       - identifier:backend
     restart: always
@@ -116,7 +116,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:1.0.0
+    image: kanselarij/agenda-sort-service:1.0.1
     logging: *default-logging
     restart: always
   custom-subcases-service:
