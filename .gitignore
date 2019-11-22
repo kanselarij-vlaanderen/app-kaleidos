@@ -1,5 +1,7 @@
 # Virtuoso files /data/db
 data/db
+testdata/*
+__MACOSX
 config/db/virtuoso*ini
 data/files/*
 data/elasticsearch/*
