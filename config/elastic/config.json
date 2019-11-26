@@ -155,6 +155,7 @@
       "rdf_type": "http://dbpedia.org/ontology/Case",
       "properties": {
         "title": "http://purl.org/dc/terms/title",
+        "shortTitle": "http://purl.org/dc/terms/alternative",
         "creators": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -212,6 +213,11 @@
             "term_vector": "with_positions_offsets_payloads"
           },
           "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "shortTitle": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
