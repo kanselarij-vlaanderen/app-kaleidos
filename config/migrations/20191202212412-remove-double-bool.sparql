@@ -1,0 +1,21 @@
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    <http://kanselarij.vo.data.gift/id/documenten/7b4f7ccc-dec2-11e9-aa72-0242c0a80002> ext:vertrouwelijk ?o .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    # Value doesn't really matter, as confidentiality at document-level is deprecated
+    <http://kanselarij.vo.data.gift/id/documenten/7b4f7ccc-dec2-11e9-aa72-0242c0a80002> ext:vertrouwelijk "false"^^mulit:boolean .
+  }
+}
+WHERE {
+   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+     <http://kanselarij.vo.data.gift/id/documenten/7b4f7ccc-dec2-11e9-aa72-0242c0a80002> a foaf:Document .
+     <http://kanselarij.vo.data.gift/id/documenten/7b4f7ccc-dec2-11e9-aa72-0242c0a80002> ext:vertrouwelijk ?o .
+  }
+}
