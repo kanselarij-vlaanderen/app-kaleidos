@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.1.0
+    image: kanselarij/frontend-kaleidos:1.1.3
     links:
       - identifier:backend
     restart: always
@@ -148,7 +148,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:1.0.6
+    image: kanselarij/newsletter-service:1.0.7
     logging: *default-logging
     restart: always
   user-management-service:
