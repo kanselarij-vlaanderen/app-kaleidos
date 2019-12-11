@@ -32,6 +32,7 @@
                 (:show-in-newsletter  :boolean  ,(s-prefix "ext:toonInKortBestek"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:explanation         :string   ,(s-prefix "ext:toelichting"))
                 (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
                 ;; Added properties from subcases
                 (:short-title         :string   ,(s-prefix "dct:alternative"))
