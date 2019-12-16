@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.0.8
+    image: kanselarij/frontend-kaleidos:1.1.3
     links:
       - identifier:backend
     restart: always
@@ -30,7 +30,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
     restart: always
   database:
-    image: semtech/mu-authorization:0.6.0-beta.1
+    image: semtech/mu-authorization:0.6.0-beta.2
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -148,7 +148,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:1.0.5
+    image: kanselarij/newsletter-service:1.0.7
     logging: *default-logging
     restart: always
   user-management-service:
