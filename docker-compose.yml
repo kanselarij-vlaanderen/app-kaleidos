@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.1.3
+    image: kanselarij/frontend-kaleidos:1.1.4
     links:
       - identifier:backend
     restart: always
@@ -47,7 +47,7 @@ services:
       - ./config/authorization:/config
     logging: *default-logging
     restart: always
-  triplestore: 
+  triplestore:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
     environment:
       SPARQL_UPDATE: "true"
@@ -162,7 +162,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:1.0.3
+    image: kanselarij/yggdrasil:1.0.6
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "true"
