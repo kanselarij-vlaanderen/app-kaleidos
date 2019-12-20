@@ -43,6 +43,8 @@ services:
       # LOG_DELTA_CLIENT_COMMUNICATION: "true"
       # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       DATABASE_COMPATIBILITY: "Virtuoso"
+      DATABASE_OVERLOAD_RECOVERY: "on"
+      LOG_DATABASE_OVERLOAD_TICK: "on"
     volumes:
       - ./config/authorization:/config
     logging: *default-logging
