@@ -71,7 +71,6 @@ services:
    restart: always
   elasticsearch:
     image: semtech/mu-search-elastic-backend:1.0.0
-    container_name: elasticsearch
     environment:
       - cluster.initial_master_nodes=elasticsearch
       - node.name=elasticsearch
