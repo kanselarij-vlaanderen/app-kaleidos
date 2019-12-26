@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  triplestore: 
+    volumes:
+      - ./testdata/db:/data
+  musearch:
+   volumes:
+      - ./testdata/files:/data
+  elasticsearch:
+    volumes:
+      - ./testdata/elasticsearch/:/usr/share/elasticsearch/data
+  file:
+    volumes:
+      - ./testdata/files:/share
+  # range-file:
+  #   volumes:
+  #     - ./testdata/files:/share
+  # document-conversion:
+  #   volumes:
+  #     - ./testdata/files:/share
+  file-bundling-service:
+    volumes:
+      - ./testdata/files:/share
+
