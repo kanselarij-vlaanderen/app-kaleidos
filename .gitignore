@@ -6,6 +6,7 @@ config/db/virtuoso*ini
 data/files/*
 data/elasticsearch/*
 development-data/files/*
+data/*
 
 .idea/
 
@@ -18,3 +19,5 @@ config/migrations/*
 *sensitive*
 node_modules
 __pycache__
+
+*~
