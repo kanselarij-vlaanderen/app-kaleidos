@@ -13,17 +13,17 @@ services:
     restart: always
     logging: *default-logging
   identifier:
-    image: semtech/mu-identifier:1.7.0
+    image: semtech/mu-identifier:1.8.0
     logging: *default-logging
     restart: always
   dispatcher:
-    image: semtech/mu-dispatcher:1.1.2
+    image: semtech/mu-dispatcher:2.0.0-beta.1
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
     restart: always
   migrations-service:
-    image: semtech/mu-migrations-service:0.5.0
+    image: semtech/mu-migrations-service:0.5.1
     volumes:
       - ./config/migrations:/data/migrations
     environment:
@@ -59,7 +59,7 @@ services:
     restart: always
     logging: *default-logging
   musearch:
-   image: semtech/mu-search:0.6.0-beta.5
+   image: semtech/mu-search:0.6.0-beta.6
    volumes:
       - ./config/elastic:/config
       - ./data/files:/data
@@ -71,7 +71,6 @@ services:
    restart: always
   elasticsearch:
     image: semtech/mu-search-elastic-backend:1.0.0
-    container_name: elasticsearch
     environment:
       - cluster.initial_master_nodes=elasticsearch
       - node.name=elasticsearch
@@ -94,7 +93,7 @@ services:
     logging: *default-logging
     restart: always
   file:
-    image: semtech/mu-file-service:3.1.0
+    image: semtech/mu-file-service:3.1.1
     volumes:
       - ./data/files:/share
     logging: *default-logging
