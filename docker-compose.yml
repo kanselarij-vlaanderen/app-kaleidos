@@ -59,9 +59,9 @@ services:
     restart: always
     logging: *default-logging
   musearch:
-   image: semtech/mu-search:0.6.0-beta.6
+   image: semtech/mu-search:0.6.0-beta.7
    volumes:
-      - ./config/elastic:/config
+      - ./config/search:/config
       - ./data/files:/data
    environment:
      NUMBER_OF_THREADS: 4
