@@ -27,6 +27,8 @@ services:
       JRUBY_OPTIONS: ""
   elasticsearch:
     restart: "no"
+  database-healthcheck:
+    restart: "no"
   kibana:
     image: docker.elastic.co/kibana/kibana:7.2.0
     environment:
@@ -63,7 +65,7 @@ services:
     restart: "no"
   minister-jurisdiction-service:
     environment:
-      NODE_ENV: "development"      
+      NODE_ENV: "development"
     restart: "no"
   yggdrasil:
     restart: "no"
