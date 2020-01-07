@@ -21,6 +21,7 @@
           "tokenizer": "standard",
           "filter": [
             "lowercase",
+            "asciifolding",
             "dutchstemmer"
           ]
         }
