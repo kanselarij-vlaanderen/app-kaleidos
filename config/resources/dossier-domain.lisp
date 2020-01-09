@@ -97,9 +97,7 @@
                                       :as "newsletter-info")
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by"))
-  :has-many `((approval               :via      ,(s-prefix "ext:procedurestapGoedkeuring")
-                                      :as "approvals")
-              (theme                  :via ,(s-prefix "dct:subject")
+  :has-many `((theme                  :via ,(s-prefix "dct:subject")
                                       :as "themes")
               (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                                       :as "heeftCreator")
