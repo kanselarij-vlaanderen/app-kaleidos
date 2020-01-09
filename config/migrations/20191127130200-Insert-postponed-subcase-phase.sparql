@@ -1,0 +1,12 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX step: <http://example.com/step/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+     step:F8AB7F8C-2928-4CED-812F-80EF560F6E31 a ext:ProcedurestapFaseCode ;
+     mu:uuid "F8AB7F8C-2928-4CED-812F-80EF560F6E31" ;
+     skos:prefLabel "Uitgesteld" .
+    }
+}
