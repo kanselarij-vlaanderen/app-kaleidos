@@ -1,5 +1,3 @@
-(define-resource document ()
-  :class (s-prefix "foaf:Document")
   :properties `((:archived              :boolean  ,(s-prefix "besluitvorming:gearchiveerd"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:description           :string   ,(s-prefix "ext:omschrijving"))
@@ -9,11 +7,13 @@
                 (:number-vr             :string   ,(s-prefix "besluitvorming:stuknummerVR"))
                 (:number-vr-original    :string   ,(s-prefix "ext:stuknummerVROriginal"))
                 (:freeze-access-level   :boolean  ,(s-prefix "ext:freezeAccessLevel")) ;; deprecated
+(define-resource document-container ()
+  :class (s-prefix "dossier:Serie")
                 (:for-cabinet           :boolean  ,(s-prefix "ext:voorKabinetten")))
   :has-many `((remark                   :via ,(s-prefix "besluitvorming:opmerking")
                                         :as "remarks")
-              (document-version         :via ,(s-prefix "besluitvorming:heeftVersie")
-                                        :as "document-versions"))
+              (document                 :via ,(s-prefix "besluitvorming:heeftVersie")
+                                        :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
              (access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;;deprecated
@@ -24,13 +24,13 @@
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
                                         :as "signed-minutes"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/documenten/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
-  :on-path "documents")
+  :on-path "document-containers")
 
-(define-resource document-version ()
-  :class (s-prefix "ext:DocumentVersie")
   :properties `((:version-number        :string   ,(s-prefix "ext:versieNummer"))
+(define-resource document ()
+  :class (s-prefix "dossier:Stuk")
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:number-vr             :string   ,(s-prefix "besluitvorming:stuknummerVR"))
                 (:chosen-file-name      :string   ,(s-prefix "ext:gekozenDocumentNaam"))
@@ -39,9 +39,9 @@
                                         :as "file")
             (file                       :via      ,(s-prefix "ext:convertedFile")
                                         :as "converted-file")
-            (document                   :via      ,(s-prefix "besluitvorming:heeftVersie")
+            (document-container         :via      ,(s-prefix "besluitvorming:heeftVersie")
                                         :inverse t
-                                        :as "document")
+                                        :as "document-container")
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
                                         :as "subcase")
@@ -72,9 +72,9 @@
                                         :inverse t
                                         :as "meeting")
                                         )
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/document-versies/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
-  :on-path "document-versions")
+  :on-path "documents")
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")
@@ -83,7 +83,7 @@
                 (:priority          :number ,(s-prefix "ext:prioriteit"))
                 (:is-oc             :boolean ,(s-prefix "ext:isOverlegcomité"))
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
-  :has-many `((document             :via    ,(s-prefix "ext:documentType")
+  :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
                                     :inverse t
                                     :as "documents")
               (document-type        :via    ,(s-prefix "skos:broader")
