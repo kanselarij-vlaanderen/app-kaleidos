@@ -1,7 +1,7 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued      :datetime   ,(s-prefix "dct:issued"))
-                (:is-final    :boolean    ,(s-prefix "ext:finaleVersie"))
+                (:is-final    :boolean    ,(s-prefix "ext:finaleVersie")) ;; 2019-01-09: property not in use by frontend. The final agenda is the last approved agenda of a meeting that has ext:finaleZittingVersie
                 (:name        :string     ,(s-prefix "ext:agendaNaam"))
                 (:created     :date       ,(s-prefix "ext:aangemaaktOp"))
                 (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
@@ -234,7 +234,7 @@
                 (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier"))
-                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie"))
+                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
                 (:kind                  :uri      ,(s-prefix "ext:aard"))
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
