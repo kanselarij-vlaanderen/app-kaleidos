@@ -79,7 +79,7 @@
   (define-resource approval ()
   :class (s-prefix "ext:Goedkeuring")
   :properties `((:created   :date ,(s-prefix "ext:aangemaakt")))
-  :has-one `(((mandatee      :via ,(s-prefix "ext:goedkeuringen")
+  :has-one `((mandatee      :via ,(s-prefix "ext:goedkeuringen")
                             :inverse t
                             :as "mandatee")
              (agendaitem    :via ,(s-prefix "ext:agendapuntGoedkeuring")
