@@ -178,6 +178,7 @@
       "rdf_type": "http://dbpedia.org/ontology/Case",
       "properties": {
         "title": "http://purl.org/dc/terms/title",
+        "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "creators": [
           "http://data.vlaanderen.be/ns/besluitvorming#heeftIndiener",
@@ -240,6 +241,9 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "created": {
+            "type": "date"
+          },
           "shortTitle": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -286,6 +290,7 @@
       "on_path": "casesByDecisionText",
       "rdf_type": "http://dbpedia.org/ontology/Case",
       "properties": {
+        "created": "http://purl.org/dc/terms/created",
         "decisionText": [
           "http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
@@ -335,6 +340,9 @@
       },
       "mappings": {
         "properties": {
+          "created": {
+            "type": "date"
+          },
           "attachment.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
