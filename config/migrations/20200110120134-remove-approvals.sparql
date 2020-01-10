@@ -1,0 +1,70 @@
+PREFIX  tmp:  <http://mu.semte.ch/vocabularies/tmp/>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  kans:  <http://kanselarij.vo.data.gift/core/>
+PREFIX  email:  <http://mu.semte.ch/vocabularies/ext/email/>
+PREFIX  validation:  <http://mu.semte.ch/vocabularies/validation/>
+PREFIX  toezichtReport:  <http://mu.semte.ch/vocabularies/ext/supervision/reporting/>
+PREFIX  toezicht:  <http://mu.semte.ch/vocabularies/ext/supervision/>
+PREFIX  skos:  <http://www.w3.org/2004/02/skos/core#>
+PREFIX  schema:  <http://schema.org/>
+PREFIX  rdfs:  <https://www.w3.org/2000/01/rdf-schema#>
+PREFIX  regorg:  <https://www.w3.org/ns/regorg#>
+PREFIX  prov:  <http://www.w3.org/ns/prov#>
+PREFIX  person:  <http://www.w3.org/ns/person#>
+PREFIX  pav:  <http://purl.org/pav/>
+PREFIX  org:  <http://www.w3.org/ns/org#>
+PREFIX  nmo:  <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX  nie:  <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX  nfo:  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX  nao:  <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#>
+PREFIX  m8g:  <http://data.europa.eu/m8g/>
+PREFIX  foaf:  <http://xmlns.com/foaf/0.1/>
+PREFIX  export:  <http://mu.semte.ch/vocabularies/ext/export/>
+PREFIX  dul:  <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX  dct:  <http://purl.org/dc/terms/>
+PREFIX  eli:  <http://data.europa.eu/eli/ontology#>
+PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX  cpsv:  <http://purl.org/vocab/cpsv#>
+PREFIX  bbcdr:  <http://mu.semte.ch/vocabularies/ext/bbcdr/>
+PREFIX  adms:  <http://www.w3.org/ns/adms#>
+PREFIX  persoon:  <http://data.vlaanderen.be/ns/persoon#>
+PREFIX  mandaat:  <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX  generiek:  <http://data.vlaanderen.be/ns/generiek#>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX  besluit:  <http://data.vlaanderen.be/ns/besluit#>
+PREFIX  oc:  <http://mu.semte.ch/vocabularies/ext/oc/>
+PREFIX  provo:  <http://www.w3.org/ns/prov#>
+PREFIX  dcat:  <http://www.w3.org/ns/dcat#>
+PREFIX  vogen:  <https://data.vlaanderen.be/ns/generiek#>
+PREFIX  voorg:  <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX  vobesluit:  <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX  rm:  <http://mu.semte.ch/vocabularies/logical-delete/>
+PREFIX  typedLiterals:  <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  app:  <http://mu.semte.ch/app/>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE {
+    GRAPH ?oldgraph {
+        ?approval ?properties ?objects .
+        ?subcase ext:procedurestapGoedkeuring ?approval .
+        ?agendapunt ext:agendapuntGoedkeuring ?approval .
+        ?mandatee ext:goedkeuringen ?approval .
+     }
+} WHERE {
+    GRAPH ?oldgraph {
+        ?approval a ext:Goedkeuring ;
+                ?properties ?objects .
+        OPTIONAL {
+            ?subcase ext:procedurestapGoedkeuring ?approval .
+        }
+        OPTIONAL {
+            ?agendapunt ext:agendapuntGoedkeuring ?approval .
+        }
+        OPTIONAL {
+            ?mandatee ext:goedkeuringen ?approval .
+        }
+    }
+}
