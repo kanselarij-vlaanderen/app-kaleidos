@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.1.5
+    image: kanselarij/frontend-kaleidos:1.1.6
     links:
       - identifier:backend
     restart: always
@@ -125,7 +125,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:1.0.0
+    image: kanselarij/agenda-approve-service:1.0.1
     logging: *default-logging
     restart: always
   mocklogin:
@@ -134,7 +134,7 @@ services:
       - ./config/mocklogin:/config
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.0.2
+    image: kanselarij/acmidm-login-service:1.1.1
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
