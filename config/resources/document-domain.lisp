@@ -16,11 +16,11 @@
                                         :as "signed-minutes"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
-  :on-path "document-containers")
+  :on-path "documents") ;; TODO: change to "document-containers" once frontend fully migrated
 
 (define-resource document ()
   :class (s-prefix "dossier:Stuk")
-  :properties `((:title                 :string   ,(s-prefix "dct:title"))
+  :properties `((:name                 :string   ,(s-prefix "dct:title"))
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk")))
@@ -68,7 +68,7 @@
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
-  :on-path "documents")
+  :on-path "document-versions") ;; TODO: change to "documents" once frontend fully migrated
 
 (define-resource document-type ()
   :class (s-prefix "ext:DocumentTypeCode")

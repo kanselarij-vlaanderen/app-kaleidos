@@ -98,11 +98,11 @@ defmodule Dispatcher do
   match "/meeting-records/*path", @any do
     Proxy.forward conn, path, "http://cache/meeting-records/"
   end
-  match "/documents/*path", @any do
+  
+  match "/documents/*path", @any do # TODO: change over path to "document-containers" once frontend fully migrated
     Proxy.forward conn, path, "http://cache/documents/"
   end
-
-  match "/document-versions/*path", @any do
+  match "/document-versions/*path", @any do # TODO: change over to "documents" once frontend fully migrated
     Proxy.forward conn, path, "http://cache/document-versions/"
   end
 
