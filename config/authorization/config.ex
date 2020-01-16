@@ -48,8 +48,10 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-      "http://xmlns.com/foaf/0.1/Document",
-      "http://mu.semte.ch/vocabularies/ext/DocumentVersie",
+      "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration
+      "https://data.vlaanderen.be/ns/dossier#Serie",
+      "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration
+      "https://data.vlaanderen.be/ns/dossier#Stuk",
       "http://dbpedia.org/ontology/Case",
       "http://dbpedia.org/ontology/UnitOfWork",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
