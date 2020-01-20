@@ -1,7 +1,6 @@
 (define-resource document-container ()
   :class (s-prefix "dossier:Serie")
-  :properties `((:created               :datetime ,(s-prefix "dct:created"))
-                (:for-cabinet           :boolean  ,(s-prefix "ext:voorKabinetten")))
+  :properties `((:created               :datetime ,(s-prefix "dct:created")))
   :has-many `((remark                   :via ,(s-prefix "besluitvorming:opmerking")
                                         :as "remarks")
               (document                 :via ,(s-prefix "dossier:collectie.bestaatUit")
