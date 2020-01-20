@@ -164,7 +164,7 @@ services:
     image: kanselarij/yggdrasil:1.0.7
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
-      RELOAD_ALL_DATA_ON_INIT: "true"
+      RELOAD_ALL_DATA_ON_INIT: "false"
     logging: *default-logging
     restart: always
   cache:
