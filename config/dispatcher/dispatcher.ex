@@ -275,10 +275,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://session-number-service/"
   end
 
-  match "/file-bundling-service/*path", @any do
-    Proxy.forward conn, path, "http://file-bundling-service/"
-  end
-
    match "/document-grouping-service/*path", @any do
     Proxy.forward conn, path, "http://document-grouping-service/"
   end
@@ -297,6 +293,10 @@ defmodule Dispatcher do
 
   get "/files/:id/download", @any do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
+  get "/files/archive/*path", @any do
+    Proxy.forward conn, path, "http://file-bundling-service/files/archive/"
   end
 
   post "/files/*path", @any do
