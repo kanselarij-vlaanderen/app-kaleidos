@@ -65,6 +65,9 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
+  get "/agendas/:id/agendaitems/files", @any do
+    Proxy.forward conn, [], "http://document-grouping-service/agendas/" <> id <> "/agendaitems/files"
+  end
   match "/agendas/*path", @any do
     Proxy.forward conn, path, "http://cache/agendas/"
   end
@@ -275,10 +278,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://session-number-service/"
   end
 
-   match "/document-grouping-service/*path", @any do
-    Proxy.forward conn, path, "http://document-grouping-service/"
-  end
-
   match "/agenda-approve/*path", @any do
     Proxy.forward conn, path, "http://agenda-approve-service/"
   end
@@ -295,7 +294,7 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
 
-  get "/files/archive/*path", @any do
+  post "/files/archive/*path", @any do
     Proxy.forward conn, path, "http://file-bundling-service/files/archive/"
   end
 
