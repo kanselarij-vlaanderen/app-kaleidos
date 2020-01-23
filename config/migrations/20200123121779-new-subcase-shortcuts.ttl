@@ -1,0 +1,29 @@
+@prefix shortcut: <http://kanselarij.vo.data.gift/id/concept/snelkoppelingen/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+shortcut:6bff31d3-db73-40fe-b26a-eb08021a4175 a ext:SnelKoppeling ;
+    mu:uuid "6bff31d3-db73-40fe-b26a-eb08021a4175" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Principiële goedkeuring m.h.o. op onderhandelingen en adviesaanvragen" .
+
+shortcut:65729f9e-9412-405b-94cb-18015913e50c a ext:SnelKoppeling ;
+    mu:uuid "65729f9e-9412-405b-94cb-18015913e50c" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Goedkeuring na adviezen" .
+
+shortcut:58b98cbe-674d-4c6f-9b9b-f7a2b103e1a1 a ext:SnelKoppeling ;
+    mu:uuid "58b98cbe-674d-4c6f-9b9b-f7a2b103e1a1" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Goedkeuring na advies van de Raad van State" .
+
+shortcut:3334d8cf-3aaf-490a-a6ab-2168466ef9aa a ext:SnelKoppeling ;
+    mu:uuid "3334d8cf-3aaf-490a-a6ab-2168466ef9aa" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Goedkeuring na adviesaanvraag aan de Raad van State" .
+
+shortcut:83eac3a4-b8a9-4a5c-b5f6-a69dc3ba596b a ext:SnelKoppeling ;
+    mu:uuid "83eac3a4-b8a9-4a5c-b5f6-a69dc3ba596b" ;
+		ext:type "subcase-name" ;
+    skos:prefLabel "Goedkeuring na onderhandelingen" .
