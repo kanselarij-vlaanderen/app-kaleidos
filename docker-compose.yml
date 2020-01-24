@@ -7,7 +7,7 @@ x-logging:
     max-file: "3"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.1.5
+    image: kanselarij/frontend-kaleidos:1.2.0
     links:
       - identifier:backend
     restart: always
@@ -30,7 +30,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
     restart: always
   database:
-    image: semtech/mu-authorization:0.6.0-beta.2
+    image: semtech/mu-authorization:0.6.0-beta.3
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -43,6 +43,8 @@ services:
       # LOG_DELTA_CLIENT_COMMUNICATION: "true"
       # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       DATABASE_COMPATIBILITY: "Virtuoso"
+      DATABASE_OVERLOAD_RECOVERY: "on"
+      #LOG_DATABASE_OVERLOAD_TICK: "on"
     volumes:
       - ./config/authorization:/config
     logging: *default-logging
@@ -123,7 +125,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:1.0.0
+    image: kanselarij/agenda-approve-service:1.0.3
     logging: *default-logging
     restart: always
   mocklogin:
@@ -132,7 +134,7 @@ services:
       - ./config/mocklogin:/config
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.0.2
+    image: kanselarij/acmidm-login-service:1.1.1
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -143,6 +145,7 @@ services:
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
       MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
+      MU_APPLICATION_AUTH_DEFAULT_GROUP_URI: "http://data.kanselarij.vlaanderen.be/id/group/user"
       REQUEST_TIMEOUT: 5000
     logging: *default-logging
     restart: always
