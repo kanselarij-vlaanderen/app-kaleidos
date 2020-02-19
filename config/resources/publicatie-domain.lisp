@@ -81,13 +81,16 @@
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
                 (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
-                (:remark                :string   ,(s-prefix "ext:opmerking")))
+                (:remark                :string   ,(s-prefix "ext:opmerking"))
+                (:modified              :date     ,(s-prefix "ext:aangepastOp")))
   :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                                         :inverse t
                                         :as "subcase")
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
-                                        :as "meeting"))
+                                        :as "meeting")
+             (user                      :via      ,(s-prefix "ext:modifiedBy")
+                                        :as "modified-by"))
   :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
                                         :as "themes")
               (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
