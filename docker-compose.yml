@@ -10,8 +10,8 @@ services:
     image: kanselarij/frontend-kaleidos:1.2.4
     links:
       - identifier:backend
-    restart: always
     logging: *default-logging
+    restart: always
   identifier:
     image: semtech/mu-identifier:1.8.0
     logging: *default-logging
@@ -59,8 +59,8 @@ services:
       - ./data/db:/data
       - ./config/db/virtuoso.ini:/data/virtuoso.ini
       - ./config/db/:/opt/virtuoso-scripts
-    restart: always
     logging: *default-logging
+    restart: always
   musearch:
    image: semtech/mu-search:0.6.0-beta.7
    volumes:
@@ -156,10 +156,10 @@ services:
     restart: always
   user-management-service:
     image: kanselarij/user-management-service:1.0.1
-    logging: *default-logging
-    restart: always
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
+    logging: *default-logging
+    restart: always
   minister-jurisdiction-service:
     image: kanselarij/minister-jurisdiction-service:1.0.0
     logging: *default-logging
@@ -175,8 +175,8 @@ services:
     image: semtech/mu-cache:2.0.1
     links:
       - resource:backend
-    restart: always
     logging: *default-logging
+    restart: always
   sink:
     image: lblod/sink-service:1.0.0
     logging: *default-logging
