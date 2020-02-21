@@ -5,6 +5,12 @@ x-logging:
   options:
     max-size: "10m"
     max-file: "3"
+x-extended-logging:
+  &extended-logging
+  driver: "json-file"
+  options:
+    max-size: "50m"
+    max-file: "20"
 services:
   frontend:
     image: kanselarij/frontend-kaleidos:1.2.4
@@ -48,7 +54,7 @@ services:
       #LOG_DATABASE_OVERLOAD_TICK: "on"
     volumes:
       - ./config/authorization:/config
-    logging: *default-logging
+    logging: *extended-logging
     restart: always
   triplestore:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
@@ -93,7 +99,7 @@ services:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
       - ./config/resources:/config
-    logging: *default-logging
+    logging: *extended-logging
     restart: always
   file:
     image: semtech/mu-file-service:3.1.1
