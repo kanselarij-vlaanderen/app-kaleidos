@@ -28,6 +28,7 @@ services:
       - ./config/migrations:/data/migrations
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+    logging: *default-logging
     restart: always
   database:
     image: semtech/mu-authorization:0.6.0-beta.3
