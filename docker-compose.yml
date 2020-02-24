@@ -117,7 +117,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:1.0.1
+    image: kanselarij/agenda-sort-service:1.1.0
     logging: *default-logging
     restart: always
   custom-subcases-service:
