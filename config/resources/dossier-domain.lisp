@@ -105,9 +105,9 @@
                                       :as "mandatees")
               (subcase                :via ,(s-prefix "dct:relation")
                                       :as "related-to")
-              (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
-              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
               (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
@@ -179,7 +179,7 @@
   :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")
-              (document       :via ,(s-prefix "ext:toegangsniveauVoorDocument")
+              (document-container  :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;; 2019-01-09 : deprecated. To be removed after checking frontend dependency
                               :inverse t
                               :as "documents")
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")

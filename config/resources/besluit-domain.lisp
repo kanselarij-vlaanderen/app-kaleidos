@@ -67,9 +67,9 @@
                                       :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (document-version       :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
-              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
               (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
                                       :as "phases"))
@@ -100,7 +100,7 @@
   :has-one `((agenda            :via ,(s-prefix "ext:mededeling")
                                 :inverse t
                                 :as "agenda"))
-  :has-many `((document-version :via ,(s-prefix "ext:mededelingBevatDocumentversie")
+  :has-many `((document         :via ,(s-prefix "ext:mededelingBevatDocumentversie")
                                 :as "document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/mededelingen/")
   :on-path "announcements")
@@ -135,7 +135,7 @@
                                 :as "remarks")
               ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
               ;           :as "heeft-versie")
-              (document-version :via ,(s-prefix "ext:documentenVoorBeslissing")
+              (document         :via ,(s-prefix "ext:documentenVoorBeslissing")
                                 :as "document-versions"))
   :has-one `((subcase           :via        ,(s-prefix "ext:procedurestapHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                 :inverse t
@@ -149,7 +149,7 @@
             ;;                   :as "newsletter-info")
              (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                                 :as "type")
-             (document          :via      ,(s-prefix "ext:beslissingsfiche")
+             (document-container  :via      ,(s-prefix "ext:beslissingsfiche")
                                 :as "signed-document"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
   :features '(include-uri)
@@ -250,7 +250,7 @@
                                         :as "requested-subcases")
               (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
                                         :as "related-cases")
-              (document-version         :via      ,(s-prefix "ext:zittingDocumentversie")
+              (document                 :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "document-versions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
@@ -280,11 +280,11 @@
              (agendaitem        :via      ,(s-prefix "ext:notulenVanAgendaPunt")
                                 :inverse t
                                 :as "agendaitem")
-             (document          :via      ,(s-prefix "ext:getekendeNotulen")
+             (document-container  :via      ,(s-prefix "ext:getekendeNotulen")
                                 :as "signed-document"))
   :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
                                 :as "attendees")
-              (document-version :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+              (document         :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                 :as "document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/notulen/")
   :features '(include-uri)

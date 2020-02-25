@@ -9,7 +9,7 @@
                 (:NUMAC :number ,(s-prefix "besluitvorming:NUMAC"))) ;; optional, NOTE: proposition to treat Publicaties in Belgisch staatsblad as ordinary publicaties (filter on NUMAC for retrieving publicaties belgisch staatsblad) NOTE: made up property-URI besluitvorming:NUMAC
   :has-one `((publication-state :via ,(s-prefix "ext:publicatieStatus") ;; NOTE: More specific relationship then besluitvorming:status as mu-cl-resources workaround
                                 :as "state")
-             (document-version :via ,(s-prefix "dct:hasPart")
+             (document         :via ,(s-prefix "dct:hasPart")
                                :as "document-versions")
              (person :via ,(s-prefix "besluitvorming:heeftAanvrager") ;; NOTE: used persoon instead of agent
                      :as "requested-by")
@@ -93,7 +93,7 @@
                                         :as "modified-by"))
   :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
                                         :as "themes")
-              (document-version         :via      ,(s-prefix "ext:documentenVoorPublicatie")
+              (document                 :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
   :features '(include-uri)
