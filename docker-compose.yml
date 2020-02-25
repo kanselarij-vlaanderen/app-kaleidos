@@ -30,7 +30,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
     restart: always
   database:
-    image: semtech/mu-authorization:0.6.0-beta.3
+    image: semtech/mu-authorization:0.6.0-beta.4
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       # LOG_OUTGOING_SPARQL_QUERIES: "true"
