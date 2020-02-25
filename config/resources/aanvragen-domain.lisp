@@ -42,7 +42,7 @@
                                    :as "consultation-request"))
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
                       :as "remarks")
-              (document :via ,(s-prefix "dct:hasPart")
+              (document-container :via ,(s-prefix "dct:hasPart")
                         :as "documents"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatie-antwoorden/")
   :features '(include-uri)
@@ -65,7 +65,7 @@
   :properties `((:target-language :string ,(s-prefix "besluitvorming:doeltaal"))
                 (:expected-delivery-date :date ,(s-prefix "besluitvorming:verwachteOpleverdatum")))
   :has-many `(
-              (document-version :via ,(s-prefix "prov:generated")
+              (document         :via ,(s-prefix "prov:generated")
                                 :as "documentVersions")
               (translation-state :via ,(s-prefix "ext:vertalingsaanvraagStatus")
                                   :as "states")

@@ -331,7 +331,7 @@
             "http://purl.org/dc/terms/hasPart",
             "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
             "http://mu.semte.ch/vocabularies/ext/beslissingsfiche",
-            "http://data.vlaanderen.be/ns/besluitvorming#heeftVersie",
+            "https://data.vlaanderen.be/ns/dossier#collectie.bestaatUit",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
