@@ -1,0 +1,12 @@
+(define-resource job ()
+  :class (s-prefix "cogs:Job")
+  :properties `((:created       :datetime  ,(s-prefix "dct:created"))
+                (:status        :uri       ,(s-prefix "ext:status"))
+                (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
+                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
+                (:generated     :uri       ,(s-prefix "prov:generated"))
+  )
+  ; :resource-base (s-url "http://kanselarij.vo.data.gift/id/jobs/")
+  :features '(include-uri)
+  :on-path "jobs"
+)

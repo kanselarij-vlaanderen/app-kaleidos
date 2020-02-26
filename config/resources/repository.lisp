@@ -68,6 +68,7 @@
 (add-prefix "toezicht" "http://mu.semte.ch/vocabularies/ext/supervision/")
 (add-prefix "toezichtReport" "http://mu.semte.ch/vocabularies/ext/supervision/reporting/")
 (add-prefix "validation" "http://mu.semte.ch/vocabularies/validation/")
+(add-prefix "cogs" "http://vocab.deri.ie/cogs#")
 
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
 (add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
