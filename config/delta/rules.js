@@ -59,7 +59,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://file-bundling/delta',
+      url: 'http://file-bundling-service/delta',
       method: 'POST'
     },
     options: {
