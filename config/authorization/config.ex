@@ -87,7 +87,10 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne"
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://www.w3.org/ns/prov#Collection", # TEMP should be writable for all user groups
+      "http://vocab.deri.ie/cogs#Job", # TEMP should be writable for all user groups
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob" # TEMP should be writable for all user groups
     ]
   end
 
