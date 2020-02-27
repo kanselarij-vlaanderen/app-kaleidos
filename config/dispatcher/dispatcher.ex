@@ -266,8 +266,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  match "/successes/*path", @any do
-    Proxy.forward conn, path, "http://cache/successes"
+  match "/logs/*path", @any do
+    Proxy.forward conn, path, "http://cache/logs"
   end
 
   match "/errors/*path", @any do
