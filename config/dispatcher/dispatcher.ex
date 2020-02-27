@@ -266,6 +266,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
+  match "/successes/*path", @any do
+    Proxy.forward conn, path, "http://cache/successes"
+  end
+
+  match "/errors/*path", @any do
+    Proxy.forward conn, path, "http://cache/errors"
+  end
+
   match "/agenda-sort/*path", @any do
     Proxy.forward conn, path, "http://agenda-sort-service/"
   end
