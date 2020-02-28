@@ -188,7 +188,7 @@ services:
     logging: *default-logging
     restart: always
   file-bundling-service:
-    image: kanselarij/file-bundling-service:2.0.0
+    image: kanselarij/file-bundling-service:2.0.1
     volumes:
       - ./data/files:/share
     logging: *default-logging
