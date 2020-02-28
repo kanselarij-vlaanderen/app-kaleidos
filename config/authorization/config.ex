@@ -202,12 +202,13 @@ defmodule Acl.UserGroups.Config do
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "admin", "admin" ),
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/organizations/",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://mu.semte.ch/vocabularies/ext/NotAThing",
-            ] } },
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+            }
+          },
         ]
       },
       %GroupSpec{
