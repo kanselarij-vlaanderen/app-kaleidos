@@ -187,16 +187,16 @@ services:
     image: lblod/sink-service:1.0.0
     logging: *default-logging
     restart: always
-  # file-bundling-service:
-  #   image: kanselarij/file-bundling-service:1.0.0
-  #   volumes:
-  #     - ./data/files:/share
-  #   logging: *default-logging
-  #   restart: always
-  # document-grouping-service:
-  #   image: kanselarij/document-grouping-service:1.0.0
-  #   logging: *default-logging
-  #   restart: always
+  file-bundling-service:
+    image: kanselarij/file-bundling-service:2.0.0
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+  document-grouping-service:
+    image: kanselarij/document-grouping-service:2.0.0
+    logging: *default-logging
+    restart: always
   database-healthcheck:
     image: kanselarij/database-healthcheck:1.0.1
     logging: *default-logging
