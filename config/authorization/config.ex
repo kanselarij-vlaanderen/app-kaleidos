@@ -245,7 +245,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types()
+              resource_types: all_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
