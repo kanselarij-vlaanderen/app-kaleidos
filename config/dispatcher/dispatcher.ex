@@ -45,18 +45,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/casesByDecisionText/invalidate/"
   end
 
-  match "/oc-agendaitems/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/oc-agendaitems/search/"
-  end
-
-  match "/oc-agendaitems/index/*path", @any do
-    Proxy.forward conn, path, "http://musearch/oc-agendaitems/search/"
-  end
-
-  match "/oc-agendaitems/invalidate/*path", @any do
-    Proxy.forward conn, path, "http://musearch/oc-agendaitems/invalidate/"
-  end
-
   match "/musearch/settings/*path", @any do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
@@ -339,18 +327,6 @@ defmodule Dispatcher do
 
   match "/newsletter/*path", @any do
     Proxy.forward conn, path, "http://newsletter-service/"
-  end
-
-  match "/oc-meetings/*path", @any do
-    Proxy.forward conn, path, "http://cache/oc-meetings/"
-  end
-
-  match "/oc-agendaitems/*path", @any do
-    Proxy.forward conn, path, "http://cache/oc-agendaitems/"
-  end
-
-  match "/oc-cases/*path", @any do
-    Proxy.forward conn, path, "http://cache/oc-cases/"
   end
 
   match "/mail-campaigns/*path", @any do
