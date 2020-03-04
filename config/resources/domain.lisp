@@ -22,7 +22,6 @@
 (read-domain-file "dossier-domain.lisp")
 (read-domain-file "files-domain.lisp")
 (read-domain-file "mandaat-domain.lisp")
-(read-domain-file "oc-domain.lisp")
 (read-domain-file "organisatie-domain.lisp")
 (read-domain-file "publicatie-domain.lisp")
 (read-domain-file "alerts-domain.lisp")

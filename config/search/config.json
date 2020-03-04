@@ -331,7 +331,7 @@
             "http://purl.org/dc/terms/hasPart",
             "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
             "http://mu.semte.ch/vocabularies/ext/beslissingsfiche",
-            "http://data.vlaanderen.be/ns/besluitvorming#heeftVersie",
+            "https://data.vlaanderen.be/ns/dossier#collectie.bestaatUit",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -375,43 +375,6 @@
             "search_analyzer": "dutchanalyzer"
           },
           "sessionDates": {
-            "type": "date"
-          }
-        }
-      }
-    },
-    {
-      "type": "oc-agendaitem",
-      "on_path": "oc-agendaitems",
-      "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
-      "properties": {
-        "subject": "http://purl.org/dc/terms/subject",
-        "sessionDate": [
-          "^http://mu.semte.ch/vocabularies/ext/oc/agendaItem",
-          "http://www.w3.org/ns/prov#startedAtTime"
-        ],
-        "data": {
-          "via": [
-            "http://mu.semte.ch/vocabularies/ext/oc/files",
-            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
-          ],
-          "attachment_pipeline": "attachment"
-        }
-      },
-      "mappings": {
-        "properties": {
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
-          "subject": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "sessionDate": {
             "type": "date"
           }
         }

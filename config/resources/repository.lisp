@@ -33,7 +33,6 @@
 
 
 (add-prefix "ext" "http://mu.semte.ch/vocabularies/ext/")
-(add-prefix "oc" "http://mu.semte.ch/vocabularies/ext/oc/")
 (add-prefix "tmp" "http://mu.semte.ch/vocabularies/tmp/")
 
 (add-prefix "besluit" "http://data.vlaanderen.be/ns/besluit#")
@@ -41,6 +40,7 @@
 (add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#")
 (add-prefix "mandaat" "http://data.vlaanderen.be/ns/mandaat#")
 (add-prefix "persoon" "http://data.vlaanderen.be/ns/persoon#")
+(add-prefix "dossier" "https://data.vlaanderen.be/ns/dossier#")
 
 (add-prefix "adms" "http://www.w3.org/ns/adms#")
 (add-prefix "bbcdr" "http://mu.semte.ch/vocabularies/ext/bbcdr/")
