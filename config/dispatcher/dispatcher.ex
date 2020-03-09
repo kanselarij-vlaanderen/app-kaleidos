@@ -56,7 +56,6 @@ defmodule Dispatcher do
   post "/agendas/:id/agendaitems/documents/files/archive", @any do
     Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
-  end
   match "/agendas/*path", @any do
     Proxy.forward conn, path, "http://cache/agendas/"
   end
