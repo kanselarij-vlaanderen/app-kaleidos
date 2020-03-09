@@ -75,5 +75,5 @@ services:
     restart: "no"
   file-bundling-service:
     restart: "no"
-  document-grouping-service:
+  file-bundling-job-creation-service:
     restart: "no"

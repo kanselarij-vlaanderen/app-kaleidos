@@ -181,13 +181,13 @@ services:
     logging: *default-logging
     restart: always
   file-bundling-service:
-    image: kanselarij/file-bundling-service:2.0.1
+    image: kanselarij/file-bundling-service:2.1.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
     restart: always
-  document-grouping-service:
-    image: kanselarij/document-grouping-service:2.0.0
+  file-bundling-job-creation-service:
+    image: kanselarij/file-bundling-job-creation-service:0.1.0
     logging: *default-logging
     restart: always
   database-healthcheck:
