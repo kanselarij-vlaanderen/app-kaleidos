@@ -4,7 +4,6 @@
                 (:status        :uri       ,(s-prefix "ext:status"))
                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
                 (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
-                (:generated     :uri       ,(s-prefix "prov:generated"))
   )
   :has-one `((file              :via     ,(s-prefix "prov:generated")
                                 :as "generated"))
