@@ -96,7 +96,9 @@
              (newsletter-info         :via ,(s-prefix "prov:generated")
                                       :as "newsletter-info")
              (mandatee                :via ,(s-prefix "ext:indiener")
-                                      :as "requested-by"))
+                                      :as "requested-by")
+             (user                    :via      ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by"))
   :has-many `((theme                  :via ,(s-prefix "dct:subject")
                                       :as "themes")
               (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
@@ -175,7 +177,8 @@
   :class (s-prefix "ext:ToegangsniveauCode") ;; NOTE: as well as skos:Concept
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
+                (:alt-label   :string ,(s-prefix "skos:altLabel"))
+                (:priority    :string ,(s-prefix "ext:prioriteit")))
   :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")

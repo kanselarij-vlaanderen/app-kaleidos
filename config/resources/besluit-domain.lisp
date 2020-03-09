@@ -45,6 +45,8 @@
                                       :as "postponed-to")
              (agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
                                       :as "previousAgendaItem")
+             (user                    :via      ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by")
              (subcase                 :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
                                       :inverse t
                                       :as "subcase")
