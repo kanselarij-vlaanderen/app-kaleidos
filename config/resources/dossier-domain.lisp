@@ -96,7 +96,9 @@
              (newsletter-info         :via ,(s-prefix "prov:generated")
                                       :as "newsletter-info")
              (mandatee                :via ,(s-prefix "ext:indiener")
-                                      :as "requested-by"))
+                                      :as "requested-by")
+             (user                    :via      ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by"))
   :has-many `((theme                  :via ,(s-prefix "dct:subject")
                                       :as "themes")
               (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
@@ -105,9 +107,9 @@
                                       :as "mandatees")
               (subcase                :via ,(s-prefix "dct:relation")
                                       :as "related-to")
-              (document-version       :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
-              (document-version       :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+              (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
               (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
@@ -175,11 +177,12 @@
   :class (s-prefix "ext:ToegangsniveauCode") ;; NOTE: as well as skos:Concept
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
+                (:alt-label   :string ,(s-prefix "skos:altLabel"))
+                (:priority    :string ,(s-prefix "ext:prioriteit")))
   :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")
-              (document       :via ,(s-prefix "ext:toegangsniveauVoorDocument")
+              (document-container  :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;; 2019-01-09 : deprecated. To be removed after checking frontend dependency
                               :inverse t
                               :as "documents")
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
