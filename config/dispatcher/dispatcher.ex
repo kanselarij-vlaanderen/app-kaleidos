@@ -211,7 +211,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/time-periods/"
   end
 
-  match "/organizations/*path", @any do
+  get "/organizations/*path", @any do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
