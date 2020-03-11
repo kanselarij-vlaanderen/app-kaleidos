@@ -73,7 +73,7 @@ services:
     restart: "no"
   sink:
     restart: "no"
-  # file-bundling-service:
-  #   restart: "no"
-  # document-grouping-service:
-  #   restart: "no"
+  file-bundling-service:
+    restart: "no"
+  file-bundling-job-creation-service:
+    restart: "no"
