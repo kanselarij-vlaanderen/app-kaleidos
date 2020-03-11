@@ -10,7 +10,7 @@ export default [
       method: 'POST'
     },
     options: {
-      resourceFormat: 'v0.0.0-genesis',
+      resourceFormat: "v0.0.1",
       gracePeriod: 10000,
       ignoreFromSelf: true
     }
