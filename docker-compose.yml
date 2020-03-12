@@ -68,12 +68,11 @@ services:
     logging: *default-logging
     restart: always
   musearch:
-   image: semtech/mu-search:0.6.0-beta.7
+   image: semtech/mu-search:0.6.0-beta.11
    volumes:
       - ./config/search:/config
       - ./data/files:/data
    environment:
-     NUMBER_OF_THREADS: 4
      JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
      LOG_LEVEL: "info"
    logging: *default-logging

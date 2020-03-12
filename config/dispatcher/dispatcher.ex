@@ -270,6 +270,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://agenda-approve-service/"
   end
 
+  match "/lazy-loading/*path", @any do
+    Proxy.forward conn, path, "http://lazy-loading-service/"
+  end
+
   match "/account-groups/*path", @any do
     Proxy.forward conn, path, "http://cache/account-groups/"
   end
