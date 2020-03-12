@@ -96,7 +96,9 @@
              (newsletter-info         :via ,(s-prefix "prov:generated")
                                       :as "newsletter-info")
              (mandatee                :via ,(s-prefix "ext:indiener")
-                                      :as "requested-by"))
+                                      :as "requested-by")
+             (user                    :via      ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by"))
   :has-many `((theme                  :via ,(s-prefix "dct:subject")
                                       :as "themes")
               (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent

@@ -88,6 +88,15 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp file_bundling_resource_types() do
+    [
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+      "http://www.w3.org/ns/prov#Collection",
+      "http://vocab.deri.ie/cogs#Job",
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
+    ]
+  end
+
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
@@ -148,13 +157,13 @@ defmodule Acl.UserGroups.Config do
       },
       %GroupSpec{
         name: "o-intern-overheid-read",
-        useage: [:read],
+        useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "overheid", "intern-overheid" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
             }
           }
         ]
@@ -190,18 +199,6 @@ defmodule Acl.UserGroups.Config do
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "admin", "admin" ),
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/organizations/",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://mu.semte.ch/vocabularies/ext/NotAThing",
-            ] } },
-        ]
-      },
-      %GroupSpec{
-        name: "o-intern-regering-read",
-        useage: [:read],
-        access: named_graph_access_by_role( "kabinet", "intern-regering" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
@@ -212,14 +209,27 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
+        name: "o-intern-regering-read",
+        useage: [:read, :write, :read_for_write],
+        access: named_graph_access_by_role( "kabinet", "intern-regering" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
+            }
+          },
+        ]
+      },
+      %GroupSpec{
         name: "o-minister-read",
-        useage: [:read],
+        useage: [:read, :write, :read_for_write],
         access: named_graph_access_by_role( "minister", "minister" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
             }
           },
         ]
@@ -232,7 +242,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types()
+              resource_types: all_resource_types() ++file_bundling_resource_types()
             }
           },
         ]

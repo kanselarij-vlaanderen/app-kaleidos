@@ -53,8 +53,8 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
-  get "/agendas/:id/agendaitems/files", @any do
-    Proxy.forward conn, [], "http://document-grouping-service/agendas/" <> id <> "/agendaitems/files"
+  post "/agendas/:id/agendaitems/documents/files/archive", @any do
+    Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
   match "/agendas/*path", @any do
     Proxy.forward conn, path, "http://cache/agendas/"
@@ -270,6 +270,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://agenda-approve-service/"
   end
 
+  match "/lazy-loading/*path", @any do
+    Proxy.forward conn, path, "http://lazy-loading-service/"
+  end
+
   match "/account-groups/*path", @any do
     Proxy.forward conn, path, "http://cache/account-groups/"
   end
@@ -280,10 +284,6 @@ defmodule Dispatcher do
 
   get "/files/:id/download", @any do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
-  end
-
-  post "/files/archive/*path", @any do
-    Proxy.forward conn, path, "http://file-bundling-service/files/archive/"
   end
 
   post "/files/*path", @any do
@@ -331,6 +331,10 @@ defmodule Dispatcher do
 
   match "/mail-campaigns/*path", @any do
     Proxy.forward conn, path, "http://cache/mail-campaigns/"
+  end
+
+  match "/file-bundling-jobs/*path", @any do
+    Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
   match "_", %{ last_call: true } do
