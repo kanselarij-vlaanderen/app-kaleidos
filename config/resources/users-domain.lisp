@@ -21,7 +21,9 @@
   :class (s-prefix "foaf:OnlineAccount")
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/accounts/")
   :properties `((:provider    :via ,(s-prefix "foaf:accountServiceHomepage"))
-                (:vo-id       :via ,(s-prefix "dct:identifier")))
+                (:vo-id       :via ,(s-prefix "dct:identifier"))
+                (:vo-email       :via ,(s-prefix "ext:email"))
+                (:phone-number       :via ,(s-prefix "ext:phone")))
   :has-one `((user            :via ,(s-prefix "foaf:account")
                               :inverse t
                               :as "user"))
