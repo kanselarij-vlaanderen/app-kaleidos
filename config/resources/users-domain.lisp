@@ -3,20 +3,27 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/gebruikers/")
   :properties `((:first-name            :string   ,(s-prefix "foaf:firstName"))
                 (:last-name             :string   ,(s-prefix "foaf:familyName"))
-                (:rijksregister-nummer  :string   ,(s-prefix "dct:identifier"))) ;; We don't receive this value right now
+                (:email-link            :uri      ,(s-prefix "foaf:mbox"))
+                (:phone-link            :uri      ,(s-prefix "foaf:phone")))
   :has-one `((account-group             :via      ,(s-prefix "foaf:member")
                                         :inverse t
                                         :as "group")
              (account                   :via      ,(s-prefix "foaf:account")
-                                        :as "account"))
+                                        :as "account")
+             (organization              :via      ,(s-prefix "org:memberOf")
+                                        :inverse t
+                                        :as "organization")
+             )
   :on-path "users"
 )
 
 (define-resource account ()
   :class (s-prefix "foaf:OnlineAccount")
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/accounts/")
-  :properties `((:provider    :via ,(s-prefix "foaf:accountServiceHomepage"))
-                (:vo-id       :via ,(s-prefix "dct:identifier")))
+  :properties `((:provider     :via ,(s-prefix "foaf:accountServiceHomepage"))
+                (:vo-id        :via ,(s-prefix "dct:identifier"))
+                (:vo-email     :via ,(s-prefix "ext:email"))
+                (:phone-number :via ,(s-prefix "ext:phone")))
   :has-one `((user            :via ,(s-prefix "foaf:account")
                               :inverse t
                               :as "user"))
