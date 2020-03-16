@@ -1,13 +1,3 @@
-(define-resource log ()
-  :class (s-prefix "ext:Log")
-  :resource-base (s-url "http://mu.semte.ch/vocabularies/ext/logs/")
-  :properties `((:type                  :string   ,(s-prefix "ext:type"))
-                (:service-name          :string   ,(s-prefix "ext:serviceName"))
-                (:unix-timestamp        :string   ,(s-prefix "ext:unixTimestamp"))
-                (:state                 :string   ,(s-prefix "ext:state")))
-  :on-path "logs"
-)
-
 (define-resource error ()
   :class (s-prefix "ext:Error")
   :resource-base (s-url "http://mu.semte.ch/vocabularies/ext/errors/")
