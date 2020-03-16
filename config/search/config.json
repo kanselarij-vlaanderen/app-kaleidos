@@ -1,18 +1,19 @@
 {
   "batch_size": 128,
   "max_batches": 0,
+  "number_of_threads": 4,
+  "update_wait_interval_minutes": 8,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
-                             [{"name": "o-intern-overheid-read", "variables" : ["intern-overheid"]}],
-                             [{"name": "o-admin-roles", "variables" : ["admin"]}],
-                             [{"name": "o-intern-regering-read", "variables" : ["intern-regering"]}],
-                             [{"name": "o-minister-read", "variables" : ["minister"]}],
-                             [{"name": "o-kanselarij-all", "variables" : ["kanselarij"]}],
-                             [{"name": "public", "variables" : []}]
-                           ],
+    [{"variables":[], "name":"clean"}, {"variables":["intern-regering"], "name":"o-intern-regering-read"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":["intern-overheid"], "name":"o-intern-overheid-read"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":["minister"], "name":"o-minister-read"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"o-kanselarij-on-public"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":[], "name":"o-admin-on-public"}, {"variables":["admin"], "name":"o-admin-roles"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"public"}]
+  ],
   "attachments_path_base": "/data/",
   "eager_indexing_sparql_query": false,
-  "additive_indexes": true,
+  "additive_indexes": false,
   "persist_indexes": true,
   "default_settings": {
     "analysis": {
@@ -375,43 +376,6 @@
             "search_analyzer": "dutchanalyzer"
           },
           "sessionDates": {
-            "type": "date"
-          }
-        }
-      }
-    },
-    {
-      "type": "oc-agendaitem",
-      "on_path": "oc-agendaitems",
-      "rdf_type": "http://mu.semte.ch/vocabularies/ext/oc/AgendaItem",
-      "properties": {
-        "subject": "http://purl.org/dc/terms/subject",
-        "sessionDate": [
-          "^http://mu.semte.ch/vocabularies/ext/oc/agendaItem",
-          "http://www.w3.org/ns/prov#startedAtTime"
-        ],
-        "data": {
-          "via": [
-            "http://mu.semte.ch/vocabularies/ext/oc/files",
-            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
-          ],
-          "attachment_pipeline": "attachment"
-        }
-      },
-      "mappings": {
-        "properties": {
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
-          "subject": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "sessionDate": {
             "type": "date"
           }
         }
