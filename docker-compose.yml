@@ -200,3 +200,7 @@ services:
     image: kanselarij/database-healthcheck:1.0.1
     logging: *default-logging
     restart: always
+  lazy-loading-service:
+    image: kanselarij/lazy-loading-service:1.0.0
+    logging: *default-logging
+    restart: always
