@@ -19,5 +19,4 @@ config/migrations/*
 *sensitive*
 node_modules
 __pycache__
-
 *~

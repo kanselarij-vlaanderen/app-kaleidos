@@ -1,0 +1,10 @@
+(define-resource error ()
+  :class (s-prefix "ext:Error")
+  :resource-base (s-url "http://mu.semte.ch/vocabularies/ext/errors/")
+  :properties `((:type                  :string   ,(s-prefix "ext:type"))
+                (:service-name          :string   ,(s-prefix "ext:serviceName"))
+                (:unix-timestamp        :string   ,(s-prefix "ext:unixTimestamp"))
+                (:state                 :string   ,(s-prefix "ext:state"))
+                (:error                 :string   ,(s-prefix "ext:error")))
+  :on-path "errors"
+)
