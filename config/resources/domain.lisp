@@ -27,4 +27,5 @@
 (read-domain-file "alerts-domain.lisp")
 (read-domain-file "aanvragen-domain.lisp")
 (read-domain-file "users-domain.lisp")
+(read-domain-file "monitoring-domain.lisp")
 (read-domain-file "job-domain.lisp")
