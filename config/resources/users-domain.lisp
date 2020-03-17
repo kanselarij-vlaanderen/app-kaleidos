@@ -11,7 +11,6 @@
              (account                   :via      ,(s-prefix "foaf:account")
                                         :as "account")
              (organization              :via      ,(s-prefix "org:memberOf")
-                                        :inverse t
                                         :as "organization")
              )
   :on-path "users"
