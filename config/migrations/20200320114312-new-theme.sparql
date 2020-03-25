@@ -1,0 +1,15 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX theme: <http://kanselarij.vo.data.gift/id/concept/thema-codes/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        theme:d7a9756e-697a-46cf-a22d-ccba40e98ffb a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "d7a9756e-697a-46cf-a22d-ccba40e98ffb" ;
+            skos:prefLabel "justitie en handhaving"@nl ;
+            owl:deprecated "false"^^mulit:boolean .
+    }
+}
