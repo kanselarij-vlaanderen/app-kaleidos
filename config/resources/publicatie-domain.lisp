@@ -91,7 +91,7 @@
                                         :as "meeting")
              (user                      :via      ,(s-prefix "ext:modifiedBy")
                                         :as "modified-by"))
-  :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((theme                    :via      ,(s-prefix "ext:themesOfNewsletter")
                                         :as "themes")
               (document                 :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "document-versions"))
@@ -105,7 +105,7 @@
                 (:scope-note    :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label     :string ,(s-prefix "skos:altLabel"))
                 (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
-  :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfNewsletter")
                                 :inverse t
                                 :as "newsletters"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
