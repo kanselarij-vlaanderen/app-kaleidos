@@ -94,10 +94,10 @@
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-one `((ise-code            :via    ,(s-prefix "ext:heeftIseCode")
+  :has-many `((ise-code           :via    ,(s-prefix "ext:heeftIseCode")
                                   :inverse t
                                   :as "ise-code")
-            (government-domain    :via ,(s-prefix "ext:heeftBeleidsDomein")
+  :has-one `((government-domain   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :as "domain"))                
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsvelden/")
   :features '(include-uri)
