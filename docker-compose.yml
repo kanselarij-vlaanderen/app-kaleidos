@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.5.7
+    image: kanselarij/frontend-kaleidos:1.5.8
     links:
       - identifier:backend
     logging: *default-logging
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:1.1.1
+    image: kanselarij/yggdrasil:1.1.2
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
