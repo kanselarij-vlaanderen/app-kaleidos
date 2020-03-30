@@ -329,6 +329,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  match "/mandatee-service/*path", @any do
+    Proxy.forward conn, path, "http://mandatee-service/"
+  end
+
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
