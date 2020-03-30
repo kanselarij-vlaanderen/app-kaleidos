@@ -84,7 +84,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne"
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://www.w3.org/ns/org#Organization"
     ]
   end
 
@@ -127,7 +128,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
       "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne"
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://www.w3.org/ns/org#Organization"
     ]
   end
 
