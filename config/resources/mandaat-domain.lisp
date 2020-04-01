@@ -96,7 +96,7 @@
                 (:alt-label       :string ,(s-prefix "skos:altLabel")))
   :has-many `((ise-code           :via    ,(s-prefix "ext:heeftIseCode")
                                   :inverse t
-                                  :as "ise-code")
+                                  :as "ise-code"))
   :has-one `((government-domain   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :as "domain"))                
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsvelden/")
@@ -104,7 +104,7 @@
   :on-path "government-fields")
 
 (define-resource ise-code ()
-  :class                                   (s-prefix "kans:IseCode")
+  :class  (s-prefix "kans:IseCode")
   :properties `((:name            :string ,(s-prefix "skos:prefLabel"))
                 (:code            :string ,(s-prefix "skos:altLabel")))
   :has-one `((government-field    :via    ,(s-prefix "ext:heeftIseCode")
