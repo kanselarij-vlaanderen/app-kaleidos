@@ -127,7 +127,7 @@ services:
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service:1.0.0
+    image: kanselarij/custom-subcases-service:1.0.1
     logging: *default-logging
     restart: always
   agenda-approve-service:
