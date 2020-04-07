@@ -1,5 +1,5 @@
 (define-resource publication ()
-  :class (s-prefix "besluitvorming:Publicatie") 
+  :class (s-prefix "besluitvorming:Publicatie")
   :properties `((:nuber-of-words :number ,(s-prefix "besluitvorming:aantalWoorden"))
                 (:digital :boolean ,(s-prefix "besluitvorming:digitaal"))
                 (:number :string ,(s-prefix "adms:identifier"))
@@ -16,14 +16,14 @@
              (mandatee :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                        :as "mandatee"))
   :has-many `((remark :via ,(s-prefix "rdfs:comment")
-                      :as "remarks") 
+                      :as "remarks")
               (decision :via ,(s-prefix "besluitvorming:isGerealiseerdDoor")
                         :inverse t
                         :as "decisions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicaties/")
   :features '(include-uri)
   :on-path "publications")
-  
+
 (define-resource publication-state ()
   :class (s-prefix "besluitvorming:PublicatieStatus") ;; NOTE: Should be subclass of besluitvorming:Status (mu-cl-resources reasoner workaround)
   :properties `((:date :datetime ,(s-prefix "besluitvorming:statusdatum")))
@@ -71,7 +71,7 @@
   :on-path "remarks")
 
 (define-resource newsletter-info ()
-  :class (s-prefix "besluitvorming:NieuwsbriefInfo") 
+  :class (s-prefix "besluitvorming:NieuwsbriefInfo")
   :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
                 (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
@@ -91,7 +91,7 @@
                                         :as "meeting")
              (user                      :via      ,(s-prefix "ext:modifiedBy")
                                         :as "modified-by"))
-  :has-many `((theme                    :via      ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((theme                    :via      ,(s-prefix "dct:subject")
                                         :as "themes")
               (document                 :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "document-versions"))
@@ -116,7 +116,7 @@
   :on-path "themes")
 
 (define-resource mail-campaign ()
-  :class (s-prefix "ext:MailCampagne") 
+  :class (s-prefix "ext:MailCampagne")
   :properties `((:campaign-id       :string   ,(s-prefix "ext:campagneId"))
                 (:campaign-web-id   :string   ,(s-prefix "ext:campagneWebId"))
                 (:archive-url       :string   ,(s-prefix "ext:voorbeeldUrl"))
