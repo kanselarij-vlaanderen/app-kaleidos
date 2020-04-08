@@ -97,8 +97,6 @@
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
-              (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
                                       :as "agendaitems")
               (subcase-phase          :via ,(s-prefix "ext:subcaseProcedurestapFase")
