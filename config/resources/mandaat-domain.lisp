@@ -33,7 +33,7 @@
                                   :inverse t
                                   :as "requested-subcases"))
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
-                                  :as "person")
+                                  :as "person"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/mandatarissen/")
   :features '(include-uri)
   :on-path "mandatees")
