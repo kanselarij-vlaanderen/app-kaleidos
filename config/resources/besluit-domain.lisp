@@ -6,14 +6,12 @@
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
                 (:created     :date       ,(s-prefix "dct:created"))
                 (:type        :uri        ,(s-prefix "dct:type"))
-                (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
+                (:modified    :datetime   ,(s-prefix "dct:modified"))
                 (:is-accepted :boolean    ,(s-prefix "ext:accepted")))
   :has-one `((meeting         :via        ,(s-prefix "besluit:isAangemaaktVoor")
                               :as "created-for")
              (agendastatus    :via        ,(s-prefix "besluitvorming:agendaStatus")
                               :as "status")
-             (agendatype      :via        ,(s-prefix "besluitvorming:agendaType")
-                              :as "agendatype")
              (access-level    :via ,(s-prefix "besluitvorming:vertrouwelijkheidsniveau")
                               :as "access-level")
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
@@ -42,18 +40,6 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendastatus/")
   :features '(include-uri)
   :on-path "agendastatuses")
-
-(define-resource agendatype ()
-  :class (s-prefix "kans:AgendaType")
-  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                  (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                  (:alt-label   :string ,(s-prefix "skos:altLabel")))
-  :has-many `((agenda     :via        ,(s-prefix "besluitvorming:agendaType")
-                          :inverse t
-                          :as "agendas"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendatype/")
-  :features '(include-uri)
-  :on-path "agendastypes")
 
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
@@ -263,9 +249,8 @@
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier"))
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
-                (:kind                  :uri      ,(s-prefix "ext:aard"))
-                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
-                (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
+                (:kind                  :uri      ,(s-prefix "dct:type"))
+                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))) 
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
                                         :inverse t
                                         :as "agendas")

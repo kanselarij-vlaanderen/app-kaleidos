@@ -1,0 +1,31 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+     ?s besluitvorming:volgnummer ?name.
+  }
+} WHERE {
+ GRAPH ?g {
+   ?s <http://mu.semte.ch/vocabularies/ext/agendaNaam> ?name.
+   FILTER(STRLEN(?name) = 1)
+ }
+};
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+    ?agenda besluitvorming:volgnummer ?versionnumber .
+  }
+} WHERE {
+ GRAPH ?g {
+   ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> "Ontwerpagenda" .
+   
+   { SELECT ?agenda COUNT( DISTINCT (?previous)) AS ?previousCount WHERE {
+         ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> "Ontwerpagenda" .
+         ?agenda besluitvorming:heeftVorigeVersie* ?previous .
+   } GROUP BY ?agenda }
+
+   BIND(SUBSTR("ABCDEFGHIJKLMNOPQRSTUVWXYZ", ?previousCount, 1) AS ?versionnumber)
+
+ }
+}
