@@ -169,6 +169,12 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "data.attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
           }
         }
       }
@@ -231,12 +237,6 @@
       },
       "mappings": {
         "properties": {
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
           "title": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -282,6 +282,18 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "data.attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
           }
         }
       }
@@ -344,12 +356,6 @@
           "created": {
             "type": "date"
           },
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
           "decisionText": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -377,6 +383,18 @@
           },
           "sessionDates": {
             "type": "date"
+          },
+          "attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "data.attachment.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
           }
         }
       }
