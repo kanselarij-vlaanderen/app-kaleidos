@@ -105,12 +105,9 @@
                 (:scope-note    :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label     :string ,(s-prefix "skos:altLabel"))
                 (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
-  :has-many `((newsletter-info  :via    ,(s-prefix "ext:themesOfSubcase")
+  :has-many `((newsletter-info  :via    ,(s-prefix "dct:subject")
                                 :inverse t
-                                :as "newsletters")
-              (subcase          :via    ,(s-prefix "dct:subject")
-                                :inverse t
-                                :as "subcases"))
+                                :as "newsletters"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
   :features `(no-pagination-defaults include-uri)
   :on-path "themes")

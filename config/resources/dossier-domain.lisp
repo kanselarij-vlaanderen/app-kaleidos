@@ -99,9 +99,7 @@
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
-  :has-many `((theme                  :via ,(s-prefix "dct:subject")
-                                      :as "themes")
-              (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+  :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                                       :as "heeftCreator")
               (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
