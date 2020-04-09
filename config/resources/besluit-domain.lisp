@@ -63,8 +63,6 @@
             ;; Added has-many relations from subcases
               (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
-              (theme                  :via      ,(s-prefix "ext:agendapuntSubject")
-                                      :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (document               :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
