@@ -269,8 +269,6 @@
                                         :as "notes")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter")
-             (document                  :via        ,(s-prefix "ext:getekendeNotule")
-                                        :as "file")
              (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
                                         :as "signature")
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")

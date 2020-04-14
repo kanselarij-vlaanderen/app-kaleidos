@@ -1,11 +1,11 @@
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
 INSERT {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
      ?s besluitvorming:volgnummer ?name.
   }
 } WHERE {
- GRAPH ?g {
+ GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
    ?s <http://mu.semte.ch/vocabularies/ext/agendaNaam> ?name.
    FILTER(STRLEN(?name) = 1)
  }
@@ -13,11 +13,11 @@ INSERT {
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
 INSERT {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?agenda besluitvorming:volgnummer ?versionnumber .
   }
 } WHERE {
- GRAPH ?g {
+ GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
    ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> "Ontwerpagenda" .
    
    { SELECT ?agenda COUNT( DISTINCT (?previous)) AS ?previousCount WHERE {
