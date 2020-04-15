@@ -2,10 +2,10 @@
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued      :datetime   ,(s-prefix "dct:issued"))
                 (:is-final    :boolean    ,(s-prefix "ext:finaleVersie")) ;; 2019-01-09: property not in use by frontend. The final agenda is the last approved agenda of a meeting that has ext:finaleZittingVersie
-                (:name        :string     ,(s-prefix "dct:title"))
+                (:title        :string     ,(s-prefix "dct:title"))
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
                 (:created     :date       ,(s-prefix "dct:created"))
-                (:type        :uri        ,(s-prefix "dct:type"))
+                (:agendatype  :uri        ,(s-prefix "dct:type"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 (:is-accepted :boolean    ,(s-prefix "ext:accepted")))
   :has-one `((meeting         :via        ,(s-prefix "besluit:isAangemaaktVoor")
