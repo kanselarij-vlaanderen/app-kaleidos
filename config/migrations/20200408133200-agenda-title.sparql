@@ -1,0 +1,19 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agenda dct:title ?name.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda besluitvorming:volgnummer ?number.
+    ?agenda besluit:isAangemaaktVoor ?zitting.
+    ?zitting besluit:geplandeStart ?date.
+    BIND(CONCAT("Agenda ", ?number, " voor zitting ", DAY(?date), "-", MONTH(?date), "-", YEAR(?date)) AS ?name)
+  }
+}
