@@ -56,7 +56,7 @@ defmodule Acl.UserGroups.Config do
       "http://dbpedia.org/ontology/UnitOfWork",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://data.vlaanderen.be/ns/besluit#Besluit",
-      "http://data.vlaanderen.be/ns/besluit#Zitting",
+      "http://data.vlaanderen.be/ns/besluitvorming#Vergaderactiviteit",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
