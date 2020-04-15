@@ -8,7 +8,7 @@
                 (:agendatype  :uri        ,(s-prefix "dct:type"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 (:is-accepted :boolean    ,(s-prefix "ext:accepted")))
-  :has-one `((meeting         :via        ,(s-prefix "besluit:isAgendaVoor")
+  :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
              (agendastatus    :via        ,(s-prefix "besluitvorming:agendaStatus")
                               :as "status")
