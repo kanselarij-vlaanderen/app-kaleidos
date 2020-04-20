@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:1.8.0
+    image: kanselarij/frontend-kaleidos:1.9.2
     links:
       - identifier:backend
     logging: *default-logging
@@ -156,7 +156,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:1.0.9
+    image: kanselarij/newsletter-service:1.2.0
     logging: *default-logging
     restart: always
   user-management-service:

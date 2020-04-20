@@ -104,12 +104,6 @@ defmodule Dispatcher do
   match "/document-type-codes/*path", @any do
     Proxy.forward conn, path, "http://cache/document-type-codes/"
   end
-  match "/translaterequests/*path", @any do
-    Proxy.forward conn, path, "http://cache/translaterequests/"
-  end
-  match "/translaterequest-statusses/*path", @any do
-    Proxy.forward conn, path, "http://cache/translaterequest-statusses/"
-  end
   match "/media-type-codes/*path", @any do
     Proxy.forward conn, path, "http://cache/media-type-codes/"
   end
@@ -123,10 +117,6 @@ defmodule Dispatcher do
 
   match "/policy-levels/*path", @any do
     Proxy.forward conn, path, "http://cache/policy-levels/"
-  end
-
-  match "/submitters/*path", @any do
-    Proxy.forward conn, path, "http://cache/submitters/"
   end
 
   match "/subcases/*path", @any do
@@ -147,12 +137,6 @@ defmodule Dispatcher do
   match "/approvals/*path", @any do
     Proxy.forward conn, path, "http://cache/approvals/"
   end
-  match "/consultation-requests/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-requests/"
-  end
-  match "/consultation-types/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-types/"
-  end
   match "/consultation-responses/*path", @any do
     Proxy.forward conn, path, "http://cache/consultation-responses/"
   end
@@ -160,31 +144,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/consultation-response-codes/"
   end
 
-  match "/document-states/*path", @any do
-    Proxy.forward conn, path, "http://cache/document-states/"
-  end
-
   match "/file-addresses/*path", @any do
     Proxy.forward conn, path, "http://cache/file-addresses/"
   end
 
-  match "/births/*path", @any do
-    Proxy.forward conn, path, "http://cache/births/"
-  end
-  match "/mandates/*path", @any do
-    Proxy.forward conn, path, "http://cache/mandates/"
-  end
-  match "/government-functions/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-functions/"
-  end
-  match "/government-bodies/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-bodies/"
-  end
   match "/mandatees/*path", @any do
     Proxy.forward conn, path, "http://cache/mandatees/"
-  end
-  match "/mandatee-states/*path", @any do
-    Proxy.forward conn, path, "http://cache/mandatee-states/"
   end
   match "/government-fields/*path", @any do
     Proxy.forward conn, path, "http://cache/government-fields/"
@@ -201,9 +166,7 @@ defmodule Dispatcher do
   match "/people/*path", @any do
     Proxy.forward conn, path, "http://cache/people/"
   end
-  match "/genders/*path", @any do
-    Proxy.forward conn, path, "http://cache/genders/"
-  end
+
   match "/identifications/*path", @any do
     Proxy.forward conn, path, "http://cache/identifications/"
   end
@@ -215,15 +178,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
-  match "/publications/*path", @any do
-    Proxy.forward conn, path, "http://cache/publications/"
-  end
-  match "/publication-states/*path", @any do
-    Proxy.forward conn, path, "http://cache/publication-states/"
-  end
-  match "/publication-state-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/publication-state-codes/"
-  end
   match "/remarks/*path", @any do
     Proxy.forward conn, path, "http://cache/remarks/"
   end
