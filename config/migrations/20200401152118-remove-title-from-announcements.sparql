@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?graph {
+    ?agendaitem dct:title ?title.
+  }
+} WHERE {
+  GRAPH ?graph {
+    ?agendapunt a besluit:Agendapunt .
+    ?agendapunt ext:isGoedkeuringVanDeNotulen "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean>
+.
+    ?agendapunt dct:title ?title .
+  }
+} 
