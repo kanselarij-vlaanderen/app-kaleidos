@@ -16,9 +16,7 @@
                                 :as "policy-level")
              (meeting           :via      ,(s-prefix "ext:heeftBijbehorendeDossiers")
                                 :inverse t
-                                :as "related-meeting")
-             (submitter         :via      ,(s-prefix "ext:heeftIndiener")
-                                :as "submitter"))
+                                :as "related-meeting"))
   :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
                                 :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
               (person           :via      ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
@@ -58,18 +56,6 @@
   :features '(include-uri)
   :on-path "policy-levels")
 
-  (define-resource submitter ()
-  :class (s-prefix "ext:Indiener")
-  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label   :string ,(s-prefix "skos:altLabel")))
-  :has-many `((case           :via ,(s-prefix "ext:heeftIndiener")
-                              :inverse t
-                              :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/indieners/")
-  :features '(include-uri)
-  :on-path "submitters")
-
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
@@ -99,9 +85,7 @@
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
-  :has-many `((theme                  :via ,(s-prefix "dct:subject")
-                                      :as "themes")
-              (person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+  :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                                       :as "heeftCreator")
               (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
@@ -111,8 +95,6 @@
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
-              (consultation-request   :via ,(s-prefix "ext:bevatConsultatievraag") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "consultationRequests") ;; NOTE: consultatieVRAGEN would be more suitable?
               (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
                                       :as "agendaitems")
               (subcase-phase          :via ,(s-prefix "ext:subcaseProcedurestapFase")
