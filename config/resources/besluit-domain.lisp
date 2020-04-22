@@ -203,6 +203,7 @@
   :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart"))
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
+                (:location              :string   ,(s-prefix "prov:atLocation"))
                 (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier"))
