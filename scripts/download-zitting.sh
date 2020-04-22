@@ -12,7 +12,7 @@ if [ $# -lt "$NUMARGS" ]
 then
     echo "Downloads all data related to a 'zitting' from an yggdrasil endpoint and loads it into your sparql endpoint"
     echo ""
-    echo "Usage: ./download-zitting.sh http://yggdrasilhost:port <zitting-id> [anon] [sparqlendpoint=http://localhost:8890] [targetgraph=http://mu.semte.ch/graphs/organizations/kanselarij]"
+    echo "Usage: ./download-zitting.sh http://yggdrasilhost:port <zitting-id> [anon] [sparqlendpoint=http://localhost:8890] [targetgraph=http://mu.semte.ch/graphs/organizations/kanselarij] [--dry-run]"
     echo ""
     echo "NOTE:"
     echo "- anon is optional, if present, data will be anonymized by replacing all string values by the uri"
@@ -21,12 +21,14 @@ then
     echo "- by default, this endpoint will be disabled in yggdrasil, the port will also only be open on the server, not exposed to the outside"
     echo "- to enable the endpoint, add the ALLOW_DOWNLOADS=true environment variabple to yggdrasil"
     echo "- to be able to call the endpoint, make a tunnel to the server using ssh"
+    echo "- --dry-run only downloads the data as a file, it doesn't upload it to an endpoint"
   exit 1
 fi
 
 sparqlendpointpos=3
 graphpos=4
 anon="false"
+
 
 if [ $# -ge 3 ]
 then
@@ -65,7 +67,7 @@ echo "2..."
 sleep 1
 echo "1..."
 sleep 1
-echo "fetching zitting data for $zittingid..."
+echo -n "fetching zitting data for $zittingid..."
 res=$(curl -s -w "%{http_code}" $yggdrasilhost/downloadZitting?zitting=$zittingid\&anonymize=$anon)
 if [ ${#res} -lt 4 ]; then
     echo ""
@@ -73,7 +75,7 @@ if [ ${#res} -lt 4 ]; then
     echo $res
     exit 1
 fi
-ttl=${res::${#res}-4}
+downloadId=${res::${#res}-3}
 status=$(echo $res | tail -c 4)
 if [ "$status" -ne "200" ]; then
     echo ""
@@ -81,11 +83,41 @@ if [ "$status" -ne "200" ]; then
     echo $ttl
     exit $status
 fi
+alldone=0
+while [ "$alldone" -eq 0 ]
+do
+    res=$(curl -s -w "%{http_code}" $yggdrasilhost/downloadZittingResult?id=$downloadId)
+    if [ ${#res} -lt 4 ]; then
+        echo ""
+        echo "Error fetching result:  invalid response from server"
+        echo $res
+        exit 1
+    fi
+    ttl=${res::${#res}-3}
+    status=$(echo $res | tail -c 4)
+    if [ "$status" -ne "200" ]; then
+        echo ""
+        echo "Error fetching result:  $status"
+        echo $ttl
+        exit $status
+    fi
+    if [ "$ttl" != "loading" ]; then
+        alldone=1
+    fi
+    sleep 1
+    echo -n "."
+done
 filename="kaleidos-downloads/$zittingid-$(date +"%Y-%m-%d-%H-%M-%S").ttl"
 echo $ttl > $filename
+echo "done"
 echo ""
 echo "done, written to $filename"
 echo ""
+if [ "${@: -1}" == "--dry-run" ]; then
+    echo "Ended without uploading data" 
+    exit 0
+fi
+
 echo "storing zitting data for $zittingid in <$graph> of endpoint $sparqlendpoint..."
 # need to write to file because otherwise argument list can be too long...
 echo "INSERT DATA { GRAPH <$graph> { $ttl } }" > kaleidos-downloads/tmp
