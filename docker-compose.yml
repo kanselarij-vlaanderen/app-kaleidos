@@ -204,3 +204,7 @@ services:
     image: kanselarij/lazy-loading-service:1.0.1
     logging: *default-logging
     restart: always
+  mandatee-service:
+    image: kanselarij/mandatee-service:1.0.3
+    logging: *default-logging
+    restart: always
