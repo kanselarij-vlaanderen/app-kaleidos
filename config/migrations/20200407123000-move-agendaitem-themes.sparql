@@ -1,0 +1,23 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+INSERT {
+  GRAPH ?g {
+    ?newsletterInfo dct:subject ?theme.
+  }
+}  WHERE {
+  GRAPH ?g {
+    ?subcase a dbpedia:UnitOfWork .
+    ?subcase besluitvorming:isGeagendeerdVia ?agendapunt.
+    ?agendapunt a besluit:Agendapunt .
+    ?agendapunt ext:agendapuntSubject ?theme.
+    ?subcase prov:generated ?newsletterInfo .
+    ?newsletterInfo a besluitvorming:NieuwsbriefInfo.
+    FILTER NOT EXISTS {
+      ?newsletterInfo dct:subject ?somesubject.
+    }
+  }
+}

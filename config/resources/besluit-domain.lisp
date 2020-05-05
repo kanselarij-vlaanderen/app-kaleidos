@@ -63,8 +63,6 @@
             ;; Added has-many relations from subcases
               (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
-              (theme                  :via      ,(s-prefix "ext:agendapuntSubject")
-                                      :as "themes")
               (mandatee               :via      ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (document               :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
@@ -143,10 +141,6 @@
              (agendaitem        :via        ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
                                 :inverse t
                                 :as "agendaitem")
-             (publication       :via        ,(s-prefix "besluitvorming:isGerealiseerdDoor")
-                                :as "publication")
-            ;;  (newsletter-info :via ,(s-prefix "prov:generated") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-            ;;                   :as "newsletter-info")
              (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
                                 :as "type")
              (document-container  :via      ,(s-prefix "ext:beslissingsfiche")
@@ -162,9 +156,6 @@
                                    :as "area-of-jurisdiction")
              (government-unit-classification-code :via ,(s-prefix "besluit:classificatie")
                                                   :as "classification"))
-  :has-many `((government-body :via ,(s-prefix "besluit:bestuurt")
-                               :inverse t
-                               :as "government-bodies"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "government-units")
@@ -190,37 +181,6 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuurseenheid-classificatie-codes/")
   :features '(include-uri)
   :on-path "government-unit-classification-codes")
-
-(define-resource government-body ()
-  :class (s-prefix "besluit:Bestuursorgaan")
-  :properties `((:name :string ,(s-prefix "skos:prefLabel"))
-                (:binding-end :date ,(s-prefix "mandaat:bindingEinde"))
-                (:binding-start :date ,(s-prefix "mandaat:bindingStart"))
-                (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
-  :has-one `((government-unit :via ,(s-prefix "besluit:bestuurt")
-                              :as "government-unit")
-             (government-body-classification-code :via ,(s-prefix "besluit:classificatie")
-                                                  :as "classification")
-             (government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
-                             :as "is-tijdsspecialisatie-van"))
-  :has-many `((government-body :via ,(s-prefix "mandaat:isTijdspecialisatieVan")
-                                    :inverse t
-                                    :as "has-terms")
-              (mandate :via ,(s-prefix "org:hasPost")
-                       :as "bevat"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuursorganen/")
-  :features '(include-uri)
-  :on-path "government-bodies")
-
-;; Unmodified from lblod/loket
-(define-resource government-body-classification-code ()
-  :class (s-prefix "ext:BestuursorgaanClassificatieCode")
-  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuursorgaan-classificatie-codes/")
-  :features '(include-uri)
-  :on-path "government-body-classification-codes")
 
 (define-resource meeting ()
   :class (s-prefix "besluit:Zitting")
