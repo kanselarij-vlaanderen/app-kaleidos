@@ -303,7 +303,9 @@
       "on_path": "casesByDecisionText",
       "rdf_type": "http://dbpedia.org/ontology/Case",
       "properties": {
+        "title": "http://purl.org/dc/terms/title",
         "created": "http://purl.org/dc/terms/created",
+        "shortTitle": "http://purl.org/dc/terms/alternative",
         "decisionText": [
           "http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
@@ -353,8 +355,18 @@
       },
       "mappings": {
         "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "created": {
             "type": "date"
+          },
+          "shortTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           },
           "decisionText": {
             "type": "text",
