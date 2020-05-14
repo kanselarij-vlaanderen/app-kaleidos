@@ -1,0 +1,46 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+    GRAPH ?g {
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5d945b51-aeba-4af3-b259-34a7e81d902b> ext:prioriteit ?prio2 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1> ext:prioriteit ?prio3 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/97eb049e-2e2a-4bf1-97dd-96a9da72c421> ext:prioriteit ?prio4 .
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering> ext:prioriteit ?prio5 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/2e251bba-dd09-4f9d-9d8b-7787d47535f1> ext:prioriteit ?prio6 .
+        
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet> ext:prioriteit ?prio7 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ec2eae14-3824-42bc-82de-8c440af8c002> ext:prioriteit ?prio8 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f1ab8f76-598b-4729-95eb-3419ceb52f02> ext:prioriteit ?prio9 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0> ext:prioriteit ?prio10 .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering> ext:prioriteit 2 . # BVR, was 4
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1> ext:prioriteit 3 . # IF, was 43
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/97eb049e-2e2a-4bf1-97dd-96a9da72c421> ext:prioriteit 4 . # BA, was 44
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/2e251bba-dd09-4f9d-9d8b-7787d47535f1> ext:prioriteit 5 . # Bijlage, was 16
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5d945b51-aeba-4af3-b259-34a7e81d902b> ext:prioriteit 6 . # Advies, was 42
+        
+        
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet> ext:prioriteit 16 . # 2 (Decreet) -> 16
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ec2eae14-3824-42bc-82de-8c440af8c002> ext:prioriteit 42 . # 3 (MvT) -> 42
+        # 4 (BVR) -> 2
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f1ab8f76-598b-4729-95eb-3419ceb52f02> ext:prioriteit 43 . # 5 (Concept) -> 43
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0> ext:prioriteit 44 . # 6 (Beleidsnota) -> 44
+    }
+}
+WHERE {
+    GRAPH ?g {
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5d945b51-aeba-4af3-b259-34a7e81d902b> ext:prioriteit ?prio2 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1> ext:prioriteit ?prio3 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/97eb049e-2e2a-4bf1-97dd-96a9da72c421> ext:prioriteit ?prio4 .
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering> ext:prioriteit ?prio5 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/2e251bba-dd09-4f9d-9d8b-7787d47535f1> ext:prioriteit ?prio6 .
+        
+        <https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet> ext:prioriteit ?prio7 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ec2eae14-3824-42bc-82de-8c440af8c002> ext:prioriteit ?prio8 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f1ab8f76-598b-4729-95eb-3419ceb52f02> ext:prioriteit ?prio9 .
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0> ext:prioriteit ?prio10 .
+    }
+}
