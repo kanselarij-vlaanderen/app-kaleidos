@@ -1,0 +1,44 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+DELETE {
+    GRAPH ?g {
+        ?zitting ext:zittingDocumentversie ?wrongdoc .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?zitting ext:zittingDocumentversie ?rightversion . # Link all versions of the right document
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?zitting a besluit:Zitting ;
+            adms:identifier ?number ;
+            besluit:geplandeStart ?startdate ;
+            ext:zittingDocumentversie ?wrongdoc .
+
+        ?wrongdoc dct:title ?docname .
+        FILTER (CONTAINS(?docname, "/")) # Dirty filter for type = notulen on legacy documents
+
+        BIND( CONCAT("VR PV ", STR(YEAR(?startdate)), "/", IF(?number < 10, CONCAT("0", STR(?number)), STR(?number))) AS ?rightname) # Only catches first version
+        FILTER (!CONTAINS(?docname, ?rightname))
+
+        ?rightdoc a dossier:Stuk ;
+            dct:title ?rightname .
+        ?container a dossier:Serie ;
+            dossier:collectie.bestaatUit ?rightdoc ;
+            dossier:collectie.bestaatUit ?rightversion .
+        ?rightversion dct:title ?rightnames .
+    }
+    VALUES ?g {
+        <http://mu.semte.ch/graphs/organizations/kanselarij>
+        <http://mu.semte.ch/graphs/organizations/intern-overheid>
+        <http://mu.semte.ch/graphs/organizations/intern-regering>
+        <http://mu.semte.ch/graphs/organizations/kanselarij-mirror>
+        <http://mu.semte.ch/graphs/organizations/minister>
+    }
+}
