@@ -3,11 +3,11 @@
   :properties `((:created       :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
-                (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
+                (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
 )
-  :has-many `((subcase          :via      ,(s-prefix "dct:hasPart")
+  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
@@ -37,7 +37,7 @@
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) ;; deprecated
-  :has-one `((case                    :via ,(s-prefix "dct:hasPart")
+  :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
