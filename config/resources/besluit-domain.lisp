@@ -202,8 +202,6 @@
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases")
-              (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
-                                        :as "related-cases")
               (document                 :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "document-versions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
