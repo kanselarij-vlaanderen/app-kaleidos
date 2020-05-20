@@ -1,5 +1,5 @@
 (define-resource case ()
-  :class (s-prefix "dbpedia:Case")
+  :class (s-prefix "dossier:Dossier")
   :properties `((:created       :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??

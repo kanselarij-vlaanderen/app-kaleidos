@@ -52,7 +52,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration
       "https://data.vlaanderen.be/ns/dossier#Stuk",
-      "http://dbpedia.org/ontology/Case",
+      "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://dbpedia.org/ontology/UnitOfWork",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://data.vlaanderen.be/ns/besluit#Besluit",
