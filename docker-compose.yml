@@ -205,6 +205,6 @@ services:
     logging: *default-logging
     restart: always
   mandatee-service:
-    image: kanselarij/mandatee-service:1.0.3
+    image: kanselarij/mandatee-service:1.1.0
     logging: *default-logging
     restart: always
