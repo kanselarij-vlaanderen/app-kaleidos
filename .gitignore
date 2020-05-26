@@ -1,15 +1,18 @@
 # Virtuoso files /data/db
 data/db
-testdata/*
-__MACOSX
 config/db/virtuoso*ini
-data/files/*
-data/elasticsearch/*
-development-data/files/*
-data/*
-config/search/*.store
-.idea/
 
+# Files
+data/files/*
+
+# Search data
+data/elasticsearch/*
+config/search/*.store
+
+# All data (overrides many of above rules ...)
+data/*
+
+# Docker env
 .env
 docker-compose.override.yml
 
@@ -17,6 +20,14 @@ docker-compose.override.yml
 config/migrations/*
 !config/migrations/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-*
 *sensitive*
+
+# Test env
+testdata/*
+development-data/files/*
+
 node_modules
 __pycache__
+
 *~
+__MACOSX
+.idea/

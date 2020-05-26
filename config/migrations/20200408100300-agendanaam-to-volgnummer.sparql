@@ -1,0 +1,31 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+     ?s besluitvorming:volgnummer ?name.
+  }
+} WHERE {
+ GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+   ?s <http://mu.semte.ch/vocabularies/ext/agendaNaam> ?name.
+   FILTER(STRLEN(?name) = 1)
+ }
+};
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agenda besluitvorming:volgnummer ?versionnumber .
+  }
+} WHERE {
+ GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+   ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> "Ontwerpagenda" .
+   
+   { SELECT ?agenda COUNT( DISTINCT (?previous)) AS ?previousCount WHERE {
+         ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> "Ontwerpagenda" .
+         ?agenda besluitvorming:heeftVorigeVersie* ?previous .
+   } GROUP BY ?agenda }
+
+   BIND(SUBSTR("ABCDEFGHIJKLMNOPQRSTUVWXYZ", ?previousCount, 1) AS ?versionnumber)
+
+ }
+}

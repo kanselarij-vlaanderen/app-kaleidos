@@ -1,0 +1,28 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX statusid: <http://kanselarij.vo.data.gift/id/agendastatus/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+     ?finalAgenda besluitvorming:agendaStatus statusid:f06f2b9f-b3e5-4315-8892-501b00650101.
+     ?goedgekeurdeAgenda besluitvorming:agendaStatus statusid:ff0539e6-3e63-450b-a9b7-cc6463a0d3d1 .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agenda a besluitvorming:Agenda.
+    ?agenda <http://mu.semte.ch/vocabularies/ext/agendaNaam> ?naam .
+    FILTER(?naam != "Ontwerpagenda")
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    {{ ?moreRecent besluitvorming:heeftVorigeVersie ?agenda .
+       BIND(?agenda AS ?goedgekeurdeAgenda) 
+      } UNION {
+       ?agenda a besluitvorming:Agenda .
+       FILTER NOT EXISTS {
+         ?moreRecent besluitvorming:heeftVorigeVersie ?agenda .
+       }
+       BIND(?agenda AS ?finalAgenda) 
+
+      }}
+    }
+  }
+} 

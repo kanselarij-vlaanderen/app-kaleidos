@@ -60,17 +60,17 @@
         ],
         "meetingId": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "meetingAgendaClosed": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://mu.semte.ch/vocabularies/ext/finaleZittingVersie"
         ],
         "sessionDates": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "mandateeName": [
@@ -209,7 +209,7 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "subcaseTitle": [
@@ -323,7 +323,7 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluit#isAangemaaktVoor",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "data": {
