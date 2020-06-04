@@ -52,7 +52,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration
       "https://data.vlaanderen.be/ns/dossier#Stuk",
-      "http://dbpedia.org/ontology/Case",
+      "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://dbpedia.org/ontology/UnitOfWork",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://data.vlaanderen.be/ns/besluit#Besluit",
@@ -76,8 +76,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/id/concept/policy-level/",
-      "http://kanselarij.vo.data.gift/id/concept/submitter/",
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
