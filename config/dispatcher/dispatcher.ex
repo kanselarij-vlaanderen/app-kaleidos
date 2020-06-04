@@ -128,11 +128,8 @@ defmodule Dispatcher do
    match "/subcase-types/*path", @any do
     Proxy.forward conn, path, "http://cache/subcase-types/"
   end
-  match "/subcase-phases/*path", @any do
-    Proxy.forward conn, path, "http://cache/subcase-phases/"
-  end
-  match "/subcase-phase-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/subcase-phase-codes/"
+  match "/agenda-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/agenda-activities/"
   end
   match "/access-levels/*path", @any do
     Proxy.forward conn, path, "http://cache/access-levels/"

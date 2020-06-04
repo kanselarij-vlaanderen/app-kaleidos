@@ -63,14 +63,14 @@
                                       :as "previousAgendaItem")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by")
-             (subcase                 :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                                      :inverse t
-                                      :as "subcase")
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                      :as "meeting-record"))
+                                      :as "meeting-record")
+             (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
+                                      :inverse t
+                                      :as "agenda-activity"))
   :has-many `((mandatee               :via     ,(s-prefix "besluit:heeftAanwezige")
                                       :inverse t
                                       :as "attendees")
@@ -84,9 +84,7 @@
               (document               :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "linked-document-versions")
-              (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
-                                      :as "phases"))
+                                      :as "linked-document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
   :features `(no-pagination-defaults include-uri)
   :on-path "agendaitems")

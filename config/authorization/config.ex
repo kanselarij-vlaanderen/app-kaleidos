@@ -60,14 +60,12 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
       "http://mu.semte.ch/vocabularies/ext/Notule",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode",
+      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
+      "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode", # TODO: fix missing "u"
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -85,7 +83,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization"
+      "http://www.w3.org/ns/org#Organization",
+      "http://data.vlaanderen.be/ns/besluitvorming#Agendering"
     ]
   end
 
@@ -104,15 +103,13 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://xmlns.com/foaf/0.1/OnlineAccount",
       "http://xmlns.com/foaf/0.1/Person",
       "http://xmlns.com/foaf/0.1/Group",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
+      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
@@ -129,7 +126,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization"
+      "http://www.w3.org/ns/org#Organization",
     ]
   end
 
