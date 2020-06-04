@@ -1,32 +1,14 @@
 (define-resource case ()
-  :class (s-prefix "dbpedia:Case")
+  :class (s-prefix "dossier:Dossier")
   :properties `((:created       :datetime ,(s-prefix "dct:created")) ;; NOTE: Type should be :date instead?
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
-                (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: Type should be :number instead?
-                (:is-archived   :boolean   ,(s-prefix "ext:isGearchiveerd"))
+                (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
+                (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
-                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel")) ;; deprecated
 )
-  :has-one `((access-level   :via ,(s-prefix "ext:toegangsniveauVoorDossier")
-                                :as "access-level")
-             (case-type         :via      ,(s-prefix "dct:type")
-                                :as "type")
-             (policy-level      :via      ,(s-prefix "ext:heeftBeleidsNiveau")
-                                :as "policy-level")
-             (meeting           :via      ,(s-prefix "ext:heeftBijbehorendeDossiers")
-                                :inverse t
-                                :as "related-meeting"))
-  :has-many `((remark           :via      ,(s-prefix "besluitvorming:opmerking")
-                                :as "opmerking") ;; NOTE: opmerkingEN would be more suitable?
-              (person           :via      ,(s-prefix "besluitvorming:heeftIndiener") ;; NOTE: used persoon instead of agent
-                                :as "creators")
-              (person           :via      ,(s-prefix "besluitvorming:heeftContactpersoon") ;; NOTE: used persoon instead of agent
-                                :as "contactPersons")
-              (subcase          :via      ,(s-prefix "dct:hasPart")
-                                :as "subcases")
-              (case             :via      ,(s-prefix "dct:relation")
-                                :as "related"))
+  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
+                                :as "subcases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
   :on-path "cases")
@@ -37,24 +19,9 @@
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel"))
                 (:deprecated  :boolean ,(s-prefix "owl:deprecated")))
-  :has-many `((case           :via ,(s-prefix "dct:type")
-                              :inverse t
-                              :as "cases"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/dossier-type-codes/")
   :features '(include-uri)
   :on-path "case-types")
-
-(define-resource policy-level ()
-  :class (s-prefix "ext:BeleidsNiveau")
-  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label   :string ,(s-prefix "skos:altLabel")))
-  :has-many `((case            :via ,(s-prefix "ext:heeftBeleidsNiveau")
-                              :inverse t
-                              :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beleidsniveaus/")
-  :features '(include-uri)
-  :on-path "policy-levels")
 
 (define-resource subcase ()
   :class (s-prefix "dbpedia:UnitOfWork")
@@ -70,7 +37,7 @@
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) ;; deprecated
-  :has-one `((case                    :via ,(s-prefix "dct:hasPart")
+  :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")

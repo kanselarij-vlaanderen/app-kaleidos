@@ -115,10 +115,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/case-types/"
   end
 
-  match "/policy-levels/*path", @any do
-    Proxy.forward conn, path, "http://cache/policy-levels/"
-  end
-
   match "/subcases/*path", @any do
     Proxy.forward conn, path, "http://cache/subcases/"
   end

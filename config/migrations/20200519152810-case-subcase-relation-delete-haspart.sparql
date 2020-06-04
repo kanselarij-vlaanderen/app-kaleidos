@@ -1,0 +1,14 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+
+DELETE {
+  GRAPH ?g {
+    ?dossier dct:hasPart ?subcase .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?dossier a dbpedia:Case ;
+      dossier:doorloopt ?subcase .
+  }
+}
