@@ -1,0 +1,14 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+
+INSERT {
+  GRAPH ?g {
+    ?newUri a dossier:Dossier .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?dossier a dbpedia:Case .
+    BIND(IRI(STR(?dossier)) AS ?newUri)
+  }
+}
