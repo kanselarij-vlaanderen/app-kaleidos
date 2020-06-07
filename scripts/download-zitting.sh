@@ -55,6 +55,7 @@ fi
 yggdrasilhost=$1
 zittingid=$2
 
+echo "storing zitting data for $zittingid in <$graph> of endpoint $sparqlendpoint..."
 echo "starting download of zitting $zittingid in 3 seconds, press Ctrl-C to cancel"
 if [ $anon == "true" ]; then
     echo "anonymizing data"
@@ -112,18 +113,41 @@ echo $ttl > $filename
 echo "done"
 echo ""
 echo "done, written to $filename"
+triplesretrieved=$(echo "$ttl" | wc -l | xargs)
+echo "$triplesretrieved triples retrieved"
 echo ""
 if [ "${@: -1}" == "--dry-run" ]; then
     echo "Ended without uploading data" 
     exit 0
 fi
 
-echo "storing zitting data for $zittingid in <$graph> of endpoint $sparqlendpoint..."
-# need to write to file because otherwise argument list can be too long...
-echo "INSERT DATA { GRAPH <$graph> { $ttl } }" > kaleidos-downloads/tmp
-curl -H "cache-control: no-cache" -H "host: database:8890" -H "mu-auth-sudo: true" -H "connection: keep-alive" -H "Accept: *" --form "content-type=text/csv" --form "format=text/csv" --form "update=<kaleidos-downloads/tmp" -X POST "$sparqlendpoint/sparql"
-echo ""
+echo -n "storing data..."
+linecount=0
+totallines=0
+lines=""
+while IFS= read -r line
+do
+    lines="$lines
+$line"
+    linecount=$((linecount + 1))
+    totallines=$((totallines + 1))
+    if [ "$linecount" -gt 1000 ]; then
+        # need to write to file because otherwise argument list can be too long...
+        echo "INSERT DATA { GRAPH <$graph> { $lines } }" > kaleidos-downloads/tmp
+        curl -s -H "cache-control: no-cache" -H "host: database:8890" -H "mu-auth-sudo: true" -H "connection: keep-alive" -H "Accept: *" --form "content-type=text/csv" --form "format=text/csv" --form "update=<kaleidos-downloads/tmp" -X POST "$sparqlendpoint/sparql" > /dev/null
+        echo -n "."
+        linecount=0
+        lines=""
+    fi
+done <<< "$ttl"
+if [ "$linecount" -gt 0 ]; then
+    echo "INSERT DATA { GRAPH <$graph> { $lines } }" > kaleidos-downloads/tmp
+    curl -s -H "cache-control: no-cache" -H "host: database:8890" -H "mu-auth-sudo: true" -H "connection: keep-alive" -H "Accept: *" --form "content-type=text/csv" --form "format=text/csv" --form "update=<kaleidos-downloads/tmp" -X POST "$sparqlendpoint/sparql" > /dev/null
+fi
+
 echo "done"
+echo "inserted $totallines (or less) triples"
+echo ""
 rm kaleidos-downloads/tmp
 echo "all done"
 
