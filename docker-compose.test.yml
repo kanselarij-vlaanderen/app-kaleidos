@@ -14,9 +14,9 @@ services:
   file:
     volumes:
       - ./testdata/files:/share
-  kibana:
-    entrypoint: "echo 'service disabled'"
-    restart: "no"
+  # kibana:
+  #   entrypoint: "echo 'service disabled'"
+  #   restart: "no"
   # range-file:
   #   volumes:
   #     - ./testdata/files:/share

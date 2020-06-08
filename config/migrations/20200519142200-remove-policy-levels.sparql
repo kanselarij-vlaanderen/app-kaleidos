@@ -1,0 +1,13 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?policyLevel ?p ?o .
+  }
+}
+ WHERE {
+  GRAPH ?g {
+    ?policyLevel a ext:BeleidsNiveau .
+    ?policyLevel ?p ?o .
+  }
+}

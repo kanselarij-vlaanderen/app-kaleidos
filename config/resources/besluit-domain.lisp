@@ -1,27 +1,43 @@
 (define-resource agenda ()
   :class (s-prefix "besluitvorming:Agenda")
   :properties `((:issued      :datetime   ,(s-prefix "dct:issued"))
-                (:is-final    :boolean    ,(s-prefix "ext:finaleVersie")) ;; 2019-01-09: property not in use by frontend. The final agenda is the last approved agenda of a meeting that has ext:finaleZittingVersie
-                (:name        :string     ,(s-prefix "ext:agendaNaam"))
-                (:created     :date       ,(s-prefix "ext:aangemaaktOp"))
-                (:modified    :datetime   ,(s-prefix "ext:aangepastOp"))
-                (:is-accepted :boolean    ,(s-prefix "ext:accepted")))
-  :has-one `((meeting         :via        ,(s-prefix "besluit:isAangemaaktVoor")
+                (:title        :string     ,(s-prefix "dct:title"))
+                (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
+                (:created     :date       ,(s-prefix "dct:created"))
+                (:agendatype  :uri        ,(s-prefix "dct:type"))
+                (:modified    :datetime   ,(s-prefix "dct:modified")))
+  :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
-            (agenda           :via        ,(s-prefix "besluitvorming:heeftVorigeVersie")
+             (agendastatus    :via        ,(s-prefix "besluitvorming:agendaStatus")
+                              :as "status")
+             (access-level    :via ,(s-prefix "besluitvorming:vertrouwelijkheidsniveau")
+                              :as "access-level")
+             (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
                               :as "previous-version")
-            (agenda           :via        ,(s-prefix "besluitvorming:heeftVorigeVersie")
-                              :inverse t
-                              :as "next-version")
-            (file             :via        ,(s-prefix "ext:getekendeNotule")
-                              :as "file"))
+             (agenda           :via        ,(s-prefix "prov:wasRevisionOf")
+                               :inverse t
+                               :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
+              (document       :via        ,(s-prefix "besluitvorming:heeftBijlage")
+                              :as "attachments")
              (announcement    :via        ,(s-prefix "ext:mededeling")
                               :as "announcements"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
+
+(define-resource agendastatus ()
+  :class (s-prefix "kans:AgendaStatus")
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
+                  (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                  (:alt-label   :string ,(s-prefix "skos:altLabel")))
+  :has-many `((agenda     :via        ,(s-prefix "besluitvorming:agendaStatus")
+                          :inverse t
+                          :as "agendas"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendastatus/")
+  :features '(include-uri)
+  :on-path "agendastatuses")
 
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
@@ -183,18 +199,18 @@
   :on-path "government-unit-classification-codes")
 
 (define-resource meeting ()
-  :class (s-prefix "besluit:Zitting")
+  :class (s-prefix "besluit:Vergaderactiviteit")
   :properties `((:planned-start         :datetime ,(s-prefix "besluit:geplandeStart"))
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
+                (:location              :string   ,(s-prefix "prov:atLocation"))
                 (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier"))
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
-                (:kind                  :uri      ,(s-prefix "ext:aard"))
-                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
-                (:location              :url      ,(s-prefix "prov:atLocation"))) ;; NOTE: besluitvorming mentions (unspecified) type 'Locatie' don't use this
-  :has-many `((agenda                   :via      ,(s-prefix "besluit:isAangemaaktVoor")
+                (:kind                  :uri      ,(s-prefix "dct:type"))
+                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))) 
+  :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
                                         :inverse t
                                         :as "agendas")
               (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
@@ -202,8 +218,6 @@
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases")
-              (case                     :via       ,(s-prefix "ext:heeftBijbehorendeDossiers")
-                                        :as "related-cases")
               (document                 :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "document-versions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
