@@ -7,9 +7,6 @@
                                         :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (decision                  :via ,(s-prefix "ext:beslissingsfiche")
-                                        :inverse t
-                                        :as "signed-decision")
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
                                         :as "signed-minutes"))
@@ -55,9 +52,9 @@
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            (decision                   :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                        :inverse t
-                                        :as "decision")
+            ; (agenda-item-treatment      :via ,(s-prefix "ext:documentenVoorBeslissing")
+            ;                             :inverse t
+            ;                             :as "agenda-item-treatment")
             (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
                                         :as "meeting-record")

@@ -13,9 +13,6 @@
     ;;                            :as "temporary-replacements")
              (ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "ise-codes")
-             (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
-                                  :inverse t
-                                  :as "decisions")
              (case                :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                   :inverse t
                                   :as "cases")
