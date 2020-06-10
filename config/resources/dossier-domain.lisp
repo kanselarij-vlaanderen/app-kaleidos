@@ -62,8 +62,6 @@
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
-              (agendaitem             :via ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                                      :as "agendaitems")
               (remark                 :via ,(s-prefix "besluitvorming:opmerking")
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")

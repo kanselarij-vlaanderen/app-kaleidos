@@ -1,0 +1,213 @@
+#For each subcase that has agendaitems (and does not already have a activity linked):
+#Create 1 activity with a generated uuid
+#link the subcase to that activity
+
+# PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+# PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# INSERT {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?newActivityURI a besluitvorming:Agendering ;
+#                     mu:uuid ?newActivityUuid .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?newActivityURI .
+#   } 
+# }
+# WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     SELECT  * WHERE {
+#       GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#       ?subcase a dbpedia:UnitOfWork .
+
+#       FILTER EXISTS { ?subcase besluitvorming:isGeagendeerdVia ?agendaitems . }
+#       FILTER NOT EXISTS { ?subcase besluitvorming:vindtPlaatsTijdens ?activity .}
+
+#       OPTIONAL { ?subcase mu:uuid ?olduuid . } 
+#       BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newuuid)
+#       BIND(IRI(CONCAT("http://kanselarij.vo.data.gift/id/agenderingen/", ?newuuid)) AS ?newActivityURI)
+#       }
+#     } 
+#   } 
+#   BIND(STRAFTER(STR(?newActivityURI), "http://kanselarij.vo.data.gift/id/agenderingen/") AS ?newActivityUuid) 
+# }
+
+
+#for each subcase that has an activity (and where the activity does not have agendaitems):
+#get the agendaitems linked to the subcase
+#link the agendaitems to the activity of the subcase
+
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# INSERT {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+#   } 
+# }
+# WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?subcase a dbpedia:UnitOfWork .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?activity .
+#     ?subcase besluitvorming:isGeagendeerdVia ?currentAgendaitems .
+#     FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?o .}
+#   }
+# }
+
+
+#for every postponed, get the subcase via the agendaitems the postponeds are linked to
+#For every subcase that is indirectly linked to a postponed:
+#Create 1 activity with a generated uuid
+#link the subcase to that activity
+#link the activity with a temp relation to the postponeds
+
+# PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+# PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# INSERT {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?newActivityURI a besluitvorming:Agendering ;
+#                     mu:uuid ?newActivityUuid .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?newActivityURI .
+#     ?newActivityURI ext:tempRelation ?postponeds .
+#     SELECT * WHERE {
+#       GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#         {
+#           SELECT ?postponeds ?subcase WHERE {
+#             GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#               ?postponeds a besluitvorming:Verdaagd .
+#               ?subcase besluitvorming:isGeagendeerdVia / ext:heeftVerdaagd  ?postponeds .
+#             }
+#           } GROUP BY ?postponeds ?subcase 
+#         }
+#         OPTIONAL { ?subcase mu:uuid ?olduuid . } 
+#         BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newuuid)
+#         BIND(IRI(CONCAT("http://kanselarij.vo.data.gift/id/agenderingen/", ?newuuid)) AS ?newActivityURI)
+#       }
+#     } 
+#   }
+#   BIND(STRAFTER(STR(?newActivityURI), "http://kanselarij.vo.data.gift/id/agenderingen/") AS ?newActivityUuid) 
+# }
+
+#for every subcase that has activities and agendaitems (and where the activity has a temp relation to a postponed):
+#unlink the agendaitems for other activities
+#link the postponed agendaitems of the subcase to the new activity
+
+# PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# DELETE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+#     ?activity ext:tempRelation ?postponeds .
+#   } 
+# }
+# INSERT {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+#   } 
+# }
+# WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?subcase a dbpedia:UnitOfWork .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?activity .
+#     ?subcase besluitvorming:isGeagendeerdVia ?currentAgendaitems .
+#     FILTER EXISTS {?activity ext:tempRelation ?postponeds . }
+#   }
+# }
+
+#for every activity that has agendaitems (and does not have a startdate yet):
+#get the creation date of the agendaitem (will be the same for different versions of the same agendaitem)
+#set that date as the startdate of hte activity
+
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+# PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+# INSERT {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity dossier:startDatum ?datum.
+#   }
+# } WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     SELECT DISTINCT(?activity) ?datum WHERE {
+#       GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#         ?activity a besluitvorming:Agendering .
+#         ?activity besluitvorming:genereertAgendapunt ?agendaitems .
+#         ?agendaitems besluitvorming:aanmaakdatum ?datum.
+#         FILTER NOT EXISTS { ?activity dossier:startDatum ?o .}
+#       }
+#     } ORDER BY ?activity
+#   }
+# }
+
+
+#after the previous migrations, there may be instances where the subcase only had postponed agendaitems:
+#in those cases, the activity will no longer have agendaitems and should be deleted
+#also delete the properties from and to the activity
+
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# DELETE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity a besluitvorming:Agendering .
+#     ?activity ?p ?o .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?activity .
+#   }
+# } WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?activity a besluitvorming:Agendering .
+#     FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?agendaitems ..}
+#   }
+# }
+
+
+
+
+
+
+
+
+
+# FIX OP ACCEPT 
+
+# PREFIX  prov:  <http://www.w3.org/ns/prov#>
+# PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+# PREFIX  dct:  <http://purl.org/dc/terms/>
+# PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+# PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+# PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+
+# INSERT {
+#   GRAPH ?g {
+# ?agendas besluitvorming:isAgendaVoor ?meeting .
+# ?agendas besluit:isAangemaaktVoor ?meeting.
+
+# } 
+# }
+# WHERE {
+#   GRAPH ?g {
+
+
+# SELECT DISTINCT(?agendas) ?meeting WHERE {
+# GRAPH ?g {
+
+#  ?agendas ?p <http://kanselarij.vo.data.gift/id/zittingen/undefined> .
+#  ?agendas dct:hasPart ?agendaitems .
+#  ?subcase besluitvorming:isGeagendeerdVia ?agendaitems .
+#  ?subcase besluitvorming:isAangevraagdVoor ?meeting .
+
+
+# }} ORDER BY ?agendas LIMIT 100
+# } 
+# }
+
+
+
+
+
+
