@@ -1,6 +1,6 @@
-#For each subcase that has agendaitems (and does not already have a activity linked):
-#Create 1 activity with a generated uuid
-#link the subcase to that activity
+# For each subcase that has agendaitems (and does not already have a activity linked):
+# Create 1 activity with a generated uuid
+# link the subcase to that activity
 
 # PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
 # PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
@@ -33,9 +33,9 @@
 # }
 
 
-#for each subcase that has an activity (and where the activity does not have agendaitems):
-#get the agendaitems linked to the subcase
-#link the agendaitems to the activity of the subcase
+# for each subcase that has an activity (and where the activity does not have agendaitems):
+# get the agendaitems linked to the subcase
+# link the agendaitems to the activity of the subcase
 
 # PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
 # PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
@@ -55,11 +55,11 @@
 # }
 
 
-#for every postponed, get the subcase via the agendaitems the postponeds are linked to
-#For every subcase that is indirectly linked to a postponed:
-#Create 1 activity with a generated uuid
-#link the subcase to that activity
-#link the activity with a temp relation to the postponeds
+# for every postponed, get the subcase via the agendaitems the postponeds are linked to
+# For every subcase that is indirectly linked to a postponed:
+# Create 1 activity with a generated uuid
+# link the subcase to that activity
+# link the activity with a temp relation to the postponeds
 
 # PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
 # PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
@@ -71,6 +71,10 @@
 #                     mu:uuid ?newActivityUuid .
 #     ?subcase besluitvorming:vindtPlaatsTijdens ?newActivityURI .
 #     ?newActivityURI ext:tempRelation ?postponeds .
+#   } 
+# }
+# WHERE {
+#   {
 #     SELECT * WHERE {
 #       GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
 #         {
@@ -90,9 +94,9 @@
 #   BIND(STRAFTER(STR(?newActivityURI), "http://kanselarij.vo.data.gift/id/agenderingen/") AS ?newActivityUuid) 
 # }
 
-#for every subcase that has activities and agendaitems (and where the activity has a temp relation to a postponed):
-#unlink the agendaitems for other activities
-#link the postponed agendaitems of the subcase to the new activity
+# for every subcase that has activities and agendaitems (and where the activity has a temp relation to a postponed):
+# unlink the agendaitems for the other activity created by the first migration
+# link the postponed agendaitems of the subcase to the new activity
 
 # PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
 # PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
@@ -100,7 +104,7 @@
 
 # DELETE {
 #   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-#     ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+#     ?oldActivity besluitvorming:genereertAgendapunt ?currentAgendaitems .
 #     ?activity ext:tempRelation ?postponeds .
 #   } 
 # }
@@ -113,14 +117,18 @@
 #   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
 #     ?subcase a dbpedia:UnitOfWork .
 #     ?subcase besluitvorming:vindtPlaatsTijdens ?activity .
+#     ?activity ext:tempRelation ?postponeds .
 #     ?subcase besluitvorming:isGeagendeerdVia ?currentAgendaitems .
-#     FILTER EXISTS {?activity ext:tempRelation ?postponeds . }
+
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?oldActivity .
+#     FILTER(?oldActivity != ?activity)
+    
 #   }
 # }
 
-#for every activity that has agendaitems (and does not have a startdate yet):
-#get the creation date of the agendaitem (will be the same for different versions of the same agendaitem)
-#set that date as the startdate of hte activity
+# for every activity that has agendaitems (and does not have a startdate yet):
+# get the creation date of the agendaitem (will be the same for different versions of the same agendaitem)
+# set that date as the startdate of hte activity
 
 # PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
 # PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
@@ -143,9 +151,10 @@
 # }
 
 
-#after the previous migrations, there may be instances where the subcase only had postponed agendaitems:
-#in those cases, the activity will no longer have agendaitems and should be deleted
-#also delete the properties from and to the activity
+# after the previous migrations, there may be instances where the subcase only had postponed agendaitems:
+# this happened after we introduced a workaround where the subcase was copied because postponing was not working correctly.
+# in those cases, subcase will have 2 activities and 1 of them will no longer have agendaitems and should be deleted
+# also delete the properties from and to the activity
 
 # PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
 
@@ -158,11 +167,19 @@
 # } WHERE {
 #   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
 #     ?activity a besluitvorming:Agendering .
-#     FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?agendaitems ..}
+#     ?activity ?p ?o .
+#     ?subcase besluitvorming:vindtPlaatsTijdens ?activity .
+#     FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?agendaitems .}
 #   }
 # }
 
 
+
+#
+# delete besluitvorming:isGeagendeerdVia
+# delete subcase-phase-codes
+# delete subcase-phase-code-types
+# 
 
 
 
