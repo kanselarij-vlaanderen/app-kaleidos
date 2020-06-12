@@ -12,7 +12,7 @@
                                         :as "account")
              (organization              :via      ,(s-prefix "org:memberOf")
                                         :as "organization")
-             )
+             ) ;; Has one relation adms:identifier to type adms::Identifier created in user-management-service
   :on-path "users"
 )
 

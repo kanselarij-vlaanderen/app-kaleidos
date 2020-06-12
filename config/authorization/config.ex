@@ -83,7 +83,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization"
+      "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/adms#Identifier"
     ]
   end
 
@@ -96,6 +97,7 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  # Also insert your type as ext:PublicClass 
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
@@ -127,9 +129,11 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization"
+      "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/adms#Identifier"
     ]
   end
+  # Also insert your type as ext:PublicClass 
 
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
