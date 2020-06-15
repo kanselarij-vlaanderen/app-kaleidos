@@ -50,13 +50,17 @@
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "agendaName": [
+        "agendaTitle": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://mu.semte.ch/vocabularies/ext/agendaNaam"
+          "http://purl.org/dc/terms/title"
         ],
-        "agendaIsAccepted": [
+        "agendaSerialNumber": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://mu.semte.ch/vocabularies/ext/accepted"
+          "http://data.vlaanderen.be/ns/besluitvorming#volgnummer"
+        ],
+        "agendaStatus": [
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#agendaStatus"
         ],
         "meetingId": [
           "^http://purl.org/dc/terms/hasPart",
@@ -129,11 +133,14 @@
           "agendaId": {
             "type": "keyword"
           },
-          "agendaName": {
+          "agendaTitle": {
+            "type": "text"
+          },
+          "agendaSerialNumber": {
             "type": "keyword"
           },
-          "agendaIsAccepted": {
-            "type": "boolean"
+          "agendaStatus": {
+            "type": "keyword"
           },
           "meetingId": {
             "type": "keyword"

@@ -1,0 +1,106 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+DELETE {
+  GRAPH ?g {
+    ?zitting a besluit:Zitting .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?zitting a besluit:Zitting .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda besluit:isAangemaaktVoor ?zitting .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda besluit:isAangemaaktVoor ?zitting .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda ext:aangemaaktOp ?d .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda ext:aangemaaktOp ?d .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda ext:aangepastOp ?d .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda ext:aangepastOp ?d .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda besluitvorming:heeftVorigeVersie ?previous .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda besluitvorming:heeftVorigeVersie ?previous .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda besluitvorming:heeftVorigeVersie ?previous .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda besluitvorming:heeftVorigeVersie ?previous .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?zitting ext:aard ?zittingType .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?zitting a besluit:Vergaderactiviteit .
+    ?zitting ext:aard ?zittingType .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?agenda ext:agendaNaam ?n .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda ext:agendaNaam ?n .
+  }
+}

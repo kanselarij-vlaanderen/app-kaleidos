@@ -131,7 +131,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:1.2.1
+    image: kanselarij/agenda-approve-service:1.2.3
     logging: *default-logging
     restart: always
   mocklogin:
