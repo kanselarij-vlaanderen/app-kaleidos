@@ -198,29 +198,27 @@
 # PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
 # PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 
-
+# DELETE {
+#   GRAPH ?g {
+#     ?agendas besluit:isAangemaaktVoor <http://kanselarij.vo.data.gift/id/zittingen/undefined>.
+#   }
+# }
 # INSERT {
 #   GRAPH ?g {
-# ?agendas besluitvorming:isAgendaVoor ?meeting .
-# ?agendas besluit:isAangemaaktVoor ?meeting.
-
-# } 
+#     ?agendas besluit:isAangemaaktVoor ?meeting.
+#   } 
 # }
 # WHERE {
 #   GRAPH ?g {
-
-
-# SELECT DISTINCT(?agendas) ?meeting WHERE {
-# GRAPH ?g {
-
-#  ?agendas ?p <http://kanselarij.vo.data.gift/id/zittingen/undefined> .
-#  ?agendas dct:hasPart ?agendaitems .
-#  ?subcase besluitvorming:isGeagendeerdVia ?agendaitems .
-#  ?subcase besluitvorming:isAangevraagdVoor ?meeting .
-
-
-# }} ORDER BY ?agendas LIMIT 100
-# } 
+#   SELECT DISTINCT(?agendas) ?meeting WHERE {
+#     GRAPH ?g {
+#       ?agendas ?p <http://kanselarij.vo.data.gift/id/zittingen/undefined> .
+#       ?agendas dct:hasPart ?agendaitems .
+#       ?subcase besluitvorming:isGeagendeerdVia ?agendaitems .
+#       ?subcase besluitvorming:isAangevraagdVoor ?meeting .
+#       }
+#     } ORDER BY ?agendas LIMIT 100
+#   } 
 # }
 
 
