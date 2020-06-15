@@ -1,0 +1,13 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?agenda ext:accepted ?accepted .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agenda a besluitvorming:Agenda .
+    ?agenda ext:accepted ?accepted .
+  }
+}
