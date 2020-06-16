@@ -146,11 +146,23 @@
                                 :inverse t
                                 :as "report")
              (newsletter-info   :via        ,(s-prefix "ext:hasNewsletterInfo")
-                                :as "newsletter-info"))
+                                :as "newsletter-info")
+             (decision-result-code   :via        ,(s-prefix "besluitvorming:resultaat")
+                                :as "result-code"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/behandelingen-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
 
+(define-resource decision-result-code ()
+  :class (s-prefix "ext:BeslissingsResultaatCode")
+  :properties `((:label       :string ,(s-prefix "skos:prefLabel")))
+  :has-many `((agenda-item-treatment        :via ,(s-prefix "besluitvorming:resultaat")
+                              :inverse t
+                              :as "agenda-item-treatments")
+              )
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/")
+  :features '(include-uri)
+  :on-path "decision-result-codes")
 
 (define-resource government-unit ()
   :class (s-prefix "besluit:Bestuurseenheid")

@@ -1,0 +1,33 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX brc: <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/>
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+
+        brc:56312c4b-9d2a-4735-b0b1-2ff14bb524fd a ext:BeslissingsResultaatCode ;
+            a skos:Concept ;
+            mu:uuid "56312c4b-9d2a-4735-b0b1-2ff14bb524fd" ;
+            skos:prefLabel "Goedgekeurd"@nl .
+
+        brc:a29b3ffd-0839-45cb-b8f4-e1760f7aacaa a ext:BeslissingsResultaatCode ;
+            a skos:Concept ;
+            mu:uuid "a29b3ffd-0839-45cb-b8f4-e1760f7aacaa" ;
+            skos:prefLabel "Uitgesteld"@nl .
+
+        brc:9f342a88-9485-4a83-87d9-245ed4b504bf a ext:BeslissingsResultaatCode ;
+            a skos:Concept ;
+            mu:uuid "9f342a88-9485-4a83-87d9-245ed4b504bf" ;
+            skos:prefLabel "Kennisname"@nl .
+
+        brc:e7e44027-fbbb-4285-ba3f-0cdb2264d43c a ext:BeslissingsResultaatCode ;
+            a skos:Concept ;
+            mu:uuid "e7e44027-fbbb-4285-ba3f-0cdb2264d43c" ;
+            skos:prefLabel "Goedkeuring mits voorwaarden"@nl .
+
+        brc:e40d885e-a677-4f1e-bce1-ea17d2aadb40 a ext:BeslissingsResultaatCode ;
+            a skos:Concept ;
+            mu:uuid "e40d885e-a677-4f1e-bce1-ea17d2aadb40" ;
+            skos:prefLabel "Afkeuring"@nl .
+    }
+}
