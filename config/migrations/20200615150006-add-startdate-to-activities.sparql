@@ -1,0 +1,23 @@
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?activity dossier:startDatum ?datum.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    SELECT DISTINCT(?activity) ?datum WHERE {
+      GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?activity a besluitvorming:Agendering .
+        ?activity besluitvorming:genereertAgendapunt ?agendaitems .
+        ?agendaitems besluitvorming:aanmaakdatum ?datum.
+        FILTER NOT EXISTS { ?activity dossier:startDatum ?o .}
+      }
+    } ORDER BY ?activity
+  }
+}
+
+# for every activity that has agendaitems (and does not have a startdate yet):
+# get the creation date of the agendaitem (will be the same for different versions of the same agendaitem)
+# set that date as the startdate of hte activity

@@ -1,0 +1,32 @@
+PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?newActivityURI a besluitvorming:Agendering ;
+                    mu:uuid ?newActivityUuid ;
+                    besluitvorming:vindtPlaatsTijdens ?subcase .
+  } 
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    SELECT  * WHERE {
+      GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+      ?subcase a dbpedia:UnitOfWork .
+
+      FILTER EXISTS { ?subcase besluitvorming:isGeagendeerdVia ?agendaitems . }
+      FILTER NOT EXISTS { ?activity besluitvorming:vindtPlaatsTijdens ?subcase . }
+
+      OPTIONAL { ?subcase mu:uuid ?olduuid . } 
+      BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newuuid)
+      BIND(IRI(CONCAT("http://kanselarij.vo.data.gift/id/agenderingen/", ?newuuid)) AS ?newActivityURI)
+      }
+    } 
+  } 
+  BIND(STRAFTER(STR(?newActivityURI), "http://kanselarij.vo.data.gift/id/agenderingen/") AS ?newActivityUuid) 
+}
+
+# For each subcase that has agendaitems (and does not already have a activity linked):
+# Create 1 activity with a generated uuid
+# link the subcase to that activity

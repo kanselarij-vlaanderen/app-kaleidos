@@ -1,0 +1,104 @@
+
+#
+# delete besluitvorming:isGeagendeerdVia  ok
+# besluitvorming:isGeagendeerdVia overal weg doen !!  TODO nog services agenda-sort, mandatee, newsletter, yggdrasil
+# delete subcase-phase-codes              ok
+# delete subcase-phase-code-types         ok
+# postponed weg                           ok
+# decision flag postponed ?
+
+# CHECK uitstellen na goedkeuring agenda is niet OK
+# 
+
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# DELETE {
+#   GRAPH ?g {
+#     ?postponeds a besluitvorming:Verdaagd .
+#     ?postponeds ?p ?o .
+#     ?any ?pp ?postponeds .
+#   } 
+# }
+# WHERE {
+#   GRAPH ?g {
+#     ?postponeds a besluitvorming:Verdaagd .
+#     OPTIONAL { ?postponeds ?p ?o . }
+#     OPTIONAL { ?any ?pp ?postponeds . }
+#   }
+# }
+
+# the reason for using graph ?g here is that the postponed models are also in public (and all the other graphs)
+# this deletes the unused postponed models (a new activity model was created for these)
+
+
+
+
+# PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+# PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+# PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+# PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+
+
+# DELETE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
+#   } 
+# }
+# WHERE {
+#   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+#     ?agendaitem a besluit:Agendapunt .
+#     ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
+#     FILTER EXISTS { ?subcase ^besluitvorming:vindtPlaatsTijdens / besluitvorming:genereertAgendapunt ?agendaitem . }
+#   }
+# }
+
+# Delete the direct relation between subcase and agendaitems
+# For safety, we verify if the new relation actually exists with a filter
+
+
+
+
+# PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+# PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+# PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+# PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
+# PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+# PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# DELETE {
+#   GRAPH ?g {
+#     ?faseCode a ext:ProcedurestapFaseCode .
+#     ?faseCode ?p ?o .
+#     ?any ?pp ?faseCode .
+#   } 
+# }
+# WHERE {
+#   GRAPH ?g {
+#     ?faseCode a ext:ProcedurestapFaseCode .
+#     OPTIONAL { ?faseCode ?p ?o . }
+#     OPTIONAL { ?any ?pp ?faseCode . }
+#   }
+# }
+
+# ;
+
+# DELETE {
+#   GRAPH ?g {
+#     ?fase a ext:ProcedurestapFase .
+#     ?fase ?p ?o .
+#     ?any ?pp ?fase .
+#   } 
+# }
+# WHERE {
+#   GRAPH ?g {
+#     ?fase a ext:ProcedurestapFase .
+#     OPTIONAL { ?fase ?p ?o . }
+#     OPTIONAL { ?any ?pp ?fase . }
+#   }
+# }
+
+
+

@@ -1,0 +1,32 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?oldActivity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+    ?activity ext:tempRelation ?postponeds .
+  } 
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+  } 
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?subcase a dbpedia:UnitOfWork .
+    ?activity besluitvorming:vindtPlaatsTijdens ?subcase .
+    ?activity a besluitvorming:Agendering .
+    ?activity ext:tempRelation ?postponeds .
+    ?subcase besluitvorming:isGeagendeerdVia ?currentAgendaitems .
+
+    ?oldActivity besluitvorming:vindtPlaatsTijdens ?subcase .
+    FILTER(?oldActivity != ?activity)
+    
+  }
+}
+
+# for every subcase that has activities and agendaitems (and where the activity has a temp relation to a postponed):
+# unlink the agendaitems for the other activity created by the first migration
+# link the postponed agendaitems of the subcase to the new activity

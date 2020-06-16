@@ -1,0 +1,21 @@
+PREFIX  dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?activity besluitvorming:genereertAgendapunt ?currentAgendaitems .
+  } 
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?subcase a dbpedia:UnitOfWork .
+    ?activity besluitvorming:vindtPlaatsTijdens ?subcase .
+    ?activity a besluitvorming:Agendering .
+    ?subcase besluitvorming:isGeagendeerdVia ?currentAgendaitems .
+    FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?o .}
+  }
+}
+
+# for each subcase that has an activity (and where the activity does not have agendaitems):
+# get the agendaitems linked to the subcase
+# link the agendaitems to the activity of the subcase

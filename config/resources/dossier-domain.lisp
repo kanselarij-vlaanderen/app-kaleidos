@@ -69,6 +69,7 @@
               (decision               :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "decisions")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
+                                      :inverse t
                                       :as "agenda-activities"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
@@ -90,7 +91,6 @@
   :class (s-prefix "besluitvorming:Agendering")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum")))
   :has-one `((subcase             :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
-                                  :inverse t
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
                                   :as "agendaitems"))

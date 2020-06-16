@@ -207,7 +207,8 @@
         ],
         "sessionDates": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
+          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "^http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
@@ -321,7 +322,8 @@
         ],
         "sessionDates": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#isGeagendeerdVia",
+          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "^http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"

@@ -1,0 +1,38 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?newActivityURI a besluitvorming:Agendering ;
+                    mu:uuid ?newActivityUuid ;
+                    besluitvorming:vindtPlaatsTijdens ?subcase .
+    ?newActivityURI ext:tempRelation ?postponeds .
+  } 
+}
+WHERE {
+  {
+    SELECT * WHERE {
+      GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        {
+          SELECT ?postponeds ?subcase WHERE {
+            GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+              ?postponeds a besluitvorming:Verdaagd .
+              ?subcase besluitvorming:isGeagendeerdVia / ext:heeftVerdaagd  ?postponeds .
+            }
+          } GROUP BY ?postponeds ?subcase 
+        }
+        OPTIONAL { ?subcase mu:uuid ?olduuid . } 
+        BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newuuid)
+        BIND(IRI(CONCAT("http://kanselarij.vo.data.gift/id/agenderingen/", ?newuuid)) AS ?newActivityURI)
+      }
+    } 
+  }
+  BIND(STRAFTER(STR(?newActivityURI), "http://kanselarij.vo.data.gift/id/agenderingen/") AS ?newActivityUuid) 
+}
+
+# for every postponed, get the subcase via the agendaitems the postponeds are linked to
+# For every subcase that is indirectly linked to a postponed:
+# Create 1 activity with a generated uuid
+# link the subcase to that activity
+# link the activity with a temp relation to the postponeds
