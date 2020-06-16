@@ -1,0 +1,20 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+    GRAPH ?g {
+        ?zitting dct:type ?typeStr .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?zitting dct:type ?type .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?zitting a besluit:Vergaderactiviteit.
+        ?zitting dct:type ?typeStr .
+        BIND(IRI(STR(?typeStr)) as ?type)
+    }
+}
