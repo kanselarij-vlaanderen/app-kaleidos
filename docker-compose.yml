@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:2.0.3
+    image: kanselarij/frontend-kaleidos:2.0.6
     links:
       - identifier:backend
     logging: *default-logging
@@ -131,7 +131,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:1.2.1
+    image: kanselarij/agenda-approve-service:1.2.5
     logging: *default-logging
     restart: always
   mocklogin:
