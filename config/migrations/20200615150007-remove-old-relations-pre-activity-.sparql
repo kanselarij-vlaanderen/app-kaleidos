@@ -1,0 +1,18 @@
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
+  } 
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendaitem a besluit:Agendapunt .
+    ?subcase besluitvorming:isGeagendeerdVia ?agendaitem .
+    FILTER EXISTS { ?subcase ^besluitvorming:vindtPlaatsTijdens / besluitvorming:genereertAgendapunt ?agendaitem . }
+  }
+}
+
+# Delete the direct relation between subcase and agendaitems
+# For safety, we verify if the new relation to activity actually exists
