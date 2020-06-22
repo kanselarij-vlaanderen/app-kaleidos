@@ -135,7 +135,7 @@
 
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
-  :properties `((:result      :url    ,(s-prefix "besluitvorming:resultaat"))) ; Property from besluitvorming:Beslissingsactiviteit
+  :properties `()
   :has-many `(
               ; (document      :via ,(s-prefix "ext:documentenVoorBeslissing")
               ;                :as "documents")
