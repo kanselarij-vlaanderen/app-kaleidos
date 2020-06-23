@@ -1,6 +1,7 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX brc: <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT DATA {
     GRAPH <http://mu.semte.ch/graphs/public> {

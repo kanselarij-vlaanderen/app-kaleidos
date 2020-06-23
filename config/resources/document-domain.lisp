@@ -9,7 +9,10 @@
                                         :as "type")
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
-                                        :as "signed-minutes"))
+                                        :as "signed-minutes")
+             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:beschrijft")
+                                        :as "agenda-item-treatment")
+                                        )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
   :on-path "documents") ;; TODO: change to "document-containers" once frontend fully migrated
