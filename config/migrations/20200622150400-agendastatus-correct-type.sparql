@@ -1,0 +1,17 @@
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+
+DELETE {
+    GRAPH ?g {
+        ?agendaStatus a kans:agendaStatus .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?agendaStatus a kans:AgendaStatus .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?agendaStatus a kans:agendaStatus.
+    }
+}
