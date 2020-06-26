@@ -1,0 +1,31 @@
+PREFIX statusid: <http://kanselarij.vo.data.gift/id/agendastatus/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://kanselarij.vo.data.gift/id/codelist/agenda-status> a skos:ConceptScheme ;
+          mu:uuid "85b21ec4-1927-44d5-87b4-2b95130ca627" ;
+          dct:title "Agenda Status" .
+    statusid:2735d084-63d1-499f-86f4-9b69eb33727f mu:uuid "2735d084-63d1-499f-86f4-9b69eb33727f" ;
+                     a kans:agendaStatus ;
+                     a skos:Concept ;
+                     skos:prefLabel "Ontwerp" ;
+                     skos:topConceptOf <http://kanselarij.vo.data.gift/id/codelist/agenda-status> ;
+                     skos:inScheme <http://kanselarij.vo.data.gift/id/codelist/agenda-status> .
+    statusid:ff0539e6-3e63-450b-a9b7-cc6463a0d3d1 mu:uuid "ff0539e6-3e63-450b-a9b7-cc6463a0d3d1" ;
+                     a kans:agendaStatus ;
+                     a skos:Concept ;
+                     skos:prefLabel "Goedgekeurd" ;
+                     skos:topConceptOf <http://kanselarij.vo.data.gift/id/codelist/agenda-status> ;
+                     skos:inScheme <http://kanselarij.vo.data.gift/id/codelist/agenda-status> .
+    statusid:f06f2b9f-b3e5-4315-8892-501b00650101 mu:uuid "f06f2b9f-b3e5-4315-8892-501b00650101" ;
+                     a kans:agendaStatus ;
+                     a skos:Concept ;
+                     skos:prefLabel "Afgesloten" ;
+                     skos:topConceptOf <http://kanselarij.vo.data.gift/id/codelist/agenda-status> ;
+                     skos:inScheme <http://kanselarij.vo.data.gift/id/codelist/agenda-status> .
+  }
+}

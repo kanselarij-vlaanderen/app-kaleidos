@@ -1,0 +1,17 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT {
+  GRAPH ?g {
+    ?zitting a besluit:Vergaderactiviteit.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?zitting a besluit:Zitting.
+    # this is done so we don't get the string_output_string needs a string output as argument 1, not an arg of type INTEGER (189) error
+    BIND(IRI(STR(?zitting)) AS ?newzitting)
+  }
+}
