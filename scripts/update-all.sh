@@ -1,10 +1,4 @@
 #!/bin/bash
-echo 'GIT PULL';
-echo '--------';
-git pull;
-echo 'UPPING ALL SERVICES';
+echo 'Update and recreate all services (which also runs migrations)';
 echo '--------------------';
-docker-compose  pull && docker-compose  kill && docker-compose  rm -f && docker-compose  up -d;
-echo 'Running Migrations';
-echo '------------------';
-docker-compose restart migrations-service && docker-compose restart cache resource;
+docker-compose down && docker-compose pull && docker-compose up -d --remove-orphan
