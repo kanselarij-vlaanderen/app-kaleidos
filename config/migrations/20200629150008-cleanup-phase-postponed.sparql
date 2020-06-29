@@ -49,3 +49,5 @@ WHERE {
     OPTIONAL { ?any ?pp ?fase . }
   }
 }
+
+# KAS-1425

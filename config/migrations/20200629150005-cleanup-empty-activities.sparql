@@ -17,3 +17,4 @@ DELETE {
 # this happened after we introduced a workaround where the subcase was copied because postponing was not working correctly.
 # in those cases, subcase will have 2 activities and 1 of them will no longer have agendaitems and should be deleted
 # also delete the properties from and to the activity
+# KAS-1425

@@ -16,3 +16,4 @@ WHERE {
 
 # Delete the direct relation between subcase and agendaitems
 # For safety, we verify if the new relation to activity actually exists
+# KAS-1425

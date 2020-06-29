@@ -19,3 +19,4 @@ WHERE {
 # for each subcase that has an activity (and where the activity does not have agendaitems):
 # get the agendaitems linked to the subcase
 # link the agendaitems to the activity of the subcase
+# KAS-1425

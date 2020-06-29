@@ -36,3 +36,4 @@ WHERE {
 # Create 1 activity with a generated uuid
 # link the subcase to that activity
 # link the activity with a temp relation to the postponeds
+# KAS-1425

@@ -30,3 +30,4 @@ WHERE {
 # for every subcase that has activities and agendaitems (and where the activity has a temp relation to a postponed):
 # unlink the agendaitems for the other activity created by the first migration
 # link the postponed agendaitems of the subcase to the new activity
+# KAS-1425
