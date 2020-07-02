@@ -1,6 +1,7 @@
 # Virtuoso files /data/db
 data/db
 config/db/virtuoso*ini
+config/db/virtuoso.production.ini
 
 # Files
 data/files/*

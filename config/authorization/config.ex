@@ -81,7 +81,8 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
-      "http://data.vlaanderen.be/ns/besluitvorming#Agendering"
+      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+      "http://www.w3.org/ns/adms#Identifier",
     ]
   end
 
@@ -90,10 +91,11 @@ defmodule Acl.UserGroups.Config do
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://www.w3.org/ns/prov#Collection",
       "http://vocab.deri.ie/cogs#Job",
-      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob",
     ]
   end
 
+  # Also insert your type as ext:PublicClass 
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
@@ -123,8 +125,10 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/adms#Identifier",
     ]
   end
+  # Also insert your type as ext:PublicClass 
 
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
