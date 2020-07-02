@@ -151,7 +151,7 @@
              (newsletter-info   :via        ,(s-prefix "ext:hasNewsletterInfo")
                                 :as "newsletter-info")
              (decision-result-code   :via        ,(s-prefix "besluitvorming:resultaat")
-                                :as "result-code"))
+                                :as "decision-result-code"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/behandelingen-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
