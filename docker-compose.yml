@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:2.0.7
+    image: kanselarij/frontend-kaleidos:3.0.1
     links:
       - identifier:backend
     logging: *default-logging
@@ -160,7 +160,7 @@ services:
     logging: *default-logging
     restart: always
   user-management-service:
-    image: kanselarij/user-management-service:1.0.2
+    image: kanselarij/user-management-service:1.1.0
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
     logging: *default-logging
