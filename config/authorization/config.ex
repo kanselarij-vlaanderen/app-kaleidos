@@ -60,14 +60,12 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
       "http://mu.semte.ch/vocabularies/ext/Notule",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode",
+      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
+      "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode", # TODO: fix missing "u"
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -78,13 +76,13 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
-      "http://www.w3.org/ns/adms#Identifier"
+      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+      "http://www.w3.org/ns/adms#Identifier",
     ]
   end
 
@@ -93,7 +91,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://www.w3.org/ns/prov#Collection",
       "http://vocab.deri.ie/cogs#Job",
-      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob",
     ]
   end
 
@@ -104,15 +102,13 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFase",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://xmlns.com/foaf/0.1/OnlineAccount",
       "http://xmlns.com/foaf/0.1/Person",
       "http://xmlns.com/foaf/0.1/Group",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapFaseCode",
+      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
@@ -126,11 +122,10 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verdaagd",
       "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
-      "http://www.w3.org/ns/adms#Identifier"
+      "http://www.w3.org/ns/adms#Identifier",
     ]
   end
   # Also insert your type as ext:PublicClass 

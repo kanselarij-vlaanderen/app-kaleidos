@@ -4,7 +4,7 @@
                 (:title        :string     ,(s-prefix "dct:title"))
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
                 (:created     :date       ,(s-prefix "dct:created"))
-                ; (:agendatype  :uri        ,(s-prefix "dct:type")) // Currently not omplemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
+                ; (:agendatype  :uri        ,(s-prefix "dct:type")) // Currently not implemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
                 (:modified    :datetime   ,(s-prefix "dct:modified")))
   :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
@@ -57,20 +57,18 @@
                 (:formally-ok         :uri  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
-  :has-one `((postponed               :via      ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                                      :as "postponed-to")
-             (agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
+  :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
                                       :as "previousAgendaItem")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by")
-             (subcase                 :via      ,(s-prefix "besluitvorming:isGeagendeerdVia")
-                                      :inverse t
-                                      :as "subcase")
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                      :as "meeting-record"))
+                                      :as "meeting-record")
+             (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
+                                      :inverse t
+                                      :as "agenda-activity"))
   :has-many `((mandatee               :via     ,(s-prefix "besluit:heeftAanwezige")
                                       :inverse t
                                       :as "attendees")
@@ -84,9 +82,7 @@
               (document               :via      ,(s-prefix "ext:bevatAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "linked-document-versions")
-              (subcase-phase          :via      ,(s-prefix "ext:subcaseAgendapuntFase")
-                                      :as "phases"))
+                                      :as "linked-document-versions"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
   :features `(no-pagination-defaults include-uri)
   :on-path "agendaitems")
@@ -119,19 +115,6 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/mededelingen/")
   :on-path "announcements")
 
-
-(define-resource postponed ()
-  :class (s-prefix "besluitvorming:Verdaagd")
-  :properties `((:postponed     :boolean ,(s-prefix "besluitvorming:verdaagd")))
-  :has-one `((meeting           :via ,(s-prefix "besluitvorming:nieuweDatum") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                :inverse t
-                                :as "meeting")
-             (agendaitem        :via ,(s-prefix "ext:heeftVerdaagd") ;; instead of besluitvorming:verdaagd (mu-cl-resources relation type checking workaround)
-                                :inverse t
-                                :as "agendaitem"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/verdaagden/")
-  :features '(include-uri)
-  :on-path "postponeds")
 
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
@@ -215,8 +198,6 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
                                         :inverse t
                                         :as "agendas")
-              (postponed                :via      ,(s-prefix "besluitvorming:nieuweDatum")
-                                        :as "postponeds")
               (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases")
