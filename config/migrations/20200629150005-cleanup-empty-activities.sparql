@@ -1,0 +1,20 @@
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?activity a besluitvorming:Agendering .
+    ?activity ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?activity a besluitvorming:Agendering .
+    ?activity ?p ?o .
+    FILTER NOT EXISTS { ?activity besluitvorming:genereertAgendapunt ?agendaitems .}
+  }
+}
+
+# after the previous migrations, there may be instances where the subcase only had postponed agendaitems:
+# this happened after we introduced a workaround where the subcase was copied because postponing was not working correctly.
+# in those cases, subcase will have 2 activities and 1 of them will no longer have agendaitems and should be deleted
+# also delete the properties from and to the activity
+# KAS-1425
