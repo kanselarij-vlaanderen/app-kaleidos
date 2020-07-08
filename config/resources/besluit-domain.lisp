@@ -74,6 +74,9 @@
                                       :as "attendees")
               (remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                                       :as "remarks")
+              (agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                      :inverse t
+                                      :as "treatments")
             ;; Added has-many relations from subcases
               (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
@@ -142,10 +145,10 @@
 (define-resource decision-result-code ()
   :class (s-prefix "ext:BeslissingsResultaatCode")
   :properties `((:label       :string ,(s-prefix "skos:prefLabel")))
-  :has-many `((agenda-item-treatment        :via ,(s-prefix "besluitvorming:resultaat")
-                              :inverse t
-                              :as "agenda-item-treatments")
-              )
+;  :has-many `((agenda-item-treatment        :via ,(s-prefix "besluitvorming:resultaat")
+;                              :inverse t
+;                              :as "agenda-item-treatments")
+;              )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/")
   :features '(include-uri)
   :on-path "decision-result-codes")
