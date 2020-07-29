@@ -100,7 +100,7 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/goedkeuringen/")
   :on-path "approvals")
 
-
+;; NOTE: created zit niet in de database, modified wel
   (define-resource announcement ()
   :class (s-prefix "besluitvorming:Mededeling")
   :properties `((:title         :string ,(s-prefix "ext:title"))
