@@ -13,7 +13,7 @@ INSERT {
     }
 } WHERE{
    GRAPH ?g {
-        SELECT ?agenda ?g ?newParsedDate ?oldCreatedDate WHERE {
+        SELECT ?agenda, ?g, ?newParsedDate, ?oldCreatedDate WHERE {
             GRAPH ?g {
                 ?agenda a besluitvorming:Agenda.
                 ?agenda dct:created ?oldCreatedDate.

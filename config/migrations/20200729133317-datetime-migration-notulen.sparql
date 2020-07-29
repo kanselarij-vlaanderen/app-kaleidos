@@ -1,0 +1,24 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE{
+    GRAPH ?g {
+          ?notulen ext:aangemaaktOp ?notuleCreatedDatum .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?notulen ext:aangemaaktOp ?newParsedDate .
+    }
+} WHERE{
+   GRAPH ?g {
+        SELECT ?notulen, ?g, ?newParsedDate, ?notuleCreatedDatum WHERE {
+            GRAPH ?g {
+                ?notulen a ext:Notule .
+                ?notulen ext:aangemaaktOp ?notuleCreatedDatum .
+                FILTER ( datatype(?notuleCreatedDatum) = xsd:date )
+                FILTER ( regex(str(?notuleCreatedDatum), '\\d{4}-\\d\\d-\\d\\d') )
+                BIND (xsd:dateTime(CONCAT(str(?notuleCreatedDatum), 'T07:00:00+02:00')) AS ?newParsedDate)
+            }
+        }
+   }
+}
