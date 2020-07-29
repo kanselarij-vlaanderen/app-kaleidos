@@ -3,7 +3,7 @@
   :properties `((:issued      :datetime   ,(s-prefix "dct:issued"))
                 (:title        :string     ,(s-prefix "dct:title"))
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
-                (:created     :date       ,(s-prefix "dct:created"))
+                (:created     :datetime       ,(s-prefix "dct:created"))
                 ; (:agendatype  :uri        ,(s-prefix "dct:type")) // Currently not implemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
                 (:modified    :datetime   ,(s-prefix "dct:modified")))
   :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
@@ -90,7 +90,7 @@
 
   (define-resource approval ()
   :class (s-prefix "ext:Goedkeuring")
-  :properties `((:created   :date ,(s-prefix "ext:aangemaakt")))
+  :properties `((:created   :datetime ,(s-prefix "ext:aangemaakt")))
   :has-one `((mandatee      :via ,(s-prefix "ext:goedkeuringen")
                             :inverse t
                             :as "mandatee")
@@ -105,8 +105,8 @@
   :class (s-prefix "besluitvorming:Mededeling")
   :properties `((:title         :string ,(s-prefix "ext:title"))
                 (:text          :string ,(s-prefix "ext:text"))
-                (:created       :date ,(s-prefix "ext:created"))
-                (:modified      :date ,(s-prefix "ext:modified")))
+                (:created       :datetime ,(s-prefix "ext:created"))
+                (:modified      :datetime ,(s-prefix "ext:modified")))
   :has-one `((agenda            :via ,(s-prefix "ext:mededeling")
                                 :inverse t
                                 :as "agenda"))
@@ -217,8 +217,8 @@
 
 (define-resource meeting-record ()
   :class (s-prefix "ext:Notule")
-  :properties `((:modified      :date     ,(s-prefix "ext:aangepast"))
-                (:created       :date     ,(s-prefix "ext:aangemaaktOp"))
+  :properties `((:modified      :datetime     ,(s-prefix "ext:aangepast"))
+                (:created       :datetime     ,(s-prefix "ext:aangemaaktOp"))
                 (:announcements :string   ,(s-prefix "ext:mededelingen"))
                 (:others        :string   ,(s-prefix "ext:varia"))
                 (:description   :string   ,(s-prefix "ext:description"))
