@@ -131,7 +131,7 @@
               )
   :has-one `((agendaitem        :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                 :as "agendaitem")
-             (document-container :via        ,(s-prefix "besluitvorming:beschrijft") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
+             (document-container :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
                                 :inverse t
                                 :as "report")
              (newsletter-info   :via        ,(s-prefix "ext:hasNewsletterInfo")

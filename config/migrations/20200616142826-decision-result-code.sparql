@@ -19,7 +19,7 @@ INSERT DATA {
         brc:9f342a88-9485-4a83-87d9-245ed4b504bf a ext:BeslissingsResultaatCode ;
             a skos:Concept ;
             mu:uuid "9f342a88-9485-4a83-87d9-245ed4b504bf" ;
-            skos:prefLabel "Kennis genomen"@nl .
+            skos:prefLabel "Kennisname"@nl .
 
         brc:e7e44027-fbbb-4285-ba3f-0cdb2264d43c a ext:BeslissingsResultaatCode ;
             a skos:Concept ;

@@ -10,7 +10,7 @@
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
                                         :as "signed-minutes")
-             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:beschrijft")
+             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
