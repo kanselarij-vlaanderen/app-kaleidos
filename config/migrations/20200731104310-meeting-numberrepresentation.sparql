@@ -1,0 +1,23 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+    GRAPH ?g {
+        ?vergaderactiviteit ext:numberRepresentation ?numberToInsert .
+    }
+}
+WHERE {
+ SELECT ?g, ?vergaderactiviteit, ?vergaderActiviteitJaar, ?vergaderActiviteitNummer, ?numberToInsert WHERE {
+     GRAPH ?g {
+     ?vergaderactiviteit a besluit:Vergaderactiviteit .
+     ?vergaderactiviteit besluit:geplandeStart ?vergaderActiviteitJaar .
+     ?vergaderactiviteit adms:identifier ?vergaderActiviteitNummer .
+
+     BIND ((CONCAT(SUBSTR(str(?vergaderActiviteitJaar),1,4))) AS ?parsedYear)
+     BIND (CONCAT("VR PV ", ?parsedYear) as ?parts)
+     BIND (CONCAT(?parts, "/") as ?part1MetSlash)
+     BIND (CONCAT(?part1MetSlash, ?vergaderActiviteitNummer) as ?numberToInsert)
+   }
+ }
+}
