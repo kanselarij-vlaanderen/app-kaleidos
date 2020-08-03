@@ -197,7 +197,8 @@
                 (:number                :number   ,(s-prefix "adms:identifier"))
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
                 (:kind                  :url      ,(s-prefix "dct:type"))
-                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))) 
+                (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
+                (:number-representation :string   ,(s-prefix "ext:numberRepresentation")))
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
                                         :inverse t
                                         :as "agendas")
