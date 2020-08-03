@@ -126,6 +126,7 @@
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
   :has-many `(
+              ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
               ; (document      :via ,(s-prefix "ext:documentenVoorBeslissing")
               ;                :as "documents")
               )
