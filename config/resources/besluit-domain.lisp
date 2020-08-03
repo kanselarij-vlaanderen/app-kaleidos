@@ -146,10 +146,6 @@
 (define-resource decision-result-code ()
   :class (s-prefix "ext:BeslissingsResultaatCode")
   :properties `((:label       :string ,(s-prefix "skos:prefLabel")))
-;  :has-many `((agenda-item-treatment        :via ,(s-prefix "besluitvorming:resultaat")
-;                              :inverse t
-;                              :as "agenda-item-treatments")
-;              )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/")
   :features '(include-uri)
   :on-path "decision-result-codes")
