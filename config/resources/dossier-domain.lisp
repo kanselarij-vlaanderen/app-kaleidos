@@ -46,8 +46,9 @@
                                       :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
-             (newsletter-info         :via ,(s-prefix "prov:generated")
-                                      :as "newsletter-info")
+             ;(newsletter-info         :via ,(s-prefix "prov:generated")
+             ;                         :as "newsletter-info")
+             ; this moved to treatment
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
@@ -67,7 +68,6 @@
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                       :as "ise-codes")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
-                                      :inverse t
                                       :as "agenda-activities"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
@@ -89,6 +89,7 @@
   :class (s-prefix "besluitvorming:Agendering")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum")))
   :has-one `((subcase             :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
+                                  :inverse t
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
                                   :as "agendaitems"))
