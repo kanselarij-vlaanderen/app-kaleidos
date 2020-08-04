@@ -55,9 +55,6 @@
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            ; (agenda-item-treatment      :via ,(s-prefix "ext:documentenVoorBeslissing")
-            ;                             :inverse t
-            ;                             :as "agenda-item-treatment")
             (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
                                         :as "meeting-record")
