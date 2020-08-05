@@ -1,0 +1,21 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE{
+    GRAPH ?g {
+          ?agendapunt besluitvorming:formeelOK ?formallyOk .
+    }
+}
+INSERT {
+    GRAPH ?g {
+         ?agendapunt besluitvorming:formeelOK ?newformallyOk  .
+    }
+} WHERE{
+        SELECT ?g, ?agendapunt, ?formallyOk, ?newformallyOk WHERE {
+            GRAPH ?g {
+                ?agendapunt a besluit:Agendapunt .
+                ?agendapunt besluitvorming:formeelOK ?formallyOk.
+                BIND(URI(?formallyOk) as ?newformallyOk)
+            }
+        }
+}
