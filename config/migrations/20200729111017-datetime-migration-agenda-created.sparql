@@ -1,0 +1,26 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE{
+    GRAPH ?g {
+          ?agenda dct:created ?agendaAanmaakDatum .
+    }
+}
+INSERT {
+    GRAPH ?g {
+         ?agenda dct:created ?geformateerdeAgendaAanmaakdatum .
+    }
+} WHERE{
+   GRAPH ?g {
+        SELECT ?agenda, ?g, ?geformateerdeAgendaAanmaakdatum, ?agendaAanmaakDatum WHERE {
+            GRAPH ?g {
+                ?agenda a besluitvorming:Agenda.
+                ?agenda dct:created ?agendaAanmaakDatum.
+                FILTER ( datatype(?agendaAanmaakDatum) = xsd:date )
+                FILTER ( regex(str(?agendaAanmaakDatum), '\\d{4}-\\d\\d-\\d\\d') )
+                BIND (xsd:dateTime(CONCAT(str(?agendaAanmaakDatum), 'T07:00:00+02:00')) AS ?geformateerdeAgendaAanmaakdatum)
+            }
+        }
+   }
+}
