@@ -4,7 +4,7 @@
                 (:title        :string     ,(s-prefix "dct:title"))
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
                 (:created     :date       ,(s-prefix "dct:created"))
-                ; (:agendatype  :uri        ,(s-prefix "dct:type")) // Currently not implemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
+                ; (:agendatype  :url      ,(s-prefix "dct:type")) // Currently not implemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
                 (:modified    :datetime   ,(s-prefix "dct:modified")))
   :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
@@ -54,7 +54,7 @@
                 (:short-title         :string   ,(s-prefix "dct:alternative"))
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime   ,(s-prefix "ext:modified"))
-                (:formally-ok         :uri  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:formally-ok         :url  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
