@@ -11,6 +11,7 @@
                                         :inverse t
                                         :as "signed-minutes")
              (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
+                                        :inverse t
                                         :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
