@@ -1,0 +1,53 @@
+PREFIX  besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?postponeds a besluitvorming:Verdaagd .
+    ?postponeds ?p ?o .
+    ?any ?pp ?postponeds .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?postponeds a besluitvorming:Verdaagd .
+    OPTIONAL { ?postponeds ?p ?o . }
+    OPTIONAL { ?any ?pp ?postponeds . }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?faseCode a ext:ProcedurestapFaseCode .
+    ?faseCode ?p ?o .
+    ?any ?pp ?faseCode .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?faseCode a ext:ProcedurestapFaseCode .
+    OPTIONAL { ?faseCode ?p ?o . }
+    OPTIONAL { ?any ?pp ?faseCode . }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?fase a ext:ProcedurestapFase .
+    ?fase ?p ?o .
+    ?any ?pp ?fase .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?fase a ext:ProcedurestapFase .
+    OPTIONAL { ?fase ?p ?o . }
+    OPTIONAL { ?any ?pp ?fase . }
+  }
+}
+
+# KAS-1425

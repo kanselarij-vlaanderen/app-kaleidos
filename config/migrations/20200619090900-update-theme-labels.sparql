@@ -1,0 +1,76 @@
+PREFIX theme: <http://http://data.vlaanderen.be/ns/besluitvorming/voc/thema/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX id: <http://identifiers.org/>
+
+DELETE {
+    GRAPH ?g {
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/aa10b458-2646-4d8d-bc8b-6b0cb6354161> skos:prefLabel ?themaLabel1 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/5f10ae42-1591-445b-8178-4ccc7b385549> skos:prefLabel ?themaLabel2 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/4e590f35-4c18-4f1b-a83f-6fed95423d13> skos:prefLabel ?themaLabel3 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/0ebcd8d1-8118-45c1-8c19-cab5f484f2c9> skos:prefLabel ?themaLabel4 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/67918602-17f3-4d0a-bd35-ecaec6e118f4> skos:prefLabel ?themaLabel5 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/4d728121-5b1c-4952-a55c-d01fe3aaa46f> skos:prefLabel ?themaLabel6 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/e96a1086-e183-4853-864d-93b6f493b43b> skos:prefLabel ?themaLabel7 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/39070ba6-abf0-494e-b943-c6c9e2efae8c> skos:prefLabel ?themaLabel8 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/7d6d527e-9750-4eef-b8dc-6fa1cee737bd> skos:prefLabel ?themaLabel9 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/8df6b30f-177c-49fa-8b11-a15bcd2bf8f8> skos:prefLabel ?themaLabel10 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/b6348a8f-cdfc-45ee-b1ac-4018286ca99c> skos:prefLabel ?themaLabel11 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/f4f51361-d54d-489f-aa7b-d332539c9f5a> skos:prefLabel ?themaLabel12 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/9c24c16e-4d84-413d-93f8-6498f8c93ad5> skos:prefLabel ?themaLabel13 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/cc792c34-3d83-4a03-9903-ccd925c5d83f> skos:prefLabel ?themaLabel14 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/1b303e56-1ee6-4a93-b1d8-9b418f3fa608> skos:prefLabel ?themaLabel15 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/a5f06fd4-b2cb-4128-9f8d-be451e36033d> skos:prefLabel ?themaLabel16 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/3808cad6-7485-4c1d-81af-5947b3694cb7> skos:prefLabel ?themaLabel17 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/6aa80f5c-9955-4c36-af9d-a5d48577066d> skos:prefLabel ?themaLabel18 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/d7a9756e-697a-46cf-a22d-ccba40e98ffb> skos:prefLabel ?themaLabel19 .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/aa10b458-2646-4d8d-bc8b-6b0cb6354161> skos:prefLabel "Overheidsinvesteringen"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/5f10ae42-1591-445b-8178-4ccc7b385549> skos:prefLabel "Natuurlijke Rijkdommen"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/4e590f35-4c18-4f1b-a83f-6fed95423d13> skos:prefLabel "Haven"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/0ebcd8d1-8118-45c1-8c19-cab5f484f2c9> skos:prefLabel "Erfgoed"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/67918602-17f3-4d0a-bd35-ecaec6e118f4> skos:prefLabel "Binnenlandse Aangelegenheden"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/4d728121-5b1c-4952-a55c-d01fe3aaa46f> skos:prefLabel "Stedelijk Beleid"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/e96a1086-e183-4853-864d-93b6f493b43b> skos:prefLabel "Staatshervorming en Communautaire Aangelegenheden"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/39070ba6-abf0-494e-b943-c6c9e2efae8c> skos:prefLabel "Sociale Economie"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/7d6d527e-9750-4eef-b8dc-6fa1cee737bd> skos:prefLabel "Ruimtelijke Ordening"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/8df6b30f-177c-49fa-8b11-a15bcd2bf8f8> skos:prefLabel "Onroerend Erfgoed"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/b6348a8f-cdfc-45ee-b1ac-4018286ca99c> skos:prefLabel "Inburgering en Integratie"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/f4f51361-d54d-489f-aa7b-d332539c9f5a> skos:prefLabel "Buitenlands Beleid"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/9c24c16e-4d84-413d-93f8-6498f8c93ad5> skos:prefLabel "Begroting en Financiën"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/cc792c34-3d83-4a03-9903-ccd925c5d83f> skos:prefLabel "Welzijn en Gezondheid"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/1b303e56-1ee6-4a93-b1d8-9b418f3fa608> skos:prefLabel "Tewerkstelling"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/a5f06fd4-b2cb-4128-9f8d-be451e36033d> skos:prefLabel "Onderwijs en Vorming"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/3808cad6-7485-4c1d-81af-5947b3694cb7> skos:prefLabel "Leefmilieu en Natuur"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/6aa80f5c-9955-4c36-af9d-a5d48577066d> skos:prefLabel "Landbouw en Visserij"@nl .
+        <http://kanselarij.vo.data.gift/id/concept/thema-codes/d7a9756e-697a-46cf-a22d-ccba40e98ffb> skos:prefLabel "Justitie en Handhaving"@nl .
+
+    }
+}
+WHERE {
+    GRAPH ?g {
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/aa10b458-2646-4d8d-bc8b-6b0cb6354161> skos:prefLabel ?themaLabel1 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/5f10ae42-1591-445b-8178-4ccc7b385549> skos:prefLabel ?themaLabel2 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/4e590f35-4c18-4f1b-a83f-6fed95423d13> skos:prefLabel ?themaLabel3 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/0ebcd8d1-8118-45c1-8c19-cab5f484f2c9> skos:prefLabel ?themaLabel4 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/67918602-17f3-4d0a-bd35-ecaec6e118f4> skos:prefLabel ?themaLabel5 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/4d728121-5b1c-4952-a55c-d01fe3aaa46f> skos:prefLabel ?themaLabel6 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/e96a1086-e183-4853-864d-93b6f493b43b> skos:prefLabel ?themaLabel7 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/39070ba6-abf0-494e-b943-c6c9e2efae8c> skos:prefLabel ?themaLabel8 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/7d6d527e-9750-4eef-b8dc-6fa1cee737bd> skos:prefLabel ?themaLabel9 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/8df6b30f-177c-49fa-8b11-a15bcd2bf8f8> skos:prefLabel ?themaLabel10 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/b6348a8f-cdfc-45ee-b1ac-4018286ca99c> skos:prefLabel ?themaLabel11 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/f4f51361-d54d-489f-aa7b-d332539c9f5a> skos:prefLabel ?themaLabel12 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/9c24c16e-4d84-413d-93f8-6498f8c93ad5> skos:prefLabel ?themaLabel13 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/cc792c34-3d83-4a03-9903-ccd925c5d83f> skos:prefLabel ?themaLabel14 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/1b303e56-1ee6-4a93-b1d8-9b418f3fa608> skos:prefLabel ?themaLabel15 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/a5f06fd4-b2cb-4128-9f8d-be451e36033d> skos:prefLabel ?themaLabel16 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/3808cad6-7485-4c1d-81af-5947b3694cb7> skos:prefLabel ?themaLabel17 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/6aa80f5c-9955-4c36-af9d-a5d48577066d> skos:prefLabel ?themaLabel18 .
+       <http://kanselarij.vo.data.gift/id/concept/thema-codes/d7a9756e-697a-46cf-a22d-ccba40e98ffb> skos:prefLabel ?themaLabel19 .
+    }
+}

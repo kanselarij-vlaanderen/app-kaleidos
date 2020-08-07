@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+    GRAPH ?g {
+       <http://kanselarij.vo.data.gift/id/concept/document-type-codes/88be191e-4f83-4dc2-9e0f-6e8b08743fcf> skos:prefLabel ?typeCodeName .
+    }
+}
+INSERT {
+    GRAPH ?g {
+       <http://kanselarij.vo.data.gift/id/concept/document-type-codes/88be191e-4f83-4dc2-9e0f-6e8b08743fcf> skos:prefLabel "Akkoord BZ"@nl .
+    }
+}
+WHERE {
+    GRAPH ?g {
+       <http://kanselarij.vo.data.gift/id/concept/document-type-codes/88be191e-4f83-4dc2-9e0f-6e8b08743fcf> skos:prefLabel ?typeCodeName .
+    }
+}
