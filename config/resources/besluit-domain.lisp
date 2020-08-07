@@ -134,7 +134,7 @@
                                 :as "agendaitem")
              (document-container :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
                                 :as "report")
-             (newsletter-info   :via        ,(s-prefix "ext:hasNewsletterInfo")
+             (newsletter-info   :via        ,(s-prefix "prov:generated")
                                 :as "newsletter-info")
              (decision-result-code   :via        ,(s-prefix "besluitvorming:resultaat")
                                 :as "decision-result-code"))

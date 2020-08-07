@@ -46,9 +46,6 @@
                                       :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
-             ;(newsletter-info         :via ,(s-prefix "prov:generated")
-             ;                         :as "newsletter-info")
-             ; this moved to treatment
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
