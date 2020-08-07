@@ -64,7 +64,7 @@
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                       :as "ise-codes")
-              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
+              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: this predicate doesn't only point to agenda-activities, but others as wel. mu-cl-resources polymorphism limitation. Needs other solution.
                                       :inverse t
                                       :as "agenda-activities"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
