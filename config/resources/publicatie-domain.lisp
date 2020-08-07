@@ -29,7 +29,7 @@
                 (:modified              :date     ,(s-prefix "ext:aangepastOp")))
   :has-one `((agenda-item-treatment     :via      ,(s-prefix "prov:generated")
                                         :inverse t
-                                        :as "agenda-item-treatments")
+                                        :as "agenda-item-treatment")
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting")
