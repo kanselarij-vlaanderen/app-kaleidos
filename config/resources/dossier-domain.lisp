@@ -64,9 +64,12 @@
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                       :as "ise-codes")
-              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: this predicate doesn't only point to agenda-activities, but others as wel. mu-cl-resources polymorphism limitation. Needs other solution.
+              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
-                                      :as "agenda-activities"))
+                                      :as "agenda-activities")
+              (agenda-item-treatment  :via ,(s-prefix "besluitvorming:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
+                                      :inverse t
+                                      :as "treatments"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")
