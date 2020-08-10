@@ -18,7 +18,7 @@ INSERT {
                 ?agenda a besluitvorming:Agenda.
                 ?agenda dct:created ?agendaAanmaakDatum.
                 FILTER ( datatype(?agendaAanmaakDatum) = xsd:date )
-                FILTER ( regex(str(?agendaAanmaakDatum), '\\d{4}-\\d\\d-\\d\\d') )
+                FILTER ( regex(str(?agendaAanmaakDatum), '\\d{4}-\\d\\d-\\d\\d$') )
                 BIND (xsd:dateTime(CONCAT(str(?agendaAanmaakDatum), 'T07:00:00+02:00')) AS ?geformateerdeAgendaAanmaakdatum)
             }
         }

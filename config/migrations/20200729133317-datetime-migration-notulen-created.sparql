@@ -16,7 +16,7 @@ INSERT {
                 ?notulen a ext:Notule .
                 ?notulen ext:aangemaaktOp ?notuleAanmaakDatum .
                 FILTER ( datatype(?notuleAanmaakDatum) = xsd:date )
-                FILTER ( regex(str(?notuleAanmaakDatum), '\\d{4}-\\d\\d-\\d\\d') )
+                FILTER ( regex(str(?notuleAanmaakDatum), '\\d{4}-\\d\\d-\\d\\d$') )
                 BIND (xsd:dateTime(CONCAT(str(?notuleAanmaakDatum), 'T07:00:00+02:00')) AS ?geformateerdeNotuleAanmaakdatum)
             }
         }
