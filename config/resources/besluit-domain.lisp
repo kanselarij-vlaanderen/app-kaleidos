@@ -132,7 +132,7 @@
               )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem")
-             (subcase               :via        ,(s-prefix "besluitvorming:beslissingVindtPlaatsTijdens")
+             (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
              (document-container    :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
                                     :as "report")
