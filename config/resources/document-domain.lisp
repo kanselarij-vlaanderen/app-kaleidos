@@ -24,7 +24,6 @@
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
                 (:public-since          :boolean  ,(s-prefix "ext:publiekSinds")))
-
   :has-one `((access-level               :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
             (file                       :via      ,(s-prefix "ext:file")
