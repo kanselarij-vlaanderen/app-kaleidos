@@ -1,7 +1,7 @@
 (define-resource file-bundling-job ()
   :class (s-prefix "ext:FileBundlingJob") ; "cogs:Job"
   :properties `((:created       :datetime  ,(s-prefix "dct:created"))
-                (:status        :uri       ,(s-prefix "ext:status"))
+                (:status        :url       ,(s-prefix "ext:status"))
                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
                 (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
   )
