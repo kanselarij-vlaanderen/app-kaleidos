@@ -1,7 +1,7 @@
 
 (define-resource remark ()
   :class (s-prefix "schema:Comment") ;; NOTE: instead of misusing 'rdfs:comment' property name as class name
-  :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: Type should be :date instead?
+  :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum"))
                 (:text          :string   ,(s-prefix "rdfs:comment")))
   :has-one `((user              :via      ,(s-prefix "dct:creator")
                                 :as "author")
@@ -26,7 +26,7 @@
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
                 (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
                 (:remark                :string   ,(s-prefix "ext:opmerking"))
-                (:modified              :date     ,(s-prefix "ext:aangepastOp")))
+                (:modified              :datetime ,(s-prefix "ext:aangepastOp")))
   :has-one `((agenda-item-treatment     :via      ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "agenda-item-treatment")

@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:3.0.18
+    image: kanselarij/frontend-kaleidos:3.0.19
     links:
       - identifier:backend
     logging: *default-logging
@@ -131,7 +131,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:2.0.0
+    image: kanselarij/agenda-approve-service:2.1.0
     logging: *default-logging
     restart: always
   mocklogin:
@@ -156,7 +156,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:2.0.0
+    image: kanselarij/newsletter-service:2.1.0
     logging: *default-logging
     restart: always
   user-management-service:
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.0.0
+    image: kanselarij/yggdrasil:3.1.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"

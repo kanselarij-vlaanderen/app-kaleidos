@@ -2,7 +2,7 @@
 
 (define-resource consultation-response ()
   :class (s-prefix "besluitvorming:Consultatie-antwoord")
-  :properties `((:date :datetime ,(s-prefix "besluitvorming:ontvangstdatum")) ;; NOTE: Type should be :date instead?
+  :properties `((:date :datetime ,(s-prefix "besluitvorming:ontvangstdatum"))
                 (:text :string ,(s-prefix "besluitvorming:samenvatting")))
   :has-one `((consultation-response-code :via ,(s-prefix "besluitvorming:uitkomst")
                                          :as "result")

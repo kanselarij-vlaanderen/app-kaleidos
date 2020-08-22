@@ -20,10 +20,11 @@
 
 (define-resource document ()
   :class (s-prefix "dossier:Stuk")
-  :properties `((:name                 :string   ,(s-prefix "dct:title"))
+  :properties `((:name                  :string   ,(s-prefix "dct:title"))
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
-                (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk")))
+                (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
+                (:public-since          :datetime  ,(s-prefix "ext:publiekSinds")))
   :has-one `((access-level               :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
             (file                       :via      ,(s-prefix "ext:file")
