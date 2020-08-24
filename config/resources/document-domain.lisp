@@ -50,9 +50,6 @@
             (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
                                         :inverse t
                                         :as "agendaitem")
-            (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
-                                        :inverse t
-                                        :as "announcement")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")

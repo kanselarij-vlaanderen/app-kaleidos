@@ -1,0 +1,11 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE{
+    GRAPH ?g {
+       ?announcement a besluitvorming:Mededeling .
+    }
+ } WHERE{
+    GRAPH ?g {
+       ?announcement a besluitvorming:Mededeling .
+    }
+ }
