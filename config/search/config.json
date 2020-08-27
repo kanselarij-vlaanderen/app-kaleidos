@@ -304,11 +304,6 @@
         "title": "http://purl.org/dc/terms/title",
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
-        "decisionText": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
-          "http://data.europa.eu/eli/ontology#description"
-        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
@@ -358,11 +353,6 @@
             "type": "date"
           },
           "shortTitle": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "decisionText": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
