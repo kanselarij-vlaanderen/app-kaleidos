@@ -1,0 +1,24 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE{
+    GRAPH ?g {
+          ?notule ext:aangepast ?notuleAangepastDatum .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?notule ext:aangemaaktOp ?geformatteerdeNotuleAangepastDatum .
+    }
+} WHERE{
+   GRAPH ?g {
+        SELECT ?notule, ?g, ?geformatteerdeNotuleAangepastDatum, ?notuleAangepastDatum WHERE {
+            GRAPH ?g {
+                ?notule a ext:Notule .
+                ?notule ext:aangepast ?notuleAangepastDatum .
+                FILTER ( datatype(?notuleAangepastDatum) = xsd:date )
+                FILTER ( regex(str(?notuleAangepastDatum), '\\d{4}-\\d\\d-\\d\\d$') )
+                BIND (xsd:dateTime(CONCAT(str(?notuleAangepastDatum), 'T07:00:00+02:00')) AS ?geformatteerdeNotuleAangepastDatum)
+            }
+        }
+   }
+}
