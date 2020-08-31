@@ -44,7 +44,7 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
                                         :inverse t
                                         :as "linked-subcase")
-            (agendaitem                 :via ,(s-prefix "ext:bevatAgendapuntDocumentversie")
+            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitem")
             (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")

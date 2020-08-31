@@ -54,7 +54,7 @@
                 (:short-title         :string   ,(s-prefix "dct:alternative"))
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
-                (:formally-ok         :url      ,(s-prefix "ext:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
+                (:formally-ok         :url      ,(s-prefix "ext:formeelOK"))
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
