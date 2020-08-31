@@ -8,25 +8,19 @@
                 (:date-decree     :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:nick-name       :string ,(s-prefix "ext:nickName"))
                 (:title           :string ,(s-prefix "dct:title")))
-  :has-many `(
-    ;; (mandatee                  :via ,(s-prefix "mandaat:isTijdelijkVervangenDoor")
-    ;;                            :as "temporary-replacements")
-             (ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+  :has-many `((ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "ise-codes")
              (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
                                   :inverse t
                                   :as "decisions")
-             (case                :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
-                                  :inverse t
-                                  :as "cases")
              (meeting-record      :via ,(s-prefix "ext:aanwezigen")
                                   :as "meetings-attended")
              (approval            :via ,(s-prefix "ext:goedkeuringen")
                                   :as "approvals")
-             (subcase             :via ,(s-prefix "besluitvorming:heeftBevoegde")
+             (subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
                                   :as "subcases")
-             (agendaitem          :via ,(s-prefix "besluitvorming:heeftBevoegdeVoorAgendapunt")
+             (agendaitem          :via ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt")
                                   :inverse t
                                   :as "agendaitems")
              (subcase             :via ,(s-prefix "ext:indiener")

@@ -54,7 +54,7 @@
                                       :as "modified-by"))
   :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                                       :as "heeftCreator")
-              (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+              (mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (subcase                :via ,(s-prefix "dct:relation")
                                       :as "related-to")
