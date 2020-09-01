@@ -304,11 +304,6 @@
         "title": "http://purl.org/dc/terms/title",
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
-        "decisionText": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
-          "http://data.europa.eu/eli/ontology#description"
-        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
@@ -338,8 +333,8 @@
         "data": {
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
-            "http://mu.semte.ch/vocabularies/ext/procedurestapHeeftBesluit",
-            "http://mu.semte.ch/vocabularies/ext/beslissingsfiche",
+            "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+            "http://data.vlaanderen.be/ns/besluitvorming#genereertVerslag",
             "https://data.vlaanderen.be/ns/dossier#collectie.bestaatUit",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
@@ -358,11 +353,6 @@
             "type": "date"
           },
           "shortTitle": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "decisionText": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"

@@ -74,6 +74,9 @@
                                       :as "attendees")
               (remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
                                       :as "remarks")
+              (agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                      :inverse t
+                                      :as "treatments")
             ;; Added has-many relations from subcases
               (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
                                       :as "approvals")
@@ -100,8 +103,8 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/goedkeuringen/")
   :on-path "approvals")
 
-;; NOTE: created zit niet in de database, modified wel
-  (define-resource announcement ()
+
+  (define-resource announcement () ; TODO: Remove. This model has never been used by the frontend application. Use agendaitem with "show-as-remark = true" instead.
   :class (s-prefix "besluitvorming:Mededeling")
   :properties `((:title         :string ,(s-prefix "ext:title"))
                 (:text          :string ,(s-prefix "ext:text"))
@@ -116,37 +119,40 @@
   :on-path "announcements")
 
 
-(define-resource decision ()
-  :class (s-prefix "besluit:Besluit") ;; NOTE: Took over all properties from document instead of subclassing (mu-cl-resources workaround)
-  :properties `((:description   :string     ,(s-prefix "eli:description"))
-                (:short-title   :string     ,(s-prefix "eli:title_short"))
-                (:approved      :boolean    ,(s-prefix "besluitvorming:goedgekeurd")) ;; NOTE: What is the URI of property 'goedgekeurd'? Made up besluitvorming:goedgekeurd
-                (:archived      :boolean    ,(s-prefix "besluitvorming:gearchiveerd")) ;; NOTE: Inherited from Document
-                (:title         :string     ,(s-prefix "dct:title")) ;; NOTE: Inherited from Document
-                (:number-vp     :string     ,(s-prefix "besluitvorming:stuknummerVP")) ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'stuknummerVP'? Made up besluitvorming:stuknummerVP
-                (:number-vr     :string     ,(s-prefix "besluitvorming:stuknummerVR"))
-                (:richtext      :string   ,(s-prefix "ext:htmlInhoud"))) ;; NOTE: Inherited from Document
-  :has-many `((mandatee         :via        ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit
-                                :as "mandatees")
-              (remark           :via        ,(s-prefix "besluitvorming:opmerking") ;; NOTE: Inherited from Document
-                                :as "remarks")
-              ; (documentversie :via ,(s-prefix "ext:documenttype")  ;; NOTE: Inherited from Document ;; NOTE: What is the URI of property 'heeftVersie'? Made up besluitvorming:heeftVersie
-              ;           :as "heeft-versie")
-              (document         :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                :as "document-versions"))
-  :has-one `((subcase           :via        ,(s-prefix "ext:procedurestapHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                :inverse t
-                                :as "subcase")
-             (agendaitem        :via        ,(s-prefix "ext:agendapuntHeeftBesluit") ;; instead of prov:generated (mu-cl-resources relation type checking workaround)
-                                :inverse t
-                                :as "agendaitem")
-             (document-type     :via        ,(s-prefix "ext:documentType") ;; NOTE: Inherited from Document
-                                :as "type")
-             (document-container  :via      ,(s-prefix "ext:beslissingsfiche")
-                                :as "signed-document"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/besluiten/")
+(define-resource agenda-item-treatment ()
+  :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
+  :properties `(
+                (:created     :datetime       ,(s-prefix "dct:created"))
+                (:modified    :datetime   ,(s-prefix "dct:modified"))
+                )
+  :has-many `(
+              ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
+              ; (document      :via ,(s-prefix "ext:documentenVoorBeslissing")
+              ;                :as "documents")
+              )
+  :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                    :as "agendaitem")
+             (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
+                                    :as "subcase")
+             (document-container    :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
+                                    :as "report")
+             (newsletter-info       :via        ,(s-prefix "prov:generated")
+                                    :as "newsletter-info")
+             (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
+                                    :as "decision-result-code"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/behandelingen-van-agendapunt/")
   :features '(include-uri)
-  :on-path "decisions")
+  :on-path "agenda-item-treatments")
+
+(define-resource decision-result-code ()
+  :class (s-prefix "ext:BeslissingsResultaatCode")
+  :properties `(
+                (:label       :string ,(s-prefix "skos:prefLabel"))
+                (:priority    :number ,(s-prefix "ext:priority"))
+               )
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/")
+  :features '(include-uri)
+  :on-path "decision-result-codes")
 
 (define-resource government-unit ()
   :class (s-prefix "besluit:Bestuurseenheid")
