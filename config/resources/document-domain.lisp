@@ -7,12 +7,13 @@
                                         :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (decision                  :via ,(s-prefix "ext:beslissingsfiche")
-                                        :inverse t
-                                        :as "signed-decision")
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
-                                        :as "signed-minutes"))
+                                        :as "signed-minutes")
+             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
+                                        :inverse t
+                                        :as "agenda-item-treatment")
+                                        )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
   :on-path "documents") ;; TODO: change to "document-containers" once frontend fully migrated
@@ -50,15 +51,9 @@
             (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
                                         :inverse t
                                         :as "agendaitem")
-            (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
-                                        :inverse t
-                                        :as "announcement")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            (decision                   :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                        :inverse t
-                                        :as "decision")
             (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
                                         :as "meeting-record")

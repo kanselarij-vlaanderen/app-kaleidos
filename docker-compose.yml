@@ -127,7 +127,7 @@ services:
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service:2.0.0
+    image: kanselarij/custom-subcases-service:2.1.0
     logging: *default-logging
     restart: always
   agenda-approve-service:
@@ -156,7 +156,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:2.1.0
+    image: kanselarij/newsletter-service:2.1.1
     logging: *default-logging
     restart: always
   user-management-service:
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.1.0
+    image: kanselarij/yggdrasil:3.3.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"

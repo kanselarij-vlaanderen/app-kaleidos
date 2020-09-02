@@ -26,10 +26,10 @@
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
                 (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
                 (:remark                :string   ,(s-prefix "ext:opmerking"))
-                (:modified              :datetime     ,(s-prefix "ext:aangepastOp")))
-  :has-one `((subcase                   :via      ,(s-prefix "prov:generated") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
+                (:modified              :datetime ,(s-prefix "ext:aangepastOp")))
+  :has-one `((agenda-item-treatment     :via      ,(s-prefix "prov:generated")
                                         :inverse t
-                                        :as "subcase")
+                                        :as "agenda-item-treatment")
              (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting")

@@ -10,9 +10,6 @@
                 (:title           :string ,(s-prefix "dct:title")))
   :has-many `((ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "ise-codes")
-             (decision            :via ,(s-prefix "besluitvorming:neemtBesluit") ;; NOTE: What is the URI of property 'neemt' (Agent neemt besluit)? Guessed besluitvorming:neemtBesluit 
-                                  :inverse t
-                                  :as "decisions")
              (meeting-record      :via ,(s-prefix "ext:aanwezigen")
                                   :as "meetings-attended")
              (approval            :via ,(s-prefix "ext:goedkeuringen")

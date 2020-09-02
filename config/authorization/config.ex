@@ -55,7 +55,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://dbpedia.org/ontology/UnitOfWork",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
-      "http://data.vlaanderen.be/ns/besluit#Besluit",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
       "http://schema.org/Comment",
@@ -64,7 +64,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
+      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveaCode", # TODO: fix missing "u"
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
@@ -105,10 +105,10 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
+      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://xmlns.com/foaf/0.1/OnlineAccount",
       "http://xmlns.com/foaf/0.1/Person",
       "http://xmlns.com/foaf/0.1/Group",
-      "https://data.vlaanderen.be/ns/besluitvorming#Mededeling", # TODO: why is this https ?
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
