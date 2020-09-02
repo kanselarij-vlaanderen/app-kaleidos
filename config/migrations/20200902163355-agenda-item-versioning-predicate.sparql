@@ -1,0 +1,20 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+DELETE {
+    GRAPH ?g {
+        ?agendaItemB ext:replacesPrevious ?agendaItemA .
+    }  
+}
+INSERT {
+  GRAPH ?g {
+      ?agendaItemB prov:wasRevisionOf ?agendaItemA .
+  }  
+}
+WHERE {
+    GRAPH ?g {
+        ?agendaItemA a besluit:Agendapunt .
+        ?agendaItemB a besluit:Agendapunt .
+        ?agendaItemB ext:replacesPrevious ?agendaItemA .
+    }
+}
