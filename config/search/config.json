@@ -78,17 +78,17 @@
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "mandateeName": [
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
         "mandateeFirstNames": [
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/firstName"
         ],
         "mandateeFamilyNames": [
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
@@ -98,7 +98,7 @@
         ],
         "data": {
           "via": [
-            "http://mu.semte.ch/vocabularies/ext/bevatAgendapuntDocumentversie",
+            "http://mu.semte.ch/vocabularies/besluitvorming/geagendeerdStuk",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -196,19 +196,19 @@
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/firstName"
         ],
         "mandateeFamilyNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
@@ -306,19 +306,19 @@
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/firstName"
         ],
         "mandateeFamilyNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBevoegde",
+          "http://data.vlaanderen.be/ns/ext#heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
