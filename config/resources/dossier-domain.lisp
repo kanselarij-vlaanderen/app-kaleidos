@@ -24,7 +24,7 @@
   :on-path "case-types")
 
 (define-resource subcase ()
-  :class (s-prefix "dbpedia:UnitOfWork")
+  :class (s-prefix "dossier:Procedurestap")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
                 (:subcase-identifier  :string ,(s-prefix "ext:procedurestapNummer"))
