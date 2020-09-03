@@ -20,9 +20,7 @@
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
               (document       :via        ,(s-prefix "besluitvorming:heeftBijlage")
-                              :as "attachments")
-             (announcement    :via        ,(s-prefix "ext:mededeling")
-                              :as "announcements"))
+                              :as "attachments"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
@@ -102,22 +100,6 @@
                             :as "agendaitem"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/goedkeuringen/")
   :on-path "approvals")
-
-
-  (define-resource announcement () ; TODO: Remove. This model has never been used by the frontend application. Use agendaitem with "show-as-remark = true" instead.
-  :class (s-prefix "besluitvorming:Mededeling")
-  :properties `((:title         :string ,(s-prefix "ext:title"))
-                (:text          :string ,(s-prefix "ext:text"))
-                (:created       :datetime ,(s-prefix "ext:created"))
-                (:modified      :datetime ,(s-prefix "ext:modified")))
-  :has-one `((agenda            :via ,(s-prefix "ext:mededeling")
-                                :inverse t
-                                :as "agenda"))
-  :has-many `((document         :via ,(s-prefix "ext:mededelingBevatDocumentversie")
-                                :as "document-versions"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/mededelingen/")
-  :on-path "announcements")
-
 
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
