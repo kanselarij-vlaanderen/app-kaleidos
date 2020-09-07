@@ -116,7 +116,9 @@
                                     :as "agendaitem")
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
-             (document-container    :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
+             ;(document-container   :via        ,(s-prefix "besluitvorming:genereertVerslag") ; "beslissingsfiche", Property from besluitvorming:Beslissingsactiviteit
+             ;                      :as "report")
+             (document              :via        ,(s-prefix "besluitvorming:genereertVerslag")
                                     :as "report")
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
