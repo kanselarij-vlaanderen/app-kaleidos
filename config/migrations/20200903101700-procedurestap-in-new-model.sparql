@@ -11,9 +11,7 @@ INSERT {
   ?ps a dossier:Procedurestap .
   }
 } WHERE{
-  SELECT ?g, ?ps WHERE {
     GRAPH ?g {
               ?ps a dbpedia:UnitOfWork .
              }
-    }
 }
