@@ -26,42 +26,42 @@
 (define-resource subcase ()
   :class (s-prefix "dossier:Procedurestap")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
-                (:title               :string ,(s-prefix "dct:title"))
-                (:subcase-identifier  :string ,(s-prefix "ext:procedurestapNummer"))
+                (:title               :string ,(s-prefix "dct:title"))  # todo delete
+                (:subcase-identifier  :string ,(s-prefix "ext:procedurestapNummer")) # todo delete
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
                 (:concluded           :boolean ,(s-prefix "besluitvorming:besloten"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
-                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) ;; deprecated
+                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling")) # todo delete
+                (:freeze-access-level :boolean ,(s-prefix "ext:freezeAccessLevel"))) ;; deprecated # todo delete
   :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
              (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor")
                                       :as "requested-for-meeting")
-             (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
+             (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap") # todo delete
                                       :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
-             (mandatee                :via ,(s-prefix "ext:indiener")
+             (mandatee                :via ,(s-prefix "ext:indiener") # todo delete
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
-  :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
+  :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent # todo delete
                                       :as "heeftCreator")
-              (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+              (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent # todo delete
                                       :as "mandatees")
-              (subcase                :via ,(s-prefix "dct:relation")
+              (subcase                :via ,(s-prefix "dct:relation") # todo delete
                                       :as "related-to")
               (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
               (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-document-versions")
-              (remark                 :via ,(s-prefix "besluitvorming:opmerking")
+              (remark                 :via ,(s-prefix "besluitvorming:opmerking") # todo delete
                                       :as "remarks")
-              (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
+              (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen") # todo delete
                                       :as "ise-codes")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
