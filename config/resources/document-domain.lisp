@@ -18,6 +18,7 @@
   :features '(include-uri)
   :on-path "documents") ;; TODO: change to "document-containers" once frontend fully migrated
 
+;; Generieke “serie” wordt gebruikt voor specifieke doeleinden voor het groeperen van stukken (KAS-1558)
 (define-resource document ()
   :class (s-prefix "dossier:Stuk")
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
