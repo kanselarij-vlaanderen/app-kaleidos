@@ -17,7 +17,7 @@ WHERE{
 
 DELETE{
     GRAPH ?g {
-    ?ps ext:procedurestapNummer ?concluded
+    ?ps besluitvorming:besloten ?concluded
     }
 }
 WHERE{
