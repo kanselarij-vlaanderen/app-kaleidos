@@ -36,7 +36,7 @@
   :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
-             (meeting                 :via ,(s-prefix "besluitvorming:isAangevraagdVoor") # todo hernoemen naar ext:isAangevraagdVoor
+             (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor") # todo hernoemen naar ext:isAangevraagdVoor
                                       :as "requested-for-meeting")
              (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                                       :as "access-level")
