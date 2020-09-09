@@ -123,7 +123,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:2.0.0
+    image: kanselarij/agenda-sort-service:2.0.1
     logging: *default-logging
     restart: always
   custom-subcases-service:
@@ -156,7 +156,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:2.1.1
+    image: kanselarij/newsletter-service:2.1.2
     logging: *default-logging
     restart: always
   user-management-service:
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.3.0
+    image: kanselarij/yggdrasil:3.3.1
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -193,7 +193,7 @@ services:
     logging: *default-logging
     restart: always
   file-bundling-job-creation-service:
-    image: kanselarij/file-bundling-job-creation-service:0.1.5
+    image: kanselarij/file-bundling-job-creation-service:0.1.6
     logging: *default-logging
     restart: always
   database-healthcheck:
@@ -201,10 +201,10 @@ services:
     logging: *default-logging
     restart: always
   lazy-loading-service:
-    image: kanselarij/lazy-loading-service:1.0.1
+    image: kanselarij/lazy-loading-service:1.0.2
     logging: *default-logging
     restart: always
   mandatee-service:
-    image: kanselarij/mandatee-service:2.0.0
+    image: kanselarij/mandatee-service:2.0.1
     logging: *default-logging
     restart: always
