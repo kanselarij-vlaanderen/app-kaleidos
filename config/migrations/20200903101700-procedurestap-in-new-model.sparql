@@ -3,15 +3,16 @@ PREFIX dbpedia:  <http://dbpedia.org/ontology/>
 
 DELETE{
   GRAPH ?g {
-  ?ps a dbpedia:UnitOfWork .
+    ?newUri a dbpedia:UnitOfWork .
   }
 }
 INSERT {
   GRAPH ?g {
-  ?ps a dossier:Procedurestap .
+    ?newUri a dossier:Procedurestap .
   }
 } WHERE{
-    GRAPH ?g {
-              ?ps a dbpedia:UnitOfWork .
-             }
+  GRAPH ?g {
+    ?ps a dbpedia:UnitOfWork .
+    BIND(IRI(STR(?ps)) AS ?newUri)
+  }
 }

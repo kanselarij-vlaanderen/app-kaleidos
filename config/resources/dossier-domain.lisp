@@ -36,7 +36,7 @@
   :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
-             (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor") # todo hernoemen naar ext:isAangevraagdVoor
+             (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor")
                                       :as "requested-for-meeting")
              (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                                       :as "access-level")
@@ -46,7 +46,7 @@
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
-  :has-many `(mandatee                :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+  :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")

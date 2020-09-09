@@ -5,73 +5,73 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 DELETE{
   GRAPH ?g {
-  ?ps ext:procedurestapNummer ?subcaseIdentifier
+  ?ps ext:procedurestapNummer ?subcaseIdentifier .
   }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps ext:procedurestapNummer ?subcaseIdentifier .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps ext:procedurestapNummer ?subcaseIdentifier .
+  }
 };
 
 DELETE{
-    GRAPH ?g {
-    ?ps besluitvorming:besloten ?concluded
-    }
+  GRAPH ?g {
+    ?ps besluitvorming:besloten ?concluded .
+  }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps besluitvorming:besloten ?concluded .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps besluitvorming:besloten ?concluded .
+  }
 };
 
 DELETE{
-    GRAPH ?g {
+  GRAPH ?g {
     ?ps ext:freezeAccessLevel ?freezeAccessLevel .
-    }
+  }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps ext:freezeAccessLevel ?freezeAccessLevel .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps ext:freezeAccessLevel ?freezeAccessLevel .
+  }
 };
 
 DELETE{
-    GRAPH ?g {
+  GRAPH ?g {
     ?ps dct:creator ?person .
-    }
+  }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps dct:creator ?person .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps dct:creator ?person .
+  }
 };
 
 DELETE{
-    GRAPH ?g {
+  GRAPH ?g {
     ?ps dct:relation ?subcase .
-    }
+  }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps dct:relation ?subcase .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps dct:relation ?subcase .
+  }
 };
 
 DELETE{
-    GRAPH ?g {
+  GRAPH ?g {
     ?ps besluitvorming:opmerking ?remark .
-    }
+  }
 }
 WHERE{
-    GRAPH ?g {
-        ?ps a dossier:Procedurestap .
-        ?ps besluitvorming:opmerking ?remark .
-    }
+  GRAPH ?g {
+    ?ps a dossier:Procedurestap .
+    ?ps besluitvorming:opmerking ?remark .
+  }
 }
 
