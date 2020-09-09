@@ -56,7 +56,7 @@
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
-                                      :as "previousAgendaItem")
+                                      :as "previous-agenda-item")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by")
              (agenda                  :via      ,(s-prefix "dct:hasPart")
