@@ -46,7 +46,7 @@
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
-  :has-many `(mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+  :has-many `(mandatee                :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "document-versions")
