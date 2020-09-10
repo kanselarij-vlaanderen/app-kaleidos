@@ -10,9 +10,6 @@
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
                                         :as "signed-minutes")
-             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
-                                        :inverse t
-                                        :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
@@ -61,6 +58,9 @@
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
+            (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
+                                        :inverse t
+                                        :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
