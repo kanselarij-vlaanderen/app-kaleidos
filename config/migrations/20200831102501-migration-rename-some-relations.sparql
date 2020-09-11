@@ -3,24 +3,23 @@ PREFIX dbpedia:  <http://dbpedia.org/ontology/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
 
-# KAS-1422
-# agendaitem
-# besluitvorming:heeftBevoegdeVoorAgendapunt does not exist, making it ext: instead
+# ext:bevatAgendapuntDocumentversie is defined in oslo model as besluitvorming:geagendeerdStuk
 
 DELETE {
   GRAPH ?g {
-    ?agendaitem besluitvorming:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+    ?agendaitem ext:bevatAgendapuntDocumentversie ?document .
   } 
 }
 INSERT {
   GRAPH ?g {
-    ?agendaitem ext:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+    ?agendaitem besluitvorming:geagendeerdStuk ?document .
   } 
 }
 WHERE {
   GRAPH ?g {
     ?agendaitem a besluit:Agendapunt .
-    ?agendaitem besluitvorming:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+    ?agendaitem ext:bevatAgendapuntDocumentversie ?document .
   }
 }
+
 ;
