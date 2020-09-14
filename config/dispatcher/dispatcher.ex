@@ -49,7 +49,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
 
-  get "/document-versions/:id/convert", @any do
+  get "/pieces/:id/convert", @any do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
@@ -93,8 +93,8 @@ defmodule Dispatcher do
   match "/documents/*path", @any do # TODO: change over path to "document-containers" once frontend fully migrated
     Proxy.forward conn, path, "http://cache/documents/"
   end
-  match "/document-versions/*path", @any do # TODO: change over to "documents" once frontend fully migrated
-    Proxy.forward conn, path, "http://cache/document-versions/"
+  match "/pieces/*path", @any do # TODO: change over to "documents" once frontend fully migrated
+    Proxy.forward conn, path, "http://cache/pieces/"
   end
 
   match "/document-types/*path", @any do
