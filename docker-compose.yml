@@ -208,3 +208,7 @@ services:
     image: kanselarij/mandatee-service:2.0.0
     logging: *default-logging
     restart: always
+  case-documents-sync:
+    image: kanselarij/case-documents-sync-service:1.0.0
+    logging: *default-logging
+    restart: always
