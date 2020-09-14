@@ -5,7 +5,7 @@ PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT {
-    GRAPH ?g {
+    GRAPH ?h {
         ?c dossier:Dossier.bestaatUit ?doc .
     }
 }
@@ -25,4 +25,5 @@ WHERE {
         }
         ?doc a dossier:Stuk .
     }
+    BIND(?g as ?h)
 }
