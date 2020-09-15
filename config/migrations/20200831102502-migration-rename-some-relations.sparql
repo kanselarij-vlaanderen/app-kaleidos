@@ -1,0 +1,25 @@
+PREFIX ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# besluitvorming:formeelOK does not exist, making it ext: instead
+
+DELETE {
+  GRAPH ?g {
+    ?agendaitem besluitvorming:formeelOK ?formallyOk .
+  } 
+}
+INSERT {
+  GRAPH ?g {
+    ?agendaitem ext:formeelOK ?formallyOk .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem besluitvorming:formeelOK ?formallyOk .
+  }
+}
+
+;

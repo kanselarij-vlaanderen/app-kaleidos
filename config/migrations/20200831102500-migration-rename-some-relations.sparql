@@ -1,0 +1,26 @@
+PREFIX ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# KAS-1422
+# agendaitem
+# besluitvorming:heeftBevoegdeVoorAgendapunt does not exist, making it ext: instead
+
+DELETE {
+  GRAPH ?g {
+    ?agendaitem besluitvorming:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+  } 
+}
+INSERT {
+  GRAPH ?g {
+    ?agendaitem ext:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem besluitvorming:heeftBevoegdeVoorAgendapunt ?agendaitemMandatee .
+  }
+}
+;
