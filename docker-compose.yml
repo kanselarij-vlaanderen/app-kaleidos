@@ -208,3 +208,8 @@ services:
     image: kanselarij/mandatee-service:2.0.1
     logging: *default-logging
     restart: always
+  document-versions-service:
+    image: kanselarij/document-versions-service:0.1.0
+    logging: *default-logging
+    restart: always
+

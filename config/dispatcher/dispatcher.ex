@@ -53,6 +53,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
+  put "/agendaitems/:id/document-versions", @any do  # TODO: change over to "documents" once frontend fully migrated
+    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/documents"
+  end
+
   post "/agendas/:id/agendaitems/documents/files/archive", @any do
     Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
@@ -89,7 +93,7 @@ defmodule Dispatcher do
   match "/meeting-records/*path", @any do
     Proxy.forward conn, path, "http://cache/meeting-records/"
   end
-  
+
   match "/documents/*path", @any do # TODO: change over path to "document-containers" once frontend fully migrated
     Proxy.forward conn, path, "http://cache/documents/"
   end
