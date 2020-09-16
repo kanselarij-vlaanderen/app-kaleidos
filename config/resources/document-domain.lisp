@@ -36,10 +36,10 @@
                                         :inverse t
                                         :as "document-container")
             (piece                      :via      ,(s-prefix "pav:previousVersion")
-                                        :as "previous-version")
+                                        :as "previous-piece")
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
-                                        :as "next-version")
+                                        :as "next-piece")
             (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
                                         :inverse t
                                         :as "subcase")
