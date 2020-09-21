@@ -32,7 +32,7 @@
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))
+                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling")))
   :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
