@@ -127,11 +127,11 @@ services:
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service:2.1.0
+    image: kanselarij/custom-subcases-service:2.2.0
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.0.1
+    image: kanselarij/agenda-approve-service:3.1.0
     logging: *default-logging
     restart: always
   mocklogin:
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.3.1
+    image: kanselarij/yggdrasil:3.4.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -205,6 +205,6 @@ services:
     logging: *default-logging
     restart: always
   mandatee-service:
-    image: kanselarij/mandatee-service:2.0.1
+    image: kanselarij/mandatee-service:2.1.0
     logging: *default-logging
     restart: always
