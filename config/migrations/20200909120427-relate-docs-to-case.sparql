@@ -12,7 +12,7 @@ INSERT {
 WHERE {
     GRAPH ?g {
         ?c a dossier:Dossier .
-        ?sc a dbpedia:UnitOfWork . # Might be deprecated by the time this gets merged.
+        ?sc a dossier:Procedurestap .
         ?c dossier:doorloopt ?sc .
         {
           ?sc ext:bevatDocumentversie ?doc .
@@ -21,7 +21,7 @@ WHERE {
         {
           ?sc ^besluitvorming:vindtPlaatsTijdens /
               besluitvorming:genereertAgendapunt /
-              ext:bevatAgendapuntDocumentversie ?doc . # Might be deprecated by the time this gets merged
+              besluitvorming:geagendeerdStuk ?doc .
         }
         ?doc a dossier:Stuk .
     }
