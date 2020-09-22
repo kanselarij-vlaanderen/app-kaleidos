@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:4.0.5
+    image: kanselarij/frontend-kaleidos:4.0.7
     links:
       - identifier:backend
     logging: *default-logging
@@ -68,7 +68,7 @@ services:
     logging: *default-logging
     restart: always
   musearch:
-   image: semtech/mu-search:0.6.0-beta.11
+   image: semtech/mu-search:0.6.3
    volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -127,11 +127,11 @@ services:
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service:2.1.0
+    image: kanselarij/custom-subcases-service:2.2.0
     logging: *default-logging
     restart: always
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.0.1
+    image: kanselarij/agenda-approve-service:3.1.0
     logging: *default-logging
     restart: always
   mocklogin:
@@ -170,7 +170,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.3.1
+    image: kanselarij/yggdrasil:3.4.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -205,7 +205,7 @@ services:
     logging: *default-logging
     restart: always
   mandatee-service:
-    image: kanselarij/mandatee-service:2.0.1
+    image: kanselarij/mandatee-service:2.1.0
     logging: *default-logging
     restart: always
   case-documents-sync:
