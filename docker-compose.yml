@@ -209,6 +209,6 @@ services:
     logging: *default-logging
     restart: always
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:1.0.0
+    image: kanselarij/case-documents-sync-service:1.1.0
     logging: *default-logging
     restart: always
