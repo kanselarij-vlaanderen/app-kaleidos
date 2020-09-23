@@ -62,8 +62,6 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
-             (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                      :as "meeting-record")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity"))
@@ -211,12 +209,7 @@
                 (:richtext      :string   ,(s-prefix "ext:htmlInhoud")))
   :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
                                 :inverse t
-                                :as "meeting")
-             (agendaitem        :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                :inverse t
-                                :as "agendaitem")
-             (document-container  :via      ,(s-prefix "ext:getekendeNotulen")
-                                :as "signed-document"))
+                                :as "meeting"))
   :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
                                 :as "attendees")
               (document         :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")

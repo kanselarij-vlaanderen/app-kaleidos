@@ -7,9 +7,6 @@
                                         :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
-                                        :inverse t
-                                        :as "signed-minutes")
              (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")
@@ -55,9 +52,9 @@
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
-                                        :inverse t
-                                        :as "meeting-record")
+;;            (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
+;;                                        :inverse t
+;;                                        :as "meeting-record") ;; wordt niet gebruikt
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
