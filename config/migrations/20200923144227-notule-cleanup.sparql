@@ -55,5 +55,6 @@ WHERE {
     GRAPH ?g {
       ?zitting ext:algemeneNotulen ?notule.
       FILTER NOT EXISTS {?notule ext:getekendeDocumentVersiesVoorNotulen ?doc }.
+      ?notule ?p ?o.
     }
 }
