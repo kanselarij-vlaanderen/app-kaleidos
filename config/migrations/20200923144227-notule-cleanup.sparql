@@ -1,0 +1,59 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX brc: <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/>
+PREFIX type: <http://kanselarij.vo.data.gift/id/concept/document-type-codes/>
+
+;; Add type "Notule" to containers from notulen.
+
+INSERT {
+  GRAPH ?g {
+      ?collection ext:documentType type:e149294e-a8b8-4c11-83ac-6d4c417b079b.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?not a <http://mu.semte.ch/vocabularies/ext/Notule>.
+      ?not ext:getekendeDocumentVersiesVoorNotulen ?doc.
+      ?doc a ?doctype.
+      ?collection dossier:collectie.bestaatUit ?doc.
+      FILTER NOT EXISTS { ?collection ext:documentType ?value }
+    }
+}
+
+;; Link zitting directly to documents
+;; Unlink file from notule
+
+DELETE {
+  GRAPH ?g {
+       ?notule ext:getekendeDocumentVersiesVoorNotulen ?doc.
+  }
+}
+INSERT {
+  GRAPH ?g {
+       ?zitting dossier:genereert ?doc.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?zitting a ?type.
+      ?zitting ext:algemeneNotulen ?notule.
+      ?notule ext:getekendeDocumentVersiesVoorNotulen ?doc.
+    }
+}
+
+;; Unlink notule from zitting
+;; Delete unlinked notulen
+
+DELETE {
+  GRAPH ?g {
+       ?zitting ext:algemeneNotulen ?notule.
+       ?notule ?p ?o.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?zitting ext:algemeneNotulen ?notule.
+      FILTER NOT EXISTS {?notule ext:getekendeDocumentVersiesVoorNotulen ?doc }.
+    }
+}
