@@ -98,7 +98,7 @@
   :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")
-              (piece          :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;; 2019-01-09 : deprecated. To be removed after checking frontend dependency
+              (piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                               :inverse t
                               :as "pieces")
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
