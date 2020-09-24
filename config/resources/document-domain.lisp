@@ -3,7 +3,7 @@
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
   :has-many `((remark                   :via ,(s-prefix "besluitvorming:opmerking")
                                         :as "remarks")
-              (piece                    :via ,(s-prefix "dossier:collectie.bestaatUit")
+              (piece                    :via ,(s-prefix "dossier:collectie.bestaatUit") ;; TODO should become `dossier:Collectie.bestaatUit`
                                         :as "pieces"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
