@@ -13,7 +13,6 @@ WHERE {
     GRAPH ?g {
       ?not a <http://mu.semte.ch/vocabularies/ext/Notule>.
       ?not ext:getekendeDocumentVersiesVoorNotulen ?doc.
-      ?doc a ?doctype.
       ?collection dossier:collectie.bestaatUit ?doc.
       FILTER NOT EXISTS { ?collection ext:documentType ?value }
     }
