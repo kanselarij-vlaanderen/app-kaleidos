@@ -1,0 +1,29 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+    GRAPH ?h {
+        ?c dossier:Dossier.bestaatUit ?doc .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?c a dossier:Dossier .
+        ?sc a dossier:Procedurestap .
+        ?c dossier:doorloopt ?sc .
+        {
+          ?sc ext:bevatDocumentversie ?doc .
+        }
+        UNION 
+        {
+          ?sc ^besluitvorming:vindtPlaatsTijdens /
+              besluitvorming:genereertAgendapunt /
+              besluitvorming:geagendeerdStuk ?doc .
+        }
+        ?doc a dossier:Stuk .
+    }
+    BIND(?g as ?h)
+}

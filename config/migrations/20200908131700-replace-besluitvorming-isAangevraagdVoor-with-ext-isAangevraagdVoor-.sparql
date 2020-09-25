@@ -1,0 +1,20 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+	GRAPH ?g {
+		?ps besluitvorming:isAangevraagdVoor ?meeting .
+	}
+}
+INSERT {
+	GRAPH ?g {
+		?ps ext:isAangevraagdVoor ?meeting .
+	}
+}
+WHERE {
+	GRAPH ?g {
+		?ps a dossier:Procedurestap .
+		?ps besluitvorming:isAangevraagdVoor ?meeting .
+	}
+}

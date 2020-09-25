@@ -182,7 +182,7 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
                                         :inverse t
                                         :as "agendas")
-              (subcase                  :via      ,(s-prefix "besluitvorming:isAangevraagdVoor")
+              (subcase                  :via      ,(s-prefix "ext:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases")
               (document                 :via      ,(s-prefix "ext:zittingDocumentversie")

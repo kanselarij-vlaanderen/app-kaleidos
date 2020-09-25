@@ -1,0 +1,18 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+
+DELETE{
+  GRAPH ?g {
+    ?newUri a dbpedia:UnitOfWork .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?newUri a dossier:Procedurestap .
+  }
+} WHERE{
+  GRAPH ?g {
+    ?ps a dbpedia:UnitOfWork .
+    BIND(IRI(STR(?ps)) AS ?newUri)
+  }
+}
