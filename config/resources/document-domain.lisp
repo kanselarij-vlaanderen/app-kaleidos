@@ -52,9 +52,6 @@
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-;;            (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
-;;                                        :inverse t
-;;                                        :as "meeting-record") ;; wordt niet gebruikt
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
