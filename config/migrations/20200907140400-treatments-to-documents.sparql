@@ -1,0 +1,27 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX besluit:  <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX pav: <http://purl.org/pav/>
+
+DELETE
+{
+GRAPH ?g {
+    ?treatment besluitvorming:genereertVerslag ?verslag.
+}
+}
+INSERT
+ {
+ GRAPH ?g {
+    ?treatment besluitvorming:genereertVerslag ?rightdoc.
+ }
+ }
+WHERE
+{
+GRAPH ?g {
+    ?treatment a besluit:BehandelingVanAgendapunt.
+    ?treatment besluitvorming:genereertVerslag ?verslag.
+    ?verslag a dossier:Serie.
+    ?verslag dossier:collectie.bestaatUit ?rightdoc.
+    FILTER NOT EXISTS {?rightdoc ^pav:previousVersion ?otherDoc.}
+}
+}
