@@ -113,7 +113,7 @@
                                     :as "agendaitem")
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
-             (document              :via        ,(s-prefix "besluitvorming:genereertVerslag")
+             (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
                                     :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
