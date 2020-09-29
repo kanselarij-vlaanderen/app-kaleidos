@@ -12,8 +12,9 @@ DELETE {
 }
 WHERE {
     GRAPH ?g {
+      ?zitting a besluit:Vergaderactiviteit.
       ?zitting ext:algemeneNotulen ?notule.
-      FILTER NOT EXISTS {?notule ext:getekendeDocumentVersiesVoorNotulen ?doc }.
+      ?notule a ext:Notule.
       ?notule ?p ?o.
     }
 }
