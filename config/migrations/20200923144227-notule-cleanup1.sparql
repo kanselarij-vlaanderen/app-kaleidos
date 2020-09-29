@@ -16,8 +16,9 @@ INSERT {
 }
 WHERE {
     GRAPH ?g {
-      ?zitting a ?type.
+      ?zitting a besluit:Vergaderactiviteit.
       ?zitting ext:algemeneNotulen ?notule.
+      ?notule a ext:Notule.
       ?notule ext:getekendeDocumentVersiesVoorNotulen ?doc.
     }
 }
