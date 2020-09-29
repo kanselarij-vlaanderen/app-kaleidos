@@ -87,5 +87,39 @@ export default [
       gracePeriod: 250,
       ignoreFromSelf: true
     }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk'
+      }
+    },
+    callback: {
+      url: 'http://case-documents-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/bevatDocumentversie' // Will get changed in future model refactoring
+      }
+    },
+    callback: {
+      url: 'http://case-documents-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
   }
 ];

@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:4.0.7
+    image: kanselarij/frontend-kaleidos:4.0.8
     links:
       - identifier:backend
     logging: *default-logging
@@ -206,5 +206,9 @@ services:
     restart: always
   mandatee-service:
     image: kanselarij/mandatee-service:2.1.0
+    logging: *default-logging
+    restart: always
+  case-documents-sync:
+    image: kanselarij/case-documents-sync-service:1.1.0
     logging: *default-logging
     restart: always

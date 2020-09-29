@@ -1,0 +1,23 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+    GRAPH ?g {
+        ?nieuwsbriefinfo ext:aangepastOp ?aangepast .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?nieuwsbriefinfo ext:aangepastOp ?aangepastDateTime .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?nieuwsbriefinfo a besluitvorming:NieuwsbriefInfo ;
+            ext:aangepastOp ?aangepast .
+        FILTER (datatype(?aangepast) != xsd:dateTime)
+        FILTER (REGEX(str(?aangepast), "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"))
+        BIND (xsd:dateTime(str(?aangepast)) AS ?aangepastDateTime)
+    }
+}

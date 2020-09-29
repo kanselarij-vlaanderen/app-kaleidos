@@ -3,7 +3,7 @@
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
   :has-many `((remark                   :via ,(s-prefix "besluitvorming:opmerking")
                                         :as "remarks")
-              (document                 :via ,(s-prefix "dossier:collectie.bestaatUit")
+              (document                 :via ,(s-prefix "dossier:collectie.bestaatUit") ;; TODO should become `dossier:Collectie.bestaatUit`
                                         :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
@@ -46,15 +46,15 @@
             (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitem")
-            (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
-                                        :inverse t
-                                        :as "agendaitem")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
+            (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
+                                        :inverse t
+                                        :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
