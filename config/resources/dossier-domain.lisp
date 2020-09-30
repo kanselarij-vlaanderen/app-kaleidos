@@ -50,10 +50,10 @@
                                       :as "modified-by"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (document               :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "document-versions")
-              (document               :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "linked-document-versions")
+              (piece                  :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "pieces")
+              (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "linked-pieces")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                       :as "ise-codes")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
@@ -98,9 +98,9 @@
   :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
                               :inverse t
                               :as "subcases")
-              (document-container  :via ,(s-prefix "ext:toegangsniveauVoorDocument") ;; 2019-01-09 : deprecated. To be removed after checking frontend dependency
+              (piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                               :inverse t
-                              :as "documents")
+                              :as "pieces")
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                               :inverse t
                               :as "cases"))

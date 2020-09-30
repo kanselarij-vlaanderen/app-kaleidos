@@ -19,7 +19,7 @@
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
-              (document       :via        ,(s-prefix "besluitvorming:heeftBijlage")
+              (piece       :via        ,(s-prefix "besluitvorming:heeftBijlage")
                               :as "attachments"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
@@ -75,10 +75,10 @@
                                       :as "approvals")
               (mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
-              (document               :via      ,(s-prefix "besluitvorming:geagendeerdStuk")
-                                      :as "document-versions")
-              (document               :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "linked-document-versions"))
+              (piece                  :via      ,(s-prefix "besluitvorming:geagendeerdStuk")
+                                      :as "pieces")
+              (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
+                                      :as "linked-pieces"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
   :features `(no-pagination-defaults include-uri)
   :on-path "agendaitems")
@@ -104,14 +104,14 @@
                 )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
-              ; (document      :via ,(s-prefix "ext:documentenVoorBeslissing")
-              ;                :as "documents")
+              ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
+              ;                :as "pieces")
               )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem")
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
-             (document              :via        ,(s-prefix "besluitvorming:genereertVerslag")
+             (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
                                     :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
@@ -183,8 +183,8 @@
               (subcase                  :via      ,(s-prefix "ext:isAangevraagdVoor")
                                         :inverse t
                                         :as "requested-subcases")
-              (document                 :via      ,(s-prefix "ext:zittingDocumentversie")
-                                        :as "document-versions"))
+              (piece                    :via      ,(s-prefix "ext:zittingDocumentversie")
+                                        :as "pieces"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
