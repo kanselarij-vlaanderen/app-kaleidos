@@ -187,8 +187,6 @@
                                         :as "pieces"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
-             (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
-                                        :as "notes")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter")
              (signature                 :via      ,(s-prefix "ext:heeftHandtekening")

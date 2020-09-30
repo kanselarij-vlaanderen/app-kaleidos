@@ -86,9 +86,6 @@ defmodule Dispatcher do
   match "/meetings/*path", @any do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
-  match "/meeting-records/*path", @any do
-    Proxy.forward conn, path, "http://cache/meeting-records/"
-  end
   
   match "/document-containers/*path", @any do
     Proxy.forward conn, path, "http://cache/document-containers/"

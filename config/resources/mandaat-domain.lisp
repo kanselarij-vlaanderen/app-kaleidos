@@ -10,8 +10,6 @@
                 (:title           :string ,(s-prefix "dct:title")))
   :has-many `((ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "ise-codes")
-             (meeting-record      :via ,(s-prefix "ext:aanwezigen")
-                                  :as "meetings-attended")
              (approval            :via ,(s-prefix "ext:goedkeuringen")
                                   :as "approvals")
              (subcase             :via ,(s-prefix "ext:heeftBevoegde")
