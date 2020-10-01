@@ -12,7 +12,7 @@
   :has-many `((remark :via ,(s-prefix "besluitvorming:opmerking")
                       :as "remarks")
               (document-container :via ,(s-prefix "dct:hasPart")
-                        :as "documents"))
+                        :as "document-containers"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/consultatie-antwoorden/")
   :features '(include-uri)
   :on-path "consultation-responses")
