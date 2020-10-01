@@ -93,15 +93,9 @@ defmodule Dispatcher do
   match "/meeting-records/*path", @any do
     Proxy.forward conn, path, "http://cache/meeting-records/"
   end
-<<<<<<< HEAD
-
-  match "/documents/*path", @any do # TODO: change over path to "document-containers" once frontend fully migrated
-    Proxy.forward conn, path, "http://cache/documents/"
-=======
   
   match "/document-containers/*path", @any do
     Proxy.forward conn, path, "http://cache/document-containers/"
->>>>>>> 93c39c134df75f8c8ee5b3ccf9ec2b53ce7d0e2c
   end
   match "/pieces/*path", @any do
     Proxy.forward conn, path, "http://cache/pieces/"
