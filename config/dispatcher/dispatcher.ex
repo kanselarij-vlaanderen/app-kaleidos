@@ -133,12 +133,6 @@ defmodule Dispatcher do
   match "/approvals/*path", @any do
     Proxy.forward conn, path, "http://cache/approvals/"
   end
-  match "/consultation-responses/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-responses/"
-  end
-  match "/consultation-response-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-response-codes/"
-  end
 
   match "/file-addresses/*path", @any do
     Proxy.forward conn, path, "http://cache/file-addresses/"
