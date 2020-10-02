@@ -12,9 +12,12 @@
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
 (defparameter *max-group-sorted-properties* nil)
+(defparameter sparql:*query-log-types* nil)
+
 (in-package :sparql)
 (defparameter *experimental-no-application-graph-for-sudo-select-queries* t)
 (defparameter *no-application-graph-for-sudo-select-queries* t)
+
 (in-package :mu-cl-resources)
 (read-domain-file "besluit-domain.lisp")
 (read-domain-file "besluitvorming-domain.lisp")

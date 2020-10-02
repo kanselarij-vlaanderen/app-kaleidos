@@ -40,18 +40,8 @@ services:
     image: semtech/mu-authorization:0.6.0-beta.4
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      # LOG_OUTGOING_SPARQL_QUERIES: "true"
-      # INSPECT_OUTGOING_SPARQL_QUERIES: "false"
-      # LOG_INCOMING_SPARQL_QUERIES: "true"
-      # INSPECT_INCOMING_SPARQL_QUERIES: "false"
-      # LOG_ACCESS_RIGHTS: "true"
-      # INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
-      LOG_DELTA_MESSAGES: "true"
-      # LOG_DELTA_CLIENT_COMMUNICATION: "true"
-      # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       DATABASE_COMPATIBILITY: "Virtuoso"
       DATABASE_OVERLOAD_RECOVERY: "on"
-      #LOG_DATABASE_OVERLOAD_TICK: "on"
     volumes:
       - ./config/authorization:/config
     logging: *extended-logging
