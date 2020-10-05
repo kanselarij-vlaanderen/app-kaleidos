@@ -123,7 +123,7 @@ services:
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:2.0.2
+    image: kanselarij/agenda-sort-service:2.1.0
     logging: *default-logging
     restart: always
   custom-subcases-service:
@@ -212,3 +212,8 @@ services:
     image: kanselarij/case-documents-sync-service:1.1.0
     logging: *default-logging
     restart: always
+  document-versions-service:
+    image: kanselarij/document-versions-service:0.1.0
+    logging: *default-logging
+    restart: always
+

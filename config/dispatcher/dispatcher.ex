@@ -53,6 +53,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
+  put "/agendaitems/:id/pieces", @any do
+    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/documents"
+  end
+
   post "/agendas/:id/agendaitems/pieces/files/archive", @any do
     Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/pieces/files/archive"
   end

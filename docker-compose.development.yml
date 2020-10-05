@@ -77,3 +77,9 @@ services:
     restart: "no"
   file-bundling-job-creation-service:
     restart: "no"
+  mandatee-service:
+    restart: "no"
+  lazy-loading-service:
+    restart: "no"
+  document-versions-service:
+    restart: "no"
