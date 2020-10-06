@@ -68,3 +68,40 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mail-campaigns/")
   :features `(no-pagination-defaults include-uri)
   :on-path "mail-campaigns")
+
+;; (define-resource publication ()
+;;   :class (s-prefix "ext:Publicatie")
+;;   :properties `((:       :string   ,(s-prefix "ext:*"))
+;;                 (:title                 :string   ,(s-prefix "dct:title"))
+;;                 (:short-title         :string   ,(s-prefix "dct:alternative"))
+;;                 (:*       :string   ,(s-prefix "ext:*"))
+;;                 (:*           :datetime ,(s-prefix "ext:*")))
+
+;;   :has-one `((case                  :via      ,(s-prefix "ext:publicatieVan") ;; gaan we bestaande case gebruiken hiervoor? is niet voor kanselarij
+;;                                     :as "case"))
+;;   :has-many `((translation          :via      ,(s-prefix "ext:vertaling")
+;;                                     :as "translations"))
+;;   :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie/")
+;;   :features `(no-pagination-defaults include-uri)
+;;   :on-path "publicaties")
+
+  ;; KaS-1868 historiek ? momenteel weg gehaald, mogelijk later terug
+  ;; aangevraagd door, instantie, heeft ook besluitdomeinen
+  ;; intern dossiernummer (publicatienummer) in publicatie of in dossier ? Hebben VR dossiers een ander nummering systeem ?
+  ;; nota, richtText of is dit korte en lange titel?
+  ;; status publicatie
+  ;; uiterste vertaaldatum
+  ;; uiterste datum publicatie
+  ;; wijze van publicate (type)
+  ;; opmerking (persoon wie opmerking gemaakt heeft lijkt niet nodig)
+  ;; documenten (pdf en word aan elkaar kunnen hangen), opsplitsen ?   // moet vertaald worden bool, moet in drukproef bool, type, geupload op
+  ;; vertalingen krijgen fysiek een bestand, model maken paralell op serie? meerdere pieces die gelinkt zijn aan 1 iets, alle files zijn ofwel andere extensie of vertaald.
+  ;; verstuurd naar BS ?
+  ;; handtekeningen gebeuren op de PDF, vertalingen op de PDF
+  ;; werknummer BS
+  ;; publicatie datum in BS
+  ;; BS status apart has One?
+
+
+
+  
