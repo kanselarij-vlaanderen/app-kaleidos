@@ -1,6 +1,7 @@
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 DELETE {
     GRAPH ?g {
