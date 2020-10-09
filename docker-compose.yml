@@ -23,7 +23,7 @@ services:
     logging: *default-logging
     restart: always
   dispatcher:
-    image: semtech/mu-dispatcher:2.0.0-beta.2
+    image: semtech/mu-dispatcher:2.0.0
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
