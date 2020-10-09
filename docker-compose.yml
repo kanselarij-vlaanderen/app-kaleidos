@@ -82,6 +82,12 @@ services:
         - ./config/delta:/config
     logging: *default-logging
     restart: always
+  cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    logging: *default-logging
+    restart: always
   resource:
     image: semtech/mu-cl-resources:1.20.0
     environment:
@@ -164,12 +170,6 @@ services:
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
-    logging: *default-logging
-    restart: always
-  cache:
-    image: semtech/mu-cache:2.0.1
-    links:
-      - resource:backend
     logging: *default-logging
     restart: always
   sink:
