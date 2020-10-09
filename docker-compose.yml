@@ -29,7 +29,7 @@ services:
     logging: *default-logging
     restart: always
   migrations-service:
-    image: semtech/mu-migrations-service:0.5.1
+    image: semtech/mu-migrations-service:0.7.0
     volumes:
       - ./config/migrations:/data/migrations
     environment:
