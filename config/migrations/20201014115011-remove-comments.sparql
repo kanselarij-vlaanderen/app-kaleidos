@@ -10,6 +10,6 @@ DELETE {
     GRAPH ?g {
        ?comment a   schema:Comment .
        ?comment ?p  ?o .
-       ?otherObject besluitvorming:opmerking ?comment .
+       OPTIONAL { ?otherObject besluitvorming:opmerking ?comment . }
     }
 }
