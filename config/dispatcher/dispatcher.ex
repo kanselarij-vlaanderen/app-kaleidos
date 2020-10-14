@@ -178,9 +178,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
-  match "/remarks/*path", @any do
-    Proxy.forward conn, path, "http://cache/remarks/"
-  end
   match "/newsletter-infos/*path", @any do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
