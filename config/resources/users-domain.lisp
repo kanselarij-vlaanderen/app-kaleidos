@@ -22,7 +22,9 @@
   :properties `((:provider     :via ,(s-prefix "foaf:accountServiceHomepage"))
                 (:vo-id        :via ,(s-prefix "dct:identifier"))
                 (:vo-email     :via ,(s-prefix "ext:email"))
-                (:phone-number :via ,(s-prefix "ext:phone")))
+                (:phone-number :via ,(s-prefix "ext:phone"))
+                (:created       :datetime  ,(s-prefix "dct:created"))
+                (:last-login     :datetime  ,(s-prefix "ext:lastLogin")))
   :has-one `((user            :via ,(s-prefix "foaf:account")
                               :inverse t
                               :as "user"))
