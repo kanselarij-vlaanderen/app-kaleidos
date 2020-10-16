@@ -203,7 +203,7 @@ services:
     logging: *default-logging
     restart: always
   document-versions-service:
-    image: kanselarij/document-versions-service:0.1.0
+    image: kanselarij/document-versions-service:0.2.1
     logging: *default-logging
     restart: always
 
