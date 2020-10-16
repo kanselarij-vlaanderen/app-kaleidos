@@ -43,7 +43,7 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
                                         :inverse t
                                         :as "linked-subcase")
-            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk")
+            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk") ;; This should be hasMany, but will results in a many to many relation
                                         :inverse t
                                         :as "agendaitem")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")

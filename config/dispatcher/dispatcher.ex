@@ -53,6 +53,14 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
+  put "/agendaitems/:id/pieces", @any do
+    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/documents"
+  end
+
+  put "/agendaitems/:id/pieces/restore", @any do
+    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/pieces/restore"
+  end
+  
   post "/agendas/:id/agendaitems/pieces/files/archive", @any do
     Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/pieces/files/archive"
   end
@@ -129,12 +137,6 @@ defmodule Dispatcher do
   end
   match "/approvals/*path", @any do
     Proxy.forward conn, path, "http://cache/approvals/"
-  end
-  match "/consultation-responses/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-responses/"
-  end
-  match "/consultation-response-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/consultation-response-codes/"
   end
 
   match "/file-addresses/*path", @any do

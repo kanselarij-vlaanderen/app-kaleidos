@@ -18,9 +18,7 @@
                                :inverse t
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
-                              :as "agendaitems")
-              (piece       :via        ,(s-prefix "besluitvorming:heeftBijlage")
-                              :as "attachments"))
+                              :as "agendaitems"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
@@ -62,6 +60,11 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :as "previous-version")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :inverse t
+                                      :as "next-version")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity"))

@@ -17,6 +17,17 @@ services:
     restart: "no"
   database:
     restart: "no"
+    environment:
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      INSPECT_INCOMING_SPARQL_QUERIES: "false"
+      LOG_ACCESS_RIGHTS: "true"
+      INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+      LOG_DELTA_MESSAGES: "true"
+      LOG_DELTA_CLIENT_COMMUNICATION: "true"
+      LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
+      LOG_DATABASE_OVERLOAD_TICK: "false"
   triplestore:
     ports:
       - "8890:8890"
@@ -76,4 +87,10 @@ services:
   file-bundling-service:
     restart: "no"
   file-bundling-job-creation-service:
+    restart: "no"
+  mandatee-service:
+    restart: "no"
+  lazy-loading-service:
+    restart: "no"
+  document-versions-service:
     restart: "no"
