@@ -60,6 +60,11 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :as "previous-version")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :inverse t
+                                      :as "next-version")
              (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
                                       :as "meeting-record")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
