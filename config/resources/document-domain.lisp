@@ -7,16 +7,18 @@
                                         :as "documents"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (decision                  :via ,(s-prefix "ext:beslissingsfiche")
-                                        :inverse t
-                                        :as "signed-decision")
              (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
                                         :inverse t
-                                        :as "signed-minutes"))
+                                        :as "signed-minutes")
+             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
+                                        :inverse t
+                                        :as "agenda-item-treatment")
+                                        )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
   :on-path "documents") ;; TODO: change to "document-containers" once frontend fully migrated
 
+;; Generieke “serie” wordt gebruikt voor specifieke doeleinden voor het groeperen van stukken (KAS-1558)
 (define-resource document ()
   :class (s-prefix "dossier:Stuk")
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
@@ -44,21 +46,15 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
                                         :inverse t
                                         :as "linked-subcase")
-            (agendaitem                 :via ,(s-prefix "ext:bevatAgendapuntDocumentversie")
+            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitem")
             (agendaitem                 :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
                                         :inverse t
                                         :as "agendaitem")
-            (announcement               :via ,(s-prefix "ext:mededelingBevatDocumentversie")
-                                        :inverse t
-                                        :as "announcement")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            (decision                   :via ,(s-prefix "ext:documentenVoorBeslissing")
-                                        :inverse t
-                                        :as "decision")
             (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
                                         :inverse t
                                         :as "meeting-record")

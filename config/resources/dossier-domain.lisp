@@ -30,7 +30,6 @@
                 (:subcase-identifier  :string ,(s-prefix "ext:procedurestapNummer"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
-                (:formally-ok         :boolean  ,(s-prefix "besluitvorming:formeelOK")) ;; NOTE: What is the URI of property 'formeelOK'? Made up besluitvorming:formeelOK
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
@@ -46,15 +45,13 @@
                                       :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
-             (newsletter-info         :via ,(s-prefix "prov:generated")
-                                      :as "newsletter-info")
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by"))
   :has-many `((person                 :via ,(s-prefix "dct:creator") ;; heeftCreator?  ;; NOTE: used persoon instead of agent
                                       :as "heeftCreator")
-              (mandatee               :via ,(s-prefix "besluitvorming:heeftBevoegde") ;; NOTE: used mandataris instead of agent
+              (mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (subcase                :via ,(s-prefix "dct:relation")
                                       :as "related-to")
@@ -66,11 +63,12 @@
                                       :as "remarks")
               (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                       :as "ise-codes")
-              (decision               :via ,(s-prefix "ext:procedurestapHeeftBesluit") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
-                                      :as "decisions")
-              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
+              (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
-                                      :as "agenda-activities"))
+                                      :as "agenda-activities")
+              (agenda-item-treatment  :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
+                                      :inverse t
+                                      :as "treatments"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")

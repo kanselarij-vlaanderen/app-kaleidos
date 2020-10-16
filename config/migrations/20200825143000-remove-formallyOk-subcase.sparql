@@ -1,0 +1,13 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+
+DELETE{
+  GRAPH ?g {
+    ?subcase besluitvorming:formeelOK ?formallyOk.
+  }
+} WHERE{
+  GRAPH ?g {
+    ?subcase a dbpedia:UnitOfWork ;
+             besluitvorming:formeelOK ?formallyOk.
+  }
+}

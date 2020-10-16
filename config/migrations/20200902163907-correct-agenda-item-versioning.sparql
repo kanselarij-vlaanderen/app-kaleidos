@@ -1,0 +1,22 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+      ?agendaItemB prov:wasRevisionOf ?agendaItemA .
+  }  
+}
+WHERE {
+    GRAPH ?g {
+        ?agendaA a besluitvorming:Agenda ;
+            dct:hasPart ?agendaItemA .
+        ?agendaB a besluitvorming:Agenda ;
+            dct:hasPart ?agendaItemB .
+        ?agendaItemA a besluit:Agendapunt .
+        ?agendaItemB a besluit:Agendapunt .
+        ?agendaItemB prov:wasRevisionOf ?agendaItemA .
+        FILTER NOT EXISTS { ?agendaB prov:wasRevisionOf ?agendaA }
+    }
+}

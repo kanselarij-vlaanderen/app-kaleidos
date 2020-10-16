@@ -1,0 +1,25 @@
+PREFIX ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dbpedia:  <http://dbpedia.org/ontology/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming:  <http://data.vlaanderen.be/ns/besluitvorming#>
+
+# ext:bevatAgendapuntDocumentversie is defined in oslo model as besluitvorming:geagendeerdStuk
+
+DELETE {
+  GRAPH ?g {
+    ?agendaitem ext:bevatAgendapuntDocumentversie ?document .
+  } 
+}
+INSERT {
+  GRAPH ?g {
+    ?agendaitem besluitvorming:geagendeerdStuk ?document .
+  } 
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem ext:bevatAgendapuntDocumentversie ?document .
+  }
+}
+
+;
