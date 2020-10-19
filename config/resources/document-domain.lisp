@@ -5,9 +5,9 @@
                                         :as "pieces"))
   :has-one `((document-type             :via ,(s-prefix "ext:documentType")
                                         :as "type")
-             (meeting-record            :via ,(s-prefix "ext:getekendeNotulen")
+             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
-                                        :as "signed-minutes")
+                                        :as "agenda-item-treatment")
                                         )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
   :features '(include-uri)
@@ -41,18 +41,18 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
                                         :inverse t
                                         :as "linked-subcase")
-            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk")
+            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk") ;; This should be hasMany, but will results in a many to many relation
                                         :inverse t
                                         :as "agendaitem")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
-            (meeting-record             :via ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
-                                        :inverse t
-                                        :as "meeting-record")
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
+            ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
+            ;;                             :inverse t
+            ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
             (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")

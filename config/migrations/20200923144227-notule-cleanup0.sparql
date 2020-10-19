@@ -1,0 +1,19 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX brc: <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/>
+PREFIX type: <http://kanselarij.vo.data.gift/id/concept/document-type-codes/>
+
+INSERT {
+  GRAPH ?g {
+      ?collection ext:documentType type:e149294e-a8b8-4c11-83ac-6d4c417b079b.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?not a <http://mu.semte.ch/vocabularies/ext/Notule>.
+      ?not ext:getekendeDocumentVersiesVoorNotulen ?doc.
+      ?collection dossier:collectie.bestaatUit ?doc.
+      FILTER NOT EXISTS { ?collection ext:documentType ?value }
+    }
+}
