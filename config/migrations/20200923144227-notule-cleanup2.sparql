@@ -1,0 +1,22 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX brc: <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/>
+PREFIX type: <http://kanselarij.vo.data.gift/id/concept/document-type-codes/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH ?g {
+       ?zitting ext:algemeneNotulen ?notule.
+       ?notule a ext:Notule.
+       ?notule ?p ?o.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?zitting a besluit:Vergaderactiviteit.
+      ?zitting ext:algemeneNotulen ?notule.
+      ?notule a ext:Notule.
+      ?notule ?p ?o.
+    }
+}
