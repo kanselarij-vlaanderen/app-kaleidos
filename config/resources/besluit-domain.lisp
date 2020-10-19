@@ -194,6 +194,8 @@
                                         :as "newsletter")
              (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
                                         :as "signature")
+              ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
+              ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
                                         :as "mail-campaign"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")

@@ -9,9 +9,6 @@
   :has-one `((file              :via        ,(s-prefix "nie:dataSource")
                                 :inverse t
                                 :as "download")
-             (agenda            :via        ,(s-prefix "ext:getekendeNotule") ;; KAS-1465 whats this ?
-                                :inverse t
-                                :as "agenda")
              (signature         :via        ,(s-prefix "ext:handtekening")
                                 :inverse t
                                 :as "signature"))

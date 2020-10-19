@@ -52,6 +52,9 @@
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
+            ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
+            ;;                             :inverse t
+            ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
             (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")
