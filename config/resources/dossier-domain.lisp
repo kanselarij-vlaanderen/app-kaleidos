@@ -61,7 +61,7 @@
                                       :as "agenda-activities")
               (agenda-item-treatment  :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
                                       :inverse t
-                                      :as "agenda-item-treatments"))
+                                      :as "treatments"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")

@@ -160,7 +160,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.5.0
+    image: kanselarij/yggdrasil:3.6.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -203,7 +203,7 @@ services:
     logging: *default-logging
     restart: always
   document-versions-service:
-    image: kanselarij/document-versions-service:0.1.0
+    image: kanselarij/document-versions-service:0.2.1
     logging: *default-logging
     restart: always
 
