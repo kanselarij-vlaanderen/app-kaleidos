@@ -67,9 +67,7 @@
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity"))
-  :has-many `((remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
-                                      :as "remarks")
-              (agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+  :has-many `((agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
                                       :as "treatments")
             ;; Added has-many relations from subcases

@@ -58,7 +58,6 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
-      "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
@@ -99,7 +98,6 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
-      "http://schema.org/Comment",
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema",
