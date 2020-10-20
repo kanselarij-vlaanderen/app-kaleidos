@@ -1,19 +1,3 @@
-
-(define-resource remark ()
-  :class (s-prefix "schema:Comment") ;; NOTE: instead of misusing 'rdfs:comment' property name as class name
-  :properties `((:created :datetime ,(s-prefix "besluitvorming:aanmaakdatum"))
-                (:text          :string   ,(s-prefix "rdfs:comment")))
-  :has-one `((user              :via      ,(s-prefix "dct:creator")
-                                :as "author")
-             (agendaitem        :via      ,(s-prefix "besluitvorming:opmerking")
-                                :inverse t
-                                :as "agendaitem"))
-  :has-many `((remark     :via      ,(s-prefix "ext:antwoorden")
-                          :as "answers"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/opmerkingen/")
-  :features '(include-uri)
-  :on-path "remarks")
-
 (define-resource newsletter-info ()
   :class (s-prefix "besluitvorming:NieuwsbriefInfo")
   :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))

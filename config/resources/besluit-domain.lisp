@@ -18,9 +18,7 @@
                                :inverse t
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
-                              :as "agendaitems")
-              (piece       :via        ,(s-prefix "besluitvorming:heeftBijlage")
-                              :as "attachments"))
+                              :as "agendaitems"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
   :features '(include-uri)
   :on-path "agendas")
@@ -43,7 +41,6 @@
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority            :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:show-in-newsletter  :boolean  ,(s-prefix "ext:toonInKortBestek"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
                 (:explanation         :string   ,(s-prefix "ext:toelichting"))
@@ -62,14 +59,15 @@
              (agenda                  :via      ,(s-prefix "dct:hasPart")
                                       :inverse t
                                       :as "agenda")
-             (meeting-record          :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                      :as "meeting-record")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :as "previous-version")
+             (agendaitem              :via        ,(s-prefix "prov:wasRevisionOf")
+                                      :inverse t
+                                      :as "next-version")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity"))
-  :has-many `((remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
-                                      :as "remarks")
-              (agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+  :has-many `((agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
                                       :as "treatments")
             ;; Added has-many relations from subcases
@@ -189,38 +187,14 @@
                                         :as "pieces"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
-             (meeting-record            :via      ,(s-prefix "ext:algemeneNotulen")
-                                        :as "notes")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter")
              (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
                                         :as "signature")
+              ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
+              ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
                                         :as "mail-campaign"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")
-
-(define-resource meeting-record ()
-  :class (s-prefix "ext:Notule")
-  :properties `((:modified      :datetime     ,(s-prefix "ext:aangepast"))
-                (:created       :datetime     ,(s-prefix "ext:aangemaaktOp"))
-                (:announcements :string   ,(s-prefix "ext:mededelingen"))
-                (:others        :string   ,(s-prefix "ext:varia"))
-                (:description   :string   ,(s-prefix "ext:description"))
-                (:richtext      :string   ,(s-prefix "ext:htmlInhoud")))
-  :has-one `((meeting           :via      ,(s-prefix "ext:algemeneNotulen")
-                                :inverse t
-                                :as "meeting")
-             (agendaitem        :via      ,(s-prefix "ext:notulenVanAgendaPunt")
-                                :inverse t
-                                :as "agendaitem")
-             (document-container  :via      ,(s-prefix "ext:getekendeNotulen")
-                                :as "signed-document-container"))
-  :has-many `((mandatee        :via      ,(s-prefix "ext:aanwezigen")
-                                :as "attendees")
-              (piece         :via      ,(s-prefix "ext:getekendeDocumentVersiesVoorNotulen")
-                                :as "pieces"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/notulen/")
-  :features '(include-uri)
-  :on-path "meeting-records")

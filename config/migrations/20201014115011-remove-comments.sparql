@@ -1,0 +1,15 @@
+PREFIX  schema:  <http://schema.org/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+    GRAPH ?g {
+       ?comment ?p  ?o .
+       ?otherObject besluitvorming:opmerking ?comment .
+    }
+} where {
+    GRAPH ?g {
+       ?comment a   schema:Comment .
+       ?comment ?p  ?o .
+       OPTIONAL { ?otherObject besluitvorming:opmerking ?comment . }
+    }
+}

@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:4.0.8
+    image: kanselarij/frontend-kaleidos:5.0.3
     links:
       - identifier:backend
     logging: *default-logging
@@ -40,18 +40,8 @@ services:
     image: semtech/mu-authorization:0.6.0-beta.4
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      # LOG_OUTGOING_SPARQL_QUERIES: "true"
-      # INSPECT_OUTGOING_SPARQL_QUERIES: "false"
-      # LOG_INCOMING_SPARQL_QUERIES: "true"
-      # INSPECT_INCOMING_SPARQL_QUERIES: "false"
-      # LOG_ACCESS_RIGHTS: "true"
-      # INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
-      LOG_DELTA_MESSAGES: "true"
-      # LOG_DELTA_CLIENT_COMMUNICATION: "true"
-      # LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       DATABASE_COMPATIBILITY: "Virtuoso"
       DATABASE_OVERLOAD_RECOVERY: "on"
-      #LOG_DATABASE_OVERLOAD_TICK: "on"
     volumes:
       - ./config/authorization:/config
     logging: *extended-logging
@@ -119,15 +109,15 @@ services:
   #   logging: *default-logging
   #   restart: always
   session-number-service:
-    image: kanselarij/session-number-service:1.1.0
+    image: kanselarij/session-number-service:1.1.1
     logging: *default-logging
     restart: always
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:2.1.0
+    image: kanselarij/agenda-sort-service:2.1.1
     logging: *default-logging
     restart: always
   custom-subcases-service:
-    image: kanselarij/custom-subcases-service:2.2.0
+    image: kanselarij/custom-subcases-service:2.2.1
     logging: *default-logging
     restart: always
   agenda-approve-service:
@@ -156,7 +146,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:2.1.3
+    image: kanselarij/newsletter-service:2.1.4
     logging: *default-logging
     restart: always
   user-management-service:
@@ -170,7 +160,7 @@ services:
     logging: *default-logging
     restart: always
   yggdrasil:
-    image: kanselarij/yggdrasil:3.5.0
+    image: kanselarij/yggdrasil:3.7.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -201,7 +191,7 @@ services:
     logging: *default-logging
     restart: always
   lazy-loading-service:
-    image: kanselarij/lazy-loading-service:1.0.2
+    image: kanselarij/lazy-loading-service:1.0.3
     logging: *default-logging
     restart: always
   mandatee-service:
@@ -213,7 +203,7 @@ services:
     logging: *default-logging
     restart: always
   document-versions-service:
-    image: kanselarij/document-versions-service:0.1.0
+    image: kanselarij/document-versions-service:0.2.1
     logging: *default-logging
     restart: always
 
