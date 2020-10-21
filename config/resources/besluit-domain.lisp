@@ -41,7 +41,6 @@
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:priority            :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:show-in-newsletter  :boolean  ,(s-prefix "ext:toonInKortBestek"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
                 (:explanation         :string   ,(s-prefix "ext:toelichting"))
@@ -68,9 +67,7 @@
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity"))
-  :has-many `((remark                 :via      ,(s-prefix "besluitvorming:opmerking") ;; NOTE: opmerkingEN would be more suitable?
-                                      :as "remarks")
-              (agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+  :has-many `((agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
                                       :as "treatments")
             ;; Added has-many relations from subcases
