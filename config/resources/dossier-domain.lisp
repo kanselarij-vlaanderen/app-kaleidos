@@ -5,8 +5,10 @@
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
-                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk"))
-)
+                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
+  :has-one `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
+                                :inverse t
+                                :as "publicationFlow"))
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
               (document         :via      ,(s-prefix "dossier:Dossier.bestaatUit")
@@ -46,8 +48,12 @@
                                       :as "type")
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
-             (user                    :via      ,(s-prefix "ext:modifiedBy")
-                                      :as "modified-by"))
+             (user                    :via ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by")
+            ;; Publication hasOne relationships
+             (publication-flow        :via ,(s-prefix "ext:doorloopt") ;; Should be dossier:doorloopt, mu-cl-resources polymorphism limited
+                                      :inverse t
+                                      :as "publicationFlow"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (piece                  :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
@@ -61,7 +67,10 @@
                                       :as "agenda-activities")
               (agenda-item-treatment  :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
                                       :inverse t
-                                      :as "treatments"))
+                                      :as "treatments")
+              (activity               :via ,(s-prefix "dossier:vindtPlaatsTijdens") ;; Dit is de juiste relatie !! ipv besluitvorming
+                                      :inverse t
+                                      :as "publication-activities") ;; this can be translationActivity, signatureActivity, publish )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")
@@ -78,9 +87,32 @@
   :features '(include-uri)
   :on-path "subcase-types")
 
-  (define-resource agenda-activity ()
+;; "http://mu.semte.ch/vocabularies/ext/publicatie/Vertaalactiviteit"
+;; "http://mu.semte.ch/vocabularies/ext/publicatie/Handtekenactiviteit"
+;; "http://mu.semte.ch/vocabularies/ext/publicatie/Drukproefactiviteit"
+(define-resource activity ()
+  :class (s-prefix "prov:Activiteit") ;; Does this belong in dossier-domain ?
+  :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
+                (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
+                (:name            :string   ,(s-prefix "dct:title"))
+                (:type            :url      ,(s-prefix "dct:type")))
+  :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
+                                  :as "subcase")
+             (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
+                                  :as "language"))
+  :has-many `((piece              :via      ,(s-prefix "prov:used")
+                                  :as "used-pieces")
+              (piece              :via      ,(s-prefix "dossier:genereert")
+                                  :as "generated-pieces")
+              (file               :via      ,(s-prefix "ext:gebruiktBestand")
+                                  :as "used-files"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/activiteiten/")
+  :features '(include-uri)
+  :on-path "activities")
+
+(define-resource agenda-activity ()
   :class (s-prefix "besluitvorming:Agendering")
-  :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum")))
+  :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum"))) ;; should be dossier:Activiteit.startdatum
   :has-one `((subcase             :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")

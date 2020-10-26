@@ -1,0 +1,52 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/publication-status/>
+PREFIX languageid: <http://kanselarij.vo.data.gift/id/language/>
+PREFIX activitytype: <http://kanselarij.vo.data.gift/id/concept/activiteits-type/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    pub:Publicatiestatus a ext:PublicClass .
+    pubstatusid:fa62e050-3960-440d-bed9-1c3d3e9923a8 a pub:Publicatiestatus ;
+      ext:priority 1;
+      mu:uuid "fa62e050-3960-440d-bed9-1c3d3e9923a8" ;
+      dct:title "Te publiceren"@nl .
+
+    pubstatusid:2f8dc814-bd91-4bcf-a823-baf1cdc42475 a pub:Publicatiestatus ;
+      ext:priority 2;
+      mu:uuid "2f8dc814-bd91-4bcf-a823-baf1cdc42475" ;
+      dct:title "Gepubliceerd"@nl .
+
+    ext:Taal a ext:PublicClass .
+    languageid:6f243592-8efd-48ae-a1fc-49cb74f8936e a ext:Taal ;
+      ext:priority 1;
+      mu:uuid "6f243592-8efd-48ae-a1fc-49cb74f8936e" ;
+      dct:title "FR"@nl .
+      dct:language "fre".
+
+    languageid:fe072a38-0ee5-4d2c-b16f-c1ed7a32e985 a ext:Taal ;
+      ext:priority 2;
+      mu:uuid "fe072a38-0ee5-4d2c-b16f-c1ed7a32e985" ;
+      dct:title "DE"@nl .
+      dct:language "deu" .
+      
+    languageid:98892376-e5ca-47dc-8e98-136db891166b a ext:Taal ;
+      ext:priority 3;
+      mu:uuid "98892376-e5ca-47dc-8e98-136db891166b" ;
+      dct:title "NL"@nl .
+      dct:language "nld" .
+
+    activitytype:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActivityType;
+      mu:uuid "e9a532a5-65c1-484f-9288-1720dcd1296c" ;
+      skos:prefLabel "Vertalen" .
+    activitytype:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActivityType;
+      mu:uuid "6a43f78e-c835-40a2-bf32-81209ac6e42a" ;
+      skos:prefLabel "Handtekenen" .
+    activitytype:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActivityType;
+      mu:uuid "165a56c5-6d32-4a8e-aefe-a1755eb0c0a4" ;
+      skos:prefLabel "Drukproeven" .  
+      
+  }
+}
