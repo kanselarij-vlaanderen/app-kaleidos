@@ -1,55 +1,67 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
-PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/publication-status/>
-PREFIX languageid: <http://kanselarij.vo.data.gift/id/language/>
-PREFIX activity-type: <http://kanselarij.vo.data.gift/id/concept/activiteits-type/>
-PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-type/>
+PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/publicatie-statussen/>
+PREFIX languageid: <http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/>
+PREFIX activity-type: <http://kanselarij.vo.data.gift/id/concept/activiteit-types/>
+PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
     pub:Publicatiestatus a ext:PublicClass .
     pubstatusid:fa62e050-3960-440d-bed9-1c3d3e9923a8 a pub:Publicatiestatus ;
+      a skos:Concept ;
       ext:priority 1;
       mu:uuid "fa62e050-3960-440d-bed9-1c3d3e9923a8" ;
-      dct:title "Te publiceren"@nl .
+      skos:prefLabel "Te publiceren"@nl .
 
     pubstatusid:2f8dc814-bd91-4bcf-a823-baf1cdc42475 a pub:Publicatiestatus ;
+      a skos:Concept ;
       ext:priority 2;
       mu:uuid "2f8dc814-bd91-4bcf-a823-baf1cdc42475" ;
-      dct:title "Gepubliceerd"@nl .
+      skos:prefLabel "Gepubliceerd"@nl .
 
-    ext:Taal a ext:PublicClass .
-    languageid:6f243592-8efd-48ae-a1fc-49cb74f8936e a ext:Taal ;
+    dct:LinguisticSystem a ext:PublicClass .
+    languageid:6f243592-8efd-48ae-a1fc-49cb74f8936e a dct:LinguisticSystem ;
+      a skos:Concept ;
       ext:priority 1;
       mu:uuid "6f243592-8efd-48ae-a1fc-49cb74f8936e" ;
-      dct:title "FR"@nl .
+      skos:prefLabel "FR"@nl .
       dct:language "fre".
 
-    languageid:fe072a38-0ee5-4d2c-b16f-c1ed7a32e985 a ext:Taal ;
+    languageid:fe072a38-0ee5-4d2c-b16f-c1ed7a32e985 a dct:LinguisticSystem ;
+      a skos:Concept ;
       ext:priority 2;
       mu:uuid "fe072a38-0ee5-4d2c-b16f-c1ed7a32e985" ;
-      dct:title "DE"@nl .
+      skos:prefLabel "DE"@nl .
       dct:language "deu" .
       
-    languageid:98892376-e5ca-47dc-8e98-136db891166b a ext:Taal ;
+    languageid:98892376-e5ca-47dc-8e98-136db891166b a dct:LinguisticSystem ;
+      a skos:Concept ;
       ext:priority 3;
       mu:uuid "98892376-e5ca-47dc-8e98-136db891166b" ;
-      dct:title "NL"@nl .
+      skos:prefLabel "NL"@nl .
       dct:language "nld" .
 
-    activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActivityType;
+    ext:ActiviteitsType a ext:PublicClass .
+    activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActiviteitsType ;
+      a skos:Concept ;
       mu:uuid "e9a532a5-65c1-484f-9288-1720dcd1296c" ;
       skos:prefLabel "Vertalen" .
-    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActivityType;
+    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActiviteitsType;
+      a skos:Concept ;
       mu:uuid "6a43f78e-c835-40a2-bf32-81209ac6e42a" ;
       skos:prefLabel "Handtekenen" .
-    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActivityType;
+    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActiviteitsType;
+      a skos:Concept ;
       mu:uuid "165a56c5-6d32-4a8e-aefe-a1755eb0c0a4" ;
       skos:prefLabel "Drukproeven" .  
 
-    publish-type:5fcca4a7-3e1f-44ec-b854-e21ad092c524 a ext:PublishType;
+    pub:PublicatieType a ext:PublicClass .
+    publish-type:5fcca4a7-3e1f-44ec-b854-e21ad092c524 a pub:PublicatieType;
+      a skos:Concept ;
       mu:uuid "5fcca4a7-3e1f-44ec-b854-e21ad092c524" ;
       ext:priority 1;
       skos:prefLabel "Extenso" .  

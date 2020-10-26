@@ -3,16 +3,17 @@
   :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
                 (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
-                (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??
-                (:publication-method  :url      ,(s-prefix "pub:publicatieWijze")) ;; url of publicatiewijze      per drukproef/publicatie ??
+                (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
                 (:numac-number        :string   ,(s-prefix "pub:numacNummer")) ;; object ? number ?  numac nummer per drukproef/publicatie ??
                 (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "dct:modified")))
-  :has-one `((case                    :via      ,(s-prefix "dossier:behandelt") ;; gaan we bestaande case gebruiken hiervoor? is niet voor kanselarij
+  :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
                                       :as "case")
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
-                                      :as "status"))
+                                      :as "status")
+             (publication-type        :via      ,(s-prefix "pub:publicatieWijze")
+                                      :as "publicationType"))
   :has-many `((subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
               (person                 :via      ,(s-prefix "pub:contactpersoon")
@@ -23,24 +24,36 @@
   :on-path "publication-flows")
 
 (define-resource publication-status ()
-  :class (s-prefix "pub:Publicatiestatus")
-  :properties `((:name        :string ,(s-prefix "dct:title"))
+  :class (s-prefix "pub:Publicatiestatus") ;; NOTE: as well as skos:Concept
+  :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
                 (:priority    :number ,(s-prefix "ext:priority")
   :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
                               :inverse t
                               :as "publicaties"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publication-statussen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-statussen/")
   :features '(include-uri)
   :on-path "publication-statuses")
 
 (define-resource language ()
-  :class (s-prefix "ext:Taal")
-  :properties `((:name                 :string ,(s-prefix "dct:title")
+  :class (s-prefix "dct:LinguisticSystem") ;; NOTE: as well as skos:Concept
+  :properties `((:name                 :string ,(s-prefix "skos:prefLabel")
                 (:iso-language-code    :string ,(s-prefix "dct:language")
                 (:priority             :number ,(s-prefix "ext:priority"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/talen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/")
   :features '(include-uri)
   :on-path "languages")
+
+(define-resource publication-type ()
+  :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-many `((publication-flow   :via ,(s-prefix "dct:type")
+                                  :inverse t
+                                  :as "publicationFlows"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-types/")
+  :features '(include-uri)
+  :on-path "publication-types")
 
 
   ;; 

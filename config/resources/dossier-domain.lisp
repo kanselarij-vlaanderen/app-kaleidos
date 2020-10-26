@@ -94,12 +94,13 @@
   :class (s-prefix "prov:Activiteit") ;; Does this belong in dossier-domain ?
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
-                (:name            :string   ,(s-prefix "dct:title"))
-                (:type            :url      ,(s-prefix "dct:type")))
+                (:name            :string   ,(s-prefix "dct:title")))
   :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
                                   :as "subcase")
              (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
-                                  :as "language"))
+                                  :as "language")
+             (activity-type       :via      ,(s-prefix "dct:type")
+                                  :as "type"))
   :has-many `((piece              :via      ,(s-prefix "prov:used")
                                   :as "used-pieces")
               (piece              :via      ,(s-prefix "dossier:genereert")
@@ -109,6 +110,18 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/activiteiten/")
   :features '(include-uri)
   :on-path "activities")
+
+(define-resource activity-type ()
+  :class (s-prefix "ext:ActiviteitType") ;; NOTE: as well as skos:Concept
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-many `((activity           :via ,(s-prefix "dct:type")
+                                  :inverse t
+                                  :as "activities"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/activiteit-types/")
+  :features '(include-uri)
+  :on-path "activity-types")
 
 (define-resource agenda-activity ()
   :class (s-prefix "besluitvorming:Agendering")

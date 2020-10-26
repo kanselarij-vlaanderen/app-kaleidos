@@ -56,9 +56,9 @@
             (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")
-            (language                   :via  ,(s-prefix "ext:taal") ;; only when type === translationActivity
+            (language                   :via  ,(s-prefix "ext:taal") ;; only when type === translationActivity   ;;KAS-1868 dct:language
                                         :as "language")
-            (piece                      :via ,(s-prefix "eli:is_translation_of")
+            (piece                      :via ,(s-prefix "eli:is_translation_of") ;; niet eli ! 
                                         :as "translation-source"))
   :has-many `((piece                    :via ,(s-prefix "eli:is_translation_of")
                                         :inverse t
@@ -68,8 +68,7 @@
                                         :as "used-in-activity")
               (piece                    :via ,(s-prefix "dossier:genereert")
                                         :inverse t
-                                        :as "generated-in-activity")
-                                        )
+                                        :as "generated-in-activity"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
   :on-path "pieces")

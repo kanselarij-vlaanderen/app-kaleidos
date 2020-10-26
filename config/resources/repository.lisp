@@ -42,7 +42,7 @@
 (add-prefix "persoon" "http://data.vlaanderen.be/ns/persoon#")
 (add-prefix "dossier" "https://data.vlaanderen.be/ns/dossier#")
 
-(add-prefix "pub" "http://mu.semte.ch/vocabularies/ext/publicatie") ;; base = ext:
+(add-prefix "pub" "http://mu.semte.ch/vocabularies/ext/publicatie/") ;; base = ext:
 
 (add-prefix "adms" "http://www.w3.org/ns/adms#")
 (add-prefix "bbcdr" "http://mu.semte.ch/vocabularies/ext/bbcdr/")
