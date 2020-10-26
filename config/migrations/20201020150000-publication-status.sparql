@@ -2,7 +2,8 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/publication-status/>
 PREFIX languageid: <http://kanselarij.vo.data.gift/id/language/>
-PREFIX activitytype: <http://kanselarij.vo.data.gift/id/concept/activiteits-type/>
+PREFIX activity-type: <http://kanselarij.vo.data.gift/id/concept/activiteits-type/>
+PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-type/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
@@ -38,15 +39,19 @@ INSERT DATA {
       dct:title "NL"@nl .
       dct:language "nld" .
 
-    activitytype:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActivityType;
+    activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActivityType;
       mu:uuid "e9a532a5-65c1-484f-9288-1720dcd1296c" ;
       skos:prefLabel "Vertalen" .
-    activitytype:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActivityType;
+    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActivityType;
       mu:uuid "6a43f78e-c835-40a2-bf32-81209ac6e42a" ;
       skos:prefLabel "Handtekenen" .
-    activitytype:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActivityType;
+    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActivityType;
       mu:uuid "165a56c5-6d32-4a8e-aefe-a1755eb0c0a4" ;
       skos:prefLabel "Drukproeven" .  
-      
+
+    publish-type:5fcca4a7-3e1f-44ec-b854-e21ad092c524 a ext:PublishType;
+      mu:uuid "5fcca4a7-3e1f-44ec-b854-e21ad092c524" ;
+      ext:priority 1;
+      skos:prefLabel "Extenso" .  
   }
 }

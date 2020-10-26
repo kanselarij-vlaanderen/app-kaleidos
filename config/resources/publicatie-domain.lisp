@@ -26,7 +26,7 @@
   :class (s-prefix "pub:Publicatiestatus")
   :properties `((:name        :string ,(s-prefix "dct:title"))
                 (:priority    :number ,(s-prefix "ext:priority")
-  :has-many `((publication    :via    ,(s-prefix "pub:publicatiestatus")
+  :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
                               :inverse t
                               :as "publicaties"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/publication-statussen/")
