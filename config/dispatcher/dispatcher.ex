@@ -283,8 +283,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
 
+  match "/publication-types/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-types/"
+  end
+
   match "/activities/*path", @any do
     Proxy.forward conn, path, "http://cache/activities/"
+  end
+
+  match "/activity-types/*path", @any do
+    Proxy.forward conn, path, "http://cache/activity-types/"
   end
 
   match "/languages/*path", @any do
