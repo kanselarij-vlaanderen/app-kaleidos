@@ -70,7 +70,7 @@
                                       :as "treatments")
               (activity               :via ,(s-prefix "dossier:vindtPlaatsTijdens") ;; Dit is de juiste relatie !! ipv besluitvorming
                                       :inverse t
-                                      :as "publication-activities") ;; this can be translationActivity, signatureActivity, publish )
+                                      :as "publication-activities")) ;; this can be translationActivity, signatureActivity, publish )
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")

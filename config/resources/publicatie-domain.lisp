@@ -12,8 +12,8 @@
                                       :as "case")
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
-             (publication-type        :via      ,(s-prefix "pub:publicatieWijze")
-                                      :as "publicationType"))
+             (publication-type        :via      ,(s-prefix "dct:type")
+                                      :as "type"))
   :has-many `((subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
               (person                 :via      ,(s-prefix "pub:contactpersoon")
@@ -26,19 +26,19 @@
 (define-resource publication-status ()
   :class (s-prefix "pub:Publicatiestatus") ;; NOTE: as well as skos:Concept
   :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
-                (:priority    :number ,(s-prefix "ext:priority")
+                (:priority    :number ,(s-prefix "ext:priority")))
   :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
                               :inverse t
                               :as "publicaties"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-statussen/")
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/")
   :features '(include-uri)
   :on-path "publication-statuses")
 
 (define-resource language ()
   :class (s-prefix "dct:LinguisticSystem") ;; NOTE: as well as skos:Concept
-  :properties `((:name                 :string ,(s-prefix "skos:prefLabel")
-                (:iso-language-code    :string ,(s-prefix "dct:language")
-                (:priority             :number ,(s-prefix "ext:priority"))
+  :properties `((:name                 :string ,(s-prefix "skos:prefLabel"))
+                (:iso-language-code    :string ,(s-prefix "dct:language"))
+                (:priority             :number ,(s-prefix "ext:priority")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/")
   :features '(include-uri)
   :on-path "languages")
@@ -47,7 +47,8 @@
   :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+                (:alt-label       :string ,(s-prefix "skos:altLabel"))
+                (:priority        :number ,(s-prefix "ext:priority")))
   :has-many `((publication-flow   :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "publicationFlows"))
@@ -70,7 +71,7 @@
   ;; uiterste datum publicatie
   ;; werknummer BS / numac
   ;; publicatie datum in BS
-  ;; wijze van publicate (type)
+  ;; wijze van publicate (dct:type)
   ;; laatste wijziging
   ;; verstuurd naar BS ?
   ;; vertalingen krijgen fysiek een bestand, model maken paralell op serie? meerdere pieces die gelinkt zijn aan 1 iets, alle files zijn ofwel andere extensie of vertaald.

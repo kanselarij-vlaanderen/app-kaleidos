@@ -1,6 +1,6 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
-PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/publicatie-statussen/>
+PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/>
 PREFIX languageid: <http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/>
 PREFIX activity-type: <http://kanselarij.vo.data.gift/id/concept/activiteit-types/>
 PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types/>
@@ -45,16 +45,16 @@ INSERT DATA {
       skos:prefLabel "NL"@nl .
       dct:language "nld" .
 
-    ext:ActiviteitsType a ext:PublicClass .
-    activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActiviteitsType ;
+    ext:ActiviteitType a ext:PublicClass .
+    activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActiviteitType ;
       a skos:Concept ;
       mu:uuid "e9a532a5-65c1-484f-9288-1720dcd1296c" ;
       skos:prefLabel "Vertalen" .
-    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActiviteitsType;
+    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActiviteitType;
       a skos:Concept ;
       mu:uuid "6a43f78e-c835-40a2-bf32-81209ac6e42a" ;
       skos:prefLabel "Handtekenen" .
-    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActiviteitsType;
+    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActiviteitType;
       a skos:Concept ;
       mu:uuid "165a56c5-6d32-4a8e-aefe-a1755eb0c0a4" ;
       skos:prefLabel "Drukproeven" .  
