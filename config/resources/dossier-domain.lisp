@@ -8,7 +8,7 @@
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
   :has-one `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
                                 :inverse t
-                                :as "publicationFlow"))
+                                :as "publication-flow"))
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
               (document         :via      ,(s-prefix "dossier:Dossier.bestaatUit")
@@ -53,7 +53,7 @@
             ;; Publication hasOne relationships
              (publication-flow        :via ,(s-prefix "ext:doorloopt") ;; Should be dossier:doorloopt, mu-cl-resources polymorphism limited
                                       :inverse t
-                                      :as "publicationFlow"))
+                                      :as "publication-flow"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (piece                  :via ,(s-prefix "ext:bevatDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)

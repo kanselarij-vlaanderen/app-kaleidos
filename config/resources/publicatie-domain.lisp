@@ -51,7 +51,7 @@
                 (:priority        :number ,(s-prefix "ext:priority")))
   :has-many `((publication-flow   :via ,(s-prefix "dct:type")
                                   :inverse t
-                                  :as "publicationFlows"))
+                                  :as "publication-flows"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-types/")
   :features '(include-uri)
   :on-path "publication-types")
