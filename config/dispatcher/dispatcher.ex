@@ -295,7 +295,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/activity-types/"
   end
 
-  match "/languages/*path", @any do
+  get "/languages/*path", @any do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
