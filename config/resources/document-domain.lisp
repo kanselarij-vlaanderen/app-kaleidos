@@ -56,7 +56,7 @@
             (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")
-            (language                   :via  ,(s-prefix "ext:taal") ;; only when type === translationActivity   ;;KAS-1868 dct:language
+            (language                   :via  ,(s-prefix "dct:language") ;; only when type === translationActivity
                                         :as "language")
             (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten ! 
                                         :as "translation-source"))
