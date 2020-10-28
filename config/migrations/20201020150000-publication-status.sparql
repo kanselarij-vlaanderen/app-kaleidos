@@ -13,36 +13,36 @@ INSERT DATA {
     pub:Publicatiestatus a ext:PublicClass .
     pubstatusid:fa62e050-3960-440d-bed9-1c3d3e9923a8 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 1;
+      ext:priority 1 ;
       mu:uuid "fa62e050-3960-440d-bed9-1c3d3e9923a8" ;
       skos:prefLabel "Te publiceren"@nl .
 
     pubstatusid:2f8dc814-bd91-4bcf-a823-baf1cdc42475 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 2;
+      ext:priority 2 ;
       mu:uuid "2f8dc814-bd91-4bcf-a823-baf1cdc42475" ;
       skos:prefLabel "Gepubliceerd"@nl .
 
     dct:LinguisticSystem a ext:PublicClass .
     languageid:6f243592-8efd-48ae-a1fc-49cb74f8936e a dct:LinguisticSystem ;
       a skos:Concept ;
-      ext:priority 1;
+      ext:priority 1 ;
       mu:uuid "6f243592-8efd-48ae-a1fc-49cb74f8936e" ;
-      skos:prefLabel "FR"@nl .
+      skos:prefLabel "FR"@nl ;
       dct:language "fre".
 
     languageid:fe072a38-0ee5-4d2c-b16f-c1ed7a32e985 a dct:LinguisticSystem ;
       a skos:Concept ;
-      ext:priority 2;
+      ext:priority 2 ;
       mu:uuid "fe072a38-0ee5-4d2c-b16f-c1ed7a32e985" ;
-      skos:prefLabel "DE"@nl .
+      skos:prefLabel "DE"@nl ;
       dct:language "deu" .
       
     languageid:98892376-e5ca-47dc-8e98-136db891166b a dct:LinguisticSystem ;
       a skos:Concept ;
-      ext:priority 3;
+      ext:priority 3 ;
       mu:uuid "98892376-e5ca-47dc-8e98-136db891166b" ;
-      skos:prefLabel "NL"@nl .
+      skos:prefLabel "NL"@nl ;
       dct:language "nld" .
 
     ext:ActiviteitType a ext:PublicClass .
@@ -50,20 +50,20 @@ INSERT DATA {
       a skos:Concept ;
       mu:uuid "e9a532a5-65c1-484f-9288-1720dcd1296c" ;
       skos:prefLabel "Vertalen" .
-    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActiviteitType;
+    activity-type:6a43f78e-c835-40a2-bf32-81209ac6e42a a ext:ActiviteitType ;
       a skos:Concept ;
       mu:uuid "6a43f78e-c835-40a2-bf32-81209ac6e42a" ;
       skos:prefLabel "Handtekenen" .
-    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActiviteitType;
+    activity-type:165a56c5-6d32-4a8e-aefe-a1755eb0c0a4 a ext:ActiviteitType ;
       a skos:Concept ;
       mu:uuid "165a56c5-6d32-4a8e-aefe-a1755eb0c0a4" ;
       skos:prefLabel "Drukproeven" .  
 
     pub:PublicatieType a ext:PublicClass .
-    publish-type:5fcca4a7-3e1f-44ec-b854-e21ad092c524 a pub:PublicatieType;
+    publish-type:5fcca4a7-3e1f-44ec-b854-e21ad092c524 a pub:PublicatieType ;
       a skos:Concept ;
       mu:uuid "5fcca4a7-3e1f-44ec-b854-e21ad092c524" ;
-      ext:priority 1;
+      ext:priority 1 ;
       skos:prefLabel "Extenso" .  
   }
 }
