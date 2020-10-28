@@ -85,7 +85,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
-      "http://purl.org/dc/terms/LinguisticSystem",
+      "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/prov#Activiteit",
     ]
   end
@@ -132,7 +132,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
-      "http://purl.org/dc/terms/LinguisticSystem",
+      "http://publications.europa.eu/ontology/euvoc#Language",
 
     ]
   end
