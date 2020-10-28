@@ -1,0 +1,10 @@
+DELETE {
+    GRAPH ?g {
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5D9D96486B1B810008000066> ?p ?o .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5D9D96486B1B810008000066> ?p ?o .
+    }
+}
