@@ -63,6 +63,7 @@ services:
       - ./config/search:/config
       - ./data/files:/data
    environment:
+     NUMBER_OF_THREADS: 16
      JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
      LOG_LEVEL: "info"
    logging: *default-logging
