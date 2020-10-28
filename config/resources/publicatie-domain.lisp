@@ -35,9 +35,8 @@
   :on-path "publication-statuses")
 
 (define-resource language ()
-  :class (s-prefix "dct:LinguisticSystem") ;; NOTE: as well as skos:Concept
+  :class (s-prefix "euvoc:Language") ;; range of dct:language is a dct:LinguisticSystem. Also see https://github.com/SEMICeu/DCAT-AP/issues/55
   :properties `((:name                 :string ,(s-prefix "skos:prefLabel"))
-                (:iso-language-code    :string ,(s-prefix "dct:language"))
                 (:priority             :number ,(s-prefix "ext:priority")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/")
   :features '(include-uri)

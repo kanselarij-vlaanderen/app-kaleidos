@@ -49,6 +49,7 @@
 (add-prefix "cpsv" "http://purl.org/vocab/cpsv#")
 (add-prefix "dbpedia" "http://dbpedia.org/ontology/")
 (add-prefix "eli" "http://data.europa.eu/eli/ontology#")
+(add-prefix "euvoc" "http://publications.europa.eu/ontology/euvoc#")
 (add-prefix "dct" "http://purl.org/dc/terms/")
 (add-prefix "dul" "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#")
 (add-prefix "export" "http://mu.semte.ch/vocabularies/ext/export/")

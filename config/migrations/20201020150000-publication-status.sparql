@@ -7,6 +7,7 @@ PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
@@ -23,27 +24,24 @@ INSERT DATA {
       mu:uuid "2f8dc814-bd91-4bcf-a823-baf1cdc42475" ;
       skos:prefLabel "Gepubliceerd"@nl .
 
-    dct:LinguisticSystem a ext:PublicClass .
-    languageid:6f243592-8efd-48ae-a1fc-49cb74f8936e a dct:LinguisticSystem ;
+    euvoc:Language a ext:PublicClass .
+    <http://publications.europa.eu/resource/authority/language/FRA> a euvoc:Language ;
       a skos:Concept ;
       ext:priority 1 ;
       mu:uuid "6f243592-8efd-48ae-a1fc-49cb74f8936e" ;
-      skos:prefLabel "FR"@nl ;
-      dct:language "fre".
+      skos:prefLabel "Frans"@nl .
 
-    languageid:fe072a38-0ee5-4d2c-b16f-c1ed7a32e985 a dct:LinguisticSystem ;
+    <http://publications.europa.eu/resource/authority/language/DEU> a euvoc:Language ;
       a skos:Concept ;
       ext:priority 2 ;
       mu:uuid "fe072a38-0ee5-4d2c-b16f-c1ed7a32e985" ;
-      skos:prefLabel "DE"@nl ;
-      dct:language "deu" .
+      skos:prefLabel "Duits"@nl .
       
-    languageid:98892376-e5ca-47dc-8e98-136db891166b a dct:LinguisticSystem ;
+    <http://publications.europa.eu/resource/authority/language/NLD> a euvoc:Language ;
       a skos:Concept ;
       ext:priority 3 ;
       mu:uuid "98892376-e5ca-47dc-8e98-136db891166b" ;
-      skos:prefLabel "NL"@nl ;
-      dct:language "nld" .
+      skos:prefLabel "Nederlands"@nl .
 
     ext:ActiviteitType a ext:PublicClass .
     activity-type:e9a532a5-65c1-484f-9288-1720dcd1296c a ext:ActiviteitType ;
