@@ -1,7 +1,6 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/>
-PREFIX languageid: <http://kanselarij.vo.data.gift/id/concept/taalkundige-systemen/>
 PREFIX activity-type: <http://kanselarij.vo.data.gift/id/concept/activiteit-types/>
 PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
