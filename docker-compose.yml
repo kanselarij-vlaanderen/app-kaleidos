@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.0.5
+    image: kanselarij/frontend-kaleidos:5.0.9
     links:
       - identifier:backend
     logging: *default-logging
@@ -23,13 +23,13 @@ services:
     logging: *default-logging
     restart: always
   dispatcher:
-    image: semtech/mu-dispatcher:2.0.0-beta.2
+    image: semtech/mu-dispatcher:2.0.0
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
     restart: always
   migrations-service:
-    image: semtech/mu-migrations-service:0.5.1
+    image: semtech/mu-migrations-service:0.7.0
     volumes:
       - ./config/migrations:/data/migrations
     environment:
@@ -37,7 +37,7 @@ services:
     logging: *default-logging
     restart: always
   database:
-    image: semtech/mu-authorization:0.6.0-beta.4
+    image: semtech/mu-authorization:0.6.0-beta.5
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
@@ -63,6 +63,7 @@ services:
       - ./config/search:/config
       - ./data/files:/data
    environment:
+     NUMBER_OF_THREADS: 16
      JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
      LOG_LEVEL: "info"
    logging: *default-logging
@@ -82,8 +83,14 @@ services:
         - ./config/delta:/config
     logging: *default-logging
     restart: always
+  cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    logging: *default-logging
+    restart: always
   resource:
-    image: semtech/mu-cl-resources:1.19.0
+    image: semtech/mu-cl-resources:1.20.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -91,7 +98,7 @@ services:
     logging: *extended-logging
     restart: always
   file:
-    image: semtech/mu-file-service:3.1.1
+    image: semtech/mu-file-service:3.1.2
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -164,12 +171,6 @@ services:
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
-    logging: *default-logging
-    restart: always
-  cache:
-    image: semtech/mu-cache:2.0.1
-    links:
-      - resource:backend
     logging: *default-logging
     restart: always
   sink:
