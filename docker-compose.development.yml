@@ -35,6 +35,7 @@ services:
   musearch:
     restart: "no"
     environment:
+      NUMBER_OF_THREADS: 4
       JRUBY_OPTIONS: ""
   elasticsearch:
     restart: "no"
