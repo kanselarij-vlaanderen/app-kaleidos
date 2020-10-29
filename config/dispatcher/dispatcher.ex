@@ -126,7 +126,7 @@ defmodule Dispatcher do
   match "/agendastatuses/*path", @any do
     Proxy.forward conn, path, "http://cache/agendastatuses/"
   end
-   match "/subcase-types/*path", @any do
+  match "/subcase-types/*path", @any do
     Proxy.forward conn, path, "http://cache/subcase-types/"
   end
   match "/agenda-activities/*path", @any do
@@ -273,6 +273,30 @@ defmodule Dispatcher do
 
   match "/mandatee-service/*path", @any do
     Proxy.forward conn, path, "http://mandatee-service/"
+  end
+
+  match "/publication-flows/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-flows/"
+  end
+
+  match "/publication-statuses/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-statuses/"
+  end
+
+  match "/publication-types/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-types/"
+  end
+
+  match "/activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/activities/"
+  end
+
+  match "/activity-types/*path", @any do
+    Proxy.forward conn, path, "http://cache/activity-types/"
+  end
+
+  get "/languages/*path", @any do
+    Proxy.forward conn, path, "http://cache/languages/"
   end
 
   match "_", %{ last_call: true } do

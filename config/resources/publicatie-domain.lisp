@@ -1,54 +1,82 @@
-(define-resource newsletter-info ()
-  :class (s-prefix "besluitvorming:NieuwsbriefInfo")
-  :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
-                (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
-                (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
-                (:publication-date      :datetime ,(s-prefix "dct:issued"))
-                (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
-                (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
-                (:title                 :string   ,(s-prefix "dct:title"))
-                (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
-                (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
-                (:remark                :string   ,(s-prefix "ext:opmerking"))
-                (:modified              :datetime ,(s-prefix "ext:aangepastOp")))
-  :has-one `((agenda-item-treatment     :via      ,(s-prefix "prov:generated")
-                                        :inverse t
-                                        :as "agenda-item-treatment")
-             (meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
-                                        :inverse t
-                                        :as "meeting")
-             (user                      :via      ,(s-prefix "ext:modifiedBy")
-                                        :as "modified-by"))
-  :has-many `((theme                    :via      ,(s-prefix "dct:subject")
-                                        :as "themes")
-              (piece                    :via      ,(s-prefix "ext:documentenVoorPublicatie")
-                                        :as "pieces"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
+(define-resource publication-flow ()
+  :class (s-prefix "pub:Publicatieaangelegenheid")
+  :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
+                (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
+                (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
+                (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
+                (:numac-number        :string   ,(s-prefix "pub:numacNummer")) ;; object ? number ?  numac nummer per drukproef/publicatie ??
+                (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
+                (:created             :datetime ,(s-prefix "dct:created"))
+                (:modified            :datetime ,(s-prefix "dct:modified")))
+  :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
+                                      :as "case")
+             (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
+                                      :as "status")
+             (publication-type        :via      ,(s-prefix "dct:type")
+                                      :as "type"))
+  :has-many `((subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
+                                      :as "subcases")
+              (person                 :via      ,(s-prefix "pub:contactpersoon")
+                                      :as "contacts"))
+              ;; mandatees van subcase bij MR,  ongekende mandatee bij niet via MR
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-aangelegenheden/")
+  :features `(include-uri)
+  :on-path "publication-flows")
+
+(define-resource publication-status ()
+  :class (s-prefix "pub:Publicatiestatus") ;; NOTE: as well as skos:Concept
+  :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
+                (:priority    :number ,(s-prefix "ext:priority")))
+  :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
+                              :inverse t
+                              :as "publicaties"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/")
   :features '(include-uri)
-  :on-path "newsletter-infos")
+  :on-path "publication-statuses")
 
-(define-resource theme ()
-  :class (s-prefix "ext:ThemaCode") ;; NOTE: as well as skos:Concept
-  :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note    :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label     :string ,(s-prefix "skos:altLabel"))
-                (:deprecated    :bool   ,(s-prefix "owl:deprecated")))
-  :has-many `((newsletter-info  :via    ,(s-prefix "dct:subject")
-                                :inverse t
-                                :as "newsletters"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
-  :features `(no-pagination-defaults include-uri)
-  :on-path "themes")
+(define-resource language ()
+  :class (s-prefix "euvoc:Language") ;; range of dct:language is a dct:LinguisticSystem. Also see https://github.com/SEMICeu/DCAT-AP/issues/55
+  :properties `((:name                 :string ,(s-prefix "skos:prefLabel"))
+                (:priority             :number ,(s-prefix "ext:priority")))
+  :features '(include-uri)
+  :on-path "languages")
 
-(define-resource mail-campaign ()
-  :class (s-prefix "ext:MailCampagne")
-  :properties `((:campaign-id       :string   ,(s-prefix "ext:campagneId"))
-                (:campaign-web-id   :string   ,(s-prefix "ext:campagneWebId"))
-                (:archive-url       :string   ,(s-prefix "ext:voorbeeldUrl"))
-                (:sent-at           :datetime ,(s-prefix "ext:isVerstuurdOp")))
-  :has-many `((meeting              :via      ,(s-prefix "ext:heeftMailCampagnes")
-                                    :inverse t
-                                    :as "meetings"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mail-campaigns/")
-  :features `(no-pagination-defaults include-uri)
-  :on-path "mail-campaigns")
+(define-resource publication-type ()
+  :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel"))
+                (:priority        :number ,(s-prefix "ext:priority")))
+  :has-many `((publication-flow   :via ,(s-prefix "dct:type")
+                                  :inverse t
+                                  :as "publication-flows"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-types/")
+  :features '(include-uri)
+  :on-path "publication-types")
+
+
+  ;; 
+  ;; historiek ? momenteel weg gehaald, mogelijk later terug
+  ;; aangevraagd door, instantie, heeft ook besluitdomeinen
+  ;; persoon wie opmerking gemaakt heeft lijkt niet nodig
+  ;; laatste wijziging door wie ?
+  ;; create BY ?
+
+
+  ;; done
+  ;; status publicatie
+  ;; uiterste vertaaldatum
+  ;; uiterste datum publicatie
+  ;; werknummer BS / numac
+  ;; publicatie datum in BS
+  ;; wijze van publicate (dct:type)
+  ;; laatste wijziging
+  ;; verstuurd naar BS ?
+  ;; vertalingen krijgen fysiek een bestand, model maken paralell op serie? meerdere pieces die gelinkt zijn aan 1 iets, alle files zijn ofwel andere extensie of vertaald.
+  ;; handtekeningen gebeuren op de PDF, vertalingen op de word
+  ;; documenten (pdf en word aan elkaar kunnen hangen), opsplitsen ? 
+  ;; contact persoon, dit is niet per se een bestaande user, gewoon text ?
+  ;; opmerking 
+
+
+  

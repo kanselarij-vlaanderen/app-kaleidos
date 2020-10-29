@@ -72,10 +72,15 @@
   :class (s-prefix "person:Person")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
-                (:first-name        :string ,(s-prefix "foaf:firstName")))
+                (:first-name        :string ,(s-prefix "foaf:firstName"))
+                (:email-link        :url    ,(s-prefix "foaf:mbox"))
+                (:phone-link        :url    ,(s-prefix "foaf:phone")))
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                     :inverse t
-                                    :as "mandatees"))
+                                    :as "mandatees")             
+              (publication-flow     :via     ,(s-prefix "pub:contactpersoon")
+                                    :inverse t
+                                    :as "publication-flows"))
   :has-one `((identification        :via    ,(s-prefix "ext:identifier")
                                     :as "identifier")
              (signature             :via    ,(s-prefix "ext:bevoegdePersoon")

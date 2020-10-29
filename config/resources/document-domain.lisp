@@ -24,7 +24,7 @@
   :has-one `((access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
             (file                       :via      ,(s-prefix "ext:file")
-                                        :as "file")
+                                        :as "file") ;; make this hasMany for publications, link pdf to word, aparte relatie, hasOne main file, hasMany other files ?
             (file                       :via      ,(s-prefix "ext:convertedFile")
                                         :as "converted-file")
             (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
@@ -56,7 +56,19 @@
             (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
                                         :as "agenda-item-treatment")
-                                        )
+            (language                   :via  ,(s-prefix "dct:language") ;; only when type === translationActivity
+                                        :as "language")
+            (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten ! 
+                                        :as "translation-source"))
+  :has-many `((piece                    :via ,(s-prefix "ext:isVertalingVan")
+                                        :inverse t
+                                        :as "translations")
+              (piece                    :via ,(s-prefix "prov:used")
+                                        :inverse t
+                                        :as "used-in-activity")
+              (piece                    :via ,(s-prefix "dossier:genereert")
+                                        :inverse t
+                                        :as "generated-in-activity"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
   :on-path "pieces")

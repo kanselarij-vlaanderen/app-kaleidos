@@ -81,6 +81,12 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/org#Organization",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://www.w3.org/ns/adms#Identifier",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
+      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
+      "http://publications.europa.eu/ontology/euvoc#Language",
+      "http://www.w3.org/ns/prov#Activiteit",
     ]
   end
 
@@ -123,6 +129,11 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
       "http://www.w3.org/ns/adms#Identifier",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
+      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
+      "http://publications.europa.eu/ontology/euvoc#Language",
+
     ]
   end
   # Also insert your type as ext:PublicClass 
