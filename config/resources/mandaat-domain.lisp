@@ -116,3 +116,17 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/signatures/")
   :features '(include-uri)
   :on-path "signatures")
+
+(define-resource contact-person ()
+  :class (s-prefix "ext:ContactPersoon")
+  :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
+                (:alternative-name  :string ,(s-prefix "foaf:name"))
+                (:first-name        :string ,(s-prefix "foaf:firstName"))
+                (:email             :url    ,(s-prefix "foaf:mbox"))
+                (:phone             :url    ,(s-prefix "foaf:phone")))
+  :has-many `((publication-flow     :via     ,(s-prefix "pub:contactpersoon")
+                                    :inverse t
+                                    :as "publication-flows"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
+  :features '(include-uri)
+  :on-path "contact-persons")
