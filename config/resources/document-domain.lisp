@@ -24,8 +24,8 @@
   :has-one `((access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
             (file                       :via      ,(s-prefix "ext:file")
-                                        :as "file") ;; make this hasMany for publications, link pdf to word, aparte relatie, hasOne main file, hasMany other files ?
-            (file                       :via      ,(s-prefix "ext:convertedFile")
+                                        :as "file") ;; make this hasMany for publications
+            (file                       :via      ,(s-prefix "ext:convertedFile") ;; Deprecated. POC never taken in production. To be removed.
                                         :as "converted-file")
             (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
                                         :inverse t
