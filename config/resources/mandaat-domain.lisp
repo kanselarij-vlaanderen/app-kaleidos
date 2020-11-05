@@ -77,10 +77,7 @@
                 (:phone-link        :url    ,(s-prefix "foaf:phone")))
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                     :inverse t
-                                    :as "mandatees")             
-              (publication-flow     :via     ,(s-prefix "pub:contactpersoon")
-                                    :inverse t
-                                    :as "publication-flows"))
+                                    :as "mandatees"))
   :has-one `((identification        :via    ,(s-prefix "ext:identifier")
                                     :as "identifier")
              (signature             :via    ,(s-prefix "ext:bevoegdePersoon")
@@ -89,6 +86,7 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/")
   :features '(include-uri)
   :on-path "people")
+  ;; People here because ember pluralizes persons to people
 
 (define-resource identification ()
   :class (s-prefix "adms:Identifier")
