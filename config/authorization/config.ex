@@ -87,7 +87,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/prov#Activiteit",
-      "http://mu.semte.ch/vocabularies/ext/ContactPersoon/",
+      "http://mu.semte.ch/vocabularies/ext/ContactPersoon",
     ]
   end
 
@@ -134,6 +134,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
+      "http://mu.semte.ch/vocabularies/ext/ContactPersoon",
 
     ]
   end

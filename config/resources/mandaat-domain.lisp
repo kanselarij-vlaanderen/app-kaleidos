@@ -122,9 +122,6 @@
                 (:first-name        :string ,(s-prefix "foaf:firstName"))
                 (:email             :url    ,(s-prefix "foaf:mbox"))
                 (:phone             :url    ,(s-prefix "foaf:phone")))
-  :has-many `((publication-flow     :via     ,(s-prefix "pub:contactpersoon")
-                                    :inverse t
-                                    :as "publication-flows"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
   :features '(include-uri)
   :on-path "contact-persons")
