@@ -115,6 +115,10 @@
   :features '(include-uri)
   :on-path "signatures")
 
+;; Contact person is on purpose a separate model.In the end this is supposed to be a PERSON
+;; but for now they are entering a lot of duplicate data and we dont want to pullute the  persons model with this metadata.
+;; same for organisation. This is a string metadata field for publication flow.
+;; In the future you want to link an exiusting contact from an existing organisation and this model should  ont exist anylonger.
 (define-resource contact-person ()
   :class (s-prefix "pub:ContactPersoon")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
