@@ -116,7 +116,7 @@
   :on-path "signatures")
 
 (define-resource contact-person ()
-  :class (s-prefix "ext:ContactPersoon")
+  :class (s-prefix "pub:ContactPersoon")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
                 (:first-name        :string ,(s-prefix "foaf:firstName"))
