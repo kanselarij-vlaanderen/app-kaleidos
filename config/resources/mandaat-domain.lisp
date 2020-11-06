@@ -121,6 +121,7 @@
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
                 (:first-name        :string ,(s-prefix "foaf:firstName"))
                 (:email             :url    ,(s-prefix "foaf:mbox"))
+                (:organisation-name :url    ,(s-prefix "pub:organisationName"))
                 (:phone             :url    ,(s-prefix "foaf:phone")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
   :features '(include-uri)
