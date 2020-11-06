@@ -119,13 +119,14 @@
 ;; but for now they are entering a lot of duplicate data and we dont want to pullute the  persons model with this metadata.
 ;; same for organisation. This is a string metadata field for publication flow.
 ;; In the future you want to link an exiusting contact from an existing organisation and this model should  ont exist anylonger.
+
 (define-resource contact-person ()
   :class (s-prefix "pub:ContactPersoon")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
                 (:first-name        :string ,(s-prefix "foaf:firstName"))
                 (:email             :url    ,(s-prefix "foaf:mbox"))
-                (:organisation-name :url    ,(s-prefix "pub:organisationName"))
+                (:organisation-name :string ,(s-prefix "pub:organisationName"))
                 (:phone             :url    ,(s-prefix "foaf:phone")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
   :features '(include-uri)
