@@ -60,7 +60,10 @@
                                         :as "language")
             (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten ! 
                                         :as "translation-source"))
-  :has-many `((piece                    :via ,(s-prefix "ext:isVertalingVan")
+  :has-many `((case                    :via ,(s-prefix "dossier:Dossier.bestaatUit")
+                                        :inverse t
+                                        :as "cases")
+              (piece                    :via ,(s-prefix "ext:isVertalingVan")
                                         :inverse t
                                         :as "translations")
               (piece                    :via ,(s-prefix "prov:used")
