@@ -91,7 +91,7 @@
 ;; "http://mu.semte.ch/vocabularies/ext/publicatie/Handtekenactiviteit"
 ;; "http://mu.semte.ch/vocabularies/ext/publicatie/Drukproefactiviteit"
 (define-resource activity ()
-  :class (s-prefix "prov:Activiteit") ;; Does this belong in dossier-domain ?
+  :class (s-prefix "prov:Activity") ;; Does this belong in dossier-domain ?
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
                 (:name            :string   ,(s-prefix "dct:title")))
