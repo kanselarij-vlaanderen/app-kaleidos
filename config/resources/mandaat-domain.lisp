@@ -77,10 +77,7 @@
                 (:phone-link        :url    ,(s-prefix "foaf:phone")))
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                     :inverse t
-                                    :as "mandatees")             
-              (publication-flow     :via     ,(s-prefix "pub:contactpersoon")
-                                    :inverse t
-                                    :as "publication-flows"))
+                                    :as "mandatees"))
   :has-one `((identification        :via    ,(s-prefix "ext:identifier")
                                     :as "identifier")
              (signature             :via    ,(s-prefix "ext:bevoegdePersoon")
@@ -89,6 +86,7 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/")
   :features '(include-uri)
   :on-path "people")
+  ;; People here because ember pluralizes persons to people
 
 (define-resource identification ()
   :class (s-prefix "adms:Identifier")
@@ -116,3 +114,20 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/signatures/")
   :features '(include-uri)
   :on-path "signatures")
+
+;; Contact person is on purpose a separate model.In the end this is supposed to be a PERSON
+;; but for now they are entering a lot of duplicate data and we dont want to pullute the  persons model with this metadata.
+;; same for organisation. This is a string metadata field for publication flow.
+;; In the future you want to link an exiusting contact from an existing organisation and this model should  ont exist anylonger.
+
+(define-resource contact-person ()
+  :class (s-prefix "pub:ContactPersoon")
+  :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
+                (:alternative-name  :string ,(s-prefix "foaf:name"))
+                (:first-name        :string ,(s-prefix "foaf:firstName"))
+                (:email             :url    ,(s-prefix "foaf:mbox"))
+                (:organisation-name :string ,(s-prefix "pub:organisationName"))
+                (:phone             :url    ,(s-prefix "foaf:phone")))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
+  :features '(include-uri)
+  :on-path "contact-persons")

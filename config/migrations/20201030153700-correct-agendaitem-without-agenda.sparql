@@ -1,0 +1,26 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g  {
+    ?agendaitem ?p ?o .
+    ?s ?pp ?agendaitem .
+  }
+} WHERE {
+  GRAPH ?g  {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem ?p ?o .
+    ?s ?pp ?agendaitem .
+    {
+      SELECT DISTINCT ?agendaitem WHERE {
+        GRAPH ?g  {
+          ?agendaitem a besluit:Agendapunt .
+          ?subcase ^besluitvorming:vindtPlaatsTijdens / besluitvorming:genereertAgendapunt ?agendaitem .
+          ?subcase ext:isAangevraagdVoor ?meeting . 
+          FILTER NOT EXISTS { ?agenda dct:hasPart ?agendaitem . }
+        }
+      }
+    }
+  } 
+} 

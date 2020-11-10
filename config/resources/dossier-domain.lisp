@@ -11,7 +11,7 @@
                                 :as "publication-flow"))
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
-              (document         :via      ,(s-prefix "dossier:Dossier.bestaatUit")
+              (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "documents"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
