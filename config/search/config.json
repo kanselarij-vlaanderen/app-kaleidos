@@ -194,6 +194,10 @@
         "title": "http://purl.org/dc/terms/title",
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
+        "publicationFlowId": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
