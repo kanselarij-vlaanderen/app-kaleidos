@@ -11,7 +11,7 @@
                                 :as "publication-flow"))
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
-              (document         :via      ,(s-prefix "dossier:Dossier.bestaatUit")
+              (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "documents"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
@@ -91,7 +91,7 @@
 ;; "http://mu.semte.ch/vocabularies/ext/publicatie/Handtekenactiviteit"
 ;; "http://mu.semte.ch/vocabularies/ext/publicatie/Drukproefactiviteit"
 (define-resource activity ()
-  :class (s-prefix "prov:Activiteit") ;; Does this belong in dossier-domain ?
+  :class (s-prefix "prov:Activity") ;; Does this belong in dossier-domain ?
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
                 (:name            :string   ,(s-prefix "dct:title")))

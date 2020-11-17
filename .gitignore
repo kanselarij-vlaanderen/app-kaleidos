@@ -32,3 +32,5 @@ __pycache__
 *~
 __MACOSX
 .idea/
+*/.DS_Store
+*.DS_Store

@@ -220,6 +220,23 @@
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
+        "meetingId": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "agendaStatus": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#agendaStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        
         "subcaseTitle": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/title"
@@ -270,6 +287,12 @@
           },
           "sessionDates": {
             "type": "date"
+          },
+          "meetingId": {
+            "type": "keyword"
+          },
+          "agendaStatus": {
+            "type": "keyword"
           },
           "subcaseTitle": {
             "type": "text",
