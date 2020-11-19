@@ -158,8 +158,8 @@ defmodule Dispatcher do
   match "/responsibilities/*path", @any do
     Proxy.forward conn, path, "http://cache/responsibilities/"
   end
-  match "/people/*path", @any do
-    Proxy.forward conn, path, "http://cache/people/"
+  match "/persons/*path", @any do
+    Proxy.forward conn, path, "http://cache/persons/"
   end
   match "/contact-persons/*path", @any do
     Proxy.forward conn, path, "http://cache/contact-persons/"
