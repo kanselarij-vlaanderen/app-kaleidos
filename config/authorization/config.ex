@@ -41,22 +41,6 @@ defmodule Acl.UserGroups.Config do
       } LIMIT 1" }
   end
 
-  defp newsletter_resource_types() do
-    [
-      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
-    ]
-  end
-  
-  defp agendering_resource_types() do
-    [
-      "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
-      "http://data.vlaanderen.be/ns/besluit#Agendapunt",
-      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
-      "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
-      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-    ]
-  end
-  
   defp generic_besluitvorming_resource_types() do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
@@ -75,6 +59,16 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp agendering_resource_types() do
+    [
+      "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
+      "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+    ]
+  end
+  
   defp file_bundling_resource_types() do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
@@ -91,6 +85,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp newsletter_resource_types() do
+    [
+      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+    ]
+  end
+  
   defp user_account_resource_types() do
     [
       "http://xmlns.com/foaf/0.1/OnlineAccount",
