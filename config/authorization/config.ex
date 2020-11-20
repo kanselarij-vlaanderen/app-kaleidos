@@ -256,6 +256,19 @@ defmodule Acl.UserGroups.Config do
           },
         ]
       },
+      %GroupSpec{
+        name: "ovrb",
+        useage: [:read, :write, :read_for_write],
+        access: named_graph_access_by_role( "OVRB", "kanselarij" ), # TODO: Read access on whole "kanselarij"-graph for now. Recent kanselarij-data will have separate graph later on
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: publication_resource_types() ++ generic_besluitvorming_resource_types() ++  document_resource_types()
+            }
+          },
+        ]
+      },
 
       # // CLEANUP
       #
