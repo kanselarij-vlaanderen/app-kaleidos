@@ -91,6 +91,15 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp user_account_resource_types() do
+    [
+      "http://xmlns.com/foaf/0.1/OnlineAccount",
+      "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/Group",
+      "http://www.w3.org/ns/adms#Identifier",
+    ]
+  end
+
   # Also insert your type as ext:PublicClass 
   defp unconfidential_resource_types() do
     [
@@ -101,9 +110,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/Thema",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://xmlns.com/foaf/0.1/OnlineAccount",
-      "http://xmlns.com/foaf/0.1/Person",
-      "http://xmlns.com/foaf/0.1/Group",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
@@ -119,7 +125,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
-      "http://www.w3.org/ns/adms#Identifier",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
@@ -145,7 +150,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types()
+            resource_types: unconfidential_resource_types() ++user_account_resource_types()
           } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -178,7 +183,7 @@ defmodule Acl.UserGroups.Config do
               "http://xmlns.com/foaf/0.1/OnlineAccount",
               "http://xmlns.com/foaf/0.1/Person",
               "http://xmlns.com/foaf/0.1/Group",
-            ] ++ unconfidential_resource_types() } },
+            ] ++ unconfidential_resource_types() ++user_account_resource_types() } },
         ]
       },
       %GroupSpec{
@@ -188,7 +193,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types()
+            resource_types: unconfidential_resource_types() ++user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
           } },
         ]
       },
@@ -240,7 +245,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
+              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++user_account_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
