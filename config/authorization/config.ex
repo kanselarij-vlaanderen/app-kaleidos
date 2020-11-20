@@ -156,7 +156,9 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types()
+            resource_types: unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types()
           } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -189,7 +191,11 @@ defmodule Acl.UserGroups.Config do
               "http://xmlns.com/foaf/0.1/OnlineAccount",
               "http://xmlns.com/foaf/0.1/Person",
               "http://xmlns.com/foaf/0.1/Group",
-            ] ++ unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() } },
+            ] ++ unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types()
+            }
+          },
         ]
       },
       %GroupSpec{
@@ -199,7 +205,9 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
+            resource_types: unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
           } },
         ]
       },
@@ -251,7 +259,14 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() ++file_bundling_resource_types()
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                unconfidential_resource_types() ++
+                static_unconfidential_code_list_types() ++
+                user_account_resource_types() ++
+                file_bundling_resource_types()
             }
           },
         ]
@@ -264,7 +279,9 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: publication_resource_types() ++ generic_besluitvorming_resource_types() ++  document_resource_types()
+              resource_types: publication_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types()
             }
           },
         ]
