@@ -41,8 +41,7 @@ defmodule Acl.UserGroups.Config do
       } LIMIT 1" }
   end
 
-  # TODO get this from the database?
-  defp all_resource_types() do
+  defp newsletter_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
     ]
@@ -241,7 +240,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
+              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
