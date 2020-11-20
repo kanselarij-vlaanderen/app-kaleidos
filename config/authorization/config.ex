@@ -44,7 +44,6 @@ defmodule Acl.UserGroups.Config do
   # TODO get this from the database?
   defp all_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
@@ -57,36 +56,9 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
-      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
-      "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
-      "http://kanselarij.vo.data.gift/core/Beleidsveld",
-      "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://www.w3.org/ns/adms#Identifier",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
-      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
-      "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/prov#Activity",
     ]
   end
@@ -256,7 +228,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() ++file_bundling_resource_types()
+              resource_types: all_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
