@@ -46,14 +46,19 @@ defmodule Acl.UserGroups.Config do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
-      "https://data.vlaanderen.be/ns/dossier#Dossier",
-      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+    ]
+  end
+  
+  defp generic_besluitvorming_resource_types() do
+    [
+      "https://data.vlaanderen.be/ns/dossier#Dossier",
+      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
       "http://www.w3.org/ns/prov#Activity",
     ]
   end
@@ -233,7 +238,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
+              resource_types: all_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
