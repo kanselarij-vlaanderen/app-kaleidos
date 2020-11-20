@@ -133,7 +133,6 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://www.w3.org/ns/person#Person",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://www.w3.org/ns/org#Organization",
       "http://www.w3.org/ns/adms#Identifier",
