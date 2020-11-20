@@ -46,11 +46,6 @@ defmodule Acl.UserGroups.Config do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
-      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-      "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Serie",
-      "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Stuk",
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
@@ -60,6 +55,16 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
       "http://www.w3.org/ns/prov#Activity",
+    ]
+  end
+  
+  defp document_resource_types() do
+    [
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+      "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
+      "https://data.vlaanderen.be/ns/dossier#Serie",
+      "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
+      "https://data.vlaanderen.be/ns/dossier#Stuk",
     ]
   end
 
@@ -228,7 +233,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
+              resource_types: all_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
