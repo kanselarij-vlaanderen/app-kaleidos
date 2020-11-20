@@ -104,10 +104,10 @@ defmodule Acl.UserGroups.Config do
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
+      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema",
+      "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
@@ -122,8 +122,8 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
       "http://www.w3.org/ns/org#Organization",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
