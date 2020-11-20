@@ -45,7 +45,6 @@ defmodule Acl.UserGroups.Config do
   defp all_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
     ]
   end
