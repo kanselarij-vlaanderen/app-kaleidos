@@ -13,13 +13,13 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.1.2
+    image: kanselarij/frontend-kaleidos:5.1.4
     links:
       - identifier:backend
     logging: *default-logging
     restart: always
   identifier:
-    image: semtech/mu-identifier:1.8.1
+    image: semtech/mu-identifier:1.9.1
     logging: *default-logging
     restart: always
   dispatcher:

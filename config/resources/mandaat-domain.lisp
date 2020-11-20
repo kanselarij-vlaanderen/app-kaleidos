@@ -85,7 +85,7 @@
                                     :as "signature"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/")
   :features '(include-uri)
-  :on-path "people")
+  :on-path "persons")
   ;; People here because ember pluralizes persons to people
 
 (define-resource identification ()

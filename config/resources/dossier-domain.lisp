@@ -12,7 +12,7 @@
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
-                                :as "documents"))
+                                :as "pieces"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
   :features '(include-uri)
   :on-path "cases")
