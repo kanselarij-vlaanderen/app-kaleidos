@@ -105,29 +105,36 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
+      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      "http://www.w3.org/ns/person#Person",
+      "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
+      "http://www.w3.org/ns/org#Organization",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
+    ]
+  end
+  # Also insert your type as ext:PublicClass 
+
+  # Also insert your type as ext:PublicClass 
+  defp static_unconfidential_code_list_types() do
+    [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
-      "http://www.w3.org/ns/org#Organization",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
@@ -150,7 +157,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++user_account_resource_types()
+            resource_types: unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types()
           } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -183,7 +190,7 @@ defmodule Acl.UserGroups.Config do
               "http://xmlns.com/foaf/0.1/OnlineAccount",
               "http://xmlns.com/foaf/0.1/Person",
               "http://xmlns.com/foaf/0.1/Group",
-            ] ++ unconfidential_resource_types() ++user_account_resource_types() } },
+            ] ++ unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() } },
         ]
       },
       %GroupSpec{
@@ -193,7 +200,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
+            resource_types: unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
           } },
         ]
       },
@@ -245,7 +252,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++user_account_resource_types() ++file_bundling_resource_types()
+              resource_types: newsletter_resource_types() ++agendering_resource_types() ++generic_besluitvorming_resource_types() ++document_resource_types() ++unconfidential_resource_types() ++static_unconfidential_code_list_types() ++user_account_resource_types() ++file_bundling_resource_types()
             }
           },
         ]
