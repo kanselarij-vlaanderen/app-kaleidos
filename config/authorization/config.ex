@@ -100,6 +100,13 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp publication_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
+    ]
+  end
+
   # Also insert your type as ext:PublicClass 
   defp unconfidential_resource_types() do
     [
