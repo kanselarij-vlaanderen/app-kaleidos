@@ -1,0 +1,15 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    publish-type:5423c83d-ae5c-4973-8cb7-baefdc3e4949 a pub:PublicatieType ;
+      a skos:Concept ;
+      mu:uuid "5423c83d-ae5c-4973-8cb7-baefdc3e4949" ;
+      ext:priority 2 ;
+      skos:prefLabel "Bij uitreksel" .  
+  }
+}
