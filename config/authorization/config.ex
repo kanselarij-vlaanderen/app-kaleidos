@@ -266,7 +266,8 @@ defmodule Acl.UserGroups.Config do
                 unconfidential_resource_types() ++
                 static_unconfidential_code_list_types() ++
                 user_account_resource_types() ++
-                file_bundling_resource_types()
+                file_bundling_resource_types() ++
+                publication_resource_types()
             }
           },
         ]
