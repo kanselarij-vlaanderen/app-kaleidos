@@ -199,6 +199,18 @@
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "publicationFlowNumber": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieNummer",
+        ],
+        "publicationFlowNumac": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/numacNummer",
+        ],
+        "publicationFlowRemark": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieOpmerking",
+        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
