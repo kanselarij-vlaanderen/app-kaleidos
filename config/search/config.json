@@ -9,6 +9,7 @@
     [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"o-kanselarij-on-public"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["intern-regering"], "name":"o-intern-regering-read"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["intern-overheid"], "name":"o-intern-overheid-read"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"ovrb"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["minister"], "name":"o-minister-read"}, {"variables":[], "name":"public"}]
   ],
   "attachments_path_base": "/data/",
