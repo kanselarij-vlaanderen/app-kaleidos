@@ -94,7 +94,10 @@
   :class (s-prefix "prov:Activity") ;; Does this belong in dossier-domain ?
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
-                (:name            :string   ,(s-prefix "dct:title")))
+                (:name            :string   ,(s-prefix "dct:title"))
+                ;;Vertaal activiteit
+                (:final-translation-date        :datetime ,(s-prefix "pub:uitersteVertaling"))
+                (:mail-content        :string ,(s-prefix "ext:bericht")))
   :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
                                   :as "subcase")
              (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
