@@ -85,6 +85,15 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp email_resource_types() do
+    [
+      # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox",
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder"
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email",
+      # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader",
+    ]
+  end
+
   defp newsletter_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
@@ -267,7 +276,8 @@ defmodule Acl.UserGroups.Config do
                 static_unconfidential_code_list_types() ++
                 user_account_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                email_resource_types()
             }
           },
         ]
@@ -282,7 +292,8 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: publication_resource_types() ++
                 generic_besluitvorming_resource_types() ++
-                document_resource_types()
+                document_resource_types() ++
+                email_resource_types()
             }
           },
         ]

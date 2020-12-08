@@ -301,6 +301,22 @@ defmodule Dispatcher do
   get "/languages/*path", @any do
     Proxy.forward conn, path, "http://cache/languages/"
   end
+  
+  # get "/mailboxes/*path" do
+  #   Proxy.forward conn, path, "http://cache/mailboxes/"
+  # end
+
+  match "/mail-folders/*path" do
+    Proxy.forward conn, path, "http://cache/mail-folders/"
+  end
+
+  match "/emails/*path" do
+    Proxy.forward conn, path, "http://cache/emails/"
+  end
+
+  # match "/email-headers/*path" do
+  #   Proxy.forward conn, path, "http://cache/email-headers/"
+  # end
 
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
