@@ -1,0 +1,34 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX publish-type: <http://kanselarij.vo.data.gift/id/concept/publicatie-types/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX step: <http://example.com/step/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    step:d25ac65a-34a9-11eb-adc1-0242ac120002 a pub:PublicatieType ;
+      a ext:ProcedurestapType ;
+      mu:uuid "d25ac65a-34a9-11eb-adc1-0242ac120002" ;
+      skos:prefLabel "Vertaling" .
+  }
+}
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    step:e711f906-34a9-11eb-adc1-0242ac120002 a pub:PublicatieType ;
+      a ext:ProcedurestapType ;
+      mu:uuid "e711f906-34a9-11eb-adc1-0242ac120002" ;
+      skos:prefLabel "Handtekenen" .
+  }
+}
+
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    step:ef78bb52-34a9-11eb-adc1-0242ac120002 a pub:PublicatieType ;
+      a ext:ProcedurestapType ;
+      mu:uuid "ef78bb52-34a9-11eb-adc1-0242ac120002" ;
+      skos:prefLabel "Drukproef" .
+  }
+}
