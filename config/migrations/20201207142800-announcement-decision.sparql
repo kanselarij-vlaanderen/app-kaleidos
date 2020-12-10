@@ -1,0 +1,20 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+    ?treatment besluitvorming:resultaat <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?treatment a besluit:BehandelingVanAgendapunt .
+    ?treatment besluitvorming:heeftOnderwerp ?agendaItem .
+    ?agendaItem a besluit:Agendapunt ;
+      ext:wordtGetoondAlsMededeling "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+    FILTER NOT EXISTS {
+      ?treatment besluitvorming:resultaat ?result .
+    }
+  }
+}

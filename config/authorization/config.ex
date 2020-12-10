@@ -41,56 +41,34 @@ defmodule Acl.UserGroups.Config do
       } LIMIT 1" }
   end
 
-  # TODO get this from the database?
-  defp all_resource_types() do
+  defp generic_besluitvorming_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
-      "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
-      "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+      "https://data.vlaanderen.be/ns/dossier#Dossier",
+      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
+      "http://www.w3.org/ns/prov#Activity",
+    ]
+  end
+  
+  defp document_resource_types() do
+    [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Stuk",
-      "https://data.vlaanderen.be/ns/dossier#Dossier",
-      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
-      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
-      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
-      "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
-      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
-      "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
-      "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/id/mandatarissen/",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
-      "http://kanselarij.vo.data.gift/core/Beleidsveld",
-      "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization",
-      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://www.w3.org/ns/adms#Identifier",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
-      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
-      "http://publications.europa.eu/ontology/euvoc#Language",
-      "http://www.w3.org/ns/prov#Activity",
     ]
   end
 
+  defp agendering_resource_types() do
+    [
+      "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
+      "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+    ]
+  end
+  
   defp file_bundling_resource_types() do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
@@ -100,39 +78,62 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp publication_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
+    ]
+  end
+
+  defp newsletter_resource_types() do
+    [
+      "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+    ]
+  end
+  
+  defp user_account_resource_types() do
+    [
+      "http://xmlns.com/foaf/0.1/OnlineAccount",
+      "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/Group",
+      "http://www.w3.org/ns/adms#Identifier",
+    ]
+  end
+
   # Also insert your type as ext:PublicClass 
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier",
-      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
-      "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://xmlns.com/foaf/0.1/OnlineAccount",
-      "http://xmlns.com/foaf/0.1/Person",
-      "http://xmlns.com/foaf/0.1/Group",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
+      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
+      "http://www.w3.org/ns/org#Organization",
+    ]
+  end
+  # Also insert your type as ext:PublicClass 
+
+  # Also insert your type as ext:PublicClass 
+  defp static_unconfidential_code_list_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
+      "http://mu.semte.ch/vocabularies/ext/ThemaCode",
+      "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
+      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
+      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
+      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
+      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://kanselarij.vo.data.gift/core/IseCode",
       "http://kanselarij.vo.data.gift/core/Beleidsdomein",
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening",
-      "http://www.w3.org/ns/person#Person",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
-      "http://www.w3.org/ns/org#Organization",
-      "http://www.w3.org/ns/adms#Identifier",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
@@ -155,7 +156,9 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types()
+            resource_types: unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types()
           } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -188,7 +191,11 @@ defmodule Acl.UserGroups.Config do
               "http://xmlns.com/foaf/0.1/OnlineAccount",
               "http://xmlns.com/foaf/0.1/Person",
               "http://xmlns.com/foaf/0.1/Group",
-            ] ++ unconfidential_resource_types() } },
+            ] ++ unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types()
+            }
+          },
         ]
       },
       %GroupSpec{
@@ -198,7 +205,9 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types()
+            resource_types: unconfidential_resource_types() ++
+              static_unconfidential_code_list_types() ++
+              user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
           } },
         ]
       },
@@ -250,7 +259,30 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/",
             constraint: %ResourceConstraint{
-              resource_types: all_resource_types() ++file_bundling_resource_types()
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                unconfidential_resource_types() ++
+                static_unconfidential_code_list_types() ++
+                user_account_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          },
+        ]
+      },
+      %GroupSpec{
+        name: "ovrb",
+        useage: [:read, :write, :read_for_write],
+        access: named_graph_access_by_role( "OVRB", "kanselarij" ), # TODO: Read access on whole "kanselarij"-graph for now. Recent kanselarij-data will have separate graph later on
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/",
+            constraint: %ResourceConstraint{
+              resource_types: publication_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types()
             }
           },
         ]

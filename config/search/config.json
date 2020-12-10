@@ -9,6 +9,7 @@
     [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"o-kanselarij-on-public"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["intern-regering"], "name":"o-intern-regering-read"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["intern-overheid"], "name":"o-intern-overheid-read"}, {"variables":[], "name":"public"}],
+    [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"ovrb"}, {"variables":[], "name":"public"}],
     [{"variables":[], "name":"clean"}, {"variables":["minister"], "name":"o-minister-read"}, {"variables":[], "name":"public"}]
   ],
   "attachments_path_base": "/data/",
@@ -212,6 +213,18 @@
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "publicationFlowNumber": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieNummer"
+        ],
+        "publicationFlowNumac": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/numacNummer"
+        ],
+        "publicationFlowRemark": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieOpmerking"
+        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -280,10 +293,30 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "publicationFlowId": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "created": {
             "type": "date"
           },
           "shortTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "publicationFlowNumber": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "publicationFlowNumac": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "publicationFlowRemark": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
