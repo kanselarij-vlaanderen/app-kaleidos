@@ -58,7 +58,7 @@ services:
     logging: *default-logging
     restart: always
   musearch:
-   image: semtech/mu-search:0.6.3
+   image: semtech/mu-search:0.7.0
    volumes:
       - ./config/search:/config
       - ./data/files:/data
