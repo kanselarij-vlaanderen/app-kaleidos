@@ -13,11 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-<<<<<<< HEAD
-    image: kanselarij/frontend-kaleidos:5.2.2
-=======
-    image: kanselarij/frontend-kaleidos:5.1.13
->>>>>>> bc4171be267f51fa6b8ca7777209ceefde3f9bc9
+    image: kanselarij/frontend-kaleidos:5.2.3
     links:
       - identifier:backend
     logging: *default-logging
