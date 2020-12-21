@@ -95,11 +95,11 @@
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
                 (:name            :string   ,(s-prefix "dct:title"))
-                ;;Publicatie activiteit
-                (:status           :string   ,(s-prefix "pub:publicatieStatus"))
+
                 ;;Vertaal activiteit
                 (:final-translation-date     :datetime ,(s-prefix "pub:uitersteVertaling"))
                 (:mail-content        :string ,(s-prefix "ext:bericht")))
+
   :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
                                   :as "subcase")
              (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
@@ -109,6 +109,8 @@
              ;;Publicatie
              (activity            :via      ,(s-prefix "pub:publishes")
                                   :as "publishes")
+             (activity-status     :via      ,(s-prefix "pub:publicatieStatus")
+                                  :as "status")
                                   )
   :has-many `((piece              :via      ,(s-prefix "prov:used")
                                   :as "used-pieces")
@@ -125,6 +127,18 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/activiteiten/")
   :features '(include-uri)
   :on-path "activities")
+
+(define-resource activity-status ()
+  :class (s-prefix "pub:ActiviteitStatus") ;; NOTE: as well as skos:Concept
+  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label       :string ,(s-prefix "skos:altLabel")))
+  :has-many `((activity           :via ,(s-prefix "pub:publicatieStatus")
+                                  :inverse t
+                                  :as "activities"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/activity-status/")
+  :features '(include-uri)
+  :on-path "activity-statuses")
 
 (define-resource activity-type ()
   :class (s-prefix "ext:ActiviteitType") ;; NOTE: as well as skos:Concept
