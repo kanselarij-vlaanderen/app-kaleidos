@@ -1,4 +1,3 @@
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 PREFIX activity-status: <http://kanselarij.vo.data.gift/id/concept/activity-status/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
