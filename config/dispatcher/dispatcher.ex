@@ -306,6 +306,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
+  get "/recovery-status/*path", @any do
+    Proxy.forward conn, [], "http://database:8890/recovery-status/"
+  end
+
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
