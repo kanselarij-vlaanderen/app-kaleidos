@@ -95,7 +95,8 @@
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
                 (:name            :string   ,(s-prefix "dct:title"))
-
+                (:created             :datetime ,(s-prefix "dct:created"))
+                (:modified            :datetime ,(s-prefix "dct:modified"))
                 ;;Vertaal activiteit
                 (:final-translation-date     :datetime ,(s-prefix "pub:uitersteVertaling"))
                 (:mail-content        :string ,(s-prefix "ext:bericht")))
@@ -111,6 +112,8 @@
                                   :as "publishes")
              (activity-status     :via      ,(s-prefix "pub:publicatieStatus")
                                   :as "status")
+            (user                 :via      ,(s-prefix "ext:modifiedBy")
+                                  :as "modified-by")
                                   )
   :has-many `((piece              :via      ,(s-prefix "prov:used")
                                   :as "used-pieces")

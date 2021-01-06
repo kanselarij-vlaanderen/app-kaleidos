@@ -13,7 +13,9 @@
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
-                                      :as "type"))
+                                      :as "type")
+             (user                    :via      ,(s-prefix "ext:modifiedBy")
+                                      :as "modified-by"))
   :has-many `((subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
               (contact-person         :via      ,(s-prefix "pub:contactPersoon")
