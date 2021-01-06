@@ -1,0 +1,21 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    pubstatusid:9b9b0b5e-45c8-11eb-b378-0242ac130002 a pub:Publicatiestatus ;
+      a skos:Concept ;
+      ext:priority 3 ;
+      mu:uuid "9b9b0b5e-45c8-11eb-b378-0242ac130002" ;
+      skos:prefLabel "Ingetrokken"@nl .
+
+    pubstatusid:bc294fde-45c8-11eb-b378-0242ac130002 a pub:Publicatiestatus ;
+      a skos:Concept ;
+      ext:priority 4 ;
+      mu:uuid "bc294fde-45c8-11eb-b378-0242ac130002" ;
+      skos:prefLabel "Gepauzeerd"@nl .
+  }
+}
