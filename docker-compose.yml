@@ -70,16 +70,16 @@ services:
     labels:
       - "logging=true"
   musearch:
-   image: semtech/mu-search:0.7.0
-   volumes:
+    image: semtech/mu-search:0.7.0
+    volumes:
       - ./config/search:/config
       - ./data/files:/data
-   environment:
-     NUMBER_OF_THREADS: 16
-     JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
-     LOG_LEVEL: "info"
-   logging: *default-logging
-   restart: always
+    environment:
+      NUMBER_OF_THREADS: 16
+      JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
+      LOG_LEVEL: "info"
+    logging: *default-logging
+    restart: always
     labels:
       - "logging=true"
   elasticsearch:
