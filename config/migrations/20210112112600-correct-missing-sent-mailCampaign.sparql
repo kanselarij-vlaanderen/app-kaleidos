@@ -1,0 +1,21 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mcp: <http://kanselarij.vo.data.gift/id/concept/mail-campaigns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    mcp:5DB97AD25084E70008000004 ext:isVerstuurdOp "2019-10-02T19:04:00Z"^^xsd:dateTime .
+    mcp:5E6CC3A05AB66F000800000B ext:isVerstuurdOp "2020-03-13T13:12:00Z"^^xsd:dateTime .
+    mcp:5E8B5A6314A49900080002E3 ext:isVerstuurdOp "2020-04-03T13:15:00Z"^^xsd:dateTime .
+    mcp:5EA889AC720F380008000149 ext:isVerstuurdOp "2020-04-24T12:40:33Z"^^xsd:dateTime .
+  }
+}
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    mcp:5DB97AD25084E70008000004 ext:isVerstuurdOp "2019-10-02T19:04:00Z"^^xsd:dateTime .
+    mcp:5E6CC3A05AB66F000800000B ext:isVerstuurdOp "2020-03-13T13:12:00Z"^^xsd:dateTime .
+    mcp:5E8B5A6314A49900080002E3 ext:isVerstuurdOp "2020-04-03T13:15:00Z"^^xsd:dateTime .
+    mcp:5EA889AC720F380008000149 ext:isVerstuurdOp "2020-04-24T12:40:33Z"^^xsd:dateTime .
+  }
+}
