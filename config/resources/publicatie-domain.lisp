@@ -6,6 +6,7 @@
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
                 (:numac-number        :string   ,(s-prefix "pub:numacNummer")) ;; object ? number ?  numac nummer per drukproef/publicatie ??
                 (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
+                (:priority            :number   ,(s-prefix "pub:prioriteit"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "dct:modified")))
   :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
