@@ -65,6 +65,9 @@
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
                                       :as "agenda-activities")
+              (submission-activity    :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
+                                      :inverse t
+                                      :as "submission-activities")
               (agenda-item-treatment  :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
                                       :inverse t
                                       :as "treatments")
@@ -162,6 +165,19 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agenderingen/")
   :features '(include-uri)
   :on-path "agenda-activities")
+
+(define-resource submission-activity ()
+  :class (s-prefix "ext:Indieningsactiviteit")
+  :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum")))
+  :has-one `((subcase             :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
+                                  :as "subcase"))
+  :has-many `((piece              :via ,(s-prefix "prov:generated")
+                                  :as "pieces")
+              (mandatee                :via ,(s-prefix "prov:qualifiedAssociation")
+                                       :as "submitters"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/indieningsactiviteiten/")
+  :features '(include-uri)
+  :on-path "submission-activities")
 
 (define-resource access-level ()
   :class (s-prefix "ext:ToegangsniveauCode") ;; NOTE: as well as skos:Concept
