@@ -161,7 +161,9 @@
   :has-one `((subcase             :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
-                                  :as "agendaitems"))
+                                  :as "agendaitems")
+             (submission-activity :via ,(s-prefix "prov:wasInformedBy")
+                                  :as "submission-activities"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/agenderingen/")
   :features '(include-uri)
   :on-path "agenda-activities")
@@ -170,7 +172,10 @@
   :class (s-prefix "ext:Indieningsactiviteit")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase             :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
-                                  :as "subcase"))
+                                  :as "subcase")
+             (agenda-activity     :via ,(s-prefix "prov:wasInformedBy")
+                                  :inverse t
+                                  :as "agenda-activity"))
   :has-many `((piece              :via ,(s-prefix "prov:generated")
                                   :as "pieces")
               (mandatee           :via ,(s-prefix "prov:qualifiedAssociation")
