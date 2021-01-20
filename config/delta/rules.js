@@ -121,5 +121,39 @@ export default [
       gracePeriod: 5000,
       ignoreFromSelf: true
     }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://purl.org/dc/terms/title'
+      }
+    },
+    callback: {
+      url: 'http://newsitem-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 250,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://purl.org/dc/terms/alternative'
+      }
+    },
+    callback: {
+      url: 'http://newsitem-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 250,
+      ignoreFromSelf: true
+    }
   }
 ];

@@ -207,4 +207,6 @@ services:
     image: kanselarij/document-versions-service:0.2.1
     logging: *default-logging
     restart: always
-
+  newsitem-sync:
+    image: kanselarij/newsitem-sync-service:0.2.0
+    restart: always
