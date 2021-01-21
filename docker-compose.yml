@@ -116,7 +116,7 @@ services:
   #   logging: *default-logging
   #   restart: always
   session-number-service:
-    image: kanselarij/session-number-service:1.1.1
+    image: kanselarij/session-number-service:1.2.0
     logging: *default-logging
     restart: always
   agenda-sort-service:
