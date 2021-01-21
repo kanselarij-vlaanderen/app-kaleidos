@@ -153,7 +153,7 @@ services:
     logging: *default-logging
     restart: always
   newsletter-service:
-    image: kanselarij/newsletter-service:2.1.5
+    image: kanselarij/newsletter-service:2.2.0
     logging: *default-logging
     restart: always
   user-management-service:
