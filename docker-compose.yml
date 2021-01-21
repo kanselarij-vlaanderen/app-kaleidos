@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.1.7
+    image: kanselarij/frontend-kaleidos:5.4.0
     links:
       - identifier:backend
     logging: *default-logging
@@ -37,7 +37,7 @@ services:
     logging: *default-logging
     restart: always
   database:
-    image: semtech/mu-authorization:0.6.0-beta.5
+    image: semtech/mu-authorization:0.6.0-beta.6
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
@@ -58,7 +58,7 @@ services:
     logging: *default-logging
     restart: always
   musearch:
-   image: semtech/mu-search:0.6.3
+   image: semtech/mu-search:0.7.0
    volumes:
       - ./config/search:/config
       - ./data/files:/data

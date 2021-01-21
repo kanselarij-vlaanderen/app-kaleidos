@@ -294,6 +294,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/activities/"
   end
 
+  match "/activity-statuses/*path", @any do
+    Proxy.forward conn, path, "http://cache/activity-statuses/"
+  end
+
   match "/activity-types/*path", @any do
     Proxy.forward conn, path, "http://cache/activity-types/"
   end
@@ -317,6 +321,10 @@ defmodule Dispatcher do
   # match "/email-headers/*path" do
   #   Proxy.forward conn, path, "http://cache/email-headers/"
   # end
+
+  get "/recovery-status/*path", @any do
+    Proxy.forward conn, [], "http://database:8890/recovery-status/"
+  end
 
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )

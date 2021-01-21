@@ -1,0 +1,21 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX activity-status: <http://kanselarij.vo.data.gift/id/concept/activity-status/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    activity-status:917349a2-4361-11eb-b378-0242ac130002 a pub:ActiviteitStatus ;
+      a skos:Concept ;
+      mu:uuid "917349a2-4361-11eb-b378-0242ac130002" ;
+      skos:prefLabel "Open" .
+    activity-status:a6f7b9f2-4361-11eb-b378-0242ac130002 a pub:ActiviteitStatus ;
+      a skos:Concept ;
+      mu:uuid "a6f7b9f2-4361-11eb-b378-0242ac130002" ;
+      skos:prefLabel "Closed" .
+    activity-status:b26eb1a0-4361-11eb-b378-0242ac130002 a pub:ActiviteitStatus ;
+      a skos:Concept ;
+      mu:uuid "b26eb1a0-4361-11eb-b378-0242ac130002" ;
+      skos:prefLabel "Withdrawn" .
+  }
+}

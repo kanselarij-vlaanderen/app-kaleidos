@@ -1,0 +1,14 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX group: <http://data.kanselarij.vlaanderen.be/id/group/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    group:OVRB foaf:name "Ondersteuning Vlaamse Regering en Betekeningen" .
+  }
+
+};
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    group:OVRB foaf:name "OVRB" .
+  }
+}

@@ -51,6 +51,14 @@
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "previousVersionId": [
+          "http://www.w3.org/ns/prov#wasRevisionOf",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "nextVersionId": [
+          "^http://www.w3.org/ns/prov#wasRevisionOf",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "agendaTitle": [
           "^http://purl.org/dc/terms/hasPart",
           "http://purl.org/dc/terms/title"
@@ -132,6 +140,12 @@
             "type": "keyword"
           },
           "agendaId": {
+            "type": "keyword"
+          },
+          "previousVersionId": {
+            "type": "keyword"
+          },
+          "nextVersionId": {
             "type": "keyword"
           },
           "agendaTitle": {
@@ -280,21 +294,6 @@
             "search_analyzer": "dutchanalyzer"
           },
           "publicationFlowId": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "publicationFlowNumber": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "publicationFlowNumac": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "publicationFlowRemark": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
