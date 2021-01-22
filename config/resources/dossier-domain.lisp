@@ -98,7 +98,8 @@
 
                 ;;Vertaal activiteit
                 (:final-translation-date     :datetime ,(s-prefix "pub:uitersteVertaling"))
-                (:mail-content        :string ,(s-prefix "ext:bericht")))
+                (:mail-content        :string ,(s-prefix "ext:bericht"))
+                (:mail-subject        :string ,(s-prefix "ext:onderwerp")))
 
   :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
                                   :as "subcase")
