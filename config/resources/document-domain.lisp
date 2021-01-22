@@ -37,15 +37,12 @@
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
                                         :as "next-piece")
-            (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
+            (subcase                    :via ,(s-prefix "ext:bevatDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "subcase")
-            (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
+            (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
-            ;; (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk") ;; This should be hasMany, but will results in a many to many relation
-            ;;                             :inverse t
-            ;;                             :as "agendaitem")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
