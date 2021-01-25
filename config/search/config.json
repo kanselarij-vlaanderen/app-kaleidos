@@ -5,12 +5,39 @@
   "update_wait_interval_minutes": 8,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
-    [{"variables":[], "name":"clean"}, {"variables":[], "name":"o-admin-on-public"}, {"variables":["admin"], "name":"o-admin-roles"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"public"}],
-    [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"o-kanselarij-all"}, {"variables":[], "name":"o-kanselarij-on-public"}, {"variables":[], "name":"public"}],
-    [{"variables":[], "name":"clean"}, {"variables":["intern-regering"], "name":"o-intern-regering-read"}, {"variables":[], "name":"public"}],
-    [{"variables":[], "name":"clean"}, {"variables":["intern-overheid"], "name":"o-intern-overheid-read"}, {"variables":[], "name":"public"}],
-    [{"variables":[], "name":"clean"}, {"variables":["kanselarij"], "name":"ovrb"}, {"variables":[], "name":"public"}],
-    [{"variables":[], "name":"clean"}, {"variables":["minister"], "name":"o-minister-read"}, {"variables":[], "name":"public"}]
+    [
+      { "name": "o-admin-roles", "variables": ["admin"] },
+      { "name": "o-kanselarij-all", "variables": ["kanselarij"] },
+      { "name": "o-admin-on-public", "variables": [] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ],
+    [
+      { "name": "o-kanselarij-all", "variables": ["kanselarij"] },
+      { "name": "o-kanselarij-on-public", "variables": [] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ],
+    [
+      { "name": "o-intern-regering-read", "variables": ["intern-regering"] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ],
+    [
+      { "name": "o-intern-overheid-read", "variables": ["intern-overheid"] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ],
+    [
+      { "name": "ovrb", "variables": ["kanselarij"] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ],
+    [
+      { "name": "o-minister-read", "variables": ["minister"] },
+      { "name": "public", "variables": [] },
+      { "name": "clean", "variables": [] }
+    ]
   ],
   "attachments_path_base": "/data/",
   "eager_indexing_sparql_query": false,
