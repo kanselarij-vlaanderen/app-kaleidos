@@ -186,13 +186,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
-          "data.attachment.content": {
+          "data.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
@@ -267,7 +261,6 @@
           "http://data.vlaanderen.be/ns/besluitvorming#agendaStatus",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        
         "subcaseTitle": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/title"
@@ -276,10 +269,20 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/alternative"
         ],
-        "data": {
+        "documents": {
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
             "http://mu.semte.ch/vocabularies/ext/bevatDocumentversie",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        },
+        "decision": {
+          "via": [
+            "https://data.vlaanderen.be/ns/dossier#doorloopt",
+            "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+            "http://data.vlaanderen.be/ns/besluitvorming#genereertVerslag",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -355,106 +358,13 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "attachment.content": {
+          "documents.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
           },
-          "data.attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          }
-        }
-      }
-    },
-    {
-      "type": "caseByDecisionText",
-      "on_path": "casesByDecisionText",
-      "rdf_type": "https://data.vlaanderen.be/ns/dossier#Dossier",
-      "properties": {
-        "title": "http://purl.org/dc/terms/title",
-        "created": "http://purl.org/dc/terms/created",
-        "shortTitle": "http://purl.org/dc/terms/alternative",
-        "mandatees": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/name"
-        ],
-        "mandateeFirstNames": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/firstName"
-        ],
-        "mandateeFamilyNames": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/familyName"
-        ],
-        "sessionDates": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
-          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
-          "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
-          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
-        ],
-        "data": {
-          "via": [
-            "https://data.vlaanderen.be/ns/dossier#doorloopt",
-            "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-            "http://data.vlaanderen.be/ns/besluitvorming#genereertVerslag",
-            "http://mu.semte.ch/vocabularies/ext/file",
-            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
-          ],
-          "attachment_pipeline": "attachment"
-        }
-      },
-      "mappings": {
-        "properties": {
-          "title": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "created": {
-            "type": "date"
-          },
-          "shortTitle": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "mandatees": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "mandateeFirstNames": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "mandateeFamilyNames": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "sessionDates": {
-            "type": "date"
-          },
-          "attachment.content": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer",
-            "term_vector": "with_positions_offsets_payloads"
-          },
-          "data.attachment.content": {
+          "decision.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
