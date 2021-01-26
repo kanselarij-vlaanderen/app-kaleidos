@@ -194,7 +194,9 @@
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
-                                        :as "mail-campaign"))
+                                        :as "mail-campaign")
+             (meeting                   :via      ,(s-prefix "dct:isPartOf")
+                                        :as "main-meeting"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")
   :features '(include-uri)
   :on-path "meetings")

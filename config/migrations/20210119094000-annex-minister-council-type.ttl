@@ -1,0 +1,13 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix kind: <http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/> .
+
+kind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce a ext:MinisterraadType ;
+    mu:uuid "d36138a9-07f0-4df6-bbf0-abd51a24e4ce" ;
+    skos:prefLabel "Annex" .
+
+kind:1d16cb70-0ae9-489e-bf97-c74897222e3c a ext:MinisterraadType ;
+    mu:uuid "1d16cb70-0ae9-489e-bf97-c74897222e3c" ;
+    skos:prefLabel "Ministerraad - Plan Vlaamse Veerkracht" ;
+    skos:broader kind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce .
