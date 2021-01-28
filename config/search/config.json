@@ -199,6 +199,7 @@
         "title": "http://purl.org/dc/terms/title",
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
+        "isArchived": "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
         "publicationFlowId": [
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -279,6 +280,9 @@
           },
           "created": {
             "type": "date"
+          },
+          "isArchived": {
+            "type": "boolean"
           },
           "shortTitle": {
             "type": "text",
