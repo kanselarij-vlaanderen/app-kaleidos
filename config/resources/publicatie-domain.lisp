@@ -17,9 +17,9 @@
                                       :as "type"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
-                (subcase              :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
+              (subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
-                (contact-person       :via      ,(s-prefix "pub:contactPersoon")
+              (contact-person         :via      ,(s-prefix "pub:contactPersoon")
                                       :as "contact-persons"))
               ;; mandatees van subcase bij MR,  ongekende mandatee bij niet via MR
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-aangelegenheden/")
