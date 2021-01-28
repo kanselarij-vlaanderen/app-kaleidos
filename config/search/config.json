@@ -274,7 +274,7 @@
           ],
           "attachment_pipeline": "attachment"
         },
-        "decision": {
+        "decisions": {
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
             "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
