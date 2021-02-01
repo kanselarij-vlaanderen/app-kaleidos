@@ -248,8 +248,7 @@
         ],
         "documents": {
           "via": [
-            "https://data.vlaanderen.be/ns/dossier#doorloopt",
-            "http://mu.semte.ch/vocabularies/ext/bevatDocumentversie",
+            "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
