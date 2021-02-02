@@ -98,6 +98,7 @@
 
                 ;;Vertaal activiteit
                 (:final-translation-date     :datetime ,(s-prefix "pub:uitersteVertaling"))
+                (:withdraw-reason     :string ,(s-prefix "ext:redenVanIntrekking"))
                 (:mail-content        :string ,(s-prefix "ext:bericht"))
                 (:mail-subject        :string ,(s-prefix "ext:onderwerp")))
 
