@@ -15,6 +15,9 @@
              (subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
                                   :as "subcases")
+             (publication-flow    :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
+                                  :inverse t
+                                  :as "publication-flows")
              (agendaitem          :via ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt")
                                   :inverse t
                                   :as "agendaitems")

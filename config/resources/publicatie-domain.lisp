@@ -15,7 +15,9 @@
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type"))
-  :has-many `((subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
+  :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
+                                      :as "mandatees")
+              (subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
               (contact-person         :via      ,(s-prefix "pub:contactPersoon")
                                       :as "contact-persons"))
