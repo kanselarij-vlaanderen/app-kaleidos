@@ -246,7 +246,7 @@ services:
     labels:
       - "logging=true"
   lazy-loading-service:
-    image: kanselarij/lazy-loading-service:1.0.3
+    image: kanselarij/lazy-loading-service:1.1.0
     logging: *default-logging
     restart: always
     labels:
