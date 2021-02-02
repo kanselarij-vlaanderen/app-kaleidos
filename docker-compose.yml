@@ -70,10 +70,11 @@ services:
     labels:
       - "logging=true"
   musearch:
-    image: semtech/mu-search:0.7.0
+    image: semtech/mu-search:0.8.0-beta.2
     volumes:
       - ./config/search:/config
       - ./data/files:/data
+      - ./data/tika/cache:/cache
     environment:
       NUMBER_OF_THREADS: 16
       JRUBY_OPTIONS: "-J-Xmx32g" # overwrite for development
@@ -85,10 +86,13 @@ services:
   elasticsearch:
     image: semtech/mu-search-elastic-backend:1.0.0
     environment:
-      - cluster.initial_master_nodes=elasticsearch
-      - node.name=elasticsearch
+      discovery.type: "single-node"
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    logging: *default-logging
+    restart: always
+  tika:
+    image: apache/tika:1.24-full
     logging: *default-logging
     restart: always
     labels:
