@@ -37,15 +37,12 @@
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
                                         :as "next-piece")
-            (subcase                    :via ,(s-prefix "ext:bevatDocumentversie")
+            (subcase                    :via ,(s-prefix "ext:bevatDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "subcase")
-            (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie")
+            (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
-            (agendaitem                 :via ,(s-prefix "besluitvorming:geagendeerdStuk") ;; This should be hasMany, but will results in a many to many relation
-                                        :inverse t
-                                        :as "agendaitem")
             (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
                                         :as "newsletter")
@@ -68,12 +65,15 @@
               (piece                    :via ,(s-prefix "ext:isVertalingVan")
                                         :inverse t
                                         :as "translations")
-              (piece                    :via ,(s-prefix "prov:used")
+              (piece                    :via ,(s-prefix "prov:used") ;; this should be activity, not used in frontend model piece
                                         :inverse t
                                         :as "used-in-activity")
-              (piece                    :via ,(s-prefix "dossier:genereert")
+              (piece                    :via ,(s-prefix "dossier:genereert") ;; this should be activity, not used in frontend model piece
                                         :inverse t
-                                        :as "generated-in-activity"))
+                                        :as "generated-in-activity")
+              (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
+                                        :inverse t
+                                        :as "agendaitems"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
   :features `(include-uri)
   :on-path "pieces")
