@@ -32,7 +32,7 @@
   :properties `((:name                :string ,(s-prefix "skos:prefLabel")))
   :has-one `((publication-flow        :via      ,(s-prefix "pub:numacNummer")
                                       :inverse t
-                                      :as "publication-flow"))
+                                      :as "publication"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-numac-nummers/")
   :features '(include-uri)
   :on-path "publication-numac-numbers")
