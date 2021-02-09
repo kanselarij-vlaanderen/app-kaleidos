@@ -16,7 +16,7 @@
                                       :as "type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
-              (publication-numac-number :via      ,(s-prefix "pub:numacNummer")
+              (numac-number           :via      ,(s-prefix "pub:numacNummer")
                                       :as "numac-numbers")
               (subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
@@ -27,7 +27,7 @@
   :features `(include-uri)
   :on-path "publication-flows")
 
-(define-resource publication-numac-number ()
+(define-resource numac-number ()
   :class (s-prefix "pub:NumacNummer")
   :properties `((:name                :string ,(s-prefix "skos:prefLabel")))
   :has-one `((publication-flow        :via      ,(s-prefix "pub:numacNummer")
@@ -35,7 +35,7 @@
                                       :as "publication"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-numac-nummers/")
   :features '(include-uri)
-  :on-path "publication-numac-numbers")
+  :on-path "numac-numbers")
 
 (define-resource publication-status ()
   :class (s-prefix "pub:Publicatiestatus") ;; NOTE: as well as skos:Concept
