@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    build: https://github.com/kanselarij-vlaanderen/kaleidos-frontend.git#v5.4.3-hotfix.1 # Sorry. Docker Hub wouldn't cooperate
+    build: kanselarij/frontend-kaleidos:5.4.5
     links:
       - identifier:backend
     logging: *default-logging
