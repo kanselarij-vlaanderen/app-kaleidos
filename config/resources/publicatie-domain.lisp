@@ -1,6 +1,7 @@
 (define-resource publication-flow ()
   :class (s-prefix "pub:Publicatieaangelegenheid")
-  :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
+  :properties `((:publication-number  :number   ,(s-prefix "pub:publicatieNummer"))
+                (:publication-suffix  :string   ,(s-prefix "pub:publicatieNummerSuffix"))
                 (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
