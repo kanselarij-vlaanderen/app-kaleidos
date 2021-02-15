@@ -39,6 +39,8 @@ services:
       JRUBY_OPTIONS: ""
   elasticsearch:
     restart: "no"
+  tika:
+    restart: "no"
   database-healthcheck:
     restart: "no"
   # kibana:
