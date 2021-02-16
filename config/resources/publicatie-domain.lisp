@@ -15,7 +15,9 @@
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
-                                      :as "type"))
+                                      :as "type")
+             (document-type           :via      ,(s-prefix "pub:afgeleidType")
+                                      :as "deduced-type"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
               (subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
