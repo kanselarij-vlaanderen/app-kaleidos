@@ -3,6 +3,7 @@
   :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
                 (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
+                (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
                 (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
                 (:priority            :number   ,(s-prefix "pub:prioriteit"))
