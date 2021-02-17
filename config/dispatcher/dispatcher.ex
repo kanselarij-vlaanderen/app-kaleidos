@@ -60,7 +60,11 @@ defmodule Dispatcher do
   put "/agendaitems/:id/pieces/restore", @any do
     Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/pieces/restore"
   end
-  
+
+  get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-item/:agenda_item_id/pieces", @any do
+    Proxy.forward conn, [], "http://agenda-sort-service/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
+  end
+
   post "/agendas/:id/agendaitems/pieces/files/archive", @any do
     Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
