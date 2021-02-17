@@ -1,23 +1,24 @@
 (define-resource publication-flow ()
   :class (s-prefix "pub:Publicatieaangelegenheid")
-  :properties `((:publication-number        :string   ,(s-prefix "pub:publicatieNummer"))
-              (:translate-before          :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
-              (:publish-before            :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
-              (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
-              (:published-at              :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
-              (:numac-number              :string   ,(s-prefix "pub:numacNummer")) ;; object ? number ?  numac nummer per drukproef/publicatie ??
-              (:remark                    :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
-              (:priority                  :number   ,(s-prefix "pub:prioriteit"))
-              (:created                   :datetime ,(s-prefix "dct:created"))
-              (:modified                  :datetime ,(s-prefix "dct:modified")))
+  :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
+                (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
+                (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
+                (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
+                (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
+                (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
+                (:priority            :number   ,(s-prefix "pub:prioriteit"))
+                (:created             :datetime ,(s-prefix "dct:created"))
+                (:modified            :datetime ,(s-prefix "dct:modified")))
   :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
                                       :as "case")
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type"))
-  :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
+  :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
+              (numac-number           :via      ,(s-prefix "pub:numacNummer")
+                                      :as "numac-numbers")
               (subcase                :via      ,(s-prefix "ext:doorloopt") ;; dossier:doorloopt kan niet, mu-cl-resources
                                       :as "subcases")
               (contact-person         :via      ,(s-prefix "pub:contactPersoon")
@@ -27,13 +28,23 @@
   :features `(include-uri)
   :on-path "publication-flows")
 
+(define-resource numac-number ()
+  :class (s-prefix "pub:NumacNummer")
+  :properties `((:name                :string ,(s-prefix "skos:prefLabel")))
+  :has-one `((publication-flow        :via      ,(s-prefix "pub:numacNummer")
+                                      :inverse t
+                                      :as "publication-flow"))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-numac-nummers/")
+  :features '(include-uri)
+  :on-path "numac-numbers")
+
 (define-resource publication-status ()
   :class (s-prefix "pub:Publicatiestatus") ;; NOTE: as well as skos:Concept
   :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
                 (:priority    :number ,(s-prefix "ext:priority")))
   :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
                               :inverse t
-                              :as "publicaties"))
+                              :as "publications"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/")
   :features '(include-uri)
   :on-path "publication-statuses")
@@ -57,30 +68,5 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-types/")
   :features '(include-uri)
   :on-path "publication-types")
-
-
-  ;; 
-  ;; historiek ? momenteel weg gehaald, mogelijk later terug
-  ;; aangevraagd door, instantie, heeft ook besluitdomeinen
-  ;; persoon wie opmerking gemaakt heeft lijkt niet nodig
-  ;; laatste wijziging door wie ?
-  ;; create BY ?
-
-
-  ;; done
-  ;; status publicatie
-  ;; uiterste vertaaldatum
-  ;; uiterste datum publicatie
-  ;; werknummer BS / numac
-  ;; publicatie datum in BS
-  ;; wijze van publicate (dct:type)
-  ;; laatste wijziging
-  ;; verstuurd naar BS ?
-  ;; vertalingen krijgen fysiek een bestand, model maken paralell op serie? meerdere pieces die gelinkt zijn aan 1 iets, alle files zijn ofwel andere extensie of vertaald.
-  ;; handtekeningen gebeuren op de PDF, vertalingen op de word
-  ;; documenten (pdf en word aan elkaar kunnen hangen), opsplitsen ? 
-  ;; contact persoon, dit is niet per se een bestaande user, gewoon text ?
-  ;; opmerking 
-
 
   
