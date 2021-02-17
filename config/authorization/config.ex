@@ -83,6 +83,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/NumacNummer",
     ]
   end
 
