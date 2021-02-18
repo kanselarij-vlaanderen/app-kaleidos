@@ -11,48 +11,48 @@ INSERT DATA {
       skos:prefLabel "beleidsdomein Kanselarij, Bestuur, Buitenlandse Zaken en Justitie (KBBJ)"@nl ;
       ISOcat:abbreviationFor "KBBJ"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:95c04340-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "95c04340-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Financiën en Begroting (FB)"@nl ;
           ISOcat:abbreviationFor "FB"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:8bec08d6-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "8bec08d6-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Economie, Wetenschap en Innovatie (EWI)"@nl ;
           ISOcat:abbreviationFor "EWI"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:84f6f360-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "84f6f360-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Onderwijs en Vorming (OV)"@nl ;
           ISOcat:abbreviationFor "OV"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:80843630-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "80843630-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Welzijn, Volksgezondheid en Gezin (WVG)"@nl ;
           ISOcat:abbreviationFor "WVG"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:7b65a832-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "7b65a832-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Cultuur, Jeugd, Sport en Media (CJSM)"@nl ;
           ISOcat:abbreviationFor "CJSM"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:75d8778c-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "75d8778c-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Werk en Sociale Economie (WSE)"@nl ;
           ISOcat:abbreviationFor "WSE"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:715350b0-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "715350b0-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Landbouw en Visserij (LV)"@nl ;
           ISOcat:abbreviationFor "LV"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:6c8db214-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "6c8db214-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Mobiliteit en Openbare Werken (MOW)"@nl ;
           ISOcat:abbreviationFor "MOW"@nl .
 
-    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+    vlorg:66c7b19a-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "66c7b19a-71f9-11eb-9439-0242ac130002" ;
           skos:prefLabel "beleidsdomein Omgeving (OMG)"@nl ;
           ISOcat:abbreviationFor "OMG"@nl .
   }
