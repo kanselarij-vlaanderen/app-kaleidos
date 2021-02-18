@@ -212,6 +212,11 @@
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieOpmerking"
         ],
+        "publicationFlowNumacNumbers": [
+          "^https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/ext/publicatie/numacNummer",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
