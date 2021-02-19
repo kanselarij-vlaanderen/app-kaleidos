@@ -7,9 +7,9 @@ PREFIX ISOcat: <http://www.isocat.org/>
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
     vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
-      mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
-      skos:prefLabel "beleidsdomein Kanselarij, Bestuur, Buitenlandse Zaken en Justitie (KBBJ)"@nl ;
-      ISOcat:abbreviationFor "KBBJ"@nl .
+          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Kanselarij, Bestuur, Buitenlandse Zaken en Justitie (KBBJ)"@nl ;
+          ISOcat:abbreviationFor "KBBJ"@nl .
 
     vlorg:95c04340-71f9-11eb-9439-0242ac130002 a org:Organization ;
           mu:uuid "95c04340-71f9-11eb-9439-0242ac130002" ;
