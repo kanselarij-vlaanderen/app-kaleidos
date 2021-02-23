@@ -1,3 +1,11 @@
+(define-resource config ()
+  :class (s-prefix "pub:Config")
+  :properties `((:key        :string ,(s-prefix "skos:prefLabel"))
+                (:value      :string ,(s-prefix "pub:value")))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-config/")
+  :features '(include-uri)
+  :on-path "configs")
+
 (define-resource publication-flow ()
   :class (s-prefix "pub:Publicatieaangelegenheid")
   :properties `((:publication-number  :number   ,(s-prefix "pub:publicatieNummer"))
