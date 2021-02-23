@@ -6,11 +6,11 @@
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-one `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
-                                :inverse t
-                                :as "publication-flow"))
   :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
+              (publication-flow :via      ,(s-prefix "dossier:behandelt")
+                                :inverse t
+                                :as "publication-flows")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "pieces"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
