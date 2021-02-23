@@ -1,0 +1,15 @@
+PREFIX pubstatusid: <http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    pubstatusid:9b9b0b5e-45c8-11eb-b378-0242ac130002 skos:prefLabel "Ingetrokken"@nl .
+  }
+
+};
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    pubstatusid:9b9b0b5e-45c8-11eb-b378-0242ac130002 skos:prefLabel "Afgevoerd"@nl .
+  }
+};
