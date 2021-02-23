@@ -1,6 +1,7 @@
 (define-resource publication-flow ()
   :class (s-prefix "pub:Publicatieaangelegenheid")
-  :properties `((:publication-number  :string   ,(s-prefix "pub:publicatieNummer"))
+  :properties `((:publication-number  :number   ,(s-prefix "pub:publicatieNummer"))
+                (:publication-suffix  :string   ,(s-prefix "pub:publicatieNummerSuffix"))
                 (:translate-before    :datetime ,(s-prefix "pub:uitersteVertaling")) ;; in de subcase ?
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
                 (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
@@ -14,7 +15,9 @@
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
-                                      :as "type"))
+                                      :as "type")
+             (document-type           :via      ,(s-prefix "pub:afgeleidType")
+                                      :as "deduced-type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
               (numac-number           :via      ,(s-prefix "pub:numacNummer")
