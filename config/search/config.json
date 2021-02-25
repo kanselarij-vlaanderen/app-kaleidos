@@ -200,15 +200,15 @@
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "isArchived": "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
-        "publicationFlowId": [
+        "publicationFlowIds": [
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "publicationFlowNumber": [
+        "publicationFlowNumbers": [
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieNummer"
         ],
-        "publicationFlowRemark": [
+        "publicationFlowRemarks": [
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieOpmerking"
         ],
@@ -277,7 +277,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "publicationFlowId": {
+          "publicationFlowIds": {
             "type": "keyword"
           },
           "created": {
@@ -291,10 +291,10 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "publicationFlowNumber": {
+          "publicationFlowNumbers": {
             "type": "keyword"
           },
-          "publicationFlowRemark": {
+          "publicationFlowRemarks": {
             "type": "keyword"
           },
           "publicationFlowNumacNumbers": {
