@@ -22,6 +22,7 @@
 (add-prefix "nfo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#")
 (add-prefix "nie" "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#")
 (add-prefix "dbpedia" "http://dbpedia.org/ontology/")
+(add-prefix "ISOcat" "http://www.isocat.org/")
 (add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
 
 ;;;;;
