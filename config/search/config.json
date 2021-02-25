@@ -278,7 +278,7 @@
             "search_analyzer": "dutchanalyzer"
           },
           "publicationFlowId": {
-            "type": "text"
+            "type": "keyword"
           },
           "created": {
             "type": "date"
@@ -292,13 +292,13 @@
             "search_analyzer": "dutchanalyzer"
           },
           "publicationFlowNumber": {
-            "type": "text"
+            "type": "keyword"
           },
           "publicationFlowRemark": {
-            "type": "text"
+            "type": "keyword"
           },
           "publicationFlowNumacNumbers": {
-            "type": "text"
+            "type": "keyword"
           },
           "mandatees": {
             "type": "text",
