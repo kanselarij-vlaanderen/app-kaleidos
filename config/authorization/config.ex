@@ -258,8 +258,7 @@ defmodule Acl.UserGroups.Config do
         name: "o-kanselarij-all",
         useage: [:read, :write, :read_for_write],
         access: access_by_role( "<http://data.kanselarij.vlaanderen.be/id/group/admin
-                                 <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>
-                                 <http://data.kanselarij.vlaanderen.be/id/group/minister president> "),
+                                 <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>"),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
