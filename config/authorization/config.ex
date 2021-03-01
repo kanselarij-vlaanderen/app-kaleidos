@@ -259,7 +259,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-kanselarij-all",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( "<http://data.kanselarij.vlaanderen.be/id/group/admin
+        access: access_by_role( "<http://data.kanselarij.vlaanderen.be/id/group/admin>
                                  <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>"),
         graphs: [
           %GraphSpec{
