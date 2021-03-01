@@ -179,7 +179,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/time-periods/"
   end
 
-  get "/organizations/*path", @any do
+  match "/organizations/*path", @any do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
@@ -293,9 +293,13 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
 
-  match "/numac-numbers/*path", @any do
-    Proxy.forward conn, path, "http://cache/numac-numbers/"
+  match "/configs/*path", @any do
+    Proxy.forward conn, path, "http://cache/configs/"
   end
+
+    match "/numac-numbers/*path", @any do
+      Proxy.forward conn, path, "http://cache/numac-numbers/"
+    end
 
   match "/publication-types/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-types/"

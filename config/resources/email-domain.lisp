@@ -11,7 +11,8 @@
   :class (s-prefix "nfo:Folder")
   :properties `((:name :string ,(s-prefix "nie:title"))
                 (:description :string ,(s-prefix "nie:description")))
-  :has-many `((email :via ,(s-prefix "email:hasEmail");;hack, as mu-cl-resources doesn't support superclasses yet (http://oscaf.sourceforge.net/nmo.html#nmo:MailboxDataObject)
+  :has-many `((email :via ,(s-prefix "nmo:isPartOf") ;; TODO: nie:isPartOf isn't valid part of NEPOMUK
+                    :inverse t
                     :as "emails")
              (folder :via ,(s-prefix "email:hasFolder");;hack, as mu-cl-resources doesn't support superclasses yet (http://oscaf.sourceforge.net/nmo.html#nmo:MailboxDataObject)
                     :as "folders"))
@@ -35,8 +36,7 @@
                 (:sent-date :datetime ,(s-prefix "nmo:sentDate")))
   :has-one `((email :via ,(s-prefix "nmo:inReplyTo")
                     :as "in-reply-to")
-             (folder :via ,(s-prefix "nmo:isPartOf")
-                    :inverse t
+             (folder :via ,(s-prefix "nmo:isPartOf") ;; TODO: nie:isPartOf isn't valid part of NEPOMUK
                     :as "folder"))
   :has-many `(
   ;           (email-header :via ,(s-prefix "nmo:messageHeader")

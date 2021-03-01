@@ -84,6 +84,9 @@
   :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
                                     :inverse t
                                     :as "document-containers")
+              (publication-flow     :via    ,(s-prefix "pub:afgeleidType")
+                                    :inverse t
+                                    :as "publication-flows")
               (document-type        :via    ,(s-prefix "skos:broader")
                                     :inverse t
                                     :as "subtypes"))
