@@ -133,7 +133,9 @@
                 (:phone             :string    ,(s-prefix "foaf:phone")))
   :has-one `((publication-flow      :via      ,(s-prefix "pub:contactPersoon")
                                     :inverse t
-                                    :as "publication-flow"))
+                                    :as "publication-flow")
+            (organization :via ,(s-prefix "org:memberOf")
+                                    :as "organization"))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/contactpersonen/")
   :features '(include-uri)
   :on-path "contact-persons")

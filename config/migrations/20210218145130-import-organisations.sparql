@@ -1,0 +1,59 @@
+PREFIX vlorg: <https://data.vlaanderen.be/id/organisatie/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX ISOcat: <http://www.isocat.org/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    vlorg:7cbbe24e-71f1-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "7cbbe24e-71f1-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Kanselarij, Bestuur, Buitenlandse Zaken en Justitie (KBBJ)"@nl ;
+          ISOcat:abbreviationFor "KBBJ"@nl .
+
+    vlorg:95c04340-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "95c04340-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Financiën en Begroting (FB)"@nl ;
+          ISOcat:abbreviationFor "FB"@nl .
+
+    vlorg:8bec08d6-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "8bec08d6-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Economie, Wetenschap en Innovatie (EWI)"@nl ;
+          ISOcat:abbreviationFor "EWI"@nl .
+
+    vlorg:84f6f360-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "84f6f360-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Onderwijs en Vorming (OV)"@nl ;
+          ISOcat:abbreviationFor "OV"@nl .
+
+    vlorg:80843630-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "80843630-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Welzijn, Volksgezondheid en Gezin (WVG)"@nl ;
+          ISOcat:abbreviationFor "WVG"@nl .
+
+    vlorg:7b65a832-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "7b65a832-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Cultuur, Jeugd, Sport en Media (CJSM)"@nl ;
+          ISOcat:abbreviationFor "CJSM"@nl .
+
+    vlorg:75d8778c-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "75d8778c-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Werk en Sociale Economie (WSE)"@nl ;
+          ISOcat:abbreviationFor "WSE"@nl .
+
+    vlorg:715350b0-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "715350b0-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Landbouw en Visserij (LV)"@nl ;
+          ISOcat:abbreviationFor "LV"@nl .
+
+    vlorg:6c8db214-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "6c8db214-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Mobiliteit en Openbare Werken (MOW)"@nl ;
+          ISOcat:abbreviationFor "MOW"@nl .
+
+    vlorg:66c7b19a-71f9-11eb-9439-0242ac130002 a org:Organization ;
+          mu:uuid "66c7b19a-71f9-11eb-9439-0242ac130002" ;
+          skos:prefLabel "beleidsdomein Omgeving (OMG)"@nl ;
+          ISOcat:abbreviationFor "OMG"@nl .
+  }
+}
