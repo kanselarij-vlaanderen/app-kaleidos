@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.6.2
+    image: kanselarij/frontend-kaleidos:5.6.4
     links:
       - identifier:backend
     logging: *default-logging
@@ -162,7 +162,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.2.1
+    image: kanselarij/agenda-approve-service:3.2.2
     logging: *default-logging
     restart: always
     labels:
