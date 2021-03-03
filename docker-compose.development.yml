@@ -97,3 +97,5 @@ services:
     restart: "no"
   document-versions-service:
     restart: "no"
+  mail-delivery:
+    restart: "no"
