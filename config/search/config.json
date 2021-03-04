@@ -6,35 +6,35 @@
   "automatic_index_updates": true,
   "eager_indexing_groups": [
     [
-      { "name": "o-admin-roles", "variables": ["admin"] },
-      { "name": "o-kanselarij-all", "variables": ["kanselarij"] },
+      { "name": "o-admin-roles", "variables": [] },
+      { "name": "o-kanselarij-all", "variables": [] },
       { "name": "o-admin-on-public", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
-      { "name": "o-kanselarij-all", "variables": ["kanselarij"] },
+      { "name": "o-kanselarij-all", "variables": [] },
       { "name": "o-kanselarij-on-public", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
-      { "name": "o-intern-regering-read", "variables": ["intern-regering"] },
+      { "name": "o-intern-regering-read", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
-      { "name": "o-intern-overheid-read", "variables": ["intern-overheid"] },
+      { "name": "o-intern-overheid-read", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
-      { "name": "ovrb", "variables": ["kanselarij"] },
+      { "name": "ovrb", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
-      { "name": "o-minister-read", "variables": ["minister"] },
+      { "name": "o-minister-read", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ]
@@ -278,7 +278,7 @@
             "search_analyzer": "dutchanalyzer"
           },
           "publicationFlowId": {
-            "type": "keyword"
+            "type": "text"
           },
           "created": {
             "type": "date"
@@ -292,13 +292,13 @@
             "search_analyzer": "dutchanalyzer"
           },
           "publicationFlowNumber": {
-            "type": "keyword"
+            "type": "text"
           },
           "publicationFlowRemark": {
-            "type": "keyword"
+            "type": "text"
           },
           "publicationFlowNumacNumbers": {
-            "type": "keyword"
+            "type": "text"
           },
           "mandatees": {
             "type": "text",
