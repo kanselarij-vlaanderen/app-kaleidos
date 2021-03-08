@@ -6,7 +6,7 @@
 								(:message 		:string 	,(s-prefix "ext:bericht")))
   :has-one `((alert-type 			:via 			,(s-prefix "ext:type") ;; NOTE: What is the domain of Besluit geeftAanleidingTot? guessed prov:generated
                          			:as "type"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/systeem-notificaties/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/systeem-notificaties/")
   :features '(include-uri)
   :on-path "alerts")
 
@@ -15,7 +15,7 @@
   :properties `((:label 			:string 	,(s-prefix "skos:prefLabel"))
                 (:scope-note 	:string 	,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/systeem-notificatie-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/systeem-notificatie-types/")
   :features '(include-uri)
   :on-path "alert-types")
 
@@ -26,6 +26,6 @@
                 (:alt-label   :string   ,(s-prefix "skos:altLabel"))
                 (:description :string   ,(s-prefix "ext:beschrijving"))
                 (:type        :string   ,(s-prefix "ext:type"))) ;; Type "agenda","minutes","decisions"...
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/snelkoppelingen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/snelkoppelingen/")
   :features '(include-uri)
   :on-path "shortcuts")

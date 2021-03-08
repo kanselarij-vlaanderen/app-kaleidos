@@ -7,7 +7,7 @@
   )
   :has-one `((file              :via     ,(s-prefix "prov:generated")
                                 :as "generated"))
-  ; :resource-base (s-url "http://kanselarij.vo.data.gift/id/file-bundling-jobs/")
+  ; :resource-base (s-url "http://themis.vlaanderen.be/id/file-bundling-jobs/")
   :features '(include-uri)
   :on-path "file-bundling-jobs"
 )

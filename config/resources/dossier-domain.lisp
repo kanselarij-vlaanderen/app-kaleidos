@@ -13,7 +13,7 @@
                                 :as "subcases")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "pieces"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/dossiers/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/dossiers/")
   :features '(include-uri)
   :on-path "cases")
 
@@ -23,7 +23,7 @@
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel"))
                 (:deprecated  :boolean ,(s-prefix "owl:deprecated")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/dossier-type-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/dossier-type-codes/")
   :features '(include-uri)
   :on-path "case-types")
 
@@ -71,7 +71,7 @@
               (activity               :via ,(s-prefix "dossier:vindtPlaatsTijdens") ;; Dit is de juiste relatie !! ipv besluitvorming
                                       :inverse t
                                       :as "publication-activities")) ;; this can be translationActivity, signatureActivity, publish )
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/procedurestappen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestappen/")
   :features '(include-uri)
   :on-path "subcases")
 
@@ -83,7 +83,7 @@
   :has-many `((subcase            :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/procedurestap-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/procedurestap-types/")
   :features '(include-uri)
   :on-path "subcase-types")
 
@@ -126,7 +126,7 @@
                                   :inverse t
                                   :as "published-by")
                                   )
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/activiteiten/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/activiteiten/")
   :features '(include-uri)
   :on-path "activities")
 
@@ -138,7 +138,7 @@
   :has-many `((activity           :via ,(s-prefix "pub:publicatieStatus")
                                   :inverse t
                                   :as "activities"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/activity-status/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activity-status/")
   :features '(include-uri)
   :on-path "activity-statuses")
 
@@ -150,7 +150,7 @@
   :has-many `((activity           :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "activities"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/activiteit-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-types/")
   :features '(include-uri)
   :on-path "activity-types")
 
@@ -161,7 +161,7 @@
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
                                   :as "agendaitems"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agenderingen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/agenderingen/")
   :features '(include-uri)
   :on-path "agenda-activities")
 
@@ -180,13 +180,13 @@
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                               :inverse t
                               :as "cases"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/toegangs-niveaus/")
   :features '(include-uri)
   :on-path "access-levels")
 
 (define-resource person-or-organization ()
   :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
   :properties `((:type :string ,(s-prefix "rdfs:type")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/personen/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
+  :resource-base (s-url "http://themis.vlaanderen.be/id/personen/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
   :features '(include-uri)
   :on-path "person-or-organization")

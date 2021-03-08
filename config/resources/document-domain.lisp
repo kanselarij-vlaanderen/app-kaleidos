@@ -9,7 +9,7 @@
                                         :inverse t
                                         :as "agenda-item-treatment")
                                         )
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/series/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/series/")
   :features '(include-uri)
   :on-path "document-containers")
 
@@ -74,7 +74,7 @@
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitems"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/stukken/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/stukken/")
   :features `(include-uri)
   :on-path "pieces")
 
@@ -95,7 +95,7 @@
                                     :as "subtypes"))
   :has-one `((document-type         :via    ,(s-prefix "skos:broader")
                                     :as "supertype"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/document-type-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/document-type-codes/")
   :features '(include-uri)
   :on-path "document-types")
 

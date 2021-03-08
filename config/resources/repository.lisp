@@ -74,7 +74,7 @@
 (add-prefix "cogs" "http://vocab.deri.ie/cogs#")
 
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
-(add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
+(add-prefix "kans" "http://themis.vlaanderen.be/core/")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for

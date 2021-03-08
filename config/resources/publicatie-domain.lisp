@@ -2,7 +2,7 @@
   :class (s-prefix "pub:Config")
   :properties `((:key        :string ,(s-prefix "skos:prefLabel"))
                 (:value      :string ,(s-prefix "pub:value")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-config/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-config/")
   :features '(include-uri)
   :on-path "configs")
 
@@ -35,7 +35,7 @@
               (contact-person         :via      ,(s-prefix "pub:contactPersoon")
                                       :as "contact-persons"))
               ;; mandatees van subcase bij MR,  ongekende mandatee bij niet via MR
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/publicatie-aangelegenheden/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/publicatie-aangelegenheden/")
   :features `(include-uri)
   :on-path "publication-flows")
 
@@ -45,7 +45,7 @@
   :has-one `((publication-flow        :via      ,(s-prefix "pub:numacNummer")
                                       :inverse t
                                       :as "publication-flow"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-numac-nummers/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-numac-nummers/")
   :features '(include-uri)
   :on-path "numac-numbers")
 
@@ -56,7 +56,7 @@
   :has-many `((publication-flow    :via    ,(s-prefix "pub:publicatiestatus")
                               :inverse t
                               :as "publications"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-statussen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-statussen/")
   :features '(include-uri)
   :on-path "publication-statuses")
 
@@ -76,7 +76,7 @@
   :has-many `((publication-flow   :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "publication-flows"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/publicatie-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-types/")
   :features '(include-uri)
   :on-path "publication-types")
 
