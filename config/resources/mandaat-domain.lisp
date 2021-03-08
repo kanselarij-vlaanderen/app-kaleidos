@@ -26,7 +26,7 @@
                                   :as "requested-subcases"))
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/mandatarissen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/mandataris/")
   :features '(include-uri)
   :on-path "mandatees")
 
@@ -38,7 +38,7 @@
   :has-many `((government-field   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :inverse t
                                   :as "government-fields"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsdomeinen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsdomein/")
   :features '(include-uri)
   :on-path "government-domains")
 
@@ -52,7 +52,7 @@
                                   :as "ise-code"))
   :has-one `((government-domain   :via ,(s-prefix "ext:heeftBeleidsDomein")
                                   :as "domain"))                
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsvelden/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsveld/")
   :features '(include-uri)
   :on-path "government-fields")
 
@@ -67,7 +67,7 @@
               (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/ise-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/ise-code/")
   :features `(no-pagination-defaults include-uri)
   :on-path "ise-codes")
 
@@ -86,7 +86,7 @@
              (signature             :via    ,(s-prefix "ext:bevoegdePersoon")
                                     :inverse t
                                     :as "signature"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/personen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)
   :on-path "persons")
   ;; People here because ember pluralizes persons to people
@@ -97,7 +97,7 @@
   :has-one `((person :via ,(s-prefix "ext:identifier")
                      :inverse t
                      :as "personId"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/identificatoren/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/identificator/")
   :features '(include-uri)
   :on-path "identifications")
 
@@ -114,7 +114,7 @@
   :has-many `((meeting      :via       ,(s-prefix "ext:heeftHandtekening")
                             :inverse t
                             :as "meetings"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/signatures/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/handtekening/")
   :features '(include-uri)
   :on-path "signatures")
 
@@ -136,6 +136,6 @@
                                     :as "publication-flow")
             (organization :via ,(s-prefix "org:memberOf")
                                     :as "organization"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/contactpersonen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/contactpersoon/")
   :features '(include-uri)
   :on-path "contact-persons")

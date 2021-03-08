@@ -13,7 +13,7 @@
                                 :as "subcases")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "pieces"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/dossiers/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
   :on-path "cases")
 
@@ -23,7 +23,7 @@
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel"))
                 (:deprecated  :boolean ,(s-prefix "owl:deprecated")))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/dossier-type-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/dossier-type/")
   :features '(include-uri)
   :on-path "case-types")
 
@@ -83,7 +83,7 @@
   :has-many `((subcase            :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "subcases"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/procedurestap-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/procedurestap-type/")
   :features '(include-uri)
   :on-path "subcase-types")
 
@@ -126,7 +126,7 @@
                                   :inverse t
                                   :as "published-by")
                                   )
-  :resource-base (s-url "http://themis.vlaanderen.be/id/activiteiten/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/activiteit/")
   :features '(include-uri)
   :on-path "activities")
 
@@ -138,7 +138,7 @@
   :has-many `((activity           :via ,(s-prefix "pub:publicatieStatus")
                                   :inverse t
                                   :as "activities"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activity-status/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-status/")
   :features '(include-uri)
   :on-path "activity-statuses")
 
@@ -150,7 +150,7 @@
   :has-many `((activity           :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "activities"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-types/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-type/")
   :features '(include-uri)
   :on-path "activity-types")
 
@@ -161,7 +161,7 @@
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
                                   :as "agendaitems"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/agenderingen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/agendering/")
   :features '(include-uri)
   :on-path "agenda-activities")
 
@@ -180,13 +180,13 @@
               (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
                               :inverse t
                               :as "cases"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/toegangs-niveaus/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/toegangsniveau/")
   :features '(include-uri)
   :on-path "access-levels")
 
 (define-resource person-or-organization ()
   :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
   :properties `((:type :string ,(s-prefix "rdfs:type")))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/personen/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
+  :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
   :features '(include-uri)
   :on-path "person-or-organization")
