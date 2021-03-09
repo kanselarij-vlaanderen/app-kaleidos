@@ -41,7 +41,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/prov#Activity",
     ]
   end
-  
+
   defp document_resource_types() do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
@@ -59,9 +59,10 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
     ]
   end
-  
+
   defp file_bundling_resource_types() do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
@@ -95,7 +96,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
     ]
   end
-  
+
   defp user_account_resource_types() do
     [
       "http://xmlns.com/foaf/0.1/OnlineAccount",
@@ -105,7 +106,7 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  # Also insert your type as ext:PublicClass 
+  # Also insert your type as ext:PublicClass
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
@@ -120,9 +121,9 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/org#Organization",
     ]
   end
-  # Also insert your type as ext:PublicClass 
+  # Also insert your type as ext:PublicClass
 
-  # Also insert your type as ext:PublicClass 
+  # Also insert your type as ext:PublicClass
   defp static_unconfidential_code_list_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
@@ -143,7 +144,7 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
   end
-  # Also insert your type as ext:PublicClass 
+  # Also insert your type as ext:PublicClass
 
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
