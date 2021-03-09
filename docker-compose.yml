@@ -162,7 +162,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.2.2
+    image: kanselarij/agenda-approve-service:3.3.0
     logging: *default-logging
     restart: always
     labels:
@@ -211,7 +211,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:3.7.0
+    image: kanselarij/yggdrasil:4.0.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -258,7 +258,7 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:1.1.0
+    image: kanselarij/case-documents-sync-service:1.2.0
     logging: *default-logging
     restart: always
     labels:

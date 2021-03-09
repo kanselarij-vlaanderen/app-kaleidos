@@ -37,9 +37,6 @@
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
                                         :as "next-piece")
-            (subcase                    :via ,(s-prefix "ext:bevatDocumentversie") ;; should be hasMany, not used in frontend yet
-                                        :inverse t
-                                        :as "subcase")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")

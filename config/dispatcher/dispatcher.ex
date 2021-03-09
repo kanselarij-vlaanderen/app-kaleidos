@@ -136,6 +136,9 @@ defmodule Dispatcher do
   match "/agenda-activities/*path", @any do
     Proxy.forward conn, path, "http://cache/agenda-activities/"
   end
+  match "/submission-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/submission-activities/"
+  end
   match "/access-levels/*path", @any do
     Proxy.forward conn, path, "http://cache/access-levels/"
   end
