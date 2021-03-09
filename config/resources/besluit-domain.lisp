@@ -19,7 +19,7 @@
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendas/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/agenda/")
   :features '(include-uri)
   :on-path "agendas")
 
@@ -31,7 +31,7 @@
   :has-many `((agenda     :via        ,(s-prefix "besluitvorming:agendaStatus")
                           :inverse t
                           :as "agendas"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendastatus/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/agenda-status/")
   :features '(include-uri)
   :on-path "agendastatuses")
 
@@ -79,7 +79,7 @@
                                       :as "pieces")
               (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-pieces"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/agendapunten/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/agendapunt/")
   :features `(no-pagination-defaults include-uri)
   :on-path "agendaitems")
 
@@ -93,7 +93,7 @@
              (agendaitem    :via ,(s-prefix "ext:agendapuntGoedkeuring")
                             :inverse t
                             :as "agendaitem"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/goedkeuringen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/goedkeuring/")
   :on-path "approvals")
 
 (define-resource agenda-item-treatment ()
@@ -117,7 +117,7 @@
                                     :as "newsletter-info")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/behandelingen-van-agendapunt/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
 
@@ -127,7 +127,7 @@
                 (:label       :string ,(s-prefix "skos:prefLabel"))
                 (:priority    :number ,(s-prefix "ext:priority"))
                )
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beslissingsresultaat-code/")
   :features '(include-uri)
   :on-path "decision-result-codes")
 
@@ -138,7 +138,7 @@
                                    :as "area-of-jurisdiction")
              (government-unit-classification-code :via ,(s-prefix "besluit:classificatie")
                                                   :as "classification"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/bestuurseenheden/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/bestuurseenheid/")
   :features '(include-uri)
   :on-path "government-units")
 
@@ -150,7 +150,7 @@
   :has-many `((government-unit :via ,(s-prefix "besluit:werkingsgebied")
                                :inverse t
                                :as "government-units"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/werkingsgebieden/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/werkingsgebied/")
   :features '(include-uri)
   :on-path "jurisdiction-areas")
 
@@ -160,7 +160,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label :string ,(s-prefix "skos:altLabel")))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/bestuurseenheid-classificatie-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/bestuurseenheid-classificatie-code/")
   :features '(include-uri)
   :on-path "government-unit-classification-codes")
 
@@ -197,6 +197,6 @@
                                         :as "mail-campaign")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/zittingen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
   :features '(include-uri)
   :on-path "meetings")

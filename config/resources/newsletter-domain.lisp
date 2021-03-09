@@ -23,7 +23,7 @@
                                         :as "themes")
               (piece                    :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "pieces"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/nieuwsbrief-infos/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/nieuwsbrief-info/")
   :features '(include-uri)
   :on-path "newsletter-infos")
 
@@ -36,7 +36,7 @@
   :has-many `((newsletter-info  :via    ,(s-prefix "dct:subject")
                                 :inverse t
                                 :as "newsletters"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/thema-codes/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/thema/")
   :features `(no-pagination-defaults include-uri)
   :on-path "themes")
 
@@ -49,6 +49,6 @@
   :has-many `((meeting              :via      ,(s-prefix "ext:heeftMailCampagnes")
                                     :inverse t
                                     :as "meetings"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/mail-campaigns/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/mailcampagne/")
   :features `(no-pagination-defaults include-uri)
   :on-path "mail-campaigns")

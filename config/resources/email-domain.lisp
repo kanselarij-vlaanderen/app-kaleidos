@@ -3,7 +3,7 @@
 ;   :properties `((:id :string ,(s-prefix "nie:identifier")))
 ;   :has-many `((folder :via ,(s-prefix "nie:hasPart")
 ;                     :as "folders"))
-;   :resource-base (s-url "http://kanselarij.vo.data.gift/id/mailboxes/")
+;   :resource-base (s-url "http://themis.vlaanderen.be/id/mailbox/")
 ;   :features '(include-uri)
 ;   :on-path "mailboxes")
 
@@ -16,7 +16,7 @@
                     :as "emails")
              (folder :via ,(s-prefix "email:hasFolder");;hack, as mu-cl-resources doesn't support superclasses yet (http://oscaf.sourceforge.net/nmo.html#nmo:MailboxDataObject)
                     :as "folders"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/mail-folders/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/mail-folder/")
   :features '(include-uri)
   :on-path "mail-folders")
 
@@ -45,7 +45,7 @@
                     :as "attachments"))
   ;           (email :via ,(s-prefix "nmo:references");;https://tools.ietf.org/html/rfc2822#section-3.6.4
   ;                   :as "references"))
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/emails/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/email/")
   :features '(include-uri)
   :on-path "emails")
 
@@ -56,6 +56,6 @@
 ;   :has-one `((email :via ,(s-prefix "nmo:messageHeader")
 ;                          :inverse t
 ;                          :as "email"))
-;   :resource-base (s-url "http://kanselarij.vo.data.gift/id/email-headers/")
+;   :resource-base (s-url "http://themis.vlaanderen.be/id/email-header/")
 ;   :features '(include-uri)
 ;   :on-path "email-headers")

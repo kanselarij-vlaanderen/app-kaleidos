@@ -1,6 +1,6 @@
 (define-resource user ()
   :class (s-prefix "foaf:Person")
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/gebruikers/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/gebruiker/")
   :properties `((:first-name            :string   ,(s-prefix "foaf:firstName"))
                 (:last-name             :string   ,(s-prefix "foaf:familyName"))
                 (:email-link            :uri      ,(s-prefix "foaf:mbox"))
@@ -18,7 +18,7 @@
 
 (define-resource account ()
   :class (s-prefix "foaf:OnlineAccount")
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/accounts/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/account/")
   :properties `((:provider     :via ,(s-prefix "foaf:accountServiceHomepage"))
                 (:vo-id        :via ,(s-prefix "dct:identifier"))
                 (:vo-email     :via ,(s-prefix "ext:email"))
@@ -31,7 +31,7 @@
 
 (define-resource account-group ()
   :class (s-prefix "foaf:Group")
-  :resource-base (s-url "http://kanselarij.vo.data.gift/id/account-groups/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/account-groep/")
   :properties `((:name  :via ,(s-prefix "foaf:name")))
   :has-many `((user     :via ,(s-prefix "foaf:member")
                         :as "users"))
