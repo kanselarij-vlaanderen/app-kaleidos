@@ -183,7 +183,7 @@ services:
       MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
-      MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
+      MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
       MU_APPLICATION_AUTH_DEFAULT_GROUP_URI: "http://data.kanselarij.vlaanderen.be/id/group/user"
       REQUEST_TIMEOUT: 5000
     logging: *default-logging
@@ -199,7 +199,7 @@ services:
   user-management-service:
     image: kanselarij/user-management-service:1.1.0
     environment:
-      MU_APPLICATION_RESOURCE_BASE_URI: "http://kanselarij.vo.data.gift/"
+      MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
     logging: *default-logging
     restart: always
     labels:
