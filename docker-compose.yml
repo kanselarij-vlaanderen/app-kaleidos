@@ -162,7 +162,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.2.2
+    image: kanselarij/agenda-approve-service:3.3.0
     logging: *default-logging
     restart: always
     labels:
