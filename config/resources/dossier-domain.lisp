@@ -71,7 +71,7 @@
               (activity               :via ,(s-prefix "dossier:vindtPlaatsTijdens") ;; Dit is de juiste relatie !! ipv besluitvorming
                                       :inverse t
                                       :as "publication-activities")) ;; this can be translationActivity, signatureActivity, publish )
-  :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestappen/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
 
