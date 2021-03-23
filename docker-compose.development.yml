@@ -60,8 +60,10 @@ services:
   mocklogin:
     restart: "no"
   login:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   newsletter-service:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   user-management-service:
     restart: "no"
@@ -78,6 +80,7 @@ services:
   file-bundling-job-creation-service:
     restart: "no"
   database-healthcheck:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   lazy-loading-service:
     restart: "no"
@@ -88,6 +91,7 @@ services:
   document-versions-service:
     restart: "no"
   mail-delivery:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   # kibana:
   #   image: docker.elastic.co/kibana/kibana:7.2.0
