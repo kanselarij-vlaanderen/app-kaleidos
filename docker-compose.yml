@@ -131,18 +131,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  # range-file:
-  #   image: mikidi/js-file-service:latest
-  #   volumes:
-  #     - ./data/files:/share
-  #   logging: *default-logging
-  #   restart: always
-  # document-conversion:
-  #   image: kanselarij/document-conversion-service:latest
-  #   volumes:
-  #     - ./data/files:/share
-  #   logging: *default-logging
-  #   restart: always
   session-number-service:
     image: kanselarij/session-number-service:1.2.0
     logging: *default-logging
