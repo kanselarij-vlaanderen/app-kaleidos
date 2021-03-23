@@ -68,8 +68,6 @@ services:
   user-management-service:
     restart: "no"
   minister-jurisdiction-service:
-    environment:
-      NODE_ENV: "development"
     restart: "no"
   yggdrasil:
     restart: "no"
