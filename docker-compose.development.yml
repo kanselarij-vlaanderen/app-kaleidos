@@ -41,26 +41,14 @@ services:
     restart: "no"
   tika:
     restart: "no"
-  database-healthcheck:
-    restart: "no"
-  # kibana:
-  #   image: docker.elastic.co/kibana/kibana:7.2.0
-  #   environment:
-  #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
-  #   logging: *default-logging
-  #   ports:
-  #     - "5601:5601"
-  #   restart: "no"
   deltanotifier:
+    restart: "no"
+  cache:
     restart: "no"
   resource:
     restart: "no"
   file:
     restart: "no"
-  # range-file:
-  #   restart: "no"
-  # document-conversion:
-  #   restart: "no"
   session-number-service:
     restart: "no"
   agenda-sort-service:
@@ -72,18 +60,16 @@ services:
   mocklogin:
     restart: "no"
   login:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   newsletter-service:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   user-management-service:
     restart: "no"
   minister-jurisdiction-service:
-    environment:
-      NODE_ENV: "development"
     restart: "no"
   yggdrasil:
-    restart: "no"
-  cache:
     restart: "no"
   sink:
     restart: "no"
@@ -91,11 +77,26 @@ services:
     restart: "no"
   file-bundling-job-creation-service:
     restart: "no"
-  mandatee-service:
+  database-healthcheck:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
   lazy-loading-service:
+    restart: "no"
+  mandatee-service:
+    restart: "no"
+  case-documents-sync:
     restart: "no"
   document-versions-service:
     restart: "no"
   mail-delivery:
+    entrypoint: "echo 'service disabled'"
     restart: "no"
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:7.2.0
+  #   environment:
+  #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
+  #   logging: *default-logging
+  #   ports:
+  #     - "5601:5601"
+  #   restart: "no"
+

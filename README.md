@@ -1,51 +1,35 @@
-# mu-project
+# Kaleidos
 
-Bootstrap a mu.semte.ch microservices environment in three easy steps.
-
-## How to
-
-Setting up your environment is done in three easy steps:  first you configure the running microservices and their names in `docker-compose.yml`, then you configure how requests are dispatched in `config/dispatcher.ex`, and lastly you start everything.
-
-### Hooking things up with docker-compose
-
-Alter the `docker-compose.yml` file so it contains all microservices you need.  The example content should be clear, but you can find more information in the [Docker Compose documentation](https://docs.docker.com/compose/).  Don't remove the `identifier` and `db` container, they are respectively the entry-point and the database of your application.  Don't forget to link the necessary microservices to the dispatcher and the database to the microservices.
-
-### Configure the dispatcher
-
-Next, alter the file `config/dispatcher.ex` based on the example that is there by default.  Dispatch requests to the necessary microservices based on the names you used for the microservice.
-
-### Boot up the system
-
-# This project has a different approach to start the compose.
-
-We use 3 docker-compose.yml files to divide our environments.
-> docker-compose -f docker-compose.local.yml 
-
-Will connect your docker-compose command to the docker-compose.local.yml file. Once this is done you will be able to build and run the docker-compose locally by executing
-> docker-compose up -d
+[Kaleidos](https://overheid.vlaanderen.be/beleid-en-regelgeving/werking-en-besluitvorming-vlaamse-regering/kaleidos) is a software-platform used to support the decision-making-process of the Flemish government. The main software-stack is built upon [semantic.works](https://semantic.works/), a micro-service-based, [linked-data](https://en.wikipedia.org/wiki/Linked_data)-first architecture (previously known as [mu.semte.ch](https://mu.semte.ch/)). This repository contains the necessary configuration for each service that the stack is composed of. Please refer to the documentation of [mu-project](https://github.com/mu-semtech/mu-project/#mu-project) for more information on how to run and configure a *semantic.works*-based project.
 
 
-You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`, to force your compose to stop, we use  `docker-compose kill`.
+## Development
 
-# Data needed to run the frontend.
+A supplementary `docker-compose.development.yml`-file is provided in order to tweak the stack-setup for development purposes. Among other changes, this configuration will for instance prevent crashed services from restarting automatically, in order to catch errors quicker.
 
-All ttl files needed are located in the `/data` folder.
+You can start the stack in development mode by running
 
-To be able to use the frontend you should upload all files listed below in the `http://mu.semte.ch/graphs/public` and to `http://mu.semte.ch/graphs/organizations/kanselarij`
+```
+docker-compose -f docker-compose.yml -f docker-compose.development.yml up
+```
 
-- `alert-types.ttl`
-- `confidentiality.ttl`
-- `document-types.ttl`
-- `dossier-type-codes.ttl`
-- `government-domains.ttl`
-- `government-fields.ttl`
-- `ise-codes.ttl`
-- `ministers.ttl`
-- `mock-roles.ttl`
-- `policy-levels.ttl`
-- `procedurestap-fase-codes.ttl`
-- `procedurestap-types.ttl`
-- `themes.ttl`
-- `submitters.ttl`
+*Pro tip: The stack consists of some services such as `mu-search` that can potentially consume a lot of resources and often aren't required for basic development-tasks. Adding the following snippet to your `docker-compose.override.yml`-file under `services`, will disable the most resource-consuming services.*
+```yml
+  musearch:
+    entrypoint: "echo 'service disabled'"
+  elasticsearch:
+    entrypoint: "echo 'service disabled'"
+  yggdrasil:
+    entrypoint: "echo 'service disabled'"
+```
 
-After doing this, you should be able to run the frontend without any troubles.
+## Data
+
+Most of Kaleidos' data is structured according the vocabularies & application-profiles standardised through [OSLO](https://data.vlaanderen.be/). The ones used in Kaleidos include:
+
+- [Besluitvorming](https://data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/)
+- [Dossier](https://data.vlaanderen.be/doc/applicatieprofiel/dossier/)
+- [Mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
+
+Part of the data produced within Kaleidos will soon be published as open-data through the "Themis"-portal. Please consult https://themis.vlaanderen.be/ for more information.
+

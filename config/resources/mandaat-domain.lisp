@@ -63,6 +63,7 @@
   :has-one `((government-field    :via    ,(s-prefix "ext:heeftIseCode")
                                   :as "field"))
   :has-many `((mandatee           :via ,(s-prefix "ext:heeftBevoegdeMandataris")
+                                  :inverse t ;; FIXME: these triples are the wrong way around
                                   :as "mandatees")
               (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
                                   :inverse t
