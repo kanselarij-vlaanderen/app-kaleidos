@@ -85,7 +85,7 @@
   :class (s-prefix "ext:RegelgevingType") ;; used ext instead of pub because this could be used on cases
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note        :string ,(s-prefix "skos:scopeNote"))
-                (:priority          :number ,(s-prefix "ext:priority"))
+                (:position          :number ,(s-prefix "schema:position"))
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((publication-flow     :via    ,(s-prefix "pub:regelgevingType")
                                     :inverse t
