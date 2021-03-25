@@ -138,7 +138,7 @@ services:
     labels:
       - "logging=true"
   agenda-sort-service:
-    image: kanselarij/agenda-sort-service:2.2.0
+    image: kanselarij/agenda-sort-service:2.3.0
     logging: *default-logging
     restart: always
     labels:

@@ -61,6 +61,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/pieces/restore"
   end
 
+  get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-items", @any do
+    Proxy.forward conn, [], "http://agenda-sort-service/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
+  end
+
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-item/:agenda_item_id/pieces", @any do
     Proxy.forward conn, [], "http://agenda-sort-service/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
   end
