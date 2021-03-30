@@ -30,6 +30,7 @@ docker-compose -f docker-compose.yml -f docker-compose.development.yml up
 Most of Kaleidos' data is structured according the vocabularies & application-profiles standardised through [OSLO](https://data.vlaanderen.be/). The ones used in Kaleidos include:
 
 - [Besluitvorming](https://data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/)
+- [Besluit Publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)
 - [Dossier](https://data.vlaanderen.be/doc/applicatieprofiel/dossier/)
 - [Mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
 
