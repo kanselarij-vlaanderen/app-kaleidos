@@ -17,6 +17,8 @@ docker-compose -f docker-compose.yml -f docker-compose.development.yml up
 ```yml
   musearch:
     entrypoint: "echo 'service disabled'"
+  tika:
+    entrypoint: "echo 'service disabled'"
   elasticsearch:
     entrypoint: "echo 'service disabled'"
   yggdrasil:
