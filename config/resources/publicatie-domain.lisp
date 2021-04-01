@@ -24,8 +24,8 @@
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type")
-             (document-type           :via      ,(s-prefix "pub:afgeleidType")
-                                      :as "deduced-type"))
+             (regulation-type         :via      ,(s-prefix "pub:regelgevingType")
+                                      :as "regulation-type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                       :as "mandatees")
               (numac-number           :via      ,(s-prefix "pub:numacNummer")
@@ -68,7 +68,7 @@
   :on-path "languages")
 
 (define-resource publication-type ()
-  :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept
+  :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept  ;; TODO shouldn't this be pub: ?
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label       :string ,(s-prefix "skos:altLabel"))
@@ -79,5 +79,19 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-type/")
   :features '(include-uri)
   :on-path "publication-types")
+
+
+(define-resource regulation-type () ;; maybe legislation ? is this the correct name for this?
+  :class (s-prefix "ext:RegelgevingType") ;; used ext instead of pub because this could be used on cases
+  :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
+                (:scope-note        :string ,(s-prefix "skos:scopeNote"))
+                (:position          :number ,(s-prefix "schema:position"))
+                (:alt-label         :string ,(s-prefix "skos:altLabel")))
+  :has-many `((publication-flow     :via    ,(s-prefix "pub:regelgevingType")
+                                    :inverse t
+                                    :as "publication-flows"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/regelgeving-type/")
+  :features '(include-uri)
+  :on-path "regulation-types")
 
   

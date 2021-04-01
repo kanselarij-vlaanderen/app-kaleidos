@@ -1,0 +1,65 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX regel-type: <http://themis.vlaanderen.be/id/concept/regelgeving-type/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <http://schema.org/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ext:RegelgevingType a ext:PublicClass .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "bf6101a9-d06b-44d4-b629-13965654c8c2" ;
+      schema:position 1 ;
+      skos:prefLabel "Decreet"@nl .
+      
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88" ;
+      schema:position 2 ;
+      skos:prefLabel "BVR"@nl .
+    
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "49bad4d9-745b-4a71-b6c6-0eac34e6bdd4" ;
+      schema:position 3 ;
+      skos:prefLabel "MB"@nl .
+
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "77808a0d-b080-4750-8e1c-8e8bfc609cd1" ;
+      schema:position 4 ;
+      skos:prefLabel "Besluit leidend ambtenaar"@nl .
+
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "e580b153-8ba3-4450-84b8-87c50a60870c" ;
+      schema:position 5 ;
+      skos:prefLabel "Bericht"@nl . 
+
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "d34bdc39-48ac-4743-a7cd-de25105fddf2" ;
+      schema:position 6 ;
+      skos:prefLabel "Omzendbrief"@nl . 
+
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "b7f2fd2c-2a33-4745-bb66-f969d846356f" ;
+      schema:position 7 ;
+      skos:prefLabel "KB"@nl . 
+
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e" ;
+      schema:position 8 ;
+      skos:prefLabel "Erratum"@nl . 
+
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 a ext:RegelgevingType ;
+      a skos:Concept ;
+      mu:uuid "0916ac88-1a96-4e6b-a87b-b7f6dd4d9652" ;
+      schema:position 9 ;
+      skos:prefLabel "Andere"@nl . 
+  }
+}

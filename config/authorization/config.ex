@@ -140,6 +140,7 @@ defmodule Acl.UserGroups.Config do
       "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatietype",
+      "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
