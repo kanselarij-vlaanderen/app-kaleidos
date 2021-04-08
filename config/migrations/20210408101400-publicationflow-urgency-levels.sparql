@@ -12,15 +12,13 @@ INSERT DATA {
       a skos:Concept ;
       mu:uuid "5a48d953-3d88-4eb6-b784-ddb3070c831d" ;
       schema:position 1 ;
-      skos:prefLabel "standaard"@nl ;
-      skos:priority 0 .
+      skos:prefLabel "standaard"@nl .
 
     urgentieniveau:b2b9c588-e91d-4ce0-a1a1-11b522e8a9bf a pub:Urgentieniveau ;
       a skos:Concept ;
       mu:uuid "b2b9c588-e91d-4ce0-a1a1-11b522e8a9bf" ;
       schema:position 2 ;
-      skos:prefLabel "spoedprocedure"@nl ;
-      skos:priority 1 .
+      skos:prefLabel "spoedprocedure"@nl .
 
   }
 }

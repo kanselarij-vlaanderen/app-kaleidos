@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "resources": {
+    "urgency-levels": {
+      "name": "urgency-level",
+      "class": "pub:Urgentieniveau",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:urgentieniveau",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/urgentieniveau/"
+    }
+  }
+}
+
+

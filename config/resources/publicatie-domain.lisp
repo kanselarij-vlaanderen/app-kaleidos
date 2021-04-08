@@ -23,7 +23,7 @@
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type")
-             (priority                :via      ,(s-prefix "pub:urgentieniveau")
+             (urgency-level           :via      ,(s-prefix "pub:urgentieniveau")
                                       :as "urgentieniveau")
              (regulation-type         :via      ,(s-prefix "pub:regelgevingType")
                                       :as "regulation-type"))
@@ -60,17 +60,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-status/")
   :features '(include-uri)
   :on-path "publication-statuses")
-
- (define-resource priority ()
-   :class (s-prefix "pub:Urgentieniveu") ;; NOTE: as well as skos:Concept
-   :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
-                 (:priority    :number ,(s-prefix "ext:priority")))
-   :has-many `((publication-flow    :via    ,(s-prefix "pub:urgentieniveau")
-                               :inverse t
-                               :as "publications"))
-   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/urgentieniveau/")
-   :features '(include-uri)
-   :on-path "priorities")
 
 (define-resource language ()
   :class (s-prefix "euvoc:Language") ;; range of dct:language is a dct:LinguisticSystem. Also see https://github.com/SEMICeu/DCAT-AP/issues/55
