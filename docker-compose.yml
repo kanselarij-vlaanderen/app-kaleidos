@@ -13,7 +13,12 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.6.10
+    image: kanselarij/frontend-kaleidos:5.7.0
+    environment:
+      EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
+      EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
+      EMBER_OAUTH_REDIRECT_URL: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
+      EMBER_OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
     links:
       - identifier:backend
     logging: *default-logging
