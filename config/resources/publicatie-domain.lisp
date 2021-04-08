@@ -15,7 +15,6 @@
                 (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
                 (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
-                (:priority            :number   ,(s-prefix "pub:prioriteit"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "dct:modified")))
   :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
@@ -24,6 +23,8 @@
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type")
+             (priority                :via      ,(s-prefix "pub:urgentieniveau")
+                                      :as "urgentieniveau")
              (regulation-type         :via      ,(s-prefix "pub:regelgevingType")
                                       :as "regulation-type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
@@ -60,6 +61,17 @@
   :features '(include-uri)
   :on-path "publication-statuses")
 
+ (define-resource priority ()
+   :class (s-prefix "pub:Urgentieniveu") ;; NOTE: as well as skos:Concept
+   :properties `((:name        :string ,(s-prefix "skos:prefLabel"))
+                 (:priority    :number ,(s-prefix "ext:priority")))
+   :has-many `((publication-flow    :via    ,(s-prefix "pub:urgentieniveau")
+                               :inverse t
+                               :as "publications"))
+   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/urgentieniveau/")
+   :features '(include-uri)
+   :on-path "priorities")
+
 (define-resource language ()
   :class (s-prefix "euvoc:Language") ;; range of dct:language is a dct:LinguisticSystem. Also see https://github.com/SEMICeu/DCAT-AP/issues/55
   :properties `((:name                 :string ,(s-prefix "skos:prefLabel"))
@@ -94,4 +106,4 @@
   :features '(include-uri)
   :on-path "regulation-types")
 
-  
+
