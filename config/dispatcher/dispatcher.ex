@@ -102,7 +102,7 @@ defmodule Dispatcher do
   match "/meetings/*path", @any do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
-  
+
   match "/document-containers/*path", @any do
     Proxy.forward conn, path, "http://cache/document-containers/"
   end
@@ -297,6 +297,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
 
+  match "/priorities/*path", @any do
+    Proxy.forward conn, path, "http://cache/priorities/"
+  end
+
   match "/configs/*path", @any do
     Proxy.forward conn, path, "http://cache/configs/"
   end
@@ -328,7 +332,7 @@ defmodule Dispatcher do
   get "/languages/*path", @any do
     Proxy.forward conn, path, "http://cache/languages/"
   end
-  
+
   # get "/mailboxes/*path" do
   #   Proxy.forward conn, path, "http://cache/mailboxes/"
   # end
