@@ -14,7 +14,7 @@
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
                 (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
-                (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
+                (:remark              :string   ,(s-prefix "rdfs:comment")) ;; check of dit nodig is
                 (:priority            :number   ,(s-prefix "pub:prioriteit"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "dct:modified")))
@@ -94,4 +94,4 @@
   :features '(include-uri)
   :on-path "regulation-types")
 
-  
+
