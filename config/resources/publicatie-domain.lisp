@@ -24,7 +24,7 @@
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type")
              (urgency-level           :via      ,(s-prefix "pub:urgentieniveau")
-                                      :as "urgentieniveau")
+                                      :as "urgency-level")
              (regulation-type         :via      ,(s-prefix "pub:regelgevingType")
                                       :as "regulation-type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
