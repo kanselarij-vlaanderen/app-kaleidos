@@ -20,7 +20,7 @@
                 (:modified            :datetime ,(s-prefix "dct:modified")))
   :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
                                       :as "case")
-             (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
+             (publication-status      :via      ,(s-prefix "adms:status")
                                       :as "status")
              (publication-type        :via      ,(s-prefix "dct:type")
                                       :as "type")
@@ -94,4 +94,4 @@
   :features '(include-uri)
   :on-path "regulation-types")
 
-  
+

@@ -1,0 +1,11 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+  ?s pub:publicatiestatus ?o .
+} INSERT {
+  ?s adms:status ?o .
+} WHERE {
+  ?s pub:publicatiestatus ?o .
+}
