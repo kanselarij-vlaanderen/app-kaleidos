@@ -6,19 +6,22 @@
 @prefix thPublicatieWijze: <http://themis.vlaanderen.be/id/concept/publicatie-wijze/> .
 @prefix pub: <http://mu.semte.ch/vocabularies/ext/publicatie/> .
 
-pub:PublicatieWijze rdfs:subClassOf skos:Concept .
+pub:PublicatieWijze a rdfs:Class ;
+  skos:prefLabel "Publicatiewijze" .
 
 thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 a skos:ConceptScheme ;
   mu:uuid "36d4c69a-5313-48e5-9096-d5729b8aa1c6" ;
   skos:prefLabel "Publicatiewijzes" .
 
 thPublicatieWijze:5659be06-3361-46b2-a0dd-69b4e6adb7e4 a pub:PublicatieWijze ;
+  a skos:Concept ;
   mu:uuid "5659be06-3361-46b2-a0dd-69b4e6adb7e4" ;
   skos:inScheme thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 ;
   skos:prefLabel "Extenso" ;
   schema:position 1 .
 
 thPublicatieWijze:bd49553f-39af-4b47-9550-1662e1bde7e6 a pub:PublicatieWijze ;
+  a skos:Concept ;
   mu:uuid "bd49553f-39af-4b47-9550-1662e1bde7e6" ;
   skos:inScheme thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 ;
   skos:prefLabel "Bij uittreksel" ;

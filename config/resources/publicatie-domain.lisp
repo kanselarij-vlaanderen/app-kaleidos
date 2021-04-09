@@ -22,8 +22,8 @@
                                       :as "case")
              (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
                                       :as "status")
-             (publication-type        :via      ,(s-prefix "dct:type")
-                                      :as "type")
+             (publication-mode        :via      ,(s-prefix "pub:publicatieWijze")
+                                      :as "mode")
              (regulation-type         :via      ,(s-prefix "pub:regelgevingType")
                                       :as "regulation-type"))
   :has-many `((mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
@@ -67,18 +67,16 @@
   :features '(include-uri)
   :on-path "languages")
 
-(define-resource publication-type ()
-  :class (s-prefix "ext:PublicatieType") ;; NOTE: as well as skos:Concept  ;; TODO shouldn't this be pub: ?
+(define-resource publication-mode ()
+  :class (s-prefix "pub:PublicatieWijze") ;; NOTE: as well as skos:Concept  ;;
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel"))
-                (:priority        :number ,(s-prefix "ext:priority")))
+                (:priority        :number ,(s-prefix "schema:position")))
   :has-many `((publication-flow   :via ,(s-prefix "dct:type")
                                   :inverse t
                                   :as "publication-flows"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-type/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-wijze/")
   :features '(include-uri)
-  :on-path "publication-types")
+  :on-path "publication-modes")
 
 
 (define-resource regulation-type () ;; maybe legislation ? is this the correct name for this?
@@ -94,4 +92,4 @@
   :features '(include-uri)
   :on-path "regulation-types")
 
-  
+
