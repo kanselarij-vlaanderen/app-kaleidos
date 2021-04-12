@@ -71,7 +71,7 @@
   :class (s-prefix "pub:PublicatieWijze") ;; NOTE: as well as skos:Concept  ;;
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:priority        :number ,(s-prefix "schema:position")))
-  :has-many `((publication-flow   :via ,(s-prefix "dct:type")
+  :has-many `((publication-flow   :via ,(s-prefix "pub:publicatieWijze")
                                   :inverse t
                                   :as "publication-flows"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatie-wijze/")
