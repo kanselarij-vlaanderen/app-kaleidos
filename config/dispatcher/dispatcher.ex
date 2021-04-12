@@ -297,7 +297,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
 
-  match "/urgency-levels/*path", @any do
+  get "/urgency-levels/*path", @any do
     Proxy.forward conn, path, "http://cache/urgency-levels/"
   end
 
