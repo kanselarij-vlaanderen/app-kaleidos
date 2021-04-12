@@ -14,13 +14,13 @@
                 (:publish-before      :datetime ,(s-prefix "pub:uiterstePublicatie")) ;; in de subcase ?
                 (:publish-date-requested    :datetime ,(s-prefix "pub:gevraagdePublicatie"))
                 (:published-at        :datetime ,(s-prefix "pub:publicatieOp")) ;; in de subcase ?                per drukproef/publicatie ??     per drukproef/publicatie ??
-                (:remark              :string   ,(s-prefix "pub:publicatieOpmerking")) ;; check of dit nodig is
+                (:remark              :string   ,(s-prefix "rdfs:comment")) ;; check of dit nodig is
                 (:priority            :number   ,(s-prefix "pub:prioriteit"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "dct:modified")))
   :has-one `((case                    :via      ,(s-prefix "dossier:behandelt")
                                       :as "case")
-             (publication-status      :via      ,(s-prefix "pub:publicatiestatus")
+             (publication-status      :via      ,(s-prefix "adms:status")
                                       :as "status")
              (publication-mode        :via      ,(s-prefix "pub:publicatieWijze")
                                       :as "mode")
