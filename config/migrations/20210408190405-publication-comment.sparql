@@ -1,0 +1,11 @@
+PREFIX rdfs: <https://www.w3.org/2000/01/rdf-schema#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+  ?s pub:publicatieOpmerking ?o .
+} INSERT {
+  ?s rdfs:comment ?o .
+} WHERE {
+  ?s pub:publicatieOpmerking ?o .
+}

@@ -110,6 +110,12 @@ services:
     restart: always
     labels:
       - "logging=true"
+  cache-warmup:
+    image: kanselarij/cache-warmup-service:0.1.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   cache:
     image: semtech/mu-cache:2.0.1
     links:
