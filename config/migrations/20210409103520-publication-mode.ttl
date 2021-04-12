@@ -6,6 +6,8 @@
 @prefix thPublicatieWijze: <http://themis.vlaanderen.be/id/concept/publicatie-wijze/> .
 @prefix pub: <http://mu.semte.ch/vocabularies/ext/publicatie/> .
 
+pub:PublicatieWijze a ext:PublicClass .
+
 thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 a skos:ConceptScheme ;
   mu:uuid "36d4c69a-5313-48e5-9096-d5729b8aa1c6" ;
   skos:prefLabel "Publicatiewijzes" .
