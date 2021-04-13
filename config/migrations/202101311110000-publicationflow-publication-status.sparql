@@ -1,10 +1,9 @@
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
-PREFIX publication-status: <http://themis.vlaanderen.be/id/concept/publicatie-wijze/>
+PREFIX publication-status: <http://themis.vlaanderen.be/id/concept/publicatie-status/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX schema: <http://schema.org/>
-
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {

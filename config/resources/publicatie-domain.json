@@ -130,7 +130,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-wijze"
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status"
     },
     "languages": {
       "name": "language",
