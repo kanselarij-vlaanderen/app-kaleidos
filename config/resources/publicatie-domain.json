@@ -18,7 +18,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "string",
+          "type": "number",
           "predicate": "schema:position"
         }
       },
