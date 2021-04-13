@@ -305,7 +305,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/numac-numbers/"
   end
 
-  match "/publication-modes/*path", @any do
+  get "/publication-modes/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-modes/"
   end
 
