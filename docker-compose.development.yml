@@ -13,6 +13,8 @@ services:
       EMBER_ENABLE_PUBLICATIONS_TAB: "true"
   identifier:
     restart: "no"
+    ports:
+    - "80:80"
   dispatcher:
     restart: "no"
   migrations-service:
