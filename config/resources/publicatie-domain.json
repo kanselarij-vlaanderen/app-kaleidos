@@ -58,47 +58,47 @@
         "case": {
           "predicate": "dossier:behandelt",
           "target": "case",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "status": {
           "predicate": "adms:status",
           "target": "publication-status",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "type": {
           "predicate": "dct:type",
           "target": "publication-type",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "urgency-level": {
           "predicate": "pub:urgentieniveau",
           "target": "urgency-level",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "regulation-type": {
           "predicate": "pub:regelgevingType",
           "target": "regulation-type",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
           "target": "mandatee",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "numac-numbers": {
           "predicate": "pub:numacNummer",
           "target": "numac-number",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "subcases": {
           "predicate": "ext:doorloopt",
           "target": "subcase",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "contact-persons": {
           "predicate": "pub:contactPersoon",
           "target": "contact-person",
-          "cardinality": "many",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
