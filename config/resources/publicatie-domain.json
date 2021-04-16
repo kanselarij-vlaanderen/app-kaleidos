@@ -1,0 +1,206 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "schema": "http://schema.org/",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "dossier": "https://data.vlaanderen.be/ns/dossier#",
+    "euvoc":"http://publications.europa.eu/ontology/euvoc#"
+  },
+  "resources": {
+    "publication-flows": {
+      "name": "publication-flow",
+      "class": "pub:Publicatieaangelegenheid",
+      "attributes": {
+        "publication-number": {
+          "type": "number",
+          "predicate": "pub:publicatieNummer"
+        },
+        "publication-suffix": {
+          "type": "string",
+          "predicate": "pub:publicatieNummerSuffix"
+        },
+        "translate-before": {
+          "type": "datetime",
+          "predicate": "pub:uitersteVertaling"
+        },
+        "publish-before": {
+          "type": "datetime",
+          "predicate": "pub:uiterstePublicatie"
+        },
+        "publish-date-requested": {
+          "type": "datetime",
+          "predicate": "pub:gevraagdePublicatie"
+        },
+        "published-at": {
+          "type": "datetime",
+          "predicate": "pub:publicatieOp"
+        },
+        "remark": {
+          "type": "string",
+          "predicate": "rdfs:comment"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "case": {
+          "predicate": "dossier:behandelt",
+          "target": "case",
+          "cardinality": "one"
+        },
+        "status": {
+          "predicate": "adms:status",
+          "target": "publication-status",
+          "cardinality": "one"
+        },
+        "type": {
+          "predicate": "dct:type",
+          "target": "publication-type",
+          "cardinality": "one"
+        },
+        "urgency-level": {
+          "predicate": "pub:urgentieniveau",
+          "target": "urgency-level",
+          "cardinality": "one"
+        },
+        "regulation-type": {
+          "predicate": "pub:regelgevingType",
+          "target": "regulation-type",
+          "cardinality": "one"
+        },
+        "mandatees": {
+          "predicate": "ext:heeftBevoegdeVoorPublicatie",
+          "target": "mandatee",
+          "cardinality": "many"
+        },
+        "numac-numbers": {
+          "predicate": "pub:numacNummer",
+          "target": "numac-number",
+          "cardinality": "many"
+        },
+        "subcases": {
+          "predicate": "ext:doorloopt",
+          "target": "subcase",
+          "cardinality": "many"
+        },
+        "contact-persons": {
+          "predicate": "pub:contactPersoon",
+          "target": "contact-person",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
+    },
+    "publication-statuses": {
+      "name": "publication-status",
+      "class": "pub:Publicatiestatus",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "priority": {
+          "type": "number",
+          "predicate": "ext:priority"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:publicatiestatus",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status/"
+    },
+    "languages": {
+      "name": "language",
+      "class": "euvoc:Language",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "priority": {
+          "type": "number",
+          "predicate": "ext:priority"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/taal/",
+      "features": ["include-uri"]
+    },
+    "urgency-levels": {
+      "name": "urgency-level",
+      "class": "pub:Urgentieniveau",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "position": {
+          "type": "number",
+          "predicate": "schema:position"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:urgentieniveau",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/urgentieniveau/"
+    },
+    "regulation-types": {
+      "name": "regulation-type",
+      "class": "ext:RegelgevingType",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "position": {
+          "type": "number",
+          "predicate": "schema:position"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "publication-flows": {
+          "predicate": "pub:regelgevingType",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/regelgeving-type/"
+    }
+  }
+}
+
+

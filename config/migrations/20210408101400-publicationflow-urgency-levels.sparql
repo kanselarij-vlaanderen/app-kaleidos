@@ -1,0 +1,29 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX urgentieniveau: <http://themis.vlaanderen.be/id/concept/urgentieniveau/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <http://schema.org/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+     <http://themis.vlaanderen.be/id/concept-scheme/8447bfd0-d343-43e2-a58b-3ac8529e01e3> a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+         <http://mu.semte.ch/vocabularies/core/uuid> "8447bfd0-d343-43e2-a58b-3ac8529e01e3" ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Urgentieniveaus" .
+
+    pub:Urgentieniveau a ext:PublicClass .
+    urgentieniveau:5a48d953-3d88-4eb6-b784-ddb3070c831d a pub:Urgentieniveau ;
+      a skos:Concept ;
+      mu:uuid "5a48d953-3d88-4eb6-b784-ddb3070c831d" ;
+      schema:position 1 ;
+      skos:prefLabel "standaard"@nl ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/8447bfd0-d343-43e2-a58b-3ac8529e01e3> .
+
+    urgentieniveau:b2b9c588-e91d-4ce0-a1a1-11b522e8a9bf a pub:Urgentieniveau ;
+      a skos:Concept ;
+      mu:uuid "b2b9c588-e91d-4ce0-a1a1-11b522e8a9bf" ;
+      schema:position 2 ;
+      skos:prefLabel "spoedprocedure"@nl ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/8447bfd0-d343-43e2-a58b-3ac8529e01e3> .
+  }
+}
