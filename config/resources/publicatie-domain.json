@@ -119,7 +119,7 @@
       },
       "relationships": {
         "publications": {
-          "predicate": "pub:publicatiestatus",
+          "predicate": "adms:status",
           "target": "publication-flow",
           "cardinality": "many",
           "inverse": true
