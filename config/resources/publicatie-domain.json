@@ -67,7 +67,7 @@
         },
         "mode": {
           "predicate": "pub:publicatieWijze",
-          "target": "mode",
+          "target": "publication-mode",
           "cardinality": "one"
         },
         "urgency-level": {
@@ -108,7 +108,7 @@
       "name": "publication-mode",
       "class": "pub:PublicatieWijze",
       "attributes": {
-        "name": {
+        "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
         },
