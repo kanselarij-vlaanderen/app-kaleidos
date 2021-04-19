@@ -45,6 +45,14 @@
           "type": "string",
           "predicate": "rdfs:comment"
         },
+        "opening-date": {
+          "type": "date",
+          "predicate": "dossier:openingsdatum"
+        },
+        "closing-date": {
+          "type": "date",
+          "predicate": "dossier:sluitingsdatum"
+        },
         "created": {
           "type": "datetime",
           "predicate": "dct:created"
