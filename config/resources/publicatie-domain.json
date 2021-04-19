@@ -58,51 +58,75 @@
         "case": {
           "predicate": "dossier:behandelt",
           "target": "case",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "status": {
           "predicate": "adms:status",
           "target": "publication-status",
-          "cardinality": "one",
+          "cardinality": "one"
         },
-        "type": {
-          "predicate": "dct:type",
-          "target": "publication-type",
-          "cardinality": "one",
+        "mode": {
+          "predicate": "pub:publicatieWijze",
+          "target": "publication-mode",
+          "cardinality": "one"
         },
         "urgency-level": {
           "predicate": "pub:urgentieniveau",
           "target": "urgency-level",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "regulation-type": {
           "predicate": "pub:regelgevingType",
           "target": "regulation-type",
-          "cardinality": "one",
+          "cardinality": "one"
         },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
           "target": "mandatee",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "numac-numbers": {
           "predicate": "pub:numacNummer",
           "target": "numac-number",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "subcases": {
           "predicate": "ext:doorloopt",
           "target": "subcase",
-          "cardinality": "many",
+          "cardinality": "many"
         },
         "contact-persons": {
           "predicate": "pub:contactPersoon",
           "target": "contact-person",
-          "cardinality": "many",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
+    },
+    "publication-modes": {
+      "name": "publication-mode",
+      "class": "pub:PublicatieWijze",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "position": {
+          "type": "number",
+          "predicate": "schema:position"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:publicatieWijze",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-wijze/"
     },
     "publication-statuses": {
       "name": "publication-status",
@@ -119,7 +143,7 @@
       },
       "relationships": {
         "publications": {
-          "predicate": "pub:publicatiestatus",
+          "predicate": "adms:status",
           "target": "publication-flow",
           "cardinality": "many",
           "inverse": true

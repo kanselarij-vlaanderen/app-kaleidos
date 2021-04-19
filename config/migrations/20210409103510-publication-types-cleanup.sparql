@@ -1,0 +1,10 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX public: <http://mu.semte.ch/graphs/public>
+
+WITH public:
+DELETE {
+  ?s ?p ?o .
+} WHERE {
+  ?s a pub:PublicatieType ;
+    ?p ?o .
+}

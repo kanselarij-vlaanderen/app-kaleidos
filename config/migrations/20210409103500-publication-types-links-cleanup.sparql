@@ -1,0 +1,13 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX public: <http://mu.semte.ch/graphs/public>
+PREFIX kanselarij: <http://mu.semte.ch/graphs/organizations/kanselarij>
+
+WITH kanselarij:
+DELETE {
+  ?s ?p ?o .
+} WHERE {
+  GRAPH public: {
+    ?o a pub:PublicatieType .
+  }
+  ?s ?p ?o .
+}
