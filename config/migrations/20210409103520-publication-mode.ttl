@@ -1,0 +1,28 @@
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thPublicatieWijze: <http://themis.vlaanderen.be/id/concept/publicatie-wijze/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix pub: <http://mu.semte.ch/vocabularies/ext/publicatie/> .
+
+pub:PublicatieWijze a ext:PublicClass .
+
+thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 a skos:ConceptScheme ;
+  mu:uuid "36d4c69a-5313-48e5-9096-d5729b8aa1c6" ;
+  skos:prefLabel "Publicatiewijzes"@nl .
+
+thPublicatieWijze:5659be06-3361-46b2-a0dd-69b4e6adb7e4 a pub:PublicatieWijze ;
+  a skos:Concept ;
+  mu:uuid "5659be06-3361-46b2-a0dd-69b4e6adb7e4" ;
+  skos:inScheme thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 ;
+  skos:prefLabel "Extenso"@nl ;
+  schema:position 1 .
+
+thPublicatieWijze:bd49553f-39af-4b47-9550-1662e1bde7e6 a pub:PublicatieWijze ;
+  a skos:Concept ;
+  mu:uuid "bd49553f-39af-4b47-9550-1662e1bde7e6" ;
+  skos:inScheme thConceptScheme:36d4c69a-5313-48e5-9096-d5729b8aa1c6 ;
+  skos:prefLabel "Bij uittreksel"@nl ;
+  schema:position 2 .

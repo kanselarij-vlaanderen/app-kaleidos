@@ -73,9 +73,9 @@
           "target": "publication-status",
           "cardinality": "one"
         },
-        "type": {
-          "predicate": "dct:type",
-          "target": "publication-type",
+        "mode": {
+          "predicate": "pub:publicatieWijze",
+          "target": "publication-mode",
           "cardinality": "one"
         },
         "urgency-level": {
@@ -112,6 +112,30 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
     },
+    "publication-modes": {
+      "name": "publication-mode",
+      "class": "pub:PublicatieWijze",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "position": {
+          "type": "number",
+          "predicate": "schema:position"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:publicatieWijze",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-wijze/"
+    },
     "publication-statuses": {
       "name": "publication-status",
       "class": "pub:Publicatiestatus",
@@ -127,7 +151,7 @@
       },
       "relationships": {
         "publications": {
-          "predicate": "pub:publicatiestatus",
+          "predicate": "adms:status",
           "target": "publication-flow",
           "cardinality": "many",
           "inverse": true
