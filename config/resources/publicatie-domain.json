@@ -144,9 +144,9 @@
           "type": "string",
           "predicate": "skos:prefLabel"
         },
-        "priority": {
+        "position": {
           "type": "number",
-          "predicate": "ext:priority"
+          "predicate": "schema:position"
         }
       },
       "relationships": {

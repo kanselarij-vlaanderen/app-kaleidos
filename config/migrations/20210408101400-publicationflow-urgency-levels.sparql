@@ -4,7 +4,6 @@ PREFIX urgentieniveau: <http://themis.vlaanderen.be/id/concept/urgentieniveau/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX schema: <http://schema.org/>
-
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
      <http://themis.vlaanderen.be/id/concept-scheme/8447bfd0-d343-43e2-a58b-3ac8529e01e3> a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
