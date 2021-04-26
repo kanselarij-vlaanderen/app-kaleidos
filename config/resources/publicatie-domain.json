@@ -160,6 +160,153 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status/"
     },
+    "request-activities": {
+      "name": "request-activity",
+      "class": "pub:AanvraagActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "email": {
+          "predicate": "nmo:email",
+          "target": "email",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/aanvraag-activiteit/"
+    },
+    "translation-activities": {
+      "name": "translation-activity",
+      "class": "pub:VertaalActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:vertalingVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/vertaal-activiteit/"
+    },
+    "proofing-activities": {
+      "name": "proofing-activity",
+      "class": "pub:DrukproefActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:drukproefVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/drukproef-activiteit/"
+
+    },
+    "publication-activities": {
+      "name": "publication-activity",
+      "class": "pub:PublicatieActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:publicatieVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-activiteit/"
+
+    },
+    "cancellation-activities": {
+      "name": "cancellation-activity",
+      "class": "pub:AnnulatieActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "publications": {
+          "predicate": "pub:annuleringVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/annulatie-activiteit/"
+    },
     "languages": {
       "name": "language",
       "class": "euvoc:Language",
