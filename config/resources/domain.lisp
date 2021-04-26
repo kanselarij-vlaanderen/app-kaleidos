@@ -33,3 +33,4 @@
 (read-domain-file "publicatie-domain.json")
 (read-domain-file "users-domain.lisp")
 (read-domain-file "email-domain.lisp")
+(read-domain-file "generiek-domain.json")
