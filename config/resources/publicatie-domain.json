@@ -88,6 +88,11 @@
           "target": "regulation-type",
           "cardinality": "one"
         },
+        "publication-status-changes": {
+          "predicate": "prov:hadActivity",
+          "target": "publication-status-change",
+          "cardinality": "one"
+        },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
           "target": "mandatee",
@@ -106,11 +111,6 @@
         "contact-persons": {
           "predicate": "pub:contactPersoon",
           "target": "contact-person",
-          "cardinality": "many"
-        },
-        "publication-status-changes": {
-          "predicate": "prov:hadActivity",
-          "target": "publication-status-change",
           "cardinality": "many"
         }
       },
@@ -255,7 +255,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-wijze/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status-wijziging/"
     }
   }
 }
