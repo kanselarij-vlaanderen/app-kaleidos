@@ -88,7 +88,7 @@
           "target": "regulation-type",
           "cardinality": "one"
         },
-        "publication-status-changes": {
+        "publication-status-change": {
           "predicate": "prov:hadActivity",
           "target": "publication-status-change",
           "cardinality": "one"
@@ -247,7 +247,7 @@
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "prov:hadActivity",
           "target": "publication-flow",
           "cardinality": "one",
@@ -255,7 +255,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status-wijziging/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
     }
   }
 }

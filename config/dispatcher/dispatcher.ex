@@ -302,7 +302,7 @@ defmodule Dispatcher do
   end
 
   match "/publication-status-changes/*path", @any do
-    Proxy.forward conn, path, "http://cache/publication-flows/"
+    Proxy.forward conn, path, "http://cache/publication-status-changes/"
   end
 
   match "/configs/*path", @any do
