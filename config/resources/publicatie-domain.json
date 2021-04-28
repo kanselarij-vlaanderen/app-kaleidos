@@ -102,7 +102,7 @@
         },
         "identification": {
           "predicate": "adms:identifier",
-          "target": "identifications",
+          "target": "identification",
           "cardinality": "one"
         }
       },
@@ -231,5 +231,3 @@
     }
   }
 }
-
-

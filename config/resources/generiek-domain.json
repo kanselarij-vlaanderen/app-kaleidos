@@ -8,6 +8,7 @@
   },
   "resources": {
     "structured-identifiers": {
+      "name": "structured-identifier",
       "class": "generiek:GestructureerdeIdentificator",
       "attributes": {
         "local-identifier": {
@@ -21,7 +22,7 @@
       },
       "relationships": {
         "identification": {
-          "target": "identifications",
+          "target": "identification",
           "predicate": "generiek:gestructureerdeIdentificator",
           "cardinality": "one",
           "inverse": true
@@ -33,6 +34,7 @@
       "new-resource-base": "http://themis.vlaanderen.be/id/structured-identificator/"
     },
     "identifications": {
+      "name": "identification",
       "class": "adms:Identifier",
       "attributes": {
         "id-name": {
@@ -46,13 +48,19 @@
       },
       "relationships": {
         "person": {
-          "target": "persons",
+          "target": "person",
           "predicate": "ext:identifier",
           "cardinality": "one",
           "inverse": true
         },
+        "publication-flow": {
+          "target": "publication-flow",
+          "predicate": "adms:identifier",
+          "cardinality": "one",
+          "inverse": true
+        },
         "structured-identifier": {
-          "target": "structured-identifiers",
+          "target": "structured-identifier",
           "predicate": "generiek:gestructureerdeIdentificator",
           "cardinality": "one"
         }
