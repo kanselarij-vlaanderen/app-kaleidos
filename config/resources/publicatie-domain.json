@@ -86,8 +86,8 @@
           "cardinality": "many"
         },
         "numac-numbers": {
-          "predicate": "pub:numacNummer",
-          "target": "numac-number",
+          "predicate": "pub:identifier",
+          "target": "identification",
           "cardinality": "many"
         },
         "subcases": {
