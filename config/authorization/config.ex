@@ -143,7 +143,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
-      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
   end

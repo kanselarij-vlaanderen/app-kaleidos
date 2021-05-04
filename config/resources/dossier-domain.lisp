@@ -107,8 +107,6 @@
                                   :as "subcase")
              (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
                                   :as "language")
-             (activity-type       :via      ,(s-prefix "dct:type")
-                                  :as "type")
              ;;Publicatie
              (activity            :via      ,(s-prefix "pub:publishes")
                                   :as "publishes")
@@ -142,18 +140,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-status/")
   :features '(include-uri)
   :on-path "activity-statuses")
-
-(define-resource activity-type ()
-  :class (s-prefix "ext:ActiviteitType") ;; NOTE: as well as skos:Concept
-  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((activity           :via ,(s-prefix "dct:type")
-                                  :inverse t
-                                  :as "activities"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-type/")
-  :features '(include-uri)
-  :on-path "activity-types")
 
 (define-resource agenda-activity ()
   :class (s-prefix "besluitvorming:Agendering")
