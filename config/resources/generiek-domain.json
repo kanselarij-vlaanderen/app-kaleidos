@@ -55,7 +55,7 @@
         },
         "publication-flow": {
           "target": "publication-flow",
-          "predicate": "pub:identifier",
+          "predicate": "adms:identifier",
           "cardinality": "one",
           "inverse": true
         },
