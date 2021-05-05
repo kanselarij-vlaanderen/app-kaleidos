@@ -38,7 +38,7 @@ defmodule Acl.UserGroups.Config do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
-      "http://www.w3.org/ns/prov#Activity",
+      "http://www.w3.org/ns/prov#Activity", # TODO: do we still need this for later with polymorphism ?
     ]
   end
 
@@ -80,6 +80,11 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
       "http://mu.semte.ch/vocabularies/ext/publicatie/NumacNummer",
       "http://www.w3.org/ns/org#Organization",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/DrukproefActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
     ]
   end
 

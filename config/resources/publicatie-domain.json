@@ -10,7 +10,8 @@
     "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
     "adms": "http://www.w3.org/ns/adms#",
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
-    "euvoc":"http://publications.europa.eu/ontology/euvoc#"
+    "euvoc": "http://publications.europa.eu/ontology/euvoc#",
+    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
   },
   "resources": {
     "publication-flows": {
@@ -321,7 +322,8 @@
         "generated-pieces":{
           "predicate": "dossier:genereert",
           "target": "piece",
-          "cardinality": "one"
+          "cardinality": "one",
+          "_comment": "this should be a besluit:Besluit"
         }
       },
       "features": ["include-uri"],
