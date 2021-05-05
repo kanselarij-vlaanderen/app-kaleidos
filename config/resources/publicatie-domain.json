@@ -184,7 +184,7 @@
         }
       },
       "relationships": {
-        "publication": {
+        "subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -230,7 +230,7 @@
         }
       },
       "relationships": {
-        "publication": {
+        "subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -272,7 +272,7 @@
         }
       },
       "relationships": {
-        "publication": {
+        "subcase": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -309,7 +309,7 @@
         }
       },
       "relationships": {
-        "publication": {
+        "subcase": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -348,7 +348,7 @@
         }
       },
       "relationships": {
-        "publication": {
+        "subcase": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
