@@ -183,16 +183,21 @@
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "pub:aanvraagVindtPlaatsTijdens",
           "target": "subcase",
+          "cardinality": "one"
+        },
+        "email": {
+          "predicate": "dct:subject",
+          "target": "email",
           "cardinality": "one",
           "inverse": true
         },
-        "email": {
-          "predicate": "nmo:email",
-          "target": "email",
-          "cardinality": "one"
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -213,14 +218,36 @@
         "end-date": {
           "type": "datetime",
           "predicate": "dossier:Activiteit.einddatum"
+        },
+        "due-date": {
+          "type": "datetime",
+          "predicate": "tmo:dueDate"
+        },
+        "target-end-date": {
+          "type": "datetime",
+          "predicate": "tmo:targetEndTime"
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
           "target": "subcase",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
+        },
+        "language": {
+          "predicate": "pub:doelTaal",
+          "target": "language",
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -244,16 +271,24 @@
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
           "target": "subcase",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/drukproef-activiteit/"
-
     },
     "publication-activities": {
       "name": "publication-activity",
@@ -273,11 +308,20 @@
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
           "target": "subcase",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -302,9 +346,14 @@
         }
       },
       "relationships": {
-        "publications": {
+        "publication": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
           "target": "subcase",
+          "cardinality": "one"
+        },
+        "email": {
+          "predicate": "dct:subject",
+          "target": "email",
           "cardinality": "one",
           "inverse": true
         }

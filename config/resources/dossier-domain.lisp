@@ -69,9 +69,21 @@
               (agenda-item-treatment  :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
                                       :inverse t
                                       :as "treatments")
-              (activity               :via ,(s-prefix "dossier:vindtPlaatsTijdens") ;; Dit is de juiste relatie !! ipv besluitvorming
+              (request-activity       :via ,(s-prefix "pub:aanvraagVindtPlaatsTijdens")
                                       :inverse t
-                                      :as "publication-activities")) ;; this can be translationActivity, signatureActivity, publish )
+                                      :as "request-activities")
+              (translation-activity   :via ,(s-prefix "pub:vertalingVindtPlaatsTijdens")
+                                      :inverse t
+                                      :as "translation-activities")
+              (proofing-activity      :via ,(s-prefix "pub:drukproefVindtPlaatsTijdens")
+                                      :inverse t
+                                      :as "proofing-activities")
+              (publication-activity   :via ,(s-prefix "pub:publicatieVindtPlaatsTijdens")
+                                      :inverse t
+                                      :as "publication-activities")
+              (cancellation-activity  :via ,(s-prefix "pub:annuleringVindtPlaatsTijdens")
+                                      :inverse t
+                                      :as "cancellation-activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
