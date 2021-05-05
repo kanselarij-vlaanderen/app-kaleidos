@@ -88,6 +88,11 @@
           "target": "regulation-type",
           "cardinality": "one"
         },
+        "publication-status-change": {
+          "predicate": "prov:hadActivity",
+          "target": "publication-status-change",
+          "cardinality": "one"
+        },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
           "target": "mandatee",
@@ -231,6 +236,26 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/regelgeving-type/"
+    },
+    "publication-status-changes": {
+      "name": "publication-status-change",
+      "class": "pub:PublicatieStatusWijziging",
+      "attributes": {
+        "started-at": {
+          "type": "datetime",
+          "predicate": "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "publication": {
+          "predicate": "prov:hadActivity",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
     }
   }
 }
