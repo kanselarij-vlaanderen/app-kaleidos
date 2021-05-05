@@ -100,59 +100,6 @@
   :features '(include-uri)
   :on-path "subcase-types")
 
-;; "http://mu.semte.ch/vocabularies/ext/publicatie/Vertaalactiviteit"
-;; "http://mu.semte.ch/vocabularies/ext/publicatie/Handtekenactiviteit"
-;; "http://mu.semte.ch/vocabularies/ext/publicatie/Drukproefactiviteit"
-(define-resource activity ()
-  :class (s-prefix "prov:Activity") ;; Does this belong in dossier-domain ?
-  :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum"))
-                (:end-date        :datetime ,(s-prefix "dossier:Activiteit.einddatum"))
-                (:name            :string   ,(s-prefix "dct:title"))
-
-                ;;Vertaal activiteit
-                (:final-translation-date     :datetime ,(s-prefix "pub:uitersteVertaling"))
-                (:withdraw-reason     :string ,(s-prefix "ext:redenVanIntrekking"))
-                (:mail-content        :string ,(s-prefix "ext:bericht"))
-                (:mail-subject        :string ,(s-prefix "ext:onderwerp")))
-
-  :has-one `((subcase             :via      ,(s-prefix "dossier:vindtPlaatsTijdens")
-                                  :as "subcase")
-             (language            :via      ,(s-prefix "ext:doelTaal") ;; only when type === translationActivity
-                                  :as "language")
-             ;;Publicatie
-             (activity            :via      ,(s-prefix "pub:publishes")
-                                  :as "publishes")
-             (activity-status     :via      ,(s-prefix "pub:publicatieStatus")
-                                  :as "status")
-                                  )
-  :has-many `((piece              :via      ,(s-prefix "prov:used")
-                                  :as "used-pieces")
-              (piece              :via      ,(s-prefix "dossier:genereert")
-                                  :as "generated-pieces")
-
-              (file               :via      ,(s-prefix "ext:gebruiktBestand")
-                                  :as "used-files")
-              ;;Publicatie
-              (activity           :via      ,(s-prefix "pub:publishes")
-                                  :inverse t
-                                  :as "published-by")
-                                  )
-  :resource-base (s-url "http://themis.vlaanderen.be/id/activiteit/")
-  :features '(include-uri)
-  :on-path "activities")
-
-(define-resource activity-status ()
-  :class (s-prefix "pub:ActiviteitStatus") ;; NOTE: as well as skos:Concept
-  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((activity           :via ,(s-prefix "pub:publicatieStatus")
-                                  :inverse t
-                                  :as "activities"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/activiteit-status/")
-  :features '(include-uri)
-  :on-path "activity-statuses")
-
 (define-resource agenda-activity ()
   :class (s-prefix "besluitvorming:Agendering")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum"))) ;; should be dossier:Activiteit.startdatum

@@ -321,12 +321,24 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/regulation-types/"
   end
 
-  match "/activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/activities/"
+  match "/request-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/request-activities/"
   end
 
-  match "/activity-statuses/*path", @any do
-    Proxy.forward conn, path, "http://cache/activity-statuses/"
+  match "/translation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/translation-activities/"
+  end
+
+  match "/proofing-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/proofing-activities/"
+  end
+
+  match "/publication-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-activities/"
+  end
+
+  match "/cancellation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/cancellation-activities/"
   end
 
   get "/languages/*path", @any do

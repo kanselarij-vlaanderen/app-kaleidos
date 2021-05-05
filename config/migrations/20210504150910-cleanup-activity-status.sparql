@@ -1,10 +1,10 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 PREFIX public: <http://mu.semte.ch/graphs/public>
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 WITH public:
 DELETE {
   ?s ?p ?o .
 } WHERE {
-  ?s a ext:ActiviteitType ;
+  ?s a pub:ActiviteitStatus ;
     ?p ?o .
 }
