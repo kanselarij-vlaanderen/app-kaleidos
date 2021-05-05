@@ -224,11 +224,7 @@
           "type": "datetime",
           "predicate": "tmo:dueDate"
         },
-<<<<<<< HEAD
         "target-end-date": {
-=======
-        "target-end-time": {
->>>>>>> 19a5271ba02d412f4f51c2e57ec68fe63e486608
           "type": "datetime",
           "predicate": "tmo:targetEndTime"
         }
@@ -326,12 +322,8 @@
         "generated-pieces":{
           "predicate": "dossier:genereert",
           "target": "piece",
-<<<<<<< HEAD
           "cardinality": "one",
           "_comment": "this should be a besluit:Besluit"
-=======
-          "cardinality": "one"
->>>>>>> 19a5271ba02d412f4f51c2e57ec68fe63e486608
         }
       },
       "features": ["include-uri"],
