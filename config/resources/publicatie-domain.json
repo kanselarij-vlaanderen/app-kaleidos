@@ -322,7 +322,7 @@
         "generated-pieces":{
           "predicate": "dossier:genereert",
           "target": "piece",
-          "cardinality": "one",
+          "cardinality": "many",
           "_comment": "this should be a besluit:Besluit"
         }
       },
