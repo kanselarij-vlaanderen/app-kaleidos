@@ -64,7 +64,7 @@
           "predicate": "generiek:gestructureerdeIdentificator",
           "cardinality": "one"
         },
-        "publication-flow-numac": {
+        "publication-flow-for-numac": {
           "target": "publication-flow",
           "predicate": "pub:identifier",
           "cardinality": "one",
