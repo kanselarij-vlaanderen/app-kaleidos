@@ -12,6 +12,5 @@ WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
   ?s2 pub:numacNummer ?numac
 } WHERE {
-  ?numac a pub:NumacNummer.
   ?s2 pub:numacNummer ?numac .
 }
