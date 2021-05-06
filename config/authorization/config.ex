@@ -77,7 +77,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/NumacNummer",
       "http://www.w3.org/ns/org#Organization",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",

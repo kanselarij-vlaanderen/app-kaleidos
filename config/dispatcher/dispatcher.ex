@@ -310,10 +310,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/configs/"
   end
 
-  match "/numac-numbers/*path", @any do
-    Proxy.forward conn, path, "http://cache/numac-numbers/"
-  end
-
   get "/publication-modes/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-modes/"
   end

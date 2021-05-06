@@ -214,8 +214,8 @@
         ],
         "publicationFlowNumacNumbers": [
           "^https://data.vlaanderen.be/ns/dossier#behandelt",
-          "http://mu.semte.ch/vocabularies/ext/publicatie/numacNummer",
-          "http://www.w3.org/2004/02/skos/core#prefLabel"
+          "http://mu.semte.ch/vocabularies/ext/publicatie/identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
         ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
