@@ -18,14 +18,6 @@
       "name": "publication-flow",
       "class": "pub:Publicatieaangelegenheid",
       "attributes": {
-        "publication-number": {
-          "type": "number",
-          "predicate": "pub:publicatieNummer"
-        },
-        "publication-suffix": {
-          "type": "string",
-          "predicate": "pub:publicatieNummerSuffix"
-        },
         "translate-before": {
           "type": "datetime",
           "predicate": "pub:uitersteVertaling"
@@ -113,6 +105,11 @@
           "predicate": "pub:contactPersoon",
           "target": "contact-person",
           "cardinality": "many"
+        },
+        "identification": {
+          "predicate": "adms:identifier",
+          "target": "identification",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -457,5 +454,3 @@
     }
   }
 }
-
-

@@ -179,6 +179,11 @@ defmodule Dispatcher do
   match "/identifications/*path", @any do
     Proxy.forward conn, path, "http://cache/identifications/"
   end
+
+  match "/structured-identifiers/*path", @any do
+    Proxy.forward conn, path, "http://cache/structured-identifiers/"
+  end
+
   match "/time-periods/*path", @any do
     Proxy.forward conn, path, "http://cache/time-periods/"
   end

@@ -85,6 +85,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/DrukproefActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
+      "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "http://www.w3.org/ns/adms#Identifier",
     ]
   end
 
