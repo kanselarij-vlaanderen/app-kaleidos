@@ -42,7 +42,7 @@
   :features '(include-uri)
   :on-path "government-domains")
 
-(define-resource government-field () 
+(define-resource government-field ()
   :class (s-prefix "kans:Beleidsveld")
   :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note      :string ,(s-prefix "skos:scopeNote"))
@@ -51,7 +51,7 @@
                                   :inverse t
                                   :as "ise-code"))
   :has-one `((government-domain   :via ,(s-prefix "ext:heeftBeleidsDomein")
-                                  :as "domain"))                
+                                  :as "domain"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsveld/")
   :features '(include-uri)
   :on-path "government-fields")
@@ -91,16 +91,6 @@
   :features '(include-uri)
   :on-path "persons")
   ;; People here because ember pluralizes persons to people
-
-(define-resource identification ()
-  :class (s-prefix "adms:Identifier")
-  :properties `((:id-name :string ,(s-prefix "skos:notation"))) ;; TODO: should have a specific type
-  :has-one `((person :via ,(s-prefix "ext:identifier")
-                     :inverse t
-                     :as "personId"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/identificator/")
-  :features '(include-uri)
-  :on-path "identifications")
 
   (define-resource signature ()
   :class (s-prefix "ext:Handtekening")
