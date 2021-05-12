@@ -96,10 +96,17 @@
           "target": "identification",
           "cardinality": "many"
         },
-        "subcases": {
-          "predicate": "ext:doorloopt",
-          "target": "subcase",
-          "cardinality": "many"
+        "translation-subcase": {
+          "predicate": "pub:doorlooptVertaling",
+          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "translation-subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:doorlooptPublicatie",
+          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-subcase",
+          "cardinality": "one"
         },
         "contact-persons": {
           "predicate": "pub:contactPersoon",
@@ -114,6 +121,114 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
+    },
+    "translation-subcases": {
+      "name": "translation-subcase",
+      "class": "pub:VertalingProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptVertaling",
+          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "translation-activities": {
+          "predicate": "pub:vertalingVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "translation-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "cancellation-activities": {
+          "predicate": "pub:annuleringVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "cancellation-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
+    },
+    "publication-subcases": {
+      "name": "publication-subcase",
+      "class": "pub:PublicatieProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptPublicatie",
+          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "proofing-activities": {
+          "predicate": "pub:drukproefVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "proofing-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "publication-activities": {
+          "predicate": "pub:publicatieVindtPlaatsTijdens",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "publication-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
     },
     "publication-modes": {
       "name": "publication-mode",
