@@ -1,0 +1,5 @@
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix pub: <http://mu.semte.ch/vocabularies/ext/publicatie/> .
+
+pub:identifier rdfs:subPropertyOf adms:identifier .

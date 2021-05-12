@@ -6,12 +6,3 @@
   :features '(include-uri)
   :on-path "configs")
 
-(define-resource numac-number ()
-  :class (s-prefix "pub:NumacNummer")
-  :properties `((:name                :string ,(s-prefix "skos:prefLabel")))
-  :has-one `((publication-flow        :via      ,(s-prefix "pub:numacNummer")
-                                      :inverse t
-                                      :as "publication-flow"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/numac-nummer/")
-  :features '(include-uri)
-  :on-path "numac-numbers")

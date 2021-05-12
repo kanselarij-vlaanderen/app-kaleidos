@@ -78,7 +78,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieStatusWijziging",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/NumacNummer",
       "http://www.w3.org/ns/org#Organization",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
