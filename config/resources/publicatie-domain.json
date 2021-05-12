@@ -152,7 +152,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "one",
@@ -206,7 +206,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "one",
@@ -296,8 +296,15 @@
         }
       },
       "relationships": {
-        "subcase": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+        "translation-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
         },
