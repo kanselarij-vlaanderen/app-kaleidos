@@ -187,7 +187,8 @@
           "cardinality": "one"
         },
         "email": {
-          "predicate": "dct:subject",
+          "predicate": "pub:requestActivitySubject",
+          "comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
@@ -351,7 +352,8 @@
           "cardinality": "one"
         },
         "email": {
-          "predicate": "dct:subject",
+          "predicate": "pub:cancellationActivitySubject",
+          "comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
