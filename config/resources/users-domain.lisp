@@ -13,6 +13,7 @@
              (organization              :via      ,(s-prefix "org:memberOf")
                                         :as "organization")
              ) ;; Has one relation adms:identifier to type adms::Identifier created in user-management-service
+  :features '(include-uri)
   :on-path "users"
 )
 
@@ -26,6 +27,7 @@
   :has-one `((user            :via ,(s-prefix "foaf:account")
                               :inverse t
                               :as "user"))
+  :features '(include-uri)
   :on-path "accounts"
 )
 
@@ -35,5 +37,6 @@
   :properties `((:name  :via ,(s-prefix "foaf:name")))
   :has-many `((user     :via ,(s-prefix "foaf:member")
                         :as "users"))
+  :features '(include-uri)
   :on-path "account-groups"
 )
