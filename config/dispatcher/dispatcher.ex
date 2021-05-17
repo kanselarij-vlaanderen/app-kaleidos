@@ -298,6 +298,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-flows/"
   end
 
+  match "/publication-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-subcases/"
+  end
+
+  match "/translation-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/translation-subcases/"
+  end
+
   match "/publication-statuses/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
