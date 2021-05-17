@@ -61,6 +61,11 @@
           "target": "case",
           "cardinality": "one"
         },
+        "reference-documents": {
+          "predicate": "pub:referentieDocument",
+          "target": "piece",
+          "cardinality": "one"
+        },
         "status": {
           "predicate": "adms:status",
           "target": "publication-status",
