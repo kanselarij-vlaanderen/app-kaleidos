@@ -75,6 +75,8 @@ defmodule Acl.UserGroups.Config do
   defp publication_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/VertalingProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieStatusWijziging",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",

@@ -101,10 +101,17 @@
           "target": "identification",
           "cardinality": "many"
         },
-        "subcases": {
-          "predicate": "ext:doorloopt",
-          "target": "subcase",
-          "cardinality": "many"
+        "translation-subcase": {
+          "predicate": "pub:doorlooptVertaling",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "translation-subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:doorlooptPublicatie",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-subcase",
+          "cardinality": "one"
         },
         "contact-persons": {
           "predicate": "pub:contactPersoon",
@@ -119,6 +126,114 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
+    },
+    "translation-subcases": {
+      "name": "translation-subcase",
+      "class": "pub:VertalingProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptVertaling",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "translation-activities": {
+          "predicate": "pub:vertalingVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "translation-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "cancellation-activities": {
+          "predicate": "pub:annuleringVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "cancellation-activity",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
+    },
+    "publication-subcases": {
+      "name": "publication-subcase",
+      "class": "pub:PublicatieProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptPublicatie",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "proofing-activities": {
+          "predicate": "pub:drukproefVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "proofing-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "publication-activities": {
+          "predicate": "pub:publicatieVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "publication-activity",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
     },
     "publication-modes": {
       "name": "publication-mode",
@@ -186,14 +301,21 @@
         }
       },
       "relationships": {
-        "subcase": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdens",
+        "translation-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
         },
         "email": {
           "predicate": "pub:requestActivitySubject",
-          "comment": "FIXME: predicate should be dct:subject",
+          "_comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
@@ -326,7 +448,7 @@
           "predicate": "dossier:genereert",
           "target": "piece",
           "cardinality": "many",
-          "_comment": "this should be a besluit:Besluit"
+          "_comment": "The type of the entity this points to should be besluit:Besluit"
         }
       },
       "features": ["include-uri"],
@@ -358,7 +480,7 @@
         },
         "email": {
           "predicate": "pub:cancellationActivitySubject",
-          "comment": "FIXME: predicate should be dct:subject",
+          "_comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
