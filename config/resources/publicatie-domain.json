@@ -443,7 +443,7 @@
           "predicate": "dossier:genereert",
           "target": "piece",
           "cardinality": "many",
-          "_comment": "this should be a besluit:Besluit"
+          "_comment": "The type of the entity this points to should be besluit:Besluit"
         }
       },
       "features": ["include-uri"],
