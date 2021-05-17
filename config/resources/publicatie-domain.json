@@ -98,13 +98,13 @@
         },
         "translation-subcase": {
           "predicate": "pub:doorlooptVertaling",
-          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "translation-subcase",
           "cardinality": "one"
         },
         "publication-subcase": {
           "predicate": "pub:doorlooptPublicatie",
-          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "publication-subcase",
           "cardinality": "one"
         },
@@ -146,28 +146,28 @@
       "relationships": {
         "publication-flow": {
           "predicate": "pub:publicatieDoorlooptVertaling",
-          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "publication-flow",
           "cardinality": "one",
           "inverse": true
         },
         "request-activities": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
           "inverse": true
         },
         "translation-activities": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "translation-activity",
           "cardinality": "many",
           "inverse": true
         },
         "cancellation-activities": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "cancellation-activity",
           "cardinality": "many",
           "inverse": true
@@ -200,28 +200,28 @@
       "relationships": {
         "publication-flow": {
           "predicate": "pub:publicatieDoorlooptPublicatie",
-          "comment": "FIXME: predicate should be dossier:doorloopt",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "publication-flow",
           "cardinality": "one",
           "inverse": true
         },
         "request-activities": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
           "inverse": true
         },
         "proofing-activities": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "proofing-activity",
           "cardinality": "many",
           "inverse": true
         },
         "publication-activities": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "publication-activity",
           "cardinality": "many",
           "inverse": true
@@ -298,19 +298,19 @@
       "relationships": {
         "translation-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
         },
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
-          "comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
         },
         "email": {
           "predicate": "pub:requestActivitySubject",
-          "comment": "FIXME: predicate should be dct:subject",
+          "_comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
@@ -475,7 +475,7 @@
         },
         "email": {
           "predicate": "pub:cancellationActivitySubject",
-          "comment": "FIXME: predicate should be dct:subject",
+          "_comment": "FIXME: predicate should be dct:subject",
           "target": "email",
           "cardinality": "one",
           "inverse": true
