@@ -10,7 +10,8 @@
     "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
     "adms": "http://www.w3.org/ns/adms#",
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
-    "euvoc":"http://publications.europa.eu/ontology/euvoc#"
+    "euvoc": "http://publications.europa.eu/ontology/euvoc#",
+    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
   },
   "resources": {
     "publication-flows": {
@@ -95,10 +96,17 @@
           "target": "identification",
           "cardinality": "many"
         },
-        "subcases": {
-          "predicate": "ext:doorloopt",
-          "target": "subcase",
-          "cardinality": "many"
+        "translation-subcase": {
+          "predicate": "pub:doorlooptVertaling",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "translation-subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:doorlooptPublicatie",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-subcase",
+          "cardinality": "one"
         },
         "contact-persons": {
           "predicate": "pub:contactPersoon",
@@ -113,6 +121,114 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-aangelegenheid/"
+    },
+    "translation-subcases": {
+      "name": "translation-subcase",
+      "class": "pub:VertalingProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptVertaling",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "translation-activities": {
+          "predicate": "pub:vertalingVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "translation-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "cancellation-activities": {
+          "predicate": "pub:annuleringVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "cancellation-activity",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
+    },
+    "publication-subcases": {
+      "name": "publication-subcase",
+      "class": "pub:PublicatieProcedurestap",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        }
+      },
+      "relationships": {
+        "publication-flow": {
+          "predicate": "pub:publicatieDoorlooptPublicatie",
+          "_comment": "FIXME: predicate should be dossier:doorloopt",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "request-activities": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "request-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "proofing-activities": {
+          "predicate": "pub:drukproefVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "proofing-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "publication-activities": {
+          "predicate": "pub:publicatieVindtPlaatsTijdens",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "publication-activity",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/procedurestap/"
     },
     "publication-modes": {
       "name": "publication-mode",
@@ -161,6 +277,212 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-status/"
+    },
+    "request-activities": {
+      "name": "request-activity",
+      "class": "pub:AanvraagActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "translation-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "publication-subcase": {
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "email": {
+          "predicate": "pub:requestActivitySubject",
+          "_comment": "FIXME: predicate should be dct:subject",
+          "target": "email",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/aanvraag-activiteit/"
+    },
+    "translation-activities": {
+      "name": "translation-activity",
+      "class": "pub:VertaalActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        },
+        "due-date": {
+          "type": "datetime",
+          "predicate": "tmo:dueDate"
+        },
+        "target-end-date": {
+          "type": "datetime",
+          "predicate": "tmo:targetEndTime"
+        }
+      },
+      "relationships": {
+        "subcase": {
+          "predicate": "pub:vertalingVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "language": {
+          "predicate": "pub:doelTaal",
+          "target": "language",
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/vertaal-activiteit/"
+    },
+    "proofing-activities": {
+      "name": "proofing-activity",
+      "class": "pub:DrukproefActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "subcase": {
+          "predicate": "pub:drukproefVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/drukproef-activiteit/"
+    },
+    "publication-activities": {
+      "name": "publication-activity",
+      "class": "pub:PublicatieActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "subcase": {
+          "predicate": "pub:publicatieVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "used-pieces":{
+          "predicate": "prov:used",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "generated-pieces":{
+          "predicate": "dossier:genereert",
+          "target": "piece",
+          "cardinality": "many",
+          "_comment": "The type of the entity this points to should be besluit:Besluit"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-activiteit/"
+
+    },
+    "cancellation-activities": {
+      "name": "cancellation-activity",
+      "class": "pub:AnnulatieActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "subcase": {
+          "predicate": "pub:annuleringVindtPlaatsTijdens",
+          "target": "subcase",
+          "cardinality": "one"
+        },
+        "email": {
+          "predicate": "pub:cancellationActivitySubject",
+          "_comment": "FIXME: predicate should be dct:subject",
+          "target": "email",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/annulatie-activiteit/"
     },
     "languages": {
       "name": "language",

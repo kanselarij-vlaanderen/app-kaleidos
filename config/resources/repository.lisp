@@ -60,6 +60,7 @@
 (add-prefix "nfo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#")
 (add-prefix "nie" "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#")
 (add-prefix "nmo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#")
+(add-prefix "tmo" "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#")
 (add-prefix "org" "http://www.w3.org/ns/org#")
 (add-prefix "pav" "http://purl.org/pav/")
 (add-prefix "person" "http://www.w3.org/ns/person#")

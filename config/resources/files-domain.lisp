@@ -12,9 +12,6 @@
              (signature         :via        ,(s-prefix "ext:handtekening")
                                 :inverse t
                                 :as "signature"))
-  :has-many `((activity         :via        ,(s-prefix "ext:gebruiktBestand")
-                                :inverse t
-                                :as "activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestand/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")

@@ -38,7 +38,7 @@ defmodule Acl.UserGroups.Config do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
-      "http://www.w3.org/ns/prov#Activity",
+      "http://www.w3.org/ns/prov#Activity", # TODO: do we still need this for later with polymorphism ?
     ]
   end
 
@@ -75,10 +75,17 @@ defmodule Acl.UserGroups.Config do
   defp publication_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/VertalingProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieStatusWijziging",
       "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
       "http://www.w3.org/ns/org#Organization",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/DrukproefActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
     ]
@@ -144,7 +151,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
-      "http://mu.semte.ch/vocabularies/ext/ActiviteitType",
       "http://publications.europa.eu/ontology/euvoc#Language",
     ]
   end

@@ -298,6 +298,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-flows/"
   end
 
+  match "/publication-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-subcases/"
+  end
+
+  match "/translation-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/translation-subcases/"
+  end
+
   match "/publication-statuses/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-statuses/"
   end
@@ -322,16 +330,24 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/regulation-types/"
   end
 
-  match "/activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/activities/"
+  match "/request-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/request-activities/"
   end
 
-  match "/activity-statuses/*path", @any do
-    Proxy.forward conn, path, "http://cache/activity-statuses/"
+  match "/translation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/translation-activities/"
   end
 
-  match "/activity-types/*path", @any do
-    Proxy.forward conn, path, "http://cache/activity-types/"
+  match "/proofing-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/proofing-activities/"
+  end
+
+  match "/publication-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-activities/"
+  end
+
+  match "/cancellation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/cancellation-activities/"
   end
 
   get "/languages/*path", @any do

@@ -1,0 +1,14 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX public: <http://mu.semte.ch/graphs/public>
+
+WITH public:
+DELETE {
+  ?subcaseType ?p ?o .
+} WHERE {
+    ?subcaseType ?p ?o .
+    VALUES ?subcaseType {
+        <http://example.com/step/d25ac65a-34a9-11eb-adc1-0242ac120002>
+        <http://example.com/step/e711f906-34a9-11eb-adc1-0242ac120002>
+        <http://example.com/step/ef78bb52-34a9-11eb-adc1-0242ac120002>
+    }
+}

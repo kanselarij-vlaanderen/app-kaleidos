@@ -37,7 +37,11 @@
   :has-one `((email :via ,(s-prefix "nmo:inReplyTo")
                     :as "in-reply-to")
              (folder :via ,(s-prefix "nmo:isPartOf") ;; TODO: nie:isPartOf isn't valid part of NEPOMUK
-                    :as "folder"))
+                    :as "folder")
+             (request-activity :via ,(s-prefix "pub:requestActivitySubject") ;; FIXME: predicate should be "dct:subject"
+                    :as "request-activity")
+             (cancellation-activity :via ,(s-prefix "pub:cancellationActivitySubject")) ;; FIXME: predicate should be "dct:subject"
+                  :as "cancellation-activity"))
   :has-many `(
   ;           (email-header :via ,(s-prefix "nmo:messageHeader")
   ;                 :as "headers")
