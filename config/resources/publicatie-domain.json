@@ -64,7 +64,7 @@
         "reference-documents": {
           "predicate": "pub:referentieDocument",
           "target": "piece",
-          "cardinality": "one"
+          "cardinality": "many"
         },
         "status": {
           "predicate": "adms:status",
