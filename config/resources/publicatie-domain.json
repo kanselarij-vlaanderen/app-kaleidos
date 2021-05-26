@@ -124,7 +124,8 @@
         },
         "target-end-date": {
           "type": "datetime",
-          "predicate": "tmo:targetEndDate"
+          "predicate": "tmo:targetEndTime",
+          "_comment": "FIXME: translation has no requested date, only ultimate"
         },
         "created": {
           "type": "datetime",
@@ -180,13 +181,17 @@
           "type": "string",
           "predicate": "dct:title"
         },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
         "due-date": {
           "type": "datetime",
           "predicate": "tmo:dueDate"
         },
         "target-end-date": {
           "type": "datetime",
-          "predicate": "tmo:targetEndDate"
+          "predicate": "tmo:targetEndTime"
         },
         "created": {
           "type": "datetime",
