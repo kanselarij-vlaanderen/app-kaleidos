@@ -118,6 +118,14 @@
           "type": "string",
           "predicate": "dct:title"
         },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
         "due-date": {
           "type": "datetime",
           "predicate": "tmo:dueDate"
@@ -180,6 +188,10 @@
         "title": {
           "type": "string",
           "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
         },
         "end-date": {
           "type": "datetime",
