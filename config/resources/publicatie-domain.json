@@ -18,6 +18,14 @@
       "name": "publication-flow",
       "class": "pub:Publicatieaangelegenheid",
       "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "long-title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
         "translate-before": {
           "type": "datetime",
           "predicate": "pub:uitersteVertaling"
