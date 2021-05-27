@@ -54,9 +54,12 @@
                                         :as "agenda-item-treatment")
             (language                   :via  ,(s-prefix "dct:language") ;; only when type === translationActivity
                                         :as "language")
-            (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten ! 
-                                        :as "translation-source"))
-  :has-many `((case                    :via ,(s-prefix "dossier:Dossier.bestaatUit")
+            (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten !
+                                        :as "translation-source")
+            (publication-flow           :via ,(s-prefix "pub:referentieDocument")
+                                        :inverse t
+                                        :as "publication-flow"))
+  :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
                                         :as "cases")
               (piece                    :via ,(s-prefix "ext:isVertalingVan")
