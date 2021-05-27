@@ -18,22 +18,6 @@
       "name": "publication-flow",
       "class": "pub:Publicatieaangelegenheid",
       "attributes": {
-        "translate-before": {
-          "type": "datetime",
-          "predicate": "pub:uitersteVertaling"
-        },
-        "publish-before": {
-          "type": "datetime",
-          "predicate": "pub:uiterstePublicatie"
-        },
-        "publish-date-requested": {
-          "type": "datetime",
-          "predicate": "pub:gevraagdePublicatie"
-        },
-        "published-at": {
-          "type": "datetime",
-          "predicate": "pub:publicatieOp"
-        },
         "remark": {
           "type": "string",
           "predicate": "rdfs:comment"
@@ -134,6 +118,23 @@
           "type": "string",
           "predicate": "dct:title"
         },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "due-date": {
+          "type": "datetime",
+          "predicate": "tmo:dueDate"
+        },
+        "target-end-date": {
+          "type": "datetime",
+          "predicate": "tmo:targetEndTime",
+          "_comment": "FIXME: translation has no requested date, only ultimate"
+        },
         "created": {
           "type": "datetime",
           "predicate": "dct:created"
@@ -145,7 +146,7 @@
       },
       "relationships": {
         "publication-flow": {
-          "predicate": "pub:publicatieDoorlooptVertaling",
+          "predicate": "pub:doorlooptVertaling",
           "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "publication-flow",
           "cardinality": "one",
@@ -188,6 +189,22 @@
           "type": "string",
           "predicate": "dct:title"
         },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "due-date": {
+          "type": "datetime",
+          "predicate": "tmo:dueDate"
+        },
+        "target-end-date": {
+          "type": "datetime",
+          "predicate": "tmo:targetEndTime"
+        },
         "created": {
           "type": "datetime",
           "predicate": "dct:created"
@@ -199,7 +216,7 @@
       },
       "relationships": {
         "publication-flow": {
-          "predicate": "pub:publicatieDoorlooptPublicatie",
+          "predicate": "pub:doorlooptPublicatie",
           "_comment": "FIXME: predicate should be dossier:doorloopt",
           "target": "publication-flow",
           "cardinality": "one",
