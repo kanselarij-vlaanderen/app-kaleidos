@@ -294,6 +294,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://mandatee-service/"
   end
 
+  match "/publication-flows/search/*path", @any do
+    Proxy.forward conn, path, "http://musearch/publication-flows/search/"
+  end
+
   match "/publication-flows/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-flows/"
   end
