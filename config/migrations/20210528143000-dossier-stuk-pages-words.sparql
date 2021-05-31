@@ -1,0 +1,37 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX prism: <http://prismstandard.org/namespaces/basic/2.0/#>
+PREFIX fabio: <http://purl.org/spar/fabio/#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s pub:paginas ?pages .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s fabio:hasPageCount ?pages .
+  }
+}
+WHERE
+  { GRAPH <http://mu.semte.ch/graphs/public>
+      { ?s  a            dossier:Stuk ;
+            pub:paginas  ?pages
+      }
+  }
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s pub:woorden ?words .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s prism:wordCount ?words .
+  }
+}
+WHERE
+  { GRAPH <http://mu.semte.ch/graphs/public>
+      { ?s  a            dossier:Stuk ;
+            pub:woorden  ?words
+      }
+  }
