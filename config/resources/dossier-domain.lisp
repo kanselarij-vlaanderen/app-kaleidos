@@ -6,10 +6,10 @@
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-one `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
+  :has-many `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
                                 :inverse t
-                                :as "publication-flow"))
-  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
+                                :as "publication-flows")
+              (subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                 :as "pieces"))
