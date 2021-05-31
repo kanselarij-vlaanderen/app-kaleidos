@@ -200,23 +200,6 @@
         "created": "http://purl.org/dc/terms/created",
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "isArchived": "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
-        "publicationFlowId": [
-          "^https://data.vlaanderen.be/ns/dossier#behandelt",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "publicationFlowNumber": [
-          "^https://data.vlaanderen.be/ns/dossier#behandelt",
-          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieNummer"
-        ],
-        "publicationFlowRemark": [
-          "^https://data.vlaanderen.be/ns/dossier#behandelt",
-          "http://mu.semte.ch/vocabularies/ext/publicatie/publicatieOpmerking"
-        ],
-        "publicationFlowNumacNumbers": [
-          "^https://data.vlaanderen.be/ns/dossier#behandelt",
-          "http://mu.semte.ch/vocabularies/ext/publicatie/identifier",
-          "http://www.w3.org/2004/02/skos/core#notation"
-        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -277,9 +260,6 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "publicationFlowId": {
-            "type": "text"
-          },
           "created": {
             "type": "date"
           },
@@ -290,15 +270,6 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
-          },
-          "publicationFlowNumber": {
-            "type": "text"
-          },
-          "publicationFlowRemark": {
-            "type": "text"
-          },
-          "publicationFlowNumacNumbers": {
-            "type": "text"
           },
           "mandatees": {
             "type": "text",
@@ -339,6 +310,56 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          }
+        }
+      }
+    },
+    {
+      "type": "publication-flow",
+      "on_path": "publication-flows",
+      "rdf_type": "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
+      "properties": {
+        "title": "http://purl.org/dc/terms/title",
+        "shortTitle": "http://purl.org/dc/terms/alternative",
+        "remark": "https://www.w3.org/2000/01/rdf-schema#comment",
+        "identification": [
+          "http://www.w3.org/ns/adms#identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
+        ],
+        "numacNumbers": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
+        ],
+        "caseId": [
+          "https://data.vlaanderen.be/ns/dossier#behandelt",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "shortTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "remark": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "identifier": {
+            "type": "text"
+          },
+          "numacNumbers": {
+            "type": "text"
+          },
+          "caseId": {
+            "type": "keyword"
           }
         }
       }
