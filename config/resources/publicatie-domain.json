@@ -179,7 +179,7 @@
           "inverse": true
         },
         "source-documents": {
-          "predicate": "pub:vertalingBronDocumen",
+          "predicate": "pub:vertalingBronDocument",
           "target": "dossier:Stuk",
           "cardinality": "many"
         }
