@@ -3,35 +3,35 @@ PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX prism: <http://prismstandard.org/namespaces/basic/2.0/#>
 PREFIX fabio: <http://purl.org/spar/fabio/#>
 DELETE {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH ?g {
     ?s pub:paginas ?pages .
   }
 }
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH ?g {
     ?s fabio:hasPageCount ?pages .
   }
 }
-WHERE
-  { GRAPH <http://mu.semte.ch/graphs/public>
-      { ?s  a            dossier:Stuk ;
-            pub:paginas  ?pages
-      }
+WHERE {
+  GRAPH ?g {
+    ?s  a   dossier:Stuk ;
+        pub:paginas  ?pages .
+    }
   }
 ;
 DELETE {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH ?g {
     ?s pub:woorden ?words .
   }
 }
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH ?g {
     ?s prism:wordCount ?words .
   }
 }
-WHERE
-  { GRAPH <http://mu.semte.ch/graphs/public>
-      { ?s  a            dossier:Stuk ;
-            pub:woorden  ?words
-      }
+WHERE {
+  GRAPH ?g {
+    ?s  a            dossier:Stuk ;
+        pub:woorden  ?words .
   }
+}
