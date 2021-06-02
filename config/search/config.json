@@ -352,7 +352,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "identifier": {
+          "identification": {
             "type": "text"
           },
           "numacNumbers": {
