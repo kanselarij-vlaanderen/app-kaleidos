@@ -180,7 +180,7 @@
         },
         "source-documents": {
           "predicate": "pub:vertalingBronDocument",
-          "target": "dossier:Stuk",
+          "target": "piece",
           "cardinality": "many"
         }
       },
