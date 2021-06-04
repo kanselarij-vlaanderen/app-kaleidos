@@ -12,5 +12,11 @@ INSERT {
   ?s a besluit:BehandelingVanAgendapunt .
   ?s besluitvorming:heeftOnderwerp/^dct:hasPart/besluitvorming:isAgendaVoor/besluit:geplandeStart ?dateTime .
 
-  BIND (xsd:date(?dateTime) AS ?date)
+  # remove timezone
+  BIND (CONCAT(
+    STR(YEAR(?dateTime)),
+    "-",
+    STR(MONTH(?dateTime)),
+    "-",
+    STR(DAY(?dateTime))) as ?date)
 }
