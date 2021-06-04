@@ -99,14 +99,16 @@
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
   :properties `(
-                (:created     :datetime       ,(s-prefix "dct:created"))
+                (:decision-date  :date     ,(s-prefix "dossier:Activiteit.startdatum"))
+                (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
               ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
               ;                :as "pieces")
-              )
+              (publication-flow    :via ,(s-prefix "dct:subject"),
+                                    :as "publication-flows"))
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem")
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")

@@ -114,6 +114,12 @@
           "predicate": "adms:identifier",
           "target": "identification",
           "cardinality": "one"
+        },
+        "agenda-item-treatment": {
+          "predicate": "dct:subject",
+          "inverse": true,
+          "cardinality": "one",
+          "target": "agenda-item-treatment"
         }
       },
       "features": ["include-uri"],
