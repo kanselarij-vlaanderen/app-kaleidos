@@ -1,0 +1,16 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+INSERT {
+  ?s dossier:Activiteit.startdatum ?date.
+} WHERE {
+  ?s a besluit:BehandelingVanAgendapunt .
+  ?s besluitvorming:heeftOnderwerp/^dct:hasPart/besluitvorming:isAgendaVoor/besluit:geplandeStart ?dateTime .
+
+  BIND (xsd:date(?dateTime) AS ?date)
+}
