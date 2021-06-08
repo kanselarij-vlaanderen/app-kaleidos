@@ -58,7 +58,10 @@
                                         :as "translation-source")
             (publication-flow           :via ,(s-prefix "pub:referentieDocument")
                                         :inverse t
-                                        :as "publication-flow"))
+                                        :as "publication-flow")
+            (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
+                                        :inverse t
+                                        :as "translation-subcase"))
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
                                         :as "cases")
