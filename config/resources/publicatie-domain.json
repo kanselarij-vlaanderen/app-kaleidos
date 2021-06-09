@@ -191,6 +191,11 @@
           "target": "cancellation-activity",
           "cardinality": "many",
           "inverse": true
+        },
+        "source-documents": {
+          "predicate": "pub:vertalingBronDocument",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
