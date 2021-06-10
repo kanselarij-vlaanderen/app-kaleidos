@@ -107,7 +107,8 @@
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
               ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
               ;                :as "pieces")
-              (publication-flow    :via ,(s-prefix "dct:subject"),
+              (publication-flow     :via ,(s-prefix "dct:subject"),
+                                    :inverse t
                                     :as "publication-flows"))
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem")
