@@ -338,6 +338,11 @@
           "target": "subcase",
           "cardinality": "one"
         },
+        "translation-activity": {
+          "predicate": "pub:vertalingsactiviteitVanAanvraag",
+          "target": "translation-activity",
+          "cardinality": "one"
+        },
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
@@ -389,6 +394,11 @@
         "subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
           "target": "subcase",
+          "cardinality": "one"
+        },
+        "request-activity": {
+          "predicate": "pub:vertalingsactiviteitVanAanvraag",
+          "target": "request-activity",
           "cardinality": "one"
         },
         "language": {
