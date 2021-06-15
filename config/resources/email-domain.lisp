@@ -28,7 +28,7 @@
                 (:cc :string ,(s-prefix "nmo:emailCc"))
                 (:bcc :string ,(s-prefix "nmo:emailBcc"))
                 (:subject :string ,(s-prefix "nmo:messageSubject"))
-                (:content :string ,(s-prefix "nmo:plainTextMessageContent"))
+                (:message :string ,(s-prefix "nmo:plainTextMessageContent"))
                 (:html-content :string ,(s-prefix "nmo:htmlMessageContent"))
                 (:is-read :boolean ,(s-prefix "nmo:isRead"))
                 (:content-mime-type :string ,(s-prefix "nmo:contentMimeType"))
