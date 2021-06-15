@@ -1,0 +1,19 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+INSERT {
+  GRAPH ?g {
+    ?s dossier:Activiteit.startdatum ?date.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a besluit:BehandelingVanAgendapunt .
+    ?s besluitvorming:heeftOnderwerp/^dct:hasPart/besluitvorming:isAgendaVoor/besluit:geplandeStart ?dateTime .
+
+    # remove time-specification from datetime
+    BIND (STRDT(SUBSTR(STR(?dateTime), 1, 10), xsd:date) as ?date)
+  }
+}
