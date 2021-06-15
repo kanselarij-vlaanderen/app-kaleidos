@@ -340,7 +340,8 @@
         "translation-activity": {
           "predicate": "pub:vertalingsactiviteitVanAanvraag",
           "target": "translation-activity",
-          "cardinality": "one"
+          "cardinality": "one",
+          "inverse": true
         },
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
