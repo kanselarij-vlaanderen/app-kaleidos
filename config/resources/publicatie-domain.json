@@ -265,6 +265,11 @@
           "target": "publication-activity",
           "cardinality": "many",
           "inverse": true
+        },
+        "publication-source-documents": {
+          "predicate": "pub:publicatieBronDocument",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
