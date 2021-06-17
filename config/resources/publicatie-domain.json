@@ -85,6 +85,7 @@
         },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
+          "_comment": "FIXME: predicate should be prov:qualifiedAssociation",
           "target": "mandatee",
           "cardinality": "many"
         },
