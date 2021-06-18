@@ -267,7 +267,7 @@
           "cardinality": "many",
           "inverse": true
         },
-        "publication-source-documents": {
+        "source-documents": {
           "predicate": "pub:publicatieBronDocument",
           "target": "piece",
           "cardinality": "many"
