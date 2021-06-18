@@ -19,6 +19,7 @@
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
+                (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
                 (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
                 (:pages                 :number   ,(s-prefix "fabio:hasPageCount"))
                 (:words                 :number   ,(s-prefix "prism:wordCount"))
