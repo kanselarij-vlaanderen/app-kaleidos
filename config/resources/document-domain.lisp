@@ -62,6 +62,9 @@
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase")
+            (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
+                                        :inverse t
+                                        :as "translation-activity")
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase-as-source")
