@@ -423,7 +423,8 @@
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "dossier:genereert",
+          "predicate": "pub:vertalingGenereert",
+          "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
         }
@@ -460,7 +461,8 @@
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "dossier:genereert",
+          "predicate": "pub:drukproefGenereert",
+          "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
         }
@@ -497,10 +499,11 @@
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "dossier:genereert",
+          "predicate": "pub:publicatieGenereert",
+          "_comment": "The type of the entity this points to should be besluit:Besluit",
+          "_comment2": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
-          "cardinality": "many",
-          "_comment": "The type of the entity this points to should be besluit:Besluit"
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],

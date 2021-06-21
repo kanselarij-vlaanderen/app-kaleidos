@@ -65,10 +65,10 @@
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase-as-source")
-            (proofing-activity          :via ,(s-prefix "dossier:genereert")
+            (proofing-activity          :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-as-generated")
-            (publication-activity       :via ,(s-prefix "dossier:genereert")
+            (publication-activity       :via ,(s-prefix "pub:publicatieGenereert")
                                         :inverse t
                                         :as "publication-activity-as-generated")
   )
