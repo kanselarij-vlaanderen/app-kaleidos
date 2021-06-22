@@ -19,6 +19,7 @@
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
+                (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
                 (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
                 (:pages                 :number   ,(s-prefix "fabio:hasPageCount"))
                 (:words                 :number   ,(s-prefix "prism:wordCount"))
@@ -59,6 +60,9 @@
             (publication-flow           :via ,(s-prefix "pub:referentieDocument")
                                         :inverse t
                                         :as "publication-flow")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
+                                        :inverse t
+                                        :as "publication-subcase")
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase"))
