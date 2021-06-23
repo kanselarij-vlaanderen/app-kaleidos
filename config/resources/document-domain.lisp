@@ -66,18 +66,9 @@
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase")
-            (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
-                                        :inverse t
-                                        :as "translation-activity")
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase")
-            (proofing-activity          :via ,(s-prefix "pub:drukproefGenereert")
-                                        :inverse t
-                                        :as "proofing-activity-as-generated")
-            (publication-activity       :via ,(s-prefix "pub:publicatieGenereert")
-                                        :inverse t
-                                        :as "publication-activity-as-generated")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t

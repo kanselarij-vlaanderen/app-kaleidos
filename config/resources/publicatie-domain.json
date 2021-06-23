@@ -354,6 +354,12 @@
           "cardinality": "one",
           "inverse": true
         },
+        "proofing-activity": {
+          "predicate": "pub:drukproefactiviteitVanAanvraag",
+          "target": "proofing-activity",
+          "cardinality": "one",
+          "inverse": "true"
+        },
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
@@ -418,7 +424,8 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:vertalingGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
@@ -456,7 +463,8 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:drukproefGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
@@ -465,6 +473,11 @@
           "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
+        },
+        "request-activity": {
+          "predicate": "pub:drukproefactiviteitVanAanvraag",
+          "cardinality": "one",
+          "target": "request-activity"
         }
       },
       "features": ["include-uri"],
@@ -494,14 +507,15 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:publicatieGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
           "predicate": "pub:publicatieGenereert",
-          "_comment": "The type of the entity this points to should be besluit:Besluit",
-          "_comment2": "FIXME: predicate should be dossier:genereert",
+          "_comment": "FIXME: predicate should be dossier:genereert",
+          "_comment2": "The type of the entity this points to should be besluit:Besluit",
           "target": "piece",
           "cardinality": "many"
         }
