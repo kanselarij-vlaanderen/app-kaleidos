@@ -53,6 +53,14 @@
   :features '(include-uri)
   :on-path "emails")
 
+(define-resource email-notification-setting ()
+  :class (s-prefix "ext:EmailNotificationSettings")
+  :properties `((:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
+                (:proof-request-to-email :string ,(s-prefix "ext:proofRequestToEmail")))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/email-notificatie-settings/")
+  :features '(include-uri)
+  :on-path "email-notification-setting")
+
 ; (define-resource email-header ()
 ;   :class (s-prefix "nmo:MessageHeader")
 ;   :properties `((:header-name :string ,(s-prefix "nmo:headerName"))

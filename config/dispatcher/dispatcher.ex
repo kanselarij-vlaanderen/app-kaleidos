@@ -378,6 +378,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
   end
 
+  match "/email-notificatie-settings/*path", @any do
+    Proxy.forward conn, path, "http://cache/email-notificatie-settings/"
+  end
+
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
