@@ -60,9 +60,6 @@
             (publication-flow           :via ,(s-prefix "pub:referentieDocument")
                                         :inverse t
                                         :as "publication-flow")
-            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
-                                        :inverse t
-                                        :as "publication-subcase")
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase")
