@@ -424,13 +424,15 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "pub:vertalingGebruikt",
+          "_predicate": "pub:vertalingGebruikt",
+          "predicate": "prov:used",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "pub:vertalingGenereert",
+          "_predicate": "pub:vertalingGenereert",
+          "predicate": "dossier:genereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
@@ -463,13 +465,15 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "pub:drukproefGebruikt",
+          "_predicate": "pub:drukproefGebruikt",
+          "predicate": "prov:used",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "pub:drukproefGenereert",
+          "_predicate": "pub:drukproefGenereert",
+          "predicate": "dossier:genereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
@@ -507,13 +511,15 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "pub:publicatieGebruikt",
+          "_predicate": "pub:publicatieGebruikt",
+          "predicate": "prov:used",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "pub:publicatieGenereert",
+          "_predicate": "pub:publicatieGenereert",
+          "predicate": "dossier:genereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "_comment2": "The type of the entity this points to should be besluit:Besluit",
           "target": "piece",
