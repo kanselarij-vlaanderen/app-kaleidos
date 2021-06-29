@@ -7,7 +7,6 @@ PREFIX  emailsetting: <http://themis.vlaanderen.be/id/email-notificatie-settings
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/system/email> {
-    ext:EmailNotificationSettings <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:PublicClass .
     emailsetting:68e1a042-5332-4399-8074-6b53dae35523 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:EmailNotificationSettings .
     emailsetting:68e1a042-5332-4399-8074-6b53dae35523 mu:uuid "68e1a042-5332-4399-8074-6b53dae35523" .
     emailsetting:68e1a042-5332-4399-8074-6b53dae35523 ext:translationRequestToEmail "johan.delaure@redpencil.io" .
