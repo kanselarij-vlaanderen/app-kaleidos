@@ -96,7 +96,7 @@ defmodule Acl.UserGroups.Config do
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox",
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email",
-      "http://mu.semte.ch/vocabularies/ext/EmailNotificatieSettings"
+      "http://mu.semte.ch/vocabularies/ext/EmailNotificationSettings"
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader",
     ]
   end
