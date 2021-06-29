@@ -322,10 +322,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-status-changes/"
   end
 
-  match "/configs/*path", @any do
-    Proxy.forward conn, path, "http://cache/configs/"
-  end
-
   get "/publication-modes/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-modes/"
   end
@@ -378,8 +374,8 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
   end
 
-  match "/email-notificatie-settings/*path", @any do
-    Proxy.forward conn, path, "http://cache/email-notificatie-settings/"
+  match "/email-notification-settings/*path", @any do
+    Proxy.forward conn, path, "http://cache/email-notification-settings/"
   end
 
   match "_", %{ last_call: true } do

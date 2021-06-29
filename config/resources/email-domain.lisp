@@ -56,10 +56,11 @@
 (define-resource email-notification-setting ()
   :class (s-prefix "ext:EmailNotificationSettings")
   :properties `((:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
+                (:default-from-email :string ,(s-prefix "ext:defaultFromEmail"))
                 (:proof-request-to-email :string ,(s-prefix "ext:proofRequestToEmail")))
   :resource-base (s-url "http://themis.vlaanderen.be/id/email-notificatie-settings/")
   :features '(include-uri)
-  :on-path "email-notification-setting")
+  :on-path "email-notification-settings")
 
 ; (define-resource email-header ()
 ;   :class (s-prefix "nmo:MessageHeader")
