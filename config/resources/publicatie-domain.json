@@ -482,8 +482,8 @@
         },
         "request-activity": {
           "predicate": "pub:drukproefactiviteitVanAanvraag",
-          "cardinality": "one",
-          "target": "request-activity"
+          "target": "request-activity",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -553,9 +553,9 @@
         }
       },
       "relationships": {
-        "translation-subcase": {
+        "subcase": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "email": {
