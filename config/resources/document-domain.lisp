@@ -66,6 +66,18 @@
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase")
+            (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "proofing-activity-used-by")
+            (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
+                                        :inverse t
+                                        :as "proofing-activity-generated-by")
+            (publication-activity        :via ,(s-prefix "pub:publicatieGebruikt")
+                                        :inverse t
+                                        :as "proofing-activity-used-by")
+            (publication-activity        :via ,(s-prefix "pub:publicatieGenereert")
+                                        :inverse t
+                                        :as "publication-activity-generated-by")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
