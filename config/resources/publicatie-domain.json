@@ -345,7 +345,7 @@
         "translation-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "translation-activity": {
@@ -363,7 +363,7 @@
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "publication-activity": {
@@ -414,7 +414,7 @@
         }
       },
       "relationships": {
-        "subcase": {
+        "translation-subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -465,7 +465,7 @@
         }
       },
       "relationships": {
-        "subcase": {
+        "publication-subcase": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
@@ -511,9 +511,9 @@
         }
       },
       "relationships": {
-        "subcase": {
+        "publication-subcase": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
-          "target": "publication-subcase",
+          "target": "subcase",
           "cardinality": "one"
         },
         "used-pieces":{
@@ -559,7 +559,7 @@
         }
       },
       "relationships": {
-        "subcase": {
+        "translation-subcase": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
           "target": "subcase",
           "cardinality": "one"
