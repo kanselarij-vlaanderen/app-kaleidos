@@ -414,9 +414,9 @@
         }
       },
       "relationships": {
-        "translation-subcase": {
+        "subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "request-activity": {
@@ -465,9 +465,9 @@
         }
       },
       "relationships": {
-        "publication-subcase": {
+        "subcase": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "used-pieces":{
@@ -511,9 +511,9 @@
         }
       },
       "relationships": {
-        "publication-subcase": {
+        "subcase": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "used-pieces":{
