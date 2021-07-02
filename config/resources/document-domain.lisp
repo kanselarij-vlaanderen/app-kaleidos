@@ -66,15 +66,12 @@
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase")
-            (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+            (translation-activity        :via ,(s-prefix "pub:vertalingGenereert")
                                         :inverse t
-                                        :as "proofing-activity-used-by")
+                                        :as "translation-activity-generated-by")
             (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
-            (publication-activity        :via ,(s-prefix "pub:publicatieGebruikt")
-                                        :inverse t
-                                        :as "proofing-activity-used-by")
             (publication-activity        :via ,(s-prefix "pub:publicatieGenereert")
                                         :inverse t
                                         :as "publication-activity-generated-by")
@@ -88,6 +85,9 @@
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitems")
+              (translation-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "translation-activities-used-by")
               (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
                                         :inverse t
                                         :as "proofing-activities-used-by")
