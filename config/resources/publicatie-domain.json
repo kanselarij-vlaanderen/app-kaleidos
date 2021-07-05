@@ -172,7 +172,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
@@ -247,7 +247,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
@@ -350,7 +350,7 @@
         "translation-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "translation-activity": {
@@ -368,7 +368,7 @@
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "publication-activity": {
@@ -421,7 +421,7 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "request-activity": {
@@ -435,15 +435,13 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "_predicate": "pub:vertalingGebruikt",
-          "predicate": "prov:used",
+          "predicate": "pub:vertalingGebruikt",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "_predicate": "pub:vertalingGenereert",
-          "predicate": "dossier:genereert",
+          "predicate": "pub:vertalingGenereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
@@ -472,27 +470,25 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "used-pieces":{
-          "_predicate": "pub:drukproefGebruikt",
-          "predicate": "prov:used",
+          "predicate": "pub:drukproefGebruikt",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "_predicate": "pub:drukproefGenereert",
-          "predicate": "dossier:genereert",
+          "predicate": "pub:drukproefGenereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
         },
         "request-activity": {
           "predicate": "pub:drukproefactiviteitVanAanvraag",
-          "cardinality": "one",
-          "target": "request-activity"
+          "target": "request-activity",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -522,15 +518,13 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "_predicate": "pub:publicatieGebruikt",
-          "predicate": "prov:used",
+          "predicate": "pub:publicatieGebruikt",
           "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "_predicate": "pub:publicatieGenereert",
-          "predicate": "dossier:genereert",
+          "predicate": "pub:publicatieGenereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
           "_comment2": "The type of the entity this points to should be besluit:Besluit",
           "target": "piece",
@@ -566,7 +560,7 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "email": {

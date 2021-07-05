@@ -63,6 +63,9 @@
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase")
+            (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
+                                        :inverse t
+                                        :as "translation-activity-generated-by")
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
                                         :as "publication-subcase-source-for")
@@ -70,14 +73,10 @@
                                         :inverse t
                                         :as "publication-subcase-correction-for")
             (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
-                                        :inverse t
-                                        :as "proofing-activity-used-by")
+                                        :as "publication-subcase")
             (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
-            (publication-activity        :via ,(s-prefix "pub:publicatieGebruikt")
-                                        :inverse t
-                                        :as "proofing-activity-used-by")
             (publication-activity        :via ,(s-prefix "pub:publicatieGenereert")
                                         :inverse t
                                         :as "publication-activity-generated-by")
@@ -90,7 +89,17 @@
                                         :as "translations")
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
-                                        :as "agendaitems"))
+                                        :as "agendaitems")
+              (translation-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "translation-activities-used-by")
+              (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "proofing-activities-used-by")
+              (publication-activity     :via ,(s-prefix "pub:publicatieGebruikt")
+                                        :inverse t
+                                        :as "publication-activities-used-by")
+  )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")
