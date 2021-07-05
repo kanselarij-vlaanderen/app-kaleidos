@@ -65,7 +65,10 @@
                                         :as "translation-subcase")
             (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
                                         :inverse t
-                                        :as "publication-subcase")
+                                        :as "publication-subcase-source-for")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieCorrectieDocument")
+                                        :inverse t
+                                        :as "publication-subcase-correction-for")
             (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
                                         :inverse t
                                         :as "proofing-activity-used-by")
