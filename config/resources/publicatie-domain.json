@@ -660,6 +660,29 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
+    },
+    "contact-point": {
+      "name": "contact-point",
+      "class": "schema:ContactPoint",
+      "attributes": {
+        "email": {
+          "type": "url",
+          "predicate": "schema:email"
+        },
+        "telephone": {
+          "type": "url",
+          "predicate": "schema:telephone"
+        }
+      },
+      "relationships": {
+        "person": {
+          "predicate": "schema:contactPoint",
+          "target": "person",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/contactpunt/"
     }
   }
 }
