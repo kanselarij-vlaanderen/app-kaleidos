@@ -28,7 +28,7 @@
 (read-domain-file "job-domain.lisp")
 (read-domain-file "mandaat-domain.lisp")
 (read-domain-file "newsletter-domain.lisp")
-(read-domain-file "organisatie-domain.lisp")
+(read-domain-file "organisatie-domain.json")
 (read-domain-file "publicatie-domain.json")
 (read-domain-file "users-domain.lisp")
 (read-domain-file "email-domain.lisp")

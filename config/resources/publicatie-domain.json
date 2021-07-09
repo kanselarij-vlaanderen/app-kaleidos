@@ -688,7 +688,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/contactpunt/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/contactpersoon/"
     }
   }
 }
