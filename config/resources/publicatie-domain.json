@@ -107,7 +107,7 @@
           "cardinality": "one"
         },
         "contact-persons": {
-          "predicate": "pub:contactPersoon",
+          "predicate": "prov:qualifiedDelegation",
           "target": "contact-person",
           "cardinality": "many"
         },
@@ -661,16 +661,16 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
     },
-    "contact-point": {
-      "name": "contact-point",
+    "contact-persons": {
+      "name": "contact-person",
       "class": "schema:ContactPoint",
       "attributes": {
         "email": {
-          "type": "url",
+          "type": "string",
           "predicate": "schema:email"
         },
         "telephone": {
-          "type": "url",
+          "type": "string",
           "predicate": "schema:telephone"
         }
       },
@@ -679,6 +679,12 @@
           "predicate": "schema:contactPoint",
           "target": "person",
           "cardinality": "one"
+        },
+        "publication-flow": {
+          "predicate": "prov:qualifiedDelegation",
+          "target": "contact-person",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "features": ["include-uri"],

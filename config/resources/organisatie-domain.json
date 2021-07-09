@@ -29,18 +29,12 @@
       }
     },
     "relationships": {
-      "user": {
-        "predicate": "ext:modifiedBy",
-        "target": "modified-by",
-        "cardinality": "one"
-      },
-      "contact-persons": {
-        "predicate": "org:memberOf",
-        "target": "contact-point",
-        "inverse": true
+      "persons": {
+        "predicate": "org:hasMember",
+        "target": "person"
       }
     },
     "features": ["include-uri"],
-    "resource-base": "https://data.vlaanderen.be/id/organisatie"
+    "resource-base": "https://data.vlaanderen.be/id/organisatie/"
   }
 }
