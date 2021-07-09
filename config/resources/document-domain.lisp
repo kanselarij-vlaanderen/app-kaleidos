@@ -63,12 +63,17 @@
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
                                         :as "translation-subcase")
-            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
-                                        :inverse t
-                                        :as "publication-subcase")
-            (translation-activity        :via ,(s-prefix "pub:vertalingGenereert")
+            (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
                                         :inverse t
                                         :as "translation-activity-generated-by")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
+                                        :inverse t
+                                        :as "publication-subcase-source-for")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieCorrectieDocument")
+                                        :inverse t
+                                        :as "publication-subcase-correction-for")
+            (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :as "publication-subcase")
             (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
