@@ -272,6 +272,11 @@
           "predicate": "pub:publicatieBronDocument",
           "target": "piece",
           "cardinality": "many"
+        },
+        "correction-documents": {
+          "predicate": "pub:publicatieCorrectieDocument",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
