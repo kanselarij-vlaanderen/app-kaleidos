@@ -87,7 +87,6 @@
                                     :inverse t
                                     :as "signature")
              (contact-person        :via ,(s-prefix "schema:contactPoint")
-                                    :inverse t
                                     :as "contact-person")
              (organization          :via ,(s-prefix "org:hasMember")
                                     :inverse t
@@ -96,7 +95,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)
   :on-path "persons")
-  ;; People here because ember pluralizes persons to people
 
   (define-resource signature ()
   :class (s-prefix "ext:Handtekening")
