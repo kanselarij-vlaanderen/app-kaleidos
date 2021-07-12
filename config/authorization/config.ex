@@ -78,6 +78,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertalingProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieStatusWijziging",
+      "http://www.w3.org/ns/person#Person",
       "http://schema.org/ContactPoint",
       "http://www.w3.org/ns/org#Organization",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
