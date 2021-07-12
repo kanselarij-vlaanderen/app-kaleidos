@@ -1,0 +1,23 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "dct": "http://purl.org/dc/terms/",
+    "eli": "http://data.europa.eu/eli/ontology#"
+  },
+  "resources": {
+    "decisions": {
+      "class": "besluit:Besluit",
+      "name": "decision",
+      "attributes": {
+        "publication-date": {
+          "type": "datetime",
+          "predicate": "eli:date_publication"
+        }
+      },
+      "relationships": {
+
+      }
+    }
+  }
+}
