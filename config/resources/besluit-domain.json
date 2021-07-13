@@ -2,8 +2,8 @@
   "version": "0.1",
   "prefixes": {
     "besluit": "http://data.vlaanderen.be/ns/besluit#",
-    "dct": "http://purl.org/dc/terms/",
-    "eli": "http://data.europa.eu/eli/ontology#"
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/"
   },
   "resources": {
     "decisions": {
@@ -11,13 +11,20 @@
       "name": "decision",
       "attributes": {
         "publication-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "eli:date_publication"
         }
       },
       "relationships": {
-
-      }
+        "publication-activity": {
+          "predicate": "pub:publicatieGenereert",
+          "target": "publication-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/besluit/"
     }
   }
 }

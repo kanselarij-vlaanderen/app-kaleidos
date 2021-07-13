@@ -88,6 +88,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluit#Besluit",
     ]
   end
 
