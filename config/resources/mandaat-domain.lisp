@@ -1,4 +1,3 @@
-
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
   :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
@@ -29,48 +28,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/mandataris/")
   :features '(include-uri)
   :on-path "mandatees")
-
-(define-resource government-domain ()
-  :class (s-prefix "kans:Beleidsdomein")
-  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((government-field   :via ,(s-prefix "ext:heeftBeleidsDomein")
-                                  :inverse t
-                                  :as "government-fields"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsdomein/")
-  :features '(include-uri)
-  :on-path "government-domains")
-
-(define-resource government-field ()
-  :class (s-prefix "kans:Beleidsveld")
-  :properties `((:label           :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note      :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label       :string ,(s-prefix "skos:altLabel")))
-  :has-many `((ise-code           :via    ,(s-prefix "ext:heeftIseCode")
-                                  :inverse t
-                                  :as "ise-code"))
-  :has-one `((government-domain   :via ,(s-prefix "ext:heeftBeleidsDomein")
-                                  :as "domain"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beleidsveld/")
-  :features '(include-uri)
-  :on-path "government-fields")
-
-(define-resource ise-code ()
-  :class  (s-prefix "kans:IseCode")
-  :properties `((:name            :string ,(s-prefix "skos:prefLabel"))
-                (:code            :string ,(s-prefix "skos:altLabel")))
-  :has-one `((government-field    :via    ,(s-prefix "ext:heeftIseCode")
-                                  :as "field"))
-  :has-many `((mandatee           :via ,(s-prefix "ext:heeftBevoegdeMandataris")
-                                  :inverse t ;; FIXME: these triples are the wrong way around
-                                  :as "mandatees")
-              (subcase            :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
-                                  :inverse t
-                                  :as "subcases"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/ise-code/")
-  :features `(no-pagination-defaults include-uri)
-  :on-path "ise-codes")
 
 (define-resource person ()
   :class (s-prefix "person:Person")

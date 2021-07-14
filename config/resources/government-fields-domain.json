@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "schema": "http://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "dossier": "https://data.vlaanderen.be/ns/dossier#",
+    "euvoc": "http://publications.europa.eu/ontology/euvoc#",
+    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
+    "kans": "http://kanselarij.vo.data.gift/core/#",
+    "besluitvorming": "https://data.vlaanderen.be/ns/besluitvorming#"
+  },
+  "resources": {
+    "government-domains": {
+      "name": "government-domain",
+      "class": "kans:Beleidsdomein",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "government-fields":{
+          "predicate": "ext:heeftBeleidsDomein",
+          "target": "government-field",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/beleidsdomein/"
+    },
+    "government-fields": {
+      "name": "government-field",
+      "class": "kans:Beleidsveld",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "domain": {
+          "predicate": "ext:heeftBeleidsDomein",
+          "target": "government-domain",
+          "cardinality": "one"
+        },
+        "ise-code":{
+          "predicate": "ext:heeftIseCode",
+          "target": "ise-code",
+          "cardinality": "many"
+        },
+        "publication-flows":{
+          "predicate": "besluitvorming:beleidsveld",
+          "target": "publication-flow",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/beleidsveld/"
+    },
+    "ise-codes": {
+      "name": "ise-code",
+      "class": "pub:VertaalActiviteit",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "code": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "field": {
+          "predicate": "ext:heeftIseCode",
+          "target": "government-field",
+          "cardinality": "one"
+        },
+        "mandatees":{
+          "predicate": "ext:heeftBevoegdeMandataris",
+          "target": "mandatee",
+          "cardinality": "many"
+        },
+        "subcase":{
+          "predicate": "ext:heeftInhoudelijkeStructuurElementen",
+          "target": "subcases",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/ise-code/"
+    }
+  }
+}
