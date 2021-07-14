@@ -237,6 +237,10 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "proof-print-corrector": {
+          "type": "string",
+          "predicate": "pub:drukproefVerbeteraar"
         }
       },
       "relationships": {
