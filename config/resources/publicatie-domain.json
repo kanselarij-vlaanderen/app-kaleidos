@@ -120,6 +120,11 @@
           "predicate": "dct:subject",
           "cardinality": "one",
           "target": "agenda-item-treatment"
+        },
+        "government-fields": {
+          "predicate": "besluitvorming:beleidsveld",
+          "target": "government-field",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
