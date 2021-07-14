@@ -65,7 +65,7 @@
           "target": "government-domain",
           "cardinality": "one"
         },
-        "ise-code":{
+        "ise-codes":{
           "predicate": "ext:heeftIseCode",
           "target": "ise-code",
           "cardinality": "many"
