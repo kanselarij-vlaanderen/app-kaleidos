@@ -28,7 +28,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "https://themis.vlaanderen.be/id/organisatie/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/organisatie/"
     }
   }
 }
