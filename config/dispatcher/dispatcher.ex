@@ -81,9 +81,6 @@ defmodule Dispatcher do
   match "/agenda-item-treatments/*path", @any do
     Proxy.forward conn, path, "http://cache/agenda-item-treatments/"
   end
-  match "/decisions/*path", @any do
-    Proxy.forward conn, path, "http://cache/decisions/"
-  end
   match "/decision-result-codes/*path", @any do
     Proxy.forward conn, path, "http://cache/decision-result-codes/"
   end
@@ -348,6 +345,10 @@ defmodule Dispatcher do
 
   match "/cancellation-activities/*path", @any do
     Proxy.forward conn, path, "http://cache/cancellation-activities/"
+  end
+
+  get "/decisions/*path", @any do
+    Proxy.forward conn, path, "http://cache/decisions/"
   end
 
   get "/languages/*path", @any do
