@@ -11,7 +11,8 @@
     "adms": "http://www.w3.org/ns/adms#",
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
-    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
+    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "resources": {
     "publication-flows": {
@@ -107,7 +108,7 @@
           "cardinality": "one"
         },
         "contact-persons": {
-          "predicate": "pub:contactPersoon",
+          "predicate": "prov:qualifiedDelegation",
           "target": "contact-person",
           "cardinality": "many"
         },
@@ -668,6 +669,36 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
+    },
+    "contact-persons": {
+      "name": "contact-person",
+      "class": "schema:ContactPoint",
+      "attributes": {
+        "email": {
+          "type": "string",
+          "predicate": "schema:email"
+        },
+        "telephone": {
+          "type": "string",
+          "predicate": "schema:telephone"
+        }
+      },
+      "relationships": {
+        "person": {
+          "predicate": "schema:contactPoint",
+          "target": "person",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "publication-flow": {
+          "predicate": "prov:qualifiedDelegation",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/contactpersoon/"
     }
   }
 }
