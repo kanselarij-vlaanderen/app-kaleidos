@@ -77,9 +77,6 @@
             (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
-            (publication-activity        :via ,(s-prefix "pub:publicatieGenereert")
-                                        :inverse t
-                                        :as "publication-activity-generated-by")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t

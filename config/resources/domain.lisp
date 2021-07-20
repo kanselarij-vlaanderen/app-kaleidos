@@ -20,6 +20,7 @@
 
 (in-package :mu-cl-resources)
 (read-domain-file "alerts-domain.lisp")
+(read-domain-file "besluit-domain.json")
 (read-domain-file "besluit-domain.lisp")
 (read-domain-file "besluitvorming-domain.lisp")
 (read-domain-file "document-domain.lisp")

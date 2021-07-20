@@ -527,11 +527,10 @@
           "target": "piece",
           "cardinality": "many"
         },
-        "generated-pieces":{
+        "decisions":{
           "predicate": "pub:publicatieGenereert",
           "_comment": "FIXME: predicate should be dossier:genereert",
-          "_comment2": "The type of the entity this points to should be besluit:Besluit",
-          "target": "piece",
+          "target": "decision",
           "cardinality": "many"
         },
         "request-activity": {

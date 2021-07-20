@@ -91,6 +91,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp staatsblad_resource_types() do
+    [
+      "http://data.vlaanderen.be/ns/besluit#Besluit"
+    ]
+  end
+
   defp email_resource_types() do
     [
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox",
@@ -170,17 +176,23 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/public",
+            constraint: %ResourceConstraint{
+              resource_types: unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
               user_account_resource_types()
-          } },
+            } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
             constraint: %ResourceFormatConstraint{
               resource_prefix: "http://mu.semte.ch/sessions/"
+            } },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/belgisch-staatsblad",
+            constraint: %ResourceConstraint{
+              resource_types: staatsblad_resource_types()
             } } ]
       },
       %GroupSpec{
