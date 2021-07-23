@@ -63,7 +63,8 @@
           "predicate": "ext:heeftIseCode",
           "_comment": "FIXME: these triples are the wrong way around",
           "target": "ise-code",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
         },
         "publication-flows":{
           "predicate": "besluitvorming:beleidsveld",
@@ -93,10 +94,10 @@
           "predicate": "ext:heeftIseCode",
           "_comment": "FIXME: these triples are the wrong way around",
           "target": "government-field",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
         },
         "mandatees":{
+          "_comment": "FIXME: these triples are the wrong way around",
           "predicate": "ext:heeftBevoegdeMandataris",
           "target": "mandatee",
           "cardinality": "many",
