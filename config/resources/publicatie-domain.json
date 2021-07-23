@@ -12,7 +12,8 @@
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
-    "prov": "http://www.w3.org/ns/prov#"
+    "prov": "http://www.w3.org/ns/prov#",
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#"
   },
   "resources": {
     "publication-flows": {
