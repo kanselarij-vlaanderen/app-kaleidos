@@ -389,8 +389,9 @@
           "cardinality": "one",
           "inverse": true
         },
-        "used-pieces":{
-          "predicate": "prov:used",
+        "used-pieces": {
+          "predicate": "pub:aanvraagGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         }

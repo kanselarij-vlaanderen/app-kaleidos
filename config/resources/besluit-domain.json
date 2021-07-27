@@ -10,6 +10,10 @@
       "class": "besluit:Besluit",
       "name": "decision",
       "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "eli:title"
+        },
         "publication-date": {
           "type": "date",
           "predicate": "eli:date_publication"
