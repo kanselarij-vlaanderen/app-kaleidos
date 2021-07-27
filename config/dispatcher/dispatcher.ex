@@ -355,6 +355,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
+  get "/decisions/*path", @any do
+    Proxy.forward conn, path, "http://cache/decisions/"
+  end
+
   # get "/mailboxes/*path" do
   #   Proxy.forward conn, path, "http://cache/mailboxes/"
   # end

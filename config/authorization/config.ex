@@ -89,6 +89,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.europa.eu/eli/ontology#LegalResource",
     ]
   end
 
@@ -307,6 +308,12 @@ defmodule Acl.UserGroups.Config do
               resource_types: email_resource_types()
             }
           },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/staatsblad",
+            constraint: %ResourceConstraint{
+              resource_types: publication_resource_types()
+            }
+          },
         ]
       },
       %GroupSpec{
@@ -326,6 +333,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/email",
             constraint: %ResourceConstraint{
               resource_types: email_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/staatsblad",
+            constraint: %ResourceConstraint{
+              resource_types: publication_resource_types()
             }
           },
         ]

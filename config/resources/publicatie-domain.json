@@ -534,6 +534,11 @@
           "target": "decision",
           "cardinality": "many"
         },
+        "decisions":{
+          "predicate": "prov:generated",
+          "target": "decision",
+          "cardinality": "many"
+        },
         "request-activity": {
           "predicate": "pub:publicatieactiviteitVanAanvraag",
           "cardinality": "one",

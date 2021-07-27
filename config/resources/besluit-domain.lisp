@@ -203,3 +203,15 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
   :features '(include-uri)
   :on-path "meetings")
+
+(define-resource decision ()
+  :class (s-prefix "eli:LegalResource")
+  :properties `((:decision-date         :date ,(s-prefix "eli:date_document"))
+                (:publication-date      :date ,(s-prefix "eli:date_publication"))
+                (:responsible-entity    :string   ,(s-prefix "eli:responsibility_of")))
+  :has-one `((publication-activity      :via      ,(s-prefix "prov:generated")
+                                        :inverse t
+                                        :as "publication-activity"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/besluit/")
+  :features '(include-uri)
+  :on-path "decisions")
