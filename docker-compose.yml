@@ -293,15 +293,21 @@ services:
       - ./data/staatsblad:/data
   staatsblad-import:
     image: kanselarij/ttl-import-service:0.2.0
+    logging: *default-logging
+    restart: always
     volumes:
       - ./data/staatsblad:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   uuid-generation:
     image: kanselarij/uuid-generation-service:0.1.0
+    logging: *default-logging
+    restart: always
     environment:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   staatsblad-linking:
     image: kanselarij/staatsblad-linking-service:0.1.0
+    logging: *default-logging
+    restart: always
 
