@@ -140,7 +140,7 @@ export default [
     options: {
       resourceFormat: 'v0.0.1',
       gracePeriod: 250,
-      ignoreFromSelf: false
+      ignoreFromSelf: true
     }
   },
   {
@@ -157,7 +157,7 @@ export default [
     options: {
       resourceFormat: 'v0.0.1',
       gracePeriod: 15000,
-      ignoreFromSelf: false
+      ignoreFromSelf: true
     }
   }
 ];
