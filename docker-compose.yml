@@ -285,8 +285,8 @@ services:
       - "logging=true"
   lod-sbmb:
     # this isn't a mu.semte.ch-service, but includes a command that is regulary run from cron
-    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10
-    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10
+    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
+    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
     image: kanselarij/lod-sbmb:latest
     logging: *default-logging
     volumes:
@@ -296,7 +296,7 @@ services:
     logging: *default-logging
     restart: always
     volumes:
-      - ./data/staatsblad:/data/imports
+      - ./data/staatsblad/nl:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   uuid-generation:
