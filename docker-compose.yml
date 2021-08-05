@@ -307,7 +307,7 @@ services:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   staatsblad-linking:
-    image: kanselarij/staatsblad-linking-service:0.1.0
+    image: kanselarij/staatsblad-linking-service:0.2.0
     logging: *default-logging
     restart: always
 
