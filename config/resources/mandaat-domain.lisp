@@ -12,6 +12,8 @@
                                   :as "ise-codes")
              (approval            :via ,(s-prefix "ext:goedkeuringen")
                                   :as "approvals")
+             (mandate             :via ,(s-prefix "org:holds")
+                                  :as "mandates")
              (subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
                                   :as "subcases")
@@ -30,11 +32,26 @@
   :features '(include-uri)
   :on-path "mandatees")
 
+(define-resource mandate ()
+  :class (s-prefix "mandaat:Mandaat")
+  :has-one `((role              :via ,(s-prefix "org:role")
+                                :as "role"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/mandaat/")
+  :features '(include-uri)
+  :on-path "mandates")
+
+(define-resource role ()
+  :class (s-prefix "org:Role")
+  :properties `((:prefLabel        :string ,(s-prefix "skos:prefLabel")))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/bestuursfunctie/")
+  :features '(include-uri)
+  :on-path "roles")
+
 (define-resource person ()
   :class (s-prefix "person:Person")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
-                (:first-name        :string ,(s-prefix "foaf:firstName"))
+                (:first-name        :string ,(s-prefix "persoon:gebruikteVoornaam"))
               )
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                     :inverse t
