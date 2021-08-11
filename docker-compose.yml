@@ -299,7 +299,7 @@ services:
       - ./data/staatsblad/nl:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
-  uuid-generation:
+  staatsblad-uuid-generation:
     image: kanselarij/uuid-generation-service:0.1.0
     logging: *default-logging
     restart: always
