@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH ?g {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ; ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ; ?p ?o .
+    FILTER NOT EXISTS { ?anything ?relation ?s . }
+  }
+}
