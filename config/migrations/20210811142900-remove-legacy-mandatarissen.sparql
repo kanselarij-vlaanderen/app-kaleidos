@@ -1,0 +1,5 @@
+DELETE WHERE {
+  GRAPH ?g {
+      ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ; ?p ?o .
+   }
+}
