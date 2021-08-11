@@ -134,7 +134,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://uuid-generation/delta',
+      url: 'http://staatsblad-uuid-generation/delta',
       method: 'POST'
     },
     options: {
