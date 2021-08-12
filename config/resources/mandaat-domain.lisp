@@ -34,7 +34,7 @@
   :class (s-prefix "person:Person")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
                 (:alternative-name  :string ,(s-prefix "foaf:name"))
-                (:first-name        :string ,(s-prefix "foaf:firstName"))
+                (:first-name        :string ,(s-prefix "persoon:gebruikteVoornaam"))
               )
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                     :inverse t
