@@ -33,7 +33,6 @@
 (define-resource person ()
   :class (s-prefix "person:Person")
   :properties `((:last-name         :string ,(s-prefix "foaf:familyName"))
-                (:alternative-name  :string ,(s-prefix "foaf:name"))
                 (:first-name        :string ,(s-prefix "persoon:gebruikteVoornaam"))
               )
   :has-many `((mandatee             :via    ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
