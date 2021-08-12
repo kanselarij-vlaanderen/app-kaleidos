@@ -25,7 +25,10 @@
                                   :inverse t
                                   :as "requested-subcases"))
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
-                                  :as "person"))
+                                  :as "person")
+             (government-body     :via ,(s-prefix "prov:hadMember")
+                                  :inverse t
+                                  :as "government-body"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/mandataris/")
   :features '(include-uri)
   :on-path "mandatees")
@@ -69,3 +72,12 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/handtekening/")
   :features '(include-uri)
   :on-path "signatures")
+
+  (define-resource government-body ()
+    :class (s-prefix "besluit:Bestuursorgaan")
+    :properties `()
+    :has-many `((mandatee           :via ,(s-prefix "prov:hadMember")
+                                    :as "members"))
+    :resource-base (s-url "http://themis.vlaanderen.be/id/bestuursorgaan/")
+    :features '(include-uri)
+    :on-path "government-bodies")
