@@ -1,0 +1,31 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+    GRAPH ?g {
+        ?mWithoutRank mandaat:rangorde ?rank .
+    }
+}
+WHERE {
+    {
+        SELECT ?mWithRank ?person ?start ?einde ?rank WHERE {
+            GRAPH ?f {
+                ?mWithRank a mandaat:Mandataris .
+                ?mWithRank mandaat:isBestuurlijkeAliasVan ?person .
+                ?mWithRank mandaat:start ?start .
+                ?mWithRank mandaat:rangorde ?rank .
+            }
+        }
+    }
+    GRAPH ?g {
+        ?mWithoutRank a mandaat:Mandataris .
+        ?mWithoutRank mandaat:isBestuurlijkeAliasVan ?person .
+        ?mWithoutRank mandaat:start ?start .
+        FILTER NOT EXISTS { ?mWithoutRank mandaat:rangorde ?unexistant . }
+        ?mWithoutRank org:holds / org:role / skos:prefLabel ?label
+    }
+}

@@ -1,0 +1,22 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+    GRAPH ?g {
+        ?mp dct:title "minister-president van de Vlaamse Regering" .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?mp a mandaat:Mandataris .
+        ?mp org:holds / org:role / skos:prefLabel "Minister-president" .
+        ?mp ^prov:hadMember / generiek:isTijdspecialisatieVan ?vr .
+        ?vr skos:prefLabel ?vrLabel .
+        FILTER NOT EXISTS { ?mp dct:title ?title }
+        FILTER(CONTAINS(?vrLabel, "Vlaamse Regering"))
+    }
+}
