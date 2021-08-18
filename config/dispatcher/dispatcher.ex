@@ -228,10 +228,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/account-groups/"
   end
 
-  match "/signatures/*path", @any do
-    Proxy.forward conn, path, "http://cache/signatures/"
-  end
-
   get "/files/:id/download", @any do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
