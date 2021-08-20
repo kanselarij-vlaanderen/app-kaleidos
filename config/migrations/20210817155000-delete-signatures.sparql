@@ -1,13 +1,11 @@
 PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
 PREFIX  public: <http://mu.semte.ch/graphs/public>
-PREFIX  nfo:  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo>
-PREFIX  person: <http://www.w3.org/ns/person>
 
 WITH public:
 DELETE {
   ?s ?p ?o .
 }
 WHERE
-{ ?s  a   ext:Handtekening ;
-      ?p  ?o
-}
+  { ?s  a   ext:Handtekening ;
+        ?p  ?o
+  }
