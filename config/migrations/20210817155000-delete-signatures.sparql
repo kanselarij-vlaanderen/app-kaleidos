@@ -8,4 +8,6 @@ DELETE {
 WHERE
   { ?s  a   ext:Handtekening ;
         ?p  ?o
-  }
+  };
+
+DELETE DATA { GRAPH public { ext:Handtekening a ext:PublicClass. }};
