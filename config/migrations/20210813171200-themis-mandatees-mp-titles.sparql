@@ -7,7 +7,7 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 INSERT {
     GRAPH ?g {
-        ?mp dct:title "minister-president van de Vlaamse Regering" .
+        ?mp dct:title "Minister-president van de Vlaamse Regering" .
     }
 }
 WHERE {
