@@ -89,8 +89,6 @@ services:
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
     restart: "no"
-  lazy-loading-service:
-    restart: "no"
   mandatee-service:
     restart: "no"
   case-documents-sync:
