@@ -11,6 +11,6 @@ WHERE
   } ;
 DELETE DATA {
   GRAPH public: {
-    ext:Handtekening <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:PublicClass .
+    ext:Handtekening a ext:PublicClass .
   }
 }
