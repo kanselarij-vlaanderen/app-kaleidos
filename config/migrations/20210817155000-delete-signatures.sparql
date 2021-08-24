@@ -8,6 +8,9 @@ DELETE {
 WHERE
   { ?s  a   ext:Handtekening ;
         ?p  ?o
-  };
-
-DELETE DATA { GRAPH public { ext:Handtekening a ext:PublicClass. }};
+  } ;
+DELETE DATA {
+  GRAPH public: {
+    ext:Handtekening <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:PublicClass .
+  }
+}
