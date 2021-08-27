@@ -152,7 +152,6 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
       "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
       "http://www.w3.org/ns/org#Organization",
     ]
