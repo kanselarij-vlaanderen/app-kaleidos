@@ -355,6 +355,51 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
+  # sign resources
+  match "/sign-flows/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-flows/"
+  end
+
+  get "/sign-statuses/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-statuses/"
+  end
+
+  match "/sign-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-subcases/"
+  end
+
+  match "/sign-mark-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-mark-activities/"
+  end
+
+  match "/sign-prepare-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-prepare-activities/"
+  end
+
+  match "/sign-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-activities/"
+  end
+
+  match "/sign-refuse-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-refuse-activities/"
+  end
+
+  match "/sign-cancellation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-cancellation-activities/"
+  end
+
+  match "/sign-complete-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-complete-activities/"
+  end
+
+  match "/sign-prepared-documents/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-prepared-documents/"
+  end
+
+  match "/signed-pieces/*path", @any do
+    Proxy.forward conn, path, "http://cache/signed-pieces/"
+  end
+
   # get "/mailboxes/*path" do
   #   Proxy.forward conn, path, "http://cache/mailboxes/"
   # end

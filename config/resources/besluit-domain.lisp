@@ -119,7 +119,11 @@
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
-                                    :as "decision-result-code"))
+                                    :as "decision-result-code")
+             (sign-flow             :via ,(s-prefix "sign:heeftBeslissing"),
+                                    :inverse t
+                                    :as "sign-flow")
+            )
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")

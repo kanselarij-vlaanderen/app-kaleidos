@@ -92,6 +92,25 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+
+  defp sign_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenAangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenStatus",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/handteken/DocumentMarkeringsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/VoorbereidingsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenWeigeringActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/AfrondingsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/GehandtekendStuk",
+      "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
+      "http://www.w3.org/ns/person#Person",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+    ]
+  end
+
   defp staatsblad_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluit#Besluit"
@@ -319,7 +338,8 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: publication_resource_types() ++
                 generic_besluitvorming_resource_types() ++
-                document_resource_types()
+                document_resource_types() ++
+                sign_resource_types()
             }
           },
           %GraphSpec{

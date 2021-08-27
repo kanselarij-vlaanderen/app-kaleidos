@@ -23,7 +23,11 @@
                                   :as "agendaitems")
              (subcase             :via ,(s-prefix "ext:indiener")
                                   :inverse t
-                                  :as "requested-subcases"))
+                                  :as "requested-subcases")
+             (sign-activity       :via ,(s-prefix "sign:ondertekenaar")
+                                  :inverse t
+                                  :as "sign-activities")
+             )
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/mandataris/")
@@ -49,6 +53,9 @@
              (organization          :via ,(s-prefix "org:hasMember")
                                     :inverse t
                                     :as "organization")
+             (sign-flow             :via ,(s-prefix "dct:creator")
+                                    :inverse t
+                                    :as "sign-flow")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)
