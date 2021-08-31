@@ -101,7 +101,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handteken/DocumentMarkeringsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/VoorbereidingsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenWeigeringActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenWeigerActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/AfrondingsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/GehandtekendStuk",
@@ -316,7 +316,8 @@ defmodule Acl.UserGroups.Config do
                 static_unconfidential_code_list_types() ++
                 user_account_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                sign_resource_types()
             }
           },
           %GraphSpec{

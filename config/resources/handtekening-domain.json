@@ -12,7 +12,7 @@
 
     "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
-    "signinghub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
+    "signingHub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
   },
   "resources": {
     "sign-flows": {
@@ -23,7 +23,7 @@
           "type": "string",
           "predicate": "dct:alternative"
         },
-        "title": {
+        "long-title": {
           "type": "string",
           "predicate": "dct:title"
         },
@@ -42,11 +42,6 @@
           "target": "regulation-type",
           "cardinality": "one"
         },
-        "status": {
-          "predicate": "adms:status",
-          "target": "sign-status",
-          "cardinality": "one"
-        },
         "case": {
           "predicate": "sign:behandeltDossier",
           "target": "case",
@@ -57,13 +52,13 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "decide-activity": {
-          "_comment": "TODO: split in decide-activity & agenda-item-treatment",
+        "decision-activity": {
+          "_comment": "TODO: split in decision-activity & agenda-item-treatment",
           "predicate": "sign:heeftBeslissing",
           "target": "agenda-item-treatment",
           "cardinality": "one"
         },
-        "councelor": {
+        "creator": {
           "predicate": "dct:creator",
           "target": "person",
           "cardinality": "one"
@@ -71,30 +66,6 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-aangelegenheid/"
-    },
-    "sign-statuses": {
-      "name": "sign-status",
-      "class": "sign:HandtekenStatus",
-      "attributes": {
-        "label": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        },
-        "position": {
-          "type": "number",
-          "predicate": "schema:position"
-        }
-      },
-      "relationships": {
-        "sign-flows": {
-          "predicate": "adms:status",
-          "target": "sign-flow",
-          "cardinality": "many",
-          "inverse": true
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-status/"
     },
     "sign-subcases": {
       "name": "sign-subcase",
@@ -120,27 +91,27 @@
           "cardinality": "one",
           "inverse": true
         },
-        "sign-mark-activity": {
+        "sign-marking-activity": {
           "predicate": "sign:markeringVindtPlaatsTijdens",
-          "target": "sign-mark-activity",
+          "target": "sign-marking-activity",
           "cardinality": "one",
           "inverse": true
         },
-        "sign-prepare-activity": {
+        "sign-preparion-activity": {
           "predicate": "sign:voorbereidingVindtPlaatsTijdens",
-          "target": "sign-prepare-activity",
+          "target": "sign-preparation-activity",
           "cardinality": "one",
           "inverse": true
         },
-        "sign-activities": {
+        "sign-signing-activities": {
           "predicate": "sign:handtekeningVindtPlaatsTijdens",
-          "target": "sign-activity",
+          "target": "sign-signing-activity",
           "cardinality": "many",
           "inverse": true
         },
-        "sign-refuse-activities": {
+        "sign-refusal-activities": {
           "predicate": "sign:weigeringVindtPlaatsTijdens",
-          "target": "sign-refuse-activity",
+          "target": "sign-refusal-activity",
           "cardinality": "many",
           "inverse": true
         },
@@ -150,9 +121,9 @@
           "cardinality": "one",
           "inverse": true
         },
-        "sign-complete-activity": {
+        "sign-completion-activity": {
           "predicate": "sign:afrondingVindtPlaatsTijdens",
-          "target": "sign-complete-activity",
+          "target": "sign-completion-activity",
           "cardinality": "one",
           "inverse": true
         }
@@ -160,8 +131,8 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-procedurestap/"
     },
-    "sign-mark-activities": {
-      "name": "sign-mark-activity",
+    "sign-marking-activities": {
+      "name": "sign-marking-activity",
       "class": "sign:DocumentMarkeringsActiviteit",
       "attributes": {
         "title": {
@@ -188,9 +159,9 @@
           "target": "piece",
           "cardinality": "one"
         },
-        "sign-prepare-activity": {
+        "sign-preparation-activity": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-prepare-activity",
+          "target": "sign-preparation-activity",
           "cardinality": "one",
           "inverse": true
         }
@@ -198,8 +169,8 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-markerings-activiteit/"
     },
-    "sign-prepare-activities": {
-      "name": "sign-prepare-activity",
+    "sign-preparation-activities": {
+      "name": "sign-preparation-activity",
       "class": "sign:VoorbereidingsActiviteit",
       "attributes": {
         "title": {
@@ -221,19 +192,19 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "sign-prepared-document": {
+        "signing-hub-document": {
           "predicate": "sign:voorbereidingGenereert",
-          "target": "sign-prepared-document",
+          "target": "signing-hub-document",
           "cardinality": "one"
         },
-        "sign-mark-activity": {
+        "sign-marking-activity": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-mark-activity",
+          "target": "sign-marking-activity",
           "cardinality": "one"
         },
-        "sign-activities": {
+        "sign-signing-activities": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-activity",
+          "target": "sign-signing-activity",
           "cardinality": "many",
           "inverse": true
         }
@@ -241,8 +212,8 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereidings-activiteit/"
     },
-    "sign-activities": {
-      "name": "sign-activity",
+    "sign-signing-activities": {
+      "name": "sign-signing-activity",
       "class": "sign:HandtekenActiviteit",
       "attributes": {
         "title": {
@@ -264,19 +235,19 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "sign-prepare-activity": {
+        "sign-preparation-activity": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-prepare-activity",
+          "target": "sign-preparation-activity",
           "cardinality": "one"
         },
-        "sign-refuse-activity": {
+        "sign-refusal-activity": {
           "predicate": "sign:isGeweigerdDoor",
-          "target": "sign-refuse-activity",
+          "target": "sign-refusal-activity",
           "cardinality": "one"
         },
-        "sign-complete-activity": {
+        "sign-completion-activity": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-complete-activity",
+          "target": "sign-completion-activity",
           "cardinality": "one",
           "inverse": true
         },
@@ -289,9 +260,9 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-activiteit/"
     },
-    "sign-refuse-activities": {
-      "name": "sign-refuse-activity",
-      "class": "sign:HandtekenWeigeringActiviteit",
+    "sign-refusal-activities": {
+      "name": "sign-refusal-activity",
+      "class": "sign:HandtekenWeigerActiviteit",
       "attributes": {
         "title": {
           "type": "string",
@@ -312,9 +283,9 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "sign-activity": {
+        "sign-signing-activity": {
           "predicate": "sign:isGeweigerdDoor",
-          "target": "sign-activity",
+          "target": "sign-signing-activity",
           "cardinality": "one",
           "inverse": true
         }
@@ -349,8 +320,8 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-annulatie-activiteit/"
     },
-    "sign-complete-activities": {
-      "name": "sign-complete-activity",
+    "sign-completion-activities": {
+      "name": "sign-completion-activity",
       "class": "sign:AfrondingsActiviteit",
       "attributes": {
         "title": {
@@ -372,32 +343,32 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "sign-activities": {
+        "sign-signing-activities": {
           "predicate": "prov:wasInformedBy",
-          "target": "sign-activity",
+          "target": "sign-signing-activity",
           "cardinality": "many"
         }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondings-activiteit/"
     },
-    "sign-prepared-documents": {
-      "name": "sign-prepared-document",
-      "class": "signinghub:Document",
+    "signing-hub-documents": {
+      "name": "signing-hub-document",
+      "class": "signingHub:Document",
       "attributes": {
         "documentId": {
           "type": "string",
-          "predicate": "signinghub:documentId"
+          "predicate": "signingHub:documentId"
         },
         "packageId": {
           "type": "string",
-          "predicate": "signinghub:packageId"
+          "predicate": "signingHub:packageId"
         }
       },
       "relationships": {
-        "sign-prepare-activity": {
+        "sign-preparation-activity": {
           "predicate": "sign:voorbereidingGenereert",
-          "target": "sign-prepare-activity",
+          "target": "sign-preparation-activity",
           "cardinality": "one"
         },
         "piece": {
@@ -407,7 +378,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereide-documenten/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereide-document/"
     },
     "signed-pieces": {
       "name": "signed-piece",
@@ -433,14 +404,14 @@
           "target": "file",
           "cardinality": "one"
         },
-        "sign-complete-activity": {
+        "sign-completion-activity": {
           "predicate": "sign:getekendDocument",
-          "target": "sign-complete-activity",
+          "target": "sign-completion-activity",
           "cardinality": "one"
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/gehandtekende-stukken/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/gehandtekende-stuk/"
     }
   }
 }

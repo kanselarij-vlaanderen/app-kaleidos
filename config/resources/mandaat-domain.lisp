@@ -24,9 +24,9 @@
              (subcase             :via ,(s-prefix "ext:indiener")
                                   :inverse t
                                   :as "requested-subcases")
-             (sign-activity       :via ,(s-prefix "sign:ondertekenaar")
+             (sign-signing-activity :via ,(s-prefix "sign:ondertekenaar")
                                   :inverse t
-                                  :as "sign-activities")
+                                  :as "sign-signing-activities")
              )
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person"))

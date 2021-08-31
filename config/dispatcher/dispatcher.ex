@@ -352,40 +352,36 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-flows/"
   end
 
-  get "/sign-statuses/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-statuses/"
-  end
-
   match "/sign-subcases/*path", @any do
     Proxy.forward conn, path, "http://cache/sign-subcases/"
   end
 
-  match "/sign-mark-activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-mark-activities/"
+  match "/sign-marking-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-marking-activities/"
   end
 
-  match "/sign-prepare-activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-prepare-activities/"
+  match "/sign-preparation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-preparation-activities/"
   end
 
-  match "/sign-activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-activities/"
+  match "/sign-signing-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-signing-activities/"
   end
 
-  match "/sign-refuse-activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-refuse-activities/"
+  match "/sign-refusal-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-refusal-activities/"
   end
 
   match "/sign-cancellation-activities/*path", @any do
     Proxy.forward conn, path, "http://cache/sign-cancellation-activities/"
   end
 
-  match "/sign-complete-activities/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-complete-activities/"
+  match "/sign-completion-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/sign-prepared-documents/*path", @any do
-    Proxy.forward conn, path, "http://cache/sign-prepared-documents/"
+  match "/signing-hub-documents/*path", @any do
+    Proxy.forward conn, path, "http://cache/signing-hub-documents/"
   end
 
   match "/signed-pieces/*path", @any do

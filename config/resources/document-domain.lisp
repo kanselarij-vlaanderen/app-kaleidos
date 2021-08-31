@@ -80,12 +80,12 @@
                                         :inverse t
                                         :as "proofing-activity-generated-by")
             ;; sign flow
-            (sign-mark-activity         :via ,(s-prefix "sign:gemarkeerdDocument")
+            (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdDocument")
                                         :inverse t
-                                        :as "sign-mark-activity")
-            (sign-prepared-document     :via ,(s-prefix "prov:hadPrimarySource")
+                                        :as "sign-marking-activity")
+            (signing-hub-document       :via ,(s-prefix "prov:hadPrimarySource")
                                         :inverse t
-                                        :as "sign-prepared-document")
+                                        :as "signing-hub-document")
             (signed-piece               :via ,(s-prefix "sign:ongetekendDocument")
                                         :inverse t
                                         :as "signed-piece")
