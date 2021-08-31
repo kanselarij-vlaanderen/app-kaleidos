@@ -278,6 +278,7 @@ services:
     labels:
       - "logging=true"
   lod-sbmb:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     # this isn't a mu.semte.ch-service, but includes a command that is regulary run from cron
     # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
     # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
@@ -286,6 +287,7 @@ services:
     volumes:
       - ./data/staatsblad:/data
   staatsblad-import:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/ttl-import-service:0.2.0
     logging: *default-logging
     restart: always
@@ -294,6 +296,7 @@ services:
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   staatsblad-uuid-generation:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/uuid-generation-service:0.1.0
     logging: *default-logging
     restart: always
@@ -301,6 +304,7 @@ services:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   staatsblad-linking:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/staatsblad-linking-service:0.3.0
     logging: *default-logging
     restart: always
