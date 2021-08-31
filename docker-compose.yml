@@ -290,7 +290,7 @@ services:
     entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/ttl-import-service:0.2.0
     logging: *default-logging
-    restart: always
+    restart: "no" # disabled on prod until tested on accept
     volumes:
       - ./data/staatsblad/nl:/data/imports
     environment:
@@ -299,7 +299,7 @@ services:
     entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/uuid-generation-service:0.1.0
     logging: *default-logging
-    restart: always
+    restart: "no" # disabled on prod until tested on accept
     environment:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
@@ -307,5 +307,4 @@ services:
     entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/staatsblad-linking-service:0.3.0
     logging: *default-logging
-    restart: always
-
+    restart: "no" # disabled on prod until tested on accept
