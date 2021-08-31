@@ -12,7 +12,7 @@
 
     "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
-    "signingHub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
+    "signinghub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
   },
   "resources": {
     "sign-flows": {
@@ -97,7 +97,7 @@
           "cardinality": "one",
           "inverse": true
         },
-        "sign-preparion-activity": {
+        "sign-preparation-activity": {
           "predicate": "sign:voorbereidingVindtPlaatsTijdens",
           "target": "sign-preparation-activity",
           "cardinality": "one",
@@ -133,7 +133,7 @@
     },
     "sign-marking-activities": {
       "name": "sign-marking-activity",
-      "class": "sign:DocumentMarkeringsActiviteit",
+      "class": "sign:MarkeringsActiviteit",
       "attributes": {
         "title": {
           "type": "string",
@@ -262,7 +262,7 @@
     },
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
-      "class": "sign:HandtekenWeigerActiviteit",
+      "class": "sign:HandtekeningWeigerActiviteit",
       "attributes": {
         "title": {
           "type": "string",
@@ -291,7 +291,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-weigering-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handtekening-weiger-activiteit/"
     },
     "sign-cancellation-activities": {
       "name": "sign-cancellation-activity",
@@ -354,15 +354,15 @@
     },
     "signing-hub-documents": {
       "name": "signing-hub-document",
-      "class": "signingHub:Document",
+      "class": "signinghub:Document",
       "attributes": {
         "documentId": {
           "type": "string",
-          "predicate": "signingHub:documentId"
+          "predicate": "signinghub:documentId"
         },
         "packageId": {
           "type": "string",
-          "predicate": "signingHub:packageId"
+          "predicate": "signinghub:packageId"
         }
       },
       "relationships": {
@@ -382,7 +382,7 @@
     },
     "signed-pieces": {
       "name": "signed-piece",
-      "class": "sign:GehandtekendStuk",
+      "class": "sign:GetekendStuk",
       "attributes": {
         "title": {
           "type": "string",
@@ -400,7 +400,7 @@
           "cardinality": "one"
         },
         "signed-file": {
-          "predicate": "sign:gehandtekendBestand",
+          "predicate": "sign:getekendBestand",
           "target": "file",
           "cardinality": "one"
         },
@@ -411,7 +411,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/gehandtekende-stuk/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/getekend-stuk/"
     }
   }
 }

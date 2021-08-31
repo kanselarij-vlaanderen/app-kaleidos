@@ -109,7 +109,11 @@
               ;                :as "pieces")
               (publication-flow     :via ,(s-prefix "dct:subject"),
                                     :inverse t
-                                    :as "publication-flows"))
+                                    :as "publication-flows")
+              (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
+                                    :inverse t
+                                    :as "sign-flows")
+            )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem")
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
@@ -120,9 +124,6 @@
                                     :as "newsletter-info")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
-             (sign-flow             :via ,(s-prefix "sign:heeftBeslissing"),
-                                    :inverse t
-                                    :as "sign-flow")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
