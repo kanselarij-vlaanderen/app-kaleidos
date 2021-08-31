@@ -1,0 +1,16 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  public: <http://mu.semte.ch/graphs/public>
+
+WITH public:
+DELETE {
+  ?s ?p ?o .
+}
+WHERE
+  { ?s  a   ext:Handtekening ;
+        ?p  ?o
+  } ;
+DELETE DATA {
+  GRAPH public: {
+    ext:Handtekening a ext:PublicClass .
+  }
+}

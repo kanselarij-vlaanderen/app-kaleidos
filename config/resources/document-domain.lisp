@@ -62,7 +62,7 @@
                                         :as "publication-flow")
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
-                                        :as "translation-subcase")
+                                        :as "translation-subcase-source-for")
             (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
                                         :inverse t
                                         :as "translation-activity-generated-by")
@@ -72,9 +72,10 @@
             (publication-subcase        :via ,(s-prefix "pub:publicatieCorrectieDocument")
                                         :inverse t
                                         :as "publication-subcase-correction-for")
-            (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
-                                        :as "publication-subcase")
-            (proofing-activity        :via ,(s-prefix "pub:drukproefGenereert")
+            (proofing-activity          :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "publication-activity-used-by")
+            (proofing-activity          :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
   )
@@ -87,7 +88,10 @@
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitems")
-              (translation-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+              (request-activity         :via ,(s-prefix "pub:aanvraagGebruikt")
+                                        :inverse t
+                                        :as "request-activities-used-by")
+              (translation-activity     :via ,(s-prefix "pub:drukproefGebruikt")
                                         :inverse t
                                         :as "translation-activities-used-by")
               (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")

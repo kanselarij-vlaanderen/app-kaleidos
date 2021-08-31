@@ -8,10 +8,7 @@
                 (:content-type  :string     ,(s-prefix "ext:contentType")))
   :has-one `((file              :via        ,(s-prefix "nie:dataSource")
                                 :inverse t
-                                :as "download")
-             (signature         :via        ,(s-prefix "ext:handtekening")
-                                :inverse t
-                                :as "signature"))
+                                :as "download"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestand/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")

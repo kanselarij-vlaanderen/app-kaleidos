@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.16.1
+    image: kanselarij/frontend-kaleidos:5.18.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -212,7 +212,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:4.0.0
+    image: kanselarij/yggdrasil:4.1.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -242,12 +242,6 @@ services:
       - "logging=true"
   database-healthcheck:
     image: kanselarij/database-healthcheck:1.0.2
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  lazy-loading-service:
-    image: kanselarij/lazy-loading-service:1.1.0
     logging: *default-logging
     restart: always
     labels:
