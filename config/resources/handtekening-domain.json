@@ -258,7 +258,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-handteken-activiteit/"
     },
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
@@ -291,7 +291,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handtekening-weiger-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-weiger-activiteit/"
     },
     "sign-cancellation-activities": {
       "name": "sign-cancellation-activity",
@@ -378,7 +378,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereide-document/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/signinghub-document/"
     },
     "signed-pieces": {
       "name": "signed-piece",
