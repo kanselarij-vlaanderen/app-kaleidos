@@ -26,7 +26,7 @@
 (read-domain-file "document-domain.lisp")
 (read-domain-file "dossier-domain.lisp")
 (read-domain-file "files-domain.lisp")
-(read-domain-file "handteken-domain.json")
+(read-domain-file "handtekening-domain.json")
 (read-domain-file "job-domain.lisp")
 (read-domain-file "mandaat-domain.lisp")
 (read-domain-file "newsletter-domain.lisp")
