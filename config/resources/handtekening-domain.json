@@ -262,7 +262,7 @@
     },
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
-      "class": "sign:HandtekeningWeigerActiviteit",
+      "class": "sign:WeigerActiviteit",
       "attributes": {
         "title": {
           "type": "string",
@@ -347,6 +347,11 @@
           "predicate": "prov:wasInformedBy",
           "target": "sign-signing-activity",
           "cardinality": "many"
+        },
+        "signed-piece": {
+          "predicate": "sign:getekendStuk",
+          "target": "signed-piece",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -395,7 +400,7 @@
       },
       "relationships": {
         "unsigned-piece": {
-          "predicate": "sign:ongetekendDocument",
+          "predicate": "sign:ongetekendStuk",
           "target": "piece",
           "cardinality": "one"
         },
@@ -405,9 +410,10 @@
           "cardinality": "one"
         },
         "sign-completion-activity": {
-          "predicate": "sign:getekendDocument",
+          "predicate": "sign:getekendStuk",
           "target": "sign-completion-activity",
-          "cardinality": "one"
+          "cardinality": "one",
+          "inverse": "true"
         }
       },
       "features": ["include-uri"],

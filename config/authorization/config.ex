@@ -101,7 +101,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handteken/MarkeringsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/VoorbereidingsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekeningWeigerActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/WeigerActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/AfrondingsActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/GetekendStuk",
