@@ -252,6 +252,11 @@
         "proof-print-corrector": {
           "type": "string",
           "predicate": "pub:drukproefVerbeteraar"
+        },
+        "date-received": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
