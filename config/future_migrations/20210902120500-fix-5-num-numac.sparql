@@ -1,0 +1,40 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?identifier skos:notation ?ovrbNumac .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?identifier skos:notation ?sbNumac .
+    }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/staatsblad> {
+      ?decision a eli:LegalResource ;
+          eli:id_local ?sbNumac ;
+          eli:date_publication ?sbPubDate .
+  }
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+      ?publicationFlow a pub:Publicatieaangelegenheid ;
+          dct:source [] .
+      ?publicationFlow pub:identifier ?identifier .
+      ?identifier skos:notation ?ovrbNumac .
+      FILTER(STRLEN(?ovrbNumac) = 5)
+
+      ?publicationFlow pub:doorlooptPublicatie / dossier:Procedurestap.einddatum ?ovrbPubDateTime .
+      BIND(STRDT(SUBSTR(STR(?ovrbPubDateTime), 1, 10), xsd:date) AS ?ovrbPubDate)
+      
+      BIND(CONCAT(STR(YEAR(?ovrbPubDateTime)), "0", ?ovrbNumac) AS ?sbNumac)
+  }
+  FILTER(?ovrbPubDate = ?sbPubDate)
+
+}
