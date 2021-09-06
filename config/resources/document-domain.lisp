@@ -83,9 +83,9 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdDocument")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (signing-hub-document       :via ,(s-prefix "prov:hadPrimarySource")
+            (signinghub-document       :via ,(s-prefix "prov:hadPrimarySource")
                                         :inverse t
-                                        :as "signing-hub-document")
+                                        :as "signinghub-document")
             (signed-piece               :via ,(s-prefix "sign:ongetekendDocument")
                                         :inverse t
                                         :as "signed-piece")

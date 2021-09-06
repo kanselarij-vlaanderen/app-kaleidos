@@ -380,8 +380,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/signing-hub-documents/*path", @any do
-    Proxy.forward conn, path, "http://cache/signing-hub-documents/"
+  match "/signinghub-documents/*path", @any do
+    Proxy.forward conn, path, "http://cache/signinghub-documents/"
   end
 
   match "/signed-pieces/*path", @any do

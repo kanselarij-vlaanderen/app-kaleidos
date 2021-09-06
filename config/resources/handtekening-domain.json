@@ -192,9 +192,9 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "signing-hub-document": {
+        "signinghub-document": {
           "predicate": "sign:voorbereidingGenereert",
-          "target": "signing-hub-document",
+          "target": "signinghub-document",
           "cardinality": "one"
         },
         "sign-marking-activity": {
@@ -357,8 +357,8 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondings-activiteit/"
     },
-    "signing-hub-documents": {
-      "name": "signing-hub-document",
+    "signinghub-documents": {
+      "name": "signinghub-document",
       "class": "signinghub:Document",
       "attributes": {
         "documentId": {
