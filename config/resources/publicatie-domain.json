@@ -13,7 +13,8 @@
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
     "prov": "http://www.w3.org/ns/prov#",
-    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#"
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
+    "dbpedia": "http://dbpedia.org/resource/"
   },
   "resources": {
     "publication-flows": {
@@ -649,6 +650,10 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "abbreviation": {
+          "type": "string",
+          "predicate": "dbpedia:abbreviation"
         }
       },
       "relationships": {
