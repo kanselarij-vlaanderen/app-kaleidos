@@ -1,0 +1,44 @@
+PREFIX  dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  adms: <http://www.w3.org/ns/adms#>
+PREFIX  pub:  <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX  pubstatus: <http://themis.vlaanderen.be/id/concept/publicatie-status/>
+
+#delete existing statusses for each pubflow
+DELETE {
+  GRAPH ?g {
+    ?pubflow adms:status ?status .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?pubflow  a            pub:Publicatieaangelegenheid ;
+                  adms:status  ?status
+      }
+  } ;
+# make status 'published' when the publication-subcase has an end-date
+INSERT {
+  GRAPH ?g {
+    ?pubflow adms:status pubstatus:2f8dc814-bd91-4bcf-a823-baf1cdc42475 .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?pubflow  a                     pub:Publicatieaangelegenheid ;
+                  pub:doorlooptPublicatie  ?pubsubcase
+        FILTER EXISTS { ?pubsubcase  dossier:Procedurestap.einddatum  xsd:date }
+      }
+  } ;
+ # make status 'to be published' when the publication-subcase has an end-date
+INSERT {
+  GRAPH ?g {
+    ?pubflow adms:status pubstatus:fa62e050-3960-440d-bed9-1c3d3e9923a8 .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?pubflow  a                     pub:Publicatieaangelegenheid ;
+                  pub:doorlooptPublicatie  ?pubsubcase
+        FILTER NOT EXISTS { ?pubsubcase  dossier:Procedurestap.einddatum  xsd:date }
+      }
+  }
