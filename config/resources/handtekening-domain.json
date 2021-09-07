@@ -295,7 +295,7 @@
     },
     "sign-cancellation-activities": {
       "name": "sign-cancellation-activity",
-      "class": "sign:Annulatieactiviteit",
+      "class": "sign:AnnulatieActiviteit",
       "attributes": {
         "title": {
           "type": "string",
