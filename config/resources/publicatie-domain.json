@@ -169,6 +169,11 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of translation documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -248,6 +253,11 @@
         "proof-print-corrector": {
           "type": "string",
           "predicate": "pub:drukproefVerbeteraar"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
