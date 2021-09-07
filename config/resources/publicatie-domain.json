@@ -656,7 +656,7 @@
         },
         "sign-flows": {
           "predicate": "sign:regelgevingType",
-          "target": "publication-flow",
+          "target": "sign-flow",
           "cardinality": "many",
           "inverse": true
         }

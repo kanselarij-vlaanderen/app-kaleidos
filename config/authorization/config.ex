@@ -95,15 +95,14 @@ defmodule Acl.UserGroups.Config do
 
   defp sign_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenAangelegenheid",
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenStatus",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenProcedurestap",
-      "http://mu.semte.ch/vocabularies/ext/handteken/MarkeringsActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/VoorbereidingsActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/WeigerActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/AfrondingsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Markeringsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Voorbereidingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Weigeractiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Annulatieactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Afrondingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handteken/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
