@@ -374,7 +374,8 @@
         "sign-preparation-activity": {
           "predicate": "sign:voorbereidingGenereert",
           "target": "sign-preparation-activity",
-          "cardinality": "one"
+          "cardinality": "one",
+          "inverse": true
         },
         "piece": {
           "predicate": "prov:hadPrimarySource",
@@ -413,7 +414,7 @@
           "predicate": "sign:getekendStuk",
           "target": "sign-completion-activity",
           "cardinality": "one",
-          "inverse": "true"
+          "inverse": true
         }
       },
       "features": ["include-uri"],
