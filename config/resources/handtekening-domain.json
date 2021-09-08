@@ -65,7 +65,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-aangelegenheid/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handtekenaangelegenheid/"
     },
     "sign-subcases": {
       "name": "sign-subcase",
@@ -167,7 +167,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-markerings-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-markeringsactiviteit/"
     },
     "sign-preparation-activities": {
       "name": "sign-preparation-activity",
@@ -210,7 +210,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereidings-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereidingsactiviteit/"
     },
     "sign-signing-activities": {
       "name": "sign-signing-activity",
@@ -258,7 +258,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-handteken-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-handtekenactiviteit/"
     },
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
@@ -291,7 +291,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-weiger-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-weigeractiviteit/"
     },
     "sign-cancellation-activities": {
       "name": "sign-cancellation-activity",
@@ -355,7 +355,7 @@
         }
       },
       "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondings-activiteit/"
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondingsactiviteit/"
     },
     "signinghub-documents": {
       "name": "signinghub-document",
