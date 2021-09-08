@@ -6,13 +6,17 @@
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-many `((publication-flow  :via      ,(s-prefix "dossier:behandelt")
-                                :inverse t
-                                :as "publication-flows")
-              (subcase          :via      ,(s-prefix "dossier:doorloopt")
+  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
                                 :as "subcases")
               (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
-                                :as "pieces"))
+                                :as "pieces")
+              (publication-flow :via      ,(s-prefix "dossier:behandelt")
+                                :inverse t
+                                :as "publication-flows")
+              (sign-flow        :via      ,(s-prefix "sign:behandeltDossier")
+                                :inverse t
+                                :as "sign-flows")
+            )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
   :on-path "cases")
