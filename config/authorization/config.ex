@@ -112,7 +112,7 @@ defmodule Acl.UserGroups.Config do
 
   defp staatsblad_resource_types() do
     [
-      "http://data.vlaanderen.be/ns/besluit#Besluit"
+      "http://data.europa.eu/eli/ontology#LegalResource",
     ]
   end
 
@@ -208,7 +208,7 @@ defmodule Acl.UserGroups.Config do
               resource_prefix: "http://mu.semte.ch/sessions/"
             } },
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/belgisch-staatsblad",
+            graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
             } } ]

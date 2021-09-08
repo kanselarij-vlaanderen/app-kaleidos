@@ -14,7 +14,8 @@
     "prov": "http://www.w3.org/ns/prov#",
     "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
-    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/"
+    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
     "publication-flows": {
@@ -169,6 +170,11 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of translation documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -248,6 +254,11 @@
         "proof-print-corrector": {
           "type": "string",
           "predicate": "pub:drukproefVerbeteraar"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -542,6 +553,11 @@
           "target": "decision",
           "cardinality": "many"
         },
+        "decisions":{
+          "predicate": "prov:generated",
+          "target": "decision",
+          "cardinality": "many"
+        },
         "request-activity": {
           "predicate": "pub:publicatieactiviteitVanAanvraag",
           "cardinality": "one",
@@ -645,6 +661,10 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "abbreviation": {
+          "type": "string",
+          "predicate": "dbpedia:abbreviation"
         }
       },
       "relationships": {

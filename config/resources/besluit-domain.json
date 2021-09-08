@@ -7,9 +7,13 @@
   },
   "resources": {
     "decisions": {
-      "class": "besluit:Besluit",
+      "class": "eli:LegalResource",
       "name": "decision",
       "attributes": {
+        "decision-date": {
+          "type": "date",
+          "predicate": "eli:date_document"
+        },
         "title": {
           "type": "string",
           "predicate": "eli:title"
@@ -17,11 +21,15 @@
         "publication-date": {
           "type": "date",
           "predicate": "eli:date_publication"
+        },
+        "responsible-entity": {
+          "type": "string",
+          "predicate": "eli:responsibility_of"
         }
       },
       "relationships": {
         "publication-activity": {
-          "predicate": "pub:publicatieGenereert",
+          "predicate": "prov:generated",
           "target": "publication-activity",
           "cardinality": "one",
           "inverse": true
