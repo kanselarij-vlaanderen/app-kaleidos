@@ -86,7 +86,7 @@
             (signinghub-document       :via ,(s-prefix "prov:hadPrimarySource")
                                         :inverse t
                                         :as "signinghub-document")
-            (signed-piece               :via ,(s-prefix "sign:ongetekendDocument")
+            (signed-piece               :via ,(s-prefix "sign:ongetekendStuk")
                                         :inverse t
                                         :as "signed-piece")
   )
