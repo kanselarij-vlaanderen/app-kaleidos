@@ -80,7 +80,7 @@
                                         :inverse t
                                         :as "proofing-activity-generated-by")
             ;; sign flow
-            (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdDocument")
+            (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
             (signinghub-document       :via ,(s-prefix "prov:hadPrimarySource")
@@ -133,4 +133,3 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/document-type/")
   :features '(include-uri)
   :on-path "document-types")
-

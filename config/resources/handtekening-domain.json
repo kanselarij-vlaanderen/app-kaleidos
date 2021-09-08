@@ -155,7 +155,7 @@
           "cardinality": "one"
         },
         "piece": {
-          "predicate": "sign:gemarkeerdDocument",
+          "predicate": "sign:gemarkeerdStuk",
           "target": "piece",
           "cardinality": "one"
         },
