@@ -60,12 +60,25 @@
             (publication-flow           :via ,(s-prefix "pub:referentieDocument")
                                         :inverse t
                                         :as "publication-flow")
-            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
-                                        :inverse t
-                                        :as "publication-subcase")
             (translation-subcase        :via ,(s-prefix "pub:vertalingBronDocument")
                                         :inverse t
-                                        :as "translation-subcase"))
+                                        :as "translation-subcase-source-for")
+            (translation-activity       :via ,(s-prefix "pub:vertalingGenereert")
+                                        :inverse t
+                                        :as "translation-activity-generated-by")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieBronDocument")
+                                        :inverse t
+                                        :as "publication-subcase-source-for")
+            (publication-subcase        :via ,(s-prefix "pub:publicatieCorrectieDocument")
+                                        :inverse t
+                                        :as "publication-subcase-correction-for")
+            (proofing-activity          :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "publication-activity-used-by")
+            (proofing-activity          :via ,(s-prefix "pub:drukproefGenereert")
+                                        :inverse t
+                                        :as "proofing-activity-generated-by")
+  )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
                                         :as "cases")
@@ -74,7 +87,20 @@
                                         :as "translations")
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
-                                        :as "agendaitems"))
+                                        :as "agendaitems")
+              (request-activity         :via ,(s-prefix "pub:aanvraagGebruikt")
+                                        :inverse t
+                                        :as "request-activities-used-by")
+              (translation-activity     :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "translation-activities-used-by")
+              (proofing-activity        :via ,(s-prefix "pub:drukproefGebruikt")
+                                        :inverse t
+                                        :as "proofing-activities-used-by")
+              (publication-activity     :via ,(s-prefix "pub:publicatieGebruikt")
+                                        :inverse t
+                                        :as "publication-activities-used-by")
+  )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")

@@ -1,0 +1,117 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "kans": "http://kanselarij.vo.data.gift/core/",
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#"
+  },
+  "resources": {
+    "government-domains": {
+      "name": "government-domain",
+      "class": "kans:Beleidsdomein",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "government-fields":{
+          "predicate": "ext:heeftBeleidsDomein",
+          "target": "government-field",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/beleidsdomein/"
+    },
+    "government-fields": {
+      "name": "government-field",
+      "class": "kans:Beleidsveld",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "domain": {
+          "predicate": "ext:heeftBeleidsDomein",
+          "target": "government-domain",
+          "cardinality": "one"
+        },
+        "ise-code":{
+          "_comment1": "CAUTION: singular name, but many relationship",
+          "predicate": "ext:heeftIseCode",
+          "_comment": "FIXME: these triples are the wrong way around",
+          "target": "ise-code",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "publication-flows":{
+          "predicate": "besluitvorming:beleidsveld",
+          "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/beleidsveld/"
+    },
+    "ise-codes": {
+      "name": "ise-code",
+      "class": "kans:IseCode",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "code": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "field": {
+          "predicate": "ext:heeftIseCode",
+          "_comment": "FIXME: these triples are the wrong way around",
+          "target": "government-field",
+          "cardinality": "one"
+        },
+        "mandatees":{
+          "_comment": "FIXME: these triples are the wrong way around",
+          "predicate": "ext:heeftBevoegdeMandataris",
+          "target": "mandatee",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "subcases":{
+          "predicate": "ext:heeftInhoudelijkeStructuurElementen",
+          "target": "subcase",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["no-pagination-defaults", "include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/ise-code/"
+    }
+  }
+}

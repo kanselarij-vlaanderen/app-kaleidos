@@ -32,6 +32,7 @@ services:
       LOG_DELTA_CLIENT_COMMUNICATION: "true"
       LOG_TEMPLATE_MATCHER_PERFORMANCE: "false"
       LOG_DATABASE_OVERLOAD_TICK: "false"
+      ERROR_ON_UNWRITTEN_DATA: "true"
   triplestore:
     ports:
       - "8890:8890"
@@ -87,8 +88,6 @@ services:
     restart: "no"
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
-    restart: "no"
-  lazy-loading-service:
     restart: "no"
   mandatee-service:
     restart: "no"

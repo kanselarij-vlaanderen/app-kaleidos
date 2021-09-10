@@ -39,7 +39,7 @@
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:priority            :number   ,(s-prefix "ext:prioriteit"))
+                (:number              :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
@@ -192,8 +192,6 @@
                                         :as "agenda")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter")
-             (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
-                                        :as "signature")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
