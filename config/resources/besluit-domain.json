@@ -1,0 +1,30 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/"
+  },
+  "resources": {
+    "decisions": {
+      "class": "besluit:Besluit",
+      "name": "decision",
+      "attributes": {
+        "publication-date": {
+          "type": "date",
+          "predicate": "eli:date_publication"
+        }
+      },
+      "relationships": {
+        "publication-activity": {
+          "predicate": "pub:publicatieGenereert",
+          "target": "publication-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/besluit/"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "org": "http://www.w3.org/ns/org#"
+  },
+  "resources": {
+    "organizations": {
+      "name": "organization",
+      "class": "org:Organization",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "identifier": {
+          "type": "string",
+          "predicate": "org:identifier"
+        }
+      },
+      "relationships": {
+        "persons": {
+          "predicate": "org:hasMember",
+          "target": "person",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/organisatie/"
+    }
+  }
+}

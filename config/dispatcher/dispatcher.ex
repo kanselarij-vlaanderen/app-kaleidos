@@ -81,9 +81,6 @@ defmodule Dispatcher do
   match "/agenda-item-treatments/*path", @any do
     Proxy.forward conn, path, "http://cache/agenda-item-treatments/"
   end
-  match "/decisions/*path", @any do
-    Proxy.forward conn, path, "http://cache/decisions/"
-  end
   match "/decision-result-codes/*path", @any do
     Proxy.forward conn, path, "http://cache/decision-result-codes/"
   end
@@ -322,10 +319,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-status-changes/"
   end
 
-  match "/configs/*path", @any do
-    Proxy.forward conn, path, "http://cache/configs/"
-  end
-
   get "/publication-modes/*path", @any do
     Proxy.forward conn, path, "http://cache/publication-modes/"
   end
@@ -354,6 +347,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/cancellation-activities/"
   end
 
+  get "/decisions/*path", @any do
+    Proxy.forward conn, path, "http://cache/decisions/"
+  end
+
   get "/languages/*path", @any do
     Proxy.forward conn, path, "http://cache/languages/"
   end
@@ -376,6 +373,10 @@ defmodule Dispatcher do
 
   get "/recovery-status/*path", @any do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
+  end
+
+  match "/email-notification-settings/*path", @any do
+    Proxy.forward conn, path, "http://cache/email-notification-settings/"
   end
 
   match "_", %{ last_call: true } do
