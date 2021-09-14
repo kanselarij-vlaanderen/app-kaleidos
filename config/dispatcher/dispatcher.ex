@@ -348,6 +348,14 @@ defmodule Dispatcher do
   end
 
   # sign resources
+  get "/sign-flows/:signflow_id/signing/pieces", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces"
+  end
+
+  post "/sign-flows/:signflow_id/signing/prepare", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/prepare"
+  end
+
   match "/sign-flows/*path", @any do
     Proxy.forward conn, path, "http://cache/sign-flows/"
   end
