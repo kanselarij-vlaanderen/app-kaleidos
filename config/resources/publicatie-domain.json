@@ -4,7 +4,6 @@
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "schema": "http://schema.org/",
-    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "dct": "http://purl.org/dc/terms/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
@@ -14,7 +13,9 @@
     "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
     "prov": "http://www.w3.org/ns/prov#",
     "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
-    "dbpedia": "http://dbpedia.org/resource/"
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
     "publication-flows": {
@@ -670,6 +671,12 @@
         "publication-flows": {
           "predicate": "pub:regelgevingType",
           "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-flows": {
+          "predicate": "sign:regelgevingType",
+          "target": "sign-flow",
           "cardinality": "many",
           "inverse": true
         }
