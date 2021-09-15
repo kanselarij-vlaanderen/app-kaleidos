@@ -4,7 +4,7 @@ PREFIX  regel-type: <http://themis.vlaanderen.be/id/concept/regelgeving-type/>
 PREFIX  public: <http://mu.semte.ch/graphs/public>
 PREFIX  mu:   <http://mu.semte.ch/vocabularies/core/>
 PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX  dbpedia: <http://dbpedia.org/resource/>
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
 PREFIX  pub:  <http://mu.semte.ch/vocabularies/ext/publicatie/>
 
 WITH public:
