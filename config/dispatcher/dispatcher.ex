@@ -339,7 +339,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/cancellation-activities/"
   end
 
-  get "/decisions/*path", @any do
+  match "/decisions/*path", @any do
     Proxy.forward conn, path, "http://cache/decisions/"
   end
 
