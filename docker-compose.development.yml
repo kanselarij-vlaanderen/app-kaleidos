@@ -11,6 +11,8 @@ services:
     restart: "no"
     environment:
       EMBER_ENABLE_PUBLICATIONS_TAB: "true"
+      EMBER_ENABLE_SIGNATURES: "true"
+      EMBER_ENABLE_DOCUMENT_VIEW: "true"
   identifier:
     restart: "no"
     ports:

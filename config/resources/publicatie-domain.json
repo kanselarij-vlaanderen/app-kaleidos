@@ -548,12 +548,6 @@
           "cardinality": "many"
         },
         "decisions":{
-          "predicate": "pub:publicatieGenereert",
-          "_comment": "FIXME: predicate should be dossier:genereert",
-          "target": "decision",
-          "cardinality": "many"
-        },
-        "decisions":{
           "predicate": "prov:generated",
           "target": "decision",
           "cardinality": "many"
