@@ -115,7 +115,7 @@
                                     :as "sign-flows")
             )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
-                                    :as "agendaitem")
+                                    :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
