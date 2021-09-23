@@ -14,7 +14,6 @@
                                 :inverse t
                                 :as "publication-flows")
               (sign-flow        :via      ,(s-prefix "sign:behandeltDossier")
-                                :inverse t
                                 :as "sign-flows")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
