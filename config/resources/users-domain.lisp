@@ -12,9 +12,6 @@
                                         :as "account")
              (organization              :via      ,(s-prefix "org:memberOf")
                                         :as "organization")
-             (sign-flow                 :via ,(s-prefix "dct:creator")
-                                        :inverse t
-                                        :as "sign-flow")
              ) ;; Has one relation adms:identifier to type adms::Identifier created in user-management-service
   :features '(include-uri)
   :on-path "users"
