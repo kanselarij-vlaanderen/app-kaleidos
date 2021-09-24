@@ -45,6 +45,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/casesByDecisionText/invalidate/"
   end
 
+  match "/newsletter-infos/search/*path", @any do
+    Proxy.forward conn, path, "http://musearch/newsletter-infos/search/"
+  end
+
   match "/musearch/settings/*path", @any do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
