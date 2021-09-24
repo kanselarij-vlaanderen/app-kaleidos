@@ -363,6 +363,113 @@
           }
         }
       }
+    },
+    {
+      "type": "newsletter-infos",
+      "on_path": "newsletter-infos",
+      "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "properties": {
+        "text": "http://data.vlaanderen.be/ns/besluitvorming#inhoud",
+        "richtext": "http://mu.semte.ch/vocabularies/ext/htmlInhoud",
+        "subtitle": "http://dbpedia.org/ontology/subtitle",
+        "title": "http://purl.org/dc/terms/title",
+        "publication-date": "http://purl.org/dc/terms/issued",
+        "finished": "http://mu.semte.ch/vocabularies/ext/afgewerkt",
+        "themes": [
+          "http://mu.semte.ch/vocabularies/ext/ThemaCode",
+          "http://purl.org/dc/terms/subject",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "mandatees": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/name"
+        ],
+        "mandateeFirstNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/firstName"
+        ],
+        "mandateeFamilyNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "identification": [
+          "http://www.w3.org/ns/adms#identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
+        ],
+        "data": {
+          "via": [
+            "http://mu.semte.ch/vocabularies/ext/documentenVoorPublicatie",
+            "http://mu.semte.ch/vocabularies/ext/file",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        }
+      },
+      "mappings": {
+        "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "subtitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "richtext": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "text": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "finished": {
+            "type": "text"
+          },
+          "identification": {
+            "type": "text"
+          },
+          "themes": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "publication-date": {
+            "type": "date"
+          },
+          "mandateeName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFirstNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFamilyNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "data.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          }
+        }
+      }
     }
   ]
 }
