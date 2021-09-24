@@ -370,37 +370,43 @@
       "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "properties": {
         "text": "http://data.vlaanderen.be/ns/besluitvorming#inhoud",
-        "richtext": "http://mu.semte.ch/vocabularies/ext/htmlInhoud",
         "subtitle": "http://dbpedia.org/ontology/subtitle",
         "title": "http://purl.org/dc/terms/title",
-        "publication-date": "http://purl.org/dc/terms/issued",
-        "finished": "http://mu.semte.ch/vocabularies/ext/afgewerkt",
+        "publicationDate": "http://purl.org/dc/terms/issued",
+        "beslissingStatusId": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#resultaat",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "beslissingStatusLabel": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#resultaat",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
         "themes": [
-          "http://mu.semte.ch/vocabularies/ext/ThemaCode",
           "http://purl.org/dc/terms/subject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
         "mandatees": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/name"
         ],
         "mandateeFirstNames": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/firstName"
         ],
         "mandateeFamilyNames": [
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
-        ],
-        "identification": [
-          "http://www.w3.org/ns/adms#identifier",
-          "http://www.w3.org/2004/02/skos/core#notation"
         ],
         "data": {
           "via": [
@@ -423,31 +429,28 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "richtext": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
           "text": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "finished": {
-            "type": "text"
+          "publicationDate": {
+            "type": "date"
           },
-          "identification": {
-            "type": "text"
+          "beslissingStatusId": {
+            "type": "keyword"
+          },
+          "beslissingStatusLabel": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           },
           "themes": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "publication-date": {
-            "type": "date"
-          },
-          "mandateeName": {
+          "mandatees": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
