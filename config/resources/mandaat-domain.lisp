@@ -50,9 +50,6 @@
              (organization          :via ,(s-prefix "org:hasMember")
                                     :inverse t
                                     :as "organization")
-             (sign-flow             :via ,(s-prefix "dct:creator")
-                                    :inverse t
-                                    :as "sign-flow")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)

@@ -60,7 +60,7 @@
         },
         "creator": {
           "predicate": "dct:creator",
-          "target": "person",
+          "target": "user",
           "cardinality": "one"
         }
       },
