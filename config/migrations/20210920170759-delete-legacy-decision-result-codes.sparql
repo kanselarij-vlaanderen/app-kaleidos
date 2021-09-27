@@ -1,5 +1,4 @@
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
@@ -10,15 +9,10 @@ DELETE {
   }
 } WHERE {
   GRAPH ?g {
-    ?agendaItemTreatment a besluit:BehandelingVanAgendapunt .
-    ?agendaItemTreatment besluitvorming:heeftOnderwerp ?agendaitem .
-    ?agendaitem a besluit:Agendapunt .
-    ?agendaitem besluitvorming:aanmaakdatum ?datum .
+    ?agendaItemTreatment a besluit:BehandelingVanAgendapunt ;
+         dossier:Activiteit.startdatum ?startDatum ;
+         besluitvorming:resultaat ?decisionResultCode .
 
-    FILTER (?datum < xsd:dateTime("2019-10-01T00:00:00+01:00"))
-
-    ?agendaItemTreatment besluitvorming:resultaat ?decisionResultCode .
-
-    FILTER NOT EXISTS { ?next prov:wasRevisionOf ?agendaitem }
+    FILTER (?startDatum < xsd:dateTime("2019-10-01T00:00:00+01:00"))
   }
 }
