@@ -369,16 +369,16 @@
       "on_path": "newsletter-infos",
       "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "properties": {
-        "text": "http://data.vlaanderen.be/ns/besluitvorming#inhoud",
+        "richtext": "http://mu.semte.ch/vocabularies/ext/htmlInhoud",
         "subtitle": "http://dbpedia.org/ontology/subtitle",
         "title": "http://purl.org/dc/terms/title",
         "publicationDate": "http://purl.org/dc/terms/issued",
-        "beslissingStatusId": [
+        "decisionStatusId": [
           "^http://www.w3.org/ns/prov#generated",
           "http://data.vlaanderen.be/ns/besluitvorming#resultaat",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "beslissingStatusLabel": [
+        "decisionStatusLabel": [
           "^http://www.w3.org/ns/prov#generated",
           "http://data.vlaanderen.be/ns/besluitvorming#resultaat",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -408,6 +408,19 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
+        "agendaId": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://purl.org/dc/terms/hasPart",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "agendaitemId": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "meetingId": [
+          "^http://mu.semte.ch/vocabularies/ext/algemeneNieuwsbrief",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "data": {
           "via": [
             "http://mu.semte.ch/vocabularies/ext/documentenVoorPublicatie",
@@ -429,7 +442,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "text": {
+          "richtext": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
@@ -437,10 +450,19 @@
           "publicationDate": {
             "type": "date"
           },
-          "beslissingStatusId": {
+          "decisionStatusId": {
             "type": "keyword"
           },
-          "beslissingStatusLabel": {
+          "meetingId": {
+            "type": "keyword"
+          },
+          "agendaId": {
+            "type": "keyword"
+          },
+          "agendaitemId": {
+            "type": "keyword"
+          },
+          "decisionStatusLabel": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
