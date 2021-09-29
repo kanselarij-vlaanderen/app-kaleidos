@@ -374,6 +374,7 @@
         "title": "http://purl.org/dc/terms/title",
         "publicationDate": [
           "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
           "^http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"],
@@ -414,16 +415,19 @@
         ],
         "agendaId": [
           "^http://www.w3.org/ns/prov#generated",
-          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
+          "http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "agendaitemId": [
           "^http://www.w3.org/ns/prov#generated",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "meetingId": [
           "^http://www.w3.org/ns/prov#generated",
-          "^http://purl.org/dc/terms/hasPart",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
+          "http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
