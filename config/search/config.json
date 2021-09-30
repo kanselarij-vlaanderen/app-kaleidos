@@ -416,7 +416,7 @@
         "agendaId": [
           "^http://www.w3.org/ns/prov#generated",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
-          "http://purl.org/dc/terms/hasPart",
+          "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "agendaitemId": [
@@ -427,8 +427,12 @@
         "meetingId": [
           "^http://www.w3.org/ns/prov#generated",
           "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp",
-          "http://purl.org/dc/terms/hasPart",
+          "^http://purl.org/dc/terms/hasPart",
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "generalNewsletterMeetingId": [
+          "^http://mu.semte.ch/vocabularies/ext/algemeneNieuwsbrief",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "data": {
@@ -467,6 +471,9 @@
             "type": "keyword"
           },
           "agendaId": {
+            "type": "keyword"
+          },
+          "generalNewsletterMeetingId": {
             "type": "keyword"
           },
           "agendaitemId": {
