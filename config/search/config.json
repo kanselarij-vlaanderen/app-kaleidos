@@ -482,7 +482,7 @@
             "type": "keyword"
           },
           "agendaitems.mandatees.priority": {
-            "type": "number"
+            "type": "short"
           },
           "agendaitems.mandatees.firstName": {
             "type": "text",
