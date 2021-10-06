@@ -305,6 +305,6 @@ services:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
   staatsblad-linking:
     entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
-    image: kanselarij/staatsblad-linking-service:0.4.0
+    image: kanselarij/staatsblad-linking-service:0.5.0
     logging: *default-logging
     restart: "no" # disabled on prod until tested on accept
