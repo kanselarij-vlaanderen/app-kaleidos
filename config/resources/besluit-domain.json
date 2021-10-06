@@ -27,10 +27,6 @@
         "responsible-entity": {
           "type": "string",
           "predicate": "eli:responsibility_of"
-        },
-        "staatsblad-uri": {
-          "type": "url",
-          "predicate": "owl:sameAs"
         }
       },
       "relationships": {
