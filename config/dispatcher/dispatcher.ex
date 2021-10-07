@@ -33,10 +33,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/cases/invalidate/"
   end
 
-  match "/newsletter-infos/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/newsletter-infos/search/"
-  end
-
   match "/musearch/settings/*path", @any do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
@@ -177,9 +173,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
+  match "/newsletter-infos/search/*path", @any do
+    Proxy.forward conn, path, "http://musearch/newsletter-infos/search/"
+  end
+
   match "/newsletter-infos/*path", @any do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
+
   match "/themes/*path", @any do
     Proxy.forward conn, path, "http://cache/themes/"
   end
