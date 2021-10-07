@@ -49,10 +49,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
 
-  get "/pieces/:id/convert", @any do
-    Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
-  end
-
   put "/agendaitems/:id/pieces", @any do
     Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/documents"
   end

@@ -20,9 +20,6 @@ services:
   # range-file:
   #   volumes:
   #     - ./testdata/files:/share
-  # document-conversion:
-  #   volumes:
-  #     - ./testdata/files:/share
   file-bundling-service:
     volumes:
       - ./testdata/files:/share
