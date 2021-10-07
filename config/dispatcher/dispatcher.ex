@@ -33,18 +33,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/cases/invalidate/"
   end
 
-  match "/casesByDecisionText/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/search/"
-  end
-
-  match "/casesByDecisionText/index/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/search/"
-  end
-
-  match "/casesByDecisionText/invalidate/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/invalidate/"
-  end
-
   match "/musearch/settings/*path", @any do
     Proxy.forward conn, path, "http://musearch/settings/"
   end
