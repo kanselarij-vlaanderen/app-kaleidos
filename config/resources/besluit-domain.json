@@ -2,8 +2,10 @@
   "version": "0.1",
   "prefixes": {
     "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "owl": "http://www.w3.org/2002/07/owl#",
     "eli": "http://data.europa.eu/eli/ontology#",
-    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/"
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "resources": {
     "decisions": {
