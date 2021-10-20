@@ -57,6 +57,7 @@
                                         :as "language")
             (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten !
                                         :as "translation-source")
+            ;; publication flow
             (publication-flow           :via ,(s-prefix "pub:referentieDocument")
                                         :inverse t
                                         :as "publication-flow")
@@ -78,6 +79,16 @@
             (proofing-activity          :via ,(s-prefix "pub:drukproefGenereert")
                                         :inverse t
                                         :as "proofing-activity-generated-by")
+            ;; sign flow
+            (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
+                                        :inverse t
+                                        :as "sign-marking-activity")
+            (signinghub-document       :via ,(s-prefix "prov:hadPrimarySource")
+                                        :inverse t
+                                        :as "signinghub-document")
+            (signed-piece               :via ,(s-prefix "sign:ongetekendStuk")
+                                        :inverse t
+                                        :as "signed-piece")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
@@ -122,4 +133,3 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/document-type/")
   :features '(include-uri)
   :on-path "document-types")
-

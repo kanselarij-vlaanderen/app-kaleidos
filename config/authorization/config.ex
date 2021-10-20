@@ -92,9 +92,27 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+
+  defp sign_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Markeringsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Voorbereidingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Weigeractiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Afrondingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/GetekendStuk",
+      "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
+      "http://www.w3.org/ns/person#Person",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+    ]
+  end
+
   defp staatsblad_resource_types() do
     [
-      "http://data.vlaanderen.be/ns/besluit#Besluit"
+      "http://data.europa.eu/eli/ontology#LegalResource",
     ]
   end
 
@@ -190,7 +208,7 @@ defmodule Acl.UserGroups.Config do
               resource_prefix: "http://mu.semte.ch/sessions/"
             } },
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/belgisch-staatsblad",
+            graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
             } } ]
@@ -297,7 +315,9 @@ defmodule Acl.UserGroups.Config do
                 static_unconfidential_code_list_types() ++
                 user_account_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                sign_resource_types() ++
+                staatsblad_resource_types()
             }
           },
           %GraphSpec{
@@ -316,9 +336,11 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
             constraint: %ResourceConstraint{
-              resource_types: publication_resource_types() ++
-                generic_besluitvorming_resource_types() ++
-                document_resource_types()
+              resource_types: generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                publication_resource_types() ++
+                sign_resource_types() ++
+                staatsblad_resource_types()
             }
           },
           %GraphSpec{

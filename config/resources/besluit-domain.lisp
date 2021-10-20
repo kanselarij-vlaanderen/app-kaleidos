@@ -109,9 +109,13 @@
               ;                :as "pieces")
               (publication-flow     :via ,(s-prefix "dct:subject"),
                                     :inverse t
-                                    :as "publication-flows"))
+                                    :as "publication-flows")
+              (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
+                                    :inverse t
+                                    :as "sign-flows")
+            )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
-                                    :as "agendaitem")
+                                    :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
@@ -119,7 +123,8 @@
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
-                                    :as "decision-result-code"))
+                                    :as "decision-result-code")
+            )
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")

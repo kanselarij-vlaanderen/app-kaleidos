@@ -4,7 +4,6 @@
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "schema": "http://schema.org/",
-    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "dct": "http://purl.org/dc/terms/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
@@ -13,7 +12,10 @@
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
     "prov": "http://www.w3.org/ns/prov#",
-    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#"
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
     "publication-flows": {
@@ -168,6 +170,11 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of translation documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -247,6 +254,11 @@
         "proof-print-corrector": {
           "type": "string",
           "predicate": "pub:drukproefVerbeteraar"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -536,8 +548,7 @@
           "cardinality": "many"
         },
         "decisions":{
-          "predicate": "pub:publicatieGenereert",
-          "_comment": "FIXME: predicate should be dossier:genereert",
+          "predicate": "prov:generated",
           "target": "decision",
           "cardinality": "many"
         },
@@ -644,12 +655,22 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "abbreviation": {
+          "type": "string",
+          "predicate": "dbpedia:abbreviation"
         }
       },
       "relationships": {
         "publication-flows": {
           "predicate": "pub:regelgevingType",
           "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-flows": {
+          "predicate": "sign:regelgevingType",
+          "target": "sign-flow",
           "cardinality": "many",
           "inverse": true
         }

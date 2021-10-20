@@ -33,24 +33,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://musearch/cases/invalidate/"
   end
 
-  match "/casesByDecisionText/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/search/"
-  end
-
-  match "/casesByDecisionText/index/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/search/"
-  end
-
-  match "/casesByDecisionText/invalidate/*path", @any do
-    Proxy.forward conn, path, "http://musearch/casesByDecisionText/invalidate/"
-  end
-
   match "/musearch/settings/*path", @any do
     Proxy.forward conn, path, "http://musearch/settings/"
-  end
-
-  get "/pieces/:id/convert", @any do
-    Proxy.forward conn, [], "http://document-conversion/convert-document-versions/" <> id
   end
 
   put "/agendaitems/:id/pieces", @any do
@@ -195,9 +179,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
+  match "/newsletter-infos/search/*path", @any do
+    Proxy.forward conn, path, "http://musearch/newsletter-infos/search/"
+  end
+
   match "/newsletter-infos/*path", @any do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
+
   match "/themes/*path", @any do
     Proxy.forward conn, path, "http://cache/themes/"
   end
@@ -345,12 +334,53 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/cancellation-activities/"
   end
 
-  get "/decisions/*path", @any do
+  match "/decisions/*path", @any do
     Proxy.forward conn, path, "http://cache/decisions/"
   end
 
   get "/languages/*path", @any do
     Proxy.forward conn, path, "http://cache/languages/"
+  end
+
+  # sign resources
+  match "/sign-flows/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-flows/"
+  end
+
+  match "/sign-subcases/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-subcases/"
+  end
+
+  match "/sign-marking-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-marking-activities/"
+  end
+
+  match "/sign-preparation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-preparation-activities/"
+  end
+
+  match "/sign-signing-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-signing-activities/"
+  end
+
+  match "/sign-refusal-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-refusal-activities/"
+  end
+
+  match "/sign-cancellation-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-cancellation-activities/"
+  end
+
+  match "/sign-completion-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/sign-completion-activities/"
+  end
+
+  match "/signinghub-documents/*path", @any do
+    Proxy.forward conn, path, "http://cache/signinghub-documents/"
+  end
+
+  match "/signed-pieces/*path", @any do
+    Proxy.forward conn, path, "http://cache/signed-pieces/"
   end
 
   # get "/mailboxes/*path" do

@@ -1,0 +1,424 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "http://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+
+    "dossier": "https://data.vlaanderen.be/ns/dossier#",
+    "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
+
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekening/",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "signinghub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
+  },
+  "resources": {
+    "sign-flows": {
+      "name": "sign-flow",
+      "class": "sign:Handtekenaangelegenheid",
+      "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "long-title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "opening-date": {
+          "type": "date",
+          "predicate": "dossier:openingsdatum"
+        },
+        "closing-date": {
+          "type": "date",
+          "predicate": "dossier:sluitingsdatum"
+        }
+      },
+      "relationships": {
+        "regulation-type": {
+          "predicate": "sign:regelgevingType",
+          "target": "regulation-type",
+          "cardinality": "one"
+        },
+        "case": {
+          "predicate": "sign:behandeltDossier",
+          "target": "case",
+          "cardinality": "one"
+        },
+        "sign-subcase": {
+          "predicate": "sign:doorlooptHandtekening",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "decision-activity": {
+          "_comment": "TODO: split in decision-activity & agenda-item-treatment",
+          "predicate": "sign:heeftBeslissing",
+          "target": "agenda-item-treatment",
+          "cardinality": "one"
+        },
+        "creator": {
+          "predicate": "dct:creator",
+          "target": "user",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handtekenaangelegenheid/"
+    },
+    "sign-subcases": {
+      "name": "sign-subcase",
+      "class": "sign:HandtekenProcedurestap",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-flow": {
+          "predicate": "sign:doorlooptHandtekening",
+          "target": "sign-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "sign-marking-activity": {
+          "predicate": "sign:markeringVindtPlaatsTijdens",
+          "target": "sign-marking-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "sign-preparation-activity": {
+          "predicate": "sign:voorbereidingVindtPlaatsTijdens",
+          "target": "sign-preparation-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "sign-signing-activities": {
+          "predicate": "sign:handtekeningVindtPlaatsTijdens",
+          "target": "sign-signing-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-refusal-activities": {
+          "predicate": "sign:weigeringVindtPlaatsTijdens",
+          "target": "sign-refusal-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-cancellation-activity": {
+          "predicate": "sign:annulatieVindtPlaatsTijdens",
+          "target": "sign-cancellation-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "sign-completion-activity": {
+          "predicate": "sign:afrondingVindtPlaatsTijdens",
+          "target": "sign-completion-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-procedurestap/"
+    },
+    "sign-marking-activities": {
+      "name": "sign-marking-activity",
+      "class": "sign:Markeringsactiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:markeringVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "piece": {
+          "predicate": "sign:gemarkeerdStuk",
+          "target": "piece",
+          "cardinality": "one"
+        },
+        "sign-preparation-activity": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-preparation-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-markeringsactiviteit/"
+    },
+    "sign-preparation-activities": {
+      "name": "sign-preparation-activity",
+      "class": "sign:Voorbereidingsactiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:voorbereidingVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "signinghub-document": {
+          "predicate": "sign:voorbereidingGenereert",
+          "target": "signinghub-document",
+          "cardinality": "one"
+        },
+        "sign-marking-activity": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-marking-activity",
+          "cardinality": "one"
+        },
+        "sign-signing-activities": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-signing-activity",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-voorbereidingsactiviteit/"
+    },
+    "sign-signing-activities": {
+      "name": "sign-signing-activity",
+      "class": "sign:Handtekenactiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:handtekeningVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "sign-preparation-activity": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-preparation-activity",
+          "cardinality": "one"
+        },
+        "sign-refusal-activity": {
+          "predicate": "sign:isGeweigerdDoor",
+          "target": "sign-refusal-activity",
+          "cardinality": "one"
+        },
+        "sign-completion-activity": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-completion-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "mandatee": {
+          "predicate": "sign:ondertekenaar",
+          "target": "mandatee",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-handtekenactiviteit/"
+    },
+    "sign-refusal-activities": {
+      "name": "sign-refusal-activity",
+      "class": "sign:Weigeractiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:weigeringVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "sign-signing-activity": {
+          "predicate": "sign:isGeweigerdDoor",
+          "target": "sign-signing-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-weigeractiviteit/"
+    },
+    "sign-cancellation-activities": {
+      "name": "sign-cancellation-activity",
+      "class": "sign:AnnulatieActiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:annulatieVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-annulatie-activiteit/"
+    },
+    "sign-completion-activities": {
+      "name": "sign-completion-activity",
+      "class": "sign:Afrondingsactiviteit",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:afrondingVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "sign-signing-activities": {
+          "predicate": "prov:wasInformedBy",
+          "target": "sign-signing-activity",
+          "cardinality": "many"
+        },
+        "signed-piece": {
+          "predicate": "sign:getekendStuk",
+          "target": "signed-piece",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondingsactiviteit/"
+    },
+    "signinghub-documents": {
+      "name": "signinghub-document",
+      "class": "signinghub:Document",
+      "attributes": {
+        "documentId": {
+          "type": "string",
+          "predicate": "signinghub:documentId"
+        },
+        "packageId": {
+          "type": "string",
+          "predicate": "signinghub:packageId"
+        }
+      },
+      "relationships": {
+        "sign-preparation-activity": {
+          "predicate": "sign:voorbereidingGenereert",
+          "target": "sign-preparation-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "piece": {
+          "predicate": "prov:hadPrimarySource",
+          "target": "piece",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/signinghub-document/"
+    },
+    "signed-pieces": {
+      "name": "signed-piece",
+      "class": "sign:GetekendStuk",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        }
+      },
+      "relationships": {
+        "unsigned-piece": {
+          "predicate": "sign:ongetekendStuk",
+          "target": "piece",
+          "cardinality": "one"
+        },
+        "signed-file": {
+          "predicate": "sign:getekendBestand",
+          "target": "file",
+          "cardinality": "one"
+        },
+        "sign-completion-activity": {
+          "predicate": "sign:getekendStuk",
+          "target": "sign-completion-activity",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/getekend-stuk/"
+    }
+  }
+}

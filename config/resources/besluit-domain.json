@@ -2,14 +2,20 @@
   "version": "0.1",
   "prefixes": {
     "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "owl": "http://www.w3.org/2002/07/owl#",
     "eli": "http://data.europa.eu/eli/ontology#",
-    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/"
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "resources": {
     "decisions": {
-      "class": "besluit:Besluit",
+      "class": "eli:LegalResource",
       "name": "decision",
       "attributes": {
+        "decision-date": {
+          "type": "date",
+          "predicate": "eli:date_document"
+        },
         "title": {
           "type": "string",
           "predicate": "eli:title"
@@ -17,11 +23,15 @@
         "publication-date": {
           "type": "date",
           "predicate": "eli:date_publication"
+        },
+        "responsible-entity": {
+          "type": "string",
+          "predicate": "eli:responsibility_of"
         }
       },
       "relationships": {
         "publication-activity": {
-          "predicate": "pub:publicatieGenereert",
+          "predicate": "prov:generated",
           "target": "publication-activity",
           "cardinality": "one",
           "inverse": true
