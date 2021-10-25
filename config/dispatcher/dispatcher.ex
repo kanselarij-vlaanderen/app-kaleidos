@@ -352,6 +352,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces"
   end
 
+  get "/sign-flows/:signflow_id/signing/pieces/:piece_id/signinghub", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/signinghub"
+  end
+
   post "/sign-flows/:signflow_id/signing/prepare", @any do
     Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/prepare"
   end
