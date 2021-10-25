@@ -16,7 +16,7 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX bbcdr: <http://mu.semte.ch/vocabularies/ext/bbcdr/>

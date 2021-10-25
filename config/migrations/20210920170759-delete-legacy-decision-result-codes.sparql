@@ -1,0 +1,18 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?agendaItemTreatment besluitvorming:resultaat ?decisionResultCode .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agendaItemTreatment a besluit:BehandelingVanAgendapunt ;
+         dossier:Activiteit.startdatum ?startDatum ;
+         besluitvorming:resultaat ?decisionResultCode .
+
+    FILTER (?startDatum < xsd:dateTime("2019-10-01T00:00:00+01:00"))
+  }
+}

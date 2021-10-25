@@ -1,0 +1,72 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX  schema: <http://schema.org/>
+PREFIX  regel-type: <http://themis.vlaanderen.be/id/concept/regelgeving-type/>
+PREFIX  public: <http://mu.semte.ch/graphs/public>
+PREFIX  mu:   <http://mu.semte.ch/vocabularies/core/>
+PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX  dbpedia: <http://dbpedia.org/ontology/>
+PREFIX  pub:  <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+WITH public:
+DELETE {
+  ?s ?p ?o .
+}
+WHERE
+  { ?s  a   ext:RegelgevingType ;
+        ?p  ?o
+  } ;
+INSERT DATA {
+  GRAPH public: {
+    ext:RegelgevingType <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:PublicClass .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 mu:uuid "bf6101a9-d06b-44d4-b629-13965654c8c2" .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 schema:position 1 .
+    regel-type:bf6101a9-d06b-44d4-b629-13965654c8c2 skos:prefLabel "Decreet"@nl .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 mu:uuid "ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88" .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 schema:position 2 .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 skos:prefLabel "Besluit van de Vlaamse Regering"@nl .
+    regel-type:ea7f5f79-f81c-459b-a0f7-d8e90e2d9b88 dbpedia:abbreviation "BVR"@nl .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 mu:uuid "49bad4d9-745b-4a71-b6c6-0eac34e6bdd4" .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 schema:position 3 .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 skos:prefLabel "Ministerieel besluit"@nl .
+    regel-type:49bad4d9-745b-4a71-b6c6-0eac34e6bdd4 dbpedia:abbreviation "MB"@nl .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 mu:uuid "77808a0d-b080-4750-8e1c-8e8bfc609cd1" .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 schema:position 4 .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 skos:prefLabel "Besluit leidend ambtenaar"@nl .
+    regel-type:77808a0d-b080-4750-8e1c-8e8bfc609cd1 dbpedia:abbreviation "Besluit LA"@nl .
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c mu:uuid "e580b153-8ba3-4450-84b8-87c50a60870c" .
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c schema:position 5 .
+    regel-type:e580b153-8ba3-4450-84b8-87c50a60870c skos:prefLabel "Bericht"@nl .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 mu:uuid "d34bdc39-48ac-4743-a7cd-de25105fddf2" .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 schema:position 6 .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 skos:prefLabel "Omzendbrief"@nl .
+    regel-type:d34bdc39-48ac-4743-a7cd-de25105fddf2 dbpedia:abbreviation "OB"@nl .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f mu:uuid "b7f2fd2c-2a33-4745-bb66-f969d846356f" .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f schema:position 7 .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f skos:prefLabel "Koninklijk besluit"@nl .
+    regel-type:b7f2fd2c-2a33-4745-bb66-f969d846356f dbpedia:abbreviation "KB"@nl .
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e mu:uuid "02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e" .
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e schema:position 8 .
+    regel-type:02d57dd4-bc84-4dd3-8a85-7e3ac4af2a7e skos:prefLabel "Erratum"@nl .
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ext:RegelgevingType .
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 mu:uuid "0916ac88-1a96-4e6b-a87b-b7f6dd4d9652" .
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 schema:position 9 .
+    regel-type:0916ac88-1a96-4e6b-a87b-b7f6dd4d9652 skos:prefLabel "Andere"@nl .
+  }
+}
