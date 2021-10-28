@@ -1,0 +1,23 @@
+PREFIX  veld: <http://kanselarij.vo.data.gift/id/beleidsveld/>
+PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX  kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX  domein: <http://themis.vlaanderen.be/id/concept/beleidsdomein/>
+
+INSERT {
+  GRAPH ?g {
+    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?s  a  kans:Beleidsdomein }
+  } ;
+INSERT {
+  GRAPH ?g {
+    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?s  a  kans:Beleidsveld }
+  }
