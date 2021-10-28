@@ -10,6 +10,7 @@
     "government-domains": {
       "name": "government-domain",
       "class": "kans:Beleidsdomein",
+      "_comment": "Note: as well as skos:Concept",
       "attributes": {
         "label": {
           "type": "string",
@@ -38,6 +39,7 @@
     "government-fields": {
       "name": "government-field",
       "class": "kans:Beleidsveld",
+      "_comment": "Note: as well as skos:Concept",
       "attributes": {
         "label": {
           "type": "string",

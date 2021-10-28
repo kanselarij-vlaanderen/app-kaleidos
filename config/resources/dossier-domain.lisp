@@ -6,16 +6,18 @@
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title"))
                 (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
-                                :as "subcases")
-              (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
-                                :as "pieces")
-              (publication-flow :via      ,(s-prefix "dossier:behandelt")
-                                :inverse t
-                                :as "publication-flows")
-              (sign-flow        :via      ,(s-prefix "sign:behandeltDossier")
-                                :inverse t
-                                :as "sign-flows")
+  :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")
+                                 :as "subcases")
+              (piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
+                                 :as "pieces")
+              (publication-flow  :via      ,(s-prefix "dossier:behandelt")
+                                 :inverse t
+                                 :as "publication-flows")
+              (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
+                                 :inverse t
+                                 :as "sign-flows")
+              (government-fields :via ,(s-prefix "besluitvorming:beleidsgebied") ;; NOTE: temporary name for relationship
+                                 :as "government-fields")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
