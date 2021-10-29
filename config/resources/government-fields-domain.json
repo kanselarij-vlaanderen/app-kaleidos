@@ -73,6 +73,12 @@
           "target": "publication-flow",
           "cardinality": "many",
           "inverse": true
+        },
+        "cases":{
+          "predicate": "besluitvorming:beleidsgebied",
+          "target": "case",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "features": ["include-uri"],
