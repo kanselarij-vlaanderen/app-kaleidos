@@ -4,8 +4,6 @@
   :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
                 (:start           :datetime ,(s-prefix "mandaat:start"))
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
-                (:date-sworn-in   :datetime ,(s-prefix "ext:datumEedaflegging"))
-                (:date-decree     :datetime ,(s-prefix "ext:datumMinistrieelBesluit"))
                 (:nick-name       :string ,(s-prefix "ext:nickName")) ;; Contains role of mandatee (MP, VMP, Minister)
                 (:title           :string ,(s-prefix "dct:title")))
   :has-many `((ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
