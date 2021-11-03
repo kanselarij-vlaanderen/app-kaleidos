@@ -4,7 +4,7 @@
   :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
                 (:start           :datetime ,(s-prefix "mandaat:start"))
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
-                (:nick-name       :string ,(s-prefix "ext:nickName")) ;; Contains role of mandatee (MP, VMP, Minister)
+                (:newsletter-title :string ,(s-prefix "ext:nieuwsbriefTitel")) ; As opposed to the dct:title, this property includes the name of the mandatee
                 (:title           :string ,(s-prefix "dct:title")))
   :has-many `((ise-code            :via ,(s-prefix "ext:heeftBevoegdeMandataris")
                                   :as "ise-codes")
