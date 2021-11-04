@@ -1,8 +1,10 @@
 PREFIX  veld: <http://kanselarij.vo.data.gift/id/beleidsveld/>
 PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX  ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX  kans: <http://kanselarij.vo.data.gift/core/>
 PREFIX  domein: <http://themis.vlaanderen.be/id/concept/beleidsdomein/>
 
+#Adding concepts to fields and domains
 INSERT {
   GRAPH ?g {
     ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
@@ -20,4 +22,18 @@ INSERT {
 WHERE
   { GRAPH ?g
       { ?s  a  kans:Beleidsveld }
+  };
+
+#Adding Narrower relationship to the fields
+
+INSERT {
+  GRAPH ?g {
+    ?domain skos:narrower ?field .
+  }
+}
+WHERE
+  { GRAPH ?g
+      { ?field  a  kans:Beleidsveld ;
+                ext:heeftBeleidsDomein  ?domain.
+      }
   }

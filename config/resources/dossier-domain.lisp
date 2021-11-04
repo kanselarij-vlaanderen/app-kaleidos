@@ -16,8 +16,8 @@
               (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
                                  :inverse t
                                  :as "sign-flows")
-              (government-fields :via ,(s-prefix "besluitvorming:beleidsgebied") ;; NOTE: temporary name for relationship
-                                 :as "government-fields")
+              (concept           :via ,(s-prefix "ext:beleidsgebied") ;; NOTE: temporary name for relationship
+                                 :as "government-areas")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
