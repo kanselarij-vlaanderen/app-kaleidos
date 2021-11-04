@@ -67,18 +67,6 @@
           "target": "ise-code",
           "cardinality": "many",
           "inverse": true
-        },
-        "publication-flows":{
-          "predicate": "besluitvorming:beleidsveld",
-          "target": "publication-flow",
-          "cardinality": "many",
-          "inverse": true
-        },
-        "cases":{
-          "predicate": "besluitvorming:beleidsgebied",
-          "target": "case",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "features": ["include-uri"],
