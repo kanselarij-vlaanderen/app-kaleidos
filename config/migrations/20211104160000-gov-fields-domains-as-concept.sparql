@@ -1,37 +1,31 @@
-PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX  ext: <http://mu.semte.ch/vocabularies/ext/>
-PREFIX  kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX public: <http://mu.semte.ch/graphs/public>
 
 #Adding concepts to fields and domains
+WITH public:
 INSERT {
-  GRAPH ?g {
-    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
-  }
+  ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
 }
-WHERE
-  { GRAPH ?g
-      { ?s  a  kans:Beleidsdomein }
-  } ;
+WHERE{
+  ?s  a  kans:Beleidsdomein .
+};
+
+WITH public:
 INSERT {
-  GRAPH ?g {
-    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
-  }
+  ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> skos:Concept .
 }
-WHERE
-  { GRAPH ?g
-      { ?s  a  kans:Beleidsveld }
-  };
+WHERE {
+  ?s  a  kans:Beleidsveld .
+};
 
 #Adding Narrower relationship to the fields
-
+WITH public:
 INSERT {
-  GRAPH ?g {
-    ?domain skos:narrower ?field .
-  }
+  ?domain skos:narrower ?field .
 }
-WHERE
-  { GRAPH ?g
-      { ?field  a  kans:Beleidsveld ;
-                ext:heeftBeleidsDomein  ?domain.
-      }
-  }
+WHERE {
+  ?field  a  kans:Beleidsveld ;
+          ext:heeftBeleidsDomein  ?domain.
+}
