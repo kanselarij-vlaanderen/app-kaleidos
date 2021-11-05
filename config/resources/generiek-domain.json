@@ -79,7 +79,6 @@
     "concept": {
       "name": "concept",
       "class": "skos:Concept",
-      "_comment": "Note: as well as skos:Concept",
       "attributes": {
         "label": {
           "type": "string",

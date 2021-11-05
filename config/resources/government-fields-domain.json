@@ -31,11 +31,6 @@
           "target": "government-field",
           "cardinality": "many",
           "inverse": true
-        },
-        "narrower":{
-          "predicate": "skos:narrower",
-          "target": "government-field",
-          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -62,11 +57,6 @@
       "relationships": {
         "domain": {
           "predicate": "ext:heeftBeleidsDomein",
-          "target": "government-domain",
-          "cardinality": "one"
-        },
-        "narrower":{
-          "predicate": "skos:narrower",
           "target": "government-domain",
           "cardinality": "one"
         },
