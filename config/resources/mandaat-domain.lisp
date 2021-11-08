@@ -71,3 +71,13 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)
   :on-path "persons")
+
+(define-resource government-body ()
+  :class (s-prefix "besluit:Bestuursorgaan")
+  :properties `((:name        :string ,(s-prefix "skos:prefLabel")))
+  :has-one `((mandatee        :via ,(s-prefix "prov:hadMember")
+                              :as "government-body"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/bestuursorgaan/")
+  :features '(include-uri)
+  :on-path "government-bodies")
+
