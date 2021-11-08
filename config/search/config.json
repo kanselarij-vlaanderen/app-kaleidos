@@ -108,7 +108,7 @@
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/firstName"
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
         ],
         "mandateeFamilyNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
