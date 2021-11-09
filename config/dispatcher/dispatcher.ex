@@ -341,12 +341,24 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces"
   end
 
-  get "/sign-flows/:signflow_id/signing/pieces/:piece_id/signinghub", @any do
-    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/signinghub"
+  get "/sign-flows/:signflow_id/signing/pieces/:piece_id/signinghub-url", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/signinghub-url"
   end
 
   post "/sign-flows/:signflow_id/signing/prepare", @any do
     Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/prepare"
+  end
+
+  get "/sign-flows/:signflow_id/signing/pieces/:piece_id/signers", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/signers"
+  end
+
+  post "/sign-flows/:signflow_id/signing/pieces/:piece_id/signers", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/signers"
+  end
+
+  post "/sign-flows/:signflow_id/signing/pieces/:piece_id/start", @any do
+    Proxy.forward conn, [], "http://digital-signing/sign-flows/" <> signflow_id <> "/signing/pieces/" <> piece_id <> "/start"
   end
 
   match "/sign-flows/*path", @any do
