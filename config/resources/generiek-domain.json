@@ -76,7 +76,7 @@
       ],
       "new-resource-base": "http://themis.vlaanderen.be/id/identificator/"
     },
-    "concept": {
+    "concepts": {
       "name": "concept",
       "class": "skos:Concept",
       "attributes": {
