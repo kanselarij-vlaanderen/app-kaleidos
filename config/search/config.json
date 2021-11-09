@@ -210,7 +210,7 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/firstName"
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
         ],
         "mandateeFamilyNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
@@ -426,7 +426,7 @@
                 "priority": "http://data.vlaanderen.be/ns/mandaat#rangorde",
                 "firstName": [
                   "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-                  "http://xmlns.com/foaf/0.1/firstName"
+                  "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
                 ],
                 "familyName": [
                   "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
