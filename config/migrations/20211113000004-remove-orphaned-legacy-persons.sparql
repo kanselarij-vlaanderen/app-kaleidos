@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH ?g {
+    ?s a <http://www.w3.org/ns/person#Person> ; ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a <http://www.w3.org/ns/person#Person> ; ?p ?o .
+    FILTER NOT EXISTS { ?anything ?relation ?s . }
+  }
+}

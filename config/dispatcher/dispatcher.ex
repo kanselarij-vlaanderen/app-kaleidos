@@ -141,6 +141,15 @@ defmodule Dispatcher do
   get "/concepts/*path", @any do
     Proxy.forward conn, path, "http://cache/concepts/"
   end
+  get "/mandates/*path", @any do
+    Proxy.forward conn, path, "http://cache/mandates/"
+  end
+  get "/roles/*path", @any do
+    Proxy.forward conn, path, "http://cache/roles/"
+  end
+  get "/government-bodies/*path", @any do
+    Proxy.forward conn, path, "http://cache/government-bodies/"
+  end
   match "/government-fields/*path", @any do
     Proxy.forward conn, path, "http://cache/government-fields/"
   end

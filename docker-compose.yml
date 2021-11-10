@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:0.3.0
+    image: kanselarij/cache-warmup-service:1.0.0
     logging: *default-logging
     restart: always
     labels:
@@ -192,7 +192,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.3.1
+    image: kanselarij/newsletter-service:2.4.0
     logging: *default-logging
     restart: always
     labels:
