@@ -205,12 +205,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  minister-jurisdiction-service:
-    image: kanselarij/minister-jurisdiction-service:1.0.1
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
   yggdrasil:
     image: kanselarij/yggdrasil:4.1.0
     environment:
