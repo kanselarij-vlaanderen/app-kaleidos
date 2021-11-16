@@ -1,0 +1,30 @@
+PREFIX dossier:<https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX conf: <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/>
+
+DELETE {
+    GRAPH ?g {
+        ?document ext:toegangsniveauVoorDocumentVersie ?accesslevel .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?document ext:toegangsniveauVoorDocumentVersie conf:6ca49d86-d40f-46c9-bde3-a322aa7e5c8e . # MP
+    }
+} WHERE {
+    GRAPH ?g {
+        ?document a dossier:Stuk ;
+        ?document ext:toegangsniveauVoorDocumentVersie ?accesslevel.
+            FILTER ?accesslevel IN (
+                                 conf:abe4c18d-13a9-45f0-8cdd-c493eabbbe29, # Interne Overheid
+                                 conf:d335f7e3-aefd-4f93-81a2-1629c2edafa3  # Intern Regering
+                             ) .
+        ?document besluitvorming:geagendeerdStuk ?agendaitem
+        OPTIONAL {
+         ?agendaitem dct:title ?title
+         FILTER CONTAINS ( ?title , "bekrachtiging en afkondiging" ) .
+        }
+    }
+}
