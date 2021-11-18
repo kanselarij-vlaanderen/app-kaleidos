@@ -1,0 +1,20 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+DELETE {
+    GRAPH ?g {
+        ?person foaf:firstName ?firstName .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?person persoon:gebruikteVoornaam ?firstName .
+    }
+} WHERE {
+    GRAPH ?g {
+        ?person
+            a person:Person ;
+            foaf:firstName ?firstName .
+    }
+}

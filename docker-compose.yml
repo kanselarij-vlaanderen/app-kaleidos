@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.12.1
+    image: kanselarij/frontend-kaleidos:5.21.3
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:0.1.0
+    image: kanselarij/cache-warmup-service:1.0.0
     logging: *default-logging
     restart: always
     labels:
@@ -163,7 +163,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:3.4.0
+    image: kanselarij/agenda-approve-service:4.0.1
     logging: *default-logging
     restart: always
     labels:
@@ -192,7 +192,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.3.0
+    image: kanselarij/newsletter-service:2.4.0
     logging: *default-logging
     restart: always
     labels:
@@ -212,7 +212,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:4.0.0
+    image: kanselarij/yggdrasil:4.1.0
     environment:
       DIRECT_ENDPOINT: "http://triplestore:8890/sparql"
       RELOAD_ALL_DATA_ON_INIT: "false"
@@ -242,12 +242,6 @@ services:
       - "logging=true"
   database-healthcheck:
     image: kanselarij/database-healthcheck:1.0.2
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  lazy-loading-service:
-    image: kanselarij/lazy-loading-service:1.1.0
     logging: *default-logging
     restart: always
     labels:
@@ -283,3 +277,34 @@ services:
     restart: always
     labels:
       - "logging=true"
+  lod-sbmb:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
+    # this isn't a mu.semte.ch-service, but includes a command that is regulary run from cron
+    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
+    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
+    image: kanselarij/lod-sbmb:1.11.0
+    logging: *default-logging
+    volumes:
+      - ./data/staatsblad:/data
+  staatsblad-import:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
+    image: kanselarij/ttl-import-service:0.2.0
+    logging: *default-logging
+    restart: "no" # disabled on prod until tested on accept
+    volumes:
+      - ./data/staatsblad/nl:/data/imports
+    environment:
+      GRAPH: "http://mu.semte.ch/graphs/staatsblad"
+  staatsblad-uuid-generation:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
+    image: kanselarij/uuid-generation-service:0.1.0
+    logging: *default-logging
+    restart: "no" # disabled on prod until tested on accept
+    environment:
+      RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
+      GRAPH: "http://mu.semte.ch/graphs/staatsblad"
+  staatsblad-linking:
+    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
+    image: kanselarij/staatsblad-linking-service:0.5.1
+    logging: *default-logging
+    restart: "no" # disabled on prod until tested on accept

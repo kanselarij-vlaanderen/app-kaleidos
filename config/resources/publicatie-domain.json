@@ -4,20 +4,32 @@
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "schema": "http://schema.org/",
-    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "dct": "http://purl.org/dc/terms/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
     "adms": "http://www.w3.org/ns/adms#",
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
-    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
+    "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
+    "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
     "publication-flows": {
       "name": "publication-flow",
       "class": "pub:Publicatieaangelegenheid",
       "attributes": {
+        "short-title": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "long-title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
         "remark": {
           "type": "string",
           "predicate": "rdfs:comment"
@@ -77,6 +89,7 @@
         },
         "mandatees": {
           "predicate": "ext:heeftBevoegdeVoorPublicatie",
+          "_comment": "FIXME: predicate should be prov:qualifiedAssociation",
           "target": "mandatee",
           "cardinality": "many"
         },
@@ -98,7 +111,7 @@
           "cardinality": "one"
         },
         "contact-persons": {
-          "predicate": "pub:contactPersoon",
+          "predicate": "prov:qualifiedDelegation",
           "target": "contact-person",
           "cardinality": "many"
         },
@@ -106,6 +119,16 @@
           "predicate": "adms:identifier",
           "target": "identification",
           "cardinality": "one"
+        },
+        "agenda-item-treatment": {
+          "predicate": "dct:subject",
+          "cardinality": "one",
+          "target": "agenda-item-treatment"
+        },
+        "government-fields": {
+          "predicate": "besluitvorming:beleidsveld",
+          "target": "government-field",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -147,6 +170,11 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of translation documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -158,7 +186,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
@@ -177,6 +205,11 @@
           "target": "cancellation-activity",
           "cardinality": "many",
           "inverse": true
+        },
+        "source-documents": {
+          "predicate": "pub:vertalingBronDocument",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -217,6 +250,15 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "proof-print-corrector": {
+          "type": "string",
+          "predicate": "pub:drukproefVerbeteraar"
+        },
+        "received-date": {
+          "type": "datetime",
+          "predicate": "ext:hasDateReceived",
+          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -228,7 +270,7 @@
           "inverse": true
         },
         "request-activities": {
-          "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
+          "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
           "target": "request-activity",
           "cardinality": "many",
@@ -247,6 +289,16 @@
           "target": "publication-activity",
           "cardinality": "many",
           "inverse": true
+        },
+        "source-documents": {
+          "predicate": "pub:publicatieBronDocument",
+          "target": "piece",
+          "cardinality": "many"
+        },
+        "correction-documents": {
+          "predicate": "pub:publicatieCorrectieDocument",
+          "target": "piece",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -321,14 +373,32 @@
         "translation-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensVertaling",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
+        },
+        "translation-activity": {
+          "predicate": "pub:vertalingsactiviteitVanAanvraag",
+          "target": "translation-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "proofing-activity": {
+          "predicate": "pub:drukproefactiviteitVanAanvraag",
+          "target": "proofing-activity",
+          "cardinality": "one",
+          "inverse": "true"
         },
         "publication-subcase": {
           "predicate": "pub:aanvraagVindtPlaatsTijdensPublicatie",
           "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
+        },
+        "publication-activity": {
+          "predicate": "pub:publicatieactiviteitVanAanvraag",
+          "target": "publication-activity",
+          "cardinality": "one",
+          "inverse": true
         },
         "email": {
           "predicate": "pub:requestActivitySubject",
@@ -337,8 +407,9 @@
           "cardinality": "one",
           "inverse": true
         },
-        "used-pieces":{
-          "predicate": "prov:used",
+        "used-pieces": {
+          "predicate": "pub:aanvraagGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         }
@@ -374,7 +445,12 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:vertalingVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
+          "cardinality": "one"
+        },
+        "request-activity": {
+          "predicate": "pub:vertalingsactiviteitVanAanvraag",
+          "target": "request-activity",
           "cardinality": "one"
         },
         "language": {
@@ -383,12 +459,14 @@
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:vertalingGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "dossier:genereert",
+          "predicate": "pub:vertalingGenereert",
+          "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
         }
@@ -416,18 +494,25 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:drukproefVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:drukproefGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
         "generated-pieces":{
-          "predicate": "dossier:genereert",
+          "predicate": "pub:drukproefGenereert",
+          "_comment": "FIXME: predicate should be dossier:genereert",
           "target": "piece",
           "cardinality": "many"
+        },
+        "request-activity": {
+          "predicate": "pub:drukproefactiviteitVanAanvraag",
+          "target": "request-activity",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -453,19 +538,24 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:publicatieVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "publication-subcase",
           "cardinality": "one"
         },
         "used-pieces":{
-          "predicate": "prov:used",
+          "predicate": "pub:publicatieGebruikt",
+          "_comment": "FIXME: predicate should be prov:used",
           "target": "piece",
           "cardinality": "many"
         },
-        "generated-pieces":{
-          "predicate": "dossier:genereert",
-          "target": "piece",
-          "cardinality": "many",
-          "_comment": "The type of the entity this points to should be besluit:Besluit"
+        "decisions":{
+          "predicate": "prov:generated",
+          "target": "decision",
+          "cardinality": "many"
+        },
+        "request-activity": {
+          "predicate": "pub:publicatieactiviteitVanAanvraag",
+          "cardinality": "one",
+          "target": "request-activity"
         }
       },
       "features": ["include-uri"],
@@ -492,7 +582,7 @@
       "relationships": {
         "subcase": {
           "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "target": "subcase",
+          "target": "translation-subcase",
           "cardinality": "one"
         },
         "email": {
@@ -565,12 +655,22 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "abbreviation": {
+          "type": "string",
+          "predicate": "dbpedia:abbreviation"
         }
       },
       "relationships": {
         "publication-flows": {
           "predicate": "pub:regelgevingType",
           "target": "publication-flow",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-flows": {
+          "predicate": "sign:regelgevingType",
+          "target": "sign-flow",
           "cardinality": "many",
           "inverse": true
         }
@@ -597,6 +697,36 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/publicatie-status-wijziging/"
+    },
+    "contact-persons": {
+      "name": "contact-person",
+      "class": "schema:ContactPoint",
+      "attributes": {
+        "email": {
+          "type": "string",
+          "predicate": "schema:email"
+        },
+        "telephone": {
+          "type": "string",
+          "predicate": "schema:telephone"
+        }
+      },
+      "relationships": {
+        "person": {
+          "predicate": "schema:contactPoint",
+          "target": "person",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "publication-flow": {
+          "predicate": "prov:qualifiedDelegation",
+          "target": "publication-flow",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/contactpersoon/"
     }
   }
 }

@@ -40,10 +40,12 @@
 (add-prefix "besluitvorming" "http://data.vlaanderen.be/ns/besluitvorming#")
 (add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#")
 (add-prefix "mandaat" "http://data.vlaanderen.be/ns/mandaat#")
-(add-prefix "persoon" "http://data.vlaanderen.be/ns/persoon#")
+(add-prefix "persoon" "https://data.vlaanderen.be/ns/persoon#")
 (add-prefix "dossier" "https://data.vlaanderen.be/ns/dossier#")
 
-(add-prefix "pub" "http://mu.semte.ch/vocabularies/ext/publicatie/") ;; base = ext:
+(add-prefix "pub" "http://mu.semte.ch/vocabularies/ext/publicatie/")
+(add-prefix "sign" "http://mu.semte.ch/vocabularies/ext/handtekening/")
+(add-prefix "signinghub" "http://mu.semte.ch/vocabularies/ext/signinghub/")
 
 (add-prefix "adms" "http://www.w3.org/ns/adms#")
 (add-prefix "bbcdr" "http://mu.semte.ch/vocabularies/ext/bbcdr/")

@@ -78,8 +78,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertalingProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieStatusWijziging",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/ContactPersoon",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Config",
+      "http://www.w3.org/ns/person#Person",
+      "http://schema.org/ContactPoint",
       "http://www.w3.org/ns/org#Organization",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
@@ -88,6 +88,31 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+    ]
+  end
+
+
+  defp sign_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Markeringsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Voorbereidingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Weigeractiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/Afrondingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handteken/GetekendStuk",
+      "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
+      "http://www.w3.org/ns/person#Person",
+      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+    ]
+  end
+
+  defp staatsblad_resource_types() do
+    [
+      "http://data.europa.eu/eli/ontology#LegalResource",
     ]
   end
 
@@ -96,6 +121,7 @@ defmodule Acl.UserGroups.Config do
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox",
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email",
+      "http://mu.semte.ch/vocabularies/ext/EmailNotificationSettings"
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader",
     ]
   end
@@ -125,7 +151,6 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/Handtekening", # TODO: check if this type is in use.
       "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
       "http://www.w3.org/ns/org#Organization",
     ]
@@ -169,17 +194,23 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/public",
+            constraint: %ResourceConstraint{
+              resource_types: unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
               user_account_resource_types()
-          } },
+            } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
             constraint: %ResourceFormatConstraint{
               resource_prefix: "http://mu.semte.ch/sessions/"
+            } },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/staatsblad",
+            constraint: %ResourceConstraint{
+              resource_types: staatsblad_resource_types()
             } } ]
       },
       %GroupSpec{
@@ -284,7 +315,9 @@ defmodule Acl.UserGroups.Config do
                 static_unconfidential_code_list_types() ++
                 user_account_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                sign_resource_types() ++
+                staatsblad_resource_types()
             }
           },
           %GraphSpec{
@@ -303,9 +336,11 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
             constraint: %ResourceConstraint{
-              resource_types: publication_resource_types() ++
-                generic_besluitvorming_resource_types() ++
-                document_resource_types()
+              resource_types: generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                publication_resource_types() ++
+                sign_resource_types() ++
+                staatsblad_resource_types()
             }
           },
           %GraphSpec{

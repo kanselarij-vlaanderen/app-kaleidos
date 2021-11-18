@@ -39,7 +39,7 @@
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:priority            :number   ,(s-prefix "ext:prioriteit"))
+                (:number              :number   ,(s-prefix "ext:prioriteit"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
@@ -99,16 +99,23 @@
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
   :properties `(
-                (:created     :datetime       ,(s-prefix "dct:created"))
+                (:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum"))
+                (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
               ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
               ;                :as "pieces")
-              )
+              (publication-flow     :via ,(s-prefix "dct:subject"),
+                                    :inverse t
+                                    :as "publication-flows")
+              (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
+                                    :inverse t
+                                    :as "sign-flows")
+            )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
-                                    :as "agendaitem")
+                                    :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
@@ -116,7 +123,8 @@
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
-                                    :as "decision-result-code"))
+                                    :as "decision-result-code")
+            )
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
@@ -189,8 +197,6 @@
                                         :as "agenda")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :as "newsletter")
-             (signature                 :via      ,(s-prefix "ext:heeftHandtekening")
-                                        :as "signature")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")

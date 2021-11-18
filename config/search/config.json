@@ -108,7 +108,7 @@
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/firstName"
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
         ],
         "mandateeFamilyNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
@@ -210,7 +210,7 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/firstName"
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
         ],
         "mandateeFamilyNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
@@ -360,6 +360,139 @@
           },
           "caseId": {
             "type": "keyword"
+          }
+        }
+      }
+    },
+    {
+      "type": "newsletter-infos",
+      "on_path": "newsletter-infos",
+      "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "properties": {
+        "title": "http://purl.org/dc/terms/title",
+        "subtitle": "http://dbpedia.org/ontology/subtitle",
+        "richtext": "http://mu.semte.ch/vocabularies/ext/htmlInhoud",
+        "themes": [
+          "http://purl.org/dc/terms/subject",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "generalNewsletterMeetingId": [
+          "^http://mu.semte.ch/vocabularies/ext/algemeneNieuwsbrief",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "decisions": {
+          "via": [
+            "^http://www.w3.org/ns/prov#generated",
+            "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
+          ],
+          "rdf_type": "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
+          "properties": {
+            "decisionResultCodeId": "http://mu.semte.ch/vocabularies/core/uuid",
+            "decisionResultCodeLabel": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        },
+        "agendaitems": {
+          "via": [
+            "^http://www.w3.org/ns/prov#generated",
+            "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp"
+          ],
+          "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+          "properties" : {
+            "id": "http://mu.semte.ch/vocabularies/core/uuid",
+            "nextVersionId": [
+              "^http://www.w3.org/ns/prov#wasRevisionOf",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "agendaId": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "meetingDate": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "http://data.vlaanderen.be/ns/besluit#geplandeStart"
+            ],
+            "meetingId": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "mandatees": {
+              "via": [
+                "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt"
+              ],
+              "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+              "properties" : {
+                "priority": "http://data.vlaanderen.be/ns/mandaat#rangorde",
+                "firstName": [
+                  "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+                  "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
+                ],
+                "familyName": [
+                  "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+                  "http://xmlns.com/foaf/0.1/familyName"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "subtitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "richtext": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "themes": {
+            "type": "text"
+          },
+          "generalNewsletterMeetingId": {
+            "type": "keyword"
+          },
+          "decisions.decisionResultCodeId": {
+            "type": "keyword"
+          },
+          "decisions.decisionResultCodeLabel": {
+            "type": "text"
+          },
+          "agendaitems.id": {
+            "type": "keyword"
+          },
+          "agendaitems.nextVersionId": {
+            "type": "keyword"
+          },
+          "agendaitems.agendaId": {
+            "type": "keyword"
+          },
+          "agendaitems.meetingDate": {
+            "type": "date"
+          },
+          "agendaitems.meetingId": {
+            "type": "keyword"
+          },
+          "agendaitems.mandatees.priority": {
+            "type": "short"
+          },
+          "agendaitems.mandatees.firstName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "agendaitems.mandatees.familyName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }

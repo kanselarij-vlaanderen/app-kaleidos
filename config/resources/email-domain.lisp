@@ -28,7 +28,7 @@
                 (:cc :string ,(s-prefix "nmo:emailCc"))
                 (:bcc :string ,(s-prefix "nmo:emailBcc"))
                 (:subject :string ,(s-prefix "nmo:messageSubject"))
-                (:content :string ,(s-prefix "nmo:plainTextMessageContent"))
+                (:message :string ,(s-prefix "nmo:plainTextMessageContent"))
                 (:html-content :string ,(s-prefix "nmo:htmlMessageContent"))
                 (:is-read :boolean ,(s-prefix "nmo:isRead"))
                 (:content-mime-type :string ,(s-prefix "nmo:contentMimeType"))
@@ -40,7 +40,7 @@
                     :as "folder")
              (request-activity :via ,(s-prefix "pub:requestActivitySubject") ;; FIXME: predicate should be "dct:subject"
                     :as "request-activity")
-             (cancellation-activity :via ,(s-prefix "pub:cancellationActivitySubject")) ;; FIXME: predicate should be "dct:subject"
+             (cancellation-activity :via ,(s-prefix "pub:cancellationActivitySubject") ;; FIXME: predicate should be "dct:subject"
                   :as "cancellation-activity"))
   :has-many `(
   ;           (email-header :via ,(s-prefix "nmo:messageHeader")
@@ -52,6 +52,17 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/email/")
   :features '(include-uri)
   :on-path "emails")
+
+(define-resource email-notification-setting ()
+  :class (s-prefix "ext:EmailNotificationSettings")
+  :properties `((:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
+                (:default-from-email :string ,(s-prefix "ext:defaultFromEmail"))
+                (:proof-request-to-email :string ,(s-prefix "ext:proofRequestToEmail"))
+                (:proof-request-cc-email :string ,(s-prefix "ext:proofRequestCcEmail"))
+              )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/email-notificatie-settings/")
+  :features '(include-uri)
+  :on-path "email-notification-settings")
 
 ; (define-resource email-header ()
 ;   :class (s-prefix "nmo:MessageHeader")
