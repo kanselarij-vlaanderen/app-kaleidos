@@ -361,11 +361,11 @@
       "name": "signinghub-document",
       "class": "signinghub:Document",
       "attributes": {
-        "documentId": {
+        "document-id": {
           "type": "string",
           "predicate": "signinghub:documentId"
         },
-        "packageId": {
+        "package-id": {
           "type": "string",
           "predicate": "signinghub:packageId"
         }
