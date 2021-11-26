@@ -1,0 +1,70 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "generiek": "https://data.vlaanderen.be/ns/generiek#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/"
+  },
+  "resources": {
+    "concepts": {
+      "name": "concept",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "narrower":{
+          "predicate": "skos:narrower",
+          "target": "concept",
+          "cardinality": "many"
+        },
+        "broader":{
+          "predicate": "skos:narrower",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/"
+    },
+    "concept-schemes": {
+      "name": "concept-scheme",
+      "class": "skos:ConceptScheme",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "concepts":{
+          "predicate": "skos:inScheme",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "many"
+        },
+        "top-concepts":{
+          "predicate": "skos:topConceptOf",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept-schema/"
+    }
+  }
+}
