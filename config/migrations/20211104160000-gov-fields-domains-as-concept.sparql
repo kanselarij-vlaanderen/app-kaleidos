@@ -27,9 +27,11 @@ INSERT {
     skos:inScheme <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
     skos:topConceptOf <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> .
 }
-WHERE{
-  ?s  a  kans:Beleidsdomein .
-};
+WHERE {
+  ?s a kans:Beleidsdomein .
+}
+
+;
 
 WITH public:
 INSERT {
@@ -38,8 +40,10 @@ INSERT {
     skos:topConceptOf <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> .
 }
 WHERE {
-  ?s  a  kans:Beleidsveld .
-};
+  ?s a kans:Beleidsveld .
+}
+
+;
 
 #Adding Narrower relationship to the fields
 WITH public:
@@ -47,6 +51,6 @@ INSERT {
   ?domain skos:narrower ?field .
 }
 WHERE {
-  ?field  a  kans:Beleidsveld ;
-          ext:heeftBeleidsDomein  ?domain.
+  ?field a kans:Beleidsveld ;
+    ext:heeftBeleidsDomein ?domain .
 }
