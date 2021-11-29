@@ -25,6 +25,16 @@
         }
       },
       "relationships": {
+        "concept-schemes":{
+          "predicate": "skos:inScheme",
+          "target": "concept-scheme",
+          "cardinality": "many"
+        },
+        "top-concept-schemes":{
+          "predicate": "skos:topConceptOf",
+          "target": "concept-scheme",
+          "cardinality": "many"
+        }
         "narrower":{
           "predicate": "skos:narrower",
           "target": "concept",
