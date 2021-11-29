@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.21.0
+    image: kanselarij/frontend-kaleidos:5.21.4
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -163,7 +163,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:4.0.0
+    image: kanselarij/agenda-approve-service:4.0.1
     logging: *default-logging
     restart: always
     labels:
@@ -201,12 +201,6 @@ services:
     image: kanselarij/user-management-service:1.1.0
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  minister-jurisdiction-service:
-    image: kanselarij/minister-jurisdiction-service:1.0.1
     logging: *default-logging
     restart: always
     labels:

@@ -77,8 +77,6 @@ services:
     restart: "no"
   user-management-service:
     restart: "no"
-  minister-jurisdiction-service:
-    restart: "no"
   yggdrasil:
     restart: "no"
   sink:
