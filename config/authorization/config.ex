@@ -173,7 +173,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
-      "http://www.w3.org/2004/02/skos/core#Concept"
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
     ]
   end
   # Also insert your type as ext:PublicClass
