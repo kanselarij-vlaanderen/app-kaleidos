@@ -35,5 +35,4 @@
 (read-domain-file "users-domain.lisp")
 (read-domain-file "email-domain.lisp")
 (read-domain-file "generiek-domain.json")
-(read-domain-file "government-fields-domain.json")
 (read-domain-file "concept-domain.json")

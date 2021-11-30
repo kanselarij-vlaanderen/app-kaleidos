@@ -153,15 +153,6 @@ defmodule Dispatcher do
   get "/government-bodies/*path", @any do
     Proxy.forward conn, path, "http://cache/government-bodies/"
   end
-  match "/government-fields/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-fields/"
-  end
-  match "/government-domains/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-domains/"
-  end
-  match "/ise-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/ise-codes/"
-  end
   match "/responsibilities/*path", @any do
     Proxy.forward conn, path, "http://cache/responsibilities/"
   end

@@ -60,8 +60,6 @@
                                       :as "mandatees")
               (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-pieces")
-              (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
-                                      :as "ise-codes")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
                                       :as "agenda-activities")
