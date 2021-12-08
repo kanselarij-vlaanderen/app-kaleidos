@@ -1,10 +1,7 @@
 {
   "version": "0.1",
   "prefixes": {
-    "generiek": "https://data.vlaanderen.be/ns/generiek#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "adms": "http://www.w3.org/ns/adms#",
-    "ext": "http://mu.semte.ch/vocabularies/ext/"
+    "skos": "http://www.w3.org/2004/02/skos/core#"
   },
   "resources": {
     "concepts": {
