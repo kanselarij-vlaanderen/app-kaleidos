@@ -39,7 +39,7 @@
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:number              :number   ,(s-prefix "ext:prioriteit"))
+                (:number              :integer   ,(s-prefix "ext:prioriteit"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
