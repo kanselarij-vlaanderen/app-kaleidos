@@ -34,7 +34,7 @@
           "predicate": "skos:topConceptOf",
           "target": "concept-scheme",
           "cardinality": "many"
-        }
+        },
         "narrower":{
           "predicate": "skos:narrower",
           "target": "concept",
