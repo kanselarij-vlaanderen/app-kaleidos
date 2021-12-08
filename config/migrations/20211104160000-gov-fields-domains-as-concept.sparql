@@ -1,0 +1,56 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX public: <http://mu.semte.ch/graphs/public>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH public: {
+    <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81>
+      a skos:ConceptScheme ;
+      mu:uuid "f4981a92-8639-4da4-b1e3-0e1371feaa81" ;
+      skos:prefLabel "Beleidsdomeinen van de Vlaamse overheid"@nl .
+
+    <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b>
+      a skos:ConceptScheme ;
+      mu:uuid "0012aad8-d6e5-49e2-af94-b1bebd484d5b" ;
+      skos:prefLabel "Beleidsvelden van de Vlaamse overheid"@nl .
+  }
+}
+
+;
+
+# Adding fields and domains as concepts to concept-schemes
+WITH public:
+INSERT {
+  ?s a skos:Concept ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+    skos:topConceptOf <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> .
+}
+WHERE {
+  ?s a kans:Beleidsdomein .
+}
+
+;
+
+WITH public:
+INSERT {
+  ?s a skos:Concept ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> ;
+    skos:topConceptOf <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> .
+}
+WHERE {
+  ?s a kans:Beleidsveld .
+}
+
+;
+
+#Adding Narrower relationship to the fields
+WITH public:
+INSERT {
+  ?domain skos:narrower ?field .
+}
+WHERE {
+  ?field a kans:Beleidsveld ;
+    ext:heeftBeleidsDomein ?domain .
+}

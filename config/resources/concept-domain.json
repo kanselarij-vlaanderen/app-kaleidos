@@ -1,0 +1,77 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "resources": {
+    "concepts": {
+      "name": "concept",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "concept-schemes":{
+          "predicate": "skos:inScheme",
+          "target": "concept-scheme",
+          "cardinality": "many"
+        },
+        "top-concept-schemes":{
+          "predicate": "skos:topConceptOf",
+          "target": "concept-scheme",
+          "cardinality": "many"
+        },
+        "narrower":{
+          "predicate": "skos:narrower",
+          "target": "concept",
+          "cardinality": "many"
+        },
+        "broader":{
+          "predicate": "skos:narrower",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/"
+    },
+    "concept-schemes": {
+      "name": "concept-scheme",
+      "class": "skos:ConceptScheme",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "concepts":{
+          "predicate": "skos:inScheme",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "many"
+        },
+        "top-concepts":{
+          "predicate": "skos:topConceptOf",
+          "target": "concept",
+          "inverse": true,
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept-schema/"
+    }
+  }
+}
