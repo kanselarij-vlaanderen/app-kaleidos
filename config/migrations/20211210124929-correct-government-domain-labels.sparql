@@ -1,0 +1,18 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# Correct spelling
+WITH <http://mu.semte.ch/graphs/public>
+DELETE {
+    ?govDomain skos:prefLabel ?labelOld .
+}
+INSERT {
+    ?govDomain skos:prefLabel ?labelNew .
+}
+WHERE {
+    VALUES (?govDomain ?labelNew) {
+        (<http://kanselarij.vo.data.gift/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c> "Welzijn, volksgezondheid & gezin")
+        (<http://kanselarij.vo.data.gift/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06> "Financiën & Begroting")
+    }
+
+    ?govDomain skos:prefLabel ?labelOld .
+}
