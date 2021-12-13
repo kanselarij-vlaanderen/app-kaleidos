@@ -4,8 +4,7 @@
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
-                (:title         :string   ,(s-prefix "dct:title"))
-                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
+                (:title         :string   ,(s-prefix "dct:title")))
   :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")
                                  :as "subcases")
               (piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
