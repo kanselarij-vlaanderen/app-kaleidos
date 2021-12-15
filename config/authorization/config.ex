@@ -166,17 +166,15 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
-      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
-      "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
-      "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
     ]
   end
   # Also insert your type as ext:PublicClass
