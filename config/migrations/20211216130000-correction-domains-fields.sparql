@@ -1,0 +1,122 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX beleidsdomein: <http://kanselarij.vo.data.gift/id/beleidsdomein/>
+PREFIX beleidsveld: <http://kanselarij.vo.data.gift/id/beleidsveld/>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+
+PREFIX public: <http://mu.semte.ch/graphs/public>
+
+# new field
+WITH public:
+INSERT DATA {
+  beleidsveld:64634310-4c8d-46a3-ac4a-e7777a434729 a kans:Beleidsveld ;
+    a skos:Concept ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> ;
+    skos:topConceptOf <http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> ;
+    skos:prefLabel "Justitie en handhaving" ;
+    ext:heeftBeleidsDomein beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c ;
+    mu:uuid "64634310-4c8d-46a3-ac4a-e7777a434729" .
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:64634310-4c8d-46a3-ac4a-e7777a434729 .
+};
+
+# move 4 fields from domain "Internationaal Vlaanderen" to domain "DKBUZA"
+WITH public:
+DELETE DATA {
+  beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 ext:heeftBeleidsDomein beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
+  beleidsveld:52e877e2-d342-4b0c-9835-74368a296d6c ext:heeftBeleidsDomein beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
+  beleidsveld:35d0740c-2754-4ca3-a334-936401383bcf ext:heeftBeleidsDomein beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
+  beleidsveld:e4d93deb-7e21-4838-b83d-da6b8c562723 ext:heeftBeleidsDomein beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 skos:narrower beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 .
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 skos:narrower beleidsveld:52e877e2-d342-4b0c-9835-74368a296d6c .
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 skos:narrower beleidsveld:35d0740c-2754-4ca3-a334-936401383bcf .
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 skos:narrower beleidsveld:e4d93deb-7e21-4838-b83d-da6b8c562723 .
+}
+INSERT DATA {
+  beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 ext:heeftBeleidsDomein beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c .
+  beleidsveld:52e877e2-d342-4b0c-9835-74368a296d6c ext:heeftBeleidsDomein beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c .
+  beleidsveld:35d0740c-2754-4ca3-a334-936401383bcf ext:heeftBeleidsDomein beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c .
+  beleidsveld:e4d93deb-7e21-4838-b83d-da6b8c562723 ext:heeftBeleidsDomein beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c .
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 .
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:52e877e2-d342-4b0c-9835-74368a296d6c .
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:35d0740c-2754-4ca3-a334-936401383bcf .
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:e4d93deb-7e21-4838-b83d-da6b8c562723 .
+};
+
+# delete 1 domain "Internationaal Vlaanderen"
+WITH public:
+DELETE {
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 ?p ?o .
+  ?s ?pp beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
+}
+WHERE {
+  beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 ?p ?o .
+  OPTIONAL { ?s ?pp beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 . }
+};
+
+# delete 1 unused field "Kinderen"
+WITH public:
+DELETE {
+  beleidsveld:bb23f5b3-8f56-4ebb-9201-bd085256f00a ?p ?o .
+  ?s ?pp beleidsveld:bb23f5b3-8f56-4ebb-9201-bd085256f00a .
+}
+WHERE {
+  beleidsveld:bb23f5b3-8f56-4ebb-9201-bd085256f00a ?p ?o .
+  OPTIONAL { ?s ?pp beleidsveld:bb23f5b3-8f56-4ebb-9201-bd085256f00a . }
+};
+
+# fix labels
+WITH public:
+DELETE {
+  ?domainOrField skos:prefLabel ?o .
+} WHERE {
+  ?domainOrField skos:prefLabel ?o .
+  VALUES ?domainOrField {
+    beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c
+    beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51
+    beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555
+    beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6
+    beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06
+    beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e
+    beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3
+    beleidsdomein:e2ccf3f9-6b1f-4b32-9e76-501999c51788
+    beleidsdomein:cb105245-de9e-4d32-8ef9-519b832ed4f9
+    beleidsveld:eddfc369-3b67-45a1-b0a2-d527a03c1ce1
+    beleidsdomein:53af66e3-b055-4a74-9f24-03ea9def4e0c
+    beleidsveld:82208ea2-8371-4ed1-906f-5ae4c101caee
+    beleidsveld:d83bfbfd-5821-4cf3-85cc-c7201f9343a6
+    beleidsveld:08249005-75e6-4791-ac7f-dbbb3a4d79c4
+    beleidsdomein:82535aaf-39ec-4b31-a181-f44241a65c93
+    beleidsdomein:98a3acec-51f2-4b6a-a1e1-6b6166d80d2e
+    beleidsdomein:be302e1b-f4d8-4212-a67d-bf992e6effcf
+    beleidsveld:3ada201d-68dd-41a3-b0da-5a8ef27de879
+    beleidsveld:a84f868d-de05-4a62-b7eb-fc676479a6d2
+    beleidsveld:b5eb0138-b286-473e-8f06-5647db7ac120
+    beleidsveld:2b0103aa-a3e8-4718-80f8-8de405966c57
+  }
+};
+
+WITH public:
+INSERT DATA {
+  beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:prefLabel "Kanselarij, Bestuur, Buitenlandse Zaken en Justitie" .
+  beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 skos:prefLabel "Binnenlands bestuur en stedenbeleid" .
+  beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555 skos:prefLabel "Ondersteuning Vlaamse Regering" .
+  beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6 skos:prefLabel "Gelijke kansen en integratie en inburgering" .
+  beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06 skos:prefLabel "Financi\u00EBn en Begroting" .
+  beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e skos:prefLabel "Boekhouding" .
+  beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3 skos:prefLabel "Financi\u00EBle operaties" .
+  beleidsdomein:e2ccf3f9-6b1f-4b32-9e76-501999c51788 skos:prefLabel "Economie, Wetenschap en Innovatie" .
+  beleidsdomein:cb105245-de9e-4d32-8ef9-519b832ed4f9 skos:prefLabel "Onderwijs en Vorming" .
+  beleidsveld:eddfc369-3b67-45a1-b0a2-d527a03c1ce1 skos:prefLabel "Kleuter- en leerplichtonderwijs" .
+  beleidsdomein:53af66e3-b055-4a74-9f24-03ea9def4e0c skos:prefLabel "Welzijn, Volksgezondheid en Gezin" .
+  beleidsveld:82208ea2-8371-4ed1-906f-5ae4c101caee skos:prefLabel "Welzijn" .
+  beleidsveld:d83bfbfd-5821-4cf3-85cc-c7201f9343a6 skos:prefLabel "Gezondheids- en woonzorg" .
+  beleidsveld:08249005-75e6-4791-ac7f-dbbb3a4d79c4 skos:prefLabel "Opgroeien" .
+  beleidsdomein:82535aaf-39ec-4b31-a181-f44241a65c93 skos:prefLabel "Cultuur, Jeugd, Sport en Media" .
+  beleidsdomein:98a3acec-51f2-4b6a-a1e1-6b6166d80d2e skos:prefLabel "Landbouw en Visserij" .
+  beleidsdomein:be302e1b-f4d8-4212-a67d-bf992e6effcf skos:prefLabel "Mobiliteit en Openbare Werken" .
+  beleidsveld:3ada201d-68dd-41a3-b0da-5a8ef27de879 skos:prefLabel "Waterinfrastructuur en beleid" .
+  beleidsveld:a84f868d-de05-4a62-b7eb-fc676479a6d2 skos:prefLabel "Weginfrastructuur en beleid" .
+  beleidsveld:b5eb0138-b286-473e-8f06-5647db7ac120 skos:prefLabel "Algemeen mobiliteitsbeleid" .
+  beleidsveld:2b0103aa-a3e8-4718-80f8-8de405966c57 skos:prefLabel "Wonen" .
+};
