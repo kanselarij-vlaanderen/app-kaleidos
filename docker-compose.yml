@@ -192,7 +192,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.4.0
+    image: kanselarij/newsletter-service:2.5.0
     logging: *default-logging
     restart: always
     labels:
