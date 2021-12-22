@@ -62,7 +62,7 @@ services:
     labels:
       - "logging=true"
   triplestore:
-    image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
+    image: redpencil/virtuoso:1.0.0
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
@@ -89,7 +89,7 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.0
+    image: semtech/mu-search-elastic-backend:1.0.1
     environment:
       discovery.type: "single-node"
     volumes:
@@ -192,7 +192,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.4.0
+    image: kanselarij/newsletter-service:2.5.0
     logging: *default-logging
     restart: always
     labels:

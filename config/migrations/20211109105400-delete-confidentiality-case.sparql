@@ -1,0 +1,14 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+
+
+DELETE {
+  GRAPH ?g {
+    ?case ext:vertrouwelijk ?confidential .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?case a dossier:Dossier ;
+         ext:vertrouwelijk ?confidential .
+  }
+}
