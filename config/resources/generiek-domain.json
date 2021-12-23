@@ -12,7 +12,7 @@
       "class": "generiek:GestructureerdeIdentificator",
       "attributes": {
         "local-identifier": {
-          "type": "number",
+          "type": "integer",
           "predicate": "generiek:lokaleIdentificator"
         },
         "version-identifier": {
