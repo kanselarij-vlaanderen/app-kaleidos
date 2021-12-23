@@ -133,7 +133,7 @@
   :class (s-prefix "ext:BeslissingsResultaatCode")
   :properties `(
                 (:label       :string ,(s-prefix "skos:prefLabel"))
-                (:priority    :number ,(s-prefix "ext:priority"))
+                (:priority    :integer ,(s-prefix "ext:priority"))
                )
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beslissingsresultaat-code/")
   :features '(include-uri)

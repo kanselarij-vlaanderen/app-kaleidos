@@ -120,7 +120,7 @@
   :class (s-prefix "ext:DocumentTypeCode")
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note        :string ,(s-prefix "skos:scopeNote"))
-                (:priority          :number ,(s-prefix "ext:prioriteit"))
+                (:priority          :integer ,(s-prefix "ext:prioriteit"))
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
                                     :inverse t
