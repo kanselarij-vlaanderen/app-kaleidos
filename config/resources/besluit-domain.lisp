@@ -39,7 +39,7 @@
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:number              :integer   ,(s-prefix "ext:prioriteit"))
+                (:number              :number   ,(s-prefix "ext:prioriteit")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
@@ -180,7 +180,7 @@
                 (:location              :string   ,(s-prefix "prov:atLocation"))
                 (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
-                (:number                :number   ,(s-prefix "adms:identifier"))
+                (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
                 (:kind                  :url      ,(s-prefix "dct:type"))
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
