@@ -42,12 +42,6 @@ WHERE {
         ?subcase ext:procedurestapNaam ?subcaseNameOld .
     }
 
-    GRAPH <http://mu.semte.ch/graphs/public> {
-        ?snelkoppeling a ext:SnelKoppeling .
-        ?snelkoppeling skos:prefLabel ?subcaseNameNew .
-        ?snelkoppeling ext:type "subcase-name" .
-    }
-
     BIND (
         CONCAT(
             LCASE(SUBSTR(?subcaseNameOld, 1, 1)),

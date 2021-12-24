@@ -1,27 +1,12 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
-DELETE {
+DELETE DATA {
     GRAPH <http://mu.semte.ch/graphs/public> {
-        ?s skos:prefLabel ?labelOld .
+        <http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> skos:prefLabel "In voorbereiding" .
     }
-} INSERT {
+} INSERT DATA {
     GRAPH <http://mu.semte.ch/graphs/public> {
-        ?s skos:prefLabel ?labelNew .
+        <http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> skos:prefLabel "in voorbereiding" .
     }
-} WHERE {
-    VALUES (?s ?labelOld) {
-        (<http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> "In voorbereiding")
-    }
-
-    GRAPH <http://mu.semte.ch/graphs/public> {
-        ?s a ext:ProcedurestapType .
-        ?s skos:prefLabel ?labelOld .
-    }
-
-    BIND (
-    CONCAT(
-        LCASE(SUBSTR(?labelOld, 1, 1)),
-        SUBSTR(?labelOld, 2)
-    ) AS ?labelNew)
 }
