@@ -125,7 +125,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.20.0
+    image: semtech/mu-cl-resources:feature-float-and-int
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -192,7 +192,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.4.0
+    image: kanselarij/newsletter-service:2.5.0
     logging: *default-logging
     restart: always
     labels:

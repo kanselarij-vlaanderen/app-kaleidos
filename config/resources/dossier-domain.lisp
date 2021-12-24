@@ -2,7 +2,7 @@
   :class (s-prefix "dossier:Dossier")
   :properties `((:created       :datetime ,(s-prefix "dct:created"))
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
-                (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
+                (:number        :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db ;; NOTE: only for legacy, do we want this ??
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
                 (:title         :string   ,(s-prefix "dct:title")))
   :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")

@@ -1,7 +1,7 @@
 
 (define-resource mandatee ()
   :class (s-prefix "mandaat:Mandataris")
-  :properties `((:priority        :number ,(s-prefix "mandaat:rangorde"))
+  :properties `((:priority        :integer ,(s-prefix "mandaat:rangorde"))
                 (:start           :datetime ,(s-prefix "mandaat:start"))
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
                 (:newsletter-title :string ,(s-prefix "ext:nieuwsbriefTitel")) ; As opposed to the dct:title, this property includes the name of the mandatee

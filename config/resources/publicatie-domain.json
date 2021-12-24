@@ -308,7 +308,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -332,7 +332,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -600,7 +600,7 @@
           "predicate": "skos:prefLabel"
         },
         "priority": {
-          "type": "number",
+          "type": "integer",
           "predicate": "ext:priority"
         }
       },
@@ -616,7 +616,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -644,7 +644,7 @@
           "predicate": "skos:scopeNote"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         },
         "alt-label": {
