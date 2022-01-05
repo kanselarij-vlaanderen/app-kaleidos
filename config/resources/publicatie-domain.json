@@ -49,10 +49,6 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
-        },
-        "status-modified": {
-          "type": "datetime",
-          "predicate": "dossier:statusAanpassingsDatum"
         }
       },
       "relationships": {
