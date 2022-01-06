@@ -10,7 +10,7 @@
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
 
-    "sign": "http://mu.semte.ch/vocabularies/ext/handtekening/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "signinghub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
   },

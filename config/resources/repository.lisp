@@ -44,7 +44,7 @@
 (add-prefix "dossier" "https://data.vlaanderen.be/ns/dossier#")
 
 (add-prefix "pub" "http://mu.semte.ch/vocabularies/ext/publicatie/")
-(add-prefix "sign" "http://mu.semte.ch/vocabularies/ext/handtekening/")
+(add-prefix "sign" "http://mu.semte.ch/vocabularies/ext/handtekenen/")
 (add-prefix "signinghub" "http://mu.semte.ch/vocabularies/ext/signinghub/")
 
 (add-prefix "adms" "http://www.w3.org/ns/adms#")
