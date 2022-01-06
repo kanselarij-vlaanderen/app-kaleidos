@@ -1,4 +1,4 @@
-PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX schema:  <http://schema.org/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 PREFIX pubstatusid: <http://themis.vlaanderen.be/id/concept/publicatie-status/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -20,67 +20,67 @@ INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
     pubstatusid:fa62e050-3960-440d-bed9-1c3d3e9923a8 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 1 ;
+      schema:position 1 ;
       mu:uuid "fa62e050-3960-440d-bed9-1c3d3e9923a8" ;
       skos:prefLabel "Opgestart"@nl .
 
     pubstatusid:3f0d3d3f-cde4-411f-a370-23a4a6d7743d a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 2 ;
+      schema:position 2 ;
       mu:uuid "3f0d3d3f-cde4-411f-a370-23a4a6d7743d" ;
       skos:prefLabel "Naar vertaaldienst"@nl .
 
     pubstatusid:e34302e7-fcb2-47a4-a97e-10e39625fcfc a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 3 ;
+      schema:position 3 ;
       mu:uuid "e34302e7-fcb2-47a4-a97e-10e39625fcfc" ;
       skos:prefLabel "Vertaling in"@nl .
 
     pubstatusid:f930c630-b568-4b92-b786-8a0e7363362a a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 4 ;
+      schema:position 4 ;
       mu:uuid "f930c630-b568-4b92-b786-8a0e7363362a" ;
       skos:prefLabel "Drukproef aangevraagd"@nl .
 
     pubstatusid:5350f28c-ff91-4a8c-94e1-699e92c73704 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 5 ;
+      schema:position 5 ;
       mu:uuid "5350f28c-ff91-4a8c-94e1-699e92c73704" ;
       skos:prefLabel "Proef in"@nl .
 
     pubstatusid:68b7d72e-38fd-4c0b-849b-cd4ae466e986 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 6 ;
+      schema:position 6 ;
       mu:uuid "68b7d72e-38fd-4c0b-849b-cd4ae466e986" ;
       skos:prefLabel "Rappel proef"@nl .
 
     pubstatusid:9d01b336-be99-467f-ae2e-12f3841ae765 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 7 ;
+      schema:position 7 ;
       mu:uuid "9d01b336-be99-467f-ae2e-12f3841ae765" ;
       skos:prefLabel "Proef verbeterd"@nl .
 
     pubstatusid:0b650ee2-3e5f-40f9-8c0d-0dc54a7a5f65 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 8 ;
+      schema:position 8 ;
       mu:uuid "0b650ee2-3e5f-40f9-8c0d-0dc54a7a5f65" ;
       skos:prefLabel "Publicatie gevraagd"@nl .
 
     pubstatusid:2f8dc814-bd91-4bcf-a823-baf1cdc42475 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 9 ;
+      schema:position 9 ;
       mu:uuid "2f8dc814-bd91-4bcf-a823-baf1cdc42475" ;
       skos:prefLabel "Gepubliceerd"@nl .
 
     pubstatusid:9b9b0b5e-45c8-11eb-b378-0242ac130002 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 10 ;
+      schema:position 10 ;
       mu:uuid "9b9b0b5e-45c8-11eb-b378-0242ac130002" ;
       skos:prefLabel "Geannuleerd"@nl .
 
     pubstatusid:bc294fde-45c8-11eb-b378-0242ac130002 a pub:Publicatiestatus ;
       a skos:Concept ;
-      ext:priority 11 ;
+      schema:position 11 ;
       mu:uuid "bc294fde-45c8-11eb-b378-0242ac130002" ;
       skos:prefLabel "Gepauzeerd"@nl .
     }
