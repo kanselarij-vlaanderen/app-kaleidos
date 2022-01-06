@@ -129,6 +129,7 @@ defmodule Acl.UserGroups.Config do
   defp newsletter_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
     ]
   end
 

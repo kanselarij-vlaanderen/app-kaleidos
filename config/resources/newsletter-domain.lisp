@@ -56,3 +56,13 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/mailcampagne/")
   :features `(no-pagination-defaults include-uri)
   :on-path "mail-campaigns")
+
+(define-resource themis-publication-activity ()
+  :class (s-prefix "ext:ThemisPublicationActivity")
+  :properties `((:start-date       :datetime   ,(s-prefix "prov:startedAtTime"))
+                (:scope            :string-set   ,(s-prefix "ext:scope")))
+  :has-one `((meeting              :via      ,(s-prefix "prov:used")
+                                   :as "meeting"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/themis-publicatie-activiteit/")
+  :features `(include-uri)
+  :on-path "themis-publication-activities")

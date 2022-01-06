@@ -184,6 +184,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
 
+  match "/themis-publication-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/themis-publication-activities/"
+  end
+
   match "/themes/*path", @any do
     Proxy.forward conn, path, "http://cache/themes/"
   end
