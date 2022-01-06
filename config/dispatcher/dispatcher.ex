@@ -380,21 +380,13 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/signed-pieces/"
   end
 
-  # get "/mailboxes/*path" do
-  #   Proxy.forward conn, path, "http://cache/mailboxes/"
-  # end
-
-  match "/mail-folders/*path" do
+  get "/mail-folders/*path" do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end
 
   match "/emails/*path" do
     Proxy.forward conn, path, "http://cache/emails/"
   end
-
-  # match "/email-headers/*path" do
-  #   Proxy.forward conn, path, "http://cache/email-headers/"
-  # end
 
   get "/recovery-status/*path", @any do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
