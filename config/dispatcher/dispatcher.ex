@@ -383,11 +383,11 @@ defmodule Dispatcher do
   end
 
   post "/sign-flows/:signing_flow_id/pieces/:piece_id/signers", @any do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces" <> piece_id <> "/signers"
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signers"
   end
 
   get "/signing-flows/:signing_flow_id/pieces/:piece_id/signinghub-url", @any do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces" <> piece_id <> "/signinghub-url"
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
   end
 
   post "/signing-flows/:signing_flow_id/start", @any do
