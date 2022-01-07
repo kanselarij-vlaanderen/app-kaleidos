@@ -129,6 +129,7 @@ defmodule Acl.UserGroups.Config do
   defp newsletter_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
       "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
     ]
   end
@@ -152,7 +153,6 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
       "http://www.w3.org/ns/org#Organization",
     ]
   end
