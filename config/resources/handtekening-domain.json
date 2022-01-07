@@ -10,7 +10,7 @@
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
 
-    "sign": "http://mu.semte.ch/vocabularies/ext/handtekening/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "signinghub": "http://mu.semte.ch/vocabularies/ext/signinghub/"
   },
@@ -192,11 +192,6 @@
           "target": "sign-subcase",
           "cardinality": "one"
         },
-        "signinghub-document": {
-          "predicate": "sign:voorbereidingGenereert",
-          "target": "signinghub-document",
-          "cardinality": "one"
-        },
         "sign-marking-activity": {
           "predicate": "prov:wasInformedBy",
           "target": "sign-marking-activity",
@@ -356,35 +351,6 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondingsactiviteit/"
-    },
-    "signinghub-documents": {
-      "name": "signinghub-document",
-      "class": "signinghub:Document",
-      "attributes": {
-        "documentId": {
-          "type": "string",
-          "predicate": "signinghub:documentId"
-        },
-        "packageId": {
-          "type": "string",
-          "predicate": "signinghub:packageId"
-        }
-      },
-      "relationships": {
-        "sign-preparation-activity": {
-          "predicate": "sign:voorbereidingGenereert",
-          "target": "sign-preparation-activity",
-          "cardinality": "one",
-          "inverse": true
-        },
-        "piece": {
-          "predicate": "prov:hadPrimarySource",
-          "target": "piece",
-          "cardinality": "one"
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/signinghub-document/"
     },
     "signed-pieces": {
       "name": "signed-piece",
