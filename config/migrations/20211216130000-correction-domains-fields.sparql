@@ -20,7 +20,7 @@ INSERT DATA {
   beleidsdomein:22a39165-e17c-4a52-963a-9fa3d097907c skos:narrower beleidsveld:64634310-4c8d-46a3-ac4a-e7777a434729 .
 };
 
-# move 4 fields from domain "Internationaal Vlaanderen" to domain "DKBUZA"
+# move 4 fields from domain "Internationaal Vlaanderen" to domain "Kanselarij, Bestuur, Buitenlandse Zaken en Justitie"
 WITH public:
 DELETE DATA {
   beleidsveld:0db685d1-811f-49f9-a6fe-348aab08bba4 ext:heeftBeleidsDomein beleidsdomein:50f6f74c-ae9e-4f06-86fb-ce35fd75f6e2 .
