@@ -368,17 +368,33 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/signinghub-documents/*path", @any do
-    Proxy.forward conn, path, "http://cache/signinghub-documents/"
-  end
-
   match "/signed-pieces/*path", @any do
     Proxy.forward conn, path, "http://cache/signed-pieces/"
   end
 
-  # get "/mailboxes/*path" do
-  #   Proxy.forward conn, path, "http://cache/mailboxes/"
-  # end
+
+
+  get "/signing-flows/:signing_flow_id/pieces", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
+  end
+
+  post "/signing-flows/:signing_flow_id/upload-document-to-signinghub", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-document-to-signinghub"
+  end
+
+  post "/sign-flows/:signing_flow_id/pieces/:piece_id/signers", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signers"
+  end
+
+  get "/signing-flows/:signing_flow_id/pieces/:piece_id/signinghub-url", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
+  end
+
+  post "/signing-flows/:signing_flow_id/start", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/start"
+  end
+
+
 
   match "/mail-folders/*path" do
     Proxy.forward conn, path, "http://cache/mail-folders/"

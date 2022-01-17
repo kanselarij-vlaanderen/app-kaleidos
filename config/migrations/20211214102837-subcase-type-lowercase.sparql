@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> skos:prefLabel ?l .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> skos:prefLabel "in voorbereiding" .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741> skos:prefLabel ?l .
+    }
+}

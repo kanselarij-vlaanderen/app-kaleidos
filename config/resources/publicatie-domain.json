@@ -14,7 +14,7 @@
     "prov": "http://www.w3.org/ns/prov#",
     "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
-    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
     "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
