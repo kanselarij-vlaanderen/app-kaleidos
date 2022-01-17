@@ -34,7 +34,7 @@ DELETE {
         ?item ext:prioriteit ?prio .
     }
 }
-WHERE
+WHERE {
     GRAPH ?g {
         ?item a besluit:Agendapunt ;
             ext:prioriteit ?prio ;
