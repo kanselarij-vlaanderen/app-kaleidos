@@ -192,7 +192,10 @@
                                         :inverse t
                                         :as "requested-subcases")
               (piece                    :via      ,(s-prefix "ext:zittingDocumentversie")
-                                        :as "pieces"))
+                                        :as "pieces")
+              (themis-publication-activity :via   ,(s-prefix "prov:used")
+                                           :inverse t
+                                           :as "themis-publication-activities"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")

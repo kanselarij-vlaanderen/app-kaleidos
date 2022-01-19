@@ -1,0 +1,16 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mailCampaign a <http://mu.semte.ch/vocabularies/ext/MailCampagne> ;
+      ?p ?o .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?mailCampaign a <http://mu.semte.ch/vocabularies/ext/MailCampagne> ;
+      ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mailCampaign a <http://mu.semte.ch/vocabularies/ext/MailCampagne> ;
+      ?p ?o .
+  }
+}

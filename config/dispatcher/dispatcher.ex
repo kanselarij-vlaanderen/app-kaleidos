@@ -184,6 +184,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
 
+  match "/themis-publication-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/themis-publication-activities/"
+  end
+
   match "/themes/*path", @any do
     Proxy.forward conn, path, "http://cache/themes/"
   end
@@ -372,8 +376,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/signed-pieces/"
   end
 
-
-
   get "/signing-flows/:signing_flow_id/pieces", @any do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
   end
@@ -394,19 +396,13 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/start"
   end
 
-
-
-  match "/mail-folders/*path" do
+  get "/mail-folders/*path" do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end
 
   match "/emails/*path" do
     Proxy.forward conn, path, "http://cache/emails/"
   end
-
-  # match "/email-headers/*path" do
-  #   Proxy.forward conn, path, "http://cache/email-headers/"
-  # end
 
   get "/recovery-status/*path", @any do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
