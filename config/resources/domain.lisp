@@ -11,7 +11,7 @@
 (defparameter *include-count-in-paginated-responses* t
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
-(defparameter *max-group-sorted-properties* nil)
+(defparameter *max-group-sorted-properties* t)
 (defparameter sparql:*query-log-types* nil)
 
 (in-package :sparql)
