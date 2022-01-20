@@ -76,6 +76,7 @@ DELETE {
     beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51
     beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555
     beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6
+    beleidsveld:0f693798-541d-49ee-b705-4643661402a2
     beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06
     beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e
     beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3
@@ -102,6 +103,7 @@ INSERT DATA {
   beleidsveld:82883c33-57c8-4e67-9669-53ef7f960b51 skos:prefLabel "Binnenlands bestuur en stedenbeleid" .
   beleidsveld:01f64f4e-d435-4f98-8260-7e1843bf1555 skos:prefLabel "Ondersteuning Vlaamse Regering" .
   beleidsveld:ff815ebf-7a96-42be-90fc-88824854e6a6 skos:prefLabel "Gelijke kansen en integratie en inburgering" .
+  beleidsveld:0f693798-541d-49ee-b705-4643661402a2 skos:prefLabel "Vlaamse rand" .
   beleidsdomein:58c91fe9-8839-4653-9693-9a7df6885c06 skos:prefLabel "Financi\u00EBn en Begroting" .
   beleidsveld:998b165e-3c6d-4722-bd1f-af3de421628e skos:prefLabel "Boekhouding" .
   beleidsveld:10d5f8a5-3dfe-4661-b6a2-c2ca98f819a3 skos:prefLabel "Financi\u00EBle operaties" .
