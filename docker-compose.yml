@@ -45,6 +45,7 @@ services:
       - ./config/migrations:/data/migrations
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_SPARQL_TIMEOUT: 300
     logging: *default-logging
     restart: always
     labels:
@@ -128,6 +129,7 @@ services:
     image: semtech/mu-cl-resources:feature-float-and-int
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+      LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
     volumes:
       - ./config/resources:/config
     logging: *extended-logging
