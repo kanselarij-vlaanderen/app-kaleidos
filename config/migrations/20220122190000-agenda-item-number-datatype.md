@@ -72,3 +72,16 @@ WHERE {
 ```
 
 Create a migration (`ttl`-file + `graph` file) inserting the dumped triples.
+
+Create a migration to remove the temporary triples
+```sparql
+DELETE {
+  GRAPH ?g {
+    ?s <http://mu.semte.ch/vocabularies/ext/temp_prioriteit> ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s <http://mu.semte.ch/vocabularies/ext/temp_prioriteit> ?o .
+  }
+}
+```
