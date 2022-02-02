@@ -15,7 +15,8 @@
     "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
-    "dbpedia": "http://dbpedia.org/ontology/"
+    "dbpedia": "http://dbpedia.org/ontology/",
+    "fabio": "http://purl.org/spar/fabio/"
   },
   "resources": {
     "publication-flows": {
@@ -49,6 +50,11 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
+        },
+        "number-of-pages": {
+          "type": "integer",
+          "predicate": "fabio:hasPageCount",
+          "_comment": "Should be automatically calculated as sum of the documents in the long run"
         }
       },
       "relationships": {
