@@ -95,15 +95,15 @@ defmodule Acl.UserGroups.Config do
 
   defp sign_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenaangelegenheid",
-      "http://mu.semte.ch/vocabularies/ext/handteken/HandtekenProcedurestap",
-      "http://mu.semte.ch/vocabularies/ext/handteken/Markeringsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/Voorbereidingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/Handtekenactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/Weigeractiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/AnnulatieActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/Afrondingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handteken/GetekendStuk",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Weigeractiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
@@ -119,7 +119,7 @@ defmodule Acl.UserGroups.Config do
   defp email_resource_types() do
     [
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox",
-      # "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder",
+      "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder",
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email",
       "http://mu.semte.ch/vocabularies/ext/EmailNotificationSettings"
       # "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader",
@@ -129,6 +129,8 @@ defmodule Acl.UserGroups.Config do
   defp newsletter_resource_types() do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
+      "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
     ]
   end
 
@@ -151,7 +153,6 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
-      "http://mu.semte.ch/vocabularies/ext/MailCampagne", # TODO: check if type is truly unconfidential.
       "http://www.w3.org/ns/org#Organization",
     ]
   end
@@ -166,17 +167,15 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
-      "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
-      "http://kanselarij.vo.data.gift/core/IseCode",
-      "http://kanselarij.vo.data.gift/core/Beleidsdomein",
-      "http://kanselarij.vo.data.gift/core/Beleidsveld",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
+      "http://www.w3.org/2004/02/skos/core#Concept",
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
     ]
   end
   # Also insert your type as ext:PublicClass

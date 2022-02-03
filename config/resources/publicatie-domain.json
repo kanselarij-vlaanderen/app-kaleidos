@@ -14,7 +14,7 @@
     "prov": "http://www.w3.org/ns/prov#",
     "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
-    "sign": "http://mu.semte.ch/vocabularies/ext/handteken/",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
     "dbpedia": "http://dbpedia.org/ontology/"
   },
   "resources": {
@@ -124,11 +124,6 @@
           "predicate": "dct:subject",
           "cardinality": "one",
           "target": "agenda-item-treatment"
-        },
-        "government-fields": {
-          "predicate": "besluitvorming:beleidsveld",
-          "target": "government-field",
-          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -313,7 +308,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -337,7 +332,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -605,7 +600,7 @@
           "predicate": "skos:prefLabel"
         },
         "priority": {
-          "type": "number",
+          "type": "integer",
           "predicate": "ext:priority"
         }
       },
@@ -621,7 +616,7 @@
           "predicate": "skos:prefLabel"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         }
       },
@@ -649,7 +644,7 @@
           "predicate": "skos:scopeNote"
         },
         "position": {
-          "type": "number",
+          "type": "integer",
           "predicate": "schema:position"
         },
         "alt-label": {

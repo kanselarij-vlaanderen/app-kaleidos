@@ -1,0 +1,31 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ?p ?o .
+    VALUES ?p {
+      ext:heeftBevoegdeVoorAgendapunt
+      ext:heeftBevoegde
+      ext:indiener
+      ext:heeftBevoegdeVoorPublicatie
+    }
+    FILTER NOT EXISTS {
+      ?s ?x ?y .
+      FILTER (
+        ?x != ext:heeftBevoegdeVoorAgendapunt
+        && ?x != ext:heeftBevoegde
+        && ?x != ext:indiener
+        && ?x != ext:heeftBevoegdeVoorPublicatie
+    )
+    }
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/organizations/kanselarij>
+<http://mu.semte.ch/graphs/organizations/minister>
+<http://mu.semte.ch/graphs/organizations/intern-regering>
+<http://mu.semte.ch/graphs/organizations/intern-overheid>
+  }
+}

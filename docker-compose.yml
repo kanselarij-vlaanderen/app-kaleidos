@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.21.0
+    image: kanselarij/frontend-kaleidos:5.22.3
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -45,6 +45,7 @@ services:
       - ./config/migrations:/data/migrations
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_SPARQL_TIMEOUT: 300
     logging: *default-logging
     restart: always
     labels:
@@ -62,7 +63,7 @@ services:
     labels:
       - "logging=true"
   triplestore:
-    image: tenforce/virtuoso:1.3.2-virtuoso7.2.5.1
+    image: redpencil/virtuoso:1.0.0
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
@@ -89,7 +90,7 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.0
+    image: semtech/mu-search-elastic-backend:1.0.1
     environment:
       discovery.type: "single-node"
     volumes:
@@ -125,9 +126,10 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.20.0
+    image: semtech/mu-cl-resources:feature-float-and-int
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+      LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
     volumes:
       - ./config/resources:/config
     logging: *extended-logging
@@ -163,7 +165,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve-service:
-    image: kanselarij/agenda-approve-service:4.0.0
+    image: kanselarij/agenda-approve-service:4.0.1
     logging: *default-logging
     restart: always
     labels:
@@ -192,7 +194,7 @@ services:
     labels:
       - "logging=true"
   newsletter-service:
-    image: kanselarij/newsletter-service:2.4.0
+    image: kanselarij/newsletter-service:2.5.1
     logging: *default-logging
     restart: always
     labels:
@@ -201,12 +203,6 @@ services:
     image: kanselarij/user-management-service:1.1.0
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  minister-jurisdiction-service:
-    image: kanselarij/minister-jurisdiction-service:1.0.1
     logging: *default-logging
     restart: always
     labels:

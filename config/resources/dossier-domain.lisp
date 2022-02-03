@@ -2,20 +2,21 @@
   :class (s-prefix "dossier:Dossier")
   :properties `((:created       :datetime ,(s-prefix "dct:created"))
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
-                (:number        :number   ,(s-prefix "adms:identifier")) ;; NOTE: only for legacy, do we want this ??
+                (:number        :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db ;; NOTE: only for legacy, do we want this ??
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
-                (:title         :string   ,(s-prefix "dct:title"))
-                (:confidential  :boolean  ,(s-prefix "ext:vertrouwelijk")))
-  :has-many `((subcase          :via      ,(s-prefix "dossier:doorloopt")
-                                :as "subcases")
-              (piece            :via      ,(s-prefix "dossier:Dossier.bestaatUit")
-                                :as "pieces")
-              (publication-flow :via      ,(s-prefix "dossier:behandelt")
-                                :inverse t
-                                :as "publication-flows")
-              (sign-flow        :via      ,(s-prefix "sign:behandeltDossier")
-                                :inverse t
-                                :as "sign-flows")
+                (:title         :string   ,(s-prefix "dct:title")))
+  :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")
+                                 :as "subcases")
+              (piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
+                                 :as "pieces")
+              (publication-flow  :via      ,(s-prefix "dossier:behandelt")
+                                 :inverse t
+                                 :as "publication-flows")
+              (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
+                                 :inverse t
+                                 :as "sign-flows")
+              (concept           :via ,(s-prefix "ext:beleidsgebied") ;; NOTE: temporary name for relationship
+                                 :as "government-areas")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
@@ -58,8 +59,6 @@
                                       :as "mandatees")
               (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-pieces")
-              (ise-code               :via ,(s-prefix "ext:heeftInhoudelijkeStructuurElementen")
-                                      :as "ise-codes")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?
                                       :inverse t
                                       :as "agenda-activities")

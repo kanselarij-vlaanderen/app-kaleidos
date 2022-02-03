@@ -1,0 +1,51 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?snelkoppeling skos:prefLabel ?subcaseNameOld .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?snelkoppeling skos:prefLabel ?subcaseNameNew .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?snelkoppeling a ext:SnelKoppeling .
+        ?snelkoppeling skos:prefLabel ?subcaseNameOld .
+        ?snelkoppeling ext:type "subcase-name" .
+
+        BIND (
+            CONCAT(
+                LCASE(SUBSTR(?subcaseNameOld, 1, 1)),
+                SUBSTR(?subcaseNameOld, 2)
+            ) AS ?subcaseNameNew)
+    }
+};
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?subcase ext:procedurestapNaam ?subcaseNameOld .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?subcase ext:procedurestapNaam ?subcaseNameNew .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+        ?subcase a dossier:Procedurestap .
+        ?subcase ext:procedurestapNaam ?subcaseNameOld .
+        FILTER (?subcaseNameOld != "")
+    }
+
+    BIND (
+        CONCAT(
+            LCASE(SUBSTR(?subcaseNameOld, 1, 1)),
+            SUBSTR(?subcaseNameOld, 2)
+        ) AS ?subcaseNameNew)
+}

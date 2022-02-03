@@ -21,8 +21,8 @@
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
                 (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
-                (:pages                 :number   ,(s-prefix "fabio:hasPageCount"))
-                (:words                 :number   ,(s-prefix "prism:wordCount"))
+                (:pages                 :integer   ,(s-prefix "fabio:hasPageCount"))
+                (:words                 :integer   ,(s-prefix "prism:wordCount"))
                 (:access-level-last-modified          :datetime  ,(s-prefix "ext:accessLevelLastModified")))
   :has-one `((access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
@@ -83,9 +83,6 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (signinghub-document       :via ,(s-prefix "prov:hadPrimarySource")
-                                        :inverse t
-                                        :as "signinghub-document")
             (signed-piece               :via ,(s-prefix "sign:ongetekendStuk")
                                         :inverse t
                                         :as "signed-piece")
@@ -120,7 +117,7 @@
   :class (s-prefix "ext:DocumentTypeCode")
   :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note        :string ,(s-prefix "skos:scopeNote"))
-                (:priority          :number ,(s-prefix "ext:prioriteit"))
+                (:priority          :integer ,(s-prefix "ext:prioriteit"))
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
                                     :inverse t

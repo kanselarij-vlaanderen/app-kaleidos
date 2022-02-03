@@ -135,6 +135,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-addresses/"
   end
 
+  get "/concepts/*path", @any do
+    Proxy.forward conn, path, "http://cache/concepts/"
+  end
+  get "/concept-schemes/*path", @any do
+    Proxy.forward conn, path, "http://cache/concept-schemes/"
+  end
   match "/mandatees/*path", @any do
     Proxy.forward conn, path, "http://cache/mandatees/"
   end
@@ -146,18 +152,6 @@ defmodule Dispatcher do
   end
   get "/government-bodies/*path", @any do
     Proxy.forward conn, path, "http://cache/government-bodies/"
-  end
-  match "/government-fields/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-fields/"
-  end
-  match "/government-domains/*path", @any do
-    Proxy.forward conn, path, "http://cache/government-domains/"
-  end
-  match "/ise-codes/*path", @any do
-    Proxy.forward conn, path, "http://cache/ise-codes/"
-  end
-  match "/responsibilities/*path", @any do
-    Proxy.forward conn, path, "http://cache/responsibilities/"
   end
   match "/persons/*path", @any do
     Proxy.forward conn, path, "http://cache/persons/"
@@ -188,6 +182,10 @@ defmodule Dispatcher do
 
   match "/newsletter-infos/*path", @any do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
+  end
+
+  match "/themis-publication-activities/*path", @any do
+    Proxy.forward conn, path, "http://cache/themis-publication-activities/"
   end
 
   match "/themes/*path", @any do
@@ -247,10 +245,6 @@ defmodule Dispatcher do
 
   match "/alerts/*path", @any do
     Proxy.forward conn, path, "http://cache/alerts/"
-  end
-
-  match "/minister-jurisdiction-service/*path", @any do
-    Proxy.forward conn, path, "http://minister-jurisdiction-service/"
   end
 
   match "/user-management-service/*path", @any do
@@ -378,29 +372,37 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/signinghub-documents/*path", @any do
-    Proxy.forward conn, path, "http://cache/signinghub-documents/"
-  end
-
   match "/signed-pieces/*path", @any do
     Proxy.forward conn, path, "http://cache/signed-pieces/"
   end
 
-  # get "/mailboxes/*path" do
-  #   Proxy.forward conn, path, "http://cache/mailboxes/"
-  # end
+  get "/signing-flows/:signing_flow_id/pieces", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
+  end
 
-  match "/mail-folders/*path" do
+  post "/signing-flows/:signing_flow_id/upload-document-to-signinghub", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-document-to-signinghub"
+  end
+
+  post "/sign-flows/:signing_flow_id/pieces/:piece_id/signers", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signers"
+  end
+
+  get "/signing-flows/:signing_flow_id/pieces/:piece_id/signinghub-url", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
+  end
+
+  post "/signing-flows/:signing_flow_id/start", @any do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/start"
+  end
+
+  get "/mail-folders/*path" do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end
 
   match "/emails/*path" do
     Proxy.forward conn, path, "http://cache/emails/"
   end
-
-  # match "/email-headers/*path" do
-  #   Proxy.forward conn, path, "http://cache/email-headers/"
-  # end
 
   get "/recovery-status/*path", @any do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
