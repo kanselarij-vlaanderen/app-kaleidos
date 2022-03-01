@@ -3,20 +3,28 @@ PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
   	?request ?requestP ?requestO .
+	?inverseRequestO ?inverseRequestP ?request .
+
 	?translation ?translationP ?translationO .
+	?inverseTranslationO ?inverseTranslationP ?translation .
+
 	?proof ?proofP ?proofO .
+	?inverseProofO ?inverseProofP ?proof .
 } WHERE {
   	{
   		?request a pub:AanvraagActiviteit .
   		?request <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
-  		?request ?requestP ?requestO .
+		OPTIONAL { ?request ?requestP ?requestO . }
+		OPTIONAL { ?inverseRequestO ?inverseRequestP ?request . }
 	} UNION {
     	?translation a pub:VertaalActiviteit .
   		?translation <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
-		?translation ?translationP ?translationO .
+		OPTIONAL { ?translation ?translationP ?translationO . }
+		OPTIONAL { ?inverseTranslationO ?inverseTranslationP ?translation . }
 	} UNION {
   		?proof a pub:DrukproefActiviteit .
   		?proof <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml>.
-		?proof ?proofP ?proofO .
+		OPTIONAL { ?proof ?proofP ?proofO . }
+		OPTIONAL { ?inverseProofO ?inverseProofP ?proof . }
 	}
 }
