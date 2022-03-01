@@ -1,0 +1,22 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+  	?request ?requestP ?requestO .
+	?translation ?translationP ?translationO .
+	?proof ?proofP ?proofO .
+} WHERE {
+  	{
+  		?request a pub:AanvraagActiviteit .
+  		?request <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
+  		?request ?requestP ?requestO .
+	} UNION {
+    	?translation a pub:VertaalActiviteit .
+  		?translation <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
+		?translation ?translationP ?translationO .
+	} UNION {
+  		?proof a pub:DrukproefActiviteit .
+  		?proof <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml>.
+		?proof ?proofP ?proofO .
+	}
+}
