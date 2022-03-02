@@ -121,12 +121,7 @@
                 (:alt-label         :string ,(s-prefix "skos:altLabel")))
   :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
                                     :inverse t
-                                    :as "document-containers")
-              (document-type        :via    ,(s-prefix "skos:broader")
-                                    :inverse t
-                                    :as "subtypes"))
-  :has-one `((document-type         :via    ,(s-prefix "skos:broader")
-                                    :as "supertype"))
+                                    :as "document-containers"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/document-type/")
   :features '(include-uri)
   :on-path "document-types")
