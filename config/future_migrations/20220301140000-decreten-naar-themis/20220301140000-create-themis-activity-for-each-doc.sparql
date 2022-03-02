@@ -1,0 +1,27 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX stuk: <http://themis.vlaanderen.be/id/stuk/>
+
+INSERT {
+    GRAPH ?g {
+        ?newUri a ext:ThemisPublicationActivity ;
+            prov:startedAtTime "2022-03-05T00:00:00+01:00";
+            ext:scope ["newsitems","documents"] ;
+            prov:used ?distinctMeeting.
+    }
+}
+WHERE {
+  GRAPH ?g {
+   SELECT DISTINCT ?distinctMeeting
+    WHERE {
+        ?meeting a besluit:Vergaderactiviteit ;
+            ext:zittingDocumentversie ?document.
+            VALUES ?document {
+                    stuk:5E676EDD5A2F58000800029F
+            }
+        }
+        BIND(IRI(STR(?distinctMeeting)) AS ?newUri
+   }
+}
