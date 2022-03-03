@@ -16,7 +16,7 @@ INSERT {
 }
 WHERE {
   GRAPH ?g {
-    ?meeting a besluit:Vergaderactiviteit ;
+    ?meeting a besluit:Vergaderactiviteit .
     VALUES ?meeting {
       zitting:uri
     }

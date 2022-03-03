@@ -10,8 +10,8 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 SELECT DISTINCT ?meeting
 WHERE {
   GRAPH ?g {
-    ?meeting besluitvorming:isAgendaVoor ?agenda;
-    ?agenda dct:hasPart ?agendaitem;
+    ?agenda besluitvorming:isAgendaVoor ?meeting.
+    ?agenda dct:hasPart ?agendaitem.
     ?agendaitem besluitvorming:geagendeerdStuk ?document.
     VALUES ?document {
       stuk:5E676EDD5A2F58000800029F
