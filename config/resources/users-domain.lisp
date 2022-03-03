@@ -3,8 +3,8 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/gebruiker/")
   :properties `((:first-name            :string   ,(s-prefix "foaf:firstName"))
                 (:last-name             :string   ,(s-prefix "foaf:familyName"))
-                (:email                 :uri      ,(s-prefix "foaf:mbox"))
-                (:phone                 :uri      ,(s-prefix "foaf:phone")))
+                (:email-link            :uri      ,(s-prefix "foaf:mbox"))
+                (:phone-link            :uri      ,(s-prefix "foaf:phone")))
   :has-one `((account-group             :via      ,(s-prefix "foaf:member")
                                         :inverse t
                                         :as "group")
