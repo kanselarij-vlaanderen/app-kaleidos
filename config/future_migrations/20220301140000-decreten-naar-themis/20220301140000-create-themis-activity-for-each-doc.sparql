@@ -3,10 +3,12 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX zitting: <http://themis.vlaanderen.be/id/zitting/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
 
 INSERT {
     GRAPH ?g {
-        ?newUri a ext:ThemisPublicationActivity ;
+        ?newThemisActivity a ext:ThemisPublicationActivity ;
             prov:startedAtTime "2022-03-05T00:00:00+01:00";
             ext:scope "newsitems","documents" ;
             prov:used ?meeting.
@@ -17,7 +19,9 @@ WHERE {
     ?meeting a besluit:Vergaderactiviteit ;
     VALUES ?meeting {
       zitting:uri
-      }
-    BIND(IRI(STR(?meeting)) AS ?newUri
+    }
+    OPTIONAL { ?meeting zitting:generateId ?olduuid }
+    BIND(IF(BOUND(?olduuid), STRUUID(), STRUUID()) as ?newUuid)
+    BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newUuid)) AS ?newThemisActivity)
    }
 }

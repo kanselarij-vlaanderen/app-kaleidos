@@ -2,14 +2,17 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX stuk: <http://themis.vlaanderen.be/id/stuk/>
-
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
 SELECT DISTINCT ?meeting
 WHERE {
   GRAPH ?g {
-    ?meeting a besluit:Vergaderactiviteit ;
-       ext:zittingDocumentversie ?document.
+    ?meeting besluitvorming:isAgendaVoor ?agenda;
+    ?agenda dct:hasPart ?agendaitem;
+    ?agendaitem besluitvorming:geagendeerdStuk ?document.
     VALUES ?document {
       stuk:5E676EDD5A2F58000800029F
       stuk:5ECCE80EFE23BF0008000296
