@@ -1,30 +1,42 @@
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 
+PREFIX source: <http://purl.org/dc/terms/source>
+PREFIX legacy: <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml>
+
+# delete repeated for Aanvraag-, Vertaal- and DrukrpoefActiviteit
 WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
-  	?request ?requestP ?requestO .
-	?inverseRequestO ?inverseRequestP ?request .
-
-	?translation ?translationP ?translationO .
-	?inverseTranslationO ?inverseTranslationP ?translation .
-
-	?proof ?proofP ?proofO .
-	?inverseProofO ?inverseProofP ?proof .
+  	?s ?p ?o .
+	?iO ?iP ?s .
 } WHERE {
-  	{
-  		?request a pub:AanvraagActiviteit .
-  		?request <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
-		OPTIONAL { ?request ?requestP ?requestO . }
-		OPTIONAL { ?inverseRequestO ?inverseRequestP ?request . }
-	} UNION {
-    	?translation a pub:VertaalActiviteit .
-  		?translation <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml> .
-		OPTIONAL { ?translation ?translationP ?translationO . }
-		OPTIONAL { ?inverseTranslationO ?inverseTranslationP ?translation . }
-	} UNION {
-  		?proof a pub:DrukproefActiviteit .
-  		?proof <http://purl.org/dc/terms/source> <http://vlaanderen.be/dossier-opvolging-access-db/DOSSIEROPVOLGING-H.xml>.
-		OPTIONAL { ?proof ?proofP ?proofO . }
-		OPTIONAL { ?inverseProofO ?inverseProofP ?proof . }
-	}
+	?s a pub:AanvraagActiviteit .
+	?s source: legacy: .
+	?s ?p ?o .
+	OPTIONAL { ?iO ?iP ?s . }
+}
+
+;
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+  	?s ?p ?o .
+	?iO ?iP ?s .
+} WHERE {
+	?s a pub:VertaalActiviteit .
+	?s source: legacy: .
+	?s ?p ?o .
+	OPTIONAL { ?iO ?iP ?s . }
+}
+
+;
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+  	?s ?p ?o .
+	?iO ?iP ?s .
+} WHERE {
+	?s a pub:DrukproefActiviteit .
+	?s source: legacy: .
+	?s ?p ?o .
+	OPTIONAL { ?iO ?iP ?s . }
 }
