@@ -171,11 +171,6 @@
         "modified": {
           "type": "datetime",
           "predicate": "dct:modified"
-        },
-        "received-date": {
-          "type": "datetime",
-          "predicate": "ext:hasDateReceived",
-          "_comment": "Aggregated value of the most recent receive date of translation documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -206,11 +201,6 @@
           "target": "cancellation-activity",
           "cardinality": "many",
           "inverse": true
-        },
-        "source-documents": {
-          "predicate": "pub:vertalingBronDocument",
-          "target": "piece",
-          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
@@ -255,11 +245,6 @@
         "proof-print-corrector": {
           "type": "string",
           "predicate": "pub:drukproefVerbeteraar"
-        },
-        "received-date": {
-          "type": "datetime",
-          "predicate": "ext:hasDateReceived",
-          "_comment": "Aggregated value of the most recent receive date of proof documents linked to the subcase. Kept in sync by frontend."
         }
       },
       "relationships": {
@@ -290,16 +275,6 @@
           "target": "publication-activity",
           "cardinality": "many",
           "inverse": true
-        },
-        "source-documents": {
-          "predicate": "pub:publicatieBronDocument",
-          "target": "piece",
-          "cardinality": "many"
-        },
-        "correction-documents": {
-          "predicate": "pub:publicatieCorrectieDocument",
-          "target": "piece",
-          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
