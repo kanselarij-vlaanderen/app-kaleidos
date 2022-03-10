@@ -55,8 +55,8 @@
 
 (define-resource email-notification-setting ()
   :class (s-prefix "ext:EmailNotificationSettings")
-  :properties `((:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
-                (:default-from-email :string ,(s-prefix "ext:defaultFromEmail"))
+  :properties `((:default-from-email :string ,(s-prefix "ext:defaultFromEmail"))
+                (:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
                 (:translation-request-cc-email :string ,(s-prefix "ext:translationRequestCCEmail"))
                 (:proof-request-to-email :string ,(s-prefix "ext:proofRequestToEmail"))
                 (:proof-request-cc-email :string ,(s-prefix "ext:proofRequestCcEmail"))
