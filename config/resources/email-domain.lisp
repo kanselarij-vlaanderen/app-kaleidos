@@ -57,7 +57,7 @@
   :class (s-prefix "ext:EmailNotificationSettings")
   :properties `((:default-from-email :string ,(s-prefix "ext:defaultFromEmail"))
                 (:translation-request-to-email :string ,(s-prefix "ext:translationRequestToEmail"))
-                (:translation-request-cc-email :string ,(s-prefix "ext:translationRequestCCEmail"))
+                (:translation-request-cc-email :string ,(s-prefix "ext:translationRequestCcEmail"))
                 (:proof-request-to-email :string ,(s-prefix "ext:proofRequestToEmail"))
                 (:proof-request-cc-email :string ,(s-prefix "ext:proofRequestCcEmail"))
                 (:publication-request-to-email :string ,(s-prefix "ext:publicationRequestToEmail"))
