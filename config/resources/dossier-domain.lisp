@@ -47,8 +47,6 @@
                                       :as "case")
              (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor")
                                       :as "requested-for-meeting")
-             (access-level            :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
-                                      :as "access-level")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
              (mandatee                :via ,(s-prefix "ext:indiener")
@@ -119,15 +117,9 @@
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel"))
                 (:priority    :string ,(s-prefix "ext:prioriteit")))
-  :has-many `((subcase        :via ,(s-prefix "ext:toegangsniveauVoorProcedurestap")
+  :has-many `((piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                               :inverse t
-                              :as "subcases")
-              (piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
-                              :inverse t
-                              :as "pieces")
-              (case           :via ,(s-prefix "ext:toegangsniveauVoorDossier")
-                              :inverse t
-                              :as "cases"))
+                              :as "pieces"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/toegangsniveau/")
   :features '(include-uri)
   :on-path "access-levels")
