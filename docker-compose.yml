@@ -126,7 +126,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:feature-float-and-int
+    image: semtech/mu-cl-resources:1.21.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
