@@ -23,10 +23,10 @@ services:
   file-bundling-service:
     volumes:
       - ./testdata/files:/share
-  # The DELTA_TIMEOUT is the value that yggdrasil waits between runs in milliseconds
+  # The DELTA_INTERVAL_MS is the value that yggdrasil waits between runs in milliseconds
   # Default is 5 minutes but results in 10 minutes between runs  
   yggdrasil:
     environment:
       NODE_ENV: "development"
       DEBUG: "true"
-      DELTA_TIMEOUT: 10000
+      DELTA_INTERVAL_MS: 10000
