@@ -26,10 +26,6 @@
                 (:access-level-last-modified          :datetime  ,(s-prefix "ext:accessLevelLastModified")))
   :has-one `((access-level              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
-            (file                       :via      ,(s-prefix "ext:file")
-                                        :as "file") ;; make this hasMany for publications
-            (file                       :via      ,(s-prefix "ext:convertedFile") ;; Deprecated. POC never taken in production. To be removed.
-                                        :as "converted-file")
             (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
                                         :inverse t
                                         :as "document-container")
@@ -81,6 +77,8 @@
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
                                         :as "cases")
+              (file                     :via ,(s-prefix "ext:file")
+                                        :as "files")
               (piece                    :via ,(s-prefix "ext:isVertalingVan")
                                         :inverse t
                                         :as "translations")
