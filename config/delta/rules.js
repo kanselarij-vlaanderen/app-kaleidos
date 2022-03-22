@@ -72,6 +72,27 @@ export default [
     match: {
       predicate: {
         type: 'uri',
+        value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob'
+      }
+    },
+    callback: {
+      url: 'http://publication-report/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 250,
+      ignoreFromSelf: false
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
         value: 'http://mu.semte.ch/vocabularies/ext/status'
       },
       object: {

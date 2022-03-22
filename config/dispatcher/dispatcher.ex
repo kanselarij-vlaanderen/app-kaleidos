@@ -275,6 +275,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://mandatee-service/"
   end
 
+  # PUBLICATION-FLOW
   match "/publication-flows/search/*path", @any do
     Proxy.forward conn, path, "http://musearch/publication-flows/search/"
   end
@@ -339,7 +340,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
-  # sign resources
+  # TODO: remove endpoint
+  get "/publication-report-dev/*path", @any do
+    Proxy.forward conn, path, "http://publication-report/"
+  end
+
+  # SIGN FLOW
   match "/sign-flows/*path", @any do
     Proxy.forward conn, path, "http://cache/sign-flows/"
   end
