@@ -334,6 +334,10 @@
           "https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "statusId": [
+          "http://www.w3.org/ns/adms#status",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorPublicatie",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -417,6 +421,9 @@
             "type": "text"
           },
           "caseId": {
+            "type": "keyword"
+          },
+          "statusId": {
             "type": "keyword"
           },
           "mandateeFirstNames": {
