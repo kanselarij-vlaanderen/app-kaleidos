@@ -1,0 +1,61 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix kanselarij: <http://kanselarij.vo.data.gift/core/> .
+@prefix beleidsdomein: <http://kanselarij.vo.data.gift/id/beleidsdomein/> .
+
+@prefix Beleidsdomeinen: <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> .
+
+@prefix Dar: <http://kanselarij.vo.data.gift/id/beleidsdomein/diensten-algemeen-regeringsbeleid> .
+Dar: skos:prefLabel "Diensten Algemeen Regeringsbeleid" .
+Dar: a kanselarij:Beleidsdomein .
+Dar: a skos:Concept .
+Dar: mu:uuid "c23a60f3-ffaf-44ef-be18-ff1792117caa" .
+Dar: skos:inScheme Beleidsdomeinen: .
+Dar: skos:topConceptOf Beleidsdomeinen: .
+Dar: owl:deprecated true .
+
+@prefix Iv: <http://kanselarij.vo.data.gift/id/beleidsdomein/internationaal-vlaanderen> .
+Iv: skos:prefLabel "Internationaal Vlaanderen" .
+Iv: a kanselarij:Beleidsdomein .
+Iv: a skos:Concept .
+Iv: mu:uuid "496f03b0-6582-4cfc-97b7-150a276d684f" .
+Iv: skos:inScheme Beleidsdomeinen: .
+Iv: skos:topConceptOf Beleidsdomeinen: .
+Iv: owl:deprecated true .
+
+@prefix Bz: <http://kanselarij.vo.data.gift/id/beleidsdomein/bestuurszaken> .
+Bz: skos:prefLabel "Bestuurszaken" .
+Bz: a kanselarij:Beleidsdomein .
+Bz: a skos:Concept .
+Bz: mu:uuid "d371aadd-73c5-420d-bc4e-f1eacbfaf023" .
+Bz: skos:inScheme Beleidsdomeinen: .
+Bz: skos:topConceptOf Beleidsdomeinen: .
+Bz: owl:deprecated true .
+
+@prefix Lne: <http://kanselarij.vo.data.gift/id/beleidsdomein/leefmilieu-natuur-en-energie> .
+Lne: skos:prefLabel "Leefmilieu, Natuur en Energie" .
+Lne: a kanselarij:Beleidsdomein .
+Lne: a skos:Concept .
+Lne: mu:uuid "ddc5a250-da82-4102-a47e-9f97c2ff6881" .
+Lne: skos:inScheme Beleidsdomeinen: .
+Lne: skos:topConceptOf Beleidsdomeinen: .
+Lne: owl:deprecated true .
+
+@prefix Rwo: <http://kanselarij.vo.data.gift/id/beleidsdomein/ruimtelijke-ordening-woonbeleid-en-onroerend-erfgoed> .
+Rwo: skos:prefLabel "Ruimtelijke Ordening, Woonbeleid en Onroerend Erfgoed" .
+Rwo: a kanselarij:Beleidsdomein .
+Rwo: a skos:Concept .
+Rwo: mu:uuid "90ca98c8-efc4-4fa6-8124-51208cc353ee" .
+Rwo: skos:inScheme Beleidsdomeinen: .
+Rwo: skos:topConceptOf Beleidsdomeinen: .
+Rwo: owl:deprecated true .
+
+@prefix Kb: <http://kanselarij.vo.data.gift/id/beleidsdomein/kanselarij-en-bestuur> .
+Kb: skos:prefLabel "Kanselarij en Bestuur" .
+Kb: a kanselarij:Beleidsdomein .
+Kb: a skos:Concept .
+Kb: mu:uuid "8aefc421-830d-4eb8-a302-6649d346414f" .
+Kb: skos:inScheme Beleidsdomeinen: .
+Kb: skos:topConceptOf Beleidsdomeinen: .
+Kb: owl:deprecated true .
