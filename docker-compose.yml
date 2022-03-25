@@ -257,6 +257,10 @@ services:
     restart: always
     labels:
       - "logging=true"
+  document-release:
+    image: kanselarij/document-release-service:0.1.0
+    logging: *default-logging
+    restart: always
   mail-delivery:
     image: redpencil/deliver-email-service:0.3.0
     environment:
