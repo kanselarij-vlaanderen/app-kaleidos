@@ -352,11 +352,6 @@
           "http://mu.semte.ch/vocabularies/ext/publicatie/regelgevingType",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "ministerCouncilSubcases": [
-          "https://data.vlaanderen.be/ns/dossier#behandelt",
-          "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
         "publicationDate": [
           "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
           "^http://mu.semte.ch/vocabularies/ext/publicatie/publicatieVindtPlaatsTijdens",
@@ -437,9 +432,6 @@
             "search_analyzer": "dutchanalyzer"
           },
           "regulationType": {
-            "type": "keyword"
-          },
-          "ministerCouncilSubcases": {
             "type": "keyword"
           },
           "publicationDate": {
