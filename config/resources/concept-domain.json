@@ -21,6 +21,8 @@
           "predicate": "skos:altLabel"
         },
         "deprecated": {
+          "_comment": "This predicate should be present when the concept is a government-domain and is not deprecated...",
+          "...": "in order to allow filtering with JSON:API parameter",
           "type": "bool",
           "predicate": "owl:deprecated"
         }
