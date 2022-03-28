@@ -21,7 +21,6 @@
           "predicate": "skos:altLabel"
         },
         "deprecated": {
-          "_comment": "absent when in not deprecated",
           "type": "bool",
           "predicate": "owl:deprecated"
         }
