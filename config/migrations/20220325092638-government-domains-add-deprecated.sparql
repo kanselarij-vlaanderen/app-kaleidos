@@ -8,5 +8,6 @@ WITH gPublic:
 INSERT {
     ?s owl:deprecated false .
 } WHERE {
+    ?s a skos:Concept .
     ?s skos:topConceptOf Beleidsdomeinen: .
 }
