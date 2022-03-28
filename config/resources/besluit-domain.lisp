@@ -182,7 +182,6 @@
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
-                (:kind                  :url      ,(s-prefix "dct:type"))
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:number-representation :string   ,(s-prefix "ext:numberRepresentation")))
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
@@ -204,8 +203,19 @@
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
                                         :as "mail-campaign")
+             (meeting-kind              :via      ,(s-prefix "dct:type")
+                                        :as "kind")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
   :features '(include-uri)
   :on-path "meetings")
+
+(define-resource meeting-kind ()
+  :class (s-prefix "ext:MinisterraadType")
+  :properties `((:label     :string ,(s-prefix "skos:prefLabel"))
+                (:alt-label :string ,(s-prefix "skos:altLabel"))
+                (:postfix   :string ,(s-prefix "ext:postfix")))
+  :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/")
+  :featurees '(include-uri)
+  :on-path "meeting-kinds")
