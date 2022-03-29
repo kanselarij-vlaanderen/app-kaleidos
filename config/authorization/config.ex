@@ -89,6 +89,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
     ]
   end
 
@@ -175,7 +176,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/2004/02/skos/core#Concept",
-      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportType",
     ]
   end
   # Also insert your type as ext:PublicClass
