@@ -22,8 +22,8 @@
                 (:config        :string    ,(s-prefix "pub:exportJobConfig")) ; JSON-blob allowing for extendable filter configuration
   )
   :has-one `((file              :via     ,(s-prefix "prov:generated")
-                                :as "generated"))
-  :has-one `((user              :via     ,(s-prefix "prov:wasStartedBy")
+                                :as "generated")
+             (user              :via     ,(s-prefix "prov:wasStartedBy")
                                 :as "generated-by"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/publicatierapport-export-taak/")
   :features '(include-uri)
