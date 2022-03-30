@@ -94,6 +94,8 @@ services:
     restart: "no"
   document-versions-service:
     restart: "no"
+  document-release:
+    restart: "no"
   mail-delivery:
     entrypoint: "echo 'service disabled'"
     restart: "no"

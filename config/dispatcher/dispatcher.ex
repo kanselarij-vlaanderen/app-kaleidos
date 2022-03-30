@@ -412,6 +412,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/email-notification-settings/"
   end
 
+  match "/publication-metrics-export-jobs/*path", @any do
+    Proxy.forward conn, path, "http://cache/publication-metrics-export-jobs/"
+  end
+
   match "_", %{ last_call: true } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
