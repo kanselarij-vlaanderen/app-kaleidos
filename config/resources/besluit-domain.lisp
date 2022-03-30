@@ -215,7 +215,7 @@
   :class (s-prefix "ext:MinisterraadType")
   :properties `((:label       :string  ,(s-prefix "skos:prefLabel"))
                 (:alt-label   :string  ,(s-prefix "skos:altLabel"))
-                (:priority    :integer ,(s-prefix "ext:priority"))
+                (:position    :integer ,(s-prefix "schema:position"))
                 (:postfix     :string  ,(s-prefix "ext:postfix"))
                 (:broader     :uri     ,(s-prefix "skos:broader")))
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/")
