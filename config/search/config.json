@@ -326,6 +326,10 @@
           "http://www.w3.org/ns/adms#identifier",
           "http://www.w3.org/2004/02/skos/core#notation"
         ],
+        "identificationKeyword": [
+          "http://www.w3.org/ns/adms#identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
+        ],
         "numacNumbers": [
           "http://mu.semte.ch/vocabularies/ext/publicatie/identifier",
           "http://www.w3.org/2004/02/skos/core#notation"
@@ -333,6 +337,63 @@
         "caseId": [
           "https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "statusId": [
+          "http://www.w3.org/ns/adms#status",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "mandateeFirstNames": [
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorPublicatie",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
+        ],
+        "mandateeFamilyNames": [
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorPublicatie",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "regulationTypeId": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/regelgevingType",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "publicationDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
+          "^http://mu.semte.ch/vocabularies/ext/publicatie/publicatieVindtPlaatsTijdens",
+          "http://www.w3.org/ns/prov#generated",
+          "http://data.europa.eu/eli/ontology#date_publication"
+        ],
+        "decisionDate": [
+          "http://purl.org/dc/terms/subject",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "openingDate": "https://data.vlaanderen.be/ns/dossier#openingsdatum",
+        "translationRequestDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptVertaling",
+          "^http://mu.semte.ch/vocabularies/ext/publicatie/vertalingVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "translationDueDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptVertaling",
+          "^http://mu.semte.ch/vocabularies/ext/publicatie/vertalingVindtPlaatsTijdens",
+          "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dueDate"
+        ],
+        "proofPrintRequestDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
+          "^http://mu.semte.ch/vocabularies/ext/publicatie/drukproefVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "proofPrintReceivedDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
+          "^http://mu.semte.ch/vocabularies/ext/publicatie/drukproefVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.einddatum"
+        ],
+        "publicationTargetDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
+          "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetEndTime"
+        ],
+        "publicationDueDate": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptPublicatie",
+          "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dueDate"
         ]
       },
       "mappings": {
@@ -355,11 +416,57 @@
           "identification": {
             "type": "text"
           },
+          "identificationKeyword": {
+            "type": "keyword"
+          },
           "numacNumbers": {
             "type": "text"
           },
           "caseId": {
             "type": "keyword"
+          },
+          "statusId": {
+            "type": "keyword"
+          },
+          "mandateeFirstNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeFamilyNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "regulationTypeId": {
+            "type": "keyword"
+          },
+          "publicationDate": {
+            "type": "date"
+          },
+          "decisionDate": {
+            "type": "date"
+          },
+          "openingDate": {
+            "type": "date"
+          },
+          "translationRequestDate": {
+            "type": "date"
+          },
+          "translationDueDate": {
+            "type": "date"
+          },
+          "proofPrintRequestDate": {
+            "type": "date"
+          },
+          "proofPrintReceivedDate": {
+            "type": "date"
+          },
+          "publicationTargetDate": {
+            "type": "date"
+          },
+          "publicationDueDate": {
+            "type": "date"
           }
         }
       }
