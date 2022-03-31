@@ -258,7 +258,8 @@ services:
     labels:
       - "logging=true"
   document-release:
-    image: kanselarij/document-release-service:0.1.0
+    entrypoint: "echo 'service disabled'" # disabled until spec is clarified
+    image: kanselarij/document-release-service:0.1.1
     logging: *default-logging
     restart: always
   mail-delivery:
