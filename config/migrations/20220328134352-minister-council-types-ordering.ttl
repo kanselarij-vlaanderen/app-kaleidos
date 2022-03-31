@@ -4,14 +4,27 @@
 @prefix schema: <http://schema.org/> .
 @prefix kind: <http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/> .
 
-kind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 schema:position 1 . # Ministerraad
+<http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> a skos:ConceptScheme ;
+	skos:prefLabel	"Vergaderactiviteit types" ;
+	mu:uuid	"668f0c19-3864-4e96-9dd3-de806fd53357" .
+
+kind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 schema:position 1 ; # Ministerraad
+    a skos:Concept ;
+    skos:inScheme <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> .
 
 kind:406F2ECA-524D-47DC-B889-651893135456 schema:position 2 ; # Elektronische procedure
+    a skos:Concept ;
+    skos:inScheme <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> ;
     skos:altLabel "Ministerraad via elektronische procedure"@nl .
 
-kind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F schema:position 3 . # Bijzondere ministerraad
+kind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F schema:position 3 ; # Bijzondere ministerraad
+    a skos:Concept ;
+    skos:inScheme <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> .
 
 kind:1d16cb70-0ae9-489e-bf97-c74897222e3c schema:position 4 ; # Ministerraad - Plan Vlaamse Veerkracht
-    ext:postfix "VV" .
+    a skos:Concept ;
+    skos:inScheme <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> .
 
-# kind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce # Annex gets no schema:position, which we use to filter it out when selecting a meeting's kind
+kind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce a skos:Concept ; # Annex
+    skos:narrower kind:1d16cb70-0ae9-489e-bf97-c74897222e3c ;
+    skos:inScheme <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> .
