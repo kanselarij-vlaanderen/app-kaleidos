@@ -352,7 +352,7 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
-        "regulationType": [
+        "regulationTypeId": [
           "http://mu.semte.ch/vocabularies/ext/publicatie/regelgevingType",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
@@ -438,7 +438,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "regulationType": {
+          "regulationTypeId": {
             "type": "keyword"
           },
           "publicationDate": {
