@@ -19,6 +19,10 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "position": {
+          "type": "integer",
+          "predicate": "schema:position"
         }
       },
       "relationships": {
