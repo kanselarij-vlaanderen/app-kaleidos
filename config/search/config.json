@@ -326,6 +326,10 @@
           "http://www.w3.org/ns/adms#identifier",
           "http://www.w3.org/2004/02/skos/core#notation"
         ],
+        "identificationKeyword": [
+          "http://www.w3.org/ns/adms#identifier",
+          "http://www.w3.org/2004/02/skos/core#notation"
+        ],
         "numacNumbers": [
           "http://mu.semte.ch/vocabularies/ext/publicatie/identifier",
           "http://www.w3.org/2004/02/skos/core#notation"
@@ -411,6 +415,9 @@
           },
           "identification": {
             "type": "text"
+          },
+          "identificationKeyword": {
+            "type": "keyword"
           },
           "numacNumbers": {
             "type": "text"
