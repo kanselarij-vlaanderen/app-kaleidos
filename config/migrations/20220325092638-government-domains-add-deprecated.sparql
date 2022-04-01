@@ -1,0 +1,13 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX Beleidsdomeinen: <http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81>
+
+PREFIX gPublic: <http://mu.semte.ch/graphs/public>
+
+WITH gPublic:
+INSERT {
+    ?s owl:deprecated "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+} WHERE {
+    ?s a skos:Concept .
+    ?s skos:topConceptOf Beleidsdomeinen: .
+}

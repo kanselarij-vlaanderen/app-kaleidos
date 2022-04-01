@@ -20,6 +20,10 @@
           "type": "string",
           "predicate": "skos:altLabel"
         },
+        "deprecated": {
+          "type": "bool",
+          "predicate": "owl:deprecated"
+        },
         "position": {
           "type": "integer",
           "predicate": "schema:position"
