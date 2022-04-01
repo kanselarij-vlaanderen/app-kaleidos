@@ -340,11 +340,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/languages/"
   end
 
-  # TODO: remove endpoint
-  get "/publication-report-dev/*path", @any do
-    Proxy.forward conn, path, "http://publication-report/"
-  end
-
   # SIGN FLOW
   match "/sign-flows/*path", @any do
     Proxy.forward conn, path, "http://cache/sign-flows/"
