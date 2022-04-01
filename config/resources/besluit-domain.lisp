@@ -182,7 +182,6 @@
                 (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
-                (:kind                  :url      ,(s-prefix "dct:type"))
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:number-representation :string   ,(s-prefix "ext:numberRepresentation")))
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
@@ -204,6 +203,8 @@
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
                                         :as "mail-campaign")
+             (concept                   :via      ,(s-prefix "dct:type")
+                                        :as "kind")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
