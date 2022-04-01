@@ -6,7 +6,7 @@ PREFIX gPublic: <http://mu.semte.ch/graphs/public>
 
 WITH gPublic:
 INSERT {
-    ?s owl:deprecated false .
+    ?s owl:deprecated "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
 } WHERE {
     ?s a skos:Concept .
     ?s skos:topConceptOf Beleidsdomeinen: .
