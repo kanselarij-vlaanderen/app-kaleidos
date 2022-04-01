@@ -155,7 +155,6 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://www.w3.org/ns/org#Organization",
-      "http://mu.semte.ch/vocabularies/ext/MinisterraadType",
     ]
   end
   # Also insert your type as ext:PublicClass
