@@ -1,0 +1,15 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+DELETE {
+    ?s <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?idString .
+}
+INSERT {
+    ?s <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?idInteger .
+}
+WHERE {
+    ?s a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> .
+    ?s <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?idString .
+    FILTER (DATATYPE(?idString) = xsd:string)
+    BIND (xsd:integer(?idString) AS ?idInteger)
+}
