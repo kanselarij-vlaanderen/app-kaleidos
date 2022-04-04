@@ -374,7 +374,6 @@
         ],
         "translationDueDate": [
           "http://mu.semte.ch/vocabularies/ext/publicatie/doorlooptVertaling",
-          "^http://mu.semte.ch/vocabularies/ext/publicatie/vertalingVindtPlaatsTijdens",
           "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dueDate"
         ],
         "proofPrintRequestDate": [
