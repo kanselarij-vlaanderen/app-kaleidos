@@ -307,9 +307,3 @@ services:
     image: kanselarij/staatsblad-linking-service:0.5.1
     logging: *default-logging
     restart: "no" # disabled on prod until tested on accept
-
-  publication-report:
-    restart: always
-    environment:
-      - VIRTUOSO_SPARQL_ENDPOINT=http://triplestore:8890/sparql
-    logging: *default-logging
