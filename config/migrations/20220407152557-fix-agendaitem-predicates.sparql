@@ -10,7 +10,7 @@ DELETE {
             besluitvorming:aanmaakdatum ?created ;
             ext:modified ?modified ;
             ext:toelichting ?comment ;
-            ext:priority ?position .
+            ext:prioriteit ?position .
     }
 }
 INSERT {
@@ -30,6 +30,6 @@ WHERE {
         OPTIONAL { ?agendapunt besluitvorming:aanmaakdatum ?created . }
         OPTIONAL { ?agendapunt ext:modified ?modified . }
         OPTIONAL { ?agendapunt ext:toelichting ?comment . }
-        OPTIONAL { ?agendapunt ext:priority ?position . }
+        OPTIONAL { ?agendapunt ext:prioriteit ?position . }
     }
 }
