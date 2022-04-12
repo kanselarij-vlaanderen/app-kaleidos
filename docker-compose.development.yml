@@ -99,6 +99,15 @@ services:
   mail-delivery:
     entrypoint: "echo 'service disabled'"
     restart: "no"
+  staatsblad-import:
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
+  staatsblad-uuid-generation:
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
+  staatsblad-linking:
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
   # kibana:
   #   image: docker.elastic.co/kibana/kibana:7.2.0
   #   environment:

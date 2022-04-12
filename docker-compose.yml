@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.26.1
+    image: kanselarij/frontend-kaleidos:5.26.3
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -208,7 +208,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.0.2
+    image: kanselarij/yggdrasil:5.1.0
     logging: *default-logging
     restart: always
     labels:
@@ -276,34 +276,36 @@ services:
     labels:
       - "logging=true"
   lod-sbmb:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
-    # this isn't a mu.semte.ch-service, but includes a command that is regulary run from cron
-    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
-    # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
+    # Trigger needs to be configured in server cron
+    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
+    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
     image: kanselarij/lod-sbmb:1.11.0
     volumes:
       - ./data/staatsblad:/data
-    restart: "no"
+    restart: "no" # restart disabled on purpose. Service is triggered by server cron and should not always run
     logging: *default-logging
   staatsblad-import:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/ttl-import-service:0.2.0
     volumes:
       - ./data/staatsblad/nl:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
   staatsblad-uuid-generation:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/uuid-generation-service:0.1.0
     environment:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
   staatsblad-linking:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/staatsblad-linking-service:0.5.1
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
