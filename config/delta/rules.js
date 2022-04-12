@@ -122,8 +122,7 @@ export default [
       ignoreFromSelf: true
     }
   },
-  // TODO enable deltas when testing the staatsblad services
-  /*{
+  {
     match: {
       predicate: {
         type: 'uri',
@@ -160,5 +159,5 @@ export default [
       gracePeriod: 15000,
       ignoreFromSelf: true
     }
-  }*/
+  }
 ];

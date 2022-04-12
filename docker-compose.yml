@@ -276,34 +276,38 @@ services:
     labels:
       - "logging=true"
   lod-sbmb:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     # this isn't a mu.semte.ch-service, but includes a command that is regulary run from cron
     # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
     # docker-compose run lod-sbmb -g -s $(date +%Y) -e $(date +%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
     image: kanselarij/lod-sbmb:1.11.0
     volumes:
       - ./data/staatsblad:/data
-    restart: "no"
+    restart: always
     logging: *default-logging
+    labels:
+      - "logging=true"
   staatsblad-import:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/ttl-import-service:0.2.0
     volumes:
       - ./data/staatsblad/nl:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
   staatsblad-uuid-generation:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/uuid-generation-service:0.1.0
     environment:
       RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
   staatsblad-linking:
-    entrypoint: "echo 'service disabled'" # disabled on prod until tested on accept
     image: kanselarij/staatsblad-linking-service:0.5.1
     logging: *default-logging
-    restart: "no" # disabled on prod until tested on accept
+    restart: always
+    labels:
+      - "logging=true"
