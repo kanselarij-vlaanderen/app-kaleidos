@@ -1,0 +1,35 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
+
+DELETE {
+    GRAPH ?g {
+        ?agendapunt dct:alternative ?shortTitle ;
+            besluitvorming:aanmaakdatum ?created ;
+            ext:modified ?modified ;
+            ext:toelichting ?comment ;
+            ext:prioriteit ?position .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        ?agendapunt besluitvorming:korteTitel ?shortTitle ;
+            dct:created ?created ;
+            dct:modified ?modified ;
+            schema:comment ?comment ;
+            schema:position ?position .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        ?agendapunt a besluit:Agendapunt .
+
+        OPTIONAL { ?agendapunt dct:alternative ?shortTitle . }
+        OPTIONAL { ?agendapunt besluitvorming:aanmaakdatum ?created . }
+        OPTIONAL { ?agendapunt ext:modified ?modified . }
+        OPTIONAL { ?agendapunt ext:toelichting ?comment . }
+        OPTIONAL { ?agendapunt ext:prioriteit ?position . }
+    }
+}

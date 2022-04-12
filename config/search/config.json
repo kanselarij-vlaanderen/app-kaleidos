@@ -70,7 +70,7 @@
       "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "properties": {
         "title": "http://purl.org/dc/terms/title",
-        "shortTitle": "http://purl.org/dc/terms/alternative",
+        "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
         "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
         "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
         "showAsAnnouncement": "http://mu.semte.ch/vocabularies/ext/wordtGetoondAlsMededeling",
