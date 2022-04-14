@@ -239,12 +239,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  mandatee:
-    image: kanselarij/mandatee-service:2.1.0
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
   case-documents-sync:
     image: kanselarij/case-documents-sync-service:1.2.0
     logging: *default-logging

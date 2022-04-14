@@ -271,10 +271,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
-  match "/mandatee/*path", @any do
-    Proxy.forward conn, path, "http://mandatee/"
-  end
-
   match "/publication-flows/search/*path", @any do
     Proxy.forward conn, path, "http://search/publication-flows/search/"
   end

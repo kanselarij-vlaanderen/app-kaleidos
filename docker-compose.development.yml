@@ -88,8 +88,6 @@ services:
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
     restart: "no"
-  mandatee:
-    restart: "no"
   case-documents-sync:
     restart: "no"
   document-versions:
