@@ -304,7 +304,7 @@ services:
     labels:
       - "logging=true"
   staatsblad-linking:
-    image: kanselarij/staatsblad-linking-service:0.5.1
+    image: kanselarij/staatsblad-linking-service:0.6.0
     logging: *default-logging
     restart: always
     labels:
