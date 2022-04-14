@@ -2,13 +2,13 @@
 
 echo 'this script is for reference only';
 echo 'first step:';
-echo 'add 127.0.0.1:7070:80 to the ports section of musearch';
+echo 'add 127.0.0.1:7070:80 to the ports section of search';
 echo 'then change the correct variables to reindex';
 echo 'then execute the curl call from the script';
 
 exit;
 
-#  musearch:
+#  search:
 #    ports:
 #      - 127.0.0.1:7070:80
 
