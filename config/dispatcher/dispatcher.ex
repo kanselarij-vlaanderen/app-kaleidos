@@ -10,51 +10,51 @@ defmodule Dispatcher do
   @json %{ accept: %{ json: true } }
 
   match "/agendaitems/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/agendaitems/search/"
+    Proxy.forward conn, path, "http://search/agendaitems/search/"
   end
 
   match "/agendaitems/index/*path", @any do
-    Proxy.forward conn, path, "http://musearch/agendaitems/search/"
+    Proxy.forward conn, path, "http://search/agendaitems/search/"
   end
 
   match "/agendaitems/invalidate/*path", @any do
-    Proxy.forward conn, path, "http://musearch/agendaitems/invalidate/"
+    Proxy.forward conn, path, "http://search/agendaitems/invalidate/"
   end
 
   match "/cases/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/cases/search/"
+    Proxy.forward conn, path, "http://search/cases/search/"
   end
 
   match "/cases/index/*path", @any do
-    Proxy.forward conn, path, "http://musearch/cases/search/"
+    Proxy.forward conn, path, "http://search/cases/search/"
   end
 
   match "/cases/invalidate/*path", @any do
-    Proxy.forward conn, path, "http://musearch/cases/invalidate/"
+    Proxy.forward conn, path, "http://search/cases/invalidate/"
   end
 
-  match "/musearch/settings/*path", @any do
-    Proxy.forward conn, path, "http://musearch/settings/"
+  match "/search/settings/*path", @any do
+    Proxy.forward conn, path, "http://search/settings/"
   end
 
   put "/agendaitems/:id/pieces", @any do
-    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/documents"
+    Proxy.forward conn, [], "http://document-versions/agendaitems/" <> id <> "/documents"
   end
 
   put "/agendaitems/:id/pieces/restore", @any do
-    Proxy.forward conn, [], "http://document-versions-service/agendaitems/" <> id <> "/pieces/restore"
+    Proxy.forward conn, [], "http://document-versions/agendaitems/" <> id <> "/pieces/restore"
   end
 
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-items", @any do
-    Proxy.forward conn, [], "http://agenda-sort-service/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
+    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
   end
 
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-item/:agenda_item_id/pieces", @any do
-    Proxy.forward conn, [], "http://agenda-sort-service/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
+    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
   end
 
   post "/agendas/:id/agendaitems/pieces/files/archive", @any do
-    Proxy.forward conn, [], "http://file-bundling-job-creation-service/agendas/" <> id <> "/agendaitems/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling-job-creation/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
   match "/agendas/*path", @any do
     Proxy.forward conn, path, "http://cache/agendas/"
@@ -177,7 +177,7 @@ defmodule Dispatcher do
   end
 
   match "/newsletter-infos/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/newsletter-infos/search/"
+    Proxy.forward conn, path, "http://search/newsletter-infos/search/"
   end
 
   match "/newsletter-infos/*path", @any do
@@ -201,19 +201,19 @@ defmodule Dispatcher do
   end
 
   match "/agenda-sort/*path", @any do
-    Proxy.forward conn, path, "http://agenda-sort-service/"
+    Proxy.forward conn, path, "http://agenda-sort/"
   end
 
   match "/custom-subcases/*path", @any do
-    Proxy.forward conn, path, "http://custom-subcases-service/"
+    Proxy.forward conn, path, "http://custom-subcases/"
   end
 
-  match "/session-service/*path", @any do
-    Proxy.forward conn, path, "http://session-number-service/"
+  match "/session-number/*path", @any do
+    Proxy.forward conn, path, "http://session-number/"
   end
 
   match "/agenda-approve/*path", @any do
-    Proxy.forward conn, path, "http://agenda-approve-service/"
+    Proxy.forward conn, path, "http://agenda-approve/"
   end
 
   match "/account-groups/*path", @any do
@@ -247,8 +247,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/alerts/"
   end
 
-  match "/user-management-service/*path", @any do
-    Proxy.forward conn, path, "http://user-management-service/"
+  match "/user-management/*path", @any do
+    Proxy.forward conn, path, "http://user-management/"
   end
 
   match "/alert-types/*path", @any do
@@ -260,7 +260,7 @@ defmodule Dispatcher do
   end
 
   match "/newsletter/*path", @any do
-    Proxy.forward conn, path, "http://newsletter-service/"
+    Proxy.forward conn, path, "http://newsletter/"
   end
 
   match "/mail-campaigns/*path", @any do
@@ -272,7 +272,7 @@ defmodule Dispatcher do
   end
 
   match "/publication-flows/search/*path", @any do
-    Proxy.forward conn, path, "http://musearch/publication-flows/search/"
+    Proxy.forward conn, path, "http://search/publication-flows/search/"
   end
 
   match "/publication-flows/*path", @any do

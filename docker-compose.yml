@@ -39,7 +39,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  migrations-service:
+  migrations:
     image: semtech/mu-migrations-service:0.7.0
     volumes:
       - ./config/migrations:/data/migrations
@@ -75,7 +75,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  musearch:
+  search:
     image: semtech/mu-search:0.8.0-beta.3
     volumes:
       - ./config/search:/config
@@ -103,7 +103,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  deltanotifier:
+  delta-notifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
         - ./config/delta:/config
@@ -146,25 +146,25 @@ services:
     restart: always
     labels:
       - "logging=true"
-  session-number-service:
+  session-number:
     image: kanselarij/session-number-service:1.2.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  agenda-sort-service:
+  agenda-sort:
     image: kanselarij/agenda-sort-service:2.3.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  custom-subcases-service:
+  custom-subcases:
     image: kanselarij/custom-subcases-service:2.2.1
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  agenda-approve-service:
+  agenda-approve:
     image: kanselarij/agenda-approve-service:4.1.0
     logging: *default-logging
     restart: always
@@ -193,13 +193,13 @@ services:
     restart: always
     labels:
       - "logging=true"
-  newsletter-service:
+  newsletter:
     image: kanselarij/newsletter-service:3.1.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  user-management-service:
+  user-management:
     image: kanselarij/user-management-service:1.1.0
     environment:
       MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
@@ -219,7 +219,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  file-bundling-service:
+  file-bundling:
     image: kanselarij/file-bundling-service:2.1.3
     volumes:
       - ./data/files:/share
@@ -227,7 +227,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  file-bundling-job-creation-service:
+  file-bundling-job-creation:
     image: kanselarij/file-bundling-job-creation-service:0.1.6
     logging: *default-logging
     restart: always
@@ -245,7 +245,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  document-versions-service:
+  document-versions:
     image: kanselarij/document-versions-service:0.2.1
     logging: *default-logging
     restart: always

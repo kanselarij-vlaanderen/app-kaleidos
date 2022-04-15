@@ -6,7 +6,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://musearch/update',
+      url: 'http://search/update',
       method: 'POST'
     },
     options: {
@@ -59,7 +59,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://file-bundling-service/delta',
+      url: 'http://file-bundling/delta',
       method: 'POST'
     },
     options: {
@@ -79,7 +79,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://file-bundling-service/delta',
+      url: 'http://file-bundling/delta',
       method: 'POST'
     },
     options: {

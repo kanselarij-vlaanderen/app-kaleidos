@@ -15,7 +15,7 @@ docker-compose -f docker-compose.yml -f docker-compose.development.yml up
 
 *Pro tip: The stack consists of some services such as `mu-search` that can potentially consume a lot of resources and often aren't required for basic development-tasks. Adding the following snippet to your `docker-compose.override.yml`-file under `services`, will disable the most resource-consuming services.*
 ```yml
-  musearch:
+  search:
     entrypoint: "echo 'service disabled'"
   tika:
     entrypoint: "echo 'service disabled'"

@@ -18,7 +18,7 @@ services:
     - "80:80"
   dispatcher:
     restart: "no"
-  migrations-service:
+  migrations:
     restart: "no"
   database:
     restart: "no"
@@ -38,7 +38,7 @@ services:
     ports:
       - "8890:8890"
     restart: "no"
-  musearch:
+  search:
     restart: "no"
     environment:
       NUMBER_OF_THREADS: 4
@@ -47,7 +47,7 @@ services:
     restart: "no"
   tika:
     restart: "no"
-  deltanotifier:
+  delta-notifier:
     restart: "no"
   cache-warmup:
     restart: "no"
@@ -59,38 +59,38 @@ services:
     restart: "no"
   file:
     restart: "no"
-  session-number-service:
+  session-number:
     restart: "no"
-  agenda-sort-service:
+  agenda-sort:
     restart: "no"
-  custom-subcases-service:
+  custom-subcases:
     restart: "no"
-  agenda-approve-service:
+  agenda-approve:
     restart: "no"
   mocklogin:
     restart: "no"
   login:
     entrypoint: "echo 'service disabled'"
     restart: "no"
-  newsletter-service:
+  newsletter:
     entrypoint: "echo 'service disabled'"
     restart: "no"
-  user-management-service:
+  user-management:
     restart: "no"
   yggdrasil:
     restart: "no"
   sink:
     restart: "no"
-  file-bundling-service:
+  file-bundling:
     restart: "no"
-  file-bundling-job-creation-service:
+  file-bundling-job-creation:
     restart: "no"
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
     restart: "no"
   case-documents-sync:
     restart: "no"
-  document-versions-service:
+  document-versions:
     restart: "no"
   document-release:
     restart: "no"

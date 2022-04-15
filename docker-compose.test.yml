@@ -3,7 +3,7 @@ services:
   triplestore:
     volumes:
       - ./testdata/db:/data
-  musearch:
+  search:
     volumes:
       - ./testdata/files:/data
     environment:
@@ -20,7 +20,7 @@ services:
   # range-file:
   #   volumes:
   #     - ./testdata/files:/share
-  file-bundling-service:
+  file-bundling:
     volumes:
       - ./testdata/files:/share
   # The DELTA_INTERVAL_MS is the value that yggdrasil waits between runs in milliseconds
