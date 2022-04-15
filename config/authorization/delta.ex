@@ -11,7 +11,7 @@ defmodule Delta.Config do
   @spec targets() :: [String.t]
   def targets do
     [
-      "http://deltanotifier"
+      "http://delta-notifier"
      ]
   end
 

@@ -37,18 +37,18 @@
 
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
-  :properties `((:created             :datetime ,(s-prefix "besluitvorming:aanmaakdatum")) ;; NOTE: What is the URI of property 'aanmaakdatum'? Made up besluitvorming:aanmaakdatum
+  :properties `((:created             :datetime ,(s-prefix "dct:created"))
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
-                (:number              :integer  ,(s-prefix "ext:prioriteit"))
+                (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:record              :string   ,(s-prefix "besluitvorming:notulen")) ;; NOTE: What is the URI of property 'notulen'? Made up besluitvorming:notulen
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
-                (:explanation         :string   ,(s-prefix "ext:toelichting"))
+                (:comment             :string   ,(s-prefix "schema:comment"))
+                (:private-comment     :string   ,(s-prefix "ext:privateComment"))
                 (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
                 ;; Added properties from subcases
-                (:short-title         :string   ,(s-prefix "dct:alternative"))
+                (:short-title         :string   ,(s-prefix "besluitvorming:korteTitel"))
                 (:title               :string   ,(s-prefix "dct:title"))
-                (:modified            :datetime ,(s-prefix "ext:modified"))
+                (:modified            :datetime ,(s-prefix "dct:modified"))
                 (:formally-ok         :url      ,(s-prefix "ext:formeelOK"))
                 (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda

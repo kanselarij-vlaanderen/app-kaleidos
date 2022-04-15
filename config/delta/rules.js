@@ -6,7 +6,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://musearch/update',
+      url: 'http://search/update',
       method: 'POST'
     },
     options: {
@@ -59,7 +59,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://file-bundling-service/delta',
+      url: 'http://file-bundling/delta',
       method: 'POST'
     },
     options: {
@@ -100,7 +100,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://file-bundling-service/delta',
+      url: 'http://file-bundling/delta',
       method: 'POST'
     },
     options: {
@@ -143,8 +143,7 @@ export default [
       ignoreFromSelf: true
     }
   },
-  // TODO enable deltas when testing the staatsblad services
-  /*{
+  {
     match: {
       predicate: {
         type: 'uri',
@@ -181,5 +180,5 @@ export default [
       gracePeriod: 15000,
       ignoreFromSelf: true
     }
-  }*/
+  }
 ];
