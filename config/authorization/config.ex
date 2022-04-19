@@ -236,9 +236,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++
-              static_unconfidential_code_list_types() ++
-              user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
+            resource_types: user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
             }
           },
         ]
