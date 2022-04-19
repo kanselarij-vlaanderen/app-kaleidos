@@ -234,9 +234,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: [
-              "http://www.w3.org/ns/person#Person",
-            ] ++ unconfidential_resource_types() ++
+            resource_types: unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
               user_account_resource_types()
             }
