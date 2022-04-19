@@ -1,0 +1,98 @@
+PREFIX kkind: <http://kanselarij.vo.data.gift/id/concept/ministerraad-type-codes/>
+PREFIX tkind: <http://themis.vlaanderen.be/id/concept/vergaderactiviteit-type/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX schema: <http://schema.org/>
+
+DELETE WHERE {
+  GRAPH ?g {
+    <http://kanselarij.vo.data.gift/id/concept-scheme/668f0c19-3864-4e96-9dd3-de806fd53357> ?p00 ?o00 .
+    kkind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 ?p11 ?o11 . # Ministerraad
+    kkind:406F2ECA-524D-47DC-B889-651893135456 ?p12 ?o12 . # Elektronische procedure
+    kkind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F ?p13 ?o13 . # Bijzondere ministerraad
+    kkind:1d16cb70-0ae9-489e-bf97-c74897222e3c ?p14 ?o14 . # Ministerraad - Plan Vlaamse Veerkracht
+    kkind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce ?p15 ?o15 . # Annex
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s1 ?p1 kkind:406F2ECA-524D-47DC-B889-651893135456 .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s1 ?p1 tkind:2387564a-0897-4a62-9b9a-d1755eece7af .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s1 ?p1 kkind:406F2ECA-524D-47DC-B889-651893135456 .
+  }
+};
+
+
+DELETE {
+  GRAPH ?g {
+    ?s2 ?p2 kkind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s2 ?p2 tkind:62a0a3c3-44ed-4f35-8b46-1d50616ad42c .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s2 ?p2 kkind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F .
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s3 ?p3 kkind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s3 ?p3 tkind:ef51c9d5-8b45-4501-9dcd-3e00ccff524f .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s3 ?p3 kkind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 .
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s4 ?p4 kkind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s4 ?p4 tkind:30d6a064-8cca-4485-8b37-7ab2357d931d .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s4 ?p4 kkind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce .
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s5 ?p5 kkind:1d16cb70-0ae9-489e-bf97-c74897222e3c .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s5 ?p5 tkind:9b4701f8-a136-4009-94c6-d64fdc96b9a2 .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s5 ?p5 kkind:1d16cb70-0ae9-489e-bf97-c74897222e3c .
+  }
+};
