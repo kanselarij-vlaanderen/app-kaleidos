@@ -22,18 +22,6 @@ defmodule Acl.UserGroups.Config do
     }
   end
 
-  defp direct_write_on_public( group_string ) do
-    %AccessByQuery{
-      vars: [],
-      query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-      SELECT ?session_role WHERE {
-        <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                     ext:sessionRole ?session_role.
-        FILTER( ?session_role IN (\"#{group_string}\") )
-      } LIMIT 1" }
-  end
-
   defp generic_besluitvorming_resource_types() do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
