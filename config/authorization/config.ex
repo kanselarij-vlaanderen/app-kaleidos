@@ -59,7 +59,8 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
+      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
     ]
   end
 
@@ -147,7 +148,6 @@ defmodule Acl.UserGroups.Config do
   # Also insert your type as ext:PublicClass
   defp unconfidential_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/Goedkeuring",
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
