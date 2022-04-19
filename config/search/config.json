@@ -8,13 +8,13 @@
     [
       { "name": "o-admin-roles", "variables": [] },
       { "name": "o-kanselarij-all", "variables": [] },
-      { "name": "o-admin-on-public", "variables": [] },
+      { "name": "writes-on-public", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
       { "name": "o-kanselarij-all", "variables": [] },
-      { "name": "o-kanselarij-on-public", "variables": [] },
+      { "name": "writes-on-public", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],

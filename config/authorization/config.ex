@@ -227,31 +227,20 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
       %GroupSpec{
-        name: "o-admin-on-public",
+        name: "writes-on-public",
         useage: [:write, :read_for_write],
-        access: direct_write_on_public( "admin" ),
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: unconfidential_resource_types() ++
-              static_unconfidential_code_list_types() ++
-              user_account_resource_types()
-            }
-          },
-        ]
-      },
-      %GroupSpec{
-        name: "o-kanselarij-on-public",
-        useage: [:write, :read_for_write],
-        access: direct_write_on_public( "kanselarij" ),
+        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>
+                                 <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>"),
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
             resource_types: unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
               user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
-          } },
+            }
+          },
         ]
       },
 
