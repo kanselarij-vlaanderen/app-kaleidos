@@ -236,9 +236,6 @@ defmodule Acl.UserGroups.Config do
           constraint: %ResourceConstraint{
             resource_types: [
               "http://www.w3.org/ns/person#Person",
-              "http://xmlns.com/foaf/0.1/OnlineAccount",
-              "http://xmlns.com/foaf/0.1/Person",
-              "http://xmlns.com/foaf/0.1/Group",
             ] ++ unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
               user_account_resource_types()
