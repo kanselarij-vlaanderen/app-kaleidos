@@ -59,8 +59,6 @@ services:
     restart: "no"
   file:
     restart: "no"
-  session-number:
-    restart: "no"
   agenda-sort:
     restart: "no"
   custom-subcases:

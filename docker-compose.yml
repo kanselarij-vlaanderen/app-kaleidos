@@ -146,12 +146,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  session-number:
-    image: kanselarij/session-number-service:1.3.0
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
   agenda-sort:
     image: kanselarij/agenda-sort-service:2.3.0
     logging: *default-logging
