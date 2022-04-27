@@ -208,10 +208,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://custom-subcases/"
   end
 
-  match "/session-number/*path", @any do
-    Proxy.forward conn, path, "http://session-number/"
-  end
-
   match "/agenda-approve/*path", @any do
     Proxy.forward conn, path, "http://agenda-approve/"
   end
