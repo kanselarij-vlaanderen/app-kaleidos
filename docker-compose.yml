@@ -297,3 +297,14 @@ services:
     restart: always
     labels:
       - "logging=true"
+  publication-report:
+    image: kanselarij/publication-report-service:0.1.0
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
+      VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
