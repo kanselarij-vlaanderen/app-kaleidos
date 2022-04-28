@@ -112,7 +112,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.1.0
+    image: kanselarij/cache-warmup-service:1.2.0
     logging: *default-logging
     restart: always
     labels:
@@ -170,7 +170,7 @@ services:
       - ./config/mocklogin:/config
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.2.1
+    image: kanselarij/acmidm-login-service:1.4.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
