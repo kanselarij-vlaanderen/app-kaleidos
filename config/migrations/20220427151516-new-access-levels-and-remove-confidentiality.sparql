@@ -5,16 +5,16 @@ PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
-    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2>
-      a ext:ToegangsniveauCode ;
-      mu:uuid "2d19e6a1-8103-4b70-a55c-bc1dfc3128e2" ;
-      skos:prefLabel "Ministerraad"@nl ;
-      ext:prioriteit 1 .
-
     <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/4bbbbc03-5dda-4885-a42f-7ee68fea1aae>
       a ext:ToegangsniveauCode ;
       mu:uuid "4bbbbc03-5dda-4885-a42f-7ee68fea1aae" ;
       skos:prefLabel "Intern Secretarie"@nl ;
+      ext:prioriteit 1 .
+
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2>
+      a ext:ToegangsniveauCode ;
+      mu:uuid "2d19e6a1-8103-4b70-a55c-bc1dfc3128e2" ;
+      skos:prefLabel "Ministerraad"@nl ;
       ext:prioriteit 2 .
   }
 };
