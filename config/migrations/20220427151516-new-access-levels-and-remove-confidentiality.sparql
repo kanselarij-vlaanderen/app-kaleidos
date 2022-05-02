@@ -36,26 +36,31 @@ INSERT DATA {
 };
 
 DELETE {
-  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+  GRAPH ?g {
     ?document ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
               ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
   }
 }
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+  GRAPH ?g {
     ?document ext:toegangsniveauVoorDocumentVersie <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2> . # Ministerraad
   }
 }
 WHERE {
-  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+  GRAPH ?g {
     ?document a dossier:Stuk ;
               ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
               ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
   }
 };
 
-DELETE WHERE {
-  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+DELETE {
+  GRAPH ?g {
+    ?document ext:vertrouwelijk "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+  }
+}
+WHERE {
+  GRAPH ?g {
     ?document a dossier:Stuk ;
               ext:vertrouwelijk "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
   }
