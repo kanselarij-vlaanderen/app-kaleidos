@@ -19,6 +19,8 @@ services:
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
       EMBER_OAUTH_REDIRECT_URL: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
       EMBER_OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
+    links:
+      - identifier:backend
     logging: *default-logging
     restart: always
     labels:
