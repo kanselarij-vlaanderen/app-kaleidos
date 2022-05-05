@@ -15,6 +15,20 @@ defmodule Dispatcher do
   @frontend_any %{ accept: [ :any ], layer: :frontend }
   @json_service %{ accept: [ :json ], layer: :api }
 
+  ### Files
+
+  get "/files/:id/download", %{ layer: :api } do
+    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
+  post "/files/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
+  delete "/files/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
   ### JSON Services
 
   match "/agendaitems/search/*path", @json_service do
@@ -404,20 +418,6 @@ defmodule Dispatcher do
 
   match "/files/*path", @json_service do
     Proxy.forward conn, path, "http://cache/files/"
-  end
-
-  ### Files
-
-  get "/files/:id/download", %{ layer: :api } do
-    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
-  end
-
-  post "/files/*path", %{ layer: :api } do
-    Proxy.forward conn, path, "http://file/files/"
-  end
-
-  delete "/files/*path", %{ layer: :api } do
-    Proxy.forward conn, path, "http://file/files/"
   end
 
   ### Frontend
