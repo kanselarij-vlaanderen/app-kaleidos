@@ -116,7 +116,7 @@
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
                 (:scope-note  :string ,(s-prefix "skos:scopeNote"))
                 (:alt-label   :string ,(s-prefix "skos:altLabel"))
-                (:priority    :integer ,(s-prefix "ext:prioriteit")))
+                (:priority    :integer ,(s-prefix "schema:position")))
   :has-many `((piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                               :inverse t
                               :as "pieces"))
