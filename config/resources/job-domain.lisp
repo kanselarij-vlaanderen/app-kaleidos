@@ -18,10 +18,11 @@
                 (:status        :url       ,(s-prefix "ext:status"))
                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
                 (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
-                (:metrics-type  :url       ,(s-prefix "dct:type"))
                 (:config        :string    ,(s-prefix "pub:exportJobConfig")) ; JSON-blob allowing for extendable filter configuration
   )
-  :has-one `((file              :via     ,(s-prefix "prov:generated")
+  :has-one `((concept           :via     ,(s-prefix "dct:type")
+                                :as "report-type")
+             (file              :via     ,(s-prefix "prov:generated")
                                 :as "generated")
              (user              :via     ,(s-prefix "prov:wasStartedBy")
                                 :as "generated-by"))

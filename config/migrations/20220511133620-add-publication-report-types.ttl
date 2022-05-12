@@ -1,0 +1,40 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix concept: <http://themis.vlaanderen.be/id/concept/> .
+
+@prefix PublicationReportTypes: <http://themis.vlaanderen.be/id/conceptschema/224637a8-a60a-4bcb-bd9b-f052456820a4> .
+
+# PublicationReportTypes are only used to make the /publicaties/overzicht/rapporten route
+#   act more like any other route: fetching a (list of) models
+#   Every PublicationReportType stands for a certain combination of a type to group by and types to filter on.
+#   The definition of the filters and group options these types are done in the frontend.
+
+PublicationReportTypes: a skos:ConceptScheme ;
+    skos:prefLabel "Publicatie-rapport-types" ;
+    mu:uuid "224637a8-a60a-4bcb-bd9b-f052456820a4" .
+
+
+concept:by-mandatee-on-decision-date a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "6f820cf1-cd36-49fb-ae82-b36ce5dbc6cb" .
+
+concept:by-mandatee-only-bvr a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "4e6cfd8c-c109-4117-ba06-93d07b03a357" .
+
+concept:by-mandatee-only-decree a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "9f059903-d47c-4584-86f3-bc9b16f9be5c" .
+
+concept:by-government-domain a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "b75c2a2f-2ebc-4999-94a3-48322e8fce6a" .
+
+concept:by-regulation-type a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "095a3da7-a383-48bf-b8c8-040ace0cad3c" .
+
+concept:by-regulation-type-only-not-via-council-of-ministers a skos:Concept ;
+    skos:inScheme PublicationReportTypes: ;
+    mu:uuid "cdf03cb1-166e-49a5-b582-7216527e03a4" .
