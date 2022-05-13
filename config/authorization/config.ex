@@ -165,7 +165,7 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/2004/02/skos/core#Concept",
       "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportType",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
     ]
   end
   # Also insert your type as ext:PublicClass

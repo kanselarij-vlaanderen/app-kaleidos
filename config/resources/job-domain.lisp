@@ -20,8 +20,9 @@
                 (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
                 (:config        :string    ,(s-prefix "pub:exportJobConfig")) ; JSON-blob allowing for extendable filter configuration
   )
-  :has-one `((concept           :via     ,(s-prefix "dct:type")
-                                :as "report-type")
+  :has-one `((publication-report-type
+                                :via     ,(s-prefix "dct:type")
+                                :as "type")
              (file              :via     ,(s-prefix "prov:generated")
                                 :as "generated")
              (user              :via     ,(s-prefix "prov:wasStartedBy")
@@ -29,4 +30,11 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/publicatierapport-export-taak/")
   :features '(include-uri)
   :on-path "publication-metrics-export-jobs"
+)
+
+(define-resource publication-report-type () ; two terms are in use for the same feature: publication-reports and publication-metrics-export. publication-reports is preferred.
+  :class (s-prefix "pub:Publicatierapporttype")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatierapporttype/")
+  :features '(include-uri)
+  :on-path "publication-report-types"
 )
