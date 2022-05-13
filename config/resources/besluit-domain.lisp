@@ -71,8 +71,6 @@
                                       :inverse t
                                       :as "treatments")
             ;; Added has-many relations from subcases
-              (approval               :via      ,(s-prefix "ext:agendapuntGoedkeuring")
-                                      :as "approvals")
               (mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (piece                  :via      ,(s-prefix "besluitvorming:geagendeerdStuk")
@@ -82,19 +80,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/agendapunt/")
   :features `(no-pagination-defaults include-uri)
   :on-path "agendaitems")
-
-
-  (define-resource approval ()
-  :class (s-prefix "ext:Goedkeuring")
-  :properties `((:created   :datetime ,(s-prefix "ext:aangemaakt")))
-  :has-one `((mandatee      :via ,(s-prefix "ext:goedkeuringen")
-                            :inverse t
-                            :as "mandatee")
-             (agendaitem    :via ,(s-prefix "ext:agendapuntGoedkeuring")
-                            :inverse t
-                            :as "agendaitem"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/goedkeuring/")
-  :on-path "approvals")
 
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
