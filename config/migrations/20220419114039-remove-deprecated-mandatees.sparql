@@ -1,0 +1,29 @@
+DELETE {
+    GRAPH ?g {
+        ?m ?pm ?om .
+   }
+}
+WHERE {
+    GRAPH ?g {
+        ?m a <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+        ?m ?pm ?om .
+        FILTER(!STRSTARTS(STR(?m), "http://themis.vlaanderen.be"))
+        FILTER NOT EXISTS {?s ?p ?m}
+    }
+}
+
+;
+
+DELETE {
+    GRAPH ?g {
+      ?person ?pp ?op .
+   }
+}
+WHERE {
+    GRAPH ?g {
+        ?person a <http://www.w3.org/ns/person#Person> .
+        ?person ?pp ?op .
+        FILTER(!STRSTARTS(STR(?person), "http://themis.vlaanderen.be"))
+        FILTER NOT EXISTS {?s ?p ?person}
+    }
+}

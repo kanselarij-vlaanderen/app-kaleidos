@@ -6,9 +6,7 @@
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
                 (:newsletter-title :string ,(s-prefix "ext:nieuwsbriefTitel")) ; As opposed to the dct:title, this property includes the name of the mandatee
                 (:title           :string ,(s-prefix "dct:title")))
-  :has-many `((approval            :via ,(s-prefix "ext:goedkeuringen")
-                                  :as "approvals")
-             (subcase             :via ,(s-prefix "ext:heeftBevoegde")
+  :has-many `((subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
                                   :as "subcases")
              (publication-flow    :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
@@ -78,4 +76,3 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestuursorgaan/")
   :features '(include-uri)
   :on-path "government-bodies")
-

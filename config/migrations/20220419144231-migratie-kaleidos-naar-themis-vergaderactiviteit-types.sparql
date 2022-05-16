@@ -27,9 +27,86 @@ WHERE {
     ?s ?p ?kaleidosKind .
     VALUES (?kaleidosKind ?themisKind) {
       (kkind:A5D6B7A8-2F9C-44B6-B3BE-98D80B426254 tkind:ef51c9d5-8b45-4501-9dcd-3e00ccff524f) # Ministerraad
+    }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
       (kkind:406F2ECA-524D-47DC-B889-651893135456 tkind:2387564a-0897-4a62-9b9a-d1755eece7af) # Elektronische procedure
+    }
+  }
+}
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
       (kkind:7D8E35BE-E5D1-494F-B5F9-51B07875B96F tkind:62a0a3c3-44ed-4f35-8b46-1d50616ad42c) # Bijzondere ministerraad
+    }
+  }
+}
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
       (kkind:1d16cb70-0ae9-489e-bf97-c74897222e3c tkind:9b4701f8-a136-4009-94c6-d64fdc96b9a2) # PVV
+    }
+  }
+}
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
       (kkind:d36138a9-07f0-4df6-bbf0-abd51a24e4ce tkind:30d6a064-8cca-4485-8b37-7ab2357d931d) # Annex
     }
   }
