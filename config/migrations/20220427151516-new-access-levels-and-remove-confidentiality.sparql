@@ -50,8 +50,10 @@ INSERT {
 WHERE {
   GRAPH ?g {
     ?document a dossier:Stuk ;
-              ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
-              ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
+              ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+    OPTIONAL {
+      ?document ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
+    }
   }
 };
 
