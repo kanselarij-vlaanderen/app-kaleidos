@@ -1,0 +1,5 @@
+
+<http://themis.vlaanderen.be/id/persoon/74888cf5-6e19-4cf3-abf1-eeb9af999922> a <http://www.w3.org/ns/person#Person>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "74888cf5-6e19-4cf3-abf1-eeb9af999922";
+  <http://xmlns.com/foaf/0.1/familyName> "Brouns";
+  <https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> "Jo" .
