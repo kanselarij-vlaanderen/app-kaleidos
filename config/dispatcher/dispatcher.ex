@@ -68,11 +68,11 @@ defmodule Dispatcher do
   end
 
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-items", @json_service do
-    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
+    Proxy.forward conn, [], "http://agenda-comparison/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
   end
 
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-item/:agenda_item_id/pieces", @json_service do
-    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
+    Proxy.forward conn, [], "http://agenda-comparison/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
   end
 
   post "/agendas/:id/agendaitems/pieces/files/archive", @json_service do
@@ -223,12 +223,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  match "/agenda-sort/*path", @json_service do
-    Proxy.forward conn, path, "http://agenda-sort/"
+  match "/agenda-comparison/*path", @json_service  do
+    Proxy.forward conn, path, "http://agenda-comparison/"
   end
 
   match "/custom-subcases/*path", @json_service do
     Proxy.forward conn, path, "http://custom-subcases/"
+  end
+
+  delete "/agenda-approve/*path", @json_service do
+    Proxy.forward conn, path, "http://agenda-approve/"
   end
 
   match "/agenda-approve/*path", @json_service do

@@ -146,7 +146,7 @@ services:
     restart: always
     labels:
       - "logging=true"
-  agenda-sort:
+  agenda-comparison:
     image: kanselarij/agenda-sort-service:2.3.0
     logging: *default-logging
     restart: always
