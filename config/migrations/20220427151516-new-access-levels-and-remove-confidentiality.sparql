@@ -1,0 +1,70 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX schema: <http://schema.org/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/4bbbbc03-5dda-4885-a42f-7ee68fea1aae>
+      a ext:ToegangsniveauCode ;
+      mu:uuid "4bbbbc03-5dda-4885-a42f-7ee68fea1aae" ;
+      skos:prefLabel "Intern Secretarie"@nl ;
+      schema:position 1 .
+
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2>
+      a ext:ToegangsniveauCode ;
+      mu:uuid "2d19e6a1-8103-4b70-a55c-bc1dfc3128e2" ;
+      skos:prefLabel "Ministerraad"@nl ;
+      schema:position 2 .
+  }
+};
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/d335f7e3-aefd-4f93-81a2-1629c2edafa3> ext:prioriteit "1" . # Intern Regering
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/abe4c18d-13a9-45f0-8cdd-c493eabbbe29> ext:prioriteit "2" . # Intern Overheid
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/6ca49d86-d40f-46c9-bde3-a322aa7e5c8e> ext:prioriteit "3" . # Publiek
+  }
+};
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/d335f7e3-aefd-4f93-81a2-1629c2edafa3> schema:position 3 . # Intern Regering
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/abe4c18d-13a9-45f0-8cdd-c493eabbbe29> schema:position 4 . # Intern Overheid
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/6ca49d86-d40f-46c9-bde3-a322aa7e5c8e> schema:position 5 . # Publiek
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?document ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+              ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?document ext:toegangsniveauVoorDocumentVersie <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2> . # Ministerraad
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?document a dossier:Stuk ;
+              ext:vertrouwelijk "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+    OPTIONAL {
+      ?document ext:toegangsniveauVoorDocumentVersie ?oldAccessLevel .
+    }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?document ext:vertrouwelijk "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?document a dossier:Stuk ;
+              ext:vertrouwelijk "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+  }
+}

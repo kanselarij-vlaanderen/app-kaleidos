@@ -20,7 +20,6 @@
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
-                (:confidential          :boolean  ,(s-prefix "ext:vertrouwelijk"))
                 (:number-of-pages       :integer   ,(s-prefix "fabio:hasPageCount"))
                 (:number-of-words       :integer   ,(s-prefix "prism:wordCount"))
                 (:access-level-last-modified          :datetime  ,(s-prefix "ext:accessLevelLastModified")))
