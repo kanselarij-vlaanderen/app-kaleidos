@@ -64,7 +64,7 @@
     ns1:rangorde 2 ;
     ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
     ns2:uuid "bb2e174a-374e-447d-ad0c-002204b4561f" ;
-    dcterms:title "Vlaams minister van Welzijn, Volksgezondheid, Gezin en Zeevisserij" ;
+    dcterms:title "Vlaams minister van Welzijn, Volksgezondheid en Gezin" ;
     org:holds <http://themis.vlaanderen.be/id/mandaat/5fed907ee6670526694a0704> .
 
 <http://themis.vlaanderen.be/id/mandatee/e8706d05-70b7-4b5c-ba75-f07c56cb259f> a ns1:Mandataris ;
