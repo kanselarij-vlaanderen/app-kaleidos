@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.2.0
+    image: kanselarij/yggdrasil:feature-KAS-3398-yggie-moet-geen-rekening-houden-met-vertrouwelijkheid-van-procedurestap-bij-propagatie
     logging: *default-logging
     restart: always
     labels:
