@@ -1,0 +1,34 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?doubleStatusChange a pub:PublicatieStatusWijziging .
+    ?doubleStatusChange core:uuid ?uuid .
+    ?doubleStatusChange prov:startedAtTime ?startedAt .
+    ?publicationFlow prov:hadActivity ?doubleStatusChange .
+  }
+} WHERE {
+  {
+    SELECT DISTINCT ?publicationFlow ?doubleStatusChange ?startedAt ?uuid WHERE {
+      GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+       {
+          select ?publicationFlow COUNT(DISTINCT ?statusChange) as ?statusChanges where {
+           ?statusChange a pub:PublicatieStatusWijziging .
+            ?publicationFlow a pub:Publicatieaangelegenheid .
+           ?publicationFlow prov:hadActivity ?statusChange .
+          }
+        }
+        FILTER (?statusChanges > 1)
+        ?publicationFlow prov:hadActivity ?doubleStatusChange .
+        ?doubleStatusChange prov:startedAtTime ?startedAt .
+        ?doubleStatusChange core:uuid ?uuid .
+        FILTER NOT EXISTS {
+          ?publicationFlow prov:hadActivity/prov:startedAtTime ?startedAt2 .
+          FILTER (?startedAt2 > ?startedAt)
+        }
+      }
+    }
+  }
+}
