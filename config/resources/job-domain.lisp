@@ -22,7 +22,7 @@
   )
   :has-one `((publication-report-type
                                 :via     ,(s-prefix "dct:type")
-                                :as "type")
+                                :as "report-type")
              (file              :via     ,(s-prefix "prov:generated")
                                 :as "generated")
              (user              :via     ,(s-prefix "prov:wasStartedBy")
