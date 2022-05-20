@@ -147,7 +147,7 @@ services:
     labels:
       - "logging=true"
   agenda-comparison:
-    image: kanselarij/agenda-sort-service:2.3.0
+    image: kanselarij/agenda-comparison-service:feature-KAS-2304-rename-agenda-sort-service-to-agenda-comparison-service
     logging: *default-logging
     restart: always
     labels:
