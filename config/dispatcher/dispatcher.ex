@@ -91,18 +91,6 @@ defmodule Dispatcher do
   match "/decision-result-codes/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decision-result-codes/"
   end
-  match "/bestuurseenheden/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
-  end
-  match "/werkingsgebieden/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
-  end
-  match "/bestuurseenheid-classificatie-codes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
-  end
-  match "/bestuursorgaan-classificatie-codes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
-  end
   match "/meetings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
@@ -118,12 +106,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/document-types/"
   end
 
-  match "/document-type-codes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/document-type-codes/"
-  end
-  match "/media-type-codes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/media-type-codes/"
-  end
   match "/cases/*path", @json_service do
     Proxy.forward conn, path, "http://cache/cases/"
   end
@@ -186,10 +168,6 @@ defmodule Dispatcher do
 
   match "/structured-identifiers/*path", @json_service do
     Proxy.forward conn, path, "http://cache/structured-identifiers/"
-  end
-
-  match "/time-periods/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/time-periods/"
   end
 
   match "/organizations/*path", @json_service do

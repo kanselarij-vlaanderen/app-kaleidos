@@ -188,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.2.0
+    image: kanselarij/newsletter-service:3.2.1
     logging: *default-logging
     restart: always
     labels:
@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.2.0
+    image: kanselarij/yggdrasil:5.3.0
     logging: *default-logging
     restart: always
     labels:
