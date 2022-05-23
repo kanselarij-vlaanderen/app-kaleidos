@@ -111,19 +111,6 @@
   :features '(include-uri)
   :on-path "submission-activities")
 
-(define-resource access-level ()
-  :class (s-prefix "ext:ToegangsniveauCode") ;; NOTE: as well as skos:Concept
-  :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                (:alt-label   :string ,(s-prefix "skos:altLabel"))
-                (:priority    :integer ,(s-prefix "schema:position")))
-  :has-many `((piece          :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
-                              :inverse t
-                              :as "pieces"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/toegangsniveau/")
-  :features '(include-uri)
-  :on-path "access-levels")
-
 (define-resource person-or-organization ()
   :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
   :properties `((:type :string ,(s-prefix "rdfs:type")))
