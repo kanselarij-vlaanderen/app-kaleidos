@@ -140,6 +140,9 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "http://www.w3.org/ns/prov#Generation",
+      "http://www.w3.org/ns/prov#Invalidation",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://www.w3.org/ns/org#Organization",
     ]

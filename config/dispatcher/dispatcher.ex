@@ -151,6 +151,12 @@ defmodule Dispatcher do
   get "/government-bodies/*path", @json_service do
     Proxy.forward conn, path, "http://cache/government-bodies/"
   end
+  get "/generations/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/generations/"
+  end
+  get "/invalidations/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/invalidations/"
+  end
   match "/persons/*path", @json_service do
     Proxy.forward conn, path, "http://cache/persons/"
   end
