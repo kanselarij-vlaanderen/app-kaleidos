@@ -34,6 +34,8 @@
 
 (define-resource publication-report-type () ; two terms are in use for the same feature: publication-reports and publication-metrics-export. publication-reports is preferred.
   :class (s-prefix "pub:Publicatierapporttype")
+  :properties `((:label         :string ,(s-prefix "skos:prefLabel"))
+  )
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatierapporttype/")
   :features '(include-uri)
   :on-path "publication-report-types"
