@@ -129,9 +129,6 @@ defmodule Dispatcher do
   match "/submission-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/submission-activities/"
   end
-  match "/access-levels/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/access-levels/"
-  end
 
   get "/concepts/*path", @json_service do
     Proxy.forward conn, path, "http://cache/concepts/"
