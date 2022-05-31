@@ -15,46 +15,46 @@ pub:Publicatierapporttype a ext:PublicClass .
 
 conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 a skos:ConceptScheme ;
     mu:uuid "224637a8-a60a-4bcb-bd9b-f052456820a4" ;
-    skos:prefLabel "Publicatie-rapport-types" .
+    skos:prefLabel "Publicatie-rapport-types"@nl .
 
 publicationReportType:by-mandatees-on-decision-date
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "6f820cf1-cd36-49fb-ae82-b36ce5dbc6cb" ;
-    skos:prefLabel "Publicaties per minister voor beslissingsdatum" .
+    skos:prefLabel "Publicaties per minister voor beslissingsdatum"@nl .
 
 publicationReportType:by-mandatees-only-bvr
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "4e6cfd8c-c109-4117-ba06-93d07b03a357" ;
-    skos:prefLabel "Publicaties van BVRs per minister" .
+    skos:prefLabel "Publicaties van BVRs per minister"@nl .
 
 publicationReportType:by-mandatees-only-decree
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "9f059903-d47c-4584-86f3-bc9b16f9be5c" ;
-    skos:prefLabel "Publicaties van decreten per minister" .
+    skos:prefLabel "Publicaties van decreten per minister"@nl .
 
 publicationReportType:by-government-domains
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "b75c2a2f-2ebc-4999-94a3-48322e8fce6a" ;
-    skos:prefLabel "Publicaties per beleidsdomein" .
+    skos:prefLabel "Publicaties per beleidsdomein"@nl .
 
 publicationReportType:by-regulation-type
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "095a3da7-a383-48bf-b8c8-040ace0cad3c" ;
-    skos:prefLabel "Publicaties per type regelgeving" .
+    skos:prefLabel "Publicaties per type regelgeving"@nl .
 
 publicationReportType:by-regulation-type-only-not-via-council-of-ministers
     a skos:Concept ;
     a pub:Publicatierapporttype ;
     skos:inScheme conceptScheme:b75a85c3-a599-4d4f-a2a2-dea583f2fd86 ;
     mu:uuid "cdf03cb1-166e-49a5-b582-7216527e03a4" ;
-    skos:prefLabel "Publicaties per type regelgeving buiten Ministerraad" .
+    skos:prefLabel "Publicaties per type regelgeving buiten Ministerraad"@nl .
