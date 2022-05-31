@@ -1,0 +1,119 @@
+DELETE WHERE {
+  GRAPH ?g {
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/4bbbbc03-5dda-4885-a42f-7ee68fea1aae> ?p1 ?o1 . # Intern Secretarie
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2> ?p2 ?o2 . # Ministerraad
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/d335f7e3-aefd-4f93-81a2-1629c2edafa3> ?p3 ?o3 . # Intern Regering
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/abe4c18d-13a9-45f0-8cdd-c493eabbbe29> ?p4 ?o4 . # Intern Overheid
+    <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/6ca49d86-d40f-46c9-bde3-a322aa7e5c8e> ?p5 ?o5 . # Publiek
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
+      (
+      <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/4bbbbc03-5dda-4885-a42f-7ee68fea1aae>
+      <http://themis.vlaanderen.be/id/concept/toegangsniveau/66804c35-4652-4ff4-b927-16982a3b6de8>
+      ) # Intern Secretarie
+    }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
+      (
+      <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/2d19e6a1-8103-4b70-a55c-bc1dfc3128e2>
+      <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17>
+      ) # Ministerraad
+    }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
+      (
+      <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/d335f7e3-aefd-4f93-81a2-1629c2edafa3>
+      <http://themis.vlaanderen.be/id/concept/toegangsniveau/13ae94b0-6188-49df-8ecd-4c4a17511d6d>
+      ) # Intern Regering
+    }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
+      (
+      <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/abe4c18d-13a9-45f0-8cdd-c493eabbbe29>
+      <http://themis.vlaanderen.be/id/concept/toegangsniveau/634f438e-0d62-4ae4-923a-b63460f6bc46>
+      ) # Intern Overheid
+    }
+  }
+};
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?themisKind .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?kaleidosKind .
+    VALUES (?kaleidosKind ?themisKind) {
+      (
+      <http://kanselarij.vo.data.gift/id/concept/toegangs-niveaus/6ca49d86-d40f-46c9-bde3-a322aa7e5c8e>
+      <http://themis.vlaanderen.be/id/concept/toegangsniveau/c3de9c70-391e-4031-a85e-4b03433d6266>
+      ) # Publiek
+    }
+  }
+};
