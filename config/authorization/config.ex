@@ -140,6 +140,9 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "http://www.w3.org/ns/prov#Generation",
+      "http://www.w3.org/ns/prov#Invalidation",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://www.w3.org/ns/org#Organization",
     ]
@@ -154,7 +157,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://mu.semte.ch/vocabularies/ext/ToegangsniveauCode",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",

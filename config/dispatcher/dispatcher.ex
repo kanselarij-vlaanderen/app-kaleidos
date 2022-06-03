@@ -129,9 +129,6 @@ defmodule Dispatcher do
   match "/submission-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/submission-activities/"
   end
-  match "/access-levels/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/access-levels/"
-  end
 
   get "/concepts/*path", @json_service do
     Proxy.forward conn, path, "http://cache/concepts/"
@@ -150,6 +147,12 @@ defmodule Dispatcher do
   end
   get "/government-bodies/*path", @json_service do
     Proxy.forward conn, path, "http://cache/government-bodies/"
+  end
+  get "/generations/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/generations/"
+  end
+  get "/invalidations/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/invalidations/"
   end
   match "/persons/*path", @json_service do
     Proxy.forward conn, path, "http://cache/persons/"
