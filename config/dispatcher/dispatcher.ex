@@ -29,7 +29,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
-  ### JSON Services
+  ### Search
 
   match "/agendaitems/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/agendaitems/search/"
@@ -59,6 +59,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://search/settings/"
   end
 
+
+  ### Document version management
+
   put "/agendaitems/:id/pieces", @json_service do
     Proxy.forward conn, [], "http://document-versions/agendaitems/" <> id <> "/documents"
   end
@@ -67,17 +70,50 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://document-versions/agendaitems/" <> id <> "/pieces/restore"
   end
 
+
+  ### Agenda comparison
+
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-items", @json_service do
-    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
+    Proxy.forward conn, [], "http://agenda-comparison/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-items"
   end
 
   get "/agendas/:agenda_id/compare/:compared_agenda_id/agenda-item/:agenda_item_id/pieces", @json_service do
-    Proxy.forward conn, [], "http://agenda-sort/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
+    Proxy.forward conn, [], "http://agenda-comparison/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
   end
 
   post "/agendas/:id/agendaitems/pieces/files/archive", @json_service do
     Proxy.forward conn, [], "http://file-bundling-job-creation/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
+
+
+  ### Agenda approval and meeting management
+
+  post "/meetings/:meeting_id/reopen", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/meetings/" <> meeting_id <> "/reopen"
+  end
+
+  post "/meetings/:meeting_id/close", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/meetings/" <> meeting_id <> "/close"
+  end
+
+  post "/agendas/:agenda_id/approve", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id <> "/approve"
+  end
+
+  post "/agendas/:agenda_id/reopen", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id <> "/reopen"
+  end
+
+  post "/agendas/:agenda_id/close", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id <> "/close"
+  end
+
+  delete "/agendas/:agenda_id", @json_service do
+    Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id
+  end
+
+
+  ### Regular resources and cache
 
   match "/agendas/*path", @json_service do
     Proxy.forward conn, path, "http://cache/agendas/"
@@ -197,16 +233,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  match "/agenda-sort/*path", @json_service do
-    Proxy.forward conn, path, "http://agenda-sort/"
+  match "/agenda-comparison/*path", @json_service  do
+    Proxy.forward conn, path, "http://agenda-comparison/"
   end
 
   match "/custom-subcases/*path", @json_service do
     Proxy.forward conn, path, "http://custom-subcases/"
-  end
-
-  match "/agenda-approve/*path", @json_service do
-    Proxy.forward conn, path, "http://agenda-approve/"
   end
 
   match "/account-groups/*path", @json_service do

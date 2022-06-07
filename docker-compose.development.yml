@@ -58,7 +58,7 @@ services:
     restart: "no"
   file:
     restart: "no"
-  agenda-sort:
+  agenda-comparison:
     restart: "no"
   custom-subcases:
     restart: "no"
