@@ -10,8 +10,6 @@
                               :as "created-for")
              (agendastatus    :via        ,(s-prefix "besluitvorming:agendaStatus")
                               :as "status")
-             (access-level    :via ,(s-prefix "besluitvorming:vertrouwelijkheidsniveau")
-                              :as "access-level")
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
                               :as "previous-version")
              (agenda           :via        ,(s-prefix "prov:wasRevisionOf")

@@ -2,7 +2,7 @@
   "batch_size": 128,
   "max_batches": 0,
   "number_of_threads": 4,
-  "update_wait_interval_minutes": 8,
+  "update_wait_interval_minutes": 0,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
     [
