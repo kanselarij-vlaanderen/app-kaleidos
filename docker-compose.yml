@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-2302-refactor-api
+    image: kanselarij/agenda-approve-service:5.0.0
     logging: *default-logging
     restart: always
     labels:
