@@ -55,6 +55,11 @@
           "type": "integer",
           "predicate": "fabio:hasPageCount",
           "_comment": "Should be automatically calculated as sum of the documents in the long run"
+        },
+        "number-of-extracts": {
+          "type": "integer",
+          "predicate": "pub:aantalUittreksels",
+          "_comment": "should be treated as 1 when left off"
         }
       },
       "relationships": {

@@ -126,7 +126,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.21.0
+    image: semtech/mu-cl-resources:1.21.1
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -146,8 +146,8 @@ services:
     restart: always
     labels:
       - "logging=true"
-  agenda-sort:
-    image: kanselarij/agenda-sort-service:2.3.0
+  agenda-comparison:
+    image: kanselarij/agenda-comparison-service:3.0.0
     logging: *default-logging
     restart: always
     labels:
@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:4.1.0
+    image: kanselarij/agenda-approve-service:5.0.0
     logging: *default-logging
     restart: always
     labels:
