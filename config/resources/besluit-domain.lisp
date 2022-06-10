@@ -92,9 +92,6 @@
               ;                :as "pieces")
               (decision-activity    :via ,(s-prefix "besluitvorming:heeftBeslissing"),
                                     :as "decisions")
-              (publication-flow     :via ,(s-prefix "dct:subject"),
-                                    :inverse t
-                                    :as "publication-flows")
               (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
                                     :inverse t
                                     :as "sign-flows")
@@ -120,6 +117,11 @@
                                     :as "treatment")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
+            )
+  :has-many `(
+              (publication-flow     :via ,(s-prefix "dct:subject"),
+                                    :inverse t
+                                    :as "publication-flows")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/beslissingsactiviteit/")
   :features '(include-uri)
