@@ -101,8 +101,6 @@
             )
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
-             (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
-                                    :as "subcase")
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
                                     :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
              (newsletter-info       :via        ,(s-prefix "prov:generated")
@@ -115,7 +113,9 @@
 
 (define-resource decision-activity ()
   :class (s-prefix "besluitvorming:Beslissingsactiviteit")
-  :has-one `((agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
+  :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
+                                    :as "subcase")
+             (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
                                     :inverse t
                                     :as "treatment")
              (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
