@@ -87,9 +87,6 @@
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
   :has-many `(
-              ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
-              ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
-              ;                :as "pieces")
               (decision-activity    :via ,(s-prefix "besluitvorming:heeftBeslissing"),
                                     :as "decisions")
               (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
@@ -119,6 +116,9 @@
                                     :as "decision-result-code")
             )
   :has-many `(
+              ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
+              ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
+              ;                :as "pieces")
               (publication-flow     :via ,(s-prefix "dct:subject"),
                                     :inverse t
                                     :as "publication-flows")
