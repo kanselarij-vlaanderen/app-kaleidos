@@ -80,7 +80,7 @@
   :on-path "agendaitems")
 
 (define-resource agenda-item-treatment ()
-  :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
+  :class (s-prefix "besluit:BehandelingVanAgendapunt")
   :properties `(
                 (:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:created     :datetime   ,(s-prefix "dct:created"))
