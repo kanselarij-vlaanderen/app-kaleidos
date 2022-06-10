@@ -86,13 +86,8 @@
                 (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
-  :has-many `(
-              (decision-activity    :via ,(s-prefix "besluitvorming:heeftBeslissing"),
-                                    :as "decisions")
-              (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
-                                    :inverse t
-                                    :as "sign-flows")
-            )
+  :has-many `((decision-activity    :via ,(s-prefix "besluitvorming:heeftBeslissing"),
+                                    :as "decisions"))
   :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
@@ -122,6 +117,9 @@
               (publication-flow     :via ,(s-prefix "dct:subject"),
                                     :inverse t
                                     :as "publication-flows")
+              (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
+                                    :inverse t
+                                    :as "sign-flows")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/beslissingsactiviteit/")
   :features '(include-uri)
