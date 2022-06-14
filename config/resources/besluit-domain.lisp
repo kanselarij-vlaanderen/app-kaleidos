@@ -87,7 +87,7 @@
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
   :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
-                                    :as "decision")
+                                    :as "decision-activity")
              (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
