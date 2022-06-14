@@ -82,7 +82,6 @@
 (define-resource agenda-item-treatment ()
   :class (s-prefix "besluit:BehandelingVanAgendapunt")
   :properties `(
-                (:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
@@ -102,6 +101,7 @@
 
 (define-resource decision-activity ()
   :class (s-prefix "besluitvorming:Beslissingsactiviteit")
+  :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
