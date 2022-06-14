@@ -86,9 +86,9 @@
                 (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
-  :has-many `((decision-activity    :via ,(s-prefix "besluitvorming:heeftBeslissing"),
-                                    :as "decisions"))
-  :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+  :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
+                                    :as "decision")
+             (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
                                     :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
