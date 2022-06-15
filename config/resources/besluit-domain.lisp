@@ -89,8 +89,6 @@
                                     :as "decision-activity")
              (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                     :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
-             (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
-                                    :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
             )
@@ -104,6 +102,9 @@
   :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
+             (piece                 :via        ,(s-prefix "besluitvorming:beschrijft")
+                                    :inverse t
+                                    :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
                                     :inverse t
                                     :as "treatment")
