@@ -63,7 +63,11 @@
               (submission-activity    :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
                                       :inverse t
                                       :as "submission-activities")
-              (decision-activity      :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens") ;; mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
+              ;; - mu-cl-resources polymorphism limitation. vindtPlaatsTijdens can only be used once !
+              ;; - This relationship is has-many because it is assumed that a subcase can be put on agenda,
+              ;;   postponed (postponing is a decision) and subsequently be decided upon again, thereby adding
+              ;;   another decision-activity
+              (decision-activity      :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                       :inverse t
                                       :as "decisions"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
