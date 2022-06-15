@@ -64,10 +64,11 @@
                                       :as "next-version")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
-                                      :as "agenda-activity"))
-  :has-many `((agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                      :as "agenda-activity")
+             (agenda-item-treatment   :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
-                                      :as "treatments")
+                                      :as "treatment"))
+  :has-many `(
             ;; Added has-many relations from subcases
               (mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
@@ -87,11 +88,14 @@
                 )
   :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
                                     :as "decision-activity")
-             (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
-                                    :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
              (newsletter-info       :via        ,(s-prefix "prov:generated")
                                     :as "newsletter-info")
             )
+  :has-many `(
+             ;; agenda-item-treatment has multiple agenda-items in the sense that there is one
+             ;; agenda-item version per version of the agenda
+             (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                    :as "agendaitems"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
