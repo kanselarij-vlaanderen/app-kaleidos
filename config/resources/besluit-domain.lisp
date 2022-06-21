@@ -161,8 +161,6 @@
                 (:started-on            :datetime ,(s-prefix "prov:startedAtTime")) ;; NOTE: Kept ':geplande-start' from besluit instead of ':start' from besluitvorming
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:location              :string   ,(s-prefix "prov:atLocation"))
-                (:released-decisions    :datetime ,(s-prefix "ext:releasedDecisions"))
-                (:released-documents    :datetime ,(s-prefix "ext:releasedDocuments"))
                 (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
                 (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
@@ -177,7 +175,8 @@
                                         :as "pieces")
               (themis-publication-activity :via   ,(s-prefix "prov:used")
                                            :inverse t
-                                           :as "themis-publication-activities"))
+                                           :as "themis-publication-activities")
+            )
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
@@ -189,7 +188,16 @@
              (concept                   :via      ,(s-prefix "dct:type")
                                         :as "kind")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
-                                        :as "main-meeting"))
+                                        :as "main-meeting")
+             (internal-decision-publication-activity :via  ,(s-prefix "ext:internalDecisionPublicationActivityUsed")
+                                        ; optional:  present in new meetings since KAS-3431 / optional in older meetings
+                                        :inverse t
+                                        :as "internal-decision-publication-activity")
+             (internal-document-publication-activity :via  ,(s-prefix "ext:internalDocumentPublicationActivityUsed")
+                                        ; optional: present in new meetings since KAS-3431 / optional in older meetings
+                                        :inverse t
+                                        :as "internal-document-publication-activity")
+            )
   :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
   :features '(include-uri)
   :on-path "meetings")

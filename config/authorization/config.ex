@@ -119,6 +119,8 @@ defmodule Acl.UserGroups.Config do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://mu.semte.ch/vocabularies/ext/InternalDecisionPublicationActivity",
+      "http://mu.semte.ch/vocabularies/ext/InternalDocumentPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
     ]
   end
