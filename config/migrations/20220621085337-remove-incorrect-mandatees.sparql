@@ -33,4 +33,16 @@ DELETE WHERE {
   	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d8> ?p ?o .
     ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d8> .
   }
+};
+DELETE WHERE {
+  GRAPH ?g {
+    <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a056e> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a056e> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g {
+    <http://themis.vlaanderen.be/id/mandataris/6c1ff914-8472-49ed-a22b-8d01d907ff8b> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/6c1ff914-8472-49ed-a22b-8d01d907ff8b> .
+  }
 }
