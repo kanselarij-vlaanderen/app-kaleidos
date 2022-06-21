@@ -1,0 +1,36 @@
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057b> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057b> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0589> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0589> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0599> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0599> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b9> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b9> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c9> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c9> .
+  }
+};
+DELETE WHERE {
+  GRAPH ?g { 
+  	<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d8> ?p ?o .
+    ?s ?p_ <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d8> .
+  }
+}
