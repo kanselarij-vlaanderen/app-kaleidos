@@ -112,7 +112,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.3.0
+    image: kanselarij/cache-warmup-service:1.4.0
     logging: *default-logging
     restart: always
     labels:
