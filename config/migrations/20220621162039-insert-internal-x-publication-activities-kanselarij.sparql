@@ -4,19 +4,17 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 
-DELETE {
-    GRAPH ?g {
-        ?meeting ext:releasedDecisions ?publicationTime .
-    }
-} INSERT {
-    GRAPH ?g {
+# Only convert in kanselarij-graph
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
         ?decisionPub a ext:InternalDecisionPublicationActivity .
         ?decisionPub mu:uuid ?uuid .
         ?decisionPub ext:internalDecisionPublicationActivityUsed ?meeting .
         ?decisionPub prov:startedAtTime ?publicationTime .
     }
 } WHERE {
-    GRAPH ?g {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
         ?meeting a besluit:Vergaderactiviteit .
         ?meeting ext:releasedDecisions ?publicationTime .
     }
@@ -26,19 +24,15 @@ DELETE {
 
 ;
 
-DELETE {
-    GRAPH ?g {
-        ?meeting ext:releasedDocuments ?publicationTime .
-    }
-} INSERT {
-    GRAPH ?g {
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
         ?documentPub a ext:InternalDocumentPublicationActivity .
         ?documentPub mu:uuid ?uuid .
         ?documentPub ext:internalDocumentPublicationActivityUsed ?meeting .
         ?documentPub prov:startedAtTime ?publicationTime .
     }
 } WHERE {
-    GRAPH ?g {
+    GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
         ?meeting a besluit:Vergaderactiviteit .
         ?meeting ext:releasedDocuments ?publicationTime .
     }
