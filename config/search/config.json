@@ -342,6 +342,10 @@
           "http://www.w3.org/ns/adms#status",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "urgencyLevelId": [
+          "http://mu.semte.ch/vocabularies/ext/publicatie/urgentieniveau",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorPublicatie",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -425,6 +429,9 @@
             "type": "keyword"
           },
           "statusId": {
+            "type": "keyword"
+          },
+          "urgencyLevelId": {
             "type": "keyword"
           },
           "mandateeFirstNames": {
