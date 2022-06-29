@@ -77,7 +77,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
-      "http://data.vlaanderen.be/ns/besluit#Beslissingsactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
     ]
   end
@@ -96,7 +96,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluit#Beslissingsactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
     ]
   end
 
