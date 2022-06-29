@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.4.0
+    image: kanselarij/yggdrasil:feature-KAS-3373-decision-activity
     logging: *default-logging
     restart: always
     labels:
