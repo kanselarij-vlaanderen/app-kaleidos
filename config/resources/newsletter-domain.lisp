@@ -86,7 +86,7 @@
                   ; time the publication process has started
                   ; optional ; not set when not yet started
                 (:planned-publication-time          :datetime     ,(s-prefix "generiek:geplandeStart")) ; time the publication process should end
-                (:unconfirmed-publication-time      :datetime     ,(s-prefix "ext:onbevestigdeStarttijd")) ; time to set the start-date that is to be confirmed
+                (:unconfirmed-publication-time      :datetime     ,(s-prefix "ext:onbevestigdePublicatietijd")) ; time to set the start-date that is to be confirmed
                 (:scope            :string-set   ,(s-prefix "ext:scope"))
               )
   :has-one `((meeting              :via          ,(s-prefix "prov:used")
