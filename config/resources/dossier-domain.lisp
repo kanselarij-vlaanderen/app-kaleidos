@@ -69,7 +69,7 @@
               ;;   another decision-activity
               (decision-activity      :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                       :inverse t
-                                      :as "decisions"))
+                                      :as "decision-activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
