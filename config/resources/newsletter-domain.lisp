@@ -59,7 +59,7 @@
 
 (define-resource internal-decision-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDecisionPublicationActivity")
-  :properties `((:start-date       :datetime     ,(s-prefix "prov:startedAtTime"))
+  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime"))
               )
   :has-one `((meeting              :via          ,(s-prefix "ext:internalDecisionPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
                                    :as "meeting"))
@@ -70,8 +70,9 @@
 ; "Vrijgave" release of documents within the government
 (define-resource internal-document-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDocumentPublicationActivity")
-  :properties `((:start-date       :datetime     ,(s-prefix "prov:startedAtTime")) ; time the publication process should be finished
-                (:planned-start    :datetime     ,(s-prefix "generiek:geplandeStart")) ; time to set the start-date that is to be confirmed
+  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime")) ; time the publication process is started
+                (:planned-publication-time           :datetime   ,(s-prefix "generiek:geplandeStart")) ; time to set the start-date that should
+                (:unconfirmed-publication-time       :datetime   ,(s-prefix "ext:onbevestigdePublicatietijd"))
               )
   :has-one `((meeting              :via          ,(s-prefix "ext:internalDocumentPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
                                    :as "meeting"))
@@ -81,8 +82,11 @@
 
 (define-resource themis-publication-activity ()
   :class (s-prefix "ext:ThemisPublicationActivity")
-  :properties `((:start-date       :datetime     ,(s-prefix "prov:startedAtTime")) ; time the publication process should be finished
-                (:planned-start    :datetime     ,(s-prefix "generiek:geplandeStart")) ; time to set the start-date that is to be confirmed
+  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime"))
+                  ; time the publication process has started
+                  ; optional ; not set when not yet started
+                (:planned-publication-time          :datetime     ,(s-prefix "generiek:geplandeStart")) ; time the publication process should end
+                (:unconfirmed-publication-time      :datetime     ,(s-prefix "ext:onbevestigdeStarttijd")) ; time to set the start-date that is to be confirmed
                 (:scope            :string-set   ,(s-prefix "ext:scope"))
               )
   :has-one `((meeting              :via          ,(s-prefix "prov:used")
