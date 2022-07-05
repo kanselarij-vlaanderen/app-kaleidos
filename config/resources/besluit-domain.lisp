@@ -108,7 +108,7 @@
                                     :as "subcase")
              (piece                 :via        ,(s-prefix "besluitvorming:beschrijft")
                                     :inverse t
-                                    :as "report") ; TODO KAS-3373 In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
+                                    :as "report")
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
                                     :inverse t
                                     :as "treatment")
