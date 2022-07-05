@@ -64,10 +64,11 @@
                                       :as "next-version")
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
-                                      :as "agenda-activity"))
-  :has-many `((agenda-item-treatment  :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                      :as "agenda-activity")
+             (agenda-item-treatment   :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
-                                      :as "treatments")
+                                      :as "treatment"))
+  :has-many `(
             ;; Added has-many relations from subcases
               (mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
@@ -80,15 +81,43 @@
   :on-path "agendaitems")
 
 (define-resource agenda-item-treatment ()
-  :class (s-prefix "besluit:BehandelingVanAgendapunt") ; Also includes properties/relations from besluitvorming:Beslissingsactiviteit
+  :class (s-prefix "besluit:BehandelingVanAgendapunt")
   :properties `(
-                (:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum"))
                 (:created     :datetime   ,(s-prefix "dct:created"))
                 (:modified    :datetime   ,(s-prefix "dct:modified"))
                 )
+  :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
+                                    :as "decision-activity")
+             (newsletter-info       :via        ,(s-prefix "prov:generated")
+                                    :as "newsletter-info")
+            )
+  :has-many `(
+             ;; agenda-item-treatment has multiple agenda-items in the sense that there is one
+             ;; agenda-item version per version of the agenda
+             (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+                                    :as "agendaitems"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
+  :features '(include-uri)
+  :on-path "agenda-item-treatments")
+
+
+(define-resource decision-activity ()
+  :class (s-prefix "besluitvorming:Beslissingsactiviteit")
+  :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
+  :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
+                                    :as "subcase")
+             (piece                 :via        ,(s-prefix "besluitvorming:beschrijft")
+                                    :inverse t
+                                    :as "report")
+             (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
+                                    :inverse t
+                                    :as "treatment")
+             (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
+                                    :as "decision-result-code")
+            )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
-              ; (piece      :via ,(s-prefix "ext:documentenVoorBeslissing")
+              ; (piece      :via ,(s-prefix "prov:used")
               ;                :as "pieces")
               (publication-flow     :via ,(s-prefix "dct:subject"),
                                     :inverse t
@@ -97,20 +126,9 @@
                                     :inverse t
                                     :as "sign-flows")
             )
-  :has-one `((agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
-                                    :as "agendaitem"); NOTE: in database an agenda-item-treatment has multiple agenda-items when agenda has multiple versions
-             (subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
-                                    :as "subcase")
-             (piece                 :via        ,(s-prefix "besluitvorming:genereertVerslag")
-                                    :as "report") ;In sommige gevallen waren er hier meerdere voorkomens van. Nader te bekijken hoe wat waarom?
-             (newsletter-info       :via        ,(s-prefix "prov:generated")
-                                    :as "newsletter-info")
-             (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
-                                    :as "decision-result-code")
-            )
-  :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
+  :resource-base (s-url "http://themis.vlaanderen.be/id/beslissingsactiviteit/")
   :features '(include-uri)
-  :on-path "agenda-item-treatments")
+  :on-path "decision-activities")
 
 (define-resource decision-result-code ()
   :class (s-prefix "ext:BeslissingsResultaatCode")

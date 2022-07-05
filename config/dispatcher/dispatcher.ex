@@ -124,6 +124,9 @@ defmodule Dispatcher do
   match "/agenda-item-treatments/*path", @json_service do
     Proxy.forward conn, path, "http://cache/agenda-item-treatments/"
   end
+  match "/decision-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/decision-activities/"
+  end
   match "/decision-result-codes/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decision-result-codes/"
   end

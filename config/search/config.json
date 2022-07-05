@@ -246,7 +246,7 @@
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
             "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-            "http://data.vlaanderen.be/ns/besluitvorming#genereertVerslag",
+            "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -496,6 +496,7 @@
         "decisions": {
           "via": [
             "^http://www.w3.org/ns/prov#generated",
+            "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
             "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
           ],
           "rdf_type": "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
