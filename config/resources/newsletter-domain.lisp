@@ -3,8 +3,6 @@
   :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
                 (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
-                (:publication-date      :datetime ,(s-prefix "dct:issued"))
-                (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate"))
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
