@@ -1,0 +1,10 @@
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+INSERT {
+  ?publicationFlow pub:urgentieniveau <http://themis.vlaanderen.be/id/concept/urgentieniveau/5a48d953-3d88-4eb6-b784-ddb3070c831d> .
+}
+WHERE {
+  ?publicationFlow a pub:Publicatieaangelegenheid .
+  FILTER NOT EXISTS { ?publicationFlow pub:urgentieniveau ?urgencyLevel . }
+}

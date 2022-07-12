@@ -131,10 +131,10 @@
           "target": "identification",
           "cardinality": "one"
         },
-        "agenda-item-treatment": {
+        "decision-activity": {
           "predicate": "dct:subject",
           "cardinality": "one",
-          "target": "agenda-item-treatment"
+          "target": "decision-activity"
         }
       },
       "features": ["include-uri"],

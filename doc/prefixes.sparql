@@ -1,6 +1,3 @@
-PREFIX vobesluit: <https://data.vlaanderen.be/ns/besluitvorming#>
-PREFIX voorg: <https://data.vlaanderen.be/ns/organisatie#>
-PREFIX vogen: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX dbpedia: <http://dbpedia.org/ontology/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
@@ -13,8 +10,8 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX tmp: <http://mu.semte.ch/vocabularies/tmp/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
-PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#> # ! You currently might find this namespace starting with http instead of https in Kaleidos. The published version however starts with https.
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#> # ! You currently might find this namespace starting with http instead of https in Kaleidos. The published version however starts with https.
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>

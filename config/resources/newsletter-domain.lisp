@@ -14,18 +14,15 @@
   :has-one `((meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
                                         :inverse t
                                         :as "meeting")
+             (agenda-item-treatment     :via      ,(s-prefix "prov:generated")
+                                        :inverse t
+                                        :as "agenda-item-treatment")
              (user                      :via      ,(s-prefix "ext:modifiedBy")
                                         :as "modified-by"))
   :has-many `((theme                    :via      ,(s-prefix "dct:subject")
                                         :as "themes")
               (piece                    :via      ,(s-prefix "ext:documentenVoorPublicatie")
                                         :as "pieces")
-              (agenda-item-treatment    :via      ,(s-prefix "prov:generated")
-                                        :inverse t
-                                        :as "agenda-item-treatment")
-              ; this relationship "agenda-item-treatment" is named in a singular way, although "has-many"
-              ; In reality there is only one treatment, but there might be multiple decisions.
-              ; In the current model however, treatment and decision are one object.
               )
   :resource-base (s-url "http://themis.vlaanderen.be/id/nieuwsbrief-info/")
   :features '(include-uri)

@@ -105,7 +105,7 @@ export default [
     },
     options: {
       resourceFormat: 'v0.0.1',
-      gracePeriod: 250,
+      gracePeriod: 500, // ensure PublicationMetricsExportJob relationships have been saved, since mu-cl-resources does that in different INSERT commands
       ignoreFromSelf: false
     }
   },

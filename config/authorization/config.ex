@@ -45,6 +45,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
@@ -76,7 +77,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
-      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
     ]
   end
@@ -95,7 +96,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
     ]
   end
 
@@ -168,7 +169,7 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/2004/02/skos/core#Concept",
       "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportType",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
     ]
   end
   # Also insert your type as ext:PublicClass

@@ -53,9 +53,8 @@
           "cardinality": "one"
         },
         "decision-activity": {
-          "_comment": "TODO: split in decision-activity & agenda-item-treatment",
           "predicate": "sign:heeftBeslissing",
-          "target": "agenda-item-treatment",
+          "target": "decision-activity",
           "cardinality": "one"
         },
         "creator": {
