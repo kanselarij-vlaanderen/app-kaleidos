@@ -54,8 +54,7 @@
 
 (define-resource internal-decision-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDecisionPublicationActivity")
-  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime"))
-              )
+  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime")))
   :has-one `((meeting              :via          ,(s-prefix "ext:internalDecisionPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
                                    :as "meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/internebeslissingspublicatieactiviteit/")
@@ -65,27 +64,23 @@
 ; "Vrijgave" release of documents within the government
 (define-resource internal-document-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDocumentPublicationActivity")
-  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime")) ; time the publication process is started
-                (:planned-publication-time           :datetime   ,(s-prefix "generiek:geplandeStart")) ; time to set the start-date that should
-                (:unconfirmed-publication-time       :datetime   ,(s-prefix "ext:onbevestigdePublicatietijd"))
-              )
-  :has-one `((meeting              :via          ,(s-prefix "ext:internalDocumentPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
-                                   :as "meeting"))
+  :properties `((:start-time                        :datetime   ,(s-prefix "prov:startedAtTime")) ; time the publication process is started
+                (:planned-publication-time          :datetime   ,(s-prefix "generiek:geplandeStart"))
+                (:unconfirmed-publication-time      :datetime   ,(s-prefix "ext:onbevestigdePublicatietijd")))
+  :has-one `((meeting                               :via        ,(s-prefix "ext:internalDocumentPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
+                                                    :as "meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/internedocumentpublicatieactiviteit/")
   :features `(include-uri)
   :on-path "internal-document-publication-activities")
 
 (define-resource themis-publication-activity ()
   :class (s-prefix "ext:ThemisPublicationActivity")
-  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime"))
-                  ; time the publication process has started
-                  ; optional ; not set when not yet started
+  :properties `((:start-time                        :datetime     ,(s-prefix "prov:startedAtTime"))
                 (:planned-publication-time          :datetime     ,(s-prefix "generiek:geplandeStart")) ; time the publication process should end
                 (:unconfirmed-publication-time      :datetime     ,(s-prefix "ext:onbevestigdePublicatietijd")) ; time to set the start-date that is to be confirmed
-                (:scope            :string-set   ,(s-prefix "ext:scope"))
-              )
-  :has-one `((meeting              :via          ,(s-prefix "prov:used")
-                                   :as "meeting"))
+                (:scope                             :string-set   ,(s-prefix "ext:scope")))
+  :has-one `((meeting                               :via          ,(s-prefix "prov:used")
+                                                    :as "meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/themis-publicatie-activiteit/")
   :features `(include-uri)
   :on-path "themis-publication-activities")
