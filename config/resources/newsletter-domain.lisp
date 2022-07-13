@@ -3,6 +3,8 @@
   :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
                 (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
+                (:publication-date      :datetime ,(s-prefix "dct:issued"))
+                (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate")) ;; TODO KAS-3431 This is a copy of the themis-publication date and will not be up to date with changes
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
