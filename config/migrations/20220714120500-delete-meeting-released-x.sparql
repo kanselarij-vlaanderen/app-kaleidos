@@ -29,3 +29,5 @@ DELETE {
         ?meeting ext:releasedDocuments ?publicationTime .
     }
 }
+
+# TODO KAS-3431 cleanup newsletter on meeting if no longer used

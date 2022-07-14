@@ -3,8 +3,6 @@
   :properties `((:text                  :string   ,(s-prefix "besluitvorming:inhoud"))
                 (:richtext              :string   ,(s-prefix "ext:htmlInhoud"))
                 (:subtitle              :string   ,(s-prefix "dbpedia:subtitle"))
-                (:publication-date      :datetime ,(s-prefix "dct:issued"))
-                (:publication-doc-date  :datetime ,(s-prefix "ext:issuedDocDate")) ;; TODO KAS-3431 This is a copy of the themis-publication date and will not be up to date with changes
                 (:mandatee-proposal     :string   ,(s-prefix "ext:voorstelVan"))
                 (:title                 :string   ,(s-prefix "dct:title"))
                 (:finished              :boolean  ,(s-prefix "ext:afgewerkt"))
@@ -56,33 +54,47 @@
 
 (define-resource internal-decision-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDecisionPublicationActivity")
-  :properties `((:start-time       :datetime     ,(s-prefix "prov:startedAtTime")))
+  :properties `((:start-date       :datetime     ,(s-prefix "prov:startedAtTime")))
   :has-one `((meeting              :via          ,(s-prefix "ext:internalDecisionPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
-                                   :as "meeting"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/internebeslissingspublicatieactiviteit/")
+                                   :as "meeting")
+             (release-status       :via          ,(s-prefix "adms:status")
+                                   :as "status"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/interne-beslissing-publicatie-activiteit/")
   :features `(include-uri)
   :on-path "internal-decision-publication-activities")
 
 ; "Vrijgave" release of documents within the government
 (define-resource internal-document-publication-activity () ; FIXME extend prov:Activity
   :class (s-prefix "ext:InternalDocumentPublicationActivity")
-  :properties `((:start-time                        :datetime   ,(s-prefix "prov:startedAtTime")) ; time the publication process is started
-                (:planned-publication-time          :datetime   ,(s-prefix "generiek:geplandeStart"))
-                (:unconfirmed-publication-time      :datetime   ,(s-prefix "ext:onbevestigdePublicatietijd")))
+  :properties `((:start-date                        :datetime   ,(s-prefix "prov:startedAtTime")) ; time the publication process is started
+                (:planned-publication-time          :datetime   ,(s-prefix "generiek:geplandeStart")))
   :has-one `((meeting                               :via        ,(s-prefix "ext:internalDocumentPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
-                                                    :as "meeting"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/internedocumentpublicatieactiviteit/")
+                                                    :as "meeting")
+             (release-status                        :via          ,(s-prefix "adms:status")
+                                                    :as "status"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/interne-document-publicatie-activiteit/")
   :features `(include-uri)
   :on-path "internal-document-publication-activities")
 
 (define-resource themis-publication-activity ()
   :class (s-prefix "ext:ThemisPublicationActivity")
-  :properties `((:start-time                        :datetime     ,(s-prefix "prov:startedAtTime"))
-                (:planned-publication-time          :datetime     ,(s-prefix "generiek:geplandeStart")) ; time the publication process should end
-                (:unconfirmed-publication-time      :datetime     ,(s-prefix "ext:onbevestigdePublicatietijd")) ; time to set the start-date that is to be confirmed
+  :properties `((:start-date                        :datetime     ,(s-prefix "prov:startedAtTime"))
+                (:planned-publication-time          :datetime     ,(s-prefix "generiek:geplandeStart"))
                 (:scope                             :string-set   ,(s-prefix "ext:scope")))
   :has-one `((meeting                               :via          ,(s-prefix "prov:used")
-                                                    :as "meeting"))
+                                                    :as "meeting")
+             (release-status                        :via          ,(s-prefix "adms:status")
+                                                    :as "status"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/themis-publicatie-activiteit/")
   :features `(include-uri)
   :on-path "themis-publication-activities")
+
+  (define-resource release-status () ;; also a skos:concept
+  :class (s-prefix "ext:Vrijgavestatus")
+  :properties `((:label             :string   ,(s-prefix "skos:prefLabel"))
+                ;; (:scope-note        :string   ,(s-prefix "skos:scopeNote"))
+                ;; (:alt-label         :string   ,(s-prefix "skos:altLabel"))
+                (:position           :integer  ,(s-prefix "schema:position")))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/vrijgave-status/")
+  :features `(include-uri)
+  :on-path "release-statuses")
