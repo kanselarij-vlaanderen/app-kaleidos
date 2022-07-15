@@ -57,7 +57,7 @@
   :properties `((:start-date       :datetime     ,(s-prefix "prov:startedAtTime")))
   :has-one `((meeting              :via          ,(s-prefix "ext:internalDecisionPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
                                    :as "meeting")
-             (release-status       :via          ,(s-prefix "adms:status")
+             (release-status       :via          ,(s-prefix "adms:status") ;; TODO KAS-3431 workaround needed for using release-status on multiple models with adms:status?
                                    :as "status"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/interne-beslissing-publicatie-activiteit/")
   :features `(include-uri)
@@ -70,7 +70,7 @@
                 (:planned-publication-time          :datetime   ,(s-prefix "generiek:geplandeStart")))
   :has-one `((meeting                               :via        ,(s-prefix "ext:internalDocumentPublicationActivityUsed") ; FIXME prov:used / workaround for meeting having multiple relationships of a subtype of prov:Activity
                                                     :as "meeting")
-             (release-status                        :via          ,(s-prefix "adms:status")
+             (release-status                        :via        ,(s-prefix "adms:status") ;; TODO KAS-3431 workaround needed for using release-status on multiple models with adms:status?
                                                     :as "status"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/interne-document-publicatie-activiteit/")
   :features `(include-uri)

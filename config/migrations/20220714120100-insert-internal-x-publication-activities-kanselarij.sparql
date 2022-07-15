@@ -6,10 +6,8 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 
-# Only convert in kanselarij-graph
-# TODO KAS-3431 status vrijgegeven op interne beslissingen enkel als de flag bestaat? zelfde voor docs
-# TODO KAS-3431 geplande datum halen voor docs uit newsletter.publicationDocDate ?
-# TODO KAS-3431 releasedDocuments = vrijgeven, geen datum = gepland
+# Only convert in kanselarij-graph, rebuild of yggdrasil needed
+# releasedDocuments/releasedDecisions = vrijgeven, geen datum = gepland
 
 # If publicationTime exists, the decisions have been released so status = released
 # If it does not exist, the release is not done yet or never will be so status = planned
@@ -50,6 +48,7 @@ INSERT {
     ?documentPub ext:internalDocumentPublicationActivityUsed ?meeting .
     ?documentPub prov:startedAtTime ?publicationTime .
     ?documentPub generiek:geplandeStart ?plannedDocPublicationDate .
+    ?documentPub adms:status ?releaseStatus .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
@@ -72,8 +71,8 @@ INSERT {
   BIND (IRI(CONCAT("http://themis.vlaanderen.be/id/interne-document-publicatie-activiteit/", ?newuuid)) AS ?documentPub)
 }
 
-# TODO KAS-3431 all current themis-publications released?
-# TODO KAS-3431 add themis-publication for recent agendas (not legacy? would be inconsistent with current code). Legacy with status "planned" = not released
+# TODO KAS-3431 add the "released" status to all current themis-publications (included in latest checks in frontend)
+# TODO KAS-3431 add themis-publication for recent agendas (if any) (not legacy? would be inconsistent with current code). Legacy with status "planned" = not released
 
 ;
 
