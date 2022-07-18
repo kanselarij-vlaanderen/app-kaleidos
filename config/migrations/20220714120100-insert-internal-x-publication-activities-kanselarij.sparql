@@ -1,0 +1,106 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+# Only convert in kanselarij-graph, rebuild of yggdrasil needed
+# releasedDocuments/releasedDecisions = vrijgeven, geen datum = gepland
+
+# If publicationTime exists, the decisions have been released so status = released
+# If it does not exist, the release is not done yet or never will be so status = planned
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?decisionPub a ext:InternalDecisionPublicationActivity .
+    ?decisionPub mu:uuid ?newuuid .
+    ?decisionPub ext:internalDecisionPublicationActivityUsed ?meeting .
+    ?decisionPub prov:startedAtTime ?publicationTime .
+    ?decisionPub adms:status ?releaseStatus .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newuuid) ?publicationTime ?releaseStatus WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit .
+          OPTIONAL { ?meeting ext:releasedDecisions ?publicationTime .}
+
+          BIND(IF(BOUND(?publicationTime),
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5>,
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54>)
+            AS ?releaseStatus)
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://themis.vlaanderen.be/id/interne-beslissing-publicatie-activiteit/", ?newuuid)) AS ?decisionPub)
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentPub a ext:InternalDocumentPublicationActivity .
+    ?documentPub mu:uuid ?newuuid .
+    ?documentPub ext:internalDocumentPublicationActivityUsed ?meeting .
+    ?documentPub prov:startedAtTime ?publicationTime .
+    ?documentPub generiek:geplandeStart ?plannedDocPublicationDate .
+    ?documentPub adms:status ?releaseStatus .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newuuid) ?publicationTime ?plannedDocPublicationDate ?releaseStatus WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit ;
+            ext:algemeneNieuwsbrief ?newsletter .
+          ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+          OPTIONAL { ?meeting ext:releasedDocuments ?publicationTime . }
+          BIND(IF(BOUND(?publicationTime),
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5>,
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54>)
+            AS ?releaseStatus)
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://themis.vlaanderen.be/id/interne-document-publicatie-activiteit/", ?newuuid)) AS ?documentPub)
+}
+
+# TODO KAS-3431 add the "released" status to all current themis-publications (included in latest checks in frontend)
+# TODO KAS-3431 add themis-publication for recent agendas (if any) (not legacy? would be inconsistent with current code). Legacy with status "planned" = not released
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      mu:uuid ?newThemisPublicationuuid ;
+      prov:used ?meeting ;
+      ext:scope "newsitems" ;
+      ext:scope "documents" ;
+      generiek:geplandeStart ?plannedDocPublicationDate ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54> .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newThemisPublicationuuid) ?plannedDocPublicationDate WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit ;
+            ext:algemeneNieuwsbrief ?newsletter ;
+            ext:finaleZittingVersie "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+          ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+        }
+      }
+    }
+    BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?themisPublicationActivity)
+  }
+}
+

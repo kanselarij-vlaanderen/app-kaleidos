@@ -170,6 +170,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/2004/02/skos/core#Concept",
       "http://www.w3.org/2004/02/skos/core#ConceptScheme",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
+      "http://mu.semte.ch/vocabularies/ext/Vrijgavestatus",
     ]
   end
   # Also insert your type as ext:PublicClass

@@ -1,0 +1,31 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix schema: <http://schema.org/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+
+# TODO-3431 are we going to use concepts directly?
+
+<http://themis.vlaanderen.be/id/concept-scheme/49c93ef8-ca21-4ff9-b6d3-8351b410b563> a skos:ConceptScheme;
+    mu:uuid "49c93ef8-ca21-4ff9-b6d3-8351b410b563" ;
+    skos:prefLabel "Vrijgavestatussen"@nl .
+
+<http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54> a ext:Vrijgavestatus ;
+      a skos:Concept ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/49c93ef8-ca21-4ff9-b6d3-8351b410b563> ;
+      mu:uuid "1bd5b05a-07af-46d3-827f-297f993b8b54" ;
+      schema:position 1 ;
+      skos:prefLabel "Gepland"@nl .
+
+<http://themis.vlaanderen.be/id/concept/vrijgave-status/5da73f0d-6605-493c-9c1c-0d3a71bf286a> a ext:Vrijgavestatus ;
+      a skos:Concept ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/49c93ef8-ca21-4ff9-b6d3-8351b410b563> ;
+      mu:uuid "5da73f0d-6605-493c-9c1c-0d3a71bf286a" ;
+      schema:position 2 ;
+      skos:prefLabel "Bevestigd"@nl .
+
+<http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> a ext:Vrijgavestatus ;
+      a skos:Concept ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/49c93ef8-ca21-4ff9-b6d3-8351b410b563> ;
+      mu:uuid "27bd25d1-72b4-49b2-a0ba-236ca28373e5" ;
+      schema:position 3 ;
+      skos:prefLabel "Vrijgegeven"@nl .
