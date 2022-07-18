@@ -1,0 +1,55 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity generiek:geplandeStart ?plannedDocPublicationDate ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      prov:used ?meeting .
+    ?meeting a besluit:Vergaderactiviteit ;
+      ext:algemeneNieuwsbrief ?newsletter ;
+    ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+  }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      mu:uuid ?newThemisPublicationuuid ;
+      prov:used ?meeting ;
+      ext:scope "newsitems" ;
+      ext:scope "documents" ;
+      generiek:geplandeStart ?plannedDocPublicationDate ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54> .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    FILTER NOT EXISTS {
+      ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+        prov:used ?meeting .
+    }
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newThemisPublicationuuid) ?plannedDocPublicationDate WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit ;
+            ext:algemeneNieuwsbrief ?newsletter .
+          ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+        }
+      }
+    }
+    BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?themisPublicationActivity)
+  }
+}

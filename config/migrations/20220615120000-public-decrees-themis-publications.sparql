@@ -39,4 +39,4 @@ INSERT {
     }
     BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?newThemisPublicationURI)
   }
-}  
+}
