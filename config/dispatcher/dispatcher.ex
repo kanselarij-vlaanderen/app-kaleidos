@@ -232,10 +232,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/themis-publication-activities/"
   end
 
-  match "/release-statuses/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/release-statuses/"
-  end
-
   match "/themes/*path", @json_service do
     Proxy.forward conn, path, "http://cache/themes/"
   end
