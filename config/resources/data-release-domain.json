@@ -1,0 +1,100 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "adms": "http://www.w3.org/ns/adms#",
+    "generiek": "http://data.vlaanderen.be/ns/generiek#"
+  },
+  "resources": {
+    "internal-decision-publication-activities": {
+      "name": "internal-decision-publication-activity",
+      "class": "ext:InternalDecisionPublicationActivity",
+      "_comment": "Subclass of prov:Activity",
+      "attributes": {
+        "planned-date": {
+          "type": "datetime",
+          "predicate":  "generiek:geplandeStart"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate":  "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "meeting": {
+          "predicate": "ext:internalDocumentPublicationActivityUsed",
+          "target": "meeting",
+          "cardinality": "one",
+          "_comment": "Subpredicate of prov:used"
+        },
+        "concept": {
+          "predicate": "adms:status",
+          "target": "status",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/interne-beslissing-publicatie-activiteit/"
+    },
+    "internal-document-publication-activities": {
+      "name": "internal-document-publication-activity",
+      "class": "ext:InternalDocumentPublicationActivity",
+      "_comment": "Subclass of prov:Activity",
+      "attributes": {
+        "planned-date": {
+          "type": "datetime",
+          "predicate":  "generiek:geplandeStart"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate":  "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "meeting": {
+          "predicate": "ext:internalDocumentPublicationActivityUsed",
+          "target": "meeting",
+          "cardinality": "one",
+          "_comment": "Subpredicate of prov:used"
+        },
+        "concept": {
+          "predicate": "adms:status",
+          "target": "status",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/interne-document-publicatie-activiteit/"
+    },
+    "themis-publication-activities": {
+      "name": "themis-publication-activity",
+      "class": "ext:ThemisPublicationActivity",
+      "_comment": "Subclass of prov:Activity",
+      "attributes": {
+        "planned-date": {
+          "type": "datetime",
+          "predicate":  "generiek:geplandeStart"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate":  "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "meeting": {
+          "predicate": "prov:used",
+          "target": "meeting",
+          "cardinality": "one"
+        },
+        "concept": {
+          "predicate": "adms:status",
+          "target": "status",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/themis-publicatie-activiteit/"
+    }
+  }
+}

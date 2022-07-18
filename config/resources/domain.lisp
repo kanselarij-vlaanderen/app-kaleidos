@@ -32,6 +32,7 @@
 (read-domain-file "newsletter-domain.lisp")
 (read-domain-file "organisatie-domain.json")
 (read-domain-file "publicatie-domain.json")
+(read-domain-file "data-release-domain.json")
 (read-domain-file "users-domain.lisp")
 (read-domain-file "email-domain.lisp")
 (read-domain-file "generiek-domain.json")

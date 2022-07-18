@@ -193,8 +193,7 @@
                                         :as "pieces")
               (themis-publication-activity :via   ,(s-prefix "prov:used")
                                            :inverse t
-                                           :as "themis-publication-activities")
-            )
+                                           :as "themis-publication-activities"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
              (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
@@ -208,14 +207,11 @@
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting")
              (internal-decision-publication-activity :via  ,(s-prefix "ext:internalDecisionPublicationActivityUsed")
-                                        ; optional:  present in new meetings since KAS-3431 / optional in older meetings
                                         :inverse t
                                         :as "internal-decision-publication-activity")
              (internal-document-publication-activity :via  ,(s-prefix "ext:internalDocumentPublicationActivityUsed")
-                                        ; optional: present in new meetings since KAS-3431 / optional in older meetings
                                         :inverse t
-                                        :as "internal-document-publication-activity")
-            )
+                                        :as "internal-document-publication-activity"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/zitting/")
   :features '(include-uri)
   :on-path "meetings")
