@@ -16,7 +16,7 @@ INSERT {
     ?themisPublicationActivity a ext:ThemisPublicationActivity ;
       prov:used ?meeting .
     ?meeting a besluit:Vergaderactiviteit ;
-      ext:algemeneNieuwsbrief ?newsletter ;
+      ext:algemeneNieuwsbrief ?newsletter .
     ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
   }
 }
