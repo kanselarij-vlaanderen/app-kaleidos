@@ -28,9 +28,9 @@
           "cardinality": "one",
           "_comment": "Subpredicate of prov:used"
         },
-        "concept": {
+        "status": {
           "predicate": "adms:status",
-          "target": "status",
+          "target": "concept",
           "cardinality": "one"
         }
       },
@@ -58,9 +58,9 @@
           "cardinality": "one",
           "_comment": "Subpredicate of prov:used"
         },
-        "concept": {
+        "status": {
           "predicate": "adms:status",
-          "target": "status",
+          "target": "concept",
           "cardinality": "one"
         }
       },
@@ -79,6 +79,10 @@
         "start-date": {
           "type": "datetime",
           "predicate":  "prov:startedAtTime"
+        },
+        "scope": {
+          "type": "string-set",
+          "predicate": "ext:scope"
         }
       },
       "relationships": {
@@ -87,9 +91,9 @@
           "target": "meeting",
           "cardinality": "one"
         },
-        "concept": {
+        "status": {
           "predicate": "adms:status",
-          "target": "status",
+          "target": "concept",
           "cardinality": "one"
         }
       },
