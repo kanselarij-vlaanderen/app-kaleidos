@@ -6,6 +6,8 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 
+# Set released status on existing Themis publication activities
+
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?themisPublicationActivity generiek:geplandeStart ?plannedDocPublicationDate ;
@@ -22,6 +24,8 @@ INSERT {
 }
 
 ;
+
+# Insert Themis publication activity for meetings that don't have one yet
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {

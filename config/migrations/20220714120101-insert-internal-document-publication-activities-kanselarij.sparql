@@ -21,6 +21,7 @@ INSERT {
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?meeting a besluit:Vergaderactiviteit .
+    FILTER NOT EXISTS { ?anyPubActivity ext:internalDocumentPublicationActivityUsed ?meeting . }
     {
       SELECT DISTINCT ?meeting (STRUUID() AS ?newuuid) ?publicationTime ?plannedDocPublicationDate ?releaseStatus WHERE {
         GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
