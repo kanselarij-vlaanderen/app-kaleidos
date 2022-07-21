@@ -23,7 +23,7 @@
       },
       "relationships": {
         "meeting": {
-          "predicate": "ext:internalDocumentPublicationActivityUsed",
+          "predicate": "ext:internalDecisionPublicationActivityUsed",
           "target": "meeting",
           "cardinality": "one",
           "_comment": "Subpredicate of prov:used"
