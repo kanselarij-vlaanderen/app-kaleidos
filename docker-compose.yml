@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.1.0
+    image: kanselarij/agenda-approve-service:5.2.0
     logging: *default-logging
     restart: always
     labels:
@@ -188,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.2.1
+    image: kanselarij/newsletter-service:3.3.0
     logging: *default-logging
     restart: always
     labels:
@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.5.0
+    image: kanselarij/yggdrasil:5.6.0
     logging: *default-logging
     restart: always
     labels:
@@ -246,10 +246,11 @@ services:
     labels:
       - "logging=true"
   document-release:
-    entrypoint: "echo 'service disabled'" # disabled until spec is clarified
-    image: kanselarij/document-release-service:0.1.1
+    image: kanselarij/document-release-service:1.0.0
     logging: *default-logging
     restart: "no"
+    labels:
+      - "logging=true"
   mail-delivery:
     image: redpencil/deliver-email-service:0.3.0
     environment:

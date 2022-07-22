@@ -1,0 +1,134 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+# Set released status on all Themis publication activities < 08-09-2016, but remove
+# documents scope. Documents were not published to Valvas back then
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity ext:scope "documents" .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> ; generiek:geplandeStart ?startDate .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      prov:startedAtTime ?startDate .
+    FILTER NOT EXISTS {
+      ?themisPublicationActivity adms:status ?status .
+    }
+    ?themisPublicationActivity prov:used ?meeting .
+    ?meeting a besluit:Vergaderactiviteit ;
+      besluit:geplandeStart ?meetingStart .
+    FILTER (?meetingStart < "2016-09-08T00:00:00.000Z"^^xsd:dateTime)
+  }
+}
+
+;
+
+# Set released status on other existing Themis publication activities
+# Planned start taken from newsletter, fallback to internal document release date,
+# fallback to themis-publication-activity start date
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity generiek:geplandeStart ?plannedDate ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      prov:startedAtTime ?startDate .
+    FILTER NOT EXISTS {
+      ?themisPublicationActivity adms:status ?status .
+    }
+    ?themisPublicationActivity prov:used ?meeting .
+    ?meeting a besluit:Vergaderactiviteit .
+    OPTIONAL {
+      ?meeting ext:algemeneNieuwsbrief ?newsletter .
+      ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+    }
+    OPTIONAL { ?meeting ext:releasedDocuments ?publicationTime . }
+    # plannedDocPublicationDate > publicationTime > startDate
+    BIND(IF(BOUND(?plannedDocPublicationDate), ?plannedDocPublicationDate, IF(BOUND(?publicationTime), ?publicationTime, ?startDate)) as ?plannedDate)
+  }
+}
+
+;
+
+# Insert 'empty' Themis publication activity for all pre-Valvas meetings
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      mu:uuid ?newThemisPublicationuuid ;
+      prov:used ?meeting ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newThemisPublicationuuid) WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit ;
+            besluit:geplandeStart ?meetingStart .
+          FILTER (?meetingStart < "2006-07-19T00:00:00.000Z"^^xsd:dateTime)
+          FILTER NOT EXISTS {
+            ?themisPublicationActivity prov:used ?meeting .
+          }
+        }
+      }
+    }
+    BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?themisPublicationActivity)
+  }
+}
+
+;
+
+# Insert Themis publication activity for meetings that don't have one yet (eg. recent meetings in Kaleidos that are still open and not yet released on Valvas)
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+      mu:uuid ?newThemisPublicationuuid ;
+      prov:used ?meeting ;
+      ext:scope "newsitems" ;
+      ext:scope "documents" ;
+      generiek:geplandeStart ?plannedDate ;
+      prov:startedAtTime ?plannedDocPublicationDate ;
+      adms:status ?releaseStatus .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newThemisPublicationuuid) ?plannedDate ?plannedDocPublicationDate ?releaseStatus WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit .
+          FILTER NOT EXISTS {
+            ?themisPublicationActivity a ext:ThemisPublicationActivity ;
+               prov:used ?meeting .
+          }
+          OPTIONAL {
+            ?meeting ext:algemeneNieuwsbrief ?newsletter .
+            ?newsletter ext:issuedDocDate ?plannedDocPublicationDate .
+          }
+          OPTIONAL { ?meeting ext:releasedDocuments ?publicationTime . }
+          BIND(IF(BOUND(?plannedDocPublicationDate),
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5>,
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54>)
+               AS ?releaseStatus)
+          BIND(IF(BOUND(?plannedDocPublicationDate), ?plannedDocPublicationDate, ?publicationTime) as ?plannedDate)
+        }
+      }
+    }
+    BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?themisPublicationActivity)
+  }
+}

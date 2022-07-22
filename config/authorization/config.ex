@@ -120,6 +120,8 @@ defmodule Acl.UserGroups.Config do
     [
       "http://data.vlaanderen.be/ns/besluitvorming#NieuwsbriefInfo",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://mu.semte.ch/vocabularies/ext/InternalDecisionPublicationActivity",
+      "http://mu.semte.ch/vocabularies/ext/InternalDocumentPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
     ]
   end
@@ -167,7 +169,7 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/2004/02/skos/core#Concept",
       "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype"
     ]
   end
   # Also insert your type as ext:PublicClass

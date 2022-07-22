@@ -220,6 +220,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/newsletter-infos/"
   end
 
+  match "/internal-decision-publication-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/internal-decision-publication-activities/"
+  end
+
+  match "/internal-document-publication-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/internal-document-publication-activities/"
+  end
+
   match "/themis-publication-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/themis-publication-activities/"
   end

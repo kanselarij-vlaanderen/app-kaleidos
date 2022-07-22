@@ -1,0 +1,39 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+# Only convert in kanselarij-graph, rebuild of yggdrasil needed
+# If publicationTime exists, the decisions have been released so status = released
+# If it does not exist, the release is not done yet or never will be so status = planned
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?decisionPub a ext:InternalDecisionPublicationActivity .
+    ?decisionPub mu:uuid ?newuuid .
+    ?decisionPub ext:internalDecisionPublicationActivityUsed ?meeting .
+    ?decisionPub prov:startedAtTime ?publicationTime .
+    ?decisionPub adms:status ?releaseStatus .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    FILTER NOT EXISTS { ?anyPubActivity ext:internalDecisionPublicationActivityUsed ?meeting . }
+    {
+      SELECT DISTINCT ?meeting (STRUUID() AS ?newuuid) ?publicationTime ?releaseStatus WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?meeting a besluit:Vergaderactiviteit .
+          OPTIONAL { ?meeting ext:releasedDecisions ?publicationTime .}
+
+          BIND(IF(BOUND(?publicationTime),
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5>,
+          <http://themis.vlaanderen.be/id/concept/vrijgave-status/1bd5b05a-07af-46d3-827f-297f993b8b54>)
+            AS ?releaseStatus)
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://themis.vlaanderen.be/id/interne-beslissing-publicatie-activiteit/", ?newuuid)) AS ?decisionPub)
+}
