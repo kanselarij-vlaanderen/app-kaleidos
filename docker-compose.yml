@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.31.1
+    image: kanselarij/frontend-kaleidos:5.33.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -26,7 +26,7 @@ services:
     labels:
       - "logging=true"
   identifier:
-    image: semtech/mu-identifier:1.9.1
+    image: semtech/mu-identifier:1.10.0
     logging: *default-logging
     restart: always
     labels:
@@ -98,7 +98,7 @@ services:
     logging: *default-logging
     restart: always
   tika:
-    image: apache/tika:1.24-full
+    image: redpencil/tika:2.4.0
     logging: *default-logging
     restart: always
     labels:
@@ -153,13 +153,13 @@ services:
     labels:
       - "logging=true"
   custom-subcases:
-    image: kanselarij/custom-subcases-service:2.2.1
+    image: kanselarij/custom-subcases-service:3.0.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.0.0
+    image: kanselarij/agenda-approve-service:5.1.0
     logging: *default-logging
     restart: always
     labels:
@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.4.0
+    image: kanselarij/yggdrasil:5.5.0
     logging: *default-logging
     restart: always
     labels:

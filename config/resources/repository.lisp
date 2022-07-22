@@ -11,9 +11,6 @@
 ;; This is a short-form which allows you to write, for example,
 ;; (s-url "http://purl.org/dc/terms/title")
 ;; as (s-prefix "dct:title")
-(add-prefix "vobesluit" "https://data.vlaanderen.be/ns/besluitvorming#")
-(add-prefix "voorg" "https://data.vlaanderen.be/ns/organisatie#")
-(add-prefix "vogen" "https://data.vlaanderen.be/ns/generiek#")
 (add-prefix "dbpedia" "http://dbpedia.org/ontology/")
 (add-prefix "dcat" "http://www.w3.org/ns/dcat#")
 (add-prefix "dct" "http://purl.org/dc/terms/")
@@ -37,6 +34,7 @@
 (add-prefix "tmp" "http://mu.semte.ch/vocabularies/tmp/")
 
 (add-prefix "besluit" "http://data.vlaanderen.be/ns/besluit#")
+;; Note that the actual published domain for "besluitvorming" is https://data.vlaanderen.be/ns/besluitvorming# (httpS)
 (add-prefix "besluitvorming" "http://data.vlaanderen.be/ns/besluitvorming#")
 (add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#")
 (add-prefix "mandaat" "http://data.vlaanderen.be/ns/mandaat#")

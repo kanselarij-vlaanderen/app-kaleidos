@@ -49,9 +49,8 @@
             ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
             ;;                             :inverse t
             ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
-            (agenda-item-treatment      :via ,(s-prefix "besluitvorming:genereertVerslag")
-                                        :inverse t
-                                        :as "agenda-item-treatment")
+            (decision-activity          :via ,(s-prefix "besluitvorming:beschrijft") ;; A relationship BehandelingVanAgendapunt -> genereertVerslag -> Stuk exists too in besluitvorming applicatieprofiel. We only implement besluitvorming:beschrijft for now.
+                                        :as "decision-activity")
             (language                   :via  ,(s-prefix "dct:language") ;; only when type === translationActivity
                                         :as "language")
             (piece                      :via ,(s-prefix "ext:isVertalingVan") ;; niet eli:is_translation_of, is enkel voor rechtsgeldige documenten !

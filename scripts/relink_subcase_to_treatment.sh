@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo 'this script is for reference only';
-echo 'run query if agenda-item-treatments do not have a subcase cfr. KAS-1942';
+echo 'run query if decision-activities do not have a subcase cfr. KAS-1942';
+echo 'updated query after refactor treatment/decisionActivity'
 echo 'then restart cache and resource';
 
 exit;
@@ -13,7 +14,7 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 INSERT {
   GRAPH ?G  {
-    ?treatment ext:beslissingVindtPlaatsTijdens ?subcase .
+    ?decisionActivity ext:beslissingVindtPlaatsTijdens ?subcase .
   }
 } WHERE {
   GRAPH ?G  {
@@ -23,6 +24,7 @@ INSERT {
     ?agendaitem a besluit:Agendapunt .
     ?subcase ^besluitvorming:vindtPlaatsTijdens / besluitvorming:genereertAgendapunt ?agendaitem .
     ?treatment besluitvorming:heeftOnderwerp ?agendaitem .
-    FILTER NOT EXISTS { ?treatment ext:beslissingVindtPlaatsTijdens ?subcase . }
+    ?treatment besluitvorming:heeftBeslissing ?decisionActivity .
+    FILTER NOT EXISTS { ?decisionActivity ext:beslissingVindtPlaatsTijdens ?subcase . }
   }
 }
