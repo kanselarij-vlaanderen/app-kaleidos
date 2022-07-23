@@ -188,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.3.0
+    image: kanselarij/newsletter-service:3.3.1
     logging: *default-logging
     restart: always
     labels:
