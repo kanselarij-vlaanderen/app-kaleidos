@@ -100,6 +100,9 @@ services:
   staatsblad-uuid-generation:
     entrypoint: "echo 'service disabled'"
     restart: "no"
+  staatsblad-scraping:
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
   staatsblad-linking:
     entrypoint: "echo 'service disabled'"
     restart: "no"

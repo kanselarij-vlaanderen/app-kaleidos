@@ -273,6 +273,14 @@ services:
       - ./data/staatsblad:/data
     restart: "no" # restart disabled on purpose. Service is triggered by server cron and should not always run
     logging: *default-logging
+  staatsblad-scraping:
+    image: kanselarij/staatsblad-scraping-service:0.0.2
+    environment:
+      CRON_PATTERN: "20 */7 * * *"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   staatsblad-import:
     image: kanselarij/ttl-import-service:0.2.0
     volumes:
