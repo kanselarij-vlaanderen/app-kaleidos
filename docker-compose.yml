@@ -137,7 +137,7 @@ services:
     labels:
       - "logging=true"
   file:
-    image: semtech/mu-file-service:3.2.0
+    image: semtech/mu-file-service:3.3.0
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
     volumes:
