@@ -489,10 +489,6 @@
           "http://purl.org/dc/terms/subject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "generalNewsletterMeetingId": [
-          "^http://mu.semte.ch/vocabularies/ext/algemeneNieuwsbrief",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
         "decisions": {
           "via": [
             "^http://www.w3.org/ns/prov#generated",
