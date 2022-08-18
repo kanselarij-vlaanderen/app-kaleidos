@@ -326,6 +326,29 @@ defmodule Acl.UserGroups.Config do
           },
         ]
       },
+      %GroupSpec{
+        name: "kort-bestek",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/kort-bestek>" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
+            constraint: %ResourceConstraint{
+              resource_types: generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                publication_resource_types() ++
+                sign_resource_types() ++
+                staatsblad_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
+            }
+          },
+        ]
+      },
 
       # // CLEANUP
       #
