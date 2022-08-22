@@ -196,8 +196,6 @@
                                            :as "themis-publication-activities"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
                                         :as "agenda")
-             (newsletter-info           :via      ,(s-prefix "ext:algemeneNieuwsbrief")
-                                        :as "newsletter")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")

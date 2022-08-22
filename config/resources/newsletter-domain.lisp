@@ -9,10 +9,7 @@
                 (:in-newsletter         :boolean  ,(s-prefix "ext:inNieuwsbrief"))
                 (:remark                :string   ,(s-prefix "ext:opmerking"))
                 (:modified              :datetime ,(s-prefix "ext:aangepastOp")))
-  :has-one `((meeting                   :via      ,(s-prefix "ext:algemeneNieuwsbrief")
-                                        :inverse t
-                                        :as "meeting")
-             (agenda-item-treatment     :via      ,(s-prefix "prov:generated")
+  :has-one `((agenda-item-treatment     :via      ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "agenda-item-treatment")
              (user                      :via      ,(s-prefix "ext:modifiedBy")
