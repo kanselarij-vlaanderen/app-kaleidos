@@ -7,6 +7,8 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
 
 # This query will insert a new publication activity for each meeting.
 # ! the "prov:startedAtTime" needs to be changed to a time in the near future to trigger themis/valvas publication
@@ -15,7 +17,8 @@ INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?newThemisPublicationURI a ext:ThemisPublicationActivity ;
       mu:uuid ?newThemisPublicationuuid ;
-      prov:startedAtTime "2022-07-02T12:00:00+02:00"^^xsd:dateTime ;
+      generiek:geplandeStart "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/5da73f0d-6605-493c-9c1c-0d3a71bf286a> ;
       ext:scope "newsitems" ;
       ext:scope "documents" ;
       prov:used ?meeting .
