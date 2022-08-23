@@ -317,3 +317,9 @@ services:
     restart: always
     labels:
       - "logging=true"
+  gov-field-sync:
+    image: kanselarij/gov-field-sync-service:1.0.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

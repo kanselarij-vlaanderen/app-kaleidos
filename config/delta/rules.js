@@ -151,7 +151,7 @@ export default [
       },
     },
     callback: {
-      url: 'http://case-documents-sync/delta',
+      url: 'http://gov-field-sync/delta',
       method: 'POST'
     },
     options: {
