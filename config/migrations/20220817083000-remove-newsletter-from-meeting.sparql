@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?graph {
+    ?newsletter ?p ?o .
+    ?s ?pp ?newsletter .
+  }
+}
+WHERE {
+  GRAPH ?graph {
+    ?meeting ext:algemeneNieuwsbrief ?newsletter .
+
+    OPTIONAL { ?newsletter ?p ?o . }
+    OPTIONAL { ?s ?pp ?newsletter . }
+  }
+}
