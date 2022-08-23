@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.3.0
+    image: kanselarij/agenda-approve-service:feature-KAS-2711-use-agendaitem-type
     logging: *default-logging
     restart: always
     labels:
