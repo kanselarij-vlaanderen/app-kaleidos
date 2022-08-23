@@ -115,6 +115,10 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
         ],
+        "pieceNames": [
+          "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "http://purl.org/dc/terms/title"
+        ],
         "data": {
           "via": [
             "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
@@ -178,6 +182,11 @@
             "search_analyzer": "dutchanalyzer"
           },
           "mandateeFamilyNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "pieceNames": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
@@ -488,10 +497,6 @@
         "themes": [
           "http://purl.org/dc/terms/subject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
-        ],
-        "generalNewsletterMeetingId": [
-          "^http://mu.semte.ch/vocabularies/ext/algemeneNieuwsbrief",
-          "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "decisions": {
           "via": [

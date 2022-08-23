@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.2.0
+    image: kanselarij/agenda-approve-service:5.3.0
     logging: *default-logging
     restart: always
     labels:
@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.6.2
+    image: kanselarij/yggdrasil:5.7.0
     logging: *default-logging
     restart: always
     labels:
