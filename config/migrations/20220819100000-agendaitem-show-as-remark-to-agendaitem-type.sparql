@@ -1,0 +1,47 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dossier: <https://data.omgeving.vlaanderen.be/ns/dossier#>
+
+INSERT {
+  GRAPH ?g { ?agendaitem dct:type ?notaType . }
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem ext:wordtGetoondAlsMededeling "false"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+    BIND(<http://themis.vlaanderen.be/id/concept/agendapunt-type/dd47a8f8-3ad2-4d5a-8318-66fc02fe80fd> AS ?notaType)
+  }
+};
+
+INSERT {
+  GRAPH ?g { ?agendaitem dct:type ?notaType . }
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    BIND(<http://themis.vlaanderen.be/id/concept/agendapunt-type/dd47a8f8-3ad2-4d5a-8318-66fc02fe80fd> AS ?notaType)
+    FILTER NOT EXISTS { ?agendaitem ext:wordtGetoondAlsMededeling ?showAsRemark . }
+  }
+};
+
+INSERT {
+  GRAPH ?g { ?agendaitem dct:type ?mededelingType . }
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem ext:wordtGetoondAlsMededeling "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+    BIND(<http://themis.vlaanderen.be/id/concept/agendapunt-type/8f8adcf0-58ef-4edc-9e36-0c9095fd76b0> AS ?mededelingType)
+  }
+};
+
+DELETE {
+  GRAPH ?g { ?agendaitem ext:wordtGetoondAlsMededeling ?showAsRemark . }
+}
+WHERE {
+  GRAPH ?g {
+    ?agendaitem a besluit:Agendapunt .
+    ?agendaitem ext:wordtGetoondAlsMededeling ?showAsRemark .
+  }
+}
