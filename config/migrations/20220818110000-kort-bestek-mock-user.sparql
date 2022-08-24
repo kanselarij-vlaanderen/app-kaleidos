@@ -1,0 +1,27 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX user: <http://data.kanselarij.vlaanderen.be/id/gebruiker/>
+PREFIX account: <http://data.kanselarij.vlaanderen.be/id/account/>
+PREFIX group: <http://data.kanselarij.vlaanderen.be/id/group/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      user:kort-bestek a foaf:Person ;
+          mu:uuid "8f00854c-f418-4012-9d67-c8c4b990e4a6" ;
+          foaf:firstName "Kort Bestek" ;
+          foaf:familyName "Test" ;
+          foaf:account account:kort-bestek .
+
+      account:kort-bestek a foaf:OnlineAccount ;
+          mu:uuid "87b7b743-ea43-4d08-bd47-9a1eefbfdc83" ;
+          foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
+          dct:identifier "Kort Bestek" .
+
+      group:kort-bestek a foaf:Group ;
+          mu:uuid "5ee06a10-c315-4e92-b517-ae8c087af820" ;
+          foaf:name "Kort Bestek" ;
+          foaf:member user:kort-bestek .
+    }
+}
