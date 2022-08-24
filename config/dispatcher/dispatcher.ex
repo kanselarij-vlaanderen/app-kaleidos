@@ -145,6 +145,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/document-types/"
   end
 
+  match "/decisionmaking-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/decisionmaking-flows/"
+  end
   match "/cases/*path", @json_service do
     Proxy.forward conn, path, "http://cache/cases/"
   end
