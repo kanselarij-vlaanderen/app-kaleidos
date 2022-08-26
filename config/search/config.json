@@ -201,14 +201,26 @@
       }
     },
     {
-      "type": "case",
+      "type": "decisionmaking-flow",
       "on_path": "cases",
-      "rdf_type": "https://data.vlaanderen.be/ns/dossier#Dossier",
+      "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "properties": {
-        "title": "http://purl.org/dc/terms/title",
-        "created": "http://purl.org/dc/terms/created",
-        "shortTitle": "http://purl.org/dc/terms/alternative",
-        "isArchived": "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
+        "title":  [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "http://purl.org/dc/terms/title",
+        ],
+        "created":  [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "http://purl.org/dc/terms/created",
+        ],
+        "shortTitle":  [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "http://purl.org/dc/terms/alternative",
+        ],
+        "isArchived":  [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
+        ],
         "mandatees": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -245,6 +257,7 @@
         ],
         "documents": {
           "via": [
+            "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
             "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
             "http://mu.semte.ch/vocabularies/ext/file",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
