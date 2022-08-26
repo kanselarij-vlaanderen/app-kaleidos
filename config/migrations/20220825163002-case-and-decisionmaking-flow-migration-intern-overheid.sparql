@@ -1,0 +1,95 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+INSERT {
+  ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+}
+WHERE {
+  ?dossier a dossier:Dossier .
+  FILTER NOT EXISTS {
+    ?dossier dossier:Dossier.isNeerslagVan ?existingBesluitvormingsaangelegenheid .
+  }
+  FILTER EXISTS {
+    ?agendapunt a besluit:Agendapunt .
+    ?agendapunt ^besluitvorming:heeftOnderwerp ?behandelingVanAgendapunt .
+    ?behandelingVanAgendapunt besluitvorming:heeftBeslissing ?beslissingsActiviteit .
+    ?beslissingsActiviteit ^dct:subject ?publicatieaangelegenheid .
+    ?publicatieaangelegenheid dossier:behandelt ?dossier .
+  }
+
+  BIND(STRUUID() AS ?uuid)
+  BIND(CONCAT("http://themis.vlaanderen.be/id/besluitvormingsaangelegenheid/", ?uuid) AS ?uriString)
+  BIND(IRI(?uriString) AS ?besluitvormingsaangelegenheid)
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+INSERT {
+    ?besluitvormingsaangelegenheid besluitvorming:openingsdatum ?created .
+}
+WHERE {
+  ?dossier a dossier:Dossier ;
+                                   dct:created ?created .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+INSERT {
+  ?besluitvormingsaangelegenheid dct:title ?title .
+}
+WHERE {
+  ?dossier a dossier:Dossier ;
+                                   dct:title ?title .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+INSERT {
+  ?besluitvormingsaangelegenheid dct:alternative ?shortTitle .
+}
+WHERE {
+  ?dossier a dossier:Dossier ;
+                                 dct:alternative ?shortTitle .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+DELETE {
+  ?dossier dossier:doorloopt ?subcase .
+}
+INSERT {
+  ?besluitvormingsaangelegenheid dossier:doorloopt ?subcase .
+}
+WHERE {
+  ?dossier a dossier:Dossier ;
+                                 dossier:doorloopt ?subcase .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+DELETE {
+  ?dossier besluitvorming:beleidsveld ?governmentArea .
+}
+INSERT {
+  ?besluitvormingsaangelegenheid besluitvorming:beleidsveld ?governmentArea .
+}
+WHERE {
+  ?dossier a dossier:Dossier ;
+                                 besluitvorming:beleidsveld ?governmentArea .
+  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+};
+
+WITH <http://mu.semte.ch/graphs/organizations/intern-overheid>
+INSERT {
+  ?besluitvormingsaangelegenheid besluitvorming:sluitingsdatum ?created .
+}
+WHERE {
+    ?dossier a dossier:Dossier ;
+             ext:isGearchiveerd "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> ;
+             dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+    ?besluitvormingsaangelegenheid besluitvorming:openingsdatum ?created .
+}
