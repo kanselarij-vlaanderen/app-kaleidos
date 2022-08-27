@@ -317,3 +317,18 @@ services:
     restart: always
     labels:
       - "logging=true"
+  delta-producer:
+    image: lblod/delta-producer-json-diff-file-publisher:0.5.0
+    environment:
+      PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
+      PRETTY_PRINT_DIFF_JSON: "true"
+      FILES_GRAPH: "http://mu.semte.ch/graphs/delta-files"
+      KEY: "secret-sync-key"
+    volumes:
+      - ./data/files:/share
+  fileshare:
+    image: redpencil/file-share-sync:0.0.4
+    volumes:
+      - ./data/files:/share
+    environment:
+      ALLOW_SUPER_CONSUMER: "true"

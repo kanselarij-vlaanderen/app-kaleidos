@@ -328,6 +328,35 @@ defmodule Acl.UserGroups.Config do
         ]
       },
 
+      # // READ ACCESS FOR SYNC-CONSUMER SERVICE FROM OTHER STACK
+      #
+      %GroupSpec{
+        name: "sync-consumer",
+        useage: [:read],
+        access:
+        %AccessByQuery{
+          vars: [],
+          query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+          PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+          SELECT ?thing WHERE {
+            <SESSION_ID> muAccount:account <http://services.lblod.info/diff-consumer/account>.
+            VALUES ?thing { \"let me in\" }
+          }"
+        },
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/delta-files",
+            constraint: %ResourceConstraint{
+              resource_types: [
+                "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+              ]
+            }
+          }
+        ]
+      },
+
       # // CLEANUP
       #
       %GraphCleanup{
