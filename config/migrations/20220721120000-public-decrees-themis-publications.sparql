@@ -18,6 +18,7 @@ INSERT {
     ?newThemisPublicationURI a ext:ThemisPublicationActivity ;
       mu:uuid ?newThemisPublicationuuid ;
       generiek:geplandeStart "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
+      prov:startedAtTime "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
       adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> ;
       ext:scope "newsitems" ;
       ext:scope "documents" ;
