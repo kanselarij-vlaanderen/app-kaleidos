@@ -73,11 +73,11 @@
         "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
         "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
         "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
-        "showAsAnnouncement": "http://mu.semte.ch/vocabularies/ext/wordtGetoondAlsMededeling",
         "agendaId": [
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "type": "http://purl.org/dc/terms/type",
         "previousVersionId": [
           "http://www.w3.org/ns/prov#wasRevisionOf",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -150,10 +150,10 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "showAsAnnouncement": {
+          "agendaId": {
             "type": "keyword"
           },
-          "agendaId": {
+          "type": {
             "type": "keyword"
           },
           "previousVersionId": {
