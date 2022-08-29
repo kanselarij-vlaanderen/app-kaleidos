@@ -18,7 +18,7 @@ INSERT {
     ?newThemisPublicationURI a ext:ThemisPublicationActivity ;
       mu:uuid ?newThemisPublicationuuid ;
       generiek:geplandeStart "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
-      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/5da73f0d-6605-493c-9c1c-0d3a71bf286a> ;
+      adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> ;
       ext:scope "newsitems" ;
       ext:scope "documents" ;
       prov:used ?meeting .
