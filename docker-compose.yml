@@ -333,7 +333,7 @@ services:
     environment:
       ALLOW_SUPER_CONSUMER: "true"
   gov-field-sync:
-    image: kanselarij/gov-field-sync-service:latest
+    image: kanselarij/gov-field-sync-service:0.1.0
     logging: *default-logging
     restart: always
     labels:
