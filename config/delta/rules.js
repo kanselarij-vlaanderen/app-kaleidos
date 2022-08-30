@@ -197,5 +197,26 @@ export default [
       gracePeriod: 15000,
       ignoreFromSelf: true
     }
-  }
+  },
+  /* Mirror sync producer */
+  ...['http://mu.semte.ch/graphs/organizations/admin',
+    'http://mu.semte.ch/graphs/organizations/intern-overheid',
+    'http://mu.semte.ch/graphs/organizations/intern-regering',
+    'http://mu.semte.ch/graphs/organizations/kanselarij',
+    'http://mu.semte.ch/graphs/organizations/minister',
+    'http://mu.semte.ch/graphs/public',
+    'http://mu.semte.ch/graphs/system/email',
+  ].map((graph) => {
+    return {
+      match: { graph: { value: graph } },
+      callback: {
+        url: 'http://delta-producer/delta',
+        method: 'POST'
+      },
+      options: {
+        resourceFormat: 'v0.0.1',
+        gracePeriod: 1000
+      }
+    };
+  })
 ];
