@@ -40,8 +40,7 @@
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
-                (:modified            :datetime ,(s-prefix "ext:modified"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling")))
+                (:modified            :datetime ,(s-prefix "ext:modified")))
   :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "case")
@@ -49,6 +48,8 @@
                                       :as "requested-for-meeting")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
+             (concept                 :via ,(s-prefix "ext:agendapuntType")
+                                      :as "agenda-item-type")
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via ,(s-prefix "ext:modifiedBy")

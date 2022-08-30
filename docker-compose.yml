@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.34.1
+    image: kanselarij/frontend-kaleidos:5.35.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -112,7 +112,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.4.1
+    image: kanselarij/cache-warmup-service:1.5.0
     logging: *default-logging
     restart: always
     labels:
@@ -159,7 +159,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.3.0
+    image: kanselarij/agenda-approve-service:5.4.0
     logging: *default-logging
     restart: always
     labels:
@@ -188,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.3.1
+    image: kanselarij/newsletter-service:3.4.0
     logging: *default-logging
     restart: always
     labels:
@@ -317,6 +317,21 @@ services:
     restart: always
     labels:
       - "logging=true"
+  delta-producer:
+    image: lblod/delta-producer-json-diff-file-publisher:0.5.0
+    environment:
+      PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
+      PRETTY_PRINT_DIFF_JSON: "true"
+      FILES_GRAPH: "http://mu.semte.ch/graphs/delta-files"
+      KEY: "secret-sync-key"
+    volumes:
+      - ./data/files:/share
+  fileshare:
+    image: redpencil/file-share-sync:0.0.4
+    volumes:
+      - ./data/files:/share
+    environment:
+      ALLOW_SUPER_CONSUMER: "true"
   gov-field-sync:
     image: kanselarij/gov-field-sync-service:latest
     logging: *default-logging
