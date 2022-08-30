@@ -15,7 +15,7 @@
               (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
                                  :inverse t
                                  :as "sign-flows")
-              (concept           :via ,(s-prefix "ext:beleidsgebied") ;; NOTE: temporary name for relationship
+              (concept           :via ,(s-prefix "besluitvorming:beleidsveld")
                                  :as "government-areas")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
@@ -70,7 +70,9 @@
               ;;   another decision-activity
               (decision-activity      :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                       :inverse t
-                                      :as "decision-activities"))
+                                      :as "decision-activities")
+              (concept                :via ,(s-prefix "besluitvorming:beleidsveld")
+                                      :as "government-areas"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")

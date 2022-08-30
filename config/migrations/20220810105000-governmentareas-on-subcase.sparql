@@ -1,0 +1,38 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+# replace current relation
+DELETE {
+  GRAPH ?g {
+    ?case ext:beleidsgebied ?governmentAreas .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?case besluitvorming:beleidsveld ?governmentAreas .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?case a dossier:Dossier ;
+      ext:beleidsgebied ?governmentAreas .
+  }
+}
+
+;
+#copy fields from case to linked subcases (same predicate)
+
+INSERT {
+  GRAPH ?g {
+    ?subcase besluitvorming:beleidsveld ?governmentAreas .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?case a dossier:Dossier ;
+      besluitvorming:beleidsveld ?governmentAreas ;
+      dossier:doorloopt ?subcase .
+    ?subcase a dossier:Procedurestap .
+  }
+}

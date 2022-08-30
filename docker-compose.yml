@@ -307,7 +307,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.2.2
+    image: kanselarij/publication-report-service:0.3.0
     volumes:
       - ./data/files:/share
     environment:
@@ -332,3 +332,9 @@ services:
       - ./data/files:/share
     environment:
       ALLOW_SUPER_CONSUMER: "true"
+  gov-field-sync:
+    image: kanselarij/gov-field-sync-service:0.1.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
