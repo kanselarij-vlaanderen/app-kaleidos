@@ -90,7 +90,7 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.1
+    image: semtech/mu-search-elastic-backend:1.1.0
     environment:
       discovery.type: "single-node"
     volumes:
