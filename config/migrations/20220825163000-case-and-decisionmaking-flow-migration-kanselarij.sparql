@@ -3,10 +3,12 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 INSERT {
-  ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid .
+  ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid ;
+    mu:uuid ?uuid .
   ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
 }
 WHERE {
