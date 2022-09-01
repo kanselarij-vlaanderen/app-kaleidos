@@ -60,7 +60,7 @@
                 (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; TODO: Is show-as-remark still required here? Might have come back in through merge.
   :has-one `((decisionmaking-flow     :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
-                                      :as "case")
+                                      :as "decisionmaking-flow")
              (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor")
                                       :as "requested-for-meeting")
              (subcase-type            :via ,(s-prefix "dct:type")
