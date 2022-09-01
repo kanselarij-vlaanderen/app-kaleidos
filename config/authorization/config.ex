@@ -25,6 +25,7 @@ defmodule Acl.UserGroups.Config do
   defp generic_besluitvorming_resource_types() do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
+      "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
       "http://www.w3.org/ns/prov#Activity", # TODO: do we still need this for later with polymorphism ?
     ]
@@ -325,6 +326,35 @@ defmodule Acl.UserGroups.Config do
               resource_types: email_resource_types()
             }
           },
+        ]
+      },
+
+      # // READ ACCESS FOR SYNC-CONSUMER SERVICE FROM OTHER STACK
+      #
+      %GroupSpec{
+        name: "sync-consumer",
+        useage: [:read],
+        access:
+        %AccessByQuery{
+          vars: [],
+          query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+          PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+          SELECT ?thing WHERE {
+            <SESSION_ID> muAccount:account <http://services.lblod.info/diff-consumer/account>.
+            VALUES ?thing { \"let me in\" }
+          }"
+        },
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/delta-files",
+            constraint: %ResourceConstraint{
+              resource_types: [
+                "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+              ]
+            }
+          }
         ]
       },
 

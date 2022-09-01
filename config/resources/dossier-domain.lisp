@@ -1,13 +1,13 @@
 (define-resource case ()
   :class (s-prefix "dossier:Dossier")
-  :properties `((:created       :datetime ,(s-prefix "dct:created"))
+  :properties `((:title         :string   ,(s-prefix "dct:title"))
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
-                (:number        :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db ;; NOTE: only for legacy, do we want this ??
-                (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd"))
-                (:title         :string   ,(s-prefix "dct:title")))
-  :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")
-                                 :as "subcases")
-              (piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
+                (:created       :datetime ,(s-prefix "dct:created"))
+                (:number        :number   ,(s-prefix "adms:identifier"))
+                (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd")))
+  :has-one `((decisionmaking-flow  :via      ,(s-prefix "dossier:Dossier.isNeerslagVan")
+                    :as "decisionmaking-flow"))
+  :has-many `((piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                  :as "pieces")
               (publication-flow  :via      ,(s-prefix "dossier:behandelt")
                                  :inverse t
@@ -15,12 +15,28 @@
               (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
                                  :inverse t
                                  :as "sign-flows")
-              (concept           :via ,(s-prefix "ext:beleidsgebied") ;; NOTE: temporary name for relationship
-                                 :as "government-areas")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
   :on-path "cases")
+
+(define-resource decisionmaking-flow ()
+  :class (s-prefix "besluitvorming:Besluitvormingsaangelegenheid")
+  :properties `((:title         :string   ,(s-prefix "dct:title")) ;; Both title and short-title are unused for now, we always use the titles from the linked case
+                (:short-title   :string   ,(s-prefix "dct:alternative"))
+                (:opened        :datetime ,(s-prefix "besluitvorming:openingsdatum"))
+                (:closed        :datetime ,(s-prefix "besluitvorming:sluitingsdatum")))
+  :has-one `((case               :via      ,(s-prefix "dossier:Dossier.isNeerslagVan")
+                                 :inverse t
+                                 :as "case"))
+  :has-many `((subcase           :via      ,(s-prefix "dossier:doorloopt")
+                                 :as "subcases")
+              (concept           :via ,(s-prefix "besluitvorming:beleidsveld") ;; NOTE: Contains both Beleidsveld and Beleidsdomein, despite the predicate name. These are synced to the subcase government-areas
+                                 :as "government-areas")
+            )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/besluitvormingsaangelegenheid/")
+  :features '(include-uri)
+  :on-path "decisionmaking-flows")
 
 (define-resource case-type ()
   :class (s-prefix "ext:DossierTypeCode")
@@ -41,14 +57,16 @@
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling")))
-  :has-one `((case                    :via ,(s-prefix "dossier:doorloopt")
+                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; TODO: Is show-as-remark still required here? Might have come back in through merge.
+  :has-one `((decisionmaking-flow     :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
-                                      :as "case")
+                                      :as "decisionmaking-flow")
              (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor")
                                       :as "requested-for-meeting")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
+             (concept                 :via ,(s-prefix "ext:agendapuntType")
+                                      :as "agenda-item-type")
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via ,(s-prefix "ext:modifiedBy")
@@ -69,7 +87,9 @@
               ;;   another decision-activity
               (decision-activity      :via ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                       :inverse t
-                                      :as "decision-activities"))
+                                      :as "decision-activities")
+              (concept                :via ,(s-prefix "besluitvorming:beleidsveld")
+                                      :as "government-areas"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")

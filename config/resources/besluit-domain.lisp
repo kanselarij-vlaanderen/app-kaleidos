@@ -48,7 +48,6 @@
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime ,(s-prefix "dct:modified"))
                 (:formally-ok         :url      ,(s-prefix "ext:formeelOK"))
-                (:show-as-remark      :boolean  ,(s-prefix "ext:wordtGetoondAlsMededeling"))
                 (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
                                       :as "previous-agenda-item")
@@ -67,7 +66,9 @@
                                       :as "agenda-activity")
              (agenda-item-treatment   :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
                                       :inverse t
-                                      :as "treatment"))
+                                      :as "treatment")
+             (concept                 :via ,(s-prefix "dct:type")
+                                      :as "type"))
   :has-many `(
             ;; Added has-many relations from subcases
               (mandatee               :via      ,(s-prefix "ext:heeftBevoegdeVoorAgendapunt") ;; NOTE: used mandataris instead of agent

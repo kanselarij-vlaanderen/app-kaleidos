@@ -29,6 +29,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
+  ### Mirror sync producer
+
+  match "/sync/*path", %{} do
+    Proxy.forward conn, path, "http://delta-producer/"
+  end
+
+  match "/fileshare/*path", %{} do
+    Proxy.forward conn, path, "http://fileshare/download/"
+  end
+
   ### Search
 
   match "/agendaitems/search/*path", @json_service do
@@ -145,6 +155,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/document-types/"
   end
 
+  match "/decisionmaking-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/decisionmaking-flows/"
+  end
   match "/cases/*path", @json_service do
     Proxy.forward conn, path, "http://cache/cases/"
   end
