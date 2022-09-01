@@ -4,6 +4,7 @@ PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 
 WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 INSERT {
@@ -16,12 +17,20 @@ WHERE {
   FILTER NOT EXISTS {
     ?dossier dossier:Dossier.isNeerslagVan ?existingBesluitvormingsaangelegenheid .
   }
-  FILTER EXISTS {
-    ?agendapunt a besluit:Agendapunt .
-    ?agendapunt ^besluitvorming:heeftOnderwerp ?behandelingVanAgendapunt .
-    ?behandelingVanAgendapunt besluitvorming:heeftBeslissing ?beslissingsActiviteit .
-    ?beslissingsActiviteit ^dct:subject ?publicatieaangelegenheid .
-    ?publicatieaangelegenheid dossier:behandelt ?dossier .
+
+  {
+    FILTER NOT EXISTS {
+      ?publicatieaangelegenheid a pub:Publicatieaangelegenheid .
+      ?publicatieaangelegenheid dossier:behandelt ?dossier .
+    }
+  } UNION {
+    FILTER EXISTS {
+      ?agendapunt a besluit:Agendapunt .
+      ?agendapunt ^besluitvorming:heeftOnderwerp ?behandelingVanAgendapunt .
+      ?behandelingVanAgendapunt besluitvorming:heeftBeslissing ?beslissingsActiviteit .
+      ?beslissingsActiviteit ^dct:subject ?publicatieaangelegenheid .
+      ?publicatieaangelegenheid dossier:behandelt ?dossier .
+    }
   }
 
   BIND(STRUUID() AS ?uuid)
