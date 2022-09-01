@@ -1,6 +1,7 @@
 (define-resource case ()
   :class (s-prefix "dossier:Dossier")
   :properties `((:title         :string   ,(s-prefix "dct:title"))
+                (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:created       :datetime ,(s-prefix "dct:created"))
                 (:number        :number   ,(s-prefix "adms:identifier"))
                 (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd")))
@@ -21,7 +22,7 @@
 
 (define-resource decisionmaking-flow ()
   :class (s-prefix "besluitvorming:Besluitvormingsaangelegenheid")
-  :properties `((:title         :string   ,(s-prefix "dct:title"))
+  :properties `((:title         :string   ,(s-prefix "dct:title")) ;; Both title and short-title are unused for now, we always use the titles from the linked case
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:opened        :datetime ,(s-prefix "besluitvorming:openingsdatum"))
                 (:closed        :datetime ,(s-prefix "besluitvorming:sluitingsdatum")))
