@@ -207,19 +207,19 @@
       "properties": {
         "title":  [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
-          "http://purl.org/dc/terms/title",
+          "http://purl.org/dc/terms/title"
         ],
         "created":  [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
-          "http://purl.org/dc/terms/created",
+          "http://purl.org/dc/terms/created"
         ],
         "shortTitle":  [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
-          "http://purl.org/dc/terms/alternative",
+          "http://purl.org/dc/terms/alternative"
         ],
         "isArchived":  [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
-          "http://mu.semte.ch/vocabularies/ext/isGearchiveerd",
+          "http://mu.semte.ch/vocabularies/ext/isGearchiveerd"
         ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
