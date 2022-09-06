@@ -56,8 +56,7 @@
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
-                (:modified            :datetime ,(s-prefix "ext:modified"))
-                (:show-as-remark      :boolean ,(s-prefix "ext:wordtGetoondAlsMededeling"))) ;; TODO: Is show-as-remark still required here? Might have come back in through merge.
+                (:modified            :datetime ,(s-prefix "ext:modified")))
   :has-one `((decisionmaking-flow     :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "decisionmaking-flow")
