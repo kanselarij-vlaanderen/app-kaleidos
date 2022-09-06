@@ -202,7 +202,7 @@
     },
     {
       "type": "decisionmaking-flow",
-      "on_path": "cases",
+      "on_path": "decisionmaking-flows",
       "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "properties": {
         "title":  [
