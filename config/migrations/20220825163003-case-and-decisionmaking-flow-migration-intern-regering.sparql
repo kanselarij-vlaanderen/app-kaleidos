@@ -6,36 +6,25 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 
-WITH <http://mu.semte.ch/graphs/organizations/intern-regering>
 INSERT {
-  ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid ;
-    mu:uuid ?uuid .
-  ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+  GRAPH <http://mu.semte.ch/graphs/organizations/intern-regering> {
+    ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid ;
+      mu:uuid ?uuid .
+    ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+  }
 }
 WHERE {
-  ?dossier a dossier:Dossier .
-  FILTER NOT EXISTS {
-    ?dossier dossier:Dossier.isNeerslagVan ?existingBesluitvormingsaangelegenheid .
-  }
-
-  {
+  GRAPH <http://mu.semte.ch/graphs/organizations/intern-regering> {
+    ?dossier a dossier:Dossier .
     FILTER NOT EXISTS {
-      ?publicatieaangelegenheid a pub:Publicatieaangelegenheid .
-      ?publicatieaangelegenheid dossier:behandelt ?dossier .
-    }
-  } UNION {
-    FILTER EXISTS {
-      ?agendapunt a besluit:Agendapunt .
-      ?agendapunt ^besluitvorming:heeftOnderwerp ?behandelingVanAgendapunt .
-      ?behandelingVanAgendapunt besluitvorming:heeftBeslissing ?beslissingsActiviteit .
-      ?beslissingsActiviteit ^dct:subject ?publicatieaangelegenheid .
-      ?publicatieaangelegenheid dossier:behandelt ?dossier .
+      ?dossier dossier:Dossier.isNeerslagVan ?existingBesluitvormingsaangelegenheid .
     }
   }
 
-  BIND(STRUUID() AS ?uuid)
-  BIND(CONCAT("http://themis.vlaanderen.be/id/besluitvormingsaangelegenheid/", ?uuid) AS ?uriString)
-  BIND(IRI(?uriString) AS ?besluitvormingsaangelegenheid)
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+    ?besluitvormingsaangelegenheid mu:uuid ?uuid .
+  }
 };
 
 WITH <http://mu.semte.ch/graphs/organizations/intern-regering>
