@@ -279,13 +279,13 @@
           "created": {
             "type": "date"
           },
-          "isArchived": {
-            "type": "boolean"
-          },
           "shortTitle": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "isArchived": {
+            "type": "boolean"
           },
           "mandateeFirstNames": {
             "type": "text",
@@ -577,9 +577,6 @@
           },
           "themes": {
             "type": "text"
-          },
-          "generalNewsletterMeetingId": {
-            "type": "keyword"
           },
           "decisions.decisionResultCodeId": {
             "type": "keyword"
