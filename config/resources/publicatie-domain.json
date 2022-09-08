@@ -135,6 +135,11 @@
           "predicate": "dct:subject",
           "cardinality": "one",
           "target": "decision-activity"
+        },
+        "government-areas": {
+          "predicate": "pub:beleidsveld",
+          "cardinality": "many",
+          "target": "concept"
         }
       },
       "features": ["include-uri"],
