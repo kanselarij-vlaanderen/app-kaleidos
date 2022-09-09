@@ -115,7 +115,7 @@ services:
     entrypoint: "echo 'service disabled'"
     restart: "no"
   # kibana:
-  #   image: docker.elastic.co/kibana/kibana:7.2.0
+  #   image: docker.elastic.co/kibana/kibana:7.17.0
   #   environment:
   #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
   #   logging: *default-logging
