@@ -76,7 +76,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.8.0-beta.3
+    image: semtech/mu-search:feature-wildcard-and-per-field-boosts
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -90,7 +90,7 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.1
+    image: semtech/mu-search-elastic-backend:1.1.0
     environment:
       discovery.type: "single-node"
     volumes:
