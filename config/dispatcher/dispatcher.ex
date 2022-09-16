@@ -53,16 +53,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://search/agendaitems/invalidate/"
   end
 
-  match "/cases/search/*path", @json_service do
-    Proxy.forward conn, path, "http://search/cases/search/"
+  match "/decisionmaking-flows/search/*path", @json_service do
+    Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
   end
 
-  match "/cases/index/*path", @json_service do
-    Proxy.forward conn, path, "http://search/cases/search/"
+  match "/decisionmaking-flows/index/*path", @json_service do
+    Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
   end
 
-  match "/cases/invalidate/*path", @json_service do
-    Proxy.forward conn, path, "http://search/cases/invalidate/"
+  match "/decisionmaking-flows/invalidate/*path", @json_service do
+    Proxy.forward conn, path, "http://search/decisionmaking-flows/invalidate/"
   end
 
   match "/search/settings/*path", @json_service do
@@ -155,6 +155,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/document-types/"
   end
 
+  match "/decisionmaking-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/decisionmaking-flows/"
+  end
   match "/cases/*path", @json_service do
     Proxy.forward conn, path, "http://cache/cases/"
   end
