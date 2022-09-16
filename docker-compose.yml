@@ -202,7 +202,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:feature-KAS-3571-case-flow-split
+    image: kanselarij/yggdrasil:5.8.0
     logging: *default-logging
     restart: always
     labels:
@@ -234,7 +234,13 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:feature-KAS-3571-case-flow-split
+    image: kanselarij/case-documents-sync-service:1.3.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  gov-field-sync:
+    image: kanselarij/gov-field-sync-service:0.2.0
     logging: *default-logging
     restart: always
     labels:
@@ -332,9 +338,3 @@ services:
       - ./data/files:/share
     environment:
       ALLOW_SUPER_CONSUMER: "true"
-  gov-field-sync:
-    image: kanselarij/gov-field-sync-service:feature-KAS-3571-case-flow-split
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
