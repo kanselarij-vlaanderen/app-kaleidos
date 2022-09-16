@@ -76,7 +76,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:feature-wildcard-and-per-field-boosts
+    image: semtech/mu-search:0.8.0-beta.4
     volumes:
       - ./config/search:/config
       - ./data/files:/data
