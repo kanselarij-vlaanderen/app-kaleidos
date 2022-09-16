@@ -7,7 +7,12 @@
                 (:created       :datetime   ,(s-prefix "dct:created")))
   :has-one `((file              :via        ,(s-prefix "nie:dataSource")
                                 :inverse t
-                                :as "download"))
+                                :as "download")
+             (file              :via        ,(s-prefix "prov:hadPrimarySource")
+                                :as "primary-source")
+             (file              :via        ,(s-prefix "prov:hadPrimarySource")
+                                :inverse t
+                                :as "primary-source-of"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestand/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")
