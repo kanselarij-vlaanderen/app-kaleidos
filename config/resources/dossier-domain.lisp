@@ -133,10 +133,3 @@
   :resource-base (s-url "http://kanselarij.vo.data.gift/id/indieningsactiviteit/")
   :features '(include-uri)
   :on-path "submission-activities")
-
-(define-resource person-or-organization ()
-  :class (s-prefix "ext:PersonOrOrganization") ;; NOTE: as resource hack for super typing, is person or organization
-  :properties `((:type :string ,(s-prefix "rdfs:type")))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/") ;; NOTE: Should in theory never get used, as this is a read-only hack.
-  :features '(include-uri)
-  :on-path "person-or-organization")
