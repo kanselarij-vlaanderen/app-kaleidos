@@ -1,0 +1,18 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+# rename "Ministerraad" > "Vertrouwelijk" in accessLevel
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17> skos:prefLabel ?l .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17> skos:prefLabel "Vertrouwelijk"@nl .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17> skos:prefLabel ?l .
+    }
+}
