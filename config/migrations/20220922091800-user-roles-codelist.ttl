@@ -1,0 +1,78 @@
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+
+thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 a skos:ConceptScheme ;
+  mu:uuid "b18acf1a-2a37-4b42-a549-b158d0065092" ;
+  skos:prefLabel "Gebruikersrollen"@nl .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5> a org:Role ;
+    mu:uuid "9a969b13-e80b-424f-8a82-a402bcb42bc5" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Admin" ;
+    skos:notation "Kaleidos_Admin" ;
+    skos:definition "Beheerder van de Kaleidos applicatie" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2> a org:Role ;
+    mu:uuid "c2ef1785-bf28-458f-952d-aa40989347d2" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Secretarie" ;
+    skos:notation "Kaleidos_Secretarie" ;
+    skos:definition "Medewerker team secretarie" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f> a org:Role ;
+    mu:uuid "648a1ffe-1a26-4931-a329-18d26a91438f" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Ondersteuning Vlaamse Regering en Betekeningen" ;
+    skos:notation "Kaleidos_OVRB" ;
+    skos:definition "Medewerker team Ondersteuning Vlaamse Regering en Betekeningen" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf> a org:Role ;
+    mu:uuid "ca20a872-7743-4998-b479-06b003f49daf" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Kort bestek redactie" ;
+    skos:notation "Kaleidos_KBR" ;
+    skos:definition "Medewerker team Kort Bestek" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d> a org:Role ;
+    mu:uuid "01ace9e0-f810-474e-b8e0-f578ff1e230d" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Minister" ;
+    skos:notation "Kaleidos_Minister" ;
+    skos:definition "Minister of Kabinetschef" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4> a org:Role ;
+    mu:uuid "6bcebe59-0cb5-4c5e-ab40-ca98b65887a4" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Kabinetdossierbeheerder" ;
+    skos:notation "Kaleidos_Kabinetdossierbeheerder" ;
+    skos:definition "Medewerker van een kabinet belast met indienen voor agenda en secretariaat voor handtekenen en indienen VP" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84> a org:Role ;
+    mu:uuid "33dbca4a-7e57-41d2-a26c-aedef422ff84" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Kabinetmedewerker" ;
+    skos:notation "Kaleidos_Kabinetmedewerker" ;
+    skos:definition "Medewerker van een kabinet" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644> a org:Role ;
+    mu:uuid "06cfd67b-1637-47d3-811f-97aa23a83644" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Overheidsorganisatie" ;
+    skos:notation "Kaleidos_Overheidsorganisatie" ;
+    skos:definition "Medewerker bij een departement of agentschap" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> a org:Role ;
+    mu:uuid "a12965ec-e95a-4f7b-8911-7bbb41ce29d9" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Overlegcomité raadgever" ;
+    skos:notation "Kaleidos_OC_Raadgever" ;
+    skos:definition "Medewerker bij een departement of agentschap met een recht stukken te zien op een agenda van een Overlegcomité in functie van een advies" .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642> a org:Role ;
+    mu:uuid "12543581-7f02-4166-87d2-ab15ddfce642" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Parlement" ;
+    skos:notation "Kaleidos_Parlement" ;
+    skos:definition "Medewerker bij Vlaams Parlement of volksvertegenwoordiger" .
