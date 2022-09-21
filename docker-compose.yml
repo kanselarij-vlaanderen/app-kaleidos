@@ -165,9 +165,7 @@ services:
     labels:
       - "logging=true"
   mocklogin:
-    image: kanselarij/mock-login-service:1.0.0
-    volumes:
-      - ./config/mocklogin:/config
+    image: kanselarij/mock-login-service:feature-KAS-3605-user-roles
     logging: *default-logging
   login:
     image: kanselarij/acmidm-login-service:1.4.1
