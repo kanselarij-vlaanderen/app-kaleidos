@@ -10,14 +10,58 @@ alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
 
-  defp access_by_group( group_uris ) do
+  defp admin_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5>" # admin
+    ]
+  end
+
+  defp kanselarij_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2>" # secretarie
+    ]
+  end
+
+  defp ovrb_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f>" # ovrb
+    ]
+  end
+
+  defp kort_bestek_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf>" # kort bestek
+    ]
+  end
+
+  defp minister_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister
+    ]
+  end
+
+  defp kabinet_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4>", # kabinet dossierbeheerder
+      "<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84>" # kabinet medewerker
+    ]
+  end
+
+  defp overheid_roles do
+    [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644>", # overheidsorganisatie
+      "<http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9>" # Vlaams Parlement
+    ]
+  end
+
+  defp access_by_role(role_uris) do
     %AccessByQuery{
       vars: [],
-      query: "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
-              PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      query: "PREFIX org: <http://www.w3.org/ns/org#>
+              PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?group_uri WHERE {
-                <SESSION_ID> session:account / ^foaf:account / ^foaf:member ?group_uri .
-                VALUES ?group_uri { #{group_uris} }
+                <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
+                VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
     }
   end
@@ -211,7 +255,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/overheid>" ),
+        access: access_by_role( overheid_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
@@ -225,8 +269,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
         name: "writes-on-public",
         useage: [:write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>
-                                 <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>"),
+        access: access_by_role( admin_roles() ++ kanselarij_roles() ),
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
@@ -239,7 +282,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>" ),
+        access: access_by_role( admin_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/admin",
@@ -252,7 +295,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/kabinet>" ),
+        access: access_by_role( kabinet_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
@@ -265,7 +308,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-minister-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/minister>" ),
+        access: access_by_role( minister_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/minister",
@@ -278,9 +321,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-kanselarij-all",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>
-                                 <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>
-                                 <http://data.kanselarij.vlaanderen.be/id/group/kort-bestek>"),
+        access: access_by_role( admin_roles() ++ kanselarij_roles() ++ kort_bestek_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
@@ -309,7 +350,8 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "ovrb",
         useage: [:read, :write, :read_for_write],
-        access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/OVRB>" ), # TODO: Read access on whole "kanselarij"-graph for now. Recent kanselarij-data will have separate graph later on
+        # TODO: Read access on whole "kanselarij"-graph for now. Recent kanselarij-data will have separate graph later on
+        access: access_by_role( ovrb_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
