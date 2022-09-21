@@ -131,8 +131,8 @@ defmodule Acl.UserGroups.Config do
     [
       "http://xmlns.com/foaf/0.1/OnlineAccount",
       "http://xmlns.com/foaf/0.1/Person",
-      "http://xmlns.com/foaf/0.1/Group",
-      "http://www.w3.org/ns/adms#Identifier",
+      "http://xmlns.com/foaf/0.1/Organization",
+      "http://www.w3.org/ns/org#Membership"
     ]
   end
 
@@ -166,7 +166,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype"
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/org#Role",
@@ -195,7 +195,7 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: unconfidential_resource_types() ++
               static_unconfidential_code_list_types() ++
-              user_account_resource_types()
+              user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -222,7 +222,7 @@ defmodule Acl.UserGroups.Config do
         ]
       },
 
-      %GroupSpec{
+      %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
         name: "writes-on-public",
         useage: [:write, :read_for_write],
         access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>
@@ -230,13 +230,13 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
           graph: "http://mu.semte.ch/graphs/public",
           constraint: %ResourceConstraint{
-            resource_types: user_account_resource_types() # TODO: user_account_resource_types don't belong here. Needs data-redistribution over different graphs-work.
+            resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
             }
           },
         ]
       },
 
-      %GroupSpec{
+      %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
         name: "o-admin-roles",
         useage: [:read, :write, :read_for_write],
         access: access_by_group( "<http://data.kanselarij.vlaanderen.be/id/group/admin>" ),

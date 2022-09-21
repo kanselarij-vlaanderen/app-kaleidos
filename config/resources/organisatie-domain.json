@@ -10,6 +10,7 @@
     "organizations": {
       "name": "organization",
       "class": "org:Organization",
+      "_comment": "Currently only used in publications by OVRB to assign contact-persons to organizations. Input is not structured at the moment, hence data quality of this list may be poor (containing duplicates, typos, etc.)",
       "attributes": {
         "name": {
           "type": "string",

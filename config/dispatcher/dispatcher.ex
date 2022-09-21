@@ -123,6 +123,33 @@ defmodule Dispatcher do
   end
 
 
+  ### Authentication
+
+  match "/mock/sessions/*path", @json_service do
+    Proxy.forward conn, path, "http://mocklogin/sessions/"
+  end
+
+  match "/sessions/*path", @json_service do
+    Proxy.forward conn, path, "http://login/sessions/"
+  end
+
+  get "/users/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/users/"
+  end
+
+  get "/accounts/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/accounts/"
+  end
+
+  get "/user-organizations/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/user-organizations/"
+  end
+
+  get "/memberships/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/memberships/"
+  end
+
+
   ### Regular resources and cache
 
   match "/agendas/*path", @json_service do
@@ -249,31 +276,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/themes/"
   end
 
-  match "/users/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/users/"
-  end
-
-  match "/accounts/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/accounts/"
-  end
-
   match "/agenda-comparison/*path", @json_service  do
     Proxy.forward conn, path, "http://agenda-comparison/"
   end
 
   match "/custom-subcases/*path", @json_service do
     Proxy.forward conn, path, "http://custom-subcases/"
-  end
-
-  match "/account-groups/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/account-groups/"
-  end
-
-  match "/mock/sessions/*path", @json_service do
-    Proxy.forward conn, path, "http://mocklogin/sessions/"
-  end
-  match "/sessions/*path", @json_service do
-    Proxy.forward conn, path, "http://login/sessions/"
   end
 
   match "/alerts/*path", @json_service do
