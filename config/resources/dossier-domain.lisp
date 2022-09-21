@@ -53,7 +53,7 @@
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
                 (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
-                (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
+                (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk")) ;; This is seen as "Beperkte toegang" in frontend
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified")))
