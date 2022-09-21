@@ -73,6 +73,6 @@ thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 a skos:ConceptScheme ;
 <http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642> a org:Role ;
     mu:uuid "12543581-7f02-4166-87d2-ab15ddfce642" ;
     skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
-    skos:prefLabel "Parlement" ;
+    skos:prefLabel "Vlaams Parlement" ;
     skos:notation "Kaleidos_Parlement" ;
     skos:definition "Medewerker bij Vlaams Parlement of volksvertegenwoordiger" .
