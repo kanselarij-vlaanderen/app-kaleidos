@@ -2,182 +2,182 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/92d97fe7-79b8-416d-b18c-e719cb7d78ad> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/92d97fe7-79b8-416d-b18c-e719cb7d78ad> a foaf:Person ;
     mu:uuid "92d97fe7-79b8-416d-b18c-e719cb7d78ad" ;
     foaf:firstName "Admin" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/00b774e4-2c79-4bb8-b352-b38af19df8c1> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/00b774e4-2c79-4bb8-b352-b38af19df8c1> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/00b774e4-2c79-4bb8-b352-b38af19df8c1> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/00b774e4-2c79-4bb8-b352-b38af19df8c1> a foaf:OnlineAccount ;
     mu:uuid "00b774e4-2c79-4bb8-b352-b38af19df8c1" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "admin-mock" .
+    foaf:accountName "admin-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/74375e01-9f93-44cb-89cd-89997b86697c> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/74375e01-9f93-44cb-89cd-89997b86697c> a org:Membership ;
     mu:uuid "74375e01-9f93-44cb-89cd-89997b86697c" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/92d97fe7-79b8-416d-b18c-e719cb7d78ad> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/92d97fe7-79b8-416d-b18c-e719cb7d78ad> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/68640d5b-4f77-4b8d-b906-f4961c723ec1> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/68640d5b-4f77-4b8d-b906-f4961c723ec1> a foaf:Person ;
     mu:uuid "68640d5b-4f77-4b8d-b906-f4961c723ec1" ;
     foaf:firstName "Secretarie" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/33924ed8-ceab-42d7-8855-92aef3d15437> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/33924ed8-ceab-42d7-8855-92aef3d15437> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/33924ed8-ceab-42d7-8855-92aef3d15437> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/33924ed8-ceab-42d7-8855-92aef3d15437> a foaf:OnlineAccount ;
     mu:uuid "33924ed8-ceab-42d7-8855-92aef3d15437" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "secretarie-mock" .
+    foaf:accountName "secretarie-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/53d11a1a-2afe-411f-82d7-d3f1c3e150ce> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/53d11a1a-2afe-411f-82d7-d3f1c3e150ce> a org:Membership ;
     mu:uuid "53d11a1a-2afe-411f-82d7-d3f1c3e150ce" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/68640d5b-4f77-4b8d-b906-f4961c723ec1> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/68640d5b-4f77-4b8d-b906-f4961c723ec1> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/ccf8de47-64ef-403d-a1f2-70a68a80e406> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/ccf8de47-64ef-403d-a1f2-70a68a80e406> a foaf:Person ;
     mu:uuid "ccf8de47-64ef-403d-a1f2-70a68a80e406" ;
     foaf:firstName "OVRB" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/f19a2d90-c3a6-4be2-882e-79b5b25deaee> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/f19a2d90-c3a6-4be2-882e-79b5b25deaee> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/f19a2d90-c3a6-4be2-882e-79b5b25deaee> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/f19a2d90-c3a6-4be2-882e-79b5b25deaee> a foaf:OnlineAccount ;
     mu:uuid "f19a2d90-c3a6-4be2-882e-79b5b25deaee" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "ovrb-mock" .
+    foaf:accountName "ovrb-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/2f068cc9-2ae5-456e-95f9-983cb4fb88f5> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/2f068cc9-2ae5-456e-95f9-983cb4fb88f5> a org:Membership ;
     mu:uuid "2f068cc9-2ae5-456e-95f9-983cb4fb88f5" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/ccf8de47-64ef-403d-a1f2-70a68a80e406> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/ccf8de47-64ef-403d-a1f2-70a68a80e406> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/6f15d2d1-725c-41bc-b873-b7c7ad3eb32c> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/6f15d2d1-725c-41bc-b873-b7c7ad3eb32c> a foaf:Person ;
     mu:uuid "6f15d2d1-725c-41bc-b873-b7c7ad3eb32c" ;
     foaf:firstName "Kort bestek" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/404b7c2c-8037-4db6-9792-117f840fda03> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/404b7c2c-8037-4db6-9792-117f840fda03> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/404b7c2c-8037-4db6-9792-117f840fda03> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/404b7c2c-8037-4db6-9792-117f840fda03> a foaf:OnlineAccount ;
     mu:uuid "404b7c2c-8037-4db6-9792-117f840fda03" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "kort-bestek-mock" .
+    foaf:accountName "kort-bestek-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/f42cd880-3df1-4cd6-97a7-9e965a8e97c1> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/f42cd880-3df1-4cd6-97a7-9e965a8e97c1> a org:Membership ;
     mu:uuid "f42cd880-3df1-4cd6-97a7-9e965a8e97c1" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/6f15d2d1-725c-41bc-b873-b7c7ad3eb32c> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/6f15d2d1-725c-41bc-b873-b7c7ad3eb32c> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/7a992b2f-a437-4919-8965-25b3d7942f93> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/7a992b2f-a437-4919-8965-25b3d7942f93> a foaf:Person ;
     mu:uuid "7a992b2f-a437-4919-8965-25b3d7942f93" ;
     foaf:firstName "Minister" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/0bcabd92-8c30-4b69-bdbd-6e7b0bcee211> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/0bcabd92-8c30-4b69-bdbd-6e7b0bcee211> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/0bcabd92-8c30-4b69-bdbd-6e7b0bcee211> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/0bcabd92-8c30-4b69-bdbd-6e7b0bcee211> a foaf:OnlineAccount ;
     mu:uuid "0bcabd92-8c30-4b69-bdbd-6e7b0bcee211" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "minister-mock" .
+    foaf:accountName "minister-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/27442e71-a645-4c57-82ba-cae5c9060fc5> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/27442e71-a645-4c57-82ba-cae5c9060fc5> a org:Membership ;
     mu:uuid "27442e71-a645-4c57-82ba-cae5c9060fc5" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/7a992b2f-a437-4919-8965-25b3d7942f93> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/7a992b2f-a437-4919-8965-25b3d7942f93> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/9db8d1da-00f5-4023-a019-34a974dae0b3> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/9db8d1da-00f5-4023-a019-34a974dae0b3> a foaf:Person ;
     mu:uuid "9db8d1da-00f5-4023-a019-34a974dae0b3" ;
     foaf:firstName "Kabinetdossierbeheerder" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/c076573e-a252-4358-b3b3-23f63eb946ba> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/c076573e-a252-4358-b3b3-23f63eb946ba> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/c076573e-a252-4358-b3b3-23f63eb946ba> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/c076573e-a252-4358-b3b3-23f63eb946ba> a foaf:OnlineAccount ;
     mu:uuid "c076573e-a252-4358-b3b3-23f63eb946ba" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "kabinetdossierbeheerder-mock" .
+    foaf:accountName "kabinetdossierbeheerder-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/5fc87073-bcef-4f94-9bcc-6d6c4b29ce3c> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/5fc87073-bcef-4f94-9bcc-6d6c4b29ce3c> a org:Membership ;
     mu:uuid "5fc87073-bcef-4f94-9bcc-6d6c4b29ce3c" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/9db8d1da-00f5-4023-a019-34a974dae0b3> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/9db8d1da-00f5-4023-a019-34a974dae0b3> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4> .
 
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/c716c600-bff5-4200-9aa7-14b52ea65c75> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/c716c600-bff5-4200-9aa7-14b52ea65c75> a foaf:Person ;
     mu:uuid "c716c600-bff5-4200-9aa7-14b52ea65c75" ;
     foaf:firstName "Kabinetmedewerker" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/3e3b52a3-bf34-4fa4-b49d-3ebb3efd734d> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/3e3b52a3-bf34-4fa4-b49d-3ebb3efd734d> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/3e3b52a3-bf34-4fa4-b49d-3ebb3efd734d> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/3e3b52a3-bf34-4fa4-b49d-3ebb3efd734d> a foaf:OnlineAccount ;
     mu:uuid "3e3b52a3-bf34-4fa4-b49d-3ebb3efd734d" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "kabinetmedewerker-mock" .
+    foaf:accountName "kabinetmedewerker-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/53e68625-b661-4dcb-923b-2a8b0bd2a614> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/53e68625-b661-4dcb-923b-2a8b0bd2a614> a org:Membership ;
     mu:uuid "53e68625-b661-4dcb-923b-2a8b0bd2a614" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/c716c600-bff5-4200-9aa7-14b52ea65c75> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/c716c600-bff5-4200-9aa7-14b52ea65c75> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/6b5b3e7c-c6f2-49e9-a10b-a3e3858a1c35> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/6b5b3e7c-c6f2-49e9-a10b-a3e3858a1c35> a foaf:Person ;
     mu:uuid "6b5b3e7c-c6f2-49e9-a10b-a3e3858a1c35" ;
     foaf:firstName "Overheidsorganisatie" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/a335add2-c129-46aa-9e5b-a97496d11757> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/a335add2-c129-46aa-9e5b-a97496d11757> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/a335add2-c129-46aa-9e5b-a97496d11757> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/a335add2-c129-46aa-9e5b-a97496d11757> a foaf:OnlineAccount ;
     mu:uuid "a335add2-c129-46aa-9e5b-a97496d11757" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "overheidsorganisatie-mock" .
+    foaf:accountName "overheidsorganisatie-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/c2b0a9c5-a8d8-4d5e-9c0f-ba32a2fd3d89> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/c2b0a9c5-a8d8-4d5e-9c0f-ba32a2fd3d89> a org:Membership ;
     mu:uuid "c2b0a9c5-a8d8-4d5e-9c0f-ba32a2fd3d89" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/6b5b3e7c-c6f2-49e9-a10b-a3e3858a1c35> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/6b5b3e7c-c6f2-49e9-a10b-a3e3858a1c35> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644> .
 
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> a foaf:Person ;
     mu:uuid "1a6c420c-e209-46fb-a2cb-cd3aeceec765" ;
     foaf:firstName "Overlegcomité raadgever" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/1adf0580-3779-4123-9f36-2186c99c94a8> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/1adf0580-3779-4123-9f36-2186c99c94a8> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/1adf0580-3779-4123-9f36-2186c99c94a8> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/1adf0580-3779-4123-9f36-2186c99c94a8> a foaf:OnlineAccount ;
     mu:uuid "1adf0580-3779-4123-9f36-2186c99c94a8" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "oc-raadgever-mock" .
+    foaf:accountName "oc-raadgever-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/e59daeb0-1c3e-4c47-bdde-c1d7a6e8788d> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/e59daeb0-1c3e-4c47-bdde-c1d7a6e8788d> a org:Membership ;
     mu:uuid "e59daeb0-1c3e-4c47-bdde-c1d7a6e8788d" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> .
 
 
 
-<http://data.kanselarij.vlaanderen.be/id/gebruiker/ab468df5-ceee-4943-8a89-88ac8feebdc7> a foaf:Person ;
+<http://themis.vlaanderen.be/id/gebruiker/ab468df5-ceee-4943-8a89-88ac8feebdc7> a foaf:Person ;
     mu:uuid "ab468df5-ceee-4943-8a89-88ac8feebdc7" ;
     foaf:firstName "Vlaams Parlement" ;
-    foaf:familyName "Mock" ;
-    foaf:account <http://data.kanselarij.vlaanderen.be/id/account/5eb1f49e-1c32-417b-9432-6d8b7f7afc12> .
+    foaf:familyName "Test" ;
+    foaf:account <http://themis.vlaanderen.be/id/account/5eb1f49e-1c32-417b-9432-6d8b7f7afc12> .
 
-<http://data.kanselarij.vlaanderen.be/id/account/5eb1f49e-1c32-417b-9432-6d8b7f7afc12> a foaf:OnlineAccount ;
+<http://themis.vlaanderen.be/id/account/5eb1f49e-1c32-417b-9432-6d8b7f7afc12> a foaf:OnlineAccount ;
     mu:uuid "5eb1f49e-1c32-417b-9432-6d8b7f7afc12" ;
     foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> ;
-    foaf:accountName "vlaams-parlement-mock" .
+    foaf:accountName "vlaams-parlement-test" .
 
-<http://data.kanselarij.vlaanderen.be/id/lidmaatschap/b32666f4-9641-4abf-a1f6-82b57b322349> a org:Membership ;
+<http://themis.vlaanderen.be/id/lidmaatschap/b32666f4-9641-4abf-a1f6-82b57b322349> a org:Membership ;
     mu:uuid "b32666f4-9641-4abf-a1f6-82b57b322349" ;
-    org:member <http://data.kanselarij.vlaanderen.be/id/gebruiker/ab468df5-ceee-4943-8a89-88ac8feebdc7> ;
+    org:member <http://themis.vlaanderen.be/id/gebruiker/ab468df5-ceee-4943-8a89-88ac8feebdc7> ;
     org:role <http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642> .
