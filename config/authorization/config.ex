@@ -16,7 +16,7 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  defp kanselarij_roles do
+  defp secretarie_roles do
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2>" # secretarie
     ]
@@ -50,8 +50,19 @@ defmodule Acl.UserGroups.Config do
   defp overheid_roles do
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644>", # overheidsorganisatie
-      "<http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9>" # Vlaams Parlement
+      "<http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642>" # Vlaams Parlement
     ]
+  end
+
+  defp access_by_authenticated() do
+    %AccessByQuery{
+      vars: [],
+      query: "PREFIX org: <http://www.w3.org/ns/org#>
+              PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+              SELECT ?role_uri WHERE {
+                <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
+              } LIMIT 1"
+    }
   end
 
   defp access_by_role(role_uris) do
@@ -180,7 +191,6 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  # Also insert your type as ext:PublicClass
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
@@ -195,9 +205,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/org#Organization",
     ]
   end
-  # Also insert your type as ext:PublicClass
 
-  # Also insert your type as ext:PublicClass
   defp static_unconfidential_code_list_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
@@ -218,7 +226,6 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/2004/02/skos/core#ConceptScheme"
     ]
   end
-  # Also insert your type as ext:PublicClass
 
   def user_groups do
     # These elements are walked from top to bottom.  Each of them may
@@ -228,11 +235,10 @@ defmodule Acl.UserGroups.Config do
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
     [
-      # // PUBLIC TODO for now public is the same as privileged and privileged is therefore not created
       %GroupSpec{
         name: "public",
         useage: [:read],
-        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
+        access: %AlwaysAccessible{},
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
@@ -252,76 +258,39 @@ defmodule Acl.UserGroups.Config do
               resource_types: staatsblad_resource_types()
             } } ]
       },
+
       %GroupSpec{
-        name: "o-intern-overheid-read",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( overheid_roles() ),
+        name: "authenticated",
+        useage: [:read],
+        access: access_by_authenticated(),
         graphs: [
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
+            graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
-            }
-          }
-        ]
-      },
-
-      %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
-        name: "writes-on-public",
-        useage: [:write, :read_for_write],
-        access: access_by_role( admin_roles() ++ kanselarij_roles() ),
-        graphs: [ %GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+              resource_types: user_account_resource_types()
             }
           },
         ]
       },
 
-      %GroupSpec{ # KAS-3635 Group may be removed, but requires reconfiguration of eager indexing groups in mu-search config
-        name: "o-admin-roles",
+      %GroupSpec{
+        name: "admin",
         useage: [:read, :write, :read_for_write],
         access: access_by_role( admin_roles() ),
         graphs: [
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/organizations/admin",
+            graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"]
+              resource_types: user_account_resource_types()
             }
           },
         ]
       },
+
       %GroupSpec{
-        name: "o-intern-regering-read",
+        name: "secretarie",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( kabinet_roles() ),
-        graphs: [
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
-            constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
-            }
-          },
-        ]
-      },
-      %GroupSpec{
-        name: "o-minister-read",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( minister_roles() ),
-        graphs: [
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/organizations/minister",
-            constraint: %ResourceConstraint{
-              resource_types: ["http://mu.semte.ch/vocabularies/ext/NotAThing"] ++file_bundling_resource_types()
-            }
-          },
-        ]
-      },
-      %GroupSpec{
-        name: "o-kanselarij-all",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( admin_roles() ++ kanselarij_roles() ++ kort_bestek_roles() ),
+        access: access_by_role( admin_roles() ++ secretarie_roles() ++ kort_bestek_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
@@ -330,13 +299,9 @@ defmodule Acl.UserGroups.Config do
                 agendering_resource_types() ++
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
-                unconfidential_resource_types() ++
-                static_unconfidential_code_list_types() ++
-                user_account_resource_types() ++
                 file_bundling_resource_types() ++
                 publication_resource_types() ++
-                sign_resource_types() ++
-                staatsblad_resource_types()
+                sign_resource_types()
             }
           },
           %GraphSpec{
@@ -347,11 +312,12 @@ defmodule Acl.UserGroups.Config do
           },
         ]
       },
+
       %GroupSpec{
         name: "ovrb",
         useage: [:read, :write, :read_for_write],
-        # TODO: Read access on whole "kanselarij"-graph for now. Recent kanselarij-data will have separate graph later on
-        access: access_by_role( ovrb_roles() ),
+        # TODO: Read access on whole "kanselarij"-graph for now.
+        access: access_by_role( admin_roles() ++ ovrb_roles() ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
@@ -359,8 +325,7 @@ defmodule Acl.UserGroups.Config do
               resource_types: generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 publication_resource_types() ++
-                sign_resource_types() ++
-                staatsblad_resource_types()
+                sign_resource_types()
             }
           },
           %GraphSpec{
@@ -369,6 +334,48 @@ defmodule Acl.UserGroups.Config do
               resource_types: email_resource_types()
             }
           },
+        ]
+      },
+
+      %GroupSpec{
+        name: "o-minister-read",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( minister_roles() ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/minister",
+            constraint: %ResourceConstraint{
+              resource_types: file_bundling_resource_types()
+            }
+          },
+        ]
+      },
+
+      %GroupSpec{
+        name: "o-intern-regering-read",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( kabinet_roles() ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
+            constraint: %ResourceConstraint{
+              resource_types: file_bundling_resource_types()
+            }
+          },
+        ]
+      },
+
+      %GroupSpec{
+        name: "o-intern-overheid-read",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( overheid_roles() ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
+            constraint: %ResourceConstraint{
+              resource_types: file_bundling_resource_types()
+            }
+          }
         ]
       },
 
