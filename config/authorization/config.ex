@@ -59,7 +59,7 @@ defmodule Acl.UserGroups.Config do
       vars: [],
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-              SELECT ?group_uri WHERE {
+              SELECT ?role_uri WHERE {
                 <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
