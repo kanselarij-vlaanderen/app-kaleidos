@@ -168,19 +168,14 @@ services:
     image: kanselarij/mock-login-service:feature-KAS-3605-user-roles
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.4.1
+    image: kanselarij/acmidm-login-service:feature-KAS-3604-user-roles
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       MU_APPLICATION_AUTH_REDIRECT_URI: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
       MU_APPLICATION_AUTH_CLIENT_SECRET: "THIS IS OUR SECRET"
-      MU_APPLICATION_AUTH_ROLE_CLAIM: "dkb_kaleidos_rol_3d"
-      MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
-      MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
-      MU_APPLICATION_AUTH_DEFAULT_GROUP_URI: "http://data.kanselarij.vlaanderen.be/id/group/user"
-      REQUEST_TIMEOUT: 5000
     logging: *default-logging
     restart: always
     labels:
