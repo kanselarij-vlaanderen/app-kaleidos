@@ -90,7 +90,7 @@
       "new-resource-base": "http://themis.vlaanderen.be/id/organisatie/"
     },
     "memberships":  {
-      "name": "memberships",
+      "name": "membership",
       "class": "org:Membership",
       "relationships": {
         "user": {
