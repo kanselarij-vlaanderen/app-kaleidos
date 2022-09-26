@@ -1,0 +1,124 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix core: <http://kanselarij.vo.data.gift/core/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix tl: <http://mu.semte.ch/vocabularies/typed-literals/> .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/c23a60f3-ffaf-44ef-be18-ff1792117caa> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "c23a60f3-ffaf-44ef-be18-ff1792117caa" ;
+  skos:prefLabel "Diensten voor het algemeen regeringsbeleid"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/d371aadd-73c5-420d-bc4e-f1eacbfaf023> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "d371aadd-73c5-420d-bc4e-f1eacbfaf023" ;
+  skos:prefLabel "Bestuurszaken"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "58c91fe9-8839-4653-9693-9a7df6885c06" ;
+  skos:prefLabel "Financiën en begroting"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/66d2ca3e-5bcf-405c-b704-4621004d051b> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "66d2ca3e-5bcf-405c-b704-4621004d051b" ;
+  skos:prefLabel "Buitenlands beleid, buitenlandse handel, internationale samenwerking en toerisme"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "e2ccf3f9-6b1f-4b32-9e76-501999c51788" ;
+  skos:prefLabel "Economie, wetenschap en innovatie"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "cb105245-de9e-4d32-8ef9-519b832ed4f9" ;
+  skos:prefLabel "Onderwijs en vorming"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "53af66e3-b055-4a74-9f24-03ea9def4e0c" ;
+  skos:prefLabel "Welzijn, volksgezondheid en gezin"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "82535aaf-39ec-4b31-a181-f44241a65c93" ;
+  skos:prefLabel "Cultuur, jeugd, sport en media"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "a41f29a9-7781-4419-a821-fd3bd183c7ba" ;
+  skos:prefLabel "Werk en sociale economie"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "98a3acec-51f2-4b6a-a1e1-6b6166d80d2e" ;
+  skos:prefLabel "Landbouw en visserij"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/ddc5a250-da82-4102-a47e-9f97c2ff6881> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "ddc5a250-da82-4102-a47e-9f97c2ff6881" ;
+  skos:prefLabel "Leefmilieu, natuur en energie"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "be302e1b-f4d8-4212-a67d-bf992e6effcf" ;
+  skos:prefLabel "Mobiliteit en openbare werken"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/90ca98c8-efc4-4fa6-8124-51208cc353ee> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "90ca98c8-efc4-4fa6-8124-51208cc353ee" ;
+  skos:prefLabel "Ruimtelijke ordening, woonbeleid en onroerend erfgoed"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/496f03b0-6582-4cfc-97b7-150a276d684f> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "496f03b0-6582-4cfc-97b7-150a276d684f" ;
+  skos:prefLabel "Internationaal Vlaanderen"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/8aefc421-830d-4eb8-a302-6649d346414f> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "8aefc421-830d-4eb8-a302-6649d346414f" ;
+  skos:prefLabel "Kanselarij en Bestuur"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "true"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/5a0d6e96-061d-4d91-900d-173d138f79a4> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "5a0d6e96-061d-4d91-900d-173d138f79a4" ;
+  skos:prefLabel "Omgeving"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
+
+<http://themis.vlaanderen.be/id/beleidsdomein/22a39165-e17c-4a52-963a-9fa3d097907c> a core:Beleidsdomein, skos:Concept ;
+  mu:uuid "22a39165-e17c-4a52-963a-9fa3d097907c" ;
+  skos:prefLabel "Kanselarij, Bestuur, Buitenlandse Zaken en Justitie"@nl ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
+  owl:deprecated "false"^^tl:boolean .
