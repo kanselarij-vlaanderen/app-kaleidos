@@ -36,7 +36,7 @@
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "dct:created"))
-                (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
+                ;; (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; still exists in legacy until we sort inconsistensies in data
                 (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
