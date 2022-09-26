@@ -1,0 +1,74 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?oldGovernmentDomain ?p ?o .
+    ?oldGovernmentDomain skos:prefLabel ?oldLabel .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?newGovernmentDomain ?p ?o .
+  }
+}
+WHERE {
+  VALUES (?oldGovernmentDomain ?newGovernmentDomain) {
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/diensten-algemeen-regeringsbeleid> <http://themis.vlaanderen.be/id/beleidsdomein/c23a60f3-ffaf-44ef-be18-ff1792117caa>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/bestuurszaken> <http://themis.vlaanderen.be/id/beleidsdomein/d371aadd-73c5-420d-bc4e-f1eacbfaf023>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06> <http://themis.vlaanderen.be/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788> <http://themis.vlaanderen.be/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9> <http://themis.vlaanderen.be/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c> <http://themis.vlaanderen.be/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93> <http://themis.vlaanderen.be/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba> <http://themis.vlaanderen.be/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e> <http://themis.vlaanderen.be/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/leefmilieu-natuur-en-energie> <http://themis.vlaanderen.be/id/beleidsdomein/ddc5a250-da82-4102-a47e-9f97c2ff6881>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf> <http://themis.vlaanderen.be/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/ruimtelijke-ordening-woonbeleid-en-onroerend-erfgoed> <http://themis.vlaanderen.be/id/beleidsdomein/90ca98c8-efc4-4fa6-8124-51208cc353ee>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/internationaal-vlaanderen> <http://themis.vlaanderen.be/id/beleidsdomein/496f03b0-6582-4cfc-97b7-150a276d684f>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/kanselarij-en-bestuur> <http://themis.vlaanderen.be/id/beleidsdomein/8aefc421-830d-4eb8-a302-6649d346414f>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/5a0d6e96-061d-4d91-900d-173d138f79a4> <http://themis.vlaanderen.be/id/beleidsdomein/5a0d6e96-061d-4d91-900d-173d138f79a4>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/22a39165-e17c-4a52-963a-9fa3d097907c> <http://themis.vlaanderen.be/id/beleidsdomein/22a39165-e17c-4a52-963a-9fa3d097907c>)
+  }
+  GRAPH ?g {
+    ?oldGovernmentDomain ?p ?o .
+    ?oldGovernmentDomain skos:prefLabel ?oldLabel .
+    FILTER (?p != skos:prefLabel)
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?oldGovernmentDomain .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?newGovernmentDomain .
+  }
+}
+WHERE {
+  VALUES (?oldGovernmentDomain ?newGovernmentDomain) {
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/diensten-algemeen-regeringsbeleid> <http://themis.vlaanderen.be/id/beleidsdomein/c23a60f3-ffaf-44ef-be18-ff1792117caa>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/bestuurszaken> <http://themis.vlaanderen.be/id/beleidsdomein/d371aadd-73c5-420d-bc4e-f1eacbfaf023>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06> <http://themis.vlaanderen.be/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788> <http://themis.vlaanderen.be/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9> <http://themis.vlaanderen.be/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c> <http://themis.vlaanderen.be/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93> <http://themis.vlaanderen.be/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba> <http://themis.vlaanderen.be/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e> <http://themis.vlaanderen.be/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/leefmilieu-natuur-en-energie> <http://themis.vlaanderen.be/id/beleidsdomein/ddc5a250-da82-4102-a47e-9f97c2ff6881>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf> <http://themis.vlaanderen.be/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/ruimtelijke-ordening-woonbeleid-en-onroerend-erfgoed> <http://themis.vlaanderen.be/id/beleidsdomein/90ca98c8-efc4-4fa6-8124-51208cc353ee>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/internationaal-vlaanderen> <http://themis.vlaanderen.be/id/beleidsdomein/496f03b0-6582-4cfc-97b7-150a276d684f>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/kanselarij-en-bestuur> <http://themis.vlaanderen.be/id/beleidsdomein/8aefc421-830d-4eb8-a302-6649d346414f>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/5a0d6e96-061d-4d91-900d-173d138f79a4> <http://themis.vlaanderen.be/id/beleidsdomein/5a0d6e96-061d-4d91-900d-173d138f79a4>)
+    (<http://kanselarij.vo.data.gift/id/beleidsdomein/22a39165-e17c-4a52-963a-9fa3d097907c> <http://themis.vlaanderen.be/id/beleidsdomein/22a39165-e17c-4a52-963a-9fa3d097907c>)
+  }
+  GRAPH ?g {
+    ?s ?p ?oldGovernmentDomain .
+  }
+}
