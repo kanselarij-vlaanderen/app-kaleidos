@@ -6,7 +6,7 @@
 
 <http://themis.vlaanderen.be/id/beleidsdomein/c23a60f3-ffaf-44ef-be18-ff1792117caa> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "c23a60f3-ffaf-44ef-be18-ff1792117caa" ;
-  skos:prefLabel "Diensten voor het algemeen regeringsbeleid"@nl ;
+  skos:prefLabel "Diensten Algemeen Regeringsbeleid"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "true"^^tl:boolean .
@@ -20,7 +20,7 @@
 
 <http://themis.vlaanderen.be/id/beleidsdomein/58c91fe9-8839-4653-9693-9a7df6885c06> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "58c91fe9-8839-4653-9693-9a7df6885c06" ;
-  skos:prefLabel "Financiën en begroting"@nl ;
+  skos:prefLabel "Financiën en Begroting"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
@@ -34,63 +34,63 @@
 
 <http://themis.vlaanderen.be/id/beleidsdomein/e2ccf3f9-6b1f-4b32-9e76-501999c51788> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "e2ccf3f9-6b1f-4b32-9e76-501999c51788" ;
-  skos:prefLabel "Economie, wetenschap en innovatie"@nl ;
+  skos:prefLabel "Economie, Wetenschap en Innovatie"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/cb105245-de9e-4d32-8ef9-519b832ed4f9> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "cb105245-de9e-4d32-8ef9-519b832ed4f9" ;
-  skos:prefLabel "Onderwijs en vorming"@nl ;
+  skos:prefLabel "Onderwijs en Vorming"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/53af66e3-b055-4a74-9f24-03ea9def4e0c> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "53af66e3-b055-4a74-9f24-03ea9def4e0c" ;
-  skos:prefLabel "Welzijn, volksgezondheid en gezin"@nl ;
+  skos:prefLabel "Welzijn, Volksgezondheid en Gezin"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/82535aaf-39ec-4b31-a181-f44241a65c93> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "82535aaf-39ec-4b31-a181-f44241a65c93" ;
-  skos:prefLabel "Cultuur, jeugd, sport en media"@nl ;
+  skos:prefLabel "Cultuur, Jeugd, Sport en Media"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/a41f29a9-7781-4419-a821-fd3bd183c7ba> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "a41f29a9-7781-4419-a821-fd3bd183c7ba" ;
-  skos:prefLabel "Werk en sociale economie"@nl ;
+  skos:prefLabel "Werk & sociale economie"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/98a3acec-51f2-4b6a-a1e1-6b6166d80d2e> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "98a3acec-51f2-4b6a-a1e1-6b6166d80d2e" ;
-  skos:prefLabel "Landbouw en visserij"@nl ;
+  skos:prefLabel "Landbouw en Visserij"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/ddc5a250-da82-4102-a47e-9f97c2ff6881> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "ddc5a250-da82-4102-a47e-9f97c2ff6881" ;
-  skos:prefLabel "Leefmilieu, natuur en energie"@nl ;
+  skos:prefLabel "Leefmilieu, Natuur en Energie"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "true"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/be302e1b-f4d8-4212-a67d-bf992e6effcf> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "be302e1b-f4d8-4212-a67d-bf992e6effcf" ;
-  skos:prefLabel "Mobiliteit en openbare werken"@nl ;
+  skos:prefLabel "Mobiliteit en Openbare Werken"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "false"^^tl:boolean .
 
 <http://themis.vlaanderen.be/id/beleidsdomein/90ca98c8-efc4-4fa6-8124-51208cc353ee> a ext:Beleidsdomein, skos:Concept ;
   mu:uuid "90ca98c8-efc4-4fa6-8124-51208cc353ee" ;
-  skos:prefLabel "Ruimtelijke ordening, woonbeleid en onroerend erfgoed"@nl ;
+  skos:prefLabel "Ruimtelijke Ordening, Woonbeleid en Onroerend Erfgoed"@nl ;
   skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81> ;
   owl:deprecated "true"^^tl:boolean .
