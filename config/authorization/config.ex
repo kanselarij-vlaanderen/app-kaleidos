@@ -135,6 +135,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/adms#Identifier",
       "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
+      "http://data.europa.eu/eli/ontology#LegalResource" # manual registration of decisions
     ]
   end
 
