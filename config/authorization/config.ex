@@ -285,6 +285,14 @@ defmodule Acl.UserGroups.Config do
               resource_types: user_account_resource_types()
             }
           },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/public",
+            constraint: %ResourceConstraint{
+              resource_types: [
+                "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
+              ]
+            }
+          }
         ]
       },
 
