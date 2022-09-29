@@ -56,6 +56,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
       DATABASE_OVERLOAD_RECOVERY: "on"
+      ERROR_ON_UNWRITTEN_DATA: "on"
     volumes:
       - ./config/authorization:/config
     logging: *extended-logging
@@ -247,7 +248,7 @@ services:
   document-release:
     image: kanselarij/document-release-service:1.0.0
     logging: *default-logging
-    restart: "no"
+    restart: always
     labels:
       - "logging=true"
   mail-delivery:
