@@ -166,7 +166,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Urgentieniveau",
-      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype"
+      "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatierapporttype",
       "http://mu.semte.ch/vocabularies/ext/RegelgevingType",
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/org#Role",
