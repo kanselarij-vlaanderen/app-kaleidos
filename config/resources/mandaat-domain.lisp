@@ -43,7 +43,8 @@
 
 (define-resource role ()
   :class (s-prefix "org:Role")
-  :properties `((:label        :string ,(s-prefix "skos:prefLabel")))
+  :properties `((:label        :string ,(s-prefix "skos:prefLabel"))
+                (:concept-scheme :url ,(s-prefix "skos:inScheme")))
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestuursfunctie/")
   :features '(include-uri)
   :on-path "roles")
