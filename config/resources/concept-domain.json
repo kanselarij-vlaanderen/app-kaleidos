@@ -27,6 +27,14 @@
         "position": {
           "type": "integer",
           "predicate": "schema:position"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "prov:generatedAtTime"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "prov:invalidatedAtTime"
         }
       },
       "relationships": {

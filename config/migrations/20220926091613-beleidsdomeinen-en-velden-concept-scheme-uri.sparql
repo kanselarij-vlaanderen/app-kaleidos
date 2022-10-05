@@ -1,0 +1,41 @@
+DELETE {
+  GRAPH ?g {
+    ?oldConceptSchemeUri ?p ?o .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?newConceptSchemeUri ?p ?o .
+  }
+}
+WHERE {
+  VALUES (?oldConceptSchemeUri ?newConceptSchemeUri) {
+    (<http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81>)
+    (<http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> <http://themis.vlaanderen.be/id/concept-scheme/0012aad8-d6e5-49e2-af94-b1bebd484d5b>)
+  }
+  GRAPH ?g {
+    ?oldConceptSchemeUri ?p ?o .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?oldConceptSchemeUri .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?newConceptSchemeUri .
+  }
+}
+WHERE {
+  VALUES (?oldConceptSchemeUri ?newConceptSchemeUri) {
+    (<http://themis.vlaanderen.be/id/concept-schema/f4981a92-8639-4da4-b1e3-0e1371feaa81> <http://themis.vlaanderen.be/id/concept-scheme/f4981a92-8639-4da4-b1e3-0e1371feaa81>)
+    (<http://themis.vlaanderen.be/id/concept-schema/0012aad8-d6e5-49e2-af94-b1bebd484d5b> <http://themis.vlaanderen.be/id/concept-scheme/0012aad8-d6e5-49e2-af94-b1bebd484d5b>)
+  }
+  GRAPH ?g {
+    ?s ?p ?oldConceptSchemeUri .
+  }
+}

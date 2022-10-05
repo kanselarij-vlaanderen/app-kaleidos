@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.37.1
+    image: kanselarij/frontend-kaleidos:5.37.3
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -307,7 +307,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.3.0
+    image: kanselarij/publication-report-service:0.4.0
     volumes:
       - ./data/files:/share
     environment:
