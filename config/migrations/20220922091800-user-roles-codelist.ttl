@@ -46,14 +46,14 @@ thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 a skos:ConceptScheme ;
     mu:uuid "6bcebe59-0cb5-4c5e-ab40-ca98b65887a4" ;
     skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
     skos:prefLabel "Kabinetdossierbeheerder" ;
-    skos:notation "Kaleidos_Kabinetdossierbeheerder" ;
+    skos:notation "Kaleidos_Kabinetsdossierbeheerder" ;
     skos:definition "Medewerker van een kabinet belast met indienen voor agenda en secretariaat voor handtekenen en indienen VP" .
 
 <http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84> a org:Role ;
     mu:uuid "33dbca4a-7e57-41d2-a26c-aedef422ff84" ;
     skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
     skos:prefLabel "Kabinetmedewerker" ;
-    skos:notation "Kaleidos_Kabinetmedewerker" ;
+    skos:notation "Kaleidos_Kabinetsmedewerker" ;
     skos:definition "Medewerker van een kabinet" .
 
 <http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644> a org:Role ;
