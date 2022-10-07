@@ -10,6 +10,5 @@ WHERE {
    ?publicationFlow dossier:behandelt ?case .
    ?case dossier:Dossier.isNeerslagVan ?decFlow .
    ?decFlow dossier:doorloopt ?subcase .
-    ?subcase besluitvorming:beleidsveld ?decisionGovernmentArea .
-   FILTER NOT EXISTS { ?publicationFlow pub:beleidsveld ?decisionGovernmentArea }
+   ?subcase besluitvorming:beleidsveld ?decisionGovernmentArea .
 }
