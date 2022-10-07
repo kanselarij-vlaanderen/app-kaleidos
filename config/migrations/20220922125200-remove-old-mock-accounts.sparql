@@ -1,0 +1,14 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE WHERE {
+  GRAPH ?g {
+    ?account a foaf:OnlineAccount ;
+    foaf:accountServiceHomepage ?homepage ;
+    ?accountP ?accountO .
+
+    ?person foaf:account ?account ; ?personP ?personO .
+    ?group foaf:member ?person .
+
+    FILTER(STR(?homepage) = "https://github.com/kanselarij-vlaanderen/mock-login-service")
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "org": "http://www.w3.org/ns/org#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dct": "http://purl.org/dc/terms/"
+  },
+  "resources": {
+    "users":  {
+      "name": "user",
+      "class": "foaf:Person",
+      "attributes": {
+        "first-name": {
+          "type": "string",
+          "predicate": "foaf:firstName"
+        },
+        "last-name": {
+          "type": "string",
+          "predicate": "foaf:familyName"
+        },
+        "identifier": {
+          "type": "string",
+          "predicate": "dct:identifier"
+        }
+      },
+      "relationships": {
+        "account": {
+          "predicate": "foaf:account",
+          "target": "account",
+          "cardinality": "one"
+        },
+        "memberships": {
+          "predicate": "org:member",
+          "target": "membership",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/gebruiker/"
+    },
+    "accounts":  {
+      "name": "account",
+      "class": "foaf:OnlineAccount",
+      "attributes": {
+        "provider": {
+          "type": "url",
+          "predicate": "foaf:accountServiceHomepage"
+        },
+        "name": {
+          "type": "string",
+          "predicate": "foaf:accountName"
+        }
+      },
+      "relationships": {
+        "user": {
+          "predicate": "foaf:account",
+          "target": "user",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/account/"
+    },
+    "user-organizations":  {
+      "name": "user-organization",
+      "class": "foaf:Organization",
+      "_comment": "Equivalent class of org:Organization, but we currently want to make a distinction between organizations originating from ACM/IDM (foaf:Organization) and free input of organizations (org:Organization) by OVRB in publications.",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "identifier": {
+          "type": "string",
+          "predicate": "org:identifier"
+        }
+      },
+      "relationships": {
+        "memberships": {
+          "predicate": "org:organization",
+          "target": "membership",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/organisatie/"
+    },
+    "memberships":  {
+      "name": "membership",
+      "class": "org:Membership",
+      "relationships": {
+        "user": {
+          "predicate": "org:member",
+          "target": "user",
+          "cardinality": "one"
+        },
+        "role": {
+          "predicate": "org:role",
+          "target": "role",
+          "cardinality": "one"
+        },
+        "organization": {
+          "predicate": "org:organization",
+          "target": "user-organization",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/lidmaatschap/"
+    }
+  }
+}

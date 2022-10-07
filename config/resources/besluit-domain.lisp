@@ -4,7 +4,6 @@
                 (:title        :string     ,(s-prefix "dct:title"))
                 (:serialnumber :string    ,(s-prefix "besluitvorming:volgnummer"))
                 (:created     :datetime       ,(s-prefix "dct:created"))
-                ; (:agendatype  :url        ,(s-prefix "dct:type")) // Currently not implemented ( https://test.data.vlaanderen.be/doc/applicatieprofiel/besluitvorming/#Agenda )
                 (:modified    :datetime   ,(s-prefix "dct:modified")))
   :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
@@ -39,7 +38,7 @@
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))  ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
                 (:comment             :string   ,(s-prefix "schema:comment"))
                 (:private-comment     :string   ,(s-prefix "ext:privateComment"))
                 (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
@@ -48,7 +47,7 @@
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime ,(s-prefix "dct:modified"))
                 (:formally-ok         :url      ,(s-prefix "ext:formeelOK"))
-                (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+                (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen")))
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
                                       :as "previous-agenda-item")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
@@ -181,10 +180,10 @@
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:location              :string   ,(s-prefix "prov:atLocation"))
                 (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
-                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; 2019-01-09: Also see note on agenda "is-final". "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level
+                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level. TODO whether meeting is final can be derived from existance of "?meeting besluitvorming:behandelt ?agenda" triple. This duplicate boolean flag can be removed.
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:number-representation :string   ,(s-prefix "ext:numberRepresentation")))
-  :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor")
+  :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor") ;; All agenda versions, including the final version
                                         :inverse t
                                         :as "agendas")
               (subcase                  :via      ,(s-prefix "ext:isAangevraagdVoor")
@@ -195,7 +194,7 @@
               (themis-publication-activity :via   ,(s-prefix "prov:used")
                                            :inverse t
                                            :as "themis-publication-activities"))
-  :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt");; NOTE: What is the URI of property 'behandelt'? Made up besluitvorming:behandelt
+  :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt") ;; Final agenda version that is treatened during the meeting
                                         :as "agenda")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
