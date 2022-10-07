@@ -39,7 +39,7 @@
                 (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
                 (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))
+                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))  ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
                 (:comment             :string   ,(s-prefix "schema:comment"))
                 (:private-comment     :string   ,(s-prefix "ext:privateComment"))
                 (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
@@ -48,7 +48,7 @@
                 (:title               :string   ,(s-prefix "dct:title"))
                 (:modified            :datetime ,(s-prefix "dct:modified"))
                 (:formally-ok         :url      ,(s-prefix "ext:formeelOK"))
-                (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen"))) ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+                (:is-approval         :boolean  ,(s-prefix "ext:isGoedkeuringVanDeNotulen")))
   :has-one `((agendaitem              :via      ,(s-prefix "besluit:aangebrachtNa")
                                       :as "previous-agenda-item")
              (user                    :via      ,(s-prefix "ext:modifiedBy")
