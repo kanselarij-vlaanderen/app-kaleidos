@@ -1,0 +1,36 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type ; ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type ; ?p ?o .
+    VALUES ?type {
+      foaf:Person
+      foaf:OnlineAccount
+      foaf:Group
+      adms:Identifier
+      org:Organization
+    }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a person:Person ; ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a person:Person .
+    FILTER NOT EXISTS { ?m mandaat:isBestuurlijkeAliasVan ?s . }
+    ?s ?p ?o .
+  }
+}
