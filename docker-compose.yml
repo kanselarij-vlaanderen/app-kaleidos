@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.37.1
+    image: kanselarij/frontend-kaleidos:5.38.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -56,6 +56,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
       DATABASE_OVERLOAD_RECOVERY: "on"
+      ERROR_ON_UNWRITTEN_DATA: "on"
     volumes:
       - ./config/authorization:/config
     logging: *extended-logging
@@ -112,7 +113,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.5.0
+    image: kanselarij/cache-warmup-service:1.6.0
     logging: *default-logging
     restart: always
     labels:
@@ -165,24 +166,17 @@ services:
     labels:
       - "logging=true"
   mocklogin:
-    image: kanselarij/mock-login-service:1.0.0
-    volumes:
-      - ./config/mocklogin:/config
+    image: kanselarij/mock-login-service:2.0.0
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:1.4.1
+    image: kanselarij/acmidm-login-service:2.0.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       MU_APPLICATION_AUTH_REDIRECT_URI: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
       MU_APPLICATION_AUTH_CLIENT_SECRET: "THIS IS OUR SECRET"
-      MU_APPLICATION_AUTH_ROLE_CLAIM: "dkb_kaleidos_rol_3d"
-      MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
-      MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
-      MU_APPLICATION_AUTH_DEFAULT_GROUP_URI: "http://data.kanselarij.vlaanderen.be/id/group/user"
-      REQUEST_TIMEOUT: 5000
     logging: *default-logging
     restart: always
     labels:
@@ -254,7 +248,7 @@ services:
   document-release:
     image: kanselarij/document-release-service:1.0.0
     logging: *default-logging
-    restart: "no"
+    restart: always
     labels:
       - "logging=true"
   mail-delivery:
@@ -313,7 +307,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.3.0
+    image: kanselarij/publication-report-service:0.4.0
     volumes:
       - ./data/files:/share
     environment:

@@ -1,0 +1,34 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?publicationFlow <http://mu.semte.ch/vocabularies/ext/publicatie/beleidsdomein#provisioir> ?governmentArea.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?decisionFlow besluitvorming:beleidsveld ?governmentArea .
+    ?subcase besluitvorming:beleidsveld ?governmentArea .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?publicationFlow a pub:Publicatieaangelegenheid .
+    ?publicationFlow <http://mu.semte.ch/vocabularies/ext/publicatie/beleidsdomein#provisioir> ?governmentArea.
+
+    ?publicationFlow dossier:behandelt ?case .
+    ?case dossier:Dossier.isNeerslagVan ?decisionFlow .
+    ?decisionFlow dossier:doorloopt ?subcase .
+
+    # Filter so that we only get the latest subcase
+    ?subcase dct:created ?created .
+    FILTER NOT EXISTS {
+      ?decisionFlow dossier:doorloopt ?subcase_ .
+      ?subcase_ dct:created ?created_ .
+      FILTER(?created_ > ?created)
+    }
+  }
+}

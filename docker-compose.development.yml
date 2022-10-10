@@ -7,6 +7,14 @@ x-logging:
     max-file: "3"
 
 services:
+  # Enable to test app locally over https with DNS name
+  # proxy:
+  #   image: nginx:1.13
+  #   volumes:
+  #     - ./config/proxy/conf.d:/etc/nginx/conf.d
+  #     - ./config/proxy/certs:/etc/nginx/certs
+  #   ports:
+  #     - "443:443"
   frontend:
     restart: "no"
     environment:

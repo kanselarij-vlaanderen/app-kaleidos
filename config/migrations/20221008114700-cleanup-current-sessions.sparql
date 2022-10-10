@@ -1,0 +1,5 @@
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/sessions> {
+    ?s ?p ?o .
+  }
+}

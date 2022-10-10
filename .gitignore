@@ -37,6 +37,7 @@ __MACOSX
 
 # Keyfiles
 *.pem
+config/proxy/certs/*
 
 # Accept data
 acc-data/

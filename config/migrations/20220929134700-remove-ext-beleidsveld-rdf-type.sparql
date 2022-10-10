@@ -1,0 +1,13 @@
+DELETE WHERE {
+  GRAPH ?g {
+    ?s a <http://mu.semte.ch/vocabularies/ext/Beleidsveld> .
+  }
+}
+
+;
+
+DELETE WHERE {
+  GRAPH ?g {
+    ?s a <http://mu.semte.ch/vocabularies/ext/Beleidsdomein> .
+  }
+}

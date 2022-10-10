@@ -1,0 +1,27 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?s a foaf:Person ; foaf:account ?account ; ?p ?o .
+    ?account ?accountP ?accountO .
+    ?s adms:identifier ?identifier .
+    ?identifier ?identifierP ?identifierO .
+    ?group foaf:member ?s .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?s a foaf:Person ; foaf:account ?account ; ?p ?o .
+    ?account ?accountP ?accountO .
+    OPTIONAL {
+      ?s adms:identifier ?identifier .
+      ?identifier ?identifierP ?identifierO .
+    }
+    OPTIONAL {
+      ?group foaf:member ?s .
+    }
+  }
+}
