@@ -1,0 +1,11 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
+INSERT {
+  ?publicationFlow pub:beleidsveld ?governmentArea .
+}
+WHERE {
+  ?publicationFlow a pub:Publicatieaangelegenheid .
+  ?publicationFlow <http://mu.semte.ch/vocabularies/ext/publicatie/beleidsdomein#provisioir> ?governmentArea .
+}
