@@ -1,0 +1,65 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+
+<http://themis.vlaanderen.be/id/organisatie/85a6da13-cf19-4d9c-8651-2c78755da8bb> a foaf:Organization ;
+  mu:uuid "85a6da13-cf19-4d9c-8651-2c78755da8bb" ;
+  skos:prefLabel "Kaleidos Test Organisatie Alternatief" ;
+  org:identifier "OVO1BOGUS" .
+
+<http://themis.vlaanderen.be/id/organisatie/8576cdf7-4166-4b9e-a2b7-c51d39bac1a6> a foaf:Organization ;
+  mu:uuid "8576cdf7-4166-4b9e-a2b7-c51d39bac1a6" ;
+  skos:prefLabel "Kaleidos Test Organisatie Geblokkeerd" ;
+  org:identifier "OVO2BOGUS" .
+
+<http://themis.vlaanderen.be/id/gebruiker/fad09c27-65b4-42ab-ace2-8b4112469fe9> a foaf:Person ;
+  mu:uuid "fad09c27-65b4-42ab-ace2-8b4112469fe9" ;
+  foaf:account <http://themis.vlaanderen.be/id/account/1455f7ec-eae1-481e-8501-4872f68c5b8d> ;
+  foaf:firstName "User who is Blocked" ;
+  foaf:familyName "Test" .
+
+<http://themis.vlaanderen.be/id/account/1455f7ec-eae1-481e-8501-4872f68c5b8d> a foaf:OnlineAccount ;
+  mu:uuid "1455f7ec-eae1-481e-8501-4872f68c5b8d" ;
+  foaf:accountName "user-who-is-blocked-test" ;
+  foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> .
+
+<http://themis.vlaanderen.be/id/lidmaatschap/8e276f35-9c67-4f18-b547-700624288e88> a org:Membership ;
+  mu:uuid "8e276f35-9c67-4f18-b547-700624288e88" ;
+  org:member <http://themis.vlaanderen.be/id/gebruiker/fad09c27-65b4-42ab-ace2-8b4112469fe9> ;
+  org:organization <http://themis.vlaanderen.be/id/organisatie/85a6da13-cf19-4d9c-8651-2c78755da8bb> ;
+  org:role <http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5> .
+
+<http://themis.vlaanderen.be/id/gebruiker/b22ec2a2-1b84-4342-be5b-d5f428e5ea3e> a foaf:Person ;
+  mu:uuid "b22ec2a2-1b84-4342-be5b-d5f428e5ea3e" ;
+  foaf:account <http://themis.vlaanderen.be/id/account/d0913d0f-3a3f-402e-9ba1-4d2fb7533e41> ;
+  foaf:firstName "User with Blocked Membership" ;
+  foaf:familyName "Test" .
+
+<http://themis.vlaanderen.be/id/account/d0913d0f-3a3f-402e-9ba1-4d2fb7533e41> a foaf:OnlineAccount ;
+  mu:uuid "d0913d0f-3a3f-402e-9ba1-4d2fb7533e41" ;
+  foaf:accountName "user-with-blocked-membership-test" ;
+  foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> .
+
+<http://themis.vlaanderen.be/id/lidmaatschap/fa6a72a3-fa52-4ead-afff-8571d666c36d> a org:Membership ;
+  mu:uuid "fa6a72a3-fa52-4ead-afff-8571d666c36d" ;
+  org:member <http://themis.vlaanderen.be/id/gebruiker/b22ec2a2-1b84-4342-be5b-d5f428e5ea3e> ;
+  org:organization <http://themis.vlaanderen.be/id/organisatie/85a6da13-cf19-4d9c-8651-2c78755da8bb> ;
+  org:role <http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5> .
+
+<http://themis.vlaanderen.be/id/gebruiker/c974de61-9ef4-49d6-b474-015ea904c810> a foaf:Person ;
+  mu:uuid "c974de61-9ef4-49d6-b474-015ea904c810" ;
+  foaf:account <http://themis.vlaanderen.be/id/account/cb0e0c0b-f679-4e0c-966a-1a7ec5cc6d8e> ;
+  foaf:firstName "User with Blocked Organization" ;
+  foaf:familyName "Test" .
+
+<http://themis.vlaanderen.be/id/account/cb0e0c0b-f679-4e0c-966a-1a7ec5cc6d8e> a foaf:OnlineAccount ;
+  mu:uuid "cb0e0c0b-f679-4e0c-966a-1a7ec5cc6d8e" ;
+  foaf:accountName "user-with-blocked-organization-test" ;
+  foaf:accountServiceHomepage <https://github.com/kanselarij-vlaanderen/mock-login-service> .
+
+<http://themis.vlaanderen.be/id/lidmaatschap/3cff9459-adb3-4300-a7a4-3e774fc20d6d> a org:Membership ;
+  mu:uuid "3cff9459-adb3-4300-a7a4-3e774fc20d6d" ;
+  org:member <http://themis.vlaanderen.be/id/gebruiker/c974de61-9ef4-49d6-b474-015ea904c810> ;
+  org:organization <http://themis.vlaanderen.be/id/organisatie/8576cdf7-4166-4b9e-a2b7-c51d39bac1a6> ;
+  org:role <http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5> .
