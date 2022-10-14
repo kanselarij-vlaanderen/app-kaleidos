@@ -1,0 +1,25 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+WITH <http://mu.semte.ch/graphs/system/users>
+INSERT {
+  ?thing adms:status <http://themis.vlaanderen.be/id/concept/43ba4953-3484-4ec7-9741-6e709befc531> .
+}
+WHERE {
+  VALUES (?thingGraph) {
+    (<http://mu.semte.ch/graphs/public>)
+    (<http://mu.semte.ch/graphs/system/users>)
+  }
+  GRAPH ?thingGraph {
+    VALUES (?class) {
+        (foaf:Person)
+        (foaf:Organization)
+        (org:Membership)
+    }
+    ?thing a ?class .
+  }
+  FILTER NOT EXISTS {
+    ?thing adms:status ?status .
+  }
+}
