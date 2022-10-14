@@ -25,6 +25,10 @@
         "identifier": {
           "type": "string",
           "predicate": "dct:identifier"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
         }
       },
       "relationships": {
