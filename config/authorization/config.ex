@@ -82,7 +82,6 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
-      "http://www.w3.org/ns/prov#Activity", # TODO: do we still need this for later with polymorphism ?
     ]
   end
 
