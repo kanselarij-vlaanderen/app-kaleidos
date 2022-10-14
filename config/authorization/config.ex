@@ -192,6 +192,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp user_activity_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/LoginActivity",
+    ]
+  end
+
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
@@ -293,6 +299,20 @@ defmodule Acl.UserGroups.Config do
               ]
             }
           }
+        ]
+      },
+
+      %GroupSpec{
+        name: "admin-read",
+        useage: [:read],
+        access: access_by_role( admin_roles() ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/users",
+            constraint: %ResourceConstraint{
+              resource_types: user_activity_types()
+            }
+          },
         ]
       },
 
