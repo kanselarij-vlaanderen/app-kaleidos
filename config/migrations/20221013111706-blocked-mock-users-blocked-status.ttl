@@ -1,5 +1,0 @@
-@prefix adms: <http://www.w3.org/ns/adms#> .
-
-<http://themis.vlaanderen.be/id/gebruiker/fad09c27-65b4-42ab-ace2-8b4112469fe9> adms:status <http://themis.vlaanderen.be/id/concept/ffd0d21a-3beb-44c4-b3ff-06fe9561282a> .
-<http://themis.vlaanderen.be/id/lidmaatschap/fa6a72a3-fa52-4ead-afff-8571d666c36d> adms:status <http://themis.vlaanderen.be/id/concept/ffd0d21a-3beb-44c4-b3ff-06fe9561282a> .
-<http://themis.vlaanderen.be/id/organisatie/8576cdf7-4166-4b9e-a2b7-c51d39bac1a6> adms:status <http://themis.vlaanderen.be/id/concept/ffd0d21a-3beb-44c4-b3ff-06fe9561282a> .
