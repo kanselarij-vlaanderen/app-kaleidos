@@ -166,7 +166,7 @@ services:
     labels:
       - "logging=true"
   mocklogin:
-    image: kanselarij/mock-login-service:2.0.0
+    image: kanselarij/mock-login-service:2.1.1
     logging: *default-logging
   login:
     image: kanselarij/acmidm-login-service:2.0.0
