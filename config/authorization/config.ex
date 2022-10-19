@@ -287,7 +287,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
-              resource_types: user_account_resource_types()
+              resource_types: user_account_resource_types() ++ user_activity_types()
             }
           },
           %GraphSpec{
@@ -298,20 +298,6 @@ defmodule Acl.UserGroups.Config do
               ]
             }
           }
-        ]
-      },
-
-      %GroupSpec{
-        name: "admin-read",
-        useage: [:read],
-        access: access_by_role( admin_roles() ),
-        graphs: [
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/system/users",
-            constraint: %ResourceConstraint{
-              resource_types: user_activity_types()
-            }
-          },
         ]
       },
 
