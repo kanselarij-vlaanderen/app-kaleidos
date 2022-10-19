@@ -52,7 +52,8 @@
           "predicate": "prov:wasAssociatedWith",
           "inverse": true,
           "target": "login-activity",
-          "cardinality": "one"
+          "cardinality": "one",
+          "_comment": "Reference to the most recent login activity only"
         }
       },
       "features": ["include-uri"],
