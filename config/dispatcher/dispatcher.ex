@@ -292,10 +292,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/alerts/"
   end
 
-  match "/user-management/*path", @json_service do
-    Proxy.forward conn, path, "http://user-management/"
-  end
-
   match "/alert-types/*path", @json_service do
     Proxy.forward conn, path, "http://cache/alert-types"
   end

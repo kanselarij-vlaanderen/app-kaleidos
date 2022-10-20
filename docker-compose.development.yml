@@ -80,8 +80,6 @@ services:
   newsletter:
     entrypoint: "echo 'service disabled'"
     restart: "no"
-  user-management:
-    restart: "no"
   yggdrasil:
     restart: "no"
   sink:
