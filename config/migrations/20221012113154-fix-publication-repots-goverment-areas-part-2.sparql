@@ -1,0 +1,21 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+    ?publicationFlow pub:beleidsveld ?governmentArea .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?publicationFlow a pub:Publicatieaangelegenheid .
+    ?publicationFlow dossier:behandelt ?case .
+    ?case dossier:Dossier.isNeerslagVan ?decisionFlow .
+    ?decisionFlow besluitvorming:beleidsveld ?governmentArea .
+    FILTER NOT EXISTS {
+      ?publicationFlow pub:beleidsveld ?_governmentArea .
+    }
+  }
+}
