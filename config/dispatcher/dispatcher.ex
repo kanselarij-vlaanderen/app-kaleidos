@@ -149,6 +149,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/memberships/"
   end
 
+  get "/login-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/login-activities/"
+  end
+
 
   ### Regular resources and cache
 
@@ -286,10 +290,6 @@ defmodule Dispatcher do
 
   match "/alerts/*path", @json_service do
     Proxy.forward conn, path, "http://cache/alerts/"
-  end
-
-  match "/user-management/*path", @json_service do
-    Proxy.forward conn, path, "http://user-management/"
   end
 
   match "/alert-types/*path", @json_service do

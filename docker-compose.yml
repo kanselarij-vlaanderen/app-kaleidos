@@ -166,10 +166,10 @@ services:
     labels:
       - "logging=true"
   mocklogin:
-    image: kanselarij/mock-login-service:2.1.2
+    image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:2.1.1
+    image: kanselarij/acmidm-login-service:2.2.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -183,14 +183,6 @@ services:
       - "logging=true"
   newsletter:
     image: kanselarij/newsletter-service:3.4.0
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  user-management:
-    image: kanselarij/user-management-service:1.1.0
-    environment:
-      MU_APPLICATION_RESOURCE_BASE_URI: "http://themis.vlaanderen.be/"
     logging: *default-logging
     restart: always
     labels:

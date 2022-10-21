@@ -1,6 +1,8 @@
 {
   "version": "0.1",
   "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "prov": "http://www.w3.org/ns/prov#",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "org": "http://www.w3.org/ns/org#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -23,6 +25,10 @@
         "identifier": {
           "type": "string",
           "predicate": "dct:identifier"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
         }
       },
       "relationships": {
@@ -41,6 +47,13 @@
           "predicate": "adms:status",
           "target": "concept",
           "cardinality": "one"
+        },
+        "login-activity": {
+          "predicate": "prov:wasAssociatedWith",
+          "inverse": true,
+          "target": "login-activity",
+          "cardinality": "one",
+          "_comment": "Reference to the most recent login activity only"
         }
       },
       "features": ["include-uri"],
@@ -127,6 +140,25 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/lidmaatschap/"
+    },
+    "login-activities": {
+      "name": "login-activity",
+      "class": "ext:LoginActivity",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "user": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "user",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/aanmeldingsactiviteit/"
     }
   }
 }

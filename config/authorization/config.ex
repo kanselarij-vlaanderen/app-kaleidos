@@ -82,7 +82,6 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap",
-      "http://www.w3.org/ns/prov#Activity", # TODO: do we still need this for later with polymorphism ?
     ]
   end
 
@@ -192,6 +191,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp user_activity_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/LoginActivity",
+    ]
+  end
+
   defp unconfidential_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
@@ -282,7 +287,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
-              resource_types: user_account_resource_types()
+              resource_types: user_account_resource_types() ++ user_activity_types()
             }
           },
           %GraphSpec{
