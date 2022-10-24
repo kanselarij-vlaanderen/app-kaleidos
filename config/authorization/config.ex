@@ -199,7 +199,6 @@ defmodule Acl.UserGroups.Config do
 
   defp unconfidential_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
       "http://www.w3.org/ns/person#Person",
@@ -216,10 +215,8 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
