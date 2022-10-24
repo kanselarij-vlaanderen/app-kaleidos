@@ -589,10 +589,6 @@
         "name": {
           "type": "string",
           "predicate": "skos:prefLabel"
-        },
-        "priority": {
-          "type": "integer",
-          "predicate": "ext:priority"
         }
       },
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/taal/",
