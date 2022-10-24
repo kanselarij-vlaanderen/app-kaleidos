@@ -1,0 +1,59 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# Ignore incoming links. Either they come from another static type, which we will
+# move anyway, or they don't, then we want them to stay in the in their
+# respective graph.
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES (?type) {
+    (ext:DocumentTypeCode)
+    (ext:ThemaCode)
+    (ext:SysteemNotificatieType)
+    (ext:BeslissingsResultaatCode)
+    (ext:ProcedureStapType)
+    (pub:Publicatiestatus)
+    (pub:PublicatieWijze)
+    (pub:Urgentieniveau)
+    (pub:Publicatierapporttype)
+    (ext:RegelgevingType)
+    (euvoc:Language)
+    (org:Role)
+    (skos:Concept)
+    (skos:ConceptScheme)
+    (mandaat:Mandaat)
+    (mandaat:Mandataris)
+    (besluit:Bestuurseenheid)
+    (besluit:Bestuursorgaan)
+    (prov:Generation)
+    (prov:Invalidation)
+  }
+
+  GRAPH ?g {
+    ?s a ?type .
+    ?s ?p ?o .
+  }
+  FILTER (?g != <http://mu.semte.ch/graphs/public>)
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?s ?p ?o .
+    }
+  }
+}
