@@ -68,8 +68,6 @@ services:
     restart: "no"
   agenda-comparison:
     restart: "no"
-  custom-subcases:
-    restart: "no"
   agenda-approve:
     restart: "no"
   mocklogin:
