@@ -197,11 +197,11 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  defp unconfidential_resource_types() do
+  defp public_static_data() do
     [
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://www.w3.org/ns/person#Person",
+      "http://www.w3.org/ns/person#Person", # when used as bestuurlijke-alias-van mandaat:Mandataris
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://www.w3.org/ns/prov#Generation",
@@ -211,7 +211,7 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  defp static_unconfidential_code_list_types() do
+  defp public_codelists() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
@@ -246,8 +246,8 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
             constraint: %ResourceConstraint{
-              resource_types: unconfidential_resource_types() ++
-              static_unconfidential_code_list_types() ++
+              resource_types: public_static_data() ++
+              public_codelists() ++
               user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
