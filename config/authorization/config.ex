@@ -196,6 +196,12 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/LoginActivity",
     ]
   end
+  
+  defp system_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+    ]
+  end
 
   defp public_static_data() do
     [
@@ -206,7 +212,6 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://www.w3.org/ns/prov#Generation",
       "http://www.w3.org/ns/prov#Invalidation",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://www.w3.org/ns/org#Organization",
     ]
   end
@@ -248,6 +253,7 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: public_static_data() ++
               public_codelists() ++
+              system_resource_types() ++
               user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
@@ -290,9 +296,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
             constraint: %ResourceConstraint{
-              resource_types: [
-                "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
-              ]
+              resource_types: system_resource_types()
             }
           }
         ]
