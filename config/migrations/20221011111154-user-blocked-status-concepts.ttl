@@ -1,0 +1,21 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix schema: <http://schema.org/> .
+
+<http://themis.vlaanderen.be/id/concept-scheme/dc230586-d700-494c-9826-c35e28da6965> a skos:ConceptScheme ;
+  mu:uuid "dc230586-d700-494c-9826-c35e28da6965" ;
+  skos:prefLabel "Toegangsstatus"@nl .
+
+<http://themis.vlaanderen.be/id/concept/43ba4953-3484-4ec7-9741-6e709befc531> a skos:Concept ;
+  mu:uuid "43ba4953-3484-4ec7-9741-6e709befc531" ;
+  schema:position 1 ;
+  skos:prefLabel "Toegang"@nl ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/dc230586-d700-494c-9826-c35e28da6965> ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/dc230586-d700-494c-9826-c35e28da6965> .
+
+<http://themis.vlaanderen.be/id/concept/ffd0d21a-3beb-44c4-b3ff-06fe9561282a> a skos:Concept ;
+  mu:uuid "ffd0d21a-3beb-44c4-b3ff-06fe9561282a" ;
+  schema:position 2 ;
+  skos:prefLabel "Geblokkeerd"@nl ;
+  skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/dc230586-d700-494c-9826-c35e28da6965> ;
+  skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/dc230586-d700-494c-9826-c35e28da6965> .

@@ -133,7 +133,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://login/sessions/"
   end
 
-  get "/users/*path", @json_service do
+  match "/users/*path", @json_service do
     Proxy.forward conn, path, "http://cache/users/"
   end
 
@@ -141,12 +141,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  get "/user-organizations/*path", @json_service do
+  match "/user-organizations/*path", @json_service do
     Proxy.forward conn, path, "http://cache/user-organizations/"
   end
 
-  get "/memberships/*path", @json_service do
+  match "/memberships/*path", @json_service do
     Proxy.forward conn, path, "http://cache/memberships/"
+  end
+
+  get "/login-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/login-activities/"
   end
 
 
@@ -286,10 +290,6 @@ defmodule Dispatcher do
 
   match "/alerts/*path", @json_service do
     Proxy.forward conn, path, "http://cache/alerts/"
-  end
-
-  match "/user-management/*path", @json_service do
-    Proxy.forward conn, path, "http://user-management/"
   end
 
   match "/alert-types/*path", @json_service do

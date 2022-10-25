@@ -1,0 +1,14 @@
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?s ext:priority ?priority .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a euvoc:Language .
+    ?s ext:priority ?priority .
+  }
+}
