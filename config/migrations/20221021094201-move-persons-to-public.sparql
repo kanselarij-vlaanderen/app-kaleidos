@@ -16,14 +16,7 @@ WHERE {
   GRAPH ?g {
     ?s a person:Person .
     ?s ?p ?o .
-  }
-  FILTER (?g != <http://mu.semte.ch/graphs/public>)
-  FILTER EXISTS {
     [] mandaat:isBestuurlijkeAliasVan ?s .
   }
-  FILTER NOT EXISTS {
-    GRAPH <http://mu.semte.ch/graphs/public> {
-      ?s ?p ?o .
-    }
-  }
+  FILTER (?g != <http://mu.semte.ch/graphs/public>)
 }

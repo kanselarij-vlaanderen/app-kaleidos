@@ -23,9 +23,4 @@ WHERE {
   FILTER EXISTS {
     [] mandaat:isBestuurlijkeAliasVan ?s .
   }
-  FILTER EXISTS {
-    GRAPH <http://mu.semte.ch/graphs/public> {
-      ?s ?p ?o .
-    }
-  }
 }
