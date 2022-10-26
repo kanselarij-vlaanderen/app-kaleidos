@@ -214,7 +214,6 @@ defmodule Acl.UserGroups.Config do
 
   defp static_unconfidential_code_list_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
