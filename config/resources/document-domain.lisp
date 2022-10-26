@@ -3,7 +3,7 @@
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
   :has-many `((piece                    :via ,(s-prefix "dossier:collectie.bestaatUit") ;; TODO should become `dossier:Collectie.bestaatUit`
                                         :as "pieces"))
-  :has-one `((document-type             :via ,(s-prefix "ext:documentType")
+  :has-one `((concept                   :via ,(s-prefix "dct:type")
                                         :as "type")
              (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
                                         :inverse t
@@ -101,16 +101,3 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")
-
-(define-resource document-type ()
-  :class (s-prefix "ext:DocumentTypeCode")
-  :properties `((:label             :string ,(s-prefix "skos:prefLabel"))
-                (:scope-note        :string ,(s-prefix "skos:scopeNote"))
-                (:priority          :integer ,(s-prefix "ext:prioriteit"))
-                (:alt-label         :string ,(s-prefix "skos:altLabel")))
-  :has-many `((document-container   :via    ,(s-prefix "ext:documentType")
-                                    :inverse t
-                                    :as "document-containers"))
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/document-type/")
-  :features '(include-uri)
-  :on-path "document-types")
