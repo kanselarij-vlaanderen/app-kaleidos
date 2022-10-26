@@ -1,0 +1,1 @@
+<http://themis.vlaanderen.be/id/concept/document-type/63d628cb-a594-4166-8b4e-880b4214fc5b> <http://schema.org/position> "47"^^<http://www.w3.org/2001/XMLSchema#integer> .

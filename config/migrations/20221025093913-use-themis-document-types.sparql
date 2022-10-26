@@ -1,0 +1,59 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?oldUri .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s ?p ?newUri .
+  }
+}
+WHERE {
+  VALUES (?newUri ?oldUri) {
+   (<http://themis.vlaanderen.be/id/concept/document-type/d3a616a1-4734-409d-be51-30917c91eb84> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/4fc871d4-57a0-42e3-a143-0f9f1b4d0c87>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/9c043848-6a9f-4448-9794-600e40dee6d2> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/1755f5f3-9ea7-477e-85af-4fd8265747e9>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/b3e150d3-eac6-44cf-9e70-dd4d13423631> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/2e251bba-dd09-4f9d-9d8b-7787d47535f1>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/a270ebff-2883-4c96-95c7-64fa89a729c5> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/b0b797b6-8c90-4600-8c18-8934b5710b1c>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/cc9b4207-43da-4394-94d7-3be051aa95e7> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/88be191e-4f83-4dc2-9e0f-6e8b08743fcf>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/83888ef0-a44a-4abf-a977-acfcfa63ed8b> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/9dffb0af-62ce-406a-8c47-892b7278b263>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/126f7ca5-c1e8-458a-80c2-38828a6010cc> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/984eb31f-d609-461d-b285-bd727853e437>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/e807feec-1958-46cf-a558-3379b5add49e> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/2b73f8e2-b1f8-4cbd-927f-30c91759f08b>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/0ed0785c-f427-4bc0-8507-72eb2a7b5454> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/7a67e9b7-9ea1-4221-9705-56a50a20d74c>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/e87f3a3a-d4dd-4560-8834-024b1e27a374> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/7abf48d7-c4b5-4968-8e17-cafa79ee70e3>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/73d69df5-c3f3-43b2-aeae-5a24b56b376e> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/bfb1675a-22c5-4425-b2a5-46d529184901>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/fbd697b7-9857-477f-8725-d6856a563f7a> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/550a8aff-de89-4952-8bc3-7c754c0b7c7d>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/3f6ed920-7cd0-4296-a5b7-eb06d77ca5f4> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/127d9b17-e09e-4949-9e5d-94477d2cc0c2>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/2fef8c6a-ca60-4cd5-97b3-578144aece0a> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/e76df7c2-addf-4712-acaa-9722473a0368>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/e9e8ec50-c6fd-44ac-bc34-e5e4cdb0294e> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/62215dc3-08e2-43cd-9da4-92ba47239321>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/5c8689fc-af45-480e-b16a-ec1e61680acd> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/1f222c66-bc07-4b29-9979-b351519e8f5d>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/eb048853-dc2e-44f8-9bf1-f0b7a7460a4d> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/90d97b2d-7457-4abe-907b-de3740e04bac>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/728b0691-c89b-4569-b570-4793f31b7100> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/70db618b-2225-448e-bcf9-73992cc2b453>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/351ba62d-eeff-4b08-b1e3-0a56d38116c4> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/cf471294-af65-455c-a200-86b7fd70751a> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/13297f2c-1f86-426a-833c-e51eeb01a50b>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/d638e0dc-c879-4a75-9485-9e6970a83d67> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/e149294e-a8b8-4c11-83ac-6d4c417b079b>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/6870daa2-d80a-4483-a78f-53cbd6b85af2> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/97eb049e-2e2a-4bf1-97dd-96a9da72c421>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/72dd647f-7afa-4d2a-9c7f-de73a8bd85a1> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/9840201f-68ca-4a11-bfbe-a831a4f4a584>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/fb931eff-38f2-4743-802b-4240c35b8b0c> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5d945b51-aeba-4af3-b259-34a7e81d902b>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/7b8cc610-2bcd-4eab-afa2-8cd7adbd4d4f> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f252ddeb-581f-4122-8ebd-e740e74604f9>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/7ef77ae1-816b-4eba-bae8-1f7d73cd7cba> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f1ab8f76-598b-4729-95eb-3419ceb52f02>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/a354eebe-43d2-43b9-a018-483b3cd605ea> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/0cb8f8e2-90cc-4a87-899f-092f41896573>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/f2b0f655-8ed7-4f61-8f2b-ca813de7a6ed> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/9e5b1230-f3ad-438f-9c68-9d7b1b2d875d>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/59b81be7-26c9-4a08-9a51-ce23ce83a133> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/5c6ecf8c-ae9d-44fc-9dac-216663ece43d>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/2c18bb9d-bbfe-474a-9f81-63ba3983a33e> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/bc73cf00-ab4e-406c-a99b-2bfe2e03c5b0>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/25b58316-50f2-411c-9012-e4e1957b1750> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/9c9463f9-d676-4875-aa5d-3793be199e48>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/8ae796bd-690a-4ed6-855c-c4572e883066> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/52d8ce45-1954-48e7-9402-ac5ee3edbbc4>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/bcbd33f1-f058-46d0-9c53-569edd5dbede> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/e36fbb8b-8adb-420d-9f89-9cbbe67b3b7d>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/f036e016-268e-4611-8fee-77d2047b51d8> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ec2eae14-3824-42bc-82de-8c440af8c002>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/6b4e9376-449a-43f8-8027-6dc63494057b> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/62083fb2-e770-46c8-b4d0-87a8e5ae6fff>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/53aea93f-c0f7-4a9e-a5b3-5d683ccf783c> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/361f3132-d763-412d-8d16-609ad664055c> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/0ffe6976-94d6-49f9-a248-db853477c187>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/8864821b-0eb8-42c6-99db-e39f20e9de10> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/ff80d8d0-d53d-44f8-9df2-20c10affb4d1>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/8a1e048a-4b55-4a19-b1c0-c85dba09a15c> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/f57a69b8-e4c1-468a-97ee-a516bb62c6b6>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/83f7dc8b-b763-47c4-8a21-f7e43b879ad2> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/7b42c8da-1d08-4545-a35a-12c26e3087b3>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/1e254f84-d442-425e-9fc9-5ac552b9d089> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/e446b2ee-19f2-4eb5-9c7a-0401f7a4fe7b>)
+   (<http://themis.vlaanderen.be/id/concept/document-type/2f331ce0-70e7-4150-b317-d2dbf52d6251> <http://kanselarij.vo.data.gift/id/concept/document-type-codes/90bf0f69-295f-4324-bed8-910c4016d895>)
+  }
+  GRAPH ?g {
+    ?s ?p ?oldUri .
+  }
+}
