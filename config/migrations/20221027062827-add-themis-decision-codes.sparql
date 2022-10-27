@@ -1,10 +1,12 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
     <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> a skos:ConceptScheme ;
+        mu:uuid "43052680-1c88-47f1-b081-99087afc4497" ;
         skos:prefLabel "Beslissing resultaatcodes"@nl .
 
     <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd> skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
