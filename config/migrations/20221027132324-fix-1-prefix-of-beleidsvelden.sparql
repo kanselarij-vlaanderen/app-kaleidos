@@ -1,0 +1,25 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g { ?s skos:prefLabel ?label }
+}
+INSERT {
+  GRAPH ?g { ?s skos:prefLabel ?newLabel }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a skos:Concept ;
+     skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/0012aad8-d6e5-49e2-af94-b1bebd484d5b> .
+    ?s skos:prefLabel ?label .
+  }
+
+  FILTER(STRSTARTS(?label, "1"))
+
+  BIND(STRAFTER(?label, "1") AS ?labelWithout1)
+  BIND(SUBSTR(?labelWithout1, 0, 1) AS ?firstLetter)
+  BIND(SUBSTR(?labelWithout1, 2) AS ?rest)
+
+  BIND(
+    CONCAT(UCASE(?firstLetter), ?rest)
+  AS ?newLabel)
+}
