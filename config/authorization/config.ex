@@ -196,30 +196,32 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/LoginActivity",
     ]
   end
-
-  defp unconfidential_resource_types() do
+  
+  defp system_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/DocumentIdentifier", # TODO: check if this type is in use.
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+    ]
+  end
+
+  defp public_static_data() do
+    [
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://www.w3.org/ns/person#Person",
+      "http://www.w3.org/ns/person#Person", # when used as bestuurlijke-alias-van mandaat:Mandataris
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://www.w3.org/ns/prov#Generation",
       "http://www.w3.org/ns/prov#Invalidation",
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
       "http://www.w3.org/ns/org#Organization",
     ]
   end
 
-  defp static_unconfidential_code_list_types() do
+  defp public_codelists() do
     [
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
-      "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
-      "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",
@@ -249,8 +251,9 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
             constraint: %ResourceConstraint{
-              resource_types: unconfidential_resource_types() ++
-              static_unconfidential_code_list_types() ++
+              resource_types: public_static_data() ++
+              public_codelists() ++
+              system_resource_types() ++
               user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
@@ -293,9 +296,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
             constraint: %ResourceConstraint{
-              resource_types: [
-                "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
-              ]
+              resource_types: system_resource_types()
             }
           }
         ]
