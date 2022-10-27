@@ -1,0 +1,15 @@
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g { ?uri schema:position ?oldPosition }
+}
+INSERT {
+  GRAPH ?g { ?uri schema:position ?newPosition }
+}
+WHERE {
+  VALUES (?uri ?newPosition) {
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> "4"^^xsd:integer)
+  }
+  GRAPH ?g { ?uri schema:position ?oldPosition }
+}

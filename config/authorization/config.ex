@@ -218,7 +218,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/Thema", # TODO: check if this type is in use. Looks like only "ThemaCode" is.
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/DossierTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
