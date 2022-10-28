@@ -1,0 +1,64 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> a skos:ConceptScheme ;
+        mu:uuid "43052680-1c88-47f1-b081-99087afc4497" ;
+        skos:prefLabel "Beslissing resultaatcodes"@nl .
+
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd> skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa> skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/453a36e8-6fbd-45d3-b800-ec96e59f273b> skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd> skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa> skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/453a36e8-6fbd-45d3-b800-ec96e59f273b> skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+    <http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/43052680-1c88-47f1-b081-99087afc4497> .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g { ?s ?p ?oldUri }
+}
+INSERT {
+  GRAPH ?g { ?s ?p ?newUri }
+}
+WHERE {
+  VALUES (?oldUri ?newUri) {
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/453a36e8-6fbd-45d3-b800-ec96e59f273b> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/453a36e8-6fbd-45d3-b800-ec96e59f273b>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/9f342a88-9485-4a83-87d9-245ed4b504bf>)
+  }
+  GRAPH ?g { ?s ?p ?oldUri }
+}
+
+;
+
+DELETE {
+  GRAPH ?g { ?oldUri ?p ?o }
+}
+INSERT {
+  GRAPH ?g { ?newUri ?p ?o }
+}
+WHERE {
+  VALUES (?oldUri ?newUri) {
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/56312c4b-9d2a-4735-b0b1-2ff14bb524fd>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/a29b3ffd-0839-45cb-b8f4-e1760f7aacaa>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/453a36e8-6fbd-45d3-b800-ec96e59f273b> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/453a36e8-6fbd-45d3-b800-ec96e59f273b>)
+    (<http://kanselarij.vo.data.gift/id/concept/beslissings-resultaat-codes/9f342a88-9485-4a83-87d9-245ed4b504bf> <http://themis.vlaanderen.be/id/concept/beslissing-resultaatcodes/9f342a88-9485-4a83-87d9-245ed4b504bf>)
+  }
+  GRAPH ?g { ?oldUri ?p ?o }
+}
+
+;
+
+DELETE WHERE {
+  GRAPH ?g { ?s a ext:BeslissingsResultaatCode }
+}

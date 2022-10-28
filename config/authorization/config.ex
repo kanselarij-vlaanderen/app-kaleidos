@@ -221,7 +221,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
-      "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatiestatus",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicatieWijze",

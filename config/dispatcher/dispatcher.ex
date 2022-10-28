@@ -168,9 +168,6 @@ defmodule Dispatcher do
   match "/decision-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
-  match "/decision-result-codes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/decision-result-codes/"
-  end
   match "/meetings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
