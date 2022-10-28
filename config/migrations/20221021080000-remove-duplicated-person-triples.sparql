@@ -1,0 +1,26 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES (?type) {
+    (person:Person)
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a ?type .
+  }
+  GRAPH ?g {
+    ?s a ?type .
+    ?s ?p ?o .
+  }
+  FILTER (?g != <http://mu.semte.ch/graphs/public>)
+  FILTER EXISTS {
+    [] mandaat:isBestuurlijkeAliasVan ?s .
+  }
+}

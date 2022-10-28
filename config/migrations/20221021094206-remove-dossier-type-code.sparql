@@ -1,0 +1,15 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE WHERE {
+  GRAPH ?g {
+    ?o a ext:DossierTypeCode .
+    ?s ?p ?o .
+  }
+}
+;
+DELETE WHERE {
+  GRAPH ?g {
+    ?s a ext:DossierTypeCode .
+    ?s ?p ?o .
+  }
+}
