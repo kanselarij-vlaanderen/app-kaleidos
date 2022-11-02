@@ -112,7 +112,7 @@
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
                                     :inverse t
                                     :as "treatment")
-             (decision-result-code  :via        ,(s-prefix "besluitvorming:resultaat")
+             (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
             )
   :has-many `(
@@ -129,16 +129,6 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/beslissingsactiviteit/")
   :features '(include-uri)
   :on-path "decision-activities")
-
-(define-resource decision-result-code ()
-  :class (s-prefix "ext:BeslissingsResultaatCode")
-  :properties `(
-                (:label       :string ,(s-prefix "skos:prefLabel"))
-                (:priority    :integer ,(s-prefix "ext:priority"))
-               )
-  :resource-base (s-url "http://themis.vlaanderen.be/id/concept/beslissingsresultaat-code/")
-  :features '(include-uri)
-  :on-path "decision-result-codes")
 
 (define-resource government-unit ()
   :class (s-prefix "besluit:Bestuurseenheid")
