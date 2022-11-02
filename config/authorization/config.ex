@@ -218,7 +218,6 @@ defmodule Acl.UserGroups.Config do
 
   defp public_codelists() do
     [
-      "http://mu.semte.ch/vocabularies/ext/DocumentTypeCode",
       "http://mu.semte.ch/vocabularies/ext/ThemaCode",
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatieType",
       "http://mu.semte.ch/vocabularies/ext/ProcedurestapType",

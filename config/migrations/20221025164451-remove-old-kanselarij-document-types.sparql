@@ -1,0 +1,54 @@
+DELETE {
+  GRAPH ?g {
+    ?oldUri ?p ?o .
+  }
+}
+WHERE {
+  VALUES (?oldUri) {
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/4fc871d4-57a0-42e3-a143-0f9f1b4d0c87>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/1755f5f3-9ea7-477e-85af-4fd8265747e9>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/2e251bba-dd09-4f9d-9d8b-7787d47535f1>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/b0b797b6-8c90-4600-8c18-8934b5710b1c>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/88be191e-4f83-4dc2-9e0f-6e8b08743fcf>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/9dffb0af-62ce-406a-8c47-892b7278b263>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/984eb31f-d609-461d-b285-bd727853e437>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/2b73f8e2-b1f8-4cbd-927f-30c91759f08b>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/7a67e9b7-9ea1-4221-9705-56a50a20d74c>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/7abf48d7-c4b5-4968-8e17-cafa79ee70e3>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/bfb1675a-22c5-4425-b2a5-46d529184901>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/550a8aff-de89-4952-8bc3-7c754c0b7c7d>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/127d9b17-e09e-4949-9e5d-94477d2cc0c2>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/e76df7c2-addf-4712-acaa-9722473a0368>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/62215dc3-08e2-43cd-9da4-92ba47239321>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/1f222c66-bc07-4b29-9979-b351519e8f5d>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/90d97b2d-7457-4abe-907b-de3740e04bac>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/70db618b-2225-448e-bcf9-73992cc2b453>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/c3f5b27e-70df-4b4b-a0f4-5412b7f1bfe1>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/13297f2c-1f86-426a-833c-e51eeb01a50b>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/e149294e-a8b8-4c11-83ac-6d4c417b079b>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/97eb049e-2e2a-4bf1-97dd-96a9da72c421>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/9840201f-68ca-4a11-bfbe-a831a4f4a584>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/5d945b51-aeba-4af3-b259-34a7e81d902b>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/f252ddeb-581f-4122-8ebd-e740e74604f9>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/f1ab8f76-598b-4729-95eb-3419ceb52f02>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/0cb8f8e2-90cc-4a87-899f-092f41896573>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/9e5b1230-f3ad-438f-9c68-9d7b1b2d875d>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/5c6ecf8c-ae9d-44fc-9dac-216663ece43d>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/bc73cf00-ab4e-406c-a99b-2bfe2e03c5b0>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/9c9463f9-d676-4875-aa5d-3793be199e48>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/52d8ce45-1954-48e7-9402-ac5ee3edbbc4>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/e36fbb8b-8adb-420d-9f89-9cbbe67b3b7d>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/ec2eae14-3824-42bc-82de-8c440af8c002>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/62083fb2-e770-46c8-b4d0-87a8e5ae6fff>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/ad196756-e5c1-4ac5-9bbb-9e7ea66f19d0>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/0ffe6976-94d6-49f9-a248-db853477c187>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/ff80d8d0-d53d-44f8-9df2-20c10affb4d1>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/f57a69b8-e4c1-468a-97ee-a516bb62c6b6>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/7b42c8da-1d08-4545-a35a-12c26e3087b3>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/e446b2ee-19f2-4eb5-9c7a-0401f7a4fe7b>)
+   (<http://kanselarij.vo.data.gift/id/concept/document-type-codes/90bf0f69-295f-4324-bed8-910c4016d895>)
+  }
+  GRAPH ?g {
+    ?oldUri ?p ?o .
+  }
+}

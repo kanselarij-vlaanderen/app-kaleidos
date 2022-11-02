@@ -1,0 +1,28 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?uri a ext:DocumentTypeCode ;
+      ext:prioriteit ?position .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?uri a skos:Concept ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/559774e3-061c-4f4b-a758-57228d4b68cd> ;
+      schema:position ?position .
+  }
+}
+WHERE {
+  VALUES (?uri) {
+   (<https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering>)
+   (<https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet>)
+   (<https://data.vlaanderen.be/id/concept/AardWetgeving/MinisterieelBesluit>)
+   (<https://data.vlaanderen.be/id/concept/AardWetgeving/Protocol>)
+  }
+  GRAPH ?g {
+    ?uri ext:prioriteit ?position .
+  }
+}
