@@ -277,10 +277,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://agenda-comparison/"
   end
 
-  match "/custom-subcases/*path", @json_service do
-    Proxy.forward conn, path, "http://custom-subcases/"
-  end
-
   match "/alerts/*path", @json_service do
     Proxy.forward conn, path, "http://cache/alerts/"
   end

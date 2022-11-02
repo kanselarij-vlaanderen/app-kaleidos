@@ -35,7 +35,7 @@
 (define-resource agendaitem ()
   :class (s-prefix "besluit:Agendapunt")
   :properties `((:created             :datetime ,(s-prefix "dct:created"))
-                (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; NOTE: What is the URI of property 'ingetrokken'? Made up besluitvorming:ingetrokken
+                ;; (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; still exists in legacy until we sort inconsistensies in data
                 (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))  ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
@@ -176,9 +176,6 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor") ;; All agenda versions, including the final version
                                         :inverse t
                                         :as "agendas")
-              (subcase                  :via      ,(s-prefix "ext:isAangevraagdVoor")
-                                        :inverse t
-                                        :as "requested-subcases")
               (piece                    :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "pieces")
               (themis-publication-activity :via   ,(s-prefix "prov:used")

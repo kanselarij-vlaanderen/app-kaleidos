@@ -60,8 +60,6 @@
   :has-one `((decisionmaking-flow     :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "decisionmaking-flow")
-             (meeting                 :via ,(s-prefix "ext:isAangevraagdVoor")
-                                      :as "requested-for-meeting")
              (subcase-type            :via ,(s-prefix "dct:type")
                                       :as "type")
              (concept                 :via ,(s-prefix "ext:agendapuntType")

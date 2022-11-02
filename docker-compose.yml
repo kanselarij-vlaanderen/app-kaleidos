@@ -153,14 +153,8 @@ services:
     restart: always
     labels:
       - "logging=true"
-  custom-subcases:
-    image: kanselarij/custom-subcases-service:3.0.0
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.4.0
+    image: kanselarij/agenda-approve-service:5.5.0
     logging: *default-logging
     restart: always
     labels:
