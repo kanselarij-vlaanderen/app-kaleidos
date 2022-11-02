@@ -176,9 +176,6 @@
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor") ;; All agenda versions, including the final version
                                         :inverse t
                                         :as "agendas")
-              (subcase                  :via      ,(s-prefix "ext:isAangevraagdVoor")
-                                        :inverse t
-                                        :as "requested-subcases")
               (piece                    :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "pieces")
               (themis-publication-activity :via   ,(s-prefix "prov:used")
