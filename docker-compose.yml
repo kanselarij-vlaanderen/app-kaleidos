@@ -154,7 +154,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-1652-retracted-refactor
+    image: kanselarij/agenda-approve-service:5.5.0
     logging: *default-logging
     restart: always
     labels:
