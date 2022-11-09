@@ -25,10 +25,8 @@
                 (:access-level-last-modified          :datetime  ,(s-prefix "ext:accessLevelLastModified")))
   :has-one `((concept              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
                                         :as "access-level")
-            (file                       :via      ,(s-prefix "ext:file")
+            (file                       :via      ,(s-prefix "prov:value")
                                         :as "file") ;; make this hasMany for publications
-            (file                       :via      ,(s-prefix "ext:convertedFile") ;; Deprecated. POC never taken in production. To be removed.
-                                        :as "converted-file")
             (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
                                         :inverse t
                                         :as "document-container")
