@@ -9,10 +9,10 @@
                                 :inverse t
                                 :as "download")
              (file              :via        ,(s-prefix "prov:hadPrimarySource")
-                                :as "primary-source")
+                                :as "source")
              (file              :via        ,(s-prefix "prov:hadPrimarySource")
                                 :inverse t
-                                :as "primary-source-of"))
+                                :as "derived"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/bestand/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")
