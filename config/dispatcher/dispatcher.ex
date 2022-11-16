@@ -8,12 +8,21 @@ defmodule Dispatcher do
     any: [ "*/*" ],
   ]
 
-  define_layers [ :api, :frontend ]
+  define_layers [ :frontend, :api ]
 
-  @frontend_html %{ accept: [ :html ], layer: :frontend }
-  @frontend_css %{ accept: [ :css ], layer: :frontend }
-  @frontend_any %{ accept: [ :any ], layer: :frontend }
+  @frontend %{ accept: [ :any ], layer: :frontend }
   @json_service %{ accept: [ :json ], layer: :api }
+
+  ### Frontend
+
+  get "/assets/*path", @frontend do
+    Proxy.forward conn, path, "http://frontend/assets/"
+  end
+
+  get "/torii/redirect.html", @frontend do
+    Proxy.forward conn, [], "http://frontend/torii/redirect.html"
+  end
+
 
   ### Files
 
@@ -25,7 +34,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
-  delete "/files/*path", %{ layer: :api } do
+  delete "/files/*path", @json_service do
     Proxy.forward conn, path, "http://file/files/"
   end
 
@@ -431,7 +440,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/emails/"
   end
 
-  get "/recovery-status/*path", @json_service do
+  get "/recovery-status/*_path", @json_service do
     Proxy.forward conn, [], "http://database:8890/recovery-status/"
   end
 
@@ -443,7 +452,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-metrics-export-jobs/"
   end
 
-  get "/publication-report-types/*path" do
+  get "/publication-report-types/*path", @json_service do
     Proxy.forward conn, path, "http://cache/publication-report-types/"
   end
 
@@ -451,24 +460,19 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
 
-  ### Frontend
 
-  match "/assets/*path", @frontend_css do
-    Proxy.forward conn, path, "http://frontend/assets/"
-  end
+  ## Fallback
 
-  match "/assets/*path", @frontend_any do
-    Proxy.forward conn, path, "http://frontend/assets/"
-  end
-
-  match "/*_path", @frontend_html do
+  get "/*_path", %{ layer: :api, accept: %{ html: true } } do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
 
-  ### 404
+  match "/*_path", %{ last_call: true, accept: %{ json: true } } do
+    send_resp( conn, 404, "{ \"error\": { \"code\": 404, \"message\": \"Route not found.  See config/dispatcher.ex\" } }" )
+  end
 
-  match "_", %{ last_call: true } do
-    send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
+  match "/*_path", %{ last_call: true } do
+    send_resp( conn, 404, "Route not found. See config/dispatcher.ex" )
   end
 
 end
