@@ -19,6 +19,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://frontend/assets/"
   end
 
+  get "/@appuniversum/*path", @frontend do
+    Proxy.forward conn, path, "http://frontend/@appuniversum/"
+  end
+
   get "/torii/redirect.html", @frontend do
     Proxy.forward conn, [], "http://frontend/torii/redirect.html"
   end
