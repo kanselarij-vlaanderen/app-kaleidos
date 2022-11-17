@@ -15,6 +15,12 @@ defmodule Dispatcher do
   @frontend_any %{ accept: [ :any ], layer: :frontend }
   @json_service %{ accept: [ :json ], layer: :api }
 
+  ### File conversion
+
+  post "/files/:id/convert", @json_service do
+    Proxy.forward conn, [], "http://docx-conversion/files/" <> id <> "/convert"
+  end
+
   ### Files
 
   get "/files/:id/download", %{ layer: :api } do

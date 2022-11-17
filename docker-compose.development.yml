@@ -128,3 +128,5 @@ services:
   #   restart: "no"
   gov-field-sync:
     restart: "no"
+  docx-conversion:
+    restart: "no"

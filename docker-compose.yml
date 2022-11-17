@@ -318,3 +318,7 @@ services:
       - ./data/files:/share
     environment:
       ALLOW_SUPER_CONSUMER: "true"
+  docx-conversion:
+    image: sergiofenoll/docx-conversion-service:feature-KAS-3659-automatic-file-conversion
+    volumes:
+      - ./data/files:/share
