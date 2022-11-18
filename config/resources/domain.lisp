@@ -37,3 +37,41 @@
 (read-domain-file "email-domain.lisp")
 (read-domain-file "generiek-domain.json")
 (read-domain-file "concept-domain.json")
+
+
+(defcall :get (base-path)
+  (handler-case
+      (progn
+        (verify-json-api-request-accept-header)
+        (list-call (find-resource-by-path base-path)))
+    (no-such-resource ()
+      (respond-not-found))
+    (access-denied (condition)
+      (response-for-access-denied-condition condition))
+    (no-such-link (condition)
+      (respond-not-acceptable (jsown:new-js
+                                  ("errors" (jsown:new-js ("title" "Request invalid"))))))
+    (no-such-property (condition)
+      (let ((message
+             (format nil "Could not find property (~A) on resource (~A)."
+                     (path condition) (json-type (resource condition)))))
+        (respond-not-acceptable (jsown:new-js
+                                  ("errors" (jsown:new-js
+                                              ("title" message)))))))
+    (cl-fuseki:sesame-exception (exception)
+      (declare (ignore exception))
+      (respond-server-error
+       (jsown:new-js
+         ("errors" (jsown:new-js
+                     ("title" (s+ "Could not execute SPARQL query.")))))))
+    (configuration-error (condition)
+      (respond-server-error
+       (jsown:new-js
+         ("errors" (jsown:new-js
+                     ("title" (s+ "Server configuration issue: " (description condition))))))))
+    (incorrect-accept-header (condition)
+      (respond-not-acceptable (jsown:new-js
+                                ("errors" (jsown:new-js
+                                           ("title" (description condition)))))))
+    (error (condition)
+      (respond-general-server-error))))
