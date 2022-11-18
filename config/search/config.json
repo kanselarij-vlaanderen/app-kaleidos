@@ -76,8 +76,6 @@
       "properties": {
         "title": "http://purl.org/dc/terms/title",
         "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
-        "titlePress": "http://data.vlaanderen.be/ns/besluitvorming#titelPersagenda",
-        "textPress": "http://data.vlaanderen.be/ns/besluitvorming#tekstPersagenda",
         "agendaId": [
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -141,16 +139,6 @@
             "search_analyzer": "dutchanalyzer"
           },
           "shortTitle": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "titlePress": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "textPress": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
