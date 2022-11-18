@@ -520,7 +520,7 @@
         "agendaitems": {
           "via": [
             "^http://www.w3.org/ns/prov#generated",
-            "http://data.vlaanderen.be/ns/besluitvorming#heeftOnderwerp"
+            "http://purl.org/dc/terms/subject"
           ],
           "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
           "properties" : {

@@ -63,7 +63,7 @@
              (agenda-activity         :via      ,(s-prefix "besluitvorming:genereertAgendapunt")
                                       :inverse t
                                       :as "agenda-activity")
-             (agenda-item-treatment   :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+             (agenda-item-treatment   :via        ,(s-prefix "dct:subject")
                                       :inverse t
                                       :as "treatment")
              (concept                 :via ,(s-prefix "dct:type")
@@ -94,7 +94,7 @@
   :has-many `(
              ;; agenda-item-treatment has multiple agenda-items in the sense that there is one
              ;; agenda-item version per version of the agenda
-             (agendaitem            :via        ,(s-prefix "besluitvorming:heeftOnderwerp")
+             (agendaitem            :via        ,(s-prefix "dct:subject")
                                     :as "agendaitems"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
