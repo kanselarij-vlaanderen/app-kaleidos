@@ -38,10 +38,10 @@
                 ;; (:retracted           :boolean  ,(s-prefix "besluitvorming:ingetrokken")) ;; still exists in legacy until we sort inconsistensies in data
                 (:number              :integer  ,(s-prefix "schema:position"))
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
-                (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda"))  ;; NOTE: What is the URI of property 'titelPersagenda'? Made up besluitvorming:titelPersagenda
+                ;; (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda")) NOTE: this property is unused, but data is still available in the database
                 (:comment             :string   ,(s-prefix "schema:comment"))
                 (:private-comment     :string   ,(s-prefix "ext:privateComment"))
-                (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda"))
+                ;; (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda")) NOTE: this property is unused, but data is still available in the database
                 ;; Added properties from subcases
                 (:short-title         :string   ,(s-prefix "besluitvorming:korteTitel"))
                 (:title               :string   ,(s-prefix "dct:title"))
