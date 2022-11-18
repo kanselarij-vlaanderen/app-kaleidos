@@ -1,7 +1,7 @@
 (define-resource document-container ()
   :class (s-prefix "dossier:Serie")
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
-  :has-many `((piece                    :via ,(s-prefix "dossier:collectie.bestaatUit") ;; TODO should become `dossier:Collectie.bestaatUit`
+  :has-many `((piece                    :via ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :as "pieces"))
   :has-one `((concept                   :via ,(s-prefix "dct:type")
                                         :as "type")
@@ -29,7 +29,7 @@
                                         :as "file") ;; make this hasMany for publications
             (file                       :via      ,(s-prefix "ext:convertedFile") ;; Deprecated. POC never taken in production. To be removed.
                                         :as "converted-file")
-            (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
+            (document-container         :via      ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :inverse t
                                         :as "document-container")
             (piece                      :via      ,(s-prefix "pav:previousVersion")

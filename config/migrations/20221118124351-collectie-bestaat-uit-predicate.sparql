@@ -1,0 +1,11 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+DELETE {
+  GRAPH ?g { ?thing dossier:collectie.bestaatUit ?docContainer . }
+}
+INSERT {
+  GRAPH ?g { ?thing dossier:Collectie.bestaatUit ?docContainer . }
+}
+WHERE {
+  GRAPH ?g { ?thing dossier:collectie.bestaatUit ?docContainer . }
+}
