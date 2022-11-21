@@ -1,7 +1,7 @@
 (define-resource document-container ()
   :class (s-prefix "dossier:Serie")
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
-  :has-many `((piece                    :via ,(s-prefix "dossier:collectie.bestaatUit") ;; TODO should become `dossier:Collectie.bestaatUit`
+  :has-many `((piece                    :via ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :as "pieces"))
   :has-one `((concept                   :via ,(s-prefix "dct:type")
                                         :as "type")
@@ -23,11 +23,11 @@
                 (:number-of-pages       :integer   ,(s-prefix "fabio:hasPageCount"))
                 (:number-of-words       :integer   ,(s-prefix "prism:wordCount"))
                 (:access-level-last-modified          :datetime  ,(s-prefix "ext:accessLevelLastModified")))
-  :has-one `((concept              :via ,(s-prefix "ext:toegangsniveauVoorDocumentVersie")
+  :has-one `((concept              :via ,(s-prefix "besluitvorming:vertrouwelijkheidsniveau")
                                         :as "access-level")
             (file                       :via      ,(s-prefix "prov:value")
                                         :as "file") ;; make this hasMany for publications
-            (document-container         :via      ,(s-prefix "dossier:collectie.bestaatUit")
+            (document-container         :via      ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :inverse t
                                         :as "document-container")
             (piece                      :via      ,(s-prefix "pav:previousVersion")
