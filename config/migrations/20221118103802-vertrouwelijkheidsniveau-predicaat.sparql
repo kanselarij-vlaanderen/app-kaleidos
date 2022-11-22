@@ -1,0 +1,11 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+DELETE {
+  GRAPH ?g { ?thing ext:toegangsniveauVoorDocumentVersie ?accessLevel . }
+}
+INSERT {
+  GRAPH ?g { ?thing besluitvorming:vertrouwelijkheidsniveau ?accessLevel . }
+}
+WHERE {
+  GRAPH ?g { ?thing ext:toegangsniveauVoorDocumentVersie ?accessLevel . }
+}
