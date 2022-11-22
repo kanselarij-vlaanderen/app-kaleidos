@@ -207,6 +207,14 @@ services:
     restart: always
     labels:
       - "logging=true"
+  docx-conversion:
+    image: kanselarij/docx-conversion-service:0.1.0
+    volumes:
+      - ./data/files:/share  
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   database-healthcheck:
     image: kanselarij/database-healthcheck:1.0.2
     logging: *default-logging
@@ -318,7 +326,3 @@ services:
       - ./data/files:/share
     environment:
       ALLOW_SUPER_CONSUMER: "true"
-  docx-conversion:
-    image: sergiofenoll/docx-conversion-service:feature-KAS-3659-automatic-file-conversion
-    volumes:
-      - ./data/files:/share
