@@ -148,7 +148,7 @@ services:
     labels:
       - "logging=true"
   agenda-comparison:
-    image: kanselarij/agenda-comparison-service:3.0.0
+    image: kanselarij/agenda-comparison-service:3.1.0
     logging: *default-logging
     restart: always
     labels:
