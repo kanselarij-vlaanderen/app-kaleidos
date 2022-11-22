@@ -226,7 +226,7 @@ services:
     labels:
       - "logging=true"
   document-versions:
-    image: kanselarij/document-versions-service:0.3.0
+    image: kanselarij/document-versions-service:0.3.1
     logging: *default-logging
     restart: always
     labels:
