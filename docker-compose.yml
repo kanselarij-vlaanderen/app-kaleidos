@@ -245,8 +245,8 @@ services:
       EMAIL_ADDRESS: "noreply@kaleidos.vlaanderen.be"
       EMAIL_CRON_PATTERN: "*/5 * * * *"
       EMAIL_PROTOCOL: "MS_Graph_API"
-      MS_GRAPH_API_CLIENT_ID: "CLIENT_ID"
-      MS_GRAPH_API_TENANT_ID: "TENANT_ID"
+      MS_GRAPH_API_CLIENT_ID: "51148b88-fd95-43ea-aefc-442af419f11e"
+      MS_GRAPH_API_TENANT_ID: "0c0338a6-9561-4ee8-b8d6-4e89cbd520a0"
       MS_GRAPH_API_CLIENT_SECRET: "OUR SECRET"
     volumes:
       - ./data/files:/share
