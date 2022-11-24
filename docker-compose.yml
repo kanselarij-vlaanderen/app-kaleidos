@@ -238,7 +238,7 @@ services:
     labels:
       - "logging=true"
   mail-delivery:
-    image: redpencil/deliver-email-service:0.3.1
+    image: redpencil/deliver-email-service:0.3.2
     environment:
       MAILBOX_URI: "http://themis.vlaanderen.be/id/mailboxes/e8364a49-2696-48cc-aef1-e1e396a0cd34"
       WELL_KNOWN_SERVICE: "test"
