@@ -319,11 +319,8 @@ services:
     environment:
       ALLOW_SUPER_CONSUMER: "true"
   impersonation:
-    image: semtech/mu-javascript-template:1.6.0
-    environment:
-      NODE_ENV: "development"
-    ports:
-      - "8888:80"
-      - "9229:9229"
-    volumes:
-      - ../impersonation-service/:/app
+    image: kanselarij/impersonation-service:feature-KAS-2491-user-impersonation
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
