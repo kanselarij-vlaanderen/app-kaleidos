@@ -238,12 +238,16 @@ services:
     labels:
       - "logging=true"
   mail-delivery:
-    image: redpencil/deliver-email-service:0.3.0
+    image: redpencil/deliver-email-service:0.3.2
     environment:
       MAILBOX_URI: "http://themis.vlaanderen.be/id/mailboxes/e8364a49-2696-48cc-aef1-e1e396a0cd34"
       WELL_KNOWN_SERVICE: "test"
       EMAIL_ADDRESS: "noreply@kaleidos.vlaanderen.be"
       EMAIL_CRON_PATTERN: "*/5 * * * *"
+      EMAIL_PROTOCOL: "MS_Graph_API"
+      MS_GRAPH_API_CLIENT_ID: "51148b88-fd95-43ea-aefc-442af419f11e"
+      MS_GRAPH_API_TENANT_ID: "0c0338a6-9561-4ee8-b8d6-4e89cbd520a0"
+      MS_GRAPH_API_CLIENT_SECRET: "OUR SECRET"
     volumes:
       - ./data/files:/share
     logging: *default-logging
