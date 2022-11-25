@@ -91,9 +91,9 @@ defmodule Acl.UserGroups.Config do
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?role_uri WHERE {
-                OPTIONAL { <SESSION_ID> ext:impersonatesMembership ?maybeImpersonatedMembership }
-                <SESSION_ID> ext:sessionMembership ?ownMembership .
-                BIND(COALESCE(?maybeImpersonatedMembership, ?ownMembership) AS ?membership)
+                OPTIONAL { <SESSION_ID> ext:impersonatorMembership ?maybeOwnMembership }
+                <SESSION_ID> ext:sessionMembership ?impersonatedOrOwnMembership .
+                BIND(COALESCE(?maybeOwnMembership, ?impersonatedOrOwnMembership) AS ?membership)
                 ?membership org:role ?role_uri .
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
