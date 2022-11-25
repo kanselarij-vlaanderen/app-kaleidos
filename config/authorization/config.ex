@@ -9,48 +9,56 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
-
   defp admin_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5>" # admin
+      # admin
+      "<http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5>"
     ]
   end
 
   defp secretarie_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2>" # secretarie
+      # secretarie
+      "<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2>"
     ]
   end
 
   defp ovrb_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f>" # ovrb
+      # ovrb
+      "<http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f>"
     ]
   end
 
   defp kort_bestek_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf>" # kort bestek
+      # kort bestek
+      "<http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf>"
     ]
   end
 
   defp minister_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister
+      # minister
+      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>"
     ]
   end
 
   defp kabinet_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4>", # kabinet dossierbeheerder
-      "<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84>" # kabinet medewerker
+      # kabinet dossierbeheerder
+      "<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4>",
+      # kabinet medewerker
+      "<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84>"
     ]
   end
 
   defp overheid_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644>", # overheidsorganisatie
-      "<http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642>" # Vlaams Parlement
+      # overheidsorganisatie
+      "<http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644>",
+      # Vlaams Parlement
+      "<http://themis.vlaanderen.be/id/gebruikersrol/12543581-7f02-4166-87d2-ab15ddfce642>"
     ]
   end
 
@@ -77,21 +85,38 @@ defmodule Acl.UserGroups.Config do
     }
   end
 
+  defp access_by_own_role(role_uris) do
+    %AccessByQuery{
+      vars: [],
+      query: "PREFIX org: <http://www.w3.org/ns/org#>
+              PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+              SELECT ?role_uri WHERE {
+                OPTIONAL { <SESSION_ID> ext:impersonatesMembership ?maybeImpersonatedMembership }
+                <SESSION_ID> ext:sessionMembership ?ownMembership .
+                BIND(COALESCE(?maybeImpersonatedMembership, ?ownMembership) AS ?membership)
+                ?membership org:role ?role_uri .
+                VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
+              } LIMIT 1"
+    }
+  end
+
   defp generic_besluitvorming_resource_types() do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
-      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
+      "https://data.vlaanderen.be/ns/dossier#Procedurestap"
     ]
   end
 
   defp document_resource_types() do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-      "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
+      # TODO: Delete after complete document migration, still data on PROD!
+      "http://xmlns.com/foaf/0.1/Document",
       "https://data.vlaanderen.be/ns/dossier#Serie",
-      "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Stuk",
+      # TODO: Delete after complete document migration, still data on PROD!
+      "http://mu.semte.ch/vocabularies/ext/DocumentVersie",
+      "https://data.vlaanderen.be/ns/dossier#Stuk"
     ]
   end
 
@@ -103,7 +128,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
     ]
   end
 
@@ -112,7 +137,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://www.w3.org/ns/prov#Collection",
       "http://vocab.deri.ie/cogs#Job",
-      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob",
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
     ]
   end
 
@@ -134,10 +159,10 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/adms#Identifier",
       "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
-      "http://data.europa.eu/eli/ontology#LegalResource" # manual registration of decisions
+      # manual registration of decisions
+      "http://data.europa.eu/eli/ontology#LegalResource"
     ]
   end
-
 
   defp sign_resource_types() do
     [
@@ -152,13 +177,13 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
     ]
   end
 
   defp staatsblad_resource_types() do
     [
-      "http://data.europa.eu/eli/ontology#LegalResource",
+      "http://data.europa.eu/eli/ontology#LegalResource"
     ]
   end
 
@@ -193,13 +218,13 @@ defmodule Acl.UserGroups.Config do
 
   defp user_activity_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/LoginActivity",
+      "http://mu.semte.ch/vocabularies/ext/LoginActivity"
     ]
   end
-  
+
   defp system_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
     ]
   end
 
@@ -207,12 +232,13 @@ defmodule Acl.UserGroups.Config do
     [
       "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "http://www.w3.org/ns/person#Person", # when used as bestuurlijke-alias-van mandaat:Mandataris
+      # when used as bestuurlijke-alias-van mandaat:Mandataris
+      "http://www.w3.org/ns/person#Person",
       "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://www.w3.org/ns/prov#Generation",
       "http://www.w3.org/ns/prov#Invalidation",
-      "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/org#Organization"
     ]
   end
 
@@ -249,23 +275,28 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/public",
             constraint: %ResourceConstraint{
-              resource_types: public_static_data() ++
-              public_codelists() ++
-              system_resource_types() ++
-              user_account_resource_types() # required to list mock accounts for unauthenticated users
-            } },
+              # required to list mock accounts for unauthenticated users
+              resource_types:
+                public_static_data() ++
+                  public_codelists() ++
+                  system_resource_types() ++
+                  user_account_resource_types()
+            }
+          },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
             constraint: %ResourceFormatConstraint{
               resource_prefix: "http://mu.semte.ch/sessions/"
-            } },
+            }
+          },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
-            } } ]
+            }
+          }
+        ]
       },
-
       %GroupSpec{
         name: "authenticated",
         useage: [:read],
@@ -276,15 +307,20 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: user_account_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "admin",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( admin_roles() ),
+        access: access_by_own_role(admin_roles()),
         graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/sessions",
+            constraint: %ResourceFormatConstraint{
+              resource_prefix: "http://mu.semte.ch/sessions/"
+            }
+          },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
@@ -299,22 +335,22 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-
       %GroupSpec{
         name: "secretarie",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( admin_roles() ++ secretarie_roles() ++ kort_bestek_roles() ),
+        access: access_by_role(admin_roles() ++ secretarie_roles() ++ kort_bestek_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
             constraint: %ResourceConstraint{
-              resource_types: newsletter_resource_types() ++
-                agendering_resource_types() ++
-                generic_besluitvorming_resource_types() ++
-                document_resource_types() ++
-                file_bundling_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+              resource_types:
+                newsletter_resource_types() ++
+                  agendering_resource_types() ++
+                  generic_besluitvorming_resource_types() ++
+                  document_resource_types() ++
+                  file_bundling_resource_types() ++
+                  publication_resource_types() ++
+                  sign_resource_types()
             }
           },
           %GraphSpec{
@@ -322,23 +358,23 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: email_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "ovrb",
         useage: [:read, :write, :read_for_write],
         # TODO: Read access on whole "kanselarij"-graph for now.
-        access: access_by_role( admin_roles() ++ ovrb_roles() ),
+        access: access_by_role(admin_roles() ++ ovrb_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
             constraint: %ResourceConstraint{
-              resource_types: generic_besluitvorming_resource_types() ++
-                document_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+              resource_types:
+                generic_besluitvorming_resource_types() ++
+                  document_resource_types() ++
+                  publication_resource_types() ++
+                  sign_resource_types()
             }
           },
           %GraphSpec{
@@ -346,42 +382,39 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: email_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-minister-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( minister_roles() ),
+        access: access_by_role(minister_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/minister",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( kabinet_roles() ),
+        access: access_by_role(kabinet_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( overheid_roles() ),
+        access: access_by_role(overheid_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
@@ -397,8 +430,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "sync-consumer",
         useage: [:read],
-        access:
-        %AccessByQuery{
+        access: %AccessByQuery{
           vars: [],
           query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
