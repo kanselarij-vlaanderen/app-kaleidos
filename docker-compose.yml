@@ -182,7 +182,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:feature-KAS-3658-source-file-as-main-file
+    image: kanselarij/yggdrasil:5.12.0
     logging: *default-logging
     restart: always
     labels:
