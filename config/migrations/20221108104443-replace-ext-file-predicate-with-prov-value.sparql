@@ -1,0 +1,18 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+
+DELETE {
+  GRAPH ?g { ?piece ext:file ?file }
+}
+INSERT {
+  GRAPH ?g { ?piece prov:value ?file }
+}
+WHERE {
+  GRAPH ?g {
+		?piece a dossier:Stuk .
+		?file a nfo:FileDataObject .
+		?piece ext:file ?file .
+	}
+}
