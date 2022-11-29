@@ -70,7 +70,9 @@ defmodule Acl.UserGroups.Config do
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?role_uri WHERE {
-                <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
+                OPTIONAL { <SESSION_ID> ext:impersonatedRole ?maybeImpersonatedRole }
+                <SESSION_ID> ext:sessionMembership / org:role ?ownRole .
+                BIND(COALESCE(?maybeImpersonatedRole, ?ownRole) AS ?role_uri)
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
     }
@@ -82,10 +84,7 @@ defmodule Acl.UserGroups.Config do
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?role_uri WHERE {
-                OPTIONAL { <SESSION_ID> ext:impersonatorMembership ?maybeOwnMembership }
-                <SESSION_ID> ext:sessionMembership ?impersonatedOrOwnMembership .
-                BIND(COALESCE(?maybeOwnMembership, ?impersonatedOrOwnMembership) AS ?membership)
-                ?membership org:role ?role_uri .
+                <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
     }
