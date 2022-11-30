@@ -297,7 +297,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.4.2
+    image: kanselarij/publication-report-service:0.4.3
     volumes:
       - ./data/files:/share
     environment:
