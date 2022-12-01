@@ -70,8 +70,8 @@ defmodule Acl.UserGroups.Config do
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?role_uri WHERE {
-                OPTIONAL { <SESSION_ID> ext:impersonatedRole ?maybeImpersonatedRole }
                 <SESSION_ID> ext:sessionMembership / org:role ?ownRole .
+                OPTIONAL { <SESSION_ID> ext:impersonatedRole ?maybeImpersonatedRole . }
                 BIND(COALESCE(?maybeImpersonatedRole, ?ownRole) AS ?role_uri)
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
@@ -102,7 +102,7 @@ defmodule Acl.UserGroups.Config do
     [
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Serie", 
+      "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Stuk"
     ]
