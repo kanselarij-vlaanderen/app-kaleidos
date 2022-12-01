@@ -128,5 +128,7 @@ services:
   #   restart: "no"
   gov-field-sync:
     restart: "no"
+  impersonation:
+    restart: "no"
   docx-conversion:
     restart: "no"

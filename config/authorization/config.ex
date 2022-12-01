@@ -9,7 +9,6 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
-
   defp admin_roles do
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/9a969b13-e80b-424f-8a82-a402bcb42bc5>" # admin
@@ -71,6 +70,20 @@ defmodule Acl.UserGroups.Config do
       query: "PREFIX org: <http://www.w3.org/ns/org#>
               PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               SELECT ?role_uri WHERE {
+                <SESSION_ID> ext:sessionMembership / org:role ?ownRole .
+                OPTIONAL { <SESSION_ID> ext:impersonatedRole ?maybeImpersonatedRole . }
+                BIND(COALESCE(?maybeImpersonatedRole, ?ownRole) AS ?role_uri)
+                VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
+              } LIMIT 1"
+    }
+  end
+
+  defp access_by_own_role(role_uris) do
+    %AccessByQuery{
+      vars: [],
+      query: "PREFIX org: <http://www.w3.org/ns/org#>
+              PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+              SELECT ?role_uri WHERE {
                 <SESSION_ID> ext:sessionMembership / org:role ?role_uri .
                 VALUES ?role_uri { #{Enum.join(role_uris, " ")} }
               } LIMIT 1"
@@ -81,7 +94,7 @@ defmodule Acl.UserGroups.Config do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
       "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
-      "https://data.vlaanderen.be/ns/dossier#Procedurestap",
+      "https://data.vlaanderen.be/ns/dossier#Procedurestap"
     ]
   end
 
@@ -91,7 +104,7 @@ defmodule Acl.UserGroups.Config do
       "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Stuk",
+      "https://data.vlaanderen.be/ns/dossier#Stuk"
     ]
   end
 
@@ -103,7 +116,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
     ]
   end
 
@@ -112,7 +125,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
       "http://www.w3.org/ns/prov#Collection",
       "http://vocab.deri.ie/cogs#Job",
-      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob",
+      "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
     ]
   end
 
@@ -138,7 +151,6 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-
   defp sign_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
@@ -152,13 +164,13 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
+      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
     ]
   end
 
   defp staatsblad_resource_types() do
     [
-      "http://data.europa.eu/eli/ontology#LegalResource",
+      "http://data.europa.eu/eli/ontology#LegalResource"
     ]
   end
 
@@ -193,13 +205,13 @@ defmodule Acl.UserGroups.Config do
 
   defp user_activity_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/LoginActivity",
+      "http://mu.semte.ch/vocabularies/ext/LoginActivity"
     ]
   end
-  
+
   defp system_resource_types() do
     [
-      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie",
+      "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
     ]
   end
 
@@ -212,7 +224,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "http://www.w3.org/ns/prov#Generation",
       "http://www.w3.org/ns/prov#Invalidation",
-      "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/org#Organization"
     ]
   end
 
@@ -265,7 +277,6 @@ defmodule Acl.UserGroups.Config do
               resource_types: staatsblad_resource_types()
             } } ]
       },
-
       %GroupSpec{
         name: "authenticated",
         useage: [:read],
@@ -276,15 +287,20 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: user_account_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "admin",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( admin_roles() ),
+        access: access_by_own_role(admin_roles()),
         graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/sessions",
+            constraint: %ResourceFormatConstraint{
+              resource_prefix: "http://mu.semte.ch/sessions/"
+            }
+          },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
@@ -299,11 +315,10 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-
       %GroupSpec{
         name: "secretarie",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( admin_roles() ++ secretarie_roles() ++ kort_bestek_roles() ),
+        access: access_by_role(admin_roles() ++ secretarie_roles() ++ kort_bestek_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
@@ -322,15 +337,14 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: email_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "ovrb",
         useage: [:read, :write, :read_for_write],
         # TODO: Read access on whole "kanselarij"-graph for now.
-        access: access_by_role( admin_roles() ++ ovrb_roles() ),
+        access: access_by_role(admin_roles() ++ ovrb_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
@@ -346,42 +360,39 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: email_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-minister-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( minister_roles() ),
+        access: access_by_role(minister_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/minister",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( kabinet_roles() ),
+        access: access_by_role(kabinet_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
             }
-          },
+          }
         ]
       },
-
       %GroupSpec{
         name: "o-intern-overheid-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( overheid_roles() ),
+        access: access_by_role(overheid_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
@@ -397,8 +408,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "sync-consumer",
         useage: [:read],
-        access:
-        %AccessByQuery{
+        access: %AccessByQuery{
           vars: [],
           query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
           PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>

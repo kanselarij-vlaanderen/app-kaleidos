@@ -171,6 +171,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/login-activities/"
   end
 
+  match "/impersonations/*path", @json_service do
+    Proxy.forward conn, path, "http://impersonation/impersonations/"
+  end
 
   ### Regular resources and cache
 
