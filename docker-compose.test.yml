@@ -14,6 +14,9 @@ services:
   file:
     volumes:
       - ./testdata/files:/share
+  docx-conversion:
+    volumes:
+      - ./testdata/files:/share
   # kibana:
   #   entrypoint: "echo 'service disabled'"
   #   restart: "no"

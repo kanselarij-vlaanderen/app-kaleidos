@@ -27,6 +27,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://frontend/torii/redirect.html"
   end
 
+  ### File conversion
+
+  post "/files/:id/convert", @json_service do
+    Proxy.forward conn, [], "http://docx-conversion/files/" <> id <> "/convert"
+  end
 
   ### Files
 

@@ -130,3 +130,5 @@ services:
     restart: "no"
   impersonation:
     restart: "no"
+  docx-conversion:
+    restart: "no"

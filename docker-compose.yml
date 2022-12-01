@@ -13,7 +13,7 @@ x-extended-logging:
     max-file: "20"
 services:
   frontend:
-    image: kanselarij/frontend-kaleidos:5.39.6
+    image: kanselarij/frontend-kaleidos:5.40.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -148,7 +148,7 @@ services:
     labels:
       - "logging=true"
   agenda-comparison:
-    image: kanselarij/agenda-comparison-service:3.0.0
+    image: kanselarij/agenda-comparison-service:3.1.0
     logging: *default-logging
     restart: always
     labels:
@@ -182,7 +182,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.11.0
+    image: kanselarij/yggdrasil:5.12.0
     logging: *default-logging
     restart: always
     labels:
@@ -202,7 +202,15 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.1.6
+    image: kanselarij/file-bundling-job-creation-service:0.2.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  docx-conversion:
+    image: kanselarij/docx-conversion-service:0.1.0
+    volumes:
+      - ./data/files:/share  
     logging: *default-logging
     restart: always
     labels:
@@ -226,7 +234,7 @@ services:
     labels:
       - "logging=true"
   document-versions:
-    image: kanselarij/document-versions-service:0.2.1
+    image: kanselarij/document-versions-service:0.3.1
     logging: *default-logging
     restart: always
     labels:
@@ -238,12 +246,16 @@ services:
     labels:
       - "logging=true"
   mail-delivery:
-    image: redpencil/deliver-email-service:0.3.0
+    image: redpencil/deliver-email-service:0.3.2
     environment:
       MAILBOX_URI: "http://themis.vlaanderen.be/id/mailboxes/e8364a49-2696-48cc-aef1-e1e396a0cd34"
       WELL_KNOWN_SERVICE: "test"
       EMAIL_ADDRESS: "noreply@kaleidos.vlaanderen.be"
       EMAIL_CRON_PATTERN: "*/5 * * * *"
+      EMAIL_PROTOCOL: "MS_Graph_API"
+      MS_GRAPH_API_CLIENT_ID: "51148b88-fd95-43ea-aefc-442af419f11e"
+      MS_GRAPH_API_TENANT_ID: "0c0338a6-9561-4ee8-b8d6-4e89cbd520a0"
+      MS_GRAPH_API_CLIENT_SECRET: "OUR SECRET"
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -293,7 +305,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.4.2
+    image: kanselarij/publication-report-service:0.4.3
     volumes:
       - ./data/files:/share
     environment:

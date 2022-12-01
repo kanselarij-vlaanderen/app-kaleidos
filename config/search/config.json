@@ -125,7 +125,7 @@
         "data": {
           "via": [
             "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
-            "http://mu.semte.ch/vocabularies/ext/file",
+            "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
@@ -246,7 +246,7 @@
           "via": [
             "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
             "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
-            "http://mu.semte.ch/vocabularies/ext/file",
+            "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
@@ -256,7 +256,7 @@
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
             "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
             "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
-            "http://mu.semte.ch/vocabularies/ext/file",
+            "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
