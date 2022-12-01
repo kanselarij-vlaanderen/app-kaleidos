@@ -210,7 +210,7 @@ services:
   docx-conversion:
     image: kanselarij/docx-conversion-service:0.1.0
     volumes:
-      - ./data/files:/share  
+      - ./data/files:/share
     logging: *default-logging
     restart: always
     labels:
@@ -331,7 +331,7 @@ services:
     environment:
       ALLOW_SUPER_CONSUMER: "true"
   impersonation:
-    image: kanselarij/impersonation-service:feature-KAS-2491-user-impersonation
+    image: kanselarij/impersonation-service:0.1.0
     logging: *default-logging
     restart: always
     labels:
