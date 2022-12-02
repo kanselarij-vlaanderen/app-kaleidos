@@ -1,7 +1,11 @@
 PREFIX org: <http://www.w3.org/ns/org#>
 
 DELETE WHERE {
-  <http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> ?p ?o .
-  ?membership org:role <http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> .
-  ?membership ?mp ?mo .
+  GRAPH ?g {
+    <http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> ?p ?o .
+  }
+  GRAPH ?h {
+    ?membership org:role <http://themis.vlaanderen.be/id/gebruikersrol/a12965ec-e95a-4f7b-8911-7bbb41ce29d9> .
+    ?membership ?mp ?mo .
+  }
 }
