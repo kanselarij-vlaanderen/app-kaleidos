@@ -1,0 +1,152 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "dct": "http://purl.org/dc/terms/",
+    "nie": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "resources": {
+    "news-items": {
+      "name": "news-item",
+      "class": "ext:Nieuwsbericht",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "subtitle": {
+          "type": "string",
+          "predicate": "dct:alternative"
+        },
+        "html-content": {
+          "type": "string",
+          "predicate": "nie:htmlContent"
+        },
+        "plain-text": {
+          "type": "string",
+          "predicate": "prov:value"
+        },
+        "publication-date": {
+          "type": "datetime",
+          "predicate": "dct:issued"
+        },
+        "remark": {
+          "type": "string",
+          "predicate": "rdfs:comment"
+        },
+        "modified": {
+          "type": "datetime",
+          "predicate": "dct:modified"
+        },
+        "finished": {
+          "type": "boolean",
+          "predicate": "ext:afgewerkt"
+        },
+        "in-newsletter": {
+          "type": "boolean",
+          "predicate": "ext:inNieuwsbrief"
+        }
+      },
+      "relationships": {
+        "modified-by": {
+          "target": "user",
+          "predicate": "ext:modifiedBy",
+          "cardinality": "one"
+        },
+        "themes": {
+          "target": "theme",
+          "predicate": "dct:subject",
+          "cardinality": "many"
+        },
+        "agenda-item-treatments": {
+          "target": "agenda-item-treatment",
+          "predicate": "prov:wasDerivedFrom",
+          "cardinality": "many"
+        },
+        "attachments": {
+          "target": "piece",
+          "predicate": "besluitvorming:heeftBijlage",
+          "cardinality": "many"
+        }
+      },
+      "features": [
+        "include-uri"
+      ],
+      "new-resource-base": "http://themis.vlaanderen.be/id/nieuwsbericht/"
+    },
+    "themes": {
+      "name": "theme",
+      "class": "ext:ThemaCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        },
+        "deprecated": {
+          "type": "boolean",
+          "predicate": "owl:deprecated"
+        }
+      },
+      "relationships": {
+        "newsletters": {
+          "target": "news-item",
+          "predicate": "dct:subject",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": [
+        "no-pagination-defaults",
+        "include-uri"
+      ],
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/thema/"
+    },
+    "mail-campaigns": {
+      "name": "mail-campaign",
+      "class": "ext:MailCampagne",
+      "attributes": {
+        "campagin-id": {
+          "type": "string",
+          "predicate": "ext:campagneId"
+        },
+        "campaign-web-id": {
+          "type": "string",
+          "predicate": "ext:campagneWebId"
+        },
+        "archive-url": {
+          "type": "string",
+          "predicate": "ext:voorbeeldUrl"
+        },
+        "sent-at": {
+          "type": "datetime",
+          "predicate": "ext:isVerstuurdOp"
+        }
+      },
+      "relationships": {
+        "meeting": {
+          "target": "meeting",
+          "predicate": "ext:heeftMailCampagnes",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": [
+        "include-uri"
+      ],
+      "new-resource-base": "http://themis.vlaanderen.be/id/mailcampagne"
+    }
+  }
+}

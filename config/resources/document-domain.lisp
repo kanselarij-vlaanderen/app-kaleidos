@@ -38,9 +38,9 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
-            (newsletter-info            :via ,(s-prefix "ext:documentenVoorPublicatie")
+            (news-item                  :via ,(s-prefix "ext:documentenVoorPublicatie")
                                         :inverse t
-                                        :as "newsletter")
+                                        :as "news-item")
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")

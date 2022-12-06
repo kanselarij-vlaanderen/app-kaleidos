@@ -88,8 +88,9 @@
                 )
   :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
                                     :as "decision-activity")
-             (newsletter-info       :via        ,(s-prefix "prov:generated")
-                                    :as "newsletter-info")
+             (news-item             :via ,(s-prefix "prov:wasDerivedFrom")
+                                    :inverse t
+                                    :as "news-item")
             )
   :has-many `(
              ;; agenda-item-treatment has multiple agenda-items in the sense that there is one
