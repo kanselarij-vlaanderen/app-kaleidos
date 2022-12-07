@@ -488,7 +488,7 @@
       "properties": {
         "title": "http://purl.org/dc/terms/title",
         "subtitle": "http://purl.org/dc/terms/alternative",
-        "html-content": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent",
+        "htmlContent": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent",
         "themes": [
           "http://purl.org/dc/terms/subject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -563,7 +563,7 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "html-content": {
+          "htmlContent": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
