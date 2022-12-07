@@ -176,7 +176,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.5.0
+    image: kanselarij/newsletter-service:feature-KAS-2742-newsletter-model
     logging: *default-logging
     restart: always
     labels:
