@@ -59,7 +59,10 @@ services:
   cache-warmup:
     restart: "no"
     environment:
-      AUTO_RUN: "false"
+      AUTO_RUN: "true"
+      ENABLE_RECENT_AGENDAS_CACHE: "false"
+      ENABLE_LARGE_AGENDAS_CACHE: "false"
+      ENABLE_CONCEPTS_CACHE: "true"
   cache:
     restart: "no"
   resource:
