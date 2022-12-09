@@ -3,7 +3,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 DELETE WHERE {
   GRAPH ?g {
     <http://themis.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> ?p ?o .
-    ?account foaf:account <http://themis.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> .
+    <http://themis.vlaanderen.be/id/gebruiker/1a6c420c-e209-46fb-a2cb-cd3aeceec765> foaf:account ?account .
     ?account ?ap ?ao .
   }
 }
