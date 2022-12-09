@@ -177,6 +177,8 @@ services:
       - "logging=true"
   newsletter:
     image: kanselarij/newsletter-service:3.5.0
+    volumes:
+      - ./data/generated-xmls:/share
     logging: *default-logging
     restart: always
     labels:
