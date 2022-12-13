@@ -63,10 +63,10 @@
           "predicate": "dct:subject",
           "cardinality": "many"
         },
-        "agenda-item-treatments": {
+        "agenda-item-treatment": {
           "target": "agenda-item-treatment",
           "predicate": "prov:wasDerivedFrom",
-          "cardinality": "many"
+          "cardinality": "one"
         },
         "attachments": {
           "target": "piece",
@@ -109,7 +109,6 @@
         }
       },
       "features": [
-        "no-pagination-defaults",
         "include-uri"
       ],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/thema/"
@@ -146,7 +145,7 @@
       "features": [
         "include-uri"
       ],
-      "new-resource-base": "http://themis.vlaanderen.be/id/mailcampagne"
+      "new-resource-base": "http://themis.vlaanderen.be/id/mailcampagne/"
     }
   }
 }
