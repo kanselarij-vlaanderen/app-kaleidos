@@ -4,11 +4,7 @@
   :has-many `((piece                    :via ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :as "pieces"))
   :has-one `((concept                   :via ,(s-prefix "dct:type")
-                                        :as "type")
-             (agenda-item-treatment     :via ,(s-prefix "besluitvorming:genereertVerslag")
-                                        :inverse t
-                                        :as "agenda-item-treatment")
-                                        )
+                                        :as "type"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/serie/")
   :features '(include-uri)
   :on-path "document-containers")

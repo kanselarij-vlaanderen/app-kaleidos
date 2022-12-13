@@ -177,6 +177,8 @@ services:
       - "logging=true"
   newsletter:
     image: kanselarij/newsletter-service:feature-KAS-2742-newsletter-model
+    volumes:
+      - ./data/generated-xmls:/data
     logging: *default-logging
     restart: always
     labels:
