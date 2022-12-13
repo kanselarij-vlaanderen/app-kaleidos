@@ -1,0 +1,13 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE {
+  GRAPH ?g { ?newsItem a besluitvorming:NieuwsbriefInfo . }
+}
+INSERT {
+  GRAPH ?g { ?newsItem a ext:Nieuwsbericht . }
+}
+WHERE {
+  GRAPH ?g { ?newsItem a besluitvorming:NieuwsbriefInfo . }
+}

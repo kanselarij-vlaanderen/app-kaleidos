@@ -1,0 +1,16 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+
+DELETE {
+  GRAPH ?g { ?newsItem ext:htmlInhoud ?htmlContent . }
+}
+INSERT {
+  GRAPH ?g { ?newsItem nie:htmlContent ?htmlContent . }
+}
+WHERE {
+  GRAPH ?g {
+    ?newsItem a besluitvorming:NieuwsbriefInfo .
+    ?newsItem ext:htmlInhoud ?htmlContent .
+  }
+}

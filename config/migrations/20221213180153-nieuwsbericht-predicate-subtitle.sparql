@@ -1,0 +1,16 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g { ?newsItem dbpedia:subtitle ?subtitle . }
+}
+INSERT {
+  GRAPH ?g { ?newsItem dct:alternative ?subtitle . }
+}
+WHERE {
+  GRAPH ?g {
+    ?newsItem a besluitvorming:NieuwsbriefInfo .
+    ?newsItem dbpedia:subtitle ?subtitle .
+  }
+}
