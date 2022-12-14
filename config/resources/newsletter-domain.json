@@ -33,7 +33,8 @@
         },
         "publication-date": {
           "type": "datetime",
-          "predicate": "dct:issued"
+          "predicate": "dct:issued",
+          "_comment": "Added on export to Themis. Not available in Kaleidos data"
         },
         "remark": {
           "type": "string",
