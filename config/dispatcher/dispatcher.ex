@@ -270,12 +270,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
-  match "/newsletter-infos/search/*path", @json_service do
-    Proxy.forward conn, path, "http://search/newsletter-infos/search/"
+  match "/news-items/search/*path", @json_service do
+    Proxy.forward conn, path, "http://search/news-items/search/"
   end
 
-  match "/newsletter-infos/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/newsletter-infos/"
+  match "/news-items/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/news-items/"
   end
 
   match "/internal-decision-publication-activities/*path", @json_service do
