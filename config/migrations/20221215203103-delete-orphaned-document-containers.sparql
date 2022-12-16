@@ -1,0 +1,15 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+
+DELETE WHERE {
+  GRAPH ?g {
+    ?documentContainer a dossier:Serie .
+    FILTER NOT EXISTS { ?documentContainer dossier:Collectie.bestaatUit ?piece }
+  }
+}
+;
+DELETE WHERE {
+  GRAPH ?g {
+    ?documentContainer a dossier:Serie .
+    FILTER NOT EXISTS { ?documentContainer dossier:Collectie.bestaatUit ?piece }
+  }
+}
