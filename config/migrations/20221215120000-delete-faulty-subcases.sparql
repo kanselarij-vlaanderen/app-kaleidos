@@ -1,0 +1,18 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?besluitvormingsaangelegenheid dossier:doorloopt ?procedurestap .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+    ?besluitvormingsaangelegenheid a besluitvorming:Besluitvormingsaangelegenheid .
+    ?besluitvormingsaangelegenheid dossier:doorloopt ?procedurestap .
+    FILTER NOT EXISTS { ?procedurestap ?x ?y  . }
+  }
+}

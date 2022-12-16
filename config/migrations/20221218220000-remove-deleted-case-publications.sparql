@@ -1,0 +1,17 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+DELETE {
+  GRAPH ?g {
+    ?publicatieDossier ?p ?o .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?publicatieDossier a pub:Publicatieaangelegenheid; dossier:behandelt ?dossier .
+    ?publicatieDossier ?p ?o .
+    FILTER NOT EXISTS { ?dossier ?p2 ?o2 . }
+  }
+}

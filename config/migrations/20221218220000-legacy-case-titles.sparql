@@ -1,0 +1,33 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+    ?dossier dct:title ?dossierTitel .
+    ?besluitvormingsaangelegenheid dct:title ?titel .
+    ?dossier dct:alternative ?dossierTitel .
+    ?besluitvormingsaangelegenheid dct:alternative ?titel .
+  }
+}
+WHERE {
+  {
+    SELECT DISTINCT ?dossier ?besluitvormingsaangelegenheid MIN(?procedurestapCreated) AS ?oldestCreated WHERE {
+      ?dossier a dossier:Dossier .
+      FILTER NOT EXISTS { ?dossier dct:title ?originalTitle . }
+      ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+      ?besluitvormingsaangelegenheid dossier:doorloopt ?procedurestap .
+      ?procedurestap dct:created ?procedurestapCreated .
+      FILTER (?procedurestapCreated < xsd:dateTime("2019-10-02T02:00:00Z"))
+    }
+  }
+  GRAPH ?g {
+    ?dossier a dossier:Dossier .
+    ?dossier dossier:Dossier.isNeerslagVan ?besluitvormingsaangelegenheid .
+    ?besluitvormingsaangelegenheid dossier:doorloopt ?procedurestap .
+    ?procedurestap dct:created ?oldestCreated .
+    OPTIONAL { ?procedurestap dct:title ?titel . }
+    OPTIONAL { ?procedurestap dct:alternative ?korteTitel . }
+    BIND(COALESCE(?korteTitel, ?titel, "Dossier zonder titel") AS ?dossierTitel)
+  }
+}
