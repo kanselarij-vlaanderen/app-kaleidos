@@ -46,7 +46,8 @@
         },
         "finished": {
           "type": "boolean",
-          "predicate": "ext:afgewerkt"
+          "predicate": "ext:afgewerkt",
+          "_comment": "Only used for internal communication. Serves no purpose outside Kaleidos"
         },
         "in-newsletter": {
           "type": "boolean",
