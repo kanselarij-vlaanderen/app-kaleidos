@@ -1,0 +1,11 @@
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+
+<http://themis.vlaanderen.be/id/gebruikersrol/ab39b02a-14a5-4aa9-90bd-e0fa268b0f3d> a org:Role ;
+    mu:uuid "ab39b02a-14a5-4aa9-90bd-e0fa268b0f3d" ;
+    skos:inScheme thConceptScheme:b18acf1a-2a37-4b42-a549-b158d0065092 ;
+    skos:prefLabel "Kanselarij" ;
+    skos:notation "Kaleidos_Kanselarij" ;
+    skos:definition "Medewerker van team secretarie en OVRB" .
