@@ -17,11 +17,16 @@ defmodule Acl.UserGroups.Config do
 
   defp secretarie_roles do
     [
+      "<http://themis.vlaanderen.be/id/gebruikersrol/ab39b02a-14a5-4aa9-90bd-e0fa268b0f3d>", # kanselarij
       "<http://themis.vlaanderen.be/id/gebruikersrol/c2ef1785-bf28-458f-952d-aa40989347d2>" # secretarie
     ]
   end
 
   defp ovrb_roles do
+    # kanselarij_role is explicitely not added here, to avoid the requirement of
+    # additional search indexes because of the new combination of user-groups.
+    # Since 'ovrb' data access is a subset of 'secretarie' data access,
+    # it's sufficient to add kanselarij_role only to secretarie_roles()
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/648a1ffe-1a26-4931-a329-18d26a91438f>" # ovrb
     ]
