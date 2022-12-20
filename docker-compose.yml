@@ -12,19 +12,6 @@ x-extended-logging:
     max-size: "50m"
     max-file: "20"
 services:
-  frontend:
-    image: kanselarij/frontend-kaleidos:5.44.0
-    environment:
-      EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
-      EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
-      EMBER_OAUTH_REDIRECT_URL: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
-      EMBER_OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
-    links:
-      - identifier:backend
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
   identifier:
     image: semtech/mu-identifier:1.10.0
     logging: *default-logging
@@ -35,6 +22,17 @@ services:
     image: semtech/mu-dispatcher:2.1.0-beta.2
     volumes:
       - ./config/dispatcher:/config
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  frontend:
+    image: kanselarij/frontend-kaleidos:5.44.0
+    environment:
+      EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
+      EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
+      EMBER_OAUTH_REDIRECT_URL: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
+      EMBER_OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
     logging: *default-logging
     restart: always
     labels:
