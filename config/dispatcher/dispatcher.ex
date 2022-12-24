@@ -28,7 +28,7 @@ defmodule Dispatcher do
   end
 
   get "/handleiding", @frontend do
-    Proxy.forward conn, [], "http://static-files/handleiding.pdf"
+    Proxy.forward conn, [], "http://static-file/handleiding.pdf"
   end
 
   ### Files
