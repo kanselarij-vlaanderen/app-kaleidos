@@ -27,6 +27,9 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://frontend/torii/redirect.html"
   end
 
+  get "/handleiding", @frontend do
+    Proxy.forward conn, [], "http://static-files/handleiding.pdf"
+  end
 
   ### Files
 

@@ -147,6 +147,10 @@ services:
     restart: always
     labels:
       - "logging=true"
+  static-file:
+    image: semtech/static-file-service:0.2.0
+    volumes:
+      - ./data/static-files:/data
   agenda-comparison:
     image: kanselarij/agenda-comparison-service:3.1.0
     logging: *default-logging
