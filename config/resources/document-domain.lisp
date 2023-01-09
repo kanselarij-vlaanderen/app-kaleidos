@@ -34,7 +34,7 @@
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
-            (news-item                  :via ,(s-prefix "ext:documentenVoorPublicatie")
+            (news-item                  :via ,(s-prefix "besluitvorming:heeftBijlage") ;; Added on export to Themis. Only available in Kaleidos for legacy data.
                                         :inverse t
                                         :as "news-item")
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
