@@ -2,15 +2,14 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
-  GRAPH ?g { ?newsItem ext:opmerking ?remark . }
+  ?newsItem ext:opmerking ?remark .
 }
 INSERT {
-  GRAPH ?g { ?newsItem rdfs:comment ?remark . }
+  ?newsItem rdfs:comment ?remark .
 }
 WHERE {
-  GRAPH ?g {
-    ?newsItem a besluitvorming:NieuwsbriefInfo .
-    ?newsItem ext:opmerking ?remark .
-  }
+  ?newsItem a besluitvorming:NieuwsbriefInfo .
+  ?newsItem ext:opmerking ?remark .
 }

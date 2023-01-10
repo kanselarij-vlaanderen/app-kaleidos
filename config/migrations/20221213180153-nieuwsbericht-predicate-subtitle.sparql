@@ -2,15 +2,14 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX dbpedia: <http://dbpedia.org/ontology/>
 PREFIX dct: <http://purl.org/dc/terms/>
 
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
-  GRAPH ?g { ?newsItem dbpedia:subtitle ?subtitle . }
+  ?newsItem dbpedia:subtitle ?subtitle .
 }
 INSERT {
-  GRAPH ?g { ?newsItem dct:alternative ?subtitle . }
+  ?newsItem dct:alternative ?subtitle .
 }
 WHERE {
-  GRAPH ?g {
-    ?newsItem a besluitvorming:NieuwsbriefInfo .
-    ?newsItem dbpedia:subtitle ?subtitle .
-  }
+  ?newsItem a besluitvorming:NieuwsbriefInfo .
+  ?newsItem dbpedia:subtitle ?subtitle .
 }
