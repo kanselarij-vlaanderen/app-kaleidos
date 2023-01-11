@@ -69,6 +69,9 @@
             (signed-piece               :via ,(s-prefix "sign:ongetekendStuk")
                                         :inverse t
                                         :as "signed-piece")
+            (submisison-activity        :via ,(s-prefix "prov:generated")
+                                        :inverse t
+                                        :as "submission-activity")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
@@ -79,6 +82,9 @@
               (agendaitem               :via ,(s-prefix "besluitvorming:geagendeerdStuk")
                                         :inverse t
                                         :as "agendaitems")
+              (agendaitem               :via ,(s-prefix "ext:bevatReedsBezorgdAgendapuntDocumentversie")
+                                        :inverse t
+                                        :as "linked-agendaitems")
               (request-activity         :via ,(s-prefix "pub:aanvraagGebruikt")
                                         :inverse t
                                         :as "request-activities-used-by")
