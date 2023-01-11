@@ -204,13 +204,6 @@
           "target": "translation-activity",
           "cardinality": "many",
           "inverse": true
-        },
-        "cancellation-activities": {
-          "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "_comment": "FIXME: predicate should be dossier:vindtPlaatsTijdens",
-          "target": "cancellation-activity",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "features": ["include-uri"],
@@ -547,40 +540,6 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept/publicatie-activiteit/"
 
-    },
-    "cancellation-activities": {
-      "name": "cancellation-activity",
-      "class": "pub:AnnulatieActiviteit",
-      "attributes": {
-        "title": {
-          "type": "string",
-          "predicate": "dct:title"
-        },
-        "start-date": {
-          "type": "datetime",
-          "predicate": "dossier:Activiteit.startdatum"
-        },
-        "end-date": {
-          "type": "datetime",
-          "predicate": "dossier:Activiteit.einddatum"
-        }
-      },
-      "relationships": {
-        "subcase": {
-          "predicate": "pub:annuleringVindtPlaatsTijdens",
-          "target": "translation-subcase",
-          "cardinality": "one"
-        },
-        "email": {
-          "predicate": "pub:cancellationActivitySubject",
-          "_comment": "FIXME: predicate should be dct:subject",
-          "target": "email",
-          "cardinality": "one",
-          "inverse": true
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/concept/annulatie-activiteit/"
     },
     "languages": {
       "name": "language",
