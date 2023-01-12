@@ -171,7 +171,6 @@
                 (:ended-on              :datetime ,(s-prefix "prov:endedAtTime")) ;; NOTE: Kept ':geeindigd-op-tijdstip' from besluit instead of ':eind' from besluitvorming
                 (:location              :string   ,(s-prefix "prov:atLocation"))
                 (:number                :number   ,(s-prefix "adms:identifier")) ;; currently mixed types (xsd:decimal & xsd:integer) exist in prod db
-                (:is-final              :boolean  ,(s-prefix "ext:finaleZittingVersie")) ;; "ext:finaleZittingVersie" == true means "agenda afgesloten" but not at a version level. TODO whether meeting is final can be derived from existance of "?meeting besluitvorming:behandelt ?agenda" triple. This duplicate boolean flag can be removed.
                 (:extra-info            :string   ,(s-prefix "ext:extraInfo"))
                 (:number-representation :string   ,(s-prefix "ext:numberRepresentation")))
   :has-many `((agenda                   :via      ,(s-prefix "besluitvorming:isAgendaVoor") ;; All agenda versions, including the final version
