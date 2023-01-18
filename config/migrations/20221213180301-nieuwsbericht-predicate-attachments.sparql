@@ -1,15 +1,14 @@
 PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
-  GRAPH ?g { ?newsItem ext:documentenVoorPublicatie ?attachments . }
+  ?newsItem ext:documentenVoorPublicatie ?attachments .
 }
 INSERT {
-  GRAPH ?g { ?newsItem besluitvorming:heeftBijlage ?attachments . }
+  ?newsItem besluitvorming:heeftBijlage ?attachments .
 }
 WHERE {
-  GRAPH ?g {
-    ?newsItem a besluitvorming:NieuwsbriefInfo .
-    ?newsItem ext:documentenVoorPublicatie ?attachments .
-  }
+  ?newsItem a besluitvorming:NieuwsbriefInfo .
+  ?newsItem ext:documentenVoorPublicatie ?attachments .
 }
