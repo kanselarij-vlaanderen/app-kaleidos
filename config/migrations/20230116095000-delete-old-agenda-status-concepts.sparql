@@ -1,0 +1,15 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+     ?status ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+     ?status a kans:AgendaStatus ;
+              skos:inScheme  <http://kanselarij.vo.data.gift/id/codelist/agenda-status> .
+     ?status ?p ?o .
+  }
+}
