@@ -1,0 +1,12 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX kans: <http://kanselarij.vo.data.gift/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?status a kans:AgendaStatus .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?status skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/b4470852-7799-42a1-af8f-22d15088ba16> .
+  }
+}
