@@ -107,11 +107,6 @@
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://purl.org/dc/terms/title"
         ],
-        "mandateeName": [
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/name"
-        ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -207,11 +202,6 @@
             "type": "date"
           },
           "mandateRoles": {
-            "type": "text",
-            "analyzer": "dutchanalyzer",
-            "search_analyzer": "dutchanalyzer"
-          },
-          "mandateeName": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
