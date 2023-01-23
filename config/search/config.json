@@ -214,6 +214,11 @@
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
           "http://mu.semte.ch/vocabularies/ext/isGearchiveerd"
         ],
+        "mandateRoles": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://purl.org/dc/terms/title"
+        ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -242,6 +247,17 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/alternative"
         ],
+        "documentNames": [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "http://purl.org/dc/terms/title"
+        ],
+        "documentFileNames": [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
         "documents": {
           "via": [
             "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -251,6 +267,19 @@
           ],
           "attachment_pipeline": "attachment"
         },
+        "decisionNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://purl.org/dc/terms/title"
+        ],
+        "decisionFileNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
         "decisions": {
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
@@ -260,7 +289,21 @@
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
-        }
+        },
+        "newsItemTitle": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://purl.org/dc/terms/title"
+        ],
+        "newsItem": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
+        ]
       },
       "mappings": {
         "properties": {
