@@ -1,0 +1,17 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?subcasetype ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?subcasetype a ext:ProcedurestapType . 
+    ?subcasetype ?p ?o .
+    VALUES (?subcasetype) {
+      (<http://example.com/step/5e508d33-b52a-425e-8b13-13b53eebd9d9>)
+      (<http://example.com/step/343e05e1-24ca-4cfb-8708-048011c2b741>)
+      (<http://example.com/step/ec5877b7-737b-4051-9b8b-abd177b61236>)
+    }
+  }
+}
