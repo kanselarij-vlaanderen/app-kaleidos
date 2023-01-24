@@ -150,13 +150,13 @@ services:
     volumes:
       - ./data/static-files:/data
   agenda-comparison:
-    image: kanselarij/agenda-approve-service:feature-KAS-3733-remove-isfinal-boolean
+    image: kanselarij/agenda-comparison-service:3.1.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.7.0
+    image: kanselarij/agenda-approve-service:feature-KAS-3733-remove-isfinal-boolean
     logging: *default-logging
     restart: always
     labels:
