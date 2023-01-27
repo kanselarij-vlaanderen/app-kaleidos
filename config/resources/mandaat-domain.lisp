@@ -21,7 +21,9 @@
              (sign-signing-activity :via ,(s-prefix "sign:ondertekenaar")
                                   :inverse t
                                   :as "sign-signing-activities")
-             )
+             (submission-activity :via ,(s-prefix "prov:qualifiedAssociation")
+                                  :inverse t
+                                  :as "submission-activities"))
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person")
              (mandate             :via ,(s-prefix "org:holds")

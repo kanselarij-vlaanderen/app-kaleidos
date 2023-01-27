@@ -73,7 +73,8 @@
         "attachments": {
           "target": "piece",
           "predicate": "besluitvorming:heeftBijlage",
-          "cardinality": "many"
+          "cardinality": "many",
+          "_comment": "Added on export to Themis. Only available in Kaleidos for legacy data"
         }
       },
       "features": [

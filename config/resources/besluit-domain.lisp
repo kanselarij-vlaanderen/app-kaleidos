@@ -7,6 +7,9 @@
                 (:modified    :datetime   ,(s-prefix "dct:modified")))
   :has-one `((meeting         :via        ,(s-prefix "besluitvorming:isAgendaVoor")
                               :as "created-for")
+             (meeting         :via        ,(s-prefix "besluitvorming:behandelt")
+                              :inverse t
+                              :as "meeting")
              (agendastatus    :via        ,(s-prefix "besluitvorming:agendaStatus")
                               :as "status")
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
