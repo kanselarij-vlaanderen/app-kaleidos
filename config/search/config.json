@@ -194,6 +194,41 @@
       }
     },
     {
+      "type": "pieces",
+      "on_path": "pieces",
+      "rdf_type": "https://data.vlaanderen.be/ns/dossier#Stuk",
+      "properties": {
+        "title": "http://purl.org/dc/terms/title",
+        "created": "http://purl.org/dc/terms/created",
+        "fileName": [
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "confidential": [
+          "^http://mu.semte.ch/vocabularies/ext/bevatReedsBezorgdeDocumentversie",
+          "http://mu.semte.ch/vocabularies/ext/vertrouwelijk"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "created": {
+            "type": "date"
+          },
+          "fileName": {
+            "type": "text"
+          },
+          "confidential": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
       "type": "decisionmaking-flow",
       "on_path": "decisionmaking-flows",
       "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
