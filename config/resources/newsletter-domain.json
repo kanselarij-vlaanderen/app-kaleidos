@@ -119,7 +119,7 @@
       "name": "mail-campaign",
       "class": "ext:MailCampagne",
       "attributes": {
-        "campagin-id": {
+        "campaign-id": {
           "type": "string",
           "predicate": "ext:campagneId"
         },
