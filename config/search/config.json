@@ -204,9 +204,13 @@
           "http://www.w3.org/ns/prov#value",
           "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
         ],
-        "confidential": [
-          "^http://mu.semte.ch/vocabularies/ext/bevatReedsBezorgdeDocumentversie",
-          "http://mu.semte.ch/vocabularies/ext/vertrouwelijk"
+        "documentType": [
+          "^https://data.vlaanderen.be/ns/dossier#Collectie.bestaatUit",
+          "http://purl.org/dc/terms/type"
+        ],
+        "confidentialityLevel": [
+          "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau",
+          "http://schema.org/position"
         ]
       },
       "mappings": {
@@ -222,8 +226,11 @@
           "fileName": {
             "type": "text"
           },
-          "confidential": {
-            "type": "boolean"
+          "documentType": {
+            "type": "keyword"
+          },
+          "confidentialityLevel": {
+            "type": "integer"
           }
         }
       }
