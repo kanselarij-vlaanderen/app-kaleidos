@@ -103,10 +103,9 @@
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
-        "mandateeName": [
+        "mandateRoles": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/name"
+          "http://purl.org/dc/terms/title"
         ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
@@ -122,14 +121,52 @@
           "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
           "http://purl.org/dc/terms/title"
         ],
-        "data": {
+        "pieceFileNames": [
+          "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "pieces": {
           "via": [
             "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
-        }
+        },
+        "decisionName": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://purl.org/dc/terms/title"
+        ],
+        "decisionFileName": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "decision": {
+          "via": [
+            "^http://purl.org/dc/terms/subject",
+            "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+            "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+            "http://www.w3.org/ns/prov#value",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        },
+        "newsItemTitle": [
+          "^http://purl.org/dc/terms/subject",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://purl.org/dc/terms/title"
+        ],
+        "newsItem": [
+          "^http://purl.org/dc/terms/subject",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
+        ]
       },
       "mappings": {
         "properties": {
@@ -164,7 +201,7 @@
           "sessionDates": {
             "type": "date"
           },
-          "mandateeName": {
+          "mandateRoles": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
@@ -184,11 +221,42 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "data.content": {
+          "pieceFileNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "pieces.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "decisionName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "decisionFileName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "decision.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "newsItemTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "newsItem": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }
