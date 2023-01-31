@@ -156,7 +156,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-3733-remove-isfinal-boolean
+    image: kanselarij/agenda-approve-service:5.8.0
     logging: *default-logging
     restart: always
     labels:
