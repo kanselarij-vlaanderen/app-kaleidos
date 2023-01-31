@@ -206,7 +206,8 @@
         ],
         "documentType": [
           "^https://data.vlaanderen.be/ns/dossier#Collectie.bestaatUit",
-          "http://purl.org/dc/terms/type"
+          "http://purl.org/dc/terms/type",
+          "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "confidentialityLevel": [
           "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau",
