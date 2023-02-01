@@ -107,6 +107,11 @@
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://purl.org/dc/terms/title"
         ],
+        "mandateeIds": [
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -206,6 +211,9 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "mandateeIds": {
+            "type": "keyword"
+          },
           "mandateeFirstNames": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -282,6 +290,12 @@
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
           "http://mu.semte.ch/vocabularies/ext/isGearchiveerd"
         ],
+        "mandateeIds": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -347,6 +361,9 @@
           },
           "isArchived": {
             "type": "boolean"
+          },
+          "mandateeIds": {
+            "type": "keyword"
           },
           "mandateeFirstNames": {
             "type": "text",
