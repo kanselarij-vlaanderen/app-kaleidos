@@ -324,6 +324,10 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/alternative"
         ],
+        "subcaseConfidential": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/vertrouwelijk"
+        ],
         "documents": {
           "via": [
             "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -387,6 +391,9 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "subcaseConfidential": {
+            "type": "boolean"
           },
           "documents.content": {
             "type": "text",
