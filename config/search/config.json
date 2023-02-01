@@ -213,7 +213,7 @@
           "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau",
           "http://schema.org/position"
         ],
-        "content": {
+        "data": {
           "via": [
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
@@ -240,7 +240,7 @@
           "confidentialityLevel": {
             "type": "integer"
           },
-          "content.content": {
+          "data.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
