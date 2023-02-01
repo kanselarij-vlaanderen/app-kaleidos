@@ -212,7 +212,14 @@
         "confidentialityLevel": [
           "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau",
           "http://schema.org/position"
-        ]
+        ],
+        "content": {
+          "via": [
+            "http://www.w3.org/ns/prov#value",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        }
       },
       "mappings": {
         "properties": {
@@ -232,6 +239,12 @@
           },
           "confidentialityLevel": {
             "type": "integer"
+          },
+          "content.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
           }
         }
       }
