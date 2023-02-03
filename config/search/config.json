@@ -103,6 +103,11 @@
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
+        "subcaseTitle": [
+          "^http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://purl.org/dc/terms/title"
+        ],
         "mandateRoles": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://purl.org/dc/terms/title"
@@ -151,6 +156,16 @@
           "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
           "http://www.w3.org/ns/prov#value",
           "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "decisionStartDate": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "decisionResult": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
         ],
         "decision": {
           "via": [
@@ -206,6 +221,11 @@
           "sessionDates": {
             "type": "date"
           },
+          "subcaseTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "mandateRoles": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -239,6 +259,12 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "decisionStartDate": {
+            "type": "date"
+          },
+          "decisionResult": {
+            "type": "keyword"
           },
           "decisionName": {
             "type": "text",
