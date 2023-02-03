@@ -156,7 +156,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-3775-migrate-agenda-status-to-themis-url-and-remove-agenda-status-afgesloten
+    image: kanselarij/agenda-approve-service:5.9.0
     logging: *default-logging
     restart: always
     labels:
