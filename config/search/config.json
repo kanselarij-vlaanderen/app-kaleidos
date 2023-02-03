@@ -734,6 +734,10 @@
               "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
               "properties" : {
                 "priority": "http://data.vlaanderen.be/ns/mandaat#rangorde",
+                "id": [
+                  "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+                  "http://mu.semte.ch/vocabularies/core/uuid"
+                ],
                 "firstName": [
                   "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
                   "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
@@ -790,6 +794,9 @@
           },
           "agendaitems.mandatees.priority": {
             "type": "short"
+          },
+          "agendaitems.mandatees.id": {
+            "type": "keyword"
           },
           "agendaitems.mandatees.firstName": {
             "type": "text",
