@@ -1,0 +1,12 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+} WHERE {
+  VALUES (?s) {
+    (<http://themis.vlaanderen.be/id/concept/agenda-status/dce8eb02-fa3b-44bc-aa48-2ff7eec21a74>)
+  }
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
