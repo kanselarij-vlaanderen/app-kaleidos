@@ -1,0 +1,20 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?agenda besluitvorming:agendaStatus ?status .
+  }
+} 
+INSERT {
+  GRAPH ?g {
+    ?agenda besluitvorming:agendaStatus <http://themis.vlaanderen.be/id/concept/agenda-status/fff6627e-4c96-4be1-b483-8fefcc6523ca> .
+  }
+}
+WHERE {
+  VALUES (?status) {
+    (<http://kanselarij.vo.data.gift/id/agendastatus/ff0539e6-3e63-450b-a9b7-cc6463a0d3d1>)
+  }
+  GRAPH ?g {
+    ?agenda besluitvorming:agendaStatus ?status .
+  }
+}
