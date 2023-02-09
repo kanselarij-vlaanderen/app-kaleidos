@@ -26,6 +26,9 @@ services:
   file-bundling:
     volumes:
       - ./testdata/files:/share
+  publication-report:
+    volumes:
+      - ./testdata/files:/share
   # The DELTA_INTERVAL_MS is the value that yggdrasil waits between runs in milliseconds
   # Default is 5 minutes but results in 10 minutes between runs  
   yggdrasil:

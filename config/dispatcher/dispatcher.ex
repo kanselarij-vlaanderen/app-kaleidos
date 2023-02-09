@@ -384,10 +384,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/publication-activities/"
   end
 
-  match "/cancellation-activities/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/cancellation-activities/"
-  end
-
   match "/decisions/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decisions/"
   end

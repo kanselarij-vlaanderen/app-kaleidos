@@ -103,10 +103,19 @@
           "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
-        "mandateeName": [
+        "subcaseTitle": [
+          "^http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://purl.org/dc/terms/title"
+        ],
+        "mandateRoles": [
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
+          "http://purl.org/dc/terms/title"
+        ],
+        "mandateeIds": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/name"
+          "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "mandateeFirstNames": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
@@ -122,14 +131,62 @@
           "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
           "http://purl.org/dc/terms/title"
         ],
-        "data": {
+        "pieceFileNames": [
+          "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "pieces": {
           "via": [
             "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
-        }
+        },
+        "decisionName": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://purl.org/dc/terms/title"
+        ],
+        "decisionFileName": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "decisionStartDate": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "decisionResult": [
+          "^http://purl.org/dc/terms/subject",
+          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
+        ],
+        "decision": {
+          "via": [
+            "^http://purl.org/dc/terms/subject",
+            "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+            "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+            "http://www.w3.org/ns/prov#value",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        },
+        "newsItemTitle": [
+          "^http://purl.org/dc/terms/subject",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://purl.org/dc/terms/title"
+        ],
+        "newsItem": [
+          "^http://purl.org/dc/terms/subject",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
+        ]
       },
       "mappings": {
         "properties": {
@@ -164,10 +221,18 @@
           "sessionDates": {
             "type": "date"
           },
-          "mandateeName": {
+          "subcaseTitle": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "mandateRoles": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "mandateeIds": {
+            "type": "keyword"
           },
           "mandateeFirstNames": {
             "type": "text",
@@ -184,11 +249,48 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
-          "data.content": {
+          "pieceFileNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "pieces.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "decisionStartDate": {
+            "type": "date"
+          },
+          "decisionResult": {
+            "type": "keyword"
+          },
+          "decisionName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "decisionFileName": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "decision.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          },
+          "newsItemTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "newsItem": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }
@@ -270,6 +372,17 @@
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
           "http://mu.semte.ch/vocabularies/ext/isGearchiveerd"
         ],
+        "mandateeIds": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "mandateRoles": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://purl.org/dc/terms/title"
+        ],
         "mandateeFirstNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
@@ -298,6 +411,21 @@
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/alternative"
         ],
+        "subcaseConfidential": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/vertrouwelijk"
+        ],
+        "documentNames": [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "http://purl.org/dc/terms/title"
+        ],
+        "documentFileNames": [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
         "documents": {
           "via": [
             "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -307,6 +435,19 @@
           ],
           "attachment_pipeline": "attachment"
         },
+        "decisionNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://purl.org/dc/terms/title"
+        ],
+        "decisionFileNames": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
         "decisions": {
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
@@ -316,7 +457,21 @@
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
-        }
+        },
+        "newsItemTitle": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://purl.org/dc/terms/title"
+        ],
+        "newsItem": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
+          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^http://www.w3.org/ns/prov#wasDerivedFrom",
+          "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
+        ]
       },
       "mappings": {
         "properties": {
@@ -335,6 +490,14 @@
           },
           "isArchived": {
             "type": "boolean"
+          },
+          "mandateeIds": {
+            "type": "keyword"
+          },
+          "mandateRoles": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           },
           "mandateeFirstNames": {
             "type": "text",
@@ -359,17 +522,50 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "subcaseConfidential": {
+            "type": "boolean"
+          },
+          "documentNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "documentFileNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "documents.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
           },
+          "decisionNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "decisionFileNames": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
           "decisions.content": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "newsItemTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "newsItem": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }
@@ -594,6 +790,10 @@
               "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
               "properties" : {
                 "priority": "http://data.vlaanderen.be/ns/mandaat#rangorde",
+                "id": [
+                  "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+                  "http://mu.semte.ch/vocabularies/core/uuid"
+                ],
                 "firstName": [
                   "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
                   "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
@@ -650,6 +850,9 @@
           },
           "agendaitems.mandatees.priority": {
             "type": "short"
+          },
+          "agendaitems.mandatees.id": {
+            "type": "keyword"
           },
           "agendaitems.mandatees.firstName": {
             "type": "text",
