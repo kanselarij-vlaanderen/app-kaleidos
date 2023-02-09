@@ -311,9 +311,14 @@
           "http://purl.org/dc/terms/type",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "confidentialityLevel": [
-          "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau",
-          "http://schema.org/position"
+        "accessLevel": [
+          "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
+        ],
+        "mandateeIds": [
+          "^http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "data": {
           "via": [
@@ -339,8 +344,11 @@
           "documentType": {
             "type": "keyword"
           },
-          "confidentialityLevel": {
-            "type": "integer"
+          "accessLevel": {
+            "type": "keyword"
+          },
+          "mandateeIds": {
+            "type": "keyword"
           },
           "data.content": {
             "type": "text",
