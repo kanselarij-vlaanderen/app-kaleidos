@@ -1,0 +1,33 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendaB prov:wasRevisionOf ?agendaA .
+  }}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendaA a besluitvorming:Agenda .
+    ?agendaB a besluitvorming:Agenda .
+    {
+      SELECT DISTINCT ?agendaA ?agendaB WHERE {
+        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+          ?agendaA a besluitvorming:Agenda ;
+            dct:hasPart ?agendaItemA .
+          ?agendaB a besluitvorming:Agenda ;
+            dct:hasPart ?agendaItemB .
+          ?agendaItemA a besluit:Agendapunt .
+          ?agendaItemB a besluit:Agendapunt .
+          ?agendaItemB prov:wasRevisionOf ?agendaItemA .
+          FILTER NOT EXISTS { ?agendaA besluitvorming:isAgendaVoor <http://kanselarij.vo.data.gift/id/zittingen/undefined> . }
+          FILTER NOT EXISTS { ?agendaB besluitvorming:isAgendaVoor <http://kanselarij.vo.data.gift/id/zittingen/undefined> . }
+          FILTER NOT EXISTS { ?agendaB prov:wasRevisionOf ?agendaA . }
+          ?agendaA besluitvorming:isAgendaVoor ?meeting .
+          ?agendaB besluitvorming:isAgendaVoor ?meeting .
+        }
+      }
+    }
+  }
+}
