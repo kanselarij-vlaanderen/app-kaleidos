@@ -16,9 +16,8 @@ INSERT {
   }
 }
 
-where {
-  graph <http://mu.semte.ch/graphs/organizations/kanselarij> {
-
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?meeting a besluit:Vergaderactiviteit .
     ?meeting besluitvorming:behandelt ?finalAgenda . 
     ?finalAgenda besluitvorming:agendaStatus statusid:ff0539e6-3e63-450b-a9b7-cc6463a0d3d1 .
