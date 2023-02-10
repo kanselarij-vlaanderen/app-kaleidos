@@ -1,0 +1,25 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX statusid: <http://kanselarij.vo.data.gift/id/agendastatus/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+      ?finalAgenda besluitvorming:agendaStatus statusid:ff0539e6-3e63-450b-a9b7-cc6463a0d3d1
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+      ?finalAgenda besluitvorming:agendaStatus statusid:f06f2b9f-b3e5-4315-8892-501b00650101 .
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?meeting a besluit:Vergaderactiviteit .
+    ?meeting besluitvorming:behandelt ?finalAgenda . 
+    ?finalAgenda besluitvorming:agendaStatus statusid:ff0539e6-3e63-450b-a9b7-cc6463a0d3d1 .
+  }
+}
