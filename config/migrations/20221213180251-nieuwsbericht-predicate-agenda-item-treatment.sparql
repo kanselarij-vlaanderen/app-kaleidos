@@ -2,15 +2,14 @@ PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 
+WITH <http://mu.semte.ch/graphs/organizations/kanselarij>
 DELETE {
-  GRAPH ?g { ?agendaItemTreatment prov:generated ?newsItem . }
+  ?agendaItemTreatment prov:generated ?newsItem .
 }
 INSERT {
-  GRAPH ?g { ?newsItem prov:wasDerivedFrom ?agendaItemTreatment . }
+  ?newsItem prov:wasDerivedFrom ?agendaItemTreatment .
 }
 WHERE {
-  GRAPH ?g {
-    ?newsItem a besluitvorming:NieuwsbriefInfo .
-    ?agendaItemTreatment prov:generated ?newsItem .
-  }
+  ?newsItem a besluitvorming:NieuwsbriefInfo .
+  ?agendaItemTreatment prov:generated ?newsItem .
 }
