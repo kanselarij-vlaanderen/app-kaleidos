@@ -1,0 +1,84 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?procedurestap ext:heeftBevoegde ?mandataris .
+  }
+}
+WHERE {
+  VALUES (?persoon) {
+    (<http://kanselarij.vo.data.gift/id/personen/821662a0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821a217e-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81fcfacc-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821bf652-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821a2bba-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8214aadc-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821a5914-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820efd9e-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821bab34-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8205fcbc-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821a162a-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8216699e-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8217d68a-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821ce0d0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820f2896-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b48b0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b1a84-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8205da48-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81f7595a-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821d027c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8214af0a-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821c8e32-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82171c86-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82186fb4-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820ed3f0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821aaf2c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b0058-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82166e6c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821db0dc-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81fc8736-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820f017c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81fc1760-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821bd35c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821db884-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8215ebd6-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8218748c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8217c1e0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821ae0e6-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82169eb4-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81f7e578-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8215de52-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82178784-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b8956-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820d34b4-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8217c7d0-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b7d1c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81febbbe-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/81fceda2-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82172848-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821b984c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8217067e-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/82165030-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8213270c-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/820ef4a2-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/8205f672-dec2-11e9-aa72-0242c0a80002>)
+    (<http://kanselarij.vo.data.gift/id/personen/821d615e-dec2-11e9-aa72-0242c0a80002>)
+  }
+
+  ?persoon foaf:name ?naam .
+  ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon .
+
+  GRAPH ?g { ?procedurestap ext:heeftBevoegde ?mandataris }
+  GRAPH ?_g { ?procedurestap ext:heeftBevoegde ?_mandataris }
+  FILTER(?mandataris != ?_mandataris)
+
+  ?_mandataris mandaat:isBestuurlijkeAliasVan ?_persoon .
+  ?_persoon foaf:familyName ?_naam .
+  FILTER(LCASE(?naam) = LCASE(?_naam))
+  FILTER(STRSTARTS(STR(?_persoon), "http://themis.vlaanderen.be/id/persoon/"))
+}

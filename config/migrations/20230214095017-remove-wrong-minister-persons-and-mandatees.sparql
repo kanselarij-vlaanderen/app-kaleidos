@@ -1,0 +1,44 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g { ?persoon ?p ?o }
+}
+WHERE {
+  GRAPH ?g {
+    ?persoon a person:Person ;
+             ?p ?o .
+  }
+  FILTER (CONTAINS(STR(?persoon), "kanselarij.vo.data.gift"))
+  FILTER NOT EXISTS {
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon .
+    ?agendapunt ext:heeftBevoegdeVoorAgendapunt ?mandataris .
+  }
+  FILTER NOT EXISTS {
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon
+    ?procedurestap ext:indiener|ext:heeftBevoegde ?mandataris .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g { ?mandataris ?p ?o }
+}
+WHERE {
+  GRAPH ?g {
+    ?mandataris a mandaat:Mandataris ;
+                ?p ?o .
+  }
+  FILTER NOT EXISTS {
+    ?mandataris mandaat:isBestuurlijkeAliasVan ?persoon .
+  }
+}
