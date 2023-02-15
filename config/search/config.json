@@ -108,6 +108,11 @@
           "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/title"
         ],
+        "subcaseShortTitle": [
+          "^http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "http://purl.org/dc/terms/alternative"
+        ],
         "mandateRoles": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
           "http://purl.org/dc/terms/title"
@@ -222,6 +227,11 @@
             "type": "date"
           },
           "subcaseTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "subcaseShortTitle": {
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
@@ -685,6 +695,7 @@
         "title": "http://purl.org/dc/terms/title",
         "subtitle": "http://purl.org/dc/terms/alternative",
         "htmlContent": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent",
+        "modified": "http://purl.org/dc/terms/modified",
         "themes": [
           "http://purl.org/dc/terms/subject",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -767,6 +778,9 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "modified": {
+            "type": "date"
           },
           "themes": {
             "type": "text"
