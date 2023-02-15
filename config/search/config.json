@@ -315,8 +315,10 @@
           "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
         ],
         "mandateeIds": [
-          "^http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
-          "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
