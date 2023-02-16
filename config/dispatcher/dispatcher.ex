@@ -87,6 +87,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://search/decisionmaking-flows/invalidate/"
   end
 
+  match "/pieces/search/*path", @json_service do
+    Proxy.forward conn, path, "http://search/pieces/search/"
+  end
+
+
   match "/search/settings/*path", @json_service do
     Proxy.forward conn, path, "http://search/settings/"
   end
@@ -199,10 +204,6 @@ defmodule Dispatcher do
 
   match "/document-containers/*path", @json_service do
     Proxy.forward conn, path, "http://cache/document-containers/"
-  end
-
-  match "/pieces/search/*path", @json_service do
-    Proxy.forward conn, path, "http://search/pieces/search/"
   end
 
   match "/pieces/*path", @json_service do
