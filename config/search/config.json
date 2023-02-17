@@ -338,6 +338,27 @@
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
           "attachment_pipeline": "attachment"
+        },
+        "agendaitems": {
+          "via": "^http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+          "properties" : {
+            "id": "http://mu.semte.ch/vocabularies/core/uuid",
+            "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
+            "nextVersionId": [
+              "^http://www.w3.org/ns/prov#wasRevisionOf",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "agendaId": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "meetingId": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ]
+          }
         }
       },
       "mappings": {
@@ -367,6 +388,23 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer",
             "term_vector": "with_positions_offsets_payloads"
+          },
+          "agendaitems.id": {
+            "type": "keyword"
+          },
+          "agendaitems.nextVersionId": {
+            "type": "keyword"
+          },
+          "agendaitems.agendaId": {
+            "type": "keyword"
+          },
+          "agendaitems.meetingId": {
+            "type": "keyword"
+          },
+          "agendaitems.shortTitle": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           }
         }
       }
