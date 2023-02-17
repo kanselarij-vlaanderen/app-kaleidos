@@ -306,6 +306,72 @@
       }
     },
     {
+      "type": "pieces",
+      "on_path": "pieces",
+      "rdf_type": "https://data.vlaanderen.be/ns/dossier#Stuk",
+      "properties": {
+        "title": "http://purl.org/dc/terms/title",
+        "created": "http://purl.org/dc/terms/created",
+        "fileName": [
+          "http://www.w3.org/ns/prov#value",
+          "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+        ],
+        "documentType": [
+          "^https://data.vlaanderen.be/ns/dossier#Collectie.bestaatUit",
+          "http://purl.org/dc/terms/type",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "accessLevel": [
+          "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
+        ],
+        "mandateeIds": [
+          "^https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "http://mu.semte.ch/vocabularies/ext/heeftBevoegde",
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "data": {
+          "via": [
+            "http://www.w3.org/ns/prov#value",
+            "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
+          ],
+          "attachment_pipeline": "attachment"
+        }
+      },
+      "mappings": {
+        "properties": {
+          "title": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
+          },
+          "created": {
+            "type": "date"
+          },
+          "fileName": {
+            "type": "text"
+          },
+          "documentType": {
+            "type": "keyword"
+          },
+          "accessLevel": {
+            "type": "keyword"
+          },
+          "mandateeIds": {
+            "type": "keyword"
+          },
+          "data.content": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer",
+            "term_vector": "with_positions_offsets_payloads"
+          }
+        }
+      }
+    },
+    {
       "type": "decisionmaking-flow",
       "on_path": "decisionmaking-flows",
       "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
