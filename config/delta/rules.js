@@ -113,7 +113,7 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk'
+        value: 'https://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk'
       }
     },
     callback: {
@@ -147,7 +147,7 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://data.vlaanderen.be/ns/besluitvorming#beleidsveld'
+        value: 'https://data.vlaanderen.be/ns/besluitvorming#beleidsveld'
       },
     },
     callback: {

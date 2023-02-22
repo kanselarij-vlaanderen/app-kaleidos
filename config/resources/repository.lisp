@@ -35,7 +35,7 @@
 
 (add-prefix "besluit" "http://data.vlaanderen.be/ns/besluit#")
 ;; Note that the actual published domain for "besluitvorming" is https://data.vlaanderen.be/ns/besluitvorming# (httpS)
-(add-prefix "besluitvorming" "http://data.vlaanderen.be/ns/besluitvorming#")
+(add-prefix "besluitvorming" "https://data.vlaanderen.be/ns/besluitvorming#")
 (add-prefix "generiek" "http://data.vlaanderen.be/ns/generiek#")
 (add-prefix "mandaat" "http://data.vlaanderen.be/ns/mandaat#")
 (add-prefix "persoon" "https://data.vlaanderen.be/ns/persoon#")

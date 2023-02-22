@@ -75,7 +75,7 @@
       "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "properties": {
         "title": "http://purl.org/dc/terms/title",
-        "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
+        "shortTitle": "https://data.vlaanderen.be/ns/besluitvorming#korteTitel",
         "agendaId": [
           "^http://purl.org/dc/terms/hasPart",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -91,21 +91,21 @@
         ],
         "agendaSerialNumber": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluitvorming#volgnummer"
+          "https://data.vlaanderen.be/ns/besluitvorming#volgnummer"
         ],
         "meetingId": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "sessionDates": [
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "subcaseTitle": [
-          "^http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
-          "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/title"
         ],
         "mandateRoles": [
@@ -128,17 +128,17 @@
           "http://xmlns.com/foaf/0.1/familyName"
         ],
         "pieceNames": [
-          "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "https://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
           "http://purl.org/dc/terms/title"
         ],
         "pieceFileNames": [
-          "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "https://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
           "http://www.w3.org/ns/prov#value",
           "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
         ],
         "pieces": {
           "via": [
-            "http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+            "https://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -146,32 +146,32 @@
         },
         "decisionName": [
           "^http://purl.org/dc/terms/subject",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
-          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
           "http://purl.org/dc/terms/title"
         ],
         "decisionFileName": [
           "^http://purl.org/dc/terms/subject",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
-          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
           "http://www.w3.org/ns/prov#value",
           "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
         ],
         "decisionStartDate": [
           "^http://purl.org/dc/terms/subject",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
           "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
         ],
         "decisionResult": [
           "^http://purl.org/dc/terms/subject",
-          "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
-          "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
+          "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "https://data.vlaanderen.be/ns/besluitvorming#resultaat"
         ],
         "decision": {
           "via": [
             "^http://purl.org/dc/terms/subject",
-            "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
-            "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+            "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+            "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -298,7 +298,7 @@
     {
       "type": "decisionmaking-flow",
       "on_path": "decisionmaking-flows",
-      "rdf_type": "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
+      "rdf_type": "https://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "properties": {
         "title":  [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -341,10 +341,10 @@
         ],
         "sessionDates": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
-          "^http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
-          "http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "^https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "^http://purl.org/dc/terms/hasPart",
-          "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "subcaseTitle": [
@@ -382,13 +382,13 @@
         "decisionNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
           "http://purl.org/dc/terms/title"
         ],
         "decisionFileNames": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-          "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+          "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
           "http://www.w3.org/ns/prov#value",
           "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
         ],
@@ -396,7 +396,7 @@
           "via": [
             "https://data.vlaanderen.be/ns/dossier#doorloopt",
             "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-            "^http://data.vlaanderen.be/ns/besluitvorming#beschrijft",
+            "^https://data.vlaanderen.be/ns/besluitvorming#beschrijft",
             "http://www.w3.org/ns/prov#value",
             "^http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource"
           ],
@@ -405,14 +405,14 @@
         "newsItemTitle": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
           "^http://www.w3.org/ns/prov#wasDerivedFrom",
           "http://purl.org/dc/terms/title"
         ],
         "newsItem": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "^http://mu.semte.ch/vocabularies/ext/beslissingVindtPlaatsTijdens",
-          "^http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "^https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
           "^http://www.w3.org/ns/prov#wasDerivedFrom",
           "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
         ]
@@ -692,8 +692,8 @@
         "decisions": {
           "via": [
             "http://www.w3.org/ns/prov#wasDerivedFrom",
-            "http://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
-            "http://data.vlaanderen.be/ns/besluitvorming#resultaat"
+            "https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+            "https://data.vlaanderen.be/ns/besluitvorming#resultaat"
           ],
           "rdf_type": "http://mu.semte.ch/vocabularies/ext/BeslissingsResultaatCode",
           "properties": {
@@ -719,12 +719,12 @@
             ],
             "meetingDate": [
               "^http://purl.org/dc/terms/hasPart",
-              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://data.vlaanderen.be/ns/besluit#geplandeStart"
             ],
             "meetingId": [
               "^http://purl.org/dc/terms/hasPart",
-              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://mu.semte.ch/vocabularies/core/uuid"
             ],
             "mandatees": {
