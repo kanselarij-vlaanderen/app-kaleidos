@@ -191,7 +191,29 @@
           "^http://purl.org/dc/terms/subject",
           "^http://www.w3.org/ns/prov#wasDerivedFrom",
           "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#htmlContent"
-        ]
+        ],
+        "agendaitemTreatment": {
+          "via": "^http://purl.org/dc/terms/subject",
+          "rdf_type": "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+          "properties" : {
+
+            "agendaitems": {
+              "via": "http://purl.org/dc/terms/subject",
+              "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+              "properties": {
+                "id": "http://mu.semte.ch/vocabularies/core/uuid",
+                "nextVersionId": [
+                  "^http://www.w3.org/ns/prov#wasRevisionOf",
+                  "http://mu.semte.ch/vocabularies/core/uuid"
+                ],
+                "agendaSerialNumber": [
+                  "^http://purl.org/dc/terms/hasPart",
+                  "http://data.vlaanderen.be/ns/besluitvorming#volgnummer"
+                ]
+              }
+            }
+          }
+        }
       },
       "mappings": {
         "properties": {
@@ -301,6 +323,15 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "agendaitemTreatment.agendaitems.id": {
+            "type": "keyword"
+          },
+          "agendaitemTreatment.agendaitems.nextVersionId": {
+            "type": "keyword"
+          },
+          "agendaitemTreatment.agendaitems.agendaSerialNumber": {
+            "type": "keyword"
           }
         }
       }
