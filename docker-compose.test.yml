@@ -14,6 +14,15 @@ services:
   file:
     volumes:
       - ./testdata/files:/share
+  public-file:
+    volumes:
+      - ./testdata/files:/share
+  themis-export:
+    volumes:
+      - ./testdata/files:/share
+  ttl-to-delta:
+    volumes:
+      - ./testdata/files:/share
   docx-conversion:
     volumes:
       - ./testdata/files:/share

@@ -214,6 +214,13 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp themis_export_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/PublicExportJob",
+      "http://mu.semte.ch/vocabularies/ext/TtlToDeltaTask"
+    ]
+  end
+
   defp system_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
@@ -269,7 +276,8 @@ defmodule Acl.UserGroups.Config do
               resource_types: public_static_data() ++
               public_codelists() ++
               system_resource_types() ++
-              user_account_resource_types() # required to list mock accounts for unauthenticated users
+              user_account_resource_types() ++ # required to list mock accounts for unauthenticated users
+              themis_export_types()
             } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",

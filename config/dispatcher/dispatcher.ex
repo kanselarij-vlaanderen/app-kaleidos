@@ -149,6 +149,24 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id
   end
 
+  ### Themis export
+
+  post "/meetings/:meeting_id/themis-export" do
+    Proxy.forward conn, [], "http://themis-export/meetings/" <> meeting_id <> "/publication-activities"
+  end
+
+  get "/public-export-jobs/*path" do
+    Proxy.forward conn, path, "http://themis-export/public-export-jobs/"
+  end
+
+  get "/publications/*path" do
+    Proxy.forward conn, path, "http://publication-producer/files/"
+  end
+
+  get "/public-files/*path" do
+    Proxy.forward conn, path, "http://public-file/files/"
+  end
+
 
   ### Authentication
 
