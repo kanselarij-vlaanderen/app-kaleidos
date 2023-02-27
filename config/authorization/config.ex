@@ -276,8 +276,7 @@ defmodule Acl.UserGroups.Config do
               resource_types: public_static_data() ++
               public_codelists() ++
               system_resource_types() ++
-              user_account_resource_types() ++ # required to list mock accounts for unauthenticated users
-              themis_export_types()
+              user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -444,6 +443,18 @@ defmodule Acl.UserGroups.Config do
         ]
       },
 
+      # Read-write access to public graph for Themis export types
+      %GroupSpec{
+        name: "themis-export",
+        useage: [:read, :write, :read_for_write],
+        access: %AlwaysAccessible{},
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/public",
+            constraint: %ResourceConstraint{
+              resource_types: themis_export_types()
+            } } ]
+      },
       # // CLEANUP
       #
       %GraphCleanup{
