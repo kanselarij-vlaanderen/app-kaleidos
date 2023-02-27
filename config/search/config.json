@@ -5,44 +5,40 @@
   "update_wait_interval_minutes": 0,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
+    [ { "name": "admin", "variables": [] } ],
     [
       { "name": "admin", "variables": [] },
       { "name": "secretarie", "variables": [] },
       { "name": "ovrb", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "secretarie", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "ovrb", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "o-minister-read", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "o-intern-regering-read", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "o-intern-overheid-read", "variables": [] },
       { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
-    ]
+      { "name": "public", "variables": [] }
+    ],
+    [ { "name": "clean", "variables": [] } ]
   ],
   "attachments_path_base": "/data/",
   "eager_indexing_sparql_query": false,
