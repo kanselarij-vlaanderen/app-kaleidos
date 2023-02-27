@@ -52,11 +52,16 @@
           "filter": [
             "lowercase",
             "asciifolding",
+            "dutchstopwords",
             "dutchstemmer"
           ]
         }
       },
       "filter": {
+        "dutchstopwords": {
+          "type": "stop",
+          "stopwords": "_dutch_"
+        },
         "dutchstemmer": {
           "type": "stemmer",
           "name": "dutch"
