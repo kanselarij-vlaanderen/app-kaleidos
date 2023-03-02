@@ -198,7 +198,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.2.0
+    image: kanselarij/file-bundling-service:feature-KAS-3883-download-documents-by-mandatees
     volumes:
       - ./data/files:/share
     logging: *default-logging
