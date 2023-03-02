@@ -1,7 +1,7 @@
 {
   "version": "0.1",
   "prefixes": {
-    "besluit": "https://data.vlaanderen.be/ns/besluit#",
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "eli": "http://data.europa.eu/eli/ontology#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
