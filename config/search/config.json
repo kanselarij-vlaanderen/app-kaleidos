@@ -52,6 +52,14 @@
           "filter": [
             "lowercase",
             "asciifolding",
+            "dutchstemmer"
+          ]
+        },
+        "dutchanalyzer_no_stopwords": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding",
             "dutchstopwords",
             "dutchstemmer"
           ]
