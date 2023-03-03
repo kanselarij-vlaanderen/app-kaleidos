@@ -355,6 +355,10 @@
         "accessLevel": [
           "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
         ],
+        "nextPieceId": [
+          "^http://purl.org/pav/previousVersion",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeIds": [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
           "https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -388,6 +392,11 @@
               "^http://purl.org/dc/terms/hasPart",
               "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "meetingDate": [
+              "^http://purl.org/dc/terms/hasPart",
+              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "http://data.vlaanderen.be/ns/besluit#geplandeStart"
             ]
           }
         }
@@ -409,6 +418,9 @@
             "type": "keyword"
           },
           "accessLevel": {
+            "type": "keyword"
+          },
+          "nextPieceId": {
             "type": "keyword"
           },
           "mandateeIds": {
@@ -436,6 +448,9 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "agendaitems.meetingDate": {
+            "type": "date"
           }
         }
       }
