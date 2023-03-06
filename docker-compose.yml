@@ -111,12 +111,22 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.8.0
+    image: kanselarij/cache-warmup-service:feature-KAS-3797-slow-government-domain-requests
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
+    environment:
+      CONCEPT_BACKEND_URL: "http://forever-cache/"
   cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  forever-cache:
     image: semtech/mu-cache:2.0.1
     links:
       - resource:backend

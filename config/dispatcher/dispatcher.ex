@@ -238,10 +238,10 @@ defmodule Dispatcher do
   end
 
   get "/concepts/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/concepts/"
+    Proxy.forward conn, path, "http://forever-cache/concepts/"
   end
   get "/concept-schemes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/concept-schemes/"
+    Proxy.forward conn, path, "http://forever-cache/concept-schemes/"
   end
   match "/mandatees/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mandatees/"
