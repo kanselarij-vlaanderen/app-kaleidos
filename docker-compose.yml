@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:feature-KAS-3797-slow-government-domain-requests
+    image: kanselarij/cache-warmup-service:1.9.0
     logging: *default-logging
     restart: always
     labels:
