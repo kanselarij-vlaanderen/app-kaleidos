@@ -350,11 +350,11 @@ defmodule Dispatcher do
   end
 
   match "/publication-statuses/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/publication-statuses/"
+    Proxy.forward conn, path, "http://forever-cache/publication-statuses/"
   end
 
   get "/urgency-levels/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/urgency-levels/"
+    Proxy.forward conn, path, "http://forever-cache/urgency-levels/"
   end
 
   match "/publication-status-changes/*path", @json_service do
@@ -362,11 +362,11 @@ defmodule Dispatcher do
   end
 
   get "/publication-modes/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/publication-modes/"
+    Proxy.forward conn, path, "http://forever-cache/publication-modes/"
   end
 
   match "/regulation-types/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/regulation-types/"
+    Proxy.forward conn, path, "http://forever-cache/regulation-types/"
   end
 
   match "/request-activities/*path", @json_service do
