@@ -1,0 +1,17 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    ?nieuwsbericht a ext:Nieuwsbericht ;
+                   dct:issued ?issued ;
+                   ext:themesOfSubcase ?theme .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?nieuwsbericht a ext:Nieuwsbericht ;
+                   dct:issued ?issued ;
+                   ext:themesOfSubcase ?theme .
+  }
+}
