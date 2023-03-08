@@ -3,7 +3,7 @@
   :properties `((:created               :datetime ,(s-prefix "dct:created")))
   :has-many `((piece                    :via ,(s-prefix "dossier:Collectie.bestaatUit")
                                         :as "pieces"))
-  :has-one `((concept                   :via ,(s-prefix "dct:type")
+  :has-one `((document-type             :via ,(s-prefix "dct:type")
                                         :as "type"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/serie/")
   :features '(include-uri)

@@ -246,7 +246,8 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/org#Role",
       "http://www.w3.org/2004/02/skos/core#Concept",
-      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+      "http://mu.semte.ch/vocabularies/ext/DocumentType"
     ]
   end
 
