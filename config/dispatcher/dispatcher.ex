@@ -243,6 +243,9 @@ defmodule Dispatcher do
   get "/concept-schemes/*path", @json_service do
     Proxy.forward conn, path, "http://forever-cache/concept-schemes/"
   end
+  get "/document-types/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/document-types/"
+  end
   match "/mandatees/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mandatees/"
   end

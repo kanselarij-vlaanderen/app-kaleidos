@@ -88,6 +88,20 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/concept-schema/"
+    },
+    "document-types": {
+      "name": "document-type",
+      "class": "ext:DocumentType",
+      "super": ["concept"],
+      "relationships": {
+        "document-containers": {
+          "predicate": "dct:type",
+          "target": "document-container",
+          "inverse": true,
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/concept/"
     }
   }
 }
