@@ -208,7 +208,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:feature-KAS-3883-download-documents-by-mandatees
+    image: kanselarij/file-bundling-service:2.2.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.2.0
+    image: kanselarij/file-bundling-job-creation-service:feature-KAS-3883-download-documents-by-mandatees
     logging: *default-logging
     restart: always
     labels:
