@@ -219,6 +219,20 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp sign_flow_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Weigeractiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
+    ]
+  end
+
   defp system_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
@@ -412,6 +426,43 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "sign-flow-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/signing",
+            constraint: %ResourceConstraint{
+              resource_types: sign_flow_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "sign-flow-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/signing",
+            constraint: %ResourceConstraint{
+              resource_types: sign_flow_types()
             }
           }
         ]
