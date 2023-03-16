@@ -40,13 +40,18 @@ defmodule Acl.UserGroups.Config do
 
   defp minister_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister
+      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister and kabinetchef
     ]
   end
 
-  defp kabinet_roles do
+  defp kabinet_dossierbeheerder_roles do
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4>", # kabinet dossierbeheerder
+    ]
+  end
+
+  defp kabinet_medewerker_roles do
+    [
       "<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84>" # kabinet medewerker
     ]
   end
@@ -372,7 +377,10 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-minister-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role(minister_roles()),
+        access: access_by_role(
+          minister_roles()
+          ++ kabinet_dossierbeheerder_roles() # Technically this spec is too broad for dossierbeheerders, but we add extra checks down the line
+        ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/minister",
@@ -385,7 +393,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role(kabinet_roles()),
+        access: access_by_role(kabinet_medewerker_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
