@@ -101,3 +101,30 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")
+
+(define-resource report (piece)
+  :class (s-prefix "besluitvorming:Verslag")
+  :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
+                                        :inverse t
+                                        :as "piece-parts")
+  )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/verslag/")
+  :features `(include-uri)
+  :on-path "reports")
+
+
+(define-resource piece-part ()
+  :class (s-prefix "dossier:Stukonderdeel")
+  :properties `((:title                 :string   ,(s-prefix "dct:title")))
+  :has-one `((report                    :via ,(s-prefix "dct:isPartOf")
+                                        :as "report")
+            (piece-part                 :via      ,(s-prefix "pav:previousVersion")
+                                        :as "previous-piece-part")
+            (piece-part                 :via      ,(s-prefix "pav:previousVersion")
+                                        :inverse t
+                                        :as "next-piece-part")
+  )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/stukonderdeel/")
+  :features `(include-uri)
+  :on-path "piece-parts")
+
