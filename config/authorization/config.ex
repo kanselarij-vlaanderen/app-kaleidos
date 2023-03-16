@@ -219,20 +219,6 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
-  defp sign_flow_types() do
-    [
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Weigeractiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
-    ]
-  end
-
   defp system_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
@@ -353,8 +339,7 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+                publication_resource_types()
             }
           },
           %GraphSpec{
@@ -376,8 +361,7 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+                publication_resource_types()
             }
           },
           %GraphSpec{
@@ -444,7 +428,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
-              resource_types: sign_flow_types()
+              resource_types: sign_resource_types()
             }
           }
         ]
@@ -462,7 +446,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
-              resource_types: sign_flow_types()
+              resource_types: sign_resource_types()
             }
           }
         ]
