@@ -1,0 +1,29 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX sign: <http://mu.semte.ch/vocabularies/ext/handtekenen/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+INSERT { GRAPH ?g { ?s a prov:Activity } }
+WHERE {
+  VALUES (?type) {
+    (besluitvorming:Beslissingsactiviteit)
+    (besluitvorming:Agendering)
+    (ext:IndieningsActiviteit)
+    (sign:Markeringsactiviteit)
+    (sign:Voorbereidingsactiviteit)
+    (sign:Handtekenactiviteit)
+    (sign:Weigeractiviteit)
+    (sign:AnnulatieActiviteit)
+    (sign:Afrondingsactiviteit)
+    (ext:InternalDecisionPublicationActivity)
+    (ext:InternalDocumentPublicationActivity)
+    (ext:ThemisPublicationActivity)
+    (pub:AanvraagActiviteit)
+    (pub:VertaalActiviteit)
+    (pub:DrukproefActiviteit)
+    (pub:PublicatieActiviteit)
+    (ext:LoginActivity)
+  }
+  GRAPH ?g { ?s a ?type }
+}
