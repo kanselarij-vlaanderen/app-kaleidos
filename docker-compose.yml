@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:feature-KAS-3883-download-documents-by-mandatees
+    image: kanselarij/file-bundling-job-creation-service:0.3.0
     logging: *default-logging
     restart: always
     labels:
