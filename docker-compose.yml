@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:feature-KAS-3884-beslissingen-downloaden
+    image: kanselarij/file-bundling-job-creation-service:0.4.0
     logging: *default-logging
     restart: always
     labels:
