@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:5.46.11
+    image: kanselarij/frontend-kaleidos:5.46.13
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -188,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.7.0
+    image: kanselarij/newsletter-service:3.8.0
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.2.0
+    image: kanselarij/file-bundling-job-creation-service:0.4.0
     logging: *default-logging
     restart: always
     labels:
