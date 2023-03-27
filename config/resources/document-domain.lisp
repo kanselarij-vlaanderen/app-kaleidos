@@ -115,8 +115,9 @@
 
 (define-resource piece-part ()
   :class (s-prefix "dossier:Stukonderdeel")
-  :properties `((:title                 :string   ,(s-prefix "dct:title")))
-  :has-one `((report                    :via ,(s-prefix "dct:isPartOf")
+  :properties `((:title                 :string   ,(s-prefix "dct:title"))
+               (:value                  :string   ,(s-prefix "prov:value")))
+  :has-one `((report                    :via      ,(s-prefix "dct:isPartOf")
                                         :as "report")
             (piece-part                 :via      ,(s-prefix "pav:previousVersion")
                                         :as "previous-piece-part")
