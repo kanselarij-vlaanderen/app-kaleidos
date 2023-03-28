@@ -25,5 +25,8 @@ WHERE {
     (pub:PublicatieActiviteit)
     (ext:LoginActivity)
   }
-  GRAPH ?g { ?s a ?type }
+  GRAPH ?g {
+    ?s a ?type .
+    FILTER NOT EXISTS { ?s a prov:Activity }
+  }
 }
