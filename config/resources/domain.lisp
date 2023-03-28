@@ -37,6 +37,7 @@
 (read-domain-file "email-domain.lisp")
 (read-domain-file "generiek-domain.json")
 (read-domain-file "concept-domain.json")
+(read-domain-file "health-check.lisp")
 
 
 (defcall :get (base-path)
