@@ -31,6 +31,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://static-file/handleiding.pdf"
   end
 
+  ### Health check endpoint
+  get "/health-checks/*_path", @json_service do
+    forward conn, [], "http://resource/health-checks/"
+  end
+
   ### File conversion
 
   post "/files/:id/convert", @json_service do
