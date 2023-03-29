@@ -482,6 +482,11 @@ defmodule Dispatcher do
   end
 
 
+  ### Decision extraction
+  match "/decision-extraction/*path", @json_service do
+    Proxy.forward conn, path, "http://decision-extraction/"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do

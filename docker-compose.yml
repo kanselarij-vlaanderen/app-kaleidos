@@ -329,6 +329,12 @@ services:
     restart: always
     labels:
       - "logging=true"
+  decision-extraction:
+    image: kanselarij/decision-extraction-service:0.0.1
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   delta-producer:
     image: lblod/delta-producer-json-diff-file-publisher:0.5.0
     environment:

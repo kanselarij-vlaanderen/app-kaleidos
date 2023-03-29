@@ -117,6 +117,9 @@ services:
     restart: "no"
   publication-report:
     restart: "no"
+  decision-extraction:
+    environment:
+      - NODE_ENV=development
   delta-producer:
     image: lblod/sink-service:1.0.0
     restart: "no"
