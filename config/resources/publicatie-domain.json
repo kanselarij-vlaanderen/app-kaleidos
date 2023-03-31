@@ -334,6 +334,7 @@
     "request-activities": {
       "name": "request-activity",
       "class": "pub:AanvraagActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -399,6 +400,7 @@
     "translation-activities": {
       "name": "translation-activity",
       "class": "pub:VertaalActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -456,6 +458,7 @@
     "proofing-activities": {
       "name": "proofing-activity",
       "class": "pub:DrukproefActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -500,6 +503,7 @@
     "publication-activities": {
       "name": "publication-activity",
       "class": "pub:PublicatieActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
