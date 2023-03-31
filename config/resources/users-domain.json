@@ -54,6 +54,11 @@
           "target": "login-activity",
           "cardinality": "one",
           "_comment": "Reference to the most recent login activity only"
+        },
+        "person": {
+          "predicate": "sign:IsOndertekenaarVoor",
+          "target": "person",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -108,6 +113,11 @@
           "predicate": "adms:status",
           "target": "concept",
           "cardinality": "one"
+        },
+        "mandatees": {
+          "predicate": "sign:isOrganisatieVoorMandataris",
+          "target": "mandatee",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],

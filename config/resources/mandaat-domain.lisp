@@ -23,7 +23,11 @@
                                   :as "sign-signing-activities")
              (submission-activity :via ,(s-prefix "prov:qualifiedAssociation")
                                   :inverse t
-                                  :as "submission-activities"))
+                                  :as "submission-activities")
+             (user-organization :via ,(s-prefix "sign:isOrganisatieVoorMandataris")
+                                  :inverse t
+                                  :as "user-organizations"))
+            
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person")
              (mandate             :via ,(s-prefix "org:holds")
@@ -67,6 +71,9 @@
              (organization          :via ,(s-prefix "org:hasMember")
                                     :inverse t
                                     :as "organization")
+             (user                  :via ,(s-prefix "sign:IsOndertekenaarVoor")
+                                    :inverse t
+                                    :as "user")
             )
   :resource-base (s-url "http://themis.vlaanderen.be/id/persoon/")
   :features '(include-uri)
