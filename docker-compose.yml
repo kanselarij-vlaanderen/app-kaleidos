@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/mu-authorization:latest
+    image: sergiofenoll/mu-authorization:construct-queries
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
