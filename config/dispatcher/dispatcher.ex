@@ -210,6 +210,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/pieces/"
   end
 
+  match "/reports/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/reports/"
+  end
+
+  match "/piece-parts/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/piece-parts/"
+  end
+
   match "/decisionmaking-flows/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decisionmaking-flows/"
   end
