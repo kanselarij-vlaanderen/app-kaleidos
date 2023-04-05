@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:feature-KAS-3893-bump-mu-cl-resources
+    image: kanselarij/cache-warmup-service:1.10.0
     logging: *default-logging
     restart: always
     labels:
