@@ -233,6 +233,9 @@ defmodule Dispatcher do
   match "/agenda-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/agenda-activities/"
   end
+  match "/agenda-status-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/agenda-status-activities/"
+  end
   match "/submission-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/submission-activities/"
   end

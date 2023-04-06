@@ -10,7 +10,7 @@
     "agenda-status-activities": {
       "name": "agenda-status-activity",
       "class": "ext:AgendaStatusActivity",
-      "_comment": "Subclass of prov:Activity",
+      "super": ["activity"],
       "attributes": {
         "start-date": {
           "type": "datetime",

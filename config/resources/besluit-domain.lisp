@@ -19,9 +19,9 @@
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
-             (agendaactivities :via     ,(s-prefix "prov:Activity")
+             (agenda-status-activity :via     ,(s-prefix "prov:Activity")
                               :inverse t
-                              :as "status-activities")               )
+                              :as "agenda-status-activities")               )
   :resource-base (s-url "http://themis.vlaanderen.be/id/agenda/")
   :features '(include-uri)
   :on-path "agendas")
