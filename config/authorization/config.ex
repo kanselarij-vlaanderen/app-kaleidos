@@ -214,7 +214,6 @@ defmodule Acl.UserGroups.Config do
 
   defp user_activity_types() do
     [
-      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/LoginActivity"
     ]
   end
