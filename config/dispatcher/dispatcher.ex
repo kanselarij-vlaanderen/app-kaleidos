@@ -154,6 +154,12 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id
   end
 
+  ### Document shortlists
+
+  get "/publication-flows/shortlist/*path", @json_service do
+    Proxy.forward conn, path, "http://shortlist/publication-flows/"
+  end
+
 
   ### Authentication
 

@@ -350,3 +350,9 @@ services:
     restart: always
     labels:
       - "logging=true"
+  shortlist:
+    image: kanselarij/shortlist-service:0.0.1
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
