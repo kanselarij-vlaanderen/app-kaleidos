@@ -19,6 +19,7 @@
 (defparameter *no-application-graph-for-sudo-select-queries* t)
 
 (in-package :mu-cl-resources)
+(read-domain-file "activity-domain.lisp")
 (read-domain-file "alerts-domain.lisp")
 (read-domain-file "besluit-domain.json")
 (read-domain-file "besluit-domain.lisp")

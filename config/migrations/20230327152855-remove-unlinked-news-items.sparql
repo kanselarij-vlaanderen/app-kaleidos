@@ -1,0 +1,11 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+DELETE { GRAPH ?g { ?newsItem ?p ?o } }
+WHERE {
+  GRAPH ?g {
+    ?newsItem a ext:Nieuwsbericht .
+    FILTER NOT EXISTS { ?newsItem prov:wasDerivedFrom ?thing }
+    ?newsItem ?p ?o .
+  }
+}
