@@ -161,6 +161,10 @@ defmodule Dispatcher do
   end
 
 
+  get "/sign-flows/shortlist/*path", @json_service do
+    Proxy.forward conn, path, "http://shortlist/sign-flows/"
+  end
+
   ### Authentication
 
   match "/mock/sessions/*path", @json_service do
