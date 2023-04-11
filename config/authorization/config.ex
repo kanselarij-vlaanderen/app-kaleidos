@@ -118,6 +118,7 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+      "http://www.w3.org/ns/prov#Activity",
       "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
@@ -144,6 +145,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://schema.org/ContactPoint",
       "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/DrukproefActiviteit",
@@ -161,6 +163,7 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
@@ -194,6 +197,7 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/Nieuwsbericht",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/InternalDecisionPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/InternalDocumentPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"
@@ -247,7 +251,8 @@ defmodule Acl.UserGroups.Config do
       "http://publications.europa.eu/ontology/euvoc#Language",
       "http://www.w3.org/ns/org#Role",
       "http://www.w3.org/2004/02/skos/core#Concept",
-      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+      "http://mu.semte.ch/vocabularies/ext/DocumentType"
     ]
   end
 

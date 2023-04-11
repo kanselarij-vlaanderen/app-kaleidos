@@ -108,7 +108,7 @@
   :on-path "agenda-item-treatments")
 
 
-(define-resource decision-activity ()
+(define-resource decision-activity (activity)
   :class (s-prefix "besluitvorming:Beslissingsactiviteit")
   :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
