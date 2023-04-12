@@ -71,7 +71,7 @@
              (organization          :via ,(s-prefix "org:hasMember")
                                     :inverse t
                                     :as "organization")
-             (user                  :via ,(s-prefix "sign:IsOndertekenaarVoor")
+             (user                  :via ,(s-prefix "sign:isOndertekenaarVoor")
                                     :inverse t
                                     :as "user")
             )
