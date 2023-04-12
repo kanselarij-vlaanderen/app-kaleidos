@@ -19,7 +19,7 @@
                                :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
-             (agenda-status-activity :via     ,(s-prefix "prov:Activity")
+             (agenda-status-activity :via     ,(s-prefix "prov:used")
                               :inverse t
                               :as "agenda-status-activities")               )
   :resource-base (s-url "http://themis.vlaanderen.be/id/agenda/")
