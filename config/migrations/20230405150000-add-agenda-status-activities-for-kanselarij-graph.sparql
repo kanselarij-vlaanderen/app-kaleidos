@@ -6,7 +6,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
 
-CONSTRUCT {
+INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
      ?newAgendaStatusActivity a ext:AgendaStatusActivity ;
                                               mu:uuid ?uuid ;
