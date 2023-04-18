@@ -109,8 +109,8 @@
           "http://purl.org/dc/terms/title"
         ],
         "subcaseShortTitle": [
-          "^http://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
-          "http://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+          "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/alternative"
         ],
         "mandateRoles": [
@@ -208,7 +208,7 @@
                 ],
                 "agendaSerialNumber": [
                   "^http://purl.org/dc/terms/hasPart",
-                  "http://data.vlaanderen.be/ns/besluitvorming#volgnummer"
+                  "https://data.vlaanderen.be/ns/besluitvorming#volgnummer"
                 ]
               }
             }
@@ -353,7 +353,7 @@
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "accessLevel": [
-          "http://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
+          "https://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
         ],
         "nextPieceId": [
           "^http://purl.org/pav/previousVersion",
@@ -375,11 +375,11 @@
           "attachment_pipeline": "attachment"
         },
         "agendaitems": {
-          "via": "^http://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
+          "via": "^https://data.vlaanderen.be/ns/besluitvorming#geagendeerdStuk",
           "rdf_type": "http://data.vlaanderen.be/ns/besluit#Agendapunt",
           "properties" : {
             "id": "http://mu.semte.ch/vocabularies/core/uuid",
-            "shortTitle": "http://data.vlaanderen.be/ns/besluitvorming#korteTitel",
+            "shortTitle": "https://data.vlaanderen.be/ns/besluitvorming#korteTitel",
             "nextVersionId": [
               "^http://www.w3.org/ns/prov#wasRevisionOf",
               "http://mu.semte.ch/vocabularies/core/uuid"
@@ -390,12 +390,12 @@
             ],
             "meetingId": [
               "^http://purl.org/dc/terms/hasPart",
-              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://mu.semte.ch/vocabularies/core/uuid"
             ],
             "meetingDate": [
               "^http://purl.org/dc/terms/hasPart",
-              "http://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+              "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://data.vlaanderen.be/ns/besluit#geplandeStart"
             ]
           }
