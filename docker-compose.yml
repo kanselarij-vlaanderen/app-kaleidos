@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:5.45.4
+    image: kanselarij/frontend-kaleidos:5.47.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/mu-authorization:0.6.0-beta.7
+    image: semtech/mu-authorization:0.6.0-beta.8
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
@@ -75,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.8.0-beta.4
+    image: semtech/mu-search:0.9.0-beta.3
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -111,11 +111,13 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.8.0
+    image: kanselarij/cache-warmup-service:1.10.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
+    environment:
+      CONCEPT_BACKEND_URL: "http://forever-cache/"
   cache:
     image: semtech/mu-cache:2.0.1
     links:
@@ -124,8 +126,16 @@ services:
     restart: always
     labels:
       - "logging=true"
+  forever-cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.21.1
+    image: semtech/mu-cl-resources:1.22.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -165,7 +175,7 @@ services:
     image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:2.3.0
+    image: kanselarij/acmidm-login-service:2.4.0
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -178,7 +188,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.7.0
+    image: kanselarij/newsletter-service:3.8.0
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -186,7 +196,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.14.0
+    image: kanselarij/yggdrasil:5.15.0
     logging: *default-logging
     restart: always
     labels:
@@ -206,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.2.0
+    image: kanselarij/file-bundling-job-creation-service:0.4.1
     logging: *default-logging
     restart: always
     labels:

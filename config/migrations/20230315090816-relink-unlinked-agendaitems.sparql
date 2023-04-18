@@ -1,0 +1,29 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT { GRAPH ?g { ?nieuwereAgendapunt prov:wasRevisionOf ?oudereAgendapunt } }
+WHERE {
+  VALUES ( ?nieuwereVersie ?oudereVersie ) {
+    ( "F" "E" )
+    ( "E" "D" )
+    ( "D" "C" )
+    ( "C" "B" )
+    ( "B" "A" )
+  }
+
+  GRAPH ?g {
+    ?agendering besluitvorming:vindtPlaatsTijdens ?subcase ;
+                besluitvorming:genereertAgendapunt ?nieuwereAgendapunt , ?oudereAgendapunt .
+
+    ?nieuwereAgenda dct:hasPart ?nieuwereAgendapunt ;
+                    besluitvorming:isAgendaVoor ?meeting ;
+                    besluitvorming:volgnummer ?nieuwereVersie .
+
+    ?oudereAgenda dct:hasPart ?oudereAgendapunt ;
+                  besluitvorming:isAgendaVoor ?meeting ;
+                  besluitvorming:volgnummer ?oudereVersie .
+
+    FILTER NOT EXISTS { ?nieuwereAgendapunt prov:wasRevisionOf ?oudereAgendapunt }
+  }
+}

@@ -1,0 +1,20 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering> skos:altLabel "Besluit van de Vlaamse Regering"@nl .
+    <http://themis.vlaanderen.be/id/concept/document-type/351ba62d-eeff-4b08-b1e3-0a56d38116c4> skos:altLabel "Advies van Inspectie Financiën" .
+    <http://themis.vlaanderen.be/id/concept/document-type/f2b0f655-8ed7-4f61-8f2b-ca813de7a6ed> skos:altLabel "Nota aan de Vlaamse Regering" .
+    <http://themis.vlaanderen.be/id/concept/document-type/6870daa2-d80a-4483-a78f-53cbd6b85af2> skos:altLabel "Begrotingsakkoord van de minister van begroting" .
+    <https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet> skos:altLabel "Te bekrachtigen decreet"@nl .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <https://data.vlaanderen.be/id/concept/AardWetgeving/BesluitVanDeVlaamseRegering> skos:altLabel "Besluit Vlaamse Regering"@nl .
+    <http://themis.vlaanderen.be/id/concept/document-type/351ba62d-eeff-4b08-b1e3-0a56d38116c4> skos:altLabel "Advies Inspectie Financiën"@nl .
+    <http://themis.vlaanderen.be/id/concept/document-type/f2b0f655-8ed7-4f61-8f2b-ca813de7a6ed> skos:altLabel "Nota"@nl .
+    <http://themis.vlaanderen.be/id/concept/document-type/6870daa2-d80a-4483-a78f-53cbd6b85af2> skos:altLabel "Begrotingsakkoord"@nl .
+    <https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet> skos:altLabel "Decreet"@nl .
+  }
+}

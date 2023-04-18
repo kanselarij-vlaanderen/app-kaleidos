@@ -1,0 +1,21 @@
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT { GRAPH ?g { ?nieuwereAgenda prov:wasRevisionOf ?oudereAgenda } }
+WHERE {
+  VALUES ( ?nieuwereVersie ?oudereVersie ) {
+    ( "F" "E" )
+    ( "E" "D" )
+    ( "D" "C" )
+    ( "C" "B" )
+    ( "B" "A" )
+  }
+
+  GRAPH ?g {
+    ?nieuwereAgenda besluitvorming:volgnummer ?nieuwereVersie ;
+                   besluitvorming:isAgendaVoor ?meeting .
+    ?oudereAgenda besluitvorming:isAgendaVoor ?meeting ;
+                  besluitvorming:volgnummer ?oudereVersie .
+    FILTER NOT EXISTS { ?nieuwereAgenda prov:wasRevisionOf ?oudereAgenda }
+  }
+}
