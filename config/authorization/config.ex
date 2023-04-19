@@ -110,7 +110,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Stuk",
-      "http://data.vlaanderen.be/ns/besluitvorming#Verslag",
+      "https://data.vlaanderen.be/ns/besluitvorming#Verslag",
       "https://data.vlaanderen.be/ns/dossier#Stukonderdeel"
     ]
   end

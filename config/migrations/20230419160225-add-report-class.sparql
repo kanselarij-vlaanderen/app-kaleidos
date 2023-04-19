@@ -1,9 +1,9 @@
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
-PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
 
 INSERT {
     GRAPH <http://mu.semte.ch/graphs/organizations/minister> {
-        ?stuk a dossier:Verslag .
+        ?stuk a besluitvorming:Verslag .
   }
 } 
 WHERE {
@@ -15,7 +15,7 @@ WHERE {
 
 INSERT {
     GRAPH <http://mu.semte.ch/graphs/organizations/intern-overheid> {
-        ?stuk a dossier:Verslag .
+        ?stuk a besluitvorming:Verslag .
   }
 } 
 WHERE {
@@ -27,7 +27,7 @@ WHERE {
 
 INSERT {
     GRAPH <http://mu.semte.ch/graphs/organizations/intern-regering> {
-        ?stuk a dossier:Verslag .
+        ?stuk a besluitvorming:Verslag .
   }
 } 
 WHERE {
@@ -39,7 +39,7 @@ WHERE {
 
 INSERT {
     GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-        ?stuk a dossier:Verslag .
+        ?stuk a besluitvorming:Verslag .
   }
 } 
 WHERE {
