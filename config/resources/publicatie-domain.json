@@ -12,7 +12,7 @@
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "tmo": "http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#",
     "prov": "http://www.w3.org/ns/prov#",
-    "besluitvorming": "http://data.vlaanderen.be/ns/besluitvorming#",
+    "besluitvorming": "https://data.vlaanderen.be/ns/besluitvorming#",
     "pub": "http://mu.semte.ch/vocabularies/ext/publicatie/",
     "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/",
     "dbpedia": "http://dbpedia.org/ontology/",
@@ -334,6 +334,7 @@
     "request-activities": {
       "name": "request-activity",
       "class": "pub:AanvraagActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -399,6 +400,7 @@
     "translation-activities": {
       "name": "translation-activity",
       "class": "pub:VertaalActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -456,6 +458,7 @@
     "proofing-activities": {
       "name": "proofing-activity",
       "class": "pub:DrukproefActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -500,6 +503,7 @@
     "publication-activities": {
       "name": "publication-activity",
       "class": "pub:PublicatieActiviteit",
+      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
