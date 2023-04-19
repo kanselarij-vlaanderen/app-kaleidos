@@ -65,6 +65,8 @@ services:
       ENABLE_CONCEPTS_CACHE: "true"
   cache:
     restart: "no"
+  forever-cache:
+    restart: "no"
   resource:
     restart: "no"
   file:

@@ -1,0 +1,13 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?type a ext:DocumentType .
+  }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?type a skos:Concept ;
+              skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/559774e3-061c-4f4b-a758-57228d4b68cd> .
+    }
+}

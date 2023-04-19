@@ -1,0 +1,13 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?nieuwsbericht ext:issuedDocDate ?issuedDocDate . 
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?nieuwsbericht a ext:Nieuwsbericht ;
+                   ext:issuedDocDate ?issuedDocDate . 
+  }
+}

@@ -1,0 +1,27 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE { GRAPH ?h { ?olderLoginActivity ?p ?o } }
+WHERE {
+  VALUES (?g) {
+    (<http://mu.semte.ch/graphs/public>)
+    (<http://mu.semte.ch/graphs/system/users>)
+  }
+  GRAPH ?g {
+    ?account a foaf:OnlineAccount .
+    ?user a foaf:Person ;
+      foaf:account ?account .
+  }
+  GRAPH ?h {
+    ?olderLoginActivity a ext:LoginActivity ;
+      prov:wasAssociatedWith ?user ;
+      prov:startedAtTime ?olderLoginTime .
+    ?newerLoginActivity a ext:LoginActivity ;
+      prov:wasAssociatedWith ?user ;
+      prov:startedAtTime ?newerLoginTime .
+    FILTER(?olderLoginTime < ?newerLoginTime)
+
+    ?olderLoginActivity ?p ?o .
+  }
+}

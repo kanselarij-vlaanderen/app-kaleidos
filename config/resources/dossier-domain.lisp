@@ -103,7 +103,7 @@
   :features '(include-uri)
   :on-path "subcase-types")
 
-(define-resource agenda-activity ()
+(define-resource agenda-activity (activity)
   :class (s-prefix "besluitvorming:Agendering")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:startDatum"))) ;; should be dossier:Activiteit.startdatum
   :has-one `((subcase             :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens")
@@ -116,7 +116,7 @@
   :features '(include-uri)
   :on-path "agenda-activities")
 
-(define-resource submission-activity ()
+(define-resource submission-activity (activity)
   :class (s-prefix "ext:Indieningsactiviteit")
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase             :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens

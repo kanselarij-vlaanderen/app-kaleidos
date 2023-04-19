@@ -10,7 +10,7 @@
     "internal-decision-publication-activities": {
       "name": "internal-decision-publication-activity",
       "class": "ext:InternalDecisionPublicationActivity",
-      "_comment": "Subclass of prov:Activity",
+      "super": ["activity"],
       "attributes": {
         "planned-date": {
           "type": "datetime",
@@ -40,7 +40,7 @@
     "internal-document-publication-activities": {
       "name": "internal-document-publication-activity",
       "class": "ext:InternalDocumentPublicationActivity",
-      "_comment": "Subclass of prov:Activity",
+      "super": ["activity"],
       "attributes": {
         "planned-date": {
           "type": "datetime",
@@ -70,7 +70,7 @@
     "themis-publication-activities": {
       "name": "themis-publication-activity",
       "class": "ext:ThemisPublicationActivity",
-      "_comment": "Subclass of prov:Activity",
+      "super": ["activity"],
       "attributes": {
         "planned-date": {
           "type": "datetime",
