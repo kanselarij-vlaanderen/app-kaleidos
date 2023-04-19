@@ -1,0 +1,22 @@
+PREFIX oldbesluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX newbesluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?s oldbesluitvorming:isAangevraagdVoor ?o .
+  }
+}
+
+INSERT {
+  GRAPH ?g {
+    ?s newbesluitvorming:isAangevraagdVoor ?o .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?s oldbesluitvorming:isAangevraagdVoor ?o .
+  }
+}
+
+#note: This relation should no longer exist but does

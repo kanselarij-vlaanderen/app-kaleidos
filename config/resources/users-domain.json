@@ -22,6 +22,10 @@
           "type": "string",
           "predicate": "foaf:familyName"
         },
+        "email": {
+          "type": "url",
+          "predicate": "foaf:mbox"
+        },
         "identifier": {
           "type": "string",
           "predicate": "dct:identifier"
