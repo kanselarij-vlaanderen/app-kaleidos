@@ -1,0 +1,20 @@
+PREFIX oldbesluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX newbesluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?s a oldbesluitvorming:Agendering .
+  }
+}
+
+INSERT {
+  GRAPH ?g {
+    ?s a newbesluitvorming:Agendering .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?s a oldbesluitvorming:Agendering .
+  }
+}
