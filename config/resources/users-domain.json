@@ -148,7 +148,6 @@
     "login-activities": {
       "name": "login-activity",
       "class": "ext:LoginActivity",
-      "super": ["activity"],
       "attributes": {
         "start-date": {
           "type": "datetime",

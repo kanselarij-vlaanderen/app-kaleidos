@@ -1,0 +1,20 @@
+PREFIX oldbesluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX newbesluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?s a oldbesluitvorming:Agenda .
+  }
+}
+
+INSERT {
+  GRAPH ?g {
+    ?s a newbesluitvorming:Agenda .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?s a oldbesluitvorming:Agenda .
+  }
+}
