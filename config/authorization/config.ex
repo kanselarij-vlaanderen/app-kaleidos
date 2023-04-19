@@ -98,7 +98,7 @@ defmodule Acl.UserGroups.Config do
   defp generic_besluitvorming_resource_types() do
     [
       "https://data.vlaanderen.be/ns/dossier#Dossier",
-      "http://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
+      "https://data.vlaanderen.be/ns/besluitvorming#Besluitvormingsaangelegenheid",
       "https://data.vlaanderen.be/ns/dossier#Procedurestap"
     ]
   end
@@ -117,12 +117,13 @@ defmodule Acl.UserGroups.Config do
 
   defp agendering_resource_types() do
     [
-      "http://data.vlaanderen.be/ns/besluitvorming#Agenda",
+      "https://data.vlaanderen.be/ns/besluitvorming#Agenda",
       "http://data.vlaanderen.be/ns/besluit#Agendapunt",
       "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
-      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
+      "http://www.w3.org/ns/prov#Activity",
+      "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
-      "http://data.vlaanderen.be/ns/besluitvorming#Agendering",
+      "https://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
     ]
   end
@@ -145,6 +146,7 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/person#Person",
       "http://schema.org/ContactPoint",
       "http://www.w3.org/ns/org#Organization",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/publicatie/AanvraagActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/VertaalActiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/DrukproefActiviteit",
@@ -152,7 +154,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/publicatie/AnnulatieActiviteit",
       "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "http://www.w3.org/ns/adms#Identifier",
-      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
+      "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/publicatie/PublicationMetricsExportJob",
       "http://data.europa.eu/eli/ontology#LegalResource" # manual registration of decisions
     ]
@@ -162,6 +164,7 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
@@ -171,7 +174,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
-      "http://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
+      "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
     ]
   end
 
@@ -195,6 +198,7 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/Nieuwsbericht",
       "http://mu.semte.ch/vocabularies/ext/MailCampagne",
+      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/InternalDecisionPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/InternalDocumentPublicationActivity",
       "http://mu.semte.ch/vocabularies/ext/ThemisPublicationActivity"

@@ -9,7 +9,7 @@ exit;
 
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 INSERT {
