@@ -20,6 +20,7 @@
 
 (in-package :mu-cl-resources)
 (read-domain-file "activity-domain.lisp")
+(read-domain-file "agenda-activities-domain.json")
 (read-domain-file "alerts-domain.lisp")
 (read-domain-file "besluit-domain.json")
 (read-domain-file "besluit-domain.lisp")
@@ -39,7 +40,6 @@
 (read-domain-file "generiek-domain.json")
 (read-domain-file "concept-domain.json")
 (read-domain-file "health-check.lisp")
-(read-domain-file "agenda-activities-domain.json")
 
 
 (defcall :get (base-path)
