@@ -7,7 +7,8 @@
     "org": "http://www.w3.org/ns/org#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "dct": "http://purl.org/dc/terms/",
-    "adms": "http://www.w3.org/ns/adms#"
+    "adms": "http://www.w3.org/ns/adms#",
+    "sign": "http://mu.semte.ch/vocabularies/ext/handtekenen/"
   },
   "resources": {
     "users":  {
@@ -58,6 +59,11 @@
           "target": "login-activity",
           "cardinality": "one",
           "_comment": "Reference to the most recent login activity only"
+        },
+        "person": {
+          "predicate": "sign:isOndertekenaarVoor",
+          "target": "person",
+          "cardinality": "one"
         }
       },
       "features": ["include-uri"],
@@ -112,6 +118,11 @@
           "predicate": "adms:status",
           "target": "concept",
           "cardinality": "one"
+        },
+        "mandatees": {
+          "predicate": "sign:isOrganisatieVoorMandataris",
+          "target": "mandatee",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],
