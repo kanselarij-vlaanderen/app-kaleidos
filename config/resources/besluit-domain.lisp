@@ -14,11 +14,14 @@
                               :as "status")
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
                               :as "previous-version")
-             (agenda           :via        ,(s-prefix "prov:wasRevisionOf")
-                               :inverse t
-                               :as "next-version"))
+             (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
+                              :inverse t
+                              :as "next-version"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
-                              :as "agendaitems"))
+                              :as "agendaitems")
+              (agenda-status-activity :via ,(s-prefix "prov:used")
+                                      :inverse t
+                                      :as "agenda-status-activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/agenda/")
   :features '(include-uri)
   :on-path "agendas")
@@ -30,7 +33,10 @@
                   (:alt-label   :string ,(s-prefix "skos:altLabel")))
   :has-many `((agenda     :via        ,(s-prefix "besluitvorming:agendaStatus")
                           :inverse t
-                          :as "agendas"))
+                          :as "agendas")
+              (agenda-status-activity :via     ,(s-prefix "generiek:bewerking")
+                                      :inverse t
+                                      :as "agenda-status-activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/agenda-status/")
   :features '(include-uri)
   :on-path "agendastatuses")
