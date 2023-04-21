@@ -166,7 +166,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-3382-capteren-weergeven-goedkeuringsdatum-agenda
+    image: kanselarij/agenda-approve-service:5.11.0
     logging: *default-logging
     restart: always
     labels:
@@ -196,7 +196,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:feature-KAS-3382-capteren-weergeven-goedkeuringsdatum-agenda
+    image: kanselarij/yggdrasil:5.17.0
     logging: *default-logging
     restart: always
     labels:
