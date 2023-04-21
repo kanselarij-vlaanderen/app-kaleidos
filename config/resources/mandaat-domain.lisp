@@ -27,7 +27,6 @@
              (user-organization :via ,(s-prefix "sign:isOrganisatieVoorMandataris")
                                   :inverse t
                                   :as "user-organizations"))
-            
   :has-one `((person              :via ,(s-prefix "mandaat:isBestuurlijkeAliasVan")
                                   :as "person")
              (mandate             :via ,(s-prefix "org:holds")
