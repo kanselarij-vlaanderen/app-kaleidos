@@ -1,0 +1,30 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX generiek: <http://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+     ?newAgendaStatusActivity a ext:AgendaStatusActivity ;
+                                              a prov:Activity ;
+                                              mu:uuid ?uuid ;
+                                              prov:used ?agenda ;
+                                              prov:startedAtTime ?modified ;
+                                              generiek:bewerking ?agendaStatus .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agenda a besluitvorming:Agenda ;
+                dct:modified ?modified ;
+                besluitvorming:agendaStatus ?agendaStatus .
+    FILTER NOT EXISTS {
+      ?agendaStatusActivity a ext:AgendaStatusActivity ;
+                                        prov:used ?agenda .
+    }
+    BIND(STRUUID() AS ?uuid)
+    BIND(IRI(CONCAT('http://themis.vlaanderen.be/id/agenda-status-activiteit/', ?uuid)) AS ?newAgendaStatusActivity)
+  }
+}
