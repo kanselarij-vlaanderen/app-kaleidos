@@ -1,0 +1,37 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "generiek": "http://data.vlaanderen.be/ns/generiek#"
+  },
+  "resources": {
+    "agenda-status-activities": {
+      "name": "agenda-status-activity",
+      "class": "ext:AgendaStatusActivity",
+      "super": ["activity"],
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate":  "prov:startedAtTime"
+        }
+      },
+      "relationships": {
+        "agenda": {
+          "predicate": "prov:used",
+          "target": "agenda",
+          "cardinality": "one"
+        },
+        "status-set": {
+          "predicate": "generiek:bewerking",
+          "target": "agendastatus",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/agenda-status-activiteit/"
+    }
+  }
+
+}
