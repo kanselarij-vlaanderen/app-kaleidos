@@ -8,10 +8,11 @@ defmodule Dispatcher do
     any: [ "*/*" ],
   ]
 
-  define_layers [ :frontend, :api ]
+  define_layers [ :frontend, :api, :not_found ]
 
   @frontend %{ accept: [ :any ], layer: :frontend }
   @json_service %{ accept: [ :json ], layer: :api }
+  @not_found %{ accept: [ :any ], layer: :not_found }
 
   ### Frontend
 
@@ -29,6 +30,11 @@ defmodule Dispatcher do
 
   get "/handleiding", @frontend do
     Proxy.forward conn, [], "http://static-file/handleiding.pdf"
+  end
+
+  ### Health check endpoint
+  get "/health-checks/*_path", @json_service do
+    forward conn, [], "http://resource/health-checks/"
   end
 
   ### File conversion
@@ -511,11 +517,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
 
-  match "/*_path", %{ last_call: true, accept: %{ json: true } } do
+  match "/*_path", %{ layer: :not_found, accept: %{ json: true } } do
     send_resp( conn, 404, "{ \"error\": { \"code\": 404, \"message\": \"Route not found.  See config/dispatcher.ex\" } }" )
   end
 
-  match "/*_path", %{ last_call: true } do
+  match "/*_path", @not_found do
     send_resp( conn, 404, "Route not found. See config/dispatcher.ex" )
   end
 
