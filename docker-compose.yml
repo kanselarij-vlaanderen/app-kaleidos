@@ -105,7 +105,7 @@ services:
   delta-notifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
-        - ./config/delta:/config
+      - ./config/delta:/config
     logging: *default-logging
     restart: always
     labels:
@@ -135,8 +135,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:feature-construct-and-or
-    # image: semtech/mu-cl-resources:1.21.1
+    image: semtech/mu-cl-resources:1.22.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -354,6 +353,20 @@ services:
       ALLOW_SUPER_CONSUMER: "true"
   impersonation:
     image: kanselarij/impersonation-service:0.1.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  decision-report-generation:
+    image: kanselarij/decision-report-generation-service:0.0.1
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+    volumes:
+      - ./data/files:/share
+  chrome-browser:
+    image: kanselarij/chrome-browser:0.0.1
     logging: *default-logging
     restart: always
     labels:

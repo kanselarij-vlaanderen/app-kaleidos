@@ -140,3 +140,6 @@ services:
     restart: "no"
   docx-conversion:
     restart: "no"
+  decision-report-generation:
+    environment:
+      - NODE_ENV=development

@@ -500,6 +500,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://decision-extraction/"
   end
 
+  ### Decision report generation
+  match "/generate-decision-report/*path", @json_service do
+    Proxy.forward conn, path, "http://decision-report-generation/"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do
