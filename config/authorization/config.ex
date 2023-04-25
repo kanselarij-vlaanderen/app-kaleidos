@@ -124,7 +124,8 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "https://data.vlaanderen.be/ns/besluitvorming#Agendering",
-      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit"
+      "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/AgendaStatusActivity"
     ]
   end
 
