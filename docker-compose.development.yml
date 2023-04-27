@@ -137,3 +137,5 @@ services:
     restart: "no"
   docx-conversion:
     restart: "no"
+  shortlist:
+    restart: "no"
