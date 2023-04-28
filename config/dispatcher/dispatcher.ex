@@ -173,6 +173,15 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://public-file/files/"
   end
 
+  ### Document shortlists
+
+  get "/publication-flows/shortlist/*path", @json_service do
+    Proxy.forward conn, path, "http://shortlist/publication-flows/"
+  end
+
+  get "/sign-flows/shortlist/*path", @json_service do
+    Proxy.forward conn, path, "http://shortlist/sign-flows/"
+  end
 
   ### Authentication
 

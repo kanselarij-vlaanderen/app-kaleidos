@@ -137,6 +137,8 @@ services:
     restart: "no"
   docx-conversion:
     restart: "no"
+  shortlist:
+    restart: "no"
   public-file:
     restart: "no"
   themis-export:
