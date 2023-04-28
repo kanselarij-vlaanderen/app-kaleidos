@@ -34,5 +34,17 @@ Most of Kaleidos' data is structured according the vocabularies & application-pr
 - [Dossier](https://data.vlaanderen.be/doc/applicatieprofiel/dossier/)
 - [Mandatendatabank](https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/)
 
-Part of the data produced within Kaleidos will soon be published as open-data through the "Themis"-portal. Please consult https://themis.vlaanderen.be/ for more information.
+### Open-data publication to Themis
+
+Part of the data produced within Kaleidos is published as open-data through the "Themis"-portal. Please consult https://themis.vlaanderen.be/ for more information.
+
+The sync to Themis works with a pull-mechanism. Kaleidos generates and provides publications, which are polled and fetched at regular intervals by the Themis stack.
+
+The services used to generate data exports for Themis:
+- an [export service](https://github.com/kanselarij-vlaanderen/themis-export-service) responsible for collecting data from Kaleidos and generating a TTL data dump
+- a [TTL to delta conversion service](https://github.com/redpencilio/ttl-to-delta-service) to convert the TTL data dump to the delta format
+- a [producer service](https://github.com/kanselarij-vlaanderen/themis-publication-producer) providing an endpoint to fetch publications for interested consumers
+- a [public file service](https://github.com/kanselarij-vlaanderen/public-file-service) providing an endpoint for interested consumers to fetch public Kaleidos documents
+
+The main component of the [Themis stack](https://github.com/kanselarij-vlaanderen/app-themis) is the [Themis publication consumer service](https://github.com/kanselarij-vlaanderen/themis-publication-consumer) responsible for polling and fetching of the publications and accompanying documents.
 

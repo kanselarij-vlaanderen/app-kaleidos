@@ -356,3 +356,40 @@ services:
     restart: always
     labels:
       - "logging=true"
+  #themis
+  public-file:
+    image: kanselarij/public-file-service:4.3.0
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  themis-export:
+    image: kanselarij/themis-export-service:3.0.0
+    environment:
+      MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
+      VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  ttl-to-delta:
+    image: redpencil/ttl-to-delta:1.0.1
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  publication-producer:
+    image: kanselarij/themis-publication-producer:1.1.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
