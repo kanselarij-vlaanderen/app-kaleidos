@@ -23,6 +23,9 @@ services:
   ttl-to-delta:
     volumes:
       - ./testdata/files:/share
+  export-file:
+    volumes:
+      - ./testdata/files:/share
   docx-conversion:
     volumes:
       - ./testdata/files:/share
