@@ -374,7 +374,7 @@ services:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
     volumes:
-      - ./data/files:/share
+      - ./data/exports:/share
     labels:
       - "logging=true"
     restart: always
@@ -382,7 +382,7 @@ services:
   ttl-to-delta:
     image: redpencil/ttl-to-delta:1.0.1
     volumes:
-      - ./data/files:/share
+      - ./data/exports:/share
     labels:
       - "logging=true"
     restart: always
