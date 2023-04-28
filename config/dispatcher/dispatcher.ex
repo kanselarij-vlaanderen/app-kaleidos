@@ -173,6 +173,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://public-file/files/"
   end
 
+  get "/export-files/*path" do
+    Proxy.forward conn, path, "http://export-file/files/"
+  end
+
   ### Document shortlists
 
   get "/publication-flows/shortlist/*path", @json_service do

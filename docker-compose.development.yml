@@ -147,3 +147,5 @@ services:
     restart: "no"
   publication-producer:
     restart: "no"
+  export-file:
+    restart: "no"

@@ -393,3 +393,11 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  export-file:
+    image: semtech/mu-file-service:3.3.0
+    volumes:
+      - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
