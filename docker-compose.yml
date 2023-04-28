@@ -381,6 +381,9 @@ services:
     logging: *default-logging
   ttl-to-delta:
     image: redpencil/ttl-to-delta:1.0.1
+    environment:
+      - TASK_GRAPH: "http://mu.semte.ch/graphs/themis-public"
+      - FILE_GRAPH: "http://mu.semte.ch/graphs/themis-public"
     volumes:
       - ./data/exports:/share
     labels:
