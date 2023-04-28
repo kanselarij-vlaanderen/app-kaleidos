@@ -282,8 +282,7 @@ defmodule Acl.UserGroups.Config do
               resource_types: public_static_data() ++
               public_codelists() ++
               system_resource_types() ++
-              user_account_resource_types() ++ # required to list mock accounts for unauthenticated users
-              themis_export_types()
+              user_account_resource_types() # required to list mock accounts for unauthenticated users
             } },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/sessions",
@@ -294,6 +293,11 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
+            } }, 
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/themis-public",
+            constraint: %ResourceConstraint{
+              resource_types: themis_export_types()
             } } ]
       },
       %GroupSpec{
