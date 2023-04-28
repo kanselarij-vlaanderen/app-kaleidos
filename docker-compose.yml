@@ -391,7 +391,7 @@ services:
     restart: always
     logging: *default-logging
   publication-producer:
-    image: kanselarij/themis-publication-producer:1.1.1
+    image: kanselarij/themis-publication-producer:1.1.2
     labels:
       - "logging=true"
     restart: always
