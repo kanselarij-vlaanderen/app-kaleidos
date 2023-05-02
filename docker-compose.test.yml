@@ -42,3 +42,6 @@ services:
   decision-report-generation:
     volumes:
       - ./testdata/files:/share
+  decision-extraction:
+    volumes:
+      - ./testdata/files:/share

@@ -336,6 +336,8 @@ services:
     restart: always
     labels:
       - "logging=true"
+    volumes:
+      - ./data/files:/share
   delta-producer:
     image: lblod/delta-producer-json-diff-file-publisher:0.5.0
     environment:
