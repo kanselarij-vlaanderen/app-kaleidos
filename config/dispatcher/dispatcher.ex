@@ -204,11 +204,7 @@ defmodule Dispatcher do
   match "/decision-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
-  ### TODO REMOVE ME
-  match "/reports/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/reports/"
-  end
-  ###
+
   match "/meetings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
