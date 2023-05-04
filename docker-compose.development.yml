@@ -137,3 +137,15 @@ services:
     restart: "no"
   docx-conversion:
     restart: "no"
+  shortlist:
+    restart: "no"
+  public-file:
+    restart: "no"
+  themis-export:
+    restart: "no"
+  ttl-to-delta:
+    restart: "no"
+  publication-producer:
+    restart: "no"
+  export-file:
+    restart: "no"

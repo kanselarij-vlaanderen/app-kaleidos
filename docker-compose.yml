@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:5.47.0
+    image: kanselarij/frontend-kaleidos:5.48.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -350,3 +350,57 @@ services:
     restart: always
     labels:
       - "logging=true"
+  shortlist:
+    image: kanselarij/shortlist-service:0.1.0
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  #themis
+  public-file:
+    image: kanselarij/public-file-service:4.3.0
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  themis-export:
+    image: kanselarij/themis-export-service:3.0.3
+    environment:
+      MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
+      VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
+    volumes:
+      - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  ttl-to-delta:
+    image: redpencil/ttl-to-delta:1.0.1
+    environment:
+      TASK_GRAPH: "http://mu.semte.ch/graphs/themis-public"
+      FILE_GRAPH: "http://mu.semte.ch/graphs/themis-public"
+    volumes:
+      - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  publication-producer:
+    image: kanselarij/themis-publication-producer:1.1.2
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  export-file:
+    image: semtech/mu-file-service:3.3.0
+    volumes:
+      - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
