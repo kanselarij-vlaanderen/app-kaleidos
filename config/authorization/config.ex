@@ -221,6 +221,13 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp themis_export_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/PublicExportJob",
+      "http://mu.semte.ch/vocabularies/ext/TtlToDeltaTask"
+    ]
+  end
+
   defp system_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/SysteemNotificatie"
@@ -288,7 +295,13 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
-            } } ]
+            } }, 
+          # %GraphSpec{
+          #   graph: "http://mu.semte.ch/graphs/themis-public",
+          #   constraint: %ResourceConstraint{
+          #     resource_types: themis_export_types()
+          #   } }
+        ]
       },
       %GroupSpec{
         name: "authenticated",

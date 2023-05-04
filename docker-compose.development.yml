@@ -22,7 +22,7 @@ services:
   identifier:
     restart: "no"
     ports:
-    - "80:80"
+      - "80:80"
   dispatcher:
     restart: "no"
   migrations:
@@ -141,5 +141,18 @@ services:
   docx-conversion:
     restart: "no"
   decision-report-generation:
+    restart: "no"
     environment:
       - NODE_ENV=development
+  shortlist:
+    restart: "no"
+  public-file:
+    restart: "no"
+  themis-export:
+    restart: "no"
+  ttl-to-delta:
+    restart: "no"
+  publication-producer:
+    restart: "no"
+  export-file:
+    restart: "no"
