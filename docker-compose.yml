@@ -397,7 +397,7 @@ services:
     restart: always
     logging: *default-logging
   export-file:
-    image: kanselarij/public-file-service:4.3.1
+    image: kanselarij/public-file-service:4.3.2
     environment:
       SKIP_CONFIDENTIALITY: "true"
       SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/themis-public"
