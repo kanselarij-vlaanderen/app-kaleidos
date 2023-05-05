@@ -404,3 +404,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  digital-signing:
+    image: kanselarij/digital-signing # Make sure to specify a tagged version here
+    volumes:
+      - ./data/files:/share
+    restart: always

@@ -457,6 +457,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-signing-activities/"
   end
 
+  match "/sign-approval-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/sign-approval-activities/"
+  end
+
   match "/sign-refusal-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/sign-refusal-activities/"
   end
@@ -477,8 +481,8 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
   end
 
-  post "/signing-flows/:signing_flow_id/upload-document-to-signinghub", @json_service do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-document-to-signinghub"
+  post "/signing-flows/:signing_flow_id/upload-to-signinghub", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-to-signinghub"
   end
 
   post "/sign-flows/:signing_flow_id/pieces/:piece_id/signers", @json_service do
