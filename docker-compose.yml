@@ -408,7 +408,7 @@ services:
     restart: always
     logging: *default-logging
   digital-signing:
-    image: kanselarij/digital-signing:0.0.1
+    image: kanselarij/digital-signing-service:0.0.1
     volumes:
       - ./data/files:/share
     restart: always
