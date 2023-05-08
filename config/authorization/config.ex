@@ -168,7 +168,6 @@ defmodule Acl.UserGroups.Config do
     [
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/HandtekenProcedurestap",
-      "http://www.w3.org/ns/prov#Activity",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
