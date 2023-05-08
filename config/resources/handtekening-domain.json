@@ -74,6 +74,10 @@
           "type": "string",
           "predicate": "dct:title"
         },
+        "notified": {
+          "type": "uri-set",
+          "predicate": "sign:genotificeerde"
+        },
         "start-date": {
           "type": "datetime",
           "predicate": "dossier:Procedurestap.startdatum"
@@ -105,6 +109,12 @@
         "sign-signing-activities": {
           "predicate": "sign:handtekeningVindtPlaatsTijdens",
           "target": "sign-signing-activity",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "sign-approval-activities": {
+          "predicate": "sign:goedkeuringVindtPlaatsTijdens",
+          "target": "sign-approval-activity",
           "cardinality": "many",
           "inverse": true
         },
@@ -203,6 +213,12 @@
           "target": "sign-signing-activity",
           "cardinality": "many",
           "inverse": true
+        },
+        "sign-approval-activities": {
+          "predicate": "sign:isGoedgekeurdDoor",
+          "target": "sign-approval-activity",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "features": ["include-uri"],
@@ -257,6 +273,43 @@
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-handtekenactiviteit/"
     },
+    "sign-approval-activities": {
+      "name": "sign-approval-activity",
+      "class": "sign:Goedkeuringsactiviteit",
+      "attributes": {
+        "approver": {
+          "type": "url",
+          "predicate": "sign:goedkeurder"
+        },
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Activiteit.einddatum"
+        }
+      },
+      "relationships": {
+        "sign-subcase": {
+          "predicate": "sign:goedkeuringVindtPlaatsTijdens",
+          "target": "sign-subcase",
+          "cardinality": "one"
+        },
+        "sign-preparation-activity": {
+          "predicate": "sign:isGoedgekeurdDoor",
+          "target": "sign-preparation-activity",
+          "cardinality": "one"
+        },
+        "sign-refusal-activity": {
+          "predicate": "sign:goedkeuringIsGeweigerdDoor",
+          "target": "sign-refusal-activity",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/handteken-goedkeuringsactiviteit/"
+    },
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
       "class": "sign:Weigeractiviteit",
@@ -284,6 +337,12 @@
         "sign-signing-activity": {
           "predicate": "sign:isGeweigerdDoor",
           "target": "sign-signing-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "sign-approval-activity": {
+          "predicate": "sign:goedkeuringIsGeweigerdDoor",
+          "target": "sign-approval-activity",
           "cardinality": "one",
           "inverse": true
         }
@@ -350,46 +409,12 @@
         },
         "signed-piece": {
           "predicate": "sign:getekendStuk",
-          "target": "signed-piece",
+          "target": "piece",
           "cardinality": "one"
         }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondingsactiviteit/"
-    },
-    "signed-pieces": {
-      "name": "signed-piece",
-      "class": "sign:GetekendStuk",
-      "attributes": {
-        "title": {
-          "type": "string",
-          "predicate": "dct:title"
-        },
-        "created": {
-          "type": "datetime",
-          "predicate": "dct:created"
-        }
-      },
-      "relationships": {
-        "unsigned-piece": {
-          "predicate": "sign:ongetekendStuk",
-          "target": "piece",
-          "cardinality": "one"
-        },
-        "signed-file": {
-          "predicate": "sign:getekendBestand",
-          "target": "file",
-          "cardinality": "one"
-        },
-        "sign-completion-activity": {
-          "predicate": "sign:getekendStuk",
-          "target": "sign-completion-activity",
-          "cardinality": "one",
-          "inverse": true
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/getekend-stuk/"
     }
   }
 }

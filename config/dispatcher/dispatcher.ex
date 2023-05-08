@@ -437,6 +437,10 @@ defmodule Dispatcher do
   end
 
   # SIGN FLOW
+  match "/sign-flows/:signing_flow_id/pieces/:piece_id/signinghub-url", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
+  end
+
   match "/sign-flows/*path", @json_service do
     Proxy.forward conn, path, "http://cache/sign-flows/"
   end
@@ -457,6 +461,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-signing-activities/"
   end
 
+  match "/sign-approval-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/sign-approval-activities/"
+  end
+
   match "/sign-refusal-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/sign-refusal-activities/"
   end
@@ -469,16 +477,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/signed-pieces/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/signed-pieces/"
-  end
-
   get "/signing-flows/:signing_flow_id/pieces", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
   end
 
-  post "/signing-flows/:signing_flow_id/upload-document-to-signinghub", @json_service do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-document-to-signinghub"
+  post "/signing-flows/:signing_flow_id/upload-to-signinghub", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-to-signinghub"
   end
 
   post "/sign-flows/:signing_flow_id/pieces/:piece_id/signers", @json_service do

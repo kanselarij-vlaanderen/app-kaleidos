@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.5.0
+    image: kanselarij/file-bundling-job-creation-service:0.5.1
     logging: *default-logging
     restart: always
     labels:
@@ -407,3 +407,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  digital-signing:
+    image: kanselarij/digital-signing # Make sure to specify a tagged version here
+    volumes:
+      - ./data/files:/share
+    restart: always

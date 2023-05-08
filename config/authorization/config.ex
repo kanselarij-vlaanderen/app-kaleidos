@@ -40,13 +40,18 @@ defmodule Acl.UserGroups.Config do
 
   defp minister_roles do
     [
-      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister
+      "<http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d>" # minister and kabinetchef
     ]
   end
 
-  defp kabinet_roles do
+  defp kabinet_dossierbeheerder_roles do
     [
       "<http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4>", # kabinet dossierbeheerder
+    ]
+  end
+
+  defp kabinet_medewerker_roles do
+    [
       "<http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84>" # kabinet medewerker
     ]
   end
@@ -167,10 +172,10 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Markeringsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Voorbereidingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/handtekenen/Goedkeuringsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Weigeractiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
       "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
@@ -352,8 +357,7 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+                publication_resource_types()
             }
           },
           %GraphSpec{
@@ -375,8 +379,7 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
-                publication_resource_types() ++
-                sign_resource_types()
+                publication_resource_types()
             }
           },
           %GraphSpec{
@@ -390,7 +393,10 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-minister-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role(minister_roles()),
+        access: access_by_role(
+          minister_roles()
+          ++ kabinet_dossierbeheerder_roles() # Technically this spec is too broad for dossierbeheerders, but we add extra checks down the line
+        ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/minister",
@@ -403,7 +409,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-intern-regering-read",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role(kabinet_roles()),
+        access: access_by_role(kabinet_medewerker_roles()),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
@@ -422,6 +428,45 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
             constraint: %ResourceConstraint{
               resource_types: file_bundling_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "sign-flow-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/signing",
+            constraint: %ResourceConstraint{
+              resource_types: sign_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "sign-flow-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/signing",
+            constraint: %ResourceConstraint{
+              resource_types: sign_resource_types()
             }
           }
         ]
