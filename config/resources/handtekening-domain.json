@@ -143,7 +143,6 @@
     "sign-marking-activities": {
       "name": "sign-marking-activity",
       "class": "sign:Markeringsactiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -182,7 +181,6 @@
     "sign-preparation-activities": {
       "name": "sign-preparation-activity",
       "class": "sign:Voorbereidingsactiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -227,7 +225,6 @@
     "sign-signing-activities": {
       "name": "sign-signing-activity",
       "class": "sign:Handtekenactiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -313,7 +310,6 @@
     "sign-refusal-activities": {
       "name": "sign-refusal-activity",
       "class": "sign:Weigeractiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -353,7 +349,6 @@
     "sign-cancellation-activities": {
       "name": "sign-cancellation-activity",
       "class": "sign:AnnulatieActiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
@@ -381,7 +376,6 @@
     "sign-completion-activities": {
       "name": "sign-completion-activity",
       "class": "sign:Afrondingsactiviteit",
-      "super": ["activity"],
       "attributes": {
         "title": {
           "type": "string",
