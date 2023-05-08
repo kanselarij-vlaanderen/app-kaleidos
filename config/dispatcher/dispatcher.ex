@@ -473,10 +473,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
-  match "/signed-pieces/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/signed-pieces/"
-  end
-
   get "/signing-flows/:signing_flow_id/pieces", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces"
   end

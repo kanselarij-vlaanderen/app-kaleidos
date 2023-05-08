@@ -409,41 +409,12 @@
         },
         "signed-piece": {
           "predicate": "sign:getekendStuk",
-          "target": "signed-piece",
+          "target": "piece",
           "cardinality": "one"
         }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/handteken-afrondingsactiviteit/"
-    },
-    "signed-pieces": {
-      "name": "signed-piece",
-      "class": "sign:GetekendStuk",
-      "attributes": {
-        "title": {
-          "type": "string",
-          "predicate": "dct:title"
-        },
-        "created": {
-          "type": "datetime",
-          "predicate": "dct:created"
-        }
-      },
-      "relationships": {
-        "signed-file": {
-          "predicate": "sign:getekendBestand",
-          "target": "file",
-          "cardinality": "one"
-        },
-        "sign-completion-activity": {
-          "predicate": "sign:getekendStuk",
-          "target": "sign-completion-activity",
-          "cardinality": "one",
-          "inverse": true
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://themis.vlaanderen.be/id/getekend-stuk/"
     }
   }
 }

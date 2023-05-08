@@ -176,7 +176,6 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Weigeractiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/handtekenen/GetekendStuk",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document",
       "http://www.w3.org/ns/person#Person",
       "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit"
