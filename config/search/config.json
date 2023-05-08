@@ -9,6 +9,8 @@
       { "name": "admin", "variables": [] },
       { "name": "secretarie", "variables": [] },
       { "name": "ovrb", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
+      { "name": "sign-flow-write", "variables": [] },
       { "name": "authenticated", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
