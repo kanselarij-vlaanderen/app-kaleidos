@@ -42,7 +42,7 @@
                                         :as "meeting")
             (meeting                    :via ,(s-prefix "besluitvorming:heeftNotulen")
                                         :inverse t
-                                        :as "meeting")
+                                        :as "isMinutesForMeeting")
             ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
             ;;                             :inverse t
             ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
