@@ -356,6 +356,11 @@ services:
     restart: always
     labels:
       - "logging=true"
+  digital-signing:
+    image: kanselarij/digital-signing-service:0.0.3
+    volumes:
+      - ./data/files:/share
+    restart: always
   #themis
   public-file:
     image: kanselarij/public-file-service:4.3.0
@@ -407,8 +412,3 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  digital-signing:
-    image: kanselarij/digital-signing-service:0.0.1
-    volumes:
-      - ./data/files:/share
-    restart: always
