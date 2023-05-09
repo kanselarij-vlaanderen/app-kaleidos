@@ -26,6 +26,7 @@
     [
       { "name": "ovrb", "variables": [] },
       { "name": "authenticated", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
