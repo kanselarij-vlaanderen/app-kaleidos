@@ -40,9 +40,6 @@
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
-            (meeting                    :via ,(s-prefix "besluitvorming:heeftNotulen")
-                                        :inverse t
-                                        :as "isMinutesForMeeting")
             ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
             ;;                             :inverse t
             ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
@@ -104,3 +101,13 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")
+
+(define-resource minutes (piece)
+  :class (s-prefix "ext:Notulen")
+  :properties `((:value                 :string   ,(s-prefix "prov:value")))
+  :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
+                                        :inverse t
+                                        :as "isMinutesForMeeting"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
+  :features `(include-uri)
+  :on-path "minutes")
