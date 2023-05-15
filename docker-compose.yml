@@ -357,7 +357,7 @@ services:
     labels:
       - "logging=true"
   digital-signing:
-    image: kanselarij/digital-signing-service:0.0.4
+    image: kanselarij/digital-signing-service:0.0.5
     volumes:
       - ./data/files:/share
     restart: always
