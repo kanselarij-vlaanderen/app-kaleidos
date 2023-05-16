@@ -31,6 +31,11 @@
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
                                         :as "next-piece")
+            (piece                      :via      ,(s-prefix "sign:ongetekendStuk") ;; instead of using signed-piece
+                                        :as "unsigned-piece")
+            (piece                      :via      ,(s-prefix "sign:ongetekendStuk") ;; instead of using signed-piece
+                                        :inverse t
+                                        :as "signed-piece")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
@@ -66,9 +71,6 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (signed-piece               :via ,(s-prefix "sign:ongetekendStuk")
-                                        :inverse t
-                                        :as "signed-piece")
             (submisison-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
