@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:5.48.0
+    image: kanselarij/frontend-kaleidos:6.0.4
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.11.0
+    image: kanselarij/cache-warmup-service:1.12.1
     logging: *default-logging
     restart: always
     labels:
@@ -175,7 +175,7 @@ services:
     image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
   login:
-    image: kanselarij/acmidm-login-service:2.4.0
+    image: kanselarij/acmidm-login-service:2.4.1
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -216,7 +216,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.5.0
+    image: kanselarij/file-bundling-job-creation-service:0.5.1
     logging: *default-logging
     restart: always
     labels:
@@ -351,11 +351,16 @@ services:
     labels:
       - "logging=true"
   shortlist:
-    image: kanselarij/shortlist-service:0.1.0
+    image: kanselarij/shortlist-service:0.1.1
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
+  digital-signing:
+    image: kanselarij/digital-signing-service:0.0.6
+    volumes:
+      - ./data/files:/share
+    restart: always
   #themis
   public-file:
     image: kanselarij/public-file-service:4.3.0

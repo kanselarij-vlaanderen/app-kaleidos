@@ -9,12 +9,16 @@
       { "name": "admin", "variables": [] },
       { "name": "secretarie", "variables": [] },
       { "name": "ovrb", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
+      { "name": "sign-flow-write", "variables": [] },
       { "name": "authenticated", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
       { "name": "secretarie", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
+      { "name": "sign-flow-write", "variables": [] },
       { "name": "authenticated", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
@@ -22,17 +26,21 @@
     [
       { "name": "ovrb", "variables": [] },
       { "name": "authenticated", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
       { "name": "o-minister-read", "variables": [] },
+      { "name": "sign-flow-write", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
       { "name": "authenticated", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
     ],
     [
       { "name": "o-intern-regering-read", "variables": [] },
+      { "name": "sign-flow-read", "variables": [] },
       { "name": "authenticated", "variables": [] },
       { "name": "public", "variables": [] },
       { "name": "clean", "variables": [] }
