@@ -200,7 +200,7 @@
                                         :as "kind")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting")
-             (piece                     :via      ,(s-prefix "besluitvorming:heeftNotulen")
+             (minutes                   :via      ,(s-prefix "besluitvorming:heeftNotulen")
                                         :as "minutes")
              (internal-decision-publication-activity :via  ,(s-prefix "ext:internalDecisionPublicationActivityUsed")
                                         :inverse t
