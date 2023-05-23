@@ -375,6 +375,8 @@ services:
     restart: always
     labels:
       - "logging=true"
+    security_opt:
+      - seccomp:./config/chrome-browser/chrome.json
   digital-signing:
     image: kanselarij/digital-signing-service:0.0.6
     volumes:
