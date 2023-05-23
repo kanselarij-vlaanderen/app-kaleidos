@@ -351,7 +351,7 @@ services:
     labels:
       - "logging=true"
   shortlist:
-    image: kanselarij/shortlist-service:0.1.1
+    image: kanselarij/shortlist-service:0.1.2
     logging: *default-logging
     restart: always
     labels:
