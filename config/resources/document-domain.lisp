@@ -109,7 +109,7 @@
   :properties `((:value                 :string   ,(s-prefix "prov:value")))
   :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
                                         :inverse t
-                                        :as "is-minutes-for-meeting"))
+                                        :as "minutes-for-meeting"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
   :features `(include-uri)
   :on-path "minutes")
