@@ -34,6 +34,10 @@
         "created": {
           "type": "datetime",
           "predicate": "dct:created"
+        },
+        "is-current-secretary": {
+          "type": "boolean",
+          "predicate": "ext:isHuidigeSecretaris"
         }
       },
       "relationships": {
@@ -64,6 +68,18 @@
           "predicate": "sign:isOndertekenaarVoor",
           "target": "person",
           "cardinality": "one"
+        },
+        "secretary-for-agendas": {
+          "predicate": "ext:secretarisVoorAgenda",
+          "inverse": true,
+          "target": "agenda",
+          "cardinality": "many"
+        },
+        "secretary-for-decisions": {
+          "predicate": "ext:secretarisVoorBeslissing",
+          "inverse": true,
+          "target": "decision-activity",
+          "cardinality": "many"
         }
       },
       "features": ["include-uri"],

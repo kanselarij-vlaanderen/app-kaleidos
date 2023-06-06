@@ -16,7 +16,9 @@
                               :as "previous-version")
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
                               :inverse t
-                              :as "next-version"))
+                              :as "next-version")
+             (user            :via        ,(s-prefix "ext:secretarisVoorAgenda")
+                              :as "secretary"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
               (agenda-status-activity :via ,(s-prefix "prov:used")
@@ -124,6 +126,8 @@
                                     :as "treatment")
              (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
+             (user                  :via        ,(s-prefix "ext:secretarisVoorBeslissing")
+                                    :as "secretary")
             )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
