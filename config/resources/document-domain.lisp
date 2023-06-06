@@ -106,7 +106,6 @@
 
 (define-resource minutes (piece)
   :class (s-prefix "ext:Notulen")
-  :properties `((:value                 :string   ,(s-prefix "prov:value")))
   :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
                                         :inverse t
                                         :as "minutes-for-meeting")
