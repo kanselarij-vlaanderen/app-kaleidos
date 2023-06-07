@@ -361,6 +361,9 @@ services:
     volumes:
       - ./data/files:/share
     restart: always
+  signflow-status-sync:
+    image: kanselarij/signflow-status-sync-service:0.0.1
+    restart: always
   #themis
   public-file:
     image: kanselarij/public-file-service:4.3.0
