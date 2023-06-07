@@ -420,3 +420,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  minutes-report-generation:
+    image: kanselarij/minutes-report-generation-service:0.0.1
+    volumes:
+      - ./data/files:/share

@@ -149,3 +149,7 @@ services:
     restart: "no"
   export-file:
     restart: "no"
+  minutes-report-generation:
+    restart: "no"
+    environment:
+      - NODE_ENV=development

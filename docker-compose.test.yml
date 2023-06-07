@@ -48,3 +48,6 @@ services:
       NODE_ENV: "development"
       DEBUG: "true"
       DELTA_INTERVAL_MS: 10000
+  minutes-report-generation:
+    volumes:
+      - ./testdata/files:/share
