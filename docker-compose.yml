@@ -356,6 +356,14 @@ services:
     restart: always
     labels:
       - "logging=true"
+  chrome-browser:
+    image: kanselarij/chrome-browser:0.0.1
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+    security_opt:
+      - seccomp:./config/chrome-browser/chrome.json
   digital-signing:
     image: kanselarij/digital-signing-service:0.0.6
     volumes:

@@ -177,6 +177,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://export-file/files/"
   end
 
+  ### Minutes report generation
+
+  match "/generate-minutes-report/*path", @json_service do
+    Proxy.forward conn, path, "http://minutes-report-generation/"
+  end
+
   ### Document shortlists
 
   get "/publication-flows/shortlist/*path", @json_service do
