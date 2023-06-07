@@ -1,0 +1,49 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?signflow <http://www.w3.org/ns/adms#status> ?oldStatus .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?signflow <http://www.w3.org/ns/adms#status> ?newStatus .
+  }
+}
+WHERE {
+  {
+    SELECT ?signflow ?oldStatus
+      COALESCE (?markingActivity, 0) AS ?markingActivity
+      COALESCE (?preparationActivity, 0) AS ?preparationActivity
+      COUNT(?signingActivity) AS ?signingActivities
+      COUNT(?approvalActivity) AS ?approvalActivities
+      COUNT(?refusalActivity) AS ?refusalActivities
+      COALESCE (?cancellationActivity, 0) AS ?cancellationActivity
+      COALESCE (?completionActivity, 0) AS ?completionActivity
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/system/signing> {
+        ?signflow a <http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid> ;
+                        <http://mu.semte.ch/vocabularies/ext/handtekenen/doorlooptHandtekening> ?signSubcase .
+        OPTIONAL { ?signflow <http://www.w3.org/ns/adms#status> ?oldStatus }
+        OPTIONAL { ?markingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/markeringVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?preparationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/voorbereidingVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?signingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?approvalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/goedkeuringVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?refusalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/weigeringVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?cancellationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/annulatieVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?completionActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/afrondingVindtPlaatsTijdens> ?signSubcase . }
+      }
+    }
+  }
+  BIND (
+    IF(?refusalActivities > 0, "Geweigerd",
+      IF(?completionActivity != 0, "Getekend",
+        IF(?signingActivities > 0, "Te handtekenen",
+          IF(?approvalActivities > 0, "Goed te keuren",
+            IF(?preparationActivity != 0, "Verstuurd",
+              IF(?markingActivity != 0, "Voor te bereiden", ?oldStatus)
+            )
+          )
+        )
+      )
+    ) AS ?newStatus
+  )
+}
