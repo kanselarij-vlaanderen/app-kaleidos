@@ -25,8 +25,8 @@ WHERE {
         OPTIONAL { ?signflow <http://www.w3.org/ns/adms#status> ?oldStatus }
         OPTIONAL { ?markingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/markeringVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?preparationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/voorbereidingVindtPlaatsTijdens> ?signSubcase . }
-        OPTIONAL { ?signingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?approvalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/goedkeuringVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL { ?signingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?refusalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/weigeringVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?cancellationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/annulatieVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?completionActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/afrondingVindtPlaatsTijdens> ?signSubcase . }
@@ -34,12 +34,14 @@ WHERE {
     }
   }
   BIND (
-    IF(?refusalActivities > 0, "Geweigerd",
-      IF(?completionActivity != 0, "Getekend",
-        IF(?signingActivities > 0, "Te handtekenen",
-          IF(?approvalActivities > 0, "Goed te keuren",
-            IF(?preparationActivity != 0, "Verstuurd",
-              IF(?markingActivity != 0, "Voor te bereiden", ?oldStatus)
+    IF(?refusalActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/3128aae6-0539-11ee-bb35-ee395168dcf7>,
+      IF(?cancellationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/2d043722-053a-11ee-bb35-ee395168dcf7>,
+        IF(?completionActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/29d4e7d2-0539-11ee-bb35-ee395168dcf7>,
+          IF(?signingActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/47508452-0538-11ee-bb35-ee395168dcf7>,
+            IF(?approvalActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/2fd72150-0538-11ee-bb35-ee395168dcf7>,
+              IF(?preparationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7>,
+                IF(?markingActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7>, ?oldStatus)
+              )
             )
           )
         )
