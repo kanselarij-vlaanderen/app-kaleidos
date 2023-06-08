@@ -370,7 +370,7 @@ services:
     labels:
       - "logging=true"
   chrome-browser:
-    image: kanselarij/chrome-browser:0.0.1
+    image: kanselarij/chrome-browser-service:0.0.1
     logging: *default-logging
     restart: always
     labels:
