@@ -11,13 +11,13 @@ INSERT {
 WHERE {
   {
     SELECT ?signflow ?oldStatus
-      COALESCE (?markingActivity, 0) AS ?markingActivity
-      COALESCE (?preparationActivity, 0) AS ?preparationActivity
-      COUNT(?signingActivity) AS ?signingActivities
-      COUNT(?approvalActivity) AS ?approvalActivities
-      COUNT(?refusalActivity) AS ?refusalActivities
-      COALESCE (?cancellationActivity, 0) AS ?cancellationActivity
-      COALESCE (?completionActivity, 0) AS ?completionActivity
+      (COALESCE (?markingActivity, 0) AS ?markingActivity)
+      (COALESCE (?preparationActivity, 0) AS ?preparationActivity)
+      (COUNT(?signingActivity) AS ?signingActivities)
+      (COUNT(?approvalActivity) AS ?approvalActivities)
+      (COUNT(?refusalActivity) AS ?refusalActivities)
+      (COALESCE (?cancellationActivity, 0) AS ?cancellationActivity)
+      (COALESCE (?completionActivity, 0) AS ?completionActivity)
     WHERE {
       GRAPH <http://mu.semte.ch/graphs/system/signing> {
         ?signflow a <http://mu.semte.ch/vocabularies/ext/handtekenen/Handtekenaangelegenheid> ;
