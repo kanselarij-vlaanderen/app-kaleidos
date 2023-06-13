@@ -1,0 +1,13 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://themis.vlaanderen.be/id/concept/document-type/8a1e048a-4b55-4a19-b1c0-c85dba09a15c>	skos:altLabel "Ontwerpdecreet van Vlaamse Regering" .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://themis.vlaanderen.be/id/concept/document-type/8a1e048a-4b55-4a19-b1c0-c85dba09a15c>	skos:altLabel "Ontwerpdecreet Vlaamse Regering" .
+  }
+}

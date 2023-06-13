@@ -71,7 +71,7 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (submisison-activity        :via ,(s-prefix "prov:generated")
+            (submission-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
   )
