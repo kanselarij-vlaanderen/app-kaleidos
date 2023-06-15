@@ -13,8 +13,8 @@ WHERE {
     SELECT ?signflow ?oldStatus
       (COALESCE (?markingActivity, 0) AS ?markingActivity)
       (COALESCE (?preparationActivity, 0) AS ?preparationActivity)
-      (COUNT(?signingActivity) AS ?signingActivities)
-      (COUNT(?approvalActivity) AS ?approvalActivities)
+      (COUNT(?signingStartDate) AS ?signingStartDates)
+      (COUNT(?approvalStartDate) AS ?approvalStartDates)
       (COUNT(?refusalActivity) AS ?refusalActivities)
       (COALESCE (?cancellationActivity, 0) AS ?cancellationActivity)
       (COALESCE (?completionActivity, 0) AS ?completionActivity)
@@ -25,8 +25,14 @@ WHERE {
         OPTIONAL { ?signflow <http://www.w3.org/ns/adms#status> ?oldStatus }
         OPTIONAL { ?markingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/markeringVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?preparationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/voorbereidingVindtPlaatsTijdens> ?signSubcase . }
-        OPTIONAL { ?approvalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/goedkeuringVindtPlaatsTijdens> ?signSubcase . }
-        OPTIONAL { ?signingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens> ?signSubcase . }
+        OPTIONAL {
+          ?approvalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/goedkeuringVindtPlaatsTijdens> ?signSubcase .
+          ?approvalActivity <https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum> ?approvalStartDate .
+        }
+        OPTIONAL {
+          ?signingActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens> ?signSubcase .
+          ?signingActivity <https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum> ?signingStartDate .
+        }
         OPTIONAL { ?refusalActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/weigeringVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?cancellationActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/annulatieVindtPlaatsTijdens> ?signSubcase . }
         OPTIONAL { ?completionActivity <http://mu.semte.ch/vocabularies/ext/handtekenen/afrondingVindtPlaatsTijdens> ?signSubcase . }
@@ -37,8 +43,8 @@ WHERE {
     IF(?refusalActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/3128aae6-0539-11ee-bb35-ee395168dcf7>,
       IF(?cancellationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/2d043722-053a-11ee-bb35-ee395168dcf7>,
         IF(?completionActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/29d4e7d2-0539-11ee-bb35-ee395168dcf7>,
-          IF(?signingActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/47508452-0538-11ee-bb35-ee395168dcf7>,
-            IF(?approvalActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/2fd72150-0538-11ee-bb35-ee395168dcf7>,
+          IF(?signingStartDates > 0, ${sparqlEscapeUri(SIGNFLOW_STATUSES.TO_BE_SIGNED)},
+            IF(?approvalStartDates > 0, ${sparqlEscapeUri(SIGNFLOW_STATUSES.TO_BE_APPROVED)},
               IF(?preparationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7>,
                 IF(?markingActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7>, ?oldStatus)
               )
