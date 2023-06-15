@@ -359,5 +359,22 @@ export default [
       gracePeriod: 5000,
       ignoreFromSelf: true
     }
+  },
+  {
+    match: {
+      predicate: { // When the signing or approval activities start
+        type: 'uri',
+        value: 'https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
   }
 ];
