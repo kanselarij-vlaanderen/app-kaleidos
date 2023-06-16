@@ -381,7 +381,7 @@ services:
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
   digital-signing:
-    image: kanselarij/digital-signing-service:0.0.9
+    image: kanselarij/digital-signing-service:1.0.0
     volumes:
       - ./data/files:/share
     restart: always
