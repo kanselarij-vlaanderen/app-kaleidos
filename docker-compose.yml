@@ -330,7 +330,7 @@ services:
     labels:
       - "logging=true"
   decision-extraction:
-    image: kanselarij/decision-extraction-service:0.0.2
+    image: kanselarij/decision-extraction-service:0.0.3
     logging: *default-logging
     restart: always
     labels:
@@ -360,6 +360,10 @@ services:
       - "logging=true"
   decision-report-generation:
     image: kanselarij/decision-report-generation-service:0.0.2
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
     volumes:
       - ./data/files:/share
   shortlist:
