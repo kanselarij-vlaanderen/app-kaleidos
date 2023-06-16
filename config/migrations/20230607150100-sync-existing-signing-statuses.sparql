@@ -43,8 +43,8 @@ WHERE {
     IF(?refusalActivities > 0, <http://themis.vlaanderen.be/id/handtekenstatus/3128aae6-0539-11ee-bb35-ee395168dcf7>,
       IF(?cancellationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/2d043722-053a-11ee-bb35-ee395168dcf7>,
         IF(?completionActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/29d4e7d2-0539-11ee-bb35-ee395168dcf7>,
-          IF(?signingStartDates > 0, ${sparqlEscapeUri(SIGNFLOW_STATUSES.TO_BE_SIGNED)},
-            IF(?approvalStartDates > 0, ${sparqlEscapeUri(SIGNFLOW_STATUSES.TO_BE_APPROVED)},
+          IF(?signingStartDates > 0, <http://themis.vlaanderen.be/id/handtekenstatus/47508452-0538-11ee-bb35-ee395168dcf7>,
+            IF(?approvalStartDates > 0, <http://themis.vlaanderen.be/id/handtekenstatus/2fd72150-0538-11ee-bb35-ee395168dcf7>,
               IF(?preparationActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7>,
                 IF(?markingActivity != 0, <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7>, ?oldStatus)
               )
