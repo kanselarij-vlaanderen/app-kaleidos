@@ -126,7 +126,7 @@
                                     :as "treatment")
              (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
-             (user                  :via        ,(s-prefix "ext:secretarisVoorBeslissing")
+             (user                  :via        ,(s-prefix "prov:wasAssociatedWith")
                                     :as "secretary")
             )
   :has-many `(

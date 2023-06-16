@@ -76,7 +76,7 @@
           "cardinality": "many"
         },
         "secretary-for-decisions": {
-          "predicate": "ext:secretarisVoorBeslissing",
+          "predicate": "prov:wasAssociatedWith",
           "inverse": true,
           "target": "decision-activity",
           "cardinality": "many"
