@@ -116,7 +116,7 @@
   :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
-             (piece                 :via        ,(s-prefix "besluitvorming:beschrijft")
+             (report                :via        ,(s-prefix "besluitvorming:beschrijft")
                                     :inverse t
                                     :as "report")
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")

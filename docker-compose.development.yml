@@ -22,7 +22,7 @@ services:
   identifier:
     restart: "no"
     ports:
-    - "80:80"
+      - "80:80"
   dispatcher:
     restart: "no"
   migrations:
@@ -117,6 +117,9 @@ services:
     restart: "no"
   publication-report:
     restart: "no"
+  decision-extraction:
+    environment:
+      - NODE_ENV=development
   delta-producer:
     image: lblod/sink-service:1.0.0
     restart: "no"
@@ -137,6 +140,10 @@ services:
     restart: "no"
   docx-conversion:
     restart: "no"
+  decision-report-generation:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
   shortlist:
     restart: "no"
   public-file:
