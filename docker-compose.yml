@@ -141,7 +141,6 @@ services:
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
     volumes:
       - ./config/resources:/config
-      # - ./startup.lisp:/usr/src/startup.lisp
     logging: *extended-logging
     restart: always
     labels:
