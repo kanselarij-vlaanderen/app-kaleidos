@@ -386,7 +386,7 @@ services:
       - ./data/files:/share
     restart: always
   signflow-status-sync:
-    image: kanselarij/signflow-status-sync-service:0.0.2
+    image: kanselarij/signflow-status-sync-service:0.0.3
     restart: always
   #themis
   public-file:
