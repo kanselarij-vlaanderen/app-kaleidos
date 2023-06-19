@@ -139,6 +139,9 @@ services:
     restart: "no"
   shortlist:
     restart: "no"
+  signflow-status-sync:
+    image: lblod/sink-service:1.0.0
+    restart: "no"
   public-file:
     restart: "no"
   themis-export:
