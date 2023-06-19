@@ -117,6 +117,7 @@ defmodule Acl.UserGroups.Config do
       "https://data.vlaanderen.be/ns/dossier#Stuk",
       "https://data.vlaanderen.be/ns/dossier#Stukonderdeel",
       "http://mu.semte.ch/vocabularies/ext/Notulen"
+      "https://data.vlaanderen.be/ns/besluitvorming#Verslag",
     ]
   end
 

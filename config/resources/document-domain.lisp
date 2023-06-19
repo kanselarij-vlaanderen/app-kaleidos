@@ -71,7 +71,7 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (submisison-activity        :via ,(s-prefix "prov:generated")
+            (submission-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
   )
@@ -115,6 +115,17 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
   :features `(include-uri)
   :on-path "minutes")
+  
+(define-resource report (piece)
+  :class (s-prefix "besluitvorming:Verslag")
+  :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
+                                        :inverse t
+                                        :as "piece-parts")
+  )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/verslag/")
+  :features `(include-uri)
+  :on-path "reports")
+
 
 (define-resource piece-part ()
   :class (s-prefix "dossier:Stukonderdeel")
