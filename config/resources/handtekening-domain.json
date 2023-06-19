@@ -37,6 +37,11 @@
         }
       },
       "relationships": {
+        "status": {
+          "predicate": "adms:status",
+          "target": "concept",
+          "cardinality": "one"
+        },
         "regulation-type": {
           "predicate": "sign:regelgevingType",
           "target": "regulation-type",
