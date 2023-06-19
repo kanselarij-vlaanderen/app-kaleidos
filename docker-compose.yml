@@ -380,6 +380,10 @@ services:
       - "logging=true"
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
+  # minutes-report-generation:
+  #   image: kanselarij/minutes-report-generation-service:0.0.1
+  #   volumes:
+  #     - ./data/files:/share
   digital-signing:
     image: kanselarij/digital-signing-service:1.0.0
     volumes:
@@ -439,7 +443,3 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.0.1
-    volumes:
-      - ./data/files:/share
