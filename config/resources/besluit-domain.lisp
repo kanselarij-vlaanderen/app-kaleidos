@@ -116,7 +116,7 @@
   :properties `((:start-date  :date     ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase               :via        ,(s-prefix "ext:beslissingVindtPlaatsTijdens")
                                     :as "subcase")
-             (piece                 :via        ,(s-prefix "besluitvorming:beschrijft")
+             (report                :via        ,(s-prefix "besluitvorming:beschrijft")
                                     :inverse t
                                     :as "report")
              (agenda-item-treatment :via        ,(s-prefix "besluitvorming:heeftBeslissing")
@@ -200,6 +200,8 @@
                                         :as "kind")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting")
+             (minutes                   :via      ,(s-prefix "besluitvorming:heeftNotulen")
+                                        :as "minutes")
              (internal-decision-publication-activity :via  ,(s-prefix "ext:internalDecisionPublicationActivityUsed")
                                         :inverse t
                                         :as "internal-decision-publication-activity")

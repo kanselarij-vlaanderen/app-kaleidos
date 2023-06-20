@@ -1,0 +1,8 @@
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g { ?s besluitvorming:gearchiveerd ?o }
+}
+WHERE {
+   GRAPH ?g { ?s besluitvorming:gearchiveerd ?o }
+}

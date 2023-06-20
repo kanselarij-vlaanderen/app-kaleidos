@@ -177,6 +177,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://export-file/files/"
   end
 
+  ### Minutes report generation
+
+  match "/generate-minutes-report/*path", @json_service do
+    Proxy.forward conn, path, "http://minutes-report-generation/"
+  end
+
   ### Document shortlists
 
   get "/publication-flows/shortlist/*path", @json_service do
@@ -235,6 +241,7 @@ defmodule Dispatcher do
   match "/decision-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
+
   match "/meetings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/meetings/"
   end
@@ -245,6 +252,18 @@ defmodule Dispatcher do
 
   match "/pieces/*path", @json_service do
     Proxy.forward conn, path, "http://cache/pieces/"
+  end
+
+  match "/reports/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/reports/"
+  end
+
+  match "/minutes/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/minutes/"
+  end
+
+  match "/piece-parts/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/piece-parts/"
   end
 
   match "/decisionmaking-flows/*path", @json_service do
@@ -509,6 +528,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
 
+
+  ### Decision extraction
+  match "/decision-extraction/*path", @json_service do
+    Proxy.forward conn, path, "http://decision-extraction/"
+  end
+
+  ### Decision report generation
+  match "/generate-decision-report/*path", @json_service do
+    Proxy.forward conn, path, "http://decision-report-generation/"
+  end
 
   ## Fallback
 

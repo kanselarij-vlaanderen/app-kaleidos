@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+
+thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 a skos:ConceptScheme ;
+  mu:uuid "ebfe253c-0537-11ee-bb35-ee395168dcf7" ;
+  skos:prefLabel "HandtekenStatussen"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "f6a60072-0537-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Voor te bereiden"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "1dd296c2-053a-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Verstuurd"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/2fd72150-0538-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "2fd72150-0538-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Goed te keuren"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/47508452-0538-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "47508452-0538-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Te handtekenen"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/29d4e7d2-0539-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "29d4e7d2-0539-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Getekend"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/3128aae6-0539-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "3128aae6-0539-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Geweigerd"@nl .
+
+<http://themis.vlaanderen.be/id/handtekenstatus/2d043722-053a-11ee-bb35-ee395168dcf7> a skos:Concept ;
+    mu:uuid "2d043722-053a-11ee-bb35-ee395168dcf7" ;
+    skos:inScheme thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 ;
+    skos:prefLabel "Geannuleerd"@nl .
