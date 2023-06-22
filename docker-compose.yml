@@ -75,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.9.0-beta.6
+    image: semtech/mu-search:latest
     volumes:
       - ./config/search:/config
       - ./data/files:/data
