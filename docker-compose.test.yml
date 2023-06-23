@@ -57,6 +57,6 @@ services:
   decision-extraction:
     volumes:
       - ./testdata/files:/share
-  # minutes-report-generation:
-  #   volumes:
-  #     - ./testdata/files:/share
+  minutes-report-generation:
+    volumes:
+      - ./testdata/files:/share
