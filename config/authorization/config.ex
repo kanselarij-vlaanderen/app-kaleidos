@@ -278,7 +278,7 @@ defmodule Acl.UserGroups.Config do
     [
       %GroupSpec{
         name: "public",
-        useage: [:read],
+        useage: [:read, :read_for_write],
         access: %AlwaysAccessible{},
         graphs: [
           %GraphSpec{
