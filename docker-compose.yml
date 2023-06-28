@@ -330,7 +330,7 @@ services:
     labels:
       - "logging=true"
   decision-extraction:
-    image: kanselarij/decision-extraction-service:0.0.4
+    image: kanselarij/decision-extraction-service:0.0.5
     logging: *default-logging
     restart: always
     labels:
