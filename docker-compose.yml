@@ -211,6 +211,15 @@ services:
     image: kanselarij/file-bundling-service:2.2.1
     volumes:
       - ./data/files:/share
+      - ./data/generated-archives:/archive
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  archive-file:
+    image: semtech/mu-file-service:3.3.0
+    volumes: 
+      - ./data/generated-archives:/archive
     logging: *default-logging
     restart: always
     labels:

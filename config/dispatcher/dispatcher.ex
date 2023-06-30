@@ -172,6 +172,10 @@ defmodule Dispatcher do
   get "/public-files/*path" do
     Proxy.forward conn, path, "http://public-file/files/"
   end
+  
+  get "/archive-files/*path" do
+    Proxy.forward conn, path, "http://archive-file/files/"
+  end
 
   get "/export-files/*path" do
     Proxy.forward conn, path, "http://export-file/files/"
