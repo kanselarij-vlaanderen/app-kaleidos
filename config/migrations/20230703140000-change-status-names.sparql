@@ -3,7 +3,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/public> {
     <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7> skos:prefLabel "Voor te bereiden"@nl .
-    <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7> skos:prefLabel "Verstuurd"@nl .
+    <http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7> skos:prefLabel "Verstuurd"@nl .
 
   }
 }
@@ -11,6 +11,6 @@ DELETE {
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
     <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7> skos:prefLabel "Op te starten"@nl .
-    <http://themis.vlaanderen.be/id/handtekenstatus/f6a60072-0537-11ee-bb35-ee395168dcf7> skos:prefLabel "Voor te bereiden"@nl .
+    <http://themis.vlaanderen.be/id/handtekenstatus/1dd296c2-053a-11ee-bb35-ee395168dcf7> skos:prefLabel "Voor te bereiden"@nl .
   }
 }
