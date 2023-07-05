@@ -69,6 +69,12 @@
           "predicate": "pub:identifier",
           "cardinality": "one",
           "inverse": true
+        },
+        "publication-flow-for-thread-id": {
+          "target": "publication-flow",
+          "predicate": "pub:threadId",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "features": [
