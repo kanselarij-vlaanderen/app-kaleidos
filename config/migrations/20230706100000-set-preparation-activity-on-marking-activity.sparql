@@ -1,0 +1,19 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX sign: <http://mu.semte.ch/vocabularies/ext/handtekenen/>
+PREFIX sh: <http://mu.semte.ch/vocabularies/ext/signinghub/>
+
+INSERT {
+    GRAPH ?g {
+        ?preparation_activity sign:isGemarkeerdDoor ?marking_activity .
+    }
+} WHERE {
+    GRAPH ?g {
+        ?signflow a sign:Handtekenaangelegenheid ;
+            sign:doorlooptHandtekening ?sign_subcase .
+        ?sign_subcase a sign:HandtekenProcedurestap .
+        ?marking_activity sign:markeringVindtPlaatsTijdens ?sign_subcase .
+        ?preparation_activity sign:voorbereidingVindtPlaatsTijdens ?sign_subcase .
+        FILTER NOT EXISTS { ?preparation_activity sign:isGemarkeerdDoor ?marking_activity . }
+    }
+}

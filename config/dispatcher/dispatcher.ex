@@ -492,6 +492,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/sign-completion-activities/"
   end
 
+  post "/signing-flows/upload-to-signinghub", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/upload-to-signinghub"
+  end
+
   post "/signing-flows/:signing_flow_id/upload-to-signinghub", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-to-signinghub"
   end

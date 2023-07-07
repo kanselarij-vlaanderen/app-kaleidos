@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.1.6
+    image: kanselarij/frontend-kaleidos:6.3.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -208,7 +208,9 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.2.1
+    image: kanselarij/file-bundling-service:2.3.0
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -385,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.0.0
+    image: kanselarij/digital-signing-service:1.0.2
     volumes:
       - ./data/files:/share
     restart: always
