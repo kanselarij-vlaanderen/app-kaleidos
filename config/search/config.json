@@ -5,56 +5,38 @@
   "update_wait_interval_minutes": 0,
   "automatic_index_updates": true,
   "eager_indexing_groups": [
+    [ { "name": "clean", "variables": [] } ],
+    [ { "name": "admin", "variables": [] } ],
+    [ { "name": "impersonation", "variables": [] } ],
+    [ { "name": "authenticated", "variables": [] } ],
+    [ { "name": "minister-write", "variables": [] } ],
+    [ { "name": "regering-write", "variables": [] } ],
+    [ { "name": "overheid-write", "variables": [] } ],
+    [ { "name": "sign-flow-read", "variables": [] } ],
+    [ { "name": "sign-flow-write", "variables": [] } ],
+
     [
-      { "name": "admin", "variables": [] },
       { "name": "secretarie", "variables": [] },
-      { "name": "ovrb", "variables": [] },
-      { "name": "sign-flow-read", "variables": [] },
-      { "name": "sign-flow-write", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
-    ],
-    [
-      { "name": "secretarie", "variables": [] },
-      { "name": "sign-flow-read", "variables": [] },
-      { "name": "sign-flow-write", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
       { "name": "ovrb", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "sign-flow-read", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "public", "variables": [] }
     ],
     [
-      { "name": "o-minister-read", "variables": [] },
-      { "name": "sign-flow-write", "variables": [] },
-      { "name": "sign-flow-read", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "minister-read", "variables": [] },
+      { "name": "public", "variables": [] }
     ],
     [
-      { "name": "o-intern-regering-read", "variables": [] },
-      { "name": "sign-flow-read", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "regering-read", "variables": [] },
+      { "name": "public", "variables": [] }
     ],
     [
-      { "name": "o-intern-overheid-read", "variables": [] },
-      { "name": "authenticated", "variables": [] },
-      { "name": "public", "variables": [] },
-      { "name": "clean", "variables": [] }
+      { "name": "overheid-read", "variables": [] },
+      { "name": "public", "variables": [] }
     ]
   ],
   "attachments_path_base": "/data/",
-  "eager_indexing_sparql_query": false,
-  "additive_indexes": false,
   "persist_indexes": true,
   "default_settings": {
     "analysis": {
