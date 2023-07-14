@@ -354,10 +354,36 @@ defmodule Acl.UserGroups.Config do
         ]
       },
 
-      ### Secretarie
+      ### Secretarie & OVRB → "Intern secretarie" access level
+      ### All the secretarie & OVRB roles read the same data,
+      ### but OVRB can only write a limited amount
       %GroupSpec{
-        name: "secretarie",
-        useage: [:read, :write, :read_for_write],
+        name: "kanselarij-read",
+        useage: [:read, :read_for_write],
+        access: access_by_role(admin_roles() ++ secretarie_roles() ++ ovrb_roles() ++ kort_bestek_roles()),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
+            constraint: %ResourceConstraint{
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "kanselarij-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(admin_roles() ++ secretarie_roles() ++ kort_bestek_roles()),
         graphs: [
           %GraphSpec{
@@ -380,9 +406,8 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
-        name: "ovrb",
-        useage: [:read, :write, :read_for_write],
-        # TODO: Read access on whole "kanselarij"-graph for now.
+        name: "ovrb-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(admin_roles() ++ ovrb_roles()),
         graphs: [
           %GraphSpec{

@@ -10,6 +10,8 @@
     [ { "name": "admin", "variables": [] } ],
     [ { "name": "impersonation", "variables": [] } ],
     [ { "name": "authenticated", "variables": [] } ],
+    [ { "name": "kanselarij-write", "variables": [] } ],
+    [ { "name": "ovrb-write", "variables": [] } ],
     [ { "name": "minister-write", "variables": [] } ],
     [ { "name": "regering-write", "variables": [] } ],
     [ { "name": "overheid-write", "variables": [] } ],
@@ -17,11 +19,7 @@
     [ { "name": "sign-flow-write", "variables": [] } ],
 
     [
-      { "name": "secretarie", "variables": [] },
-      { "name": "public", "variables": [] }
-    ],
-    [
-      { "name": "ovrb", "variables": [] },
+      { "name": "kanselarij-read", "variables": [] },
       { "name": "public", "variables": [] }
     ],
     [
