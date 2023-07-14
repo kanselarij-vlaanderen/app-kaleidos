@@ -6,6 +6,7 @@
   "automatic_index_updates": true,
   "eager_indexing_groups": [
     [ { "name": "clean", "variables": [] } ],
+    [ { "name": "public", "variables": [] } ],
     [ { "name": "admin", "variables": [] } ],
     [ { "name": "impersonation", "variables": [] } ],
     [ { "name": "authenticated", "variables": [] } ],
