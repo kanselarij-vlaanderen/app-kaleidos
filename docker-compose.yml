@@ -208,7 +208,9 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.2.1
+    image: kanselarij/file-bundling-service:2.3.0
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
       - ./data/files:/share
     logging: *default-logging
