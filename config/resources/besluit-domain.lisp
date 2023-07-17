@@ -17,7 +17,7 @@
              (agenda          :via        ,(s-prefix "prov:wasRevisionOf")
                               :inverse t
                               :as "next-version")
-             (user            :via        ,(s-prefix "ext:secretarisVoorAgenda")
+             (mandatee        :via        ,(s-prefix "ext:secretarisVoorAgenda")
                               :as "secretary"))
   :has-many `((agendaitem     :via        ,(s-prefix "dct:hasPart")
                               :as "agendaitems")
@@ -126,7 +126,7 @@
                                     :as "treatment")
              (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
-             (user                  :via        ,(s-prefix "prov:wasAssociatedWith")
+             (mandatee              :via        ,(s-prefix "prov:wasAssociatedWith")
                                     :as "secretary")
             )
   :has-many `(
