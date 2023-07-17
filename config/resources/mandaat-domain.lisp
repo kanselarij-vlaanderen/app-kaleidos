@@ -22,7 +22,7 @@
              (sign-signing-activity :via ,(s-prefix "sign:ondertekenaar")
                                   :inverse t
                                   :as "sign-signing-activities")
-             (agenda              :via ,(s-prefix "ext:secretarisVoorAgenda")
+             (meeting             :via ,(s-prefix "ext:secretarisVoorVergadering")
                                   :inverse t
                                   :as "secretary-for-agendas")
              (decision-activity   :via ,(s-prefix "prov:wasAssociatedWith")
