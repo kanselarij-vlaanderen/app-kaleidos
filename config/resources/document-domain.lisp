@@ -45,6 +45,8 @@
             (meeting                    :via ,(s-prefix "ext:zittingDocumentversie")
                                         :inverse t
                                         :as "meeting")
+            (user                       :via ,(s-prefix "ext:modifiedBy")
+                                        :as "modified-by")
             ;; (meeting                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
             ;;                             :inverse t
             ;;                             :as "meeting-notes") ;; note: check if these pieces have a document-container
