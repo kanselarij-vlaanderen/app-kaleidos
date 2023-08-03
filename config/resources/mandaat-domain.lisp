@@ -5,7 +5,6 @@
                 (:start           :datetime ,(s-prefix "mandaat:start"))
                 (:end             :datetime ,(s-prefix "mandaat:einde"))
                 (:newsletter-title :string ,(s-prefix "ext:nieuwsbriefTitel")) ; As opposed to the dct:title, this property includes the name of the mandatee
-                (:is-current-secretary :boolean ,(s-prefix "ext:isHuidigeSecretaris"))
                 (:title           :string ,(s-prefix "dct:title")))
   :has-many `((subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
