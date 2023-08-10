@@ -2,13 +2,11 @@ PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 
 DELETE {
   GRAPH ?g {
-    ?mandataris mandaat:start ?start .
     ?mandataris mandaat:einde ?einde .
   }
 } WHERE {
   GRAPH ?g {
-    ?mandataris mandaat:start ?start .
-    OPTIONAL { ?mandataris mandaat:einde ?einde . }
+    ?mandataris mandaat:einde ?einde .
     VALUES ?mandataris {
       <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0609>
       <http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0604>
