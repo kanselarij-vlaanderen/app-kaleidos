@@ -174,7 +174,7 @@
           "cardinality": "one"
         },
         "sign-preparation-activity": {
-          "predicate": "prov:wasInformedBy",
+          "predicate": "sign:isGemarkeerdDoor",
           "target": "sign-preparation-activity",
           "cardinality": "one",
           "inverse": true
@@ -207,7 +207,7 @@
           "cardinality": "one"
         },
         "sign-marking-activity": {
-          "predicate": "prov:wasInformedBy",
+          "predicate": "sign:isGemarkeerdDoor",
           "target": "sign-marking-activity",
           "cardinality": "one"
         },

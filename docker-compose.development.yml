@@ -147,7 +147,6 @@ services:
   shortlist:
     restart: "no"
   signflow-status-sync:
-    image: lblod/sink-service:1.0.0
     restart: "no"
   public-file:
     restart: "no"
@@ -159,7 +158,7 @@ services:
     restart: "no"
   export-file:
     restart: "no"
-  # minutes-report-generation:
-  #   restart: "no"
-  #   environment:
-  #     - NODE_ENV=development
+  minutes-report-generation:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
