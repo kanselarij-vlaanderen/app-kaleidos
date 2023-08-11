@@ -114,7 +114,10 @@ defmodule Acl.UserGroups.Config do
       "http://xmlns.com/foaf/0.1/Document", # TODO: Delete after complete document migration, still data on PROD!
       "https://data.vlaanderen.be/ns/dossier#Serie",
       "http://mu.semte.ch/vocabularies/ext/DocumentVersie", # TODO: Delete after complete document migration, still data on PROD!
-      "https://data.vlaanderen.be/ns/dossier#Stuk"
+      "https://data.vlaanderen.be/ns/dossier#Stuk",
+      "https://data.vlaanderen.be/ns/dossier#Stukonderdeel",
+      "http://mu.semte.ch/vocabularies/ext/Notulen",
+      "https://data.vlaanderen.be/ns/besluitvorming#Verslag"
     ]
   end
 
@@ -275,7 +278,7 @@ defmodule Acl.UserGroups.Config do
     [
       %GroupSpec{
         name: "public",
-        useage: [:read],
+        useage: [:read, :read_for_write],
         access: %AlwaysAccessible{},
         graphs: [
           %GraphSpec{
@@ -295,7 +298,7 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/staatsblad",
             constraint: %ResourceConstraint{
               resource_types: staatsblad_resource_types()
-            } }, 
+            } },
           # %GraphSpec{
           #   graph: "http://mu.semte.ch/graphs/themis-public",
           #   constraint: %ResourceConstraint{

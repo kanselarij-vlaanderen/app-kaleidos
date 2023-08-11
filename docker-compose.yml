@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.1.2
+    image: kanselarij/frontend-kaleidos:6.3.5
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -105,7 +105,7 @@ services:
   delta-notifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
-        - ./config/delta:/config
+      - ./config/delta:/config
     logging: *default-logging
     restart: always
     labels:
@@ -208,7 +208,9 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.2.0
+    image: kanselarij/file-bundling-service:2.3.0
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -329,6 +331,14 @@ services:
     restart: always
     labels:
       - "logging=true"
+  decision-extraction:
+    image: kanselarij/decision-extraction-service:0.0.5
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+    volumes:
+      - ./data/files:/share
   delta-producer:
     image: lblod/delta-producer-json-diff-file-publisher:0.5.0
     environment:
@@ -350,16 +360,39 @@ services:
     restart: always
     labels:
       - "logging=true"
+  decision-report-generation:
+    image: kanselarij/decision-report-generation-service:0.0.3
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+    volumes:
+      - ./data/files:/share
   shortlist:
     image: kanselarij/shortlist-service:0.1.3
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  digital-signing:
-    image: kanselarij/digital-signing-service:0.0.9
+  chrome-browser:
+    image: kanselarij/chrome-browser-service:0.0.1
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+    security_opt:
+      - seccomp:./config/chrome-browser/chrome.json
+  minutes-report-generation:
+    image: kanselarij/minutes-report-generation-service:0.0.1
     volumes:
       - ./data/files:/share
+  digital-signing:
+    image: kanselarij/digital-signing-service:1.1.0
+    volumes:
+      - ./data/files:/share
+    restart: always
+  signflow-status-sync:
+    image: kanselarij/signflow-status-sync-service:0.0.4
     restart: always
   #themis
   public-file:
