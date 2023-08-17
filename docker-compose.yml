@@ -75,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.9.0-beta.3
+    image: semtech/mu-search:0.9.0-beta.7
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -387,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.1.0
+    image: kanselarij/digital-signing-service:1.2.0
     volumes:
       - ./data/files:/share
     restart: always

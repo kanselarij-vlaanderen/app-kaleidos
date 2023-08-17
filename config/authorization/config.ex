@@ -319,17 +319,13 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
+      ### System-specific data access for admin users
       %GroupSpec{
         name: "admin",
         useage: [:read, :write, :read_for_write],
-        access: access_by_own_role(admin_roles()),
+        access: access_by_role(admin_roles()),
         graphs: [
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/sessions",
-            constraint: %ResourceFormatConstraint{
-              resource_prefix: "http://mu.semte.ch/sessions/"
-            }
-          },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/system/users",
             constraint: %ResourceConstraint{
@@ -345,8 +341,49 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
-        name: "secretarie",
+        name: "impersonation",
         useage: [:read, :write, :read_for_write],
+        access: access_by_own_role(admin_roles()),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/sessions",
+            constraint: %ResourceFormatConstraint{
+              resource_prefix: "http://mu.semte.ch/sessions/"
+            }
+          }
+        ]
+      },
+
+      ### Secretarie & OVRB → "Intern secretarie" access level
+      ### All the secretarie & OVRB roles read the same data,
+      ### but OVRB can only write a limited amount
+      %GroupSpec{
+        name: "kanselarij-read",
+        useage: [:read, :read_for_write],
+        access: access_by_role(admin_roles() ++ secretarie_roles() ++ ovrb_roles() ++ kort_bestek_roles()),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/kanselarij",
+            constraint: %ResourceConstraint{
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "kanselarij-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(admin_roles() ++ secretarie_roles() ++ kort_bestek_roles()),
         graphs: [
           %GraphSpec{
@@ -369,9 +406,8 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
-        name: "ovrb",
-        useage: [:read, :write, :read_for_write],
-        # TODO: Read access on whole "kanselarij"-graph for now.
+        name: "ovrb-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(admin_roles() ++ ovrb_roles()),
         graphs: [
           %GraphSpec{
@@ -390,9 +426,32 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
+      ### Ministers & their cabinet chiefs → "Vetrouwelijk" access level
       %GroupSpec{
-        name: "o-minister-read",
-        useage: [:read, :write, :read_for_write],
+        name: "minister-read",
+        useage: [:read, :read_for_write],
+        access: access_by_role(
+          minister_roles()
+          ++ kabinet_dossierbeheerder_roles() # Technically this spec is too broad for dossierbeheerders, but we add extra checks down the line
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/minister",
+            constraint: %ResourceConstraint{
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "minister-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(
           minister_roles()
           ++ kabinet_dossierbeheerder_roles() # Technically this spec is too broad for dossierbeheerders, but we add extra checks down the line
@@ -406,9 +465,29 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
+      ### Cabinet staff
       %GroupSpec{
-        name: "o-intern-regering-read",
-        useage: [:read, :write, :read_for_write],
+        name: "regering-read",
+        useage: [:read, :read_for_write],
+        access: access_by_role(kabinet_medewerker_roles()),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/intern-regering",
+            constraint: %ResourceConstraint{
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "regering-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(kabinet_medewerker_roles()),
         graphs: [
           %GraphSpec{
@@ -419,9 +498,29 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
+      ### Government staff
       %GroupSpec{
-        name: "o-intern-overheid-read",
-        useage: [:read, :write, :read_for_write],
+        name: "overheid-read",
+        useage: [:read, :read_for_write],
+        access: access_by_role(overheid_roles()),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organizations/intern-overheid",
+            constraint: %ResourceConstraint{
+              resource_types: newsletter_resource_types() ++
+                agendering_resource_types() ++
+                generic_besluitvorming_resource_types() ++
+                document_resource_types() ++
+                file_bundling_resource_types() ++
+                publication_resource_types()
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "overheid-write",
+        useage: [:write, :read_for_write],
         access: access_by_role(overheid_roles()),
         graphs: [
           %GraphSpec{
@@ -432,6 +531,8 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+
+      ### Sign flow metadata
       %GroupSpec{
         name: "sign-flow-read",
         useage: [:read],
