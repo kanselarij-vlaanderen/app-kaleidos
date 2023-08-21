@@ -239,5 +239,142 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true
     }
+  },
+  /* Signflow activities lead to new status */
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/markeringVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/voorbereidingVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/handtekeningVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/goedkeuringVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/weigeringVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/annulatieVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/afrondingVindtPlaatsTijdens'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: { // When the signing or approval activities start
+        type: 'uri',
+        value: 'https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum'
+      }
+    },
+    callback: {
+      url: 'http://signflow-status-sync/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 5000,
+      ignoreFromSelf: true
+    }
   }
 ];

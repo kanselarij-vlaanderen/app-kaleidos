@@ -103,3 +103,44 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
   :on-path "pieces")
+
+(define-resource minutes (piece)
+  :class (s-prefix "ext:Notulen")
+  :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
+                                        :inverse t
+                                        :as "minutes-for-meeting")
+             (piece-part                :via ,(s-prefix "dct:isPartOf")
+                                        :inverse t
+                                        :as "piece-parts"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
+  :features `(include-uri)
+  :on-path "minutes")
+  
+(define-resource report (piece)
+  :class (s-prefix "besluitvorming:Verslag")
+  :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
+                                        :inverse t
+                                        :as "piece-parts")
+  )
+  :resource-base (s-url "http://themis.vlaanderen.be/id/verslag/")
+  :features `(include-uri)
+  :on-path "reports")
+
+
+(define-resource piece-part ()
+  :class (s-prefix "dossier:Stukonderdeel")
+  :properties `((:title                 :string   ,(s-prefix "dct:title"))
+                (:value                  :string   ,(s-prefix "prov:value"))
+                (:created                :datetime ,(s-prefix "dct:created")))
+  :has-one `((report                    :via      ,(s-prefix "dct:isPartOf")
+                                        :as "report")
+             (minutes                   :via      ,(s-prefix "dct:isPartOf")
+                                        :as "minutes")
+             (piece-part                :via      ,(s-prefix "pav:previousVersion")
+                                        :as "previous-piece-part")
+             (piece-part                :via      ,(s-prefix "pav:previousVersion")
+                                        :inverse t
+                                        :as "next-piece-part"))
+  :resource-base (s-url "http://themis.vlaanderen.be/id/stukonderdeel/")
+  :features `(include-uri)
+  :on-path "piece-parts")

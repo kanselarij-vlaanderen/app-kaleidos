@@ -104,6 +104,11 @@
           "target": "mandatee",
           "cardinality": "many"
         },
+        "thread-id": {
+          "predicate": "pub:threadId",
+          "target": "identification",
+          "cardinality": "one"
+        },
         "numac-numbers": {
           "predicate": "pub:identifier",
           "target": "identification",
