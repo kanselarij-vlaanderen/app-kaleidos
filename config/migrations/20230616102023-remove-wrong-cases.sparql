@@ -4,6 +4,7 @@ PREFIX schema: <http://schema.org/>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
 PREFIX besluitvor: <https://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
@@ -19,16 +20,15 @@ DELETE {
     ?agendaActivity ?aaP ?aaO .
     ?aaS ?aaP_ ?agendaActivity .
 
-    ?agendaitem schema:position ?agendaitemPosition .
+    ?submissionActivity ?saP ?saO .
+    ?saS ?saP_ ?submissionActivity .
+
     ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
-    ?otherAgendaitem schema:position ?otherAgendaitemPosition .
   }
 }
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-    ?agendaitem schema:position 1 .
     ?agendaitem ext:isGoedkeuringVanDeNotulen "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
-    ?otherAgendaitem schema:position ?newOtherAgendaitemPosition .
   }
 }
 WHERE {
@@ -41,6 +41,7 @@ WHERE {
     ?case dossier:Dossier.isNeerslagVan ?decisionmakingFlow .
     ?decisionmakingFlow dossier:doorloopt ?subcase .
     ?agendaActivity besluitvor:vindtPlaatsTijdens ?subcase .
+    ?agendaActivity prov:wasInformedBy ?submissionActivity .
 
     OPTIONAL { ?decisionmakingFlow ?dcmfP ?dcmfO }
    	OPTIONAL { ?dcmfS ?dcmfP_ ?decisionmakingFlow }
@@ -53,20 +54,12 @@ WHERE {
 
     OPTIONAL { ?agendaActivity ?aaP ?aaO }
     OPTIONAL { ?aaS ?aaP_ ?agendaActivity }
+
+    OPTIONAL { ?submissionActivity ?saP ?saO }
+    OPTIONAL { ?saS ?saP_ ?submissionActivity }
     ###
 
     ?agendaActivity besluitvor:genereertAgendapunt ?agendaitem .
     ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
-
-    ###
-    # Update other agendaitems' positions
-    ?agenda dct:hasPart ?agendaitem .
-    ?agenda dct:hasPart ?otherAgendaitem .
-    ?otherAgendaitem dct:type <http://themis.vlaanderen.be/id/concept/agendapunt-type/dd47a8f8-3ad2-4d5a-8318-66fc02fe80fd> .
-    ?agendaitem schema:position ?agendaitemPosition .
-    ?otherAgendaitem schema:position ?otherAgendaitemPosition .
-    FILTER (?otherAgendaitemPosition < ?agendaitemPosition)
-    BIND(?otherAgendaitemPosition + 1 AS ?newOtherAgendaitemPosition)
-    ###
   }
 }
