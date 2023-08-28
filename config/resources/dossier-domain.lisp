@@ -3,8 +3,7 @@
   :properties `((:title         :string   ,(s-prefix "dct:title"))
                 (:short-title   :string   ,(s-prefix "dct:alternative"))
                 (:created       :datetime ,(s-prefix "dct:created"))
-                (:number        :number   ,(s-prefix "adms:identifier"))
-                (:is-archived   :boolean  ,(s-prefix "ext:isGearchiveerd")))
+                (:number        :number   ,(s-prefix "adms:identifier")))
   :has-one `((decisionmaking-flow  :via      ,(s-prefix "dossier:Dossier.isNeerslagVan")
                     :as "decisionmaking-flow"))
   :has-many `((piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
@@ -52,7 +51,6 @@
   :class (s-prefix "dossier:Procedurestap")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
                 (:title               :string ,(s-prefix "dct:title"))
-                (:is-archived         :boolean   ,(s-prefix "ext:isProcedurestapGearchiveerd"))
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk")) ;; This is seen as "Beperkte toegang" in frontend
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
