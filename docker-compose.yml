@@ -361,7 +361,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.0.3
+    image: kanselarij/decision-report-generation-service:feature-KAS-4119-bf-layout
     logging: *default-logging
     restart: always
     labels:
