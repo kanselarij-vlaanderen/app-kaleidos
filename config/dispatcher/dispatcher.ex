@@ -32,6 +32,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://static-file/handleiding.pdf"
   end
 
+  get "/leidraad-digitaal-ondertekenen", @frontend do
+    Proxy.forward conn, [], "http://static-file/leidraad-digitaal-ondertekenen.pdf"
+  end
+
   ### Health check endpoint
   get "/health-checks/*_path", @json_service do
     forward conn, [], "http://resource/health-checks/"
@@ -494,10 +498,6 @@ defmodule Dispatcher do
 
   post "/signing-flows/upload-to-signinghub", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/upload-to-signinghub"
-  end
-
-  post "/signing-flows/:signing_flow_id/upload-to-signinghub", @json_service do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/upload-to-signinghub"
   end
 
   get "/signing-flows/:signing_flow_id/pieces/:piece_id/signinghub-url", @json_service do

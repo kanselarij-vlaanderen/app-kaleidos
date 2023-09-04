@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.3.5
+    image: kanselarij/frontend-kaleidos:6.4.6
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -75,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.9.0-beta.3
+    image: semtech/mu-search:0.9.0-beta.7
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.12.1
+    image: kanselarij/cache-warmup-service:1.13.0
     logging: *default-logging
     restart: always
     labels:
@@ -135,7 +135,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.22.0
+    image: semtech/mu-cl-resources:1.22.2
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -387,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.1.0
+    image: kanselarij/digital-signing-service:1.4.1
     volumes:
       - ./data/files:/share
     restart: always
