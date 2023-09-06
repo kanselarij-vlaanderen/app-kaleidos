@@ -21,6 +21,12 @@
              (sign-signing-activity :via ,(s-prefix "sign:ondertekenaar")
                                   :inverse t
                                   :as "sign-signing-activities")
+             (meeting             :via ,(s-prefix "ext:secretarisVoorVergadering")
+                                  :inverse t
+                                  :as "secretary-for-agendas")
+             (decision-activity   :via ,(s-prefix "prov:wasAssociatedWith")
+                                  :inverse t
+                                  :as "secretary-for-decisions")
              (submission-activity :via ,(s-prefix "prov:qualifiedAssociation")
                                   :inverse t
                                   :as "submission-activities")

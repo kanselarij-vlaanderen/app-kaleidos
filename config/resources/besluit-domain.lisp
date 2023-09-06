@@ -124,6 +124,8 @@
                                     :as "treatment")
              (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
+             (mandatee              :via        ,(s-prefix "prov:wasAssociatedWith")
+                                    :as "secretary")
             )
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
@@ -198,6 +200,8 @@
                                         :as "mail-campaign")
              (concept                   :via      ,(s-prefix "dct:type")
                                         :as "kind")
+             (mandatee                  :via        ,(s-prefix "ext:secretarisVoorVergadering")
+                                        :as "secretary")
              (meeting                   :via      ,(s-prefix "dct:isPartOf")
                                         :as "main-meeting")
              (minutes                   :via      ,(s-prefix "besluitvorming:heeftNotulen")

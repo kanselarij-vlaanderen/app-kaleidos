@@ -1,0 +1,1793 @@
+@prefix ns1: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://themis.vlaanderen.be/id/mandataris/09684a8d-ac57-4c8b-9727-42ed9a477e55> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/10a45f51-a511-4caa-8273-d1eb2c1ee27c> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/1c829511-04b6-4ac4-99ad-06c6f1496535> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/1e207740-3834-4e98-8431-5a2c08704516> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/32ca24e2-e216-43e0-b0af-e377137c0775> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/345dfd2a-3c09-42bc-a3d1-99ac8c72f515> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/3dc729d9-94b7-41f7-8c91-cc30951d6a56> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/3f4bfdbf-a8c4-4687-937d-7608b1e4270c> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/43b0ffea-8395-42c2-aad5-c7796c0cd33a> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/4ca19c47-a57e-4fbf-95dd-8d4e09d71ed8> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/532a4a5b-eabe-4f93-bc3a-7ef5f8f3c26e> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5678ff3c-ef96-4d19-b5a9-b383adcc69aa> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/57d1cd49-58bf-438b-9ca4-dd521fb02066> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5deb9bb2-204a-4fbe-93ba-edeb5fa7a57b> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03eb> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03ee> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03f0> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03f2> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03f4> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03f8> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03fc> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a03ff> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0404> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0407> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a040a> ns1:einde "1982-07-23T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1981-12-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a040e> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a040f> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0410> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0411> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0412> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0414> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0415> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0416> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0417> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0418> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0419> ns1:einde "1985-12-11T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1982-07-23T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0424> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0425> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0427> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0429> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a042a> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a042b> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a042c> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a042f> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0431> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0434> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0437> ns1:einde "1987-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1985-12-11T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0438> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0439> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043a> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043b> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043c> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043d> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043e> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a043f> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0440> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0441> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0443> ns1:einde "1988-02-03T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1987-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a044e> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a044f> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0450> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0451> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0452> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0454> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0458> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a045a> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a045d> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0460> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0462> ns1:einde "1988-10-23T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-02-03T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0465> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0466> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0468> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a046b> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a046c> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a046d> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a046e> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a046f> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0470> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0471> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0473> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0475> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0477> ns1:einde "1989-02-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1988-10-23T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047a> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047b> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047c> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047d> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047e> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a047f> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0480> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0481> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0482> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0483> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0484> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0485> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0486> ns1:einde "1992-01-08T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1989-02-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0487> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0488> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0489> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a048a> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a048b> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a048c> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a048d> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a048f> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0490> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0491> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0492> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a0493> ns1:einde "1992-01-22T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-08T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a1> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a2> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a3> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a5> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a6> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a8> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04a9> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04ac> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04ae> ns1:einde "1992-01-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-22T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04af> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b1> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b2> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b3> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b4> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b5> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b6> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04b7> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04ba> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04bc> ns1:einde "1992-10-20T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-01-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04be> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04bf> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c0> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c1> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c2> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c3> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c4> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c5> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c6> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c8> ns1:einde "1995-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1992-10-20T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04c9> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04ca> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04cb> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04cc> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04cd> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04ce> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04cf> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04d0> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04d1> ns1:einde "1995-01-12T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1995-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ce6670526694a04d2> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d3> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d4> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d5> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d6> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d7> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d8> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04d9> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04da> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04dc> ns1:einde "1995-06-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-01-12T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04dd> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04de> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04df> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04e0> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04e1> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04e2> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04e3> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04e4> ns1:einde "1995-06-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f0> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f5> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f6> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f7> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f8> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04f9> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04fa> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04fd> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a04ff> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0501> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0505> ns1:einde "1997-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1995-06-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0507> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0508> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0509> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050a> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050b> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050c> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050d> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050e> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a050f> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0510> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0512> ns1:einde "1998-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "1997-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0513> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0514> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0515> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0516> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0517> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0518> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0519> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051a> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051b> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051c> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051d> ns1:einde "1998-09-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-01-01T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051e> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a051f> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0521> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0522> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0523> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0524> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0525> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0526> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0527> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0528> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0529> ns1:einde "1999-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1998-09-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0534> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0535> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0536> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0538> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a053a> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a053e> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0541> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0543> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0546> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0547> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054a> ns1:einde "2000-04-14T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "1999-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054b> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054c> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054d> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054e> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a054f> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0550> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0552> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0553> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0554> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0555> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0556> ns1:einde "2001-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2000-04-14T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0557> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0558> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0559> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055a> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055b> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055c> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055d> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055e> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a055f> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0560> ns1:einde "2001-05-11T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0561> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0562> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0563> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0564> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0565> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0566> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0567> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0568> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0569> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a056a> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a056c> ns1:einde "2001-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-11T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a056f> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0570> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0571> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0572> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0573> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0574> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0575> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0576> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0577> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0578> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057a> ns1:einde "2002-07-03T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-08-01T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057c> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057d> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057e> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a057f> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0580> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0581> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0582> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0583> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0585> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0586> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0588> ns1:einde "2003-01-31T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2002-07-03T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058a> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058b> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058c> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058d> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058e> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a058f> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0590> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0591> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0592> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0595> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0598> ns1:einde "2003-05-26T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-03-19T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a059a> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a059b> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a059c> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a059d> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a059e> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a1> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a2> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a3> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a5> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a7> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05a9> ns1:einde "2003-06-05T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-05-26T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ac> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ad> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ae> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05af> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b0> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b1> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b2> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b3> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b4> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05b5> ns1:einde "2003-06-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2003-06-05T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ba> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05bb> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05bc> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05bd> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05be> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05bf> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c0> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c1> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c2> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c4> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05c7> ns1:einde "2004-02-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-06-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ca> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05cb> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05cc> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05cd> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ce> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05cf> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d0> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d1> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d2> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d3> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d5> ns1:einde "2004-07-20T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-02-18T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05d9> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05da> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05db> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05dc> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05dd> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05de> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05df> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05e0> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05e1> ns1:einde "2004-07-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-20T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ed> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05f1> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05f3> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05f4> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05f6> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05f8> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05fa> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05fb> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05fc> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a05ff> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0602> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0604> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0609> ns1:einde "2007-06-28T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2004-07-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a060d> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a060e> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a060f> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0611> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0612> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0613> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0614> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0615> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0616> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0617> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0618> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a061a> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a061c> ns1:einde "2007-10-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-06-28T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a061d> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a061f> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0620> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0621> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0622> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0623> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0624> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0625> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0626> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0627> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0628> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0629> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062a> ns1:einde "2008-09-22T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2007-10-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062b> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062c> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062d> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062e> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a062f> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0630> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0631> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0632> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0633> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0634> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0635> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0636> ns1:einde "2008-12-30T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-09-22T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0637> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0638> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0639> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063a> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063b> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063c> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063d> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063e> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a063f> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0640> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0641> ns1:einde "2009-01-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2008-12-30T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0642> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0643> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0644> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907de6670526694a0645> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0646> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0647> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0648> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0649> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a064a> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a064b> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a064c> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a064e> ns1:einde "2009-07-13T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-01-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0659> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a065a> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a065c> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a065f> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0661> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0662> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0664> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0667> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0669> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066a> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066b> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066c> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066d> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066e> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a066f> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0670> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0671> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0672> ns1:einde "2010-07-07T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-06T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0673> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0674> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0675> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0676> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0677> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0679> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a067a> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a067b> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a067c> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a067d> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a067e> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0680> ns1:einde "2014-07-25T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2010-07-07T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a068b> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a068d> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a068e> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a068f> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0691> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0692> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0694> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0696> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0698> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a069a> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a069b> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a069c> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a069f> ns1:einde "2016-04-30T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2014-07-25T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a1> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a2> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a3> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a4> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a5> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a6> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a7> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a8> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06a9> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06aa> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ab> ns1:einde "2016-05-04T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2016-04-29T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ac> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ad> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ae> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06af> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b1> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b2> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b3> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b4> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b5> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b6> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b7> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b8> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06b9> ns1:einde "2019-01-01T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2016-05-04T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ba> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06bb> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06bc> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06bd> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06be> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06bf> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c0> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c1> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c2> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c3> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c4> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c5> ns1:einde "2019-01-09T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2018-12-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c6> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c7> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c8> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06c9> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ca> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06cb> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06cc> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06cd> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ce> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06cf> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d0> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d1> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d3> ns1:einde "2019-02-06T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2019-01-09T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d4> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d5> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d6> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d7> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d8> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06d9> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06da> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06db> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06dc> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06dd> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06de> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06df> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e1> ns1:einde "2019-07-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-02-06T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e4> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e5> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e6> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e7> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e8> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06e9> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ea> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06eb> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ec> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ed> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06ee> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f0> ns1:einde "2019-07-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f1> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f2> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f3> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f4> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f5> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f6> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f7> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f8> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06f9> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06fa> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06fb> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a06fc> ns1:einde "2019-10-02T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-07-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0708> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a070c> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a070d> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a070f> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0710> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0711> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0712> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0713> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0715> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a0719> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a071b> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a071c> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/5fed907ee6670526694a071e> ns1:einde "2021-05-10T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2019-10-02T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/60f3b4dc-ad5c-4722-9a69-baf991384412> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/74cf5db5-8b6c-442e-baf4-97fbc896f986> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/763a0c72-6bd3-4670-9ff3-6246b58ba5f1> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/7cad1801-dfd1-44a6-bdfa-5d4e8259d023> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/81e6ca1b-97c1-4572-ae79-fba4ccb91e91> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/94e1a665-19ba-4ed8-97ae-a6061e60349d> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/95cfe981-9d27-4f00-8e50-28519f068e23> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/9ce68339-a517-4501-8302-60472167a8d4> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/9daab663-7277-4080-85cb-d768feb5242b> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/9f1a1fd0-d4ef-4456-8d73-508847351f20> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/a390a4fb-1be7-4128-afd0-e38da7883e5d> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/b7834d9e-8373-4ec2-a124-2623594c772a> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/bd63fe69-25df-4b36-a4f0-c7b87157a89b> ns1:einde "2010-07-06T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2009-07-13T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/c66e1c4b-e01f-43c5-88e4-36112ba21db5> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/c88ce55a-a1f8-4d99-b2a8-fff46f62e4e4> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/cabd47da-7956-4c21-83b3-539fd0f4a4de> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/cfa50017-b0c5-4638-bb0c-bf486d0dd63b> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/d437d986-09de-4b46-8fce-f6ca4389f492> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/d52fcc41-d25f-451b-be35-102f650517ab> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/d89222e1-eb8a-411f-8889-b1c1b688ab90> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/dc380cfb-3987-42bb-afc6-8e079e64ff63> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/dc66d32b-be05-43b8-ac18-0d91fdf8c6ec> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/e2242233-4b72-4079-bb20-d196da78edbb> ns1:einde "2022-05-16T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2021-05-10T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/e86d0c8a-6182-4f73-b921-4a67771a18e0> ns1:einde "2003-03-19T00:00:00+01:00"^^xsd:dateTime ;
+    ns1:start "2003-01-31T00:00:00+01:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandataris/ed9edaf1-18b5-41ee-ab65-21c70fac2a8b> ns1:einde "2001-08-01T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2001-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/145bafde-10ea-4a73-8fe9-042cdea3ccbe> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/14d57d14-5922-4a7b-8574-1b682df71145> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/1c62a2f3-cc0c-4760-ada9-90c7f879369e> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/34405d19-996f-4f9e-8616-a30e6f3a1175> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/38e5e0e9-52c7-4f7d-b92b-16eee0edd193> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/43c129cc-ba12-4457-b93e-737b7370c46e> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/488d5ce1-bed5-400c-985a-734ff6e296f5> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/4eae2f7e-ca9f-42d6-abed-dcd4ab56fd65> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/6ace9621-2236-4023-b77d-f4cb8dec1565> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/758e0782-fa7e-4740-a5fa-032e4c0d04ca> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/7c4c08aa-b058-4656-8aac-cd9946cbeac3> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/8d2639a1-afca-467c-b7a8-9ba01fa54852> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/8dcdc330-348d-4f69-b10c-02f584adb9af> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/a55415f4-a212-4ff0-b8e6-3bc1799361af> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/aa642a1e-7cc4-44da-9a6b-bce625761c5f> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/b374d85b-428d-4177-910d-0f7077cb3311> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/bb2e174a-374e-447d-ad0c-002204b4561f> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/c665812d-820d-4f77-a559-e8c757a82302> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/d283fd40-f781-4300-a913-60658e2aec85> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/d7593ea4-a74d-403d-beeb-8f9ed0fbb082> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/ddcf86cf-387e-4afc-a38f-2e183ce46909> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/e6652d4d-418b-4060-b309-084d6f0a60fe> ns1:einde "2022-05-18T00:00:00+02:00"^^xsd:dateTime ;
+    ns1:start "2022-05-16T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/e8706d05-70b7-4b5c-ba75-f07c56cb259f> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/e92489ff-126c-4569-a15e-ae8e193be345> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
+<http://themis.vlaanderen.be/id/mandatee/f7fe3320-7c15-4322-b907-02571d3dfe6e> ns1:start "2022-05-18T00:00:00+02:00"^^xsd:dateTime .
+
