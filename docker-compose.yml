@@ -361,7 +361,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.0.5
+    image: kanselarij/decision-report-generation-service:0.0.6
     logging: *default-logging
     restart: always
     labels:
@@ -441,6 +441,12 @@ services:
       SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/themis-public"
     volumes:
       - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  html-to-pdf:
+    image: kanselarij/html-to-pdf-service:0.0.1
     labels:
       - "logging=true"
     restart: always

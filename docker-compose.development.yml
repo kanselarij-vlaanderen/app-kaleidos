@@ -162,3 +162,5 @@ services:
     restart: "no"
     environment:
       - NODE_ENV=development
+  html-to-pdf:
+    restart: "no"
