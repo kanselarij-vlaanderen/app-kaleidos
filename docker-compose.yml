@@ -446,7 +446,7 @@ services:
     restart: always
     logging: *default-logging
   html-to-pdf:
-    image: kanselarij/html-to-pdf-service:feature-KAS-4119-bf-layout
+    image: kanselarij/html-to-pdf-service:0.0.1
     labels:
       - "logging=true"
     restart: always
