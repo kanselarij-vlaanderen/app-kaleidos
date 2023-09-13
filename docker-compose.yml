@@ -348,6 +348,21 @@ services:
       KEY: "secret-sync-key"
     volumes:
       - ./data/files:/share
+  delta-consumer:
+    image: kanselarij:delta-consumer:0.0.1
+    environment:
+      DCR_SERVICE_NAME: "delta-consumer"
+      DCR_WAIT_FOR_INITIAL_SYNC: false
+      DCR_DISABLE_INITIAL_SYNC: true
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://delta-consumer.services.semantic.works/id/JobOperation/DeltaFileSyncing"
+      DCR_JOB_CREATOR_URI: "http://delta-consumer.services.semantic.works/me"
+      DCR_SECRET_KEY: "secret-sync-key" # should be the same as KEY in delta-producer
+      DCR_SYNC_BASE_URL: "http://localhost" # replace with the actual URL of the Kaleidos instance you want to mirror
+      DCR_START_FROM_DELTA_TIMESTAMP: "2023-09-11T10:00:00Z" # replace with a suitably recent timestamp on newly cleared mirrors
+      DOWNLOAD_SHARE_LINKS: true
+    volumes:
+      - ./data/files:/share
+      - ./config/consumer/example-custom-dispatching:/config
   fileshare:
     image: redpencil/file-share-sync:0.0.4
     volumes:
