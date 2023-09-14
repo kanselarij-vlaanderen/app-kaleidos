@@ -349,7 +349,7 @@ services:
     volumes:
       - ./data/files:/share
   delta-consumer:
-    image: kanselarij:delta-consumer:0.0.1
+    image: kanselarij/delta-consumer:0.0.1
     environment:
       DCR_SERVICE_NAME: "delta-consumer"
       DCR_WAIT_FOR_INITIAL_SYNC: "false"
