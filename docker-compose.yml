@@ -359,7 +359,7 @@ services:
       DCR_SECRET_KEY: "secret-sync-key" # should be the same as KEY in delta-producer
       DCR_SYNC_BASE_URL: "http://localhost" # replace with the actual URL of the Kaleidos instance you want to mirror
       DCR_START_FROM_DELTA_TIMESTAMP: "2023-09-11T10:00:00Z" # replace with a suitably recent timestamp on newly cleared mirrors
-      DOWNLOAD_SHARE_LINKS: true
+      DOWNLOAD_SHARE_LINKS: "true"
     volumes:
       - ./data/files:/share
       - ./config/consumer/example-custom-dispatching:/config
