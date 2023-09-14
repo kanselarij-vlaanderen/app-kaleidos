@@ -352,8 +352,8 @@ services:
     image: kanselarij:delta-consumer:0.0.1
     environment:
       DCR_SERVICE_NAME: "delta-consumer"
-      DCR_WAIT_FOR_INITIAL_SYNC: false
-      DCR_DISABLE_INITIAL_SYNC: true
+      DCR_WAIT_FOR_INITIAL_SYNC: "false"
+      DCR_DISABLE_INITIAL_SYNC: "true"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://delta-consumer.services.semantic.works/id/JobOperation/DeltaFileSyncing"
       DCR_JOB_CREATOR_URI: "http://delta-consumer.services.semantic.works/me"
       DCR_SECRET_KEY: "secret-sync-key" # should be the same as KEY in delta-producer
