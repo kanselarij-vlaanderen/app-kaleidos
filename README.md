@@ -33,33 +33,6 @@ If you need to re-enable a service that is disabled in `docker-compose.developme
     image: kanselarij/delta-consumer:0.0.1
 ```
 
-## Deployment
-
-### Mirror
-
-When deploying the app and if you want to enable mirroring, such that all changes are synced to a (fail-over) server, you will need to update some of the environment variables in your `docker-compose.override.yml` file.
-Make sure that your mirrored server contains a data sync of your main server, as the mirroring does not do an initial sync of the whole database.
-
-``` yml
-# !! MAIN SERVER !!
-  delta-producer:
-    environment:
-      KEY: "put an actual random key here" # We need this so the two server can communicate
-  delta-consumer:
-    image: lblod/sink-service:1.0.0 # The consumer isn't needed here, so we might as well disable it
-
-# !! MIRROR SERVER !!
-  delta-consumer:
-    environment:
-      DCR_SECRET_KEY: "put the same random key you put in the delta-producer here"
-      DCR_SYNC_BASE_URL: "http://url-to-the-main-server.com"
-      DCR_START_FROM_DELTA_TIMESTAMP: "2023-01-01T00:00:00Z" # This timestamp should be recently in the past as of deploy time, so that you only try to ingest recent changes
-  delta-producer:
-    image: lblod/sink-service:1.0.0
-  fileshare:
-    image: lblod/sink-service:1.0.0
-```
-
 ## Data
 
 Most of Kaleidos' data is structured according the vocabularies & application-profiles standardised through [OSLO](https://data.vlaanderen.be/). The ones used in Kaleidos include:
