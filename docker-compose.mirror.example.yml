@@ -8,6 +8,9 @@ version: '3.4'
 #
 # This should only be used in mirror mode! When using the mirror server as the
 # LIVE fail-over a regular override file is needed.
+#
+# Make sure to use config/delta/mirror-rules.js instead of rules.js when in
+# mirror mode.
 services:
   # Consumer extras
   delta-consumer:
