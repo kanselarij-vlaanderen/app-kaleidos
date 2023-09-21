@@ -1,13 +1,14 @@
 PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
 
 INSERT {
   GRAPH ?g {
-    ?report ext:isReportOrMinutes true .
+    ?report ext:isReportOrMinutes "true"^^mulit:boolean .
   }
 } WHERE {
   GRAPH ?g {
 	  ?report a besluitvorming:Verslag .
-		FILTER NOT EXISTS { ?report ext:isReportOrMinutes true . }
+		FILTER NOT EXISTS { ?report ext:isReportOrMinutes "true"^^mulit:boolean . }
 	}
 }
