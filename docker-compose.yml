@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.4.6
+    image: kanselarij/frontend-kaleidos:6.5.2
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -361,7 +361,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.0.3
+    image: kanselarij/decision-report-generation-service:0.0.6
     logging: *default-logging
     restart: always
     labels:
@@ -383,7 +383,7 @@ services:
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.0.1
+    image: kanselarij/minutes-report-generation-service:0.0.2
     volumes:
       - ./data/files:/share
   digital-signing:
@@ -441,6 +441,12 @@ services:
       SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/themis-public"
     volumes:
       - ./data/exports:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  html-to-pdf:
+    image: kanselarij/html-to-pdf-service:0.0.1
     labels:
       - "logging=true"
     restart: always
