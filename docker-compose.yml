@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.5.5
+    image: kanselarij/frontend-kaleidos:6.5.6
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -387,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.4.1
+    image: kanselarij/digital-signing-service:1.4.2
     volumes:
       - ./data/files:/share
     restart: always
