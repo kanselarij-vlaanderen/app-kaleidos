@@ -1,0 +1,43 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluitvor: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendaActivity ?aaP ?aaO .
+
+    ?submissionActivity ?saP ?saO .
+
+    ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendaitem ext:isGoedkeuringVanDeNotulen "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    VALUES ?decisionmakingFlowId { "8D5686A8-411C-11ED-BB35-EE395168DCF7" "8C806F51-411C-11ED-BB35-EE395168DCF7" }
+    ?decisionmakingFlow mu:uuid ?decisionmakingFlowId .
+
+    ###
+    # Stuff we need to delete
+    ?case dossier:Dossier.isNeerslagVan ?decisionmakingFlow .
+    ?decisionmakingFlow dossier:doorloopt ?subcase .
+    ?agendaActivity besluitvor:vindtPlaatsTijdens ?subcase .
+    ?agendaActivity prov:wasInformedBy ?submissionActivity .
+
+    OPTIONAL { ?agendaActivity ?aaP ?aaO }
+
+    OPTIONAL { ?submissionActivity ?saP ?saO }
+    ###
+
+    ?agendaActivity besluitvor:genereertAgendapunt ?agendaitem .
+    ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
+  }
+}

@@ -9,26 +9,11 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?decisionmakingFlow ?dcmfP ?dcmfO .
-   	?dcmfS ?dcmfP_ ?decisionmakingFlow .
 
     ?case ?cP ?cO .
-    ?cS ?cP_ ?case .
 
     ?subcase ?scP ?scO .
     ?scS ?scP_ ?subcase .
-
-    ?agendaActivity ?aaP ?aaO .
-    ?aaS ?aaP_ ?agendaActivity .
-
-    ?submissionActivity ?saP ?saO .
-    ?saS ?saP_ ?submissionActivity .
-
-    ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
-  }
-}
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-    ?agendaitem ext:isGoedkeuringVanDeNotulen "true"^^<http://mu.semte.ch/vocabularies/typed-literals/boolean> .
   }
 }
 WHERE {
@@ -40,26 +25,12 @@ WHERE {
     # Stuff we need to delete
     ?case dossier:Dossier.isNeerslagVan ?decisionmakingFlow .
     ?decisionmakingFlow dossier:doorloopt ?subcase .
-    ?agendaActivity besluitvor:vindtPlaatsTijdens ?subcase .
-    ?agendaActivity prov:wasInformedBy ?submissionActivity .
 
     OPTIONAL { ?decisionmakingFlow ?dcmfP ?dcmfO }
-   	OPTIONAL { ?dcmfS ?dcmfP_ ?decisionmakingFlow }
 
     OPTIONAL { ?case ?cP ?cO }
-    OPTIONAL { ?cS ?cP_ ?case }
 
     OPTIONAL { ?subcase ?scP ?scO }
     OPTIONAL { ?scS ?scP_ ?subcase }
-
-    OPTIONAL { ?agendaActivity ?aaP ?aaO }
-    OPTIONAL { ?aaS ?aaP_ ?agendaActivity }
-
-    OPTIONAL { ?submissionActivity ?saP ?saO }
-    OPTIONAL { ?saS ?saP_ ?submissionActivity }
-    ###
-
-    ?agendaActivity besluitvor:genereertAgendapunt ?agendaitem .
-    ?agendaitem ext:isGoedkeuringVanDeNotulen ?isApproval .
   }
 }
