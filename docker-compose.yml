@@ -196,7 +196,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.17.2
+    image: kanselarij/yggdrasil:5.18.0
     logging: *default-logging
     restart: always
     labels:
@@ -387,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.4.2
+    image: kanselarij/digital-signing-service:1.5.0
     volumes:
       - ./data/files:/share
     restart: always
