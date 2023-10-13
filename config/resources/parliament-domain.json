@@ -1,0 +1,77 @@
+{
+  "version": "0.1",
+  "resources": {
+    "parliament-flows": {
+      "name": "parliament-flow",
+      "class": "parl:Parlementaireaangelegenheid",
+      "attributes": {
+        "opening-date": {
+          "type": "date",
+          "predicate": "dossier:openingsdatum"
+        },
+        "closing-date": {
+          "type": "date",
+          "predicate": "dossier:sluitingsdatum"
+        },
+        "parliament-id": {
+          "type": "string",
+          "predicate": "parl:id"
+        }
+      },
+      "relationships": {
+        "status": {
+          "predicate": "adms:status",
+          "target": "concept",
+          "cardinality": "one"
+        },
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireProcedurestap",
+          "target": "parliament-subcase",
+          "cardinality": "one"
+        }
+      }
+    },
+    "parliament-subcases": {
+      "name": "parliament-subcase",
+      "class": "parl:ParlementaireProcedurestap",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        }
+      },
+      "relationships": {
+        "parliament-submission-activities": {
+          "predicate": "parl:parlementaireIndieningsactiviteiten",
+          "target": "parliament-submission-activity",
+          "cardinality": "many"
+        }
+      }
+    },
+    "parliament-submission-activities": {
+      "name": "parliament-submission-activity",
+      "class": "parl:ParlementaireIndieningsactiviteit",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        }
+      },
+      "relationships": {
+        "pieces": {
+          "predicate": "parl:ingediendStuk",
+          "target": "piece",
+          "cardinality": "many"
+        }
+      }
+    }
+  }
+}
