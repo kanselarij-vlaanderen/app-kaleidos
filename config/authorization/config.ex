@@ -182,6 +182,14 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp parliament_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/parlement/Parlementaireaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireIndieningsactiviteit",
+    ]
+  end
+
   defp staatsblad_resource_types() do
     [
       "http://data.europa.eu/eli/ontology#LegalResource"
@@ -569,6 +577,26 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
               resource_types: sign_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
             }
           }
         ]
