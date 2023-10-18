@@ -387,7 +387,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.5.0
+    image: kanselarij/digital-signing-service:feature-KAS-4271-digital-signing-health-check
     volumes:
       - ./data/files:/share
     restart: always
