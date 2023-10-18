@@ -131,7 +131,7 @@
 (define-resource piece-part ()
   :class (s-prefix "dossier:Stukonderdeel")
   :properties `((:title                 :string   ,(s-prefix "dct:title"))
-                (:html-content           :string   ,(s-prefix "prov:value"))
+                (:html-content          :string   ,(s-prefix "prov:value"))
                 (:created               :datetime ,(s-prefix "dct:created")))
   :has-one `((report                    :via      ,(s-prefix "dct:isPartOf")
                                         :as "report")
