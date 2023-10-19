@@ -62,3 +62,6 @@ services:
   minutes-report-generation:
     volumes:
       - ./testdata/files:/share
+  digital-signing:
+    volumes:
+      - ./testdata/files:/share
