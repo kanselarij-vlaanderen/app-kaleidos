@@ -109,8 +109,8 @@
   :class (s-prefix "ext:Notulen")
   :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
                                         :inverse t
-                                        :as "minutes-for-meeting")
-             (piece-part                :via ,(s-prefix "dct:isPartOf")
+                                        :as "minutes-for-meeting"))
+  :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
                                         :inverse t
                                         :as "piece-parts"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
