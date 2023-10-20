@@ -667,6 +667,7 @@
       "properties": {
         "title": "http://purl.org/dc/terms/title",
         "shortTitle": "http://purl.org/dc/terms/alternative",
+        "modified": "http://purl.org/dc/terms/modified",
         "remark": "https://www.w3.org/2000/01/rdf-schema#comment",
         "identification": [
           "http://www.w3.org/ns/adms#identifier",
@@ -683,6 +684,15 @@
         "caseId": [
           "https://data.vlaanderen.be/ns/dossier#behandelt",
           "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "decisionmakingFlowId": [
+          "https://data.vlaanderen.be/ns/dossier#behandelt",
+          "https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "status": [
+          "http://www.w3.org/ns/adms#status",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
         "statusId": [
           "http://www.w3.org/ns/adms#status",
@@ -720,6 +730,14 @@
         "decisionDate": [
           "http://purl.org/dc/terms/subject",
           "https://data.vlaanderen.be/ns/dossier#Activiteit.startdatum"
+        ],
+        "sessionDate": [
+          "http://purl.org/dc/terms/subject",
+          "^https://data.vlaanderen.be/ns/besluitvorming#heeftBeslissing",
+          "http://purl.org/dc/terms/subject",
+          "^http://purl.org/dc/terms/hasPart",
+          "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
+          "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
         "openingDate": "https://data.vlaanderen.be/ns/dossier#openingsdatum",
         "translationRequestDate": [
@@ -762,6 +780,9 @@
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
           },
+          "modified": {
+            "type": "date"
+          },
           "remark": {
             "type": "text",
             "analyzer": "dutchanalyzer",
@@ -778,6 +799,14 @@
           },
           "caseId": {
             "type": "keyword"
+          },
+          "decisionmakingFlowId": {
+            "type": "keyword"
+          },
+          "status": {
+            "type": "text",
+            "analyzer": "dutchanalyzer",
+            "search_analyzer": "dutchanalyzer"
           },
           "statusId": {
             "type": "keyword"
@@ -805,6 +834,9 @@
             "type": "date"
           },
           "decisionDate": {
+            "type": "date"
+          },
+          "sessionDate": {
             "type": "date"
           },
           "openingDate": {
