@@ -70,6 +70,11 @@
           "predicate": "parl:ingediendStuk",
           "target": "piece",
           "cardinality": "many"
+        },
+        "submitter": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "user",
+          "cardinality": "one"
         }
       }
     }
