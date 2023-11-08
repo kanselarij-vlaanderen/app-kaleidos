@@ -389,7 +389,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.5.0
+    image: kanselarij/digital-signing-service:1.6.0
     volumes:
       - ./data/files:/share
     restart: always
