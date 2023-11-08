@@ -13,7 +13,6 @@
 (define-resource piece ()
   :class (s-prefix "dossier:Stuk")
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
-                (:is-report-or-minutes  :boolean   ,(s-prefix "ext:isReportOrMinutes")) ;; this property is necessary until we can filter on subclass
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
