@@ -189,6 +189,9 @@
                                         :as "agendas")
               (piece                    :via      ,(s-prefix "ext:zittingDocumentversie")
                                         :as "pieces")
+              (sign-flow                :via      ,(s-prefix "sign:heeftVergadering")
+                                        :inverse t
+                                        :as "sign-flows")
               (themis-publication-activity :via   ,(s-prefix "prov:used")
                                            :inverse t
                                            :as "themis-publication-activities"))

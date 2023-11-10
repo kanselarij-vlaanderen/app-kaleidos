@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.5.7
+    image: kanselarij/frontend-kaleidos:6.6.2
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -196,7 +196,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.17.2
+    image: kanselarij/yggdrasil:5.18.0
     logging: *default-logging
     restart: always
     labels:
@@ -332,7 +332,7 @@ services:
     labels:
       - "logging=true"
   decision-extraction:
-    image: kanselarij/decision-extraction-service:0.0.5
+    image: kanselarij/decision-extraction-service:0.0.7
     logging: *default-logging
     restart: always
     labels:
@@ -361,7 +361,9 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.0.6
+    image: kanselarij/decision-report-generation-service:0.3.2
+    environment:
+      TZ: "Europe/Brussels"
     logging: *default-logging
     restart: always
     labels:
@@ -383,11 +385,11 @@ services:
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.0.2
+    image: kanselarij/minutes-report-generation-service:0.1.1
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.4.2
+    image: kanselarij/digital-signing-service:1.6.0
     volumes:
       - ./data/files:/share
     restart: always
@@ -407,7 +409,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.0.5
+    image: kanselarij/themis-export-service:3.1.0
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
