@@ -453,3 +453,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  pdf-flattener:
+    image: kanselarij/pdf-flattener-service:feature-KAS-4395-signed-copy
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'flattened-pdfs'
+      FILE_RESOURCE_BASE: 'http://themis.vlaanderen.be/id/bestand/'
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
