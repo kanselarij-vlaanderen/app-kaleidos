@@ -376,5 +376,22 @@ export default [
       gracePeriod: 5000,
       ignoreFromSelf: true
     }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/ongetekendStuk',
+      }
+    },
+    callback: {
+      url: 'http://pdf-flattener/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 500,
+      ignoreFromSelf: true
+    }
   }
 ];
