@@ -454,7 +454,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-flattener:
-    image: kanselarij/pdf-flattener-service:feature-KAS-4395-signed-copy
+    image: kanselarij/pdf-flattener-service:0.0.1
     volumes:
       - ./data/files:/share
     environment:
