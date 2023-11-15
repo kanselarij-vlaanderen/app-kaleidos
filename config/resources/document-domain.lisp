@@ -36,6 +36,8 @@
             (piece                      :via      ,(s-prefix "sign:ongetekendStuk") ;; instead of using signed-piece
                                         :inverse t
                                         :as "signed-piece")
+            (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
+                                        :as "signed-piece-copy")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
