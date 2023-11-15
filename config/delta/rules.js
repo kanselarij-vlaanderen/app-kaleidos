@@ -379,6 +379,9 @@ export default [
   },
   {
     match: {
+      graph: {
+        value: 'http://mu.semte.ch/graphs/organizations/kanselarij',
+      },
       predicate: {
         type: 'uri',
         value: 'http://mu.semte.ch/vocabularies/ext/handtekenen/ongetekendStuk',
