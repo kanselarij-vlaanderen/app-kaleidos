@@ -218,7 +218,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.6.1
+    image: kanselarij/file-bundling-job-creation-service:0.6.2
     logging: *default-logging
     restart: always
     labels:
