@@ -553,7 +553,9 @@ defmodule Dispatcher do
   match "/parliament-submission-activities/*path", @json_service do
     Proxy.forward conn, path, "http://cache/parliament-submission-activities/"
   end
-
+  match "/vlaams-parlement-sync/*path", @json_service do
+    Proxy.forward conn, path, "http://vlaams-parlement-sync/"
+  end
 
   ## Fallback
 
