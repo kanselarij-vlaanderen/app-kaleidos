@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.7.1
+    image: kanselarij/frontend-kaleidos:6.7.5
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -218,7 +218,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.6.1
+    image: kanselarij/file-bundling-job-creation-service:0.6.2
     logging: *default-logging
     restart: always
     labels:
@@ -361,7 +361,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.3.3
+    image: kanselarij/decision-report-generation-service:0.3.4
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -385,7 +385,7 @@ services:
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.1.1
+    image: kanselarij/minutes-report-generation-service:0.1.2
     volumes:
       - ./data/files:/share
   digital-signing:
@@ -454,12 +454,11 @@ services:
     restart: always
     logging: *default-logging
   pdf-flattener:
-    image: kanselarij/pdf-flattener-service:0.0.1
+    image: kanselarij/pdf-flattener-service:0.0.2
     volumes:
       - ./data/files:/share
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: 'flattened-pdfs'
-      FILE_RESOURCE_BASE: 'http://themis.vlaanderen.be/id/bestand/'
     labels:
       - "logging=true"
     restart: always
