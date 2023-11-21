@@ -164,3 +164,9 @@ services:
       - NODE_ENV=development
   html-to-pdf:
     restart: "no"
+  digital-signing:
+    environment:
+      - MODE=development
+      - SIGNINGHUB_API_URL=<PUT_API_URL_HERE>
+  pdf-flattener:
+    restart: "no"

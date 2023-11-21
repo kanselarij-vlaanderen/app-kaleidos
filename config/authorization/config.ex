@@ -144,6 +144,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp report_generation_job_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/ReportGenerationJob",
+    ]
+  end
+
   defp publication_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
@@ -378,7 +384,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
@@ -402,7 +409,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
