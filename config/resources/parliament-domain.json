@@ -34,6 +34,11 @@
           "predicate": "parl:parlementaireProcedurestap",
           "target": "parliament-subcase",
           "cardinality": "one"
+        },
+        "case": {
+          "predicate": "parl:behandeltDossier",
+          "target": "case",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://themis.vlaanderen.be/id/parlementaireaangelegenheid/"
