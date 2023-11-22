@@ -5,7 +5,10 @@
                 (:created       :datetime ,(s-prefix "dct:created"))
                 (:number        :number   ,(s-prefix "adms:identifier")))
   :has-one `((decisionmaking-flow  :via      ,(s-prefix "dossier:Dossier.isNeerslagVan")
-                    :as "decisionmaking-flow"))
+                    :as "decisionmaking-flow")
+             (parliament-flow  :via      ,(s-prefix "parl:behandeltDossier")
+                    :inverse t
+                    :as "parliament-flow"))
   :has-many `((piece             :via      ,(s-prefix "dossier:Dossier.bestaatUit")
                                  :as "pieces")
               (publication-flow  :via      ,(s-prefix "dossier:behandelt")

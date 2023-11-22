@@ -547,6 +547,20 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://decision-report-generation/"
   end
 
+  ### Vlaams Parlement
+  match "/parliament-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-flows/"
+  end
+  match "/parliament-subcases/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-subcases/"
+  end
+  match "/parliament-submission-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-submission-activities/"
+  end
+  match "/vlaams-parlement-sync/*path", @json_service do
+    Proxy.forward conn, path, "http://vlaams-parlement-sync/"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do

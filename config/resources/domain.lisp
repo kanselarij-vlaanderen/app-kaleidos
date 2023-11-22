@@ -40,6 +40,7 @@
 (read-domain-file "generiek-domain.json")
 (read-domain-file "concept-domain.json")
 (read-domain-file "health-check.lisp")
+(read-domain-file "parliament-domain.json")
 
 
 (defcall :get (base-path)
