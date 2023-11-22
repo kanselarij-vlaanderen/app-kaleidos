@@ -466,5 +466,5 @@ services:
   vlaams-parlement-sync:
     image: kanselarij/vlaams-parlement-sync-service:0.0.2
     environment:
-      ENABLE_SENDING_TO_VP_API: true
-      ENABLE_DEBUG_FILE_WRITING: false
+      ENABLE_SENDING_TO_VP_API: "true"
+      ENABLE_DEBUG_FILE_WRITING: "false"
