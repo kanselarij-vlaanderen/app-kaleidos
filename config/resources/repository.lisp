@@ -76,6 +76,7 @@
 (add-prefix "prism" "http://prismstandard.org/namespaces/basic/2.0/#")
 
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
+(add-prefix "parl" "http://mu.semte.ch/vocabularies/ext/parlement/")
 (add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
 
 ;;;;;
