@@ -123,7 +123,7 @@
       },
       "relationships": {
         "piece": {
-          "predicate": "park:heeftStuk",
+          "predicate": "parl:heeftStuk",
           "target": "piece",
           "cardinality": "one"
         }
