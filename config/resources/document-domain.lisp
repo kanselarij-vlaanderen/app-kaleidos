@@ -76,9 +76,6 @@
             (submission-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
-            (submitted-piece            :via ,(s-prefix "parl:heeftStuk")
-                                        :inverse t
-                                        :as "submitted-piece")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
@@ -104,6 +101,9 @@
               (publication-activity     :via ,(s-prefix "pub:publicatieGebruikt")
                                         :inverse t
                                         :as "publication-activities-used-by")
+              (submitted-piece          :via ,(s-prefix "parl:heeftStuk")
+                                        :inverse t
+                                        :as "submitted-pieces")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
