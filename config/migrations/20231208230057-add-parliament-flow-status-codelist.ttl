@@ -1,0 +1,27 @@
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thParlFlowStatus: <http://themis.vlaanderen.be/id/parlementaireaangelegenheid-status/> .
+
+thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 a skos:ConceptScheme ;
+  mu:uuid "bfa3671b-68c1-4371-aa00-63840b7c9901" ;
+  skos:prefLabel "Parlementaireaangelegenheid statussen"@nl .
+
+thParlFlowStatus:d30fdd4d-ba47-437d-b72e-4bff02e8c3fb a skos:Concept ;
+    mu:uuid "d30fdd4d-ba47-437d-b72e-4bff02e8c3fb" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 1 ;
+    skos:prefLabel "Onvolledig verstuurd"@nl .
+
+thParlFlowStatus:018fb31c-44ad-4bf5-b01b-76de2d48abf4 a skos:Concept ;
+    mu:uuid "018fb31c-44ad-4bf5-b01b-76de2d48abf4" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 2 ;
+    skos:prefLabel "Volledig verstuurd"@nl .
+
+thParlFlowStatus:3905d9a1-c841-42fc-8a89-3b7d4ad61b4b a skos:Concept ;
+    mu:uuid "3905d9a1-c841-42fc-8a89-3b7d4ad61b4b" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 3 ;
+    skos:prefLabel "In behandeling door Vlaams Parlement"@nl .
