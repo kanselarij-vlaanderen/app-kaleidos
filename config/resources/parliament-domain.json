@@ -57,6 +57,12 @@
         }
       },
       "relationships": {
+        "parliament-flow": {
+          "predicate": "parl:parlementaireProcedurestap",
+          "target": "parliament-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
         "parliament-submission-activities": {
           "predicate": "parl:parlementaireIndieningsactiviteiten",
           "target": "parliament-submission-activity",
@@ -79,6 +85,12 @@
         }
       },
       "relationships": {
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireIndieningsactiviteiten",
+          "target": "parliament-subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
         "submitted-pieces": {
           "predicate": "parl:ingediendStuk",
           "target": "submitted-piece",
