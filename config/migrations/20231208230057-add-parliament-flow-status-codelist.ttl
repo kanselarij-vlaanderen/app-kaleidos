@@ -24,4 +24,4 @@ thParlFlowStatus:3905d9a1-c841-42fc-8a89-3b7d4ad61b4b a skos:Concept ;
     mu:uuid "3905d9a1-c841-42fc-8a89-3b7d4ad61b4b" ;
     skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
     schema:position 3 ;
-    skos:prefLabel "In behandeling door Vlaams Parlement"@nl .
+    skos:prefLabel "In behandeling bij Vlaams Parlement"@nl .
