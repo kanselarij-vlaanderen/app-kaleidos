@@ -193,6 +193,7 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/parlement/Parlementaireaangelegenheid",
       "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireProcedurestap",
       "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireIndieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/parlement/IngediendStuk",
     ]
   end
 
@@ -591,12 +592,33 @@ defmodule Acl.UserGroups.Config do
       },
 
       %GroupSpec{
-        name: "parliament-flow",
-        useage: [:read, :write, :read_for_write],
+        name: "parliament-flow-read",
+        useage: [:read],
         access: access_by_role(
           admin_roles()
           ++ secretarie_roles()
+          ++ ovrb_roles()
           ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+          ++ overheid_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
           ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
         ),

@@ -17,7 +17,8 @@
     [ { "name": "overheid-write", "variables": [] } ],
     [ { "name": "sign-flow-read", "variables": [] } ],
     [ { "name": "sign-flow-write", "variables": [] } ],
-    [ { "name": "parliament-flow", "variables": [] } ],
+    [ { "name": "parliament-flow-read", "variables": [] } ],
+    [ { "name": "parliament-flow-write", "variables": [] } ],
 
     [
       { "name": "kanselarij-read", "variables": [] },
