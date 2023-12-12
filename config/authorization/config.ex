@@ -576,6 +576,8 @@ defmodule Acl.UserGroups.Config do
         useage: [:write, :read_for_write],
         access: access_by_role(
           admin_roles()
+          ++ secretarie_roles()
+          ++ kort_bestek_roles()
           ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
         ),
