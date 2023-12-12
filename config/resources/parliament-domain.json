@@ -82,6 +82,10 @@
         "end-date": {
           "type": "datetime",
           "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "comment": {
+          "type": "string",
+          "predicate": "dct:description"
         }
       },
       "relationships": {
