@@ -17,8 +17,12 @@
     [ { "name": "overheid-write", "variables": [] } ],
     [ { "name": "sign-flow-read", "variables": [] } ],
     [ { "name": "sign-flow-write", "variables": [] } ],
+<<<<<<< HEAD
     [ { "name": "parliament-flow-read", "variables": [] } ],
     [ { "name": "parliament-flow-write", "variables": [] } ],
+=======
+    [ { "name": "parliament-flow", "variables": [] } ],
+>>>>>>> b2bd9e94e0fd337a89476ea7f47e93afcc7f53e2
 
     [
       { "name": "kanselarij-read", "variables": [] },
