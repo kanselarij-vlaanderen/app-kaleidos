@@ -102,6 +102,19 @@
           "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/alternative"
+        ],     
+        "tempGovernmentAreaIds": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://www.w3.org/2004/02/skos/core#broader",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "tempGovernmentFieldIds": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "mandateRoles": [
           "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt",
@@ -206,6 +219,14 @@
         }
       },
       "mappings": {
+        "runtime": {
+          "governmentAreaIds": {
+            "type": "keyword",
+            "script": {
+              "source": "if (doc['tempGovernmentAreaIds'].size() > 0) { emit(doc['tempGovernmentAreaIds'].value) } else if (doc['tempGovernmentFieldIds'].size() > 0) { emit(doc['tempGovernmentFieldIds'].value) } else { emit ('') }"
+            }
+          }
+        },
         "properties": {
           "title": {
             "type": "text",
@@ -247,6 +268,12 @@
             "type": "text",
             "analyzer": "dutchanalyzer",
             "search_analyzer": "dutchanalyzer"
+          },
+          "governmentAreaIds": {
+            "type": "keyword"
+          },
+          "governmentFieldIds": {
+            "type": "keyword"
           },
           "mandateRoles": {
             "type": "text",
@@ -349,6 +376,19 @@
           "^http://purl.org/pav/previousVersion",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "tempGovernmentAreaIds": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://www.w3.org/2004/02/skos/core#broader",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "tempGovernmentFieldIds": [
+          "^http://www.w3.org/ns/prov#generated",
+          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "mandateeIds": [
           "^https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit",
           "https://data.vlaanderen.be/ns/dossier#Dossier.isNeerslagVan",
@@ -392,6 +432,14 @@
         }
       },
       "mappings": {
+        "runtime": {
+          "governmentAreaIds": {
+            "type": "keyword",
+            "script": {
+              "source": "if (doc['tempGovernmentAreaIds'].size() > 0) { emit(doc['tempGovernmentAreaIds'].value) } else if (doc['tempGovernmentFieldIds'].size() > 0) { emit(doc['tempGovernmentFieldIds'].value) } else { emit ('') }"
+            }
+          }
+        },
         "properties": {
           "title": {
             "type": "text",
@@ -411,6 +459,12 @@
             "type": "keyword"
           },
           "nextPieceId": {
+            "type": "keyword"
+          },
+          "tempGovernmentAreaIds": {
+            "type": "keyword"
+          },
+          "tempGovernmentFieldIds": {
             "type": "keyword"
           },
           "mandateeIds": {
@@ -494,6 +548,17 @@
           "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
           "http://data.vlaanderen.be/ns/besluit#geplandeStart"
         ],
+        "governmentAreaIds": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://www.w3.org/2004/02/skos/core#broader",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "governmentFieldIds": [
+          "https://data.vlaanderen.be/ns/dossier#doorloopt",
+          "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "subcaseTitle": [
           "https://data.vlaanderen.be/ns/dossier#doorloopt",
           "http://purl.org/dc/terms/title"
@@ -565,6 +630,14 @@
         ]
       },
       "mappings": {
+        "runtime": {
+          "governmentAreaIds": {
+            "type": "keyword",
+            "script": {
+              "source": "if (doc['tempGovernmentAreaIds'].size() > 0) { emit(doc['tempGovernmentAreaIds'].value) } else if (doc['tempGovernmentFieldIds'].size() > 0) { emit(doc['tempGovernmentFieldIds'].value) } else { emit ('') }"
+            }
+          }
+        },
         "properties": {
           "closedDate": {
             "type": "date"
@@ -602,6 +675,12 @@
           },
           "sessionDates": {
             "type": "date"
+          },
+          "governmentAreaIds": {
+            "type": "keyword"
+          },
+          "governmentFieldIds": {
+            "type": "keyword"
           },
           "subcaseTitle": {
             "type": "text",
@@ -883,6 +962,19 @@
               "https://data.vlaanderen.be/ns/besluitvorming#isAgendaVoor",
               "http://mu.semte.ch/vocabularies/core/uuid"
             ],
+            "governmentAreaIds": [
+              "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+              "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+              "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+              "http://www.w3.org/2004/02/skos/core#broader",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
+            "governmentFieldIds": [
+              "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+              "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
+              "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
+              "http://mu.semte.ch/vocabularies/core/uuid"
+            ],
             "mandatees": {
               "via": [
                 "http://mu.semte.ch/vocabularies/ext/heeftBevoegdeVoorAgendapunt"
@@ -908,6 +1000,14 @@
         }
       },
       "mappings": {
+        "runtime": {
+          "governmentAreaIds": {
+            "type": "keyword",
+            "script": {
+              "source": "if (doc['agendaitems.tempGovernmentAreaIds'].size() > 0) { emit(doc['agendaitems.tempGovernmentAreaIds'].value) } else if (doc['agendaitems.tempGovernmentFieldIds'].size() > 0) { emit(doc['agendaitems.tempGovernmentFieldIds'].value) } else { emit ('') }"
+            }
+          }
+        },
         "properties": {
           "title": {
             "type": "text",
@@ -949,6 +1049,12 @@
             "type": "date"
           },
           "agendaitems.meetingId": {
+            "type": "keyword"
+          },
+          "agendaitems.governmentAreaIds": {
+            "type": "keyword"
+          },
+          "agendaitems.governmentFieldIds": {
             "type": "keyword"
           },
           "agendaitems.mandatees.priority": {
