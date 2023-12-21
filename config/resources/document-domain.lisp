@@ -13,7 +13,6 @@
 (define-resource piece ()
   :class (s-prefix "dossier:Stuk")
   :properties `((:name                  :string   ,(s-prefix "dct:title"))
-                (:is-report-or-minutes  :boolean   ,(s-prefix "ext:isReportOrMinutes")) ;; this property is necessary until we can filter on subclass  
                 (:created               :datetime ,(s-prefix "dct:created"))
                 (:modified              :datetime ,(s-prefix "dct:modified"))
                 (:received-date         :datetime ,(s-prefix "fabio:hasDateReceived"))
@@ -37,6 +36,11 @@
             (piece                      :via      ,(s-prefix "sign:ongetekendStuk") ;; instead of using signed-piece
                                         :inverse t
                                         :as "signed-piece")
+            (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
+                                        :as "signed-piece-copy")
+            (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
+                                        :inverse t
+                                        :as "signed-piece-copy-of")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
@@ -100,6 +104,9 @@
               (publication-activity     :via ,(s-prefix "pub:publicatieGebruikt")
                                         :inverse t
                                         :as "publication-activities-used-by")
+              (submitted-piece          :via ,(s-prefix "parl:heeftStuk")
+                                        :inverse t
+                                        :as "submitted-pieces")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
@@ -109,8 +116,8 @@
   :class (s-prefix "ext:Notulen")
   :has-one `((meeting                   :via ,(s-prefix "besluitvorming:heeftNotulen")
                                         :inverse t
-                                        :as "minutes-for-meeting")
-             (piece-part                :via ,(s-prefix "dct:isPartOf")
+                                        :as "minutes-for-meeting"))
+  :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
                                         :inverse t
                                         :as "piece-parts"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/notulen/")
@@ -131,8 +138,8 @@
 (define-resource piece-part ()
   :class (s-prefix "dossier:Stukonderdeel")
   :properties `((:title                 :string   ,(s-prefix "dct:title"))
-                (:value                  :string   ,(s-prefix "prov:value"))
-                (:created                :datetime ,(s-prefix "dct:created")))
+                (:html-content          :string   ,(s-prefix "prov:value"))
+                (:created               :datetime ,(s-prefix "dct:created")))
   :has-one `((report                    :via      ,(s-prefix "dct:isPartOf")
                                         :as "report")
              (minutes                   :via      ,(s-prefix "dct:isPartOf")

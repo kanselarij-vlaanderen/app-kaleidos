@@ -144,6 +144,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp report_generation_job_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/ReportGenerationJob",
+    ]
+  end
+
   defp publication_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
@@ -179,6 +185,15 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document"
+    ]
+  end
+
+  defp parliament_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/parlement/Parlementaireaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireIndieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/parlement/IngediendStuk",
     ]
   end
 
@@ -370,7 +385,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
@@ -394,7 +410,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
@@ -569,6 +586,47 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
               resource_types: sign_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ ovrb_roles()
+          ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+          ++ overheid_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
             }
           }
         ]

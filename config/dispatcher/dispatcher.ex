@@ -504,6 +504,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
   end
 
+  post "/signing-flows/mark-pieces-for-signing", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/mark-pieces-for-signing"
+  end
+
   get "/mail-folders/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end
@@ -541,6 +545,23 @@ defmodule Dispatcher do
   ### Decision report generation
   match "/generate-decision-report/*path", @json_service do
     Proxy.forward conn, path, "http://decision-report-generation/"
+  end
+
+  ### Vlaams Parlement
+  match "/parliament-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-flows/"
+  end
+  match "/parliament-subcases/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-subcases/"
+  end
+  match "/parliament-submission-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-submission-activities/"
+  end
+  match "/submitted-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submitted-pieces/"
+  end
+  match "/vlaams-parlement-sync/*path", @json_service do
+    Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
 
   ## Fallback
