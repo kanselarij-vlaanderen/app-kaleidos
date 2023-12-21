@@ -1,0 +1,58 @@
+PREFIX schema: <http://schema.org/>
+
+DELETE {
+  GRAPH ?g {
+    ?concept schema:position ?oldPosition .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?concept schema:position ?newPosition .
+  }
+}
+WHERE {
+  VALUES (?concept ?newPosition) {
+    (<https://data.vlaanderen.be/id/concept/AardWetgeving/Decreet>                               "7"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/f036e016-268e-4611-8fee-77d2047b51d8> "8"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/9c043848-6a9f-4448-9794-600e40dee6d2> "9"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/73d69df5-c3f3-43b2-aeae-5a24b56b376e> "10"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/2f331ce0-70e7-4150-b317-d2dbf52d6251> "11"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/cc9b4207-43da-4394-94d7-3be051aa95e7> "12"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/728b0691-c89b-4569-b570-4793f31b7100> "13"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/fbd697b7-9857-477f-8725-d6856a563f7a> "14"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/53aea93f-c0f7-4a9e-a5b3-5d683ccf783c> "15"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/e87f3a3a-d4dd-4560-8834-024b1e27a374> "16"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/63d628cb-a594-4166-8b4e-880b4214fc5b> "17"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/e807feec-1958-46cf-a558-3379b5add49e> "18"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/5c8689fc-af45-480e-b16a-ec1e61680acd> "19"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/8864821b-0eb8-42c6-99db-e39f20e9de10> "20"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/83888ef0-a44a-4abf-a977-acfcfa63ed8b> "21"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/eb048853-dc2e-44f8-9bf1-f0b7a7460a4d> "22"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/bcbd33f1-f058-46d0-9c53-569edd5dbede> "23"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/25b58316-50f2-411c-9012-e4e1957b1750> "24"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/1e254f84-d442-425e-9fc9-5ac552b9d089> "25"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/a270ebff-2883-4c96-95c7-64fa89a729c5> "26"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/7ef77ae1-816b-4eba-bae8-1f7d73cd7cba> "27"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/a354eebe-43d2-43b9-a018-483b3cd605ea> "28"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/126f7ca5-c1e8-458a-80c2-38828a6010cc> "29"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/72dd647f-7afa-4d2a-9c7f-de73a8bd85a1> "30"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<https://data.vlaanderen.be/id/concept/AardWetgeving/MinisterieelBesluit>                   "31"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/7b8cc610-2bcd-4eab-afa2-8cd7adbd4d4f> "32"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/d638e0dc-c879-4a75-9485-9e6970a83d67> "33"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/e9e8ec50-c6fd-44ac-bc34-e5e4cdb0294e> "34"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/d3a616a1-4734-409d-be51-30917c91eb84> "35"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/cf471294-af65-455c-a200-86b7fd70751a> "36"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/6b4e9376-449a-43f8-8027-6dc63494057b> "37"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<https://data.vlaanderen.be/id/concept/AardWetgeving/Protocol>                              "38"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/2fef8c6a-ca60-4cd5-97b3-578144aece0a> "39"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/0ed0785c-f427-4bc0-8507-72eb2a7b5454> "40"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/83f7dc8b-b763-47c4-8a21-f7e43b879ad2> "41"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/59b81be7-26c9-4a08-9a51-ce23ce83a133> "42"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/8ae796bd-690a-4ed6-855c-c4572e883066> "43"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/3f6ed920-7cd0-4296-a5b7-eb06d77ca5f4> "44"^^<http://www.w3.org/2001/XMLSchema#integer>)
+    (<http://themis.vlaanderen.be/id/concept/document-type/361f3132-d763-412d-8d16-609ad664055c> "45"^^<http://www.w3.org/2001/XMLSchema#integer>)
+  }
+  GRAPH ?g {
+    ?concept schema:position ?oldPosition .
+  }
+}
