@@ -57,6 +57,12 @@
         }
       },
       "relationships": {
+        "parliament-flow": {
+          "predicate": "parl:parlementaireProcedurestap",
+          "target": "parliament-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
         "parliament-submission-activities": {
           "predicate": "parl:parlementaireIndieningsactiviteiten",
           "target": "parliament-submission-activity",
@@ -76,12 +82,22 @@
         "end-date": {
           "type": "datetime",
           "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "comment": {
+          "type": "string",
+          "predicate": "dct:description"
         }
       },
       "relationships": {
-        "pieces": {
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireIndieningsactiviteiten",
+          "target": "parliament-subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "submitted-pieces": {
           "predicate": "parl:ingediendStuk",
-          "target": "piece",
+          "target": "submitted-piece",
           "cardinality": "many"
         },
         "submitter": {
@@ -91,6 +107,44 @@
         }
       },
       "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-indieningsactiviteit/"
+    },
+    "submitted-pieces": {
+      "name": "submitted-piece",
+      "class": "parl:IngediendStuk",
+      "attributes": {
+        "unsigned-file": {
+          "type": "uri",
+          "predicate": "parl:ongetekendBestand"
+        },
+        "signed-file": {
+          "type": "uri",
+          "predicate": "parl:getekendBestand"
+        },
+        "word-file": {
+          "type": "uri",
+          "predicate": "parl:wordBestand"
+        },
+        "unsigned-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:ongetekendBestandId"
+        },
+        "signed-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:getekendBestandId"
+        },
+        "word-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:wordBestandId"
+        }
+      },
+      "relationships": {
+        "piece": {
+          "predicate": "parl:heeftStuk",
+          "target": "piece",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementair-ingediend-stuk/"
     }
   }
 }

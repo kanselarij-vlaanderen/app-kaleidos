@@ -38,6 +38,9 @@
                                         :as "signed-piece")
             (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
                                         :as "signed-piece-copy")
+            (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
+                                        :inverse t
+                                        :as "signed-piece-copy-of")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")
@@ -101,6 +104,9 @@
               (publication-activity     :via ,(s-prefix "pub:publicatieGebruikt")
                                         :inverse t
                                         :as "publication-activities-used-by")
+              (submitted-piece          :via ,(s-prefix "parl:heeftStuk")
+                                        :inverse t
+                                        :as "submitted-pieces")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
