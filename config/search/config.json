@@ -105,15 +105,15 @@
           "http://purl.org/dc/terms/alternative"
         ],     
         "tempGovernmentAreaIds": [
-          "^http://www.w3.org/ns/prov#generated",
-          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
           "http://www.w3.org/2004/02/skos/core#broader",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "tempGovernmentFieldIds": [
-          "^http://www.w3.org/ns/prov#generated",
-          "http://mu.semte.ch/vocabularies/ext/indieningVindtPlaatsTijdens",
+          "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
+          "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "https://data.vlaanderen.be/ns/besluitvorming#beleidsveld",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
