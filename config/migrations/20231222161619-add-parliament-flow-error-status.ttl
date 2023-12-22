@@ -1,0 +1,11 @@
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thParlFlowStatus: <http://themis.vlaanderen.be/id/parlementaireaangelegenheid-status/> .
+
+thParlFlowStatus:3d03c20e-0170-43f5-840e-a541d1fd22bd a skos:Concept ;
+    mu:uuid "3d03c20e-0170-43f5-840e-a541d1fd22bd" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 4 ;
+    skos:prefLabel "Error bij Vlaams Parlement"@nl .
