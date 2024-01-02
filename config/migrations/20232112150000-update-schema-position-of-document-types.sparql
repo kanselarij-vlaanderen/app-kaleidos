@@ -1,12 +1,12 @@
 PREFIX schema: <http://schema.org/>
 
 DELETE {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?concept schema:position ?oldPosition .
   }
 }
 INSERT {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?concept schema:position ?newPosition .
   }
 }
@@ -52,7 +52,7 @@ WHERE {
     (<http://themis.vlaanderen.be/id/concept/document-type/3f6ed920-7cd0-4296-a5b7-eb06d77ca5f4> "44"^^<http://www.w3.org/2001/XMLSchema#integer>)
     (<http://themis.vlaanderen.be/id/concept/document-type/361f3132-d763-412d-8d16-609ad664055c> "45"^^<http://www.w3.org/2001/XMLSchema#integer>)
   }
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?concept schema:position ?oldPosition .
   }
 }
