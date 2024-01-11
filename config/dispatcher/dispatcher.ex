@@ -504,10 +504,6 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
   end
 
-  post "/signing-flows/reset-signflow/:signing_flow_id", @json_service do
-    Proxy.forward conn, [], "http://digital-signing/signing-flows" <> signing_flow_id
-  end
-
   delete "/signing-flows/:signing_flow_id", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id
   end
