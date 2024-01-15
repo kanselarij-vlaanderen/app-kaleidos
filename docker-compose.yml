@@ -464,7 +464,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.1.4
+    image: kanselarij/vlaams-parlement-sync-service:0.1.5
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
