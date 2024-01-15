@@ -389,7 +389,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:feature-KAS-4271-digital-signing-health-check
+    image: kanselarij/digital-signing-service:1.7.3
     volumes:
       - ./data/files:/share
     restart: always
