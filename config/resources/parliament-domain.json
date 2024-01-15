@@ -112,6 +112,18 @@
       "name": "submitted-piece",
       "class": "parl:IngediendStuk",
       "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "subcase-name": {
+          "type": "string",
+          "predicate": "parl:procedurestapNaam"
+        },
+        "subcase-created": {
+          "type": "datetime",
+          "predicate": "parl:procedurestapAangemaaktOp"
+        },
         "unsigned-file": {
           "type": "uri",
           "predicate": "parl:ongetekendBestand"
