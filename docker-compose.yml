@@ -256,7 +256,7 @@ services:
     labels:
       - "logging=true"
   document-release:
-    image: kanselarij/document-release-service:1.0.0
+    image: kanselarij/document-release-service:1.0.1
     logging: *default-logging
     restart: always
     labels:
