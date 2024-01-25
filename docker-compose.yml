@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.9.5
+    image: kanselarij/frontend-kaleidos:6.9.6
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -280,7 +280,7 @@ services:
       - "logging=true"
   lod-sbmb:
     # Trigger needs to be configured in server cron
-    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n decreet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
+    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n reet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
     # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
     image: kanselarij/lod-sbmb:1.11.0
     volumes:
@@ -361,7 +361,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.3.9
+    image: kanselarij/decision-report-generation-service:0.4.0
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -385,7 +385,7 @@ services:
     security_opt:
       - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.1.6
+    image: kanselarij/minutes-report-generation-service:0.1.7
     volumes:
       - ./data/files:/share
   digital-signing:
