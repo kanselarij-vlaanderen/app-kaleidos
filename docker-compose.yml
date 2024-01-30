@@ -280,7 +280,7 @@ services:
       - "logging=true"
   lod-sbmb:
     # Trigger needs to be configured in server cron
-    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n reet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
+    # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n dereet -f decret -t DECREE -o /data -c /data/cache -w 10 && mv ./data/staatsblad/decreet* ./data/staatsblad/nl && mv ./data/staatsblad/decret* ./data/staatsblad/fr
     # cd /data/app-kaleidos && /usr/local/bin/docker-compose run lod-sbmb -g -s $(date +\%Y) -e $(date +\%Y) -n besluit -f arrete -t DECISION -o /data -c /data/cache -w 10 && mv ./data/staatsblad/besluit* ./data/staatsblad/nl && mv ./data/staatsblad/arrete* ./data/staatsblad/fr
     image: kanselarij/lod-sbmb:1.11.0
     volumes:
