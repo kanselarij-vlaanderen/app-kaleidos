@@ -159,6 +159,12 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id
   end
 
+  ### Submission of subcases on meeting
+
+  match "/meetings/:meeting_id/submit", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
+  end
+
   ### Themis export
 
   post "/meetings/:meeting_id/themis-export" do
