@@ -522,6 +522,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/mark-pieces-for-signing"
   end
 
+  get "/signing-flows/job/:id", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/job/" <> id
+  end
+
   get "/mail-folders/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end

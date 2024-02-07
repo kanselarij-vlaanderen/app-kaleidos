@@ -150,6 +150,12 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp prepare_sign_flow_job_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/PrepareSignFlowJob",
+    ]
+  end
+
   defp publication_resource_types() do
     [
       "http://mu.semte.ch/vocabularies/ext/publicatie/Publicatieaangelegenheid",
@@ -586,6 +592,7 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
               resource_types: sign_resource_types()
+              ++ prepare_sign_flow_job_types()
             }
           }
         ]
