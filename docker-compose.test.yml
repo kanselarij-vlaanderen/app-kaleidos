@@ -50,9 +50,6 @@ services:
       NODE_ENV: "development"
       DEBUG: "true"
       DELTA_INTERVAL_MS: 10000
-  chrome-browser:
-    volumes:
-      - ./testdata/files:/share
   decision-report-generation:
     volumes:
       - ./testdata/files:/share

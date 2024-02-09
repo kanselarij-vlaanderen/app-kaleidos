@@ -376,14 +376,6 @@ services:
     restart: always
     labels:
       - "logging=true"
-  chrome-browser:
-    image: kanselarij/chrome-browser-service:0.0.1
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-    security_opt:
-      - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
     image: kanselarij/minutes-report-generation-service:0.1.7
     volumes:
