@@ -206,6 +206,7 @@ export default [
     'http://mu.semte.ch/graphs/organizations/minister',
     'http://mu.semte.ch/graphs/public',
     'http://mu.semte.ch/graphs/system/email',
+    'http://mu.semte.ch/graphs/system/signing',
   ].map((graph) => {
     return {
       match: { graph: { value: graph } },

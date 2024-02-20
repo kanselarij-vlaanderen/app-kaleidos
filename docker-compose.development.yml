@@ -123,8 +123,11 @@ services:
   delta-producer:
     image: lblod/sink-service:1.0.0
     restart: "no"
+  delta-consumer:
+    image: lblod/sink-service:1.0.0
+    restart: "no"
   fileshare:
-    entrypoint: "echo 'service disabled'"
+    image: lblod/sink-service:1.0.0
     restart: "no"
   # kibana:
   #   image: docker.elastic.co/kibana/kibana:7.17.0

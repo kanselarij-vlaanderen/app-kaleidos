@@ -12,6 +12,10 @@ x-extended-logging:
     max-size: "50m"
     max-file: "20"
 services:
+  project-scripts:
+    image: semtech/simple-script-store:1.0.0
+    volumes:
+      - ./config/project-scripts:/app/scripts
   identifier:
     image: semtech/mu-identifier:1.10.0
     logging: *default-logging
