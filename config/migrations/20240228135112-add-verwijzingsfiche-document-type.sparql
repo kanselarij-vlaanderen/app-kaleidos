@@ -1,0 +1,29 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?documentType schema:position ?oldPosition .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?documentType schema:position ?newPosition .
+
+    <http://themis.vlaanderen.be/id/concept/document-type/205bb487-127c-43c6-9a8a-9b397a99f056> a skos:Concept, ext:DocumentType ;
+      mu:uuid "205bb487-127c-43c6-9a8a-9b397a99f056" ;
+      skos:prefLabel "Verwijzingsfiche" ;
+      skos:altLabel "Verwijzingsfiche" ;
+      schema:position 43 ;
+      skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/559774e3-061c-4f4b-a758-57228d4b68cd> .
+  }
+}
+WHERE {
+  VALUES (?documentType ?oldPosition ?newPosition) {
+    (<http://themis.vlaanderen.be/id/concept/document-type/8ae796bd-690a-4ed6-855c-c4572e883066> 43 44)
+    (<http://themis.vlaanderen.be/id/concept/document-type/3f6ed920-7cd0-4296-a5b7-eb06d77ca5f4> 44 45)
+    (<http://themis.vlaanderen.be/id/concept/document-type/361f3132-d763-412d-8d16-609ad664055c> 45 46)
+  }
+}
