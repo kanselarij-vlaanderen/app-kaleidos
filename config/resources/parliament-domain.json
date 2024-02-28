@@ -67,6 +67,11 @@
           "predicate": "parl:parlementaireIndieningsactiviteiten",
           "target": "parliament-submission-activity",
           "cardinality": "many"
+        },
+        "parliament-retrieval-activities": {
+          "predicate": "parl:parlementaireOphalingsactiviteit",
+          "target": "parliament-retrieval-activity",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-procedurestap/"
@@ -157,6 +162,87 @@
         }
       },
       "new-resource-base": "http://themis.vlaanderen.be/id/parlementair-ingediend-stuk/"
+    },
+    "parliament-retrieval-activities": {
+      "name": "parliament-retrieval-activity",
+      "class": "parl:ParlementaireOphalingsactiviteit",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "themes": {
+          "type": "string-set",
+          "predicate": "dct:description"
+        }
+      },
+      "relationships": {
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireOphalingsactiviteit",
+          "target": "parliament-subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "retrieved-pieces": {
+          "predicate": "parl:opgehaaldStuk",
+          "target": "retrieved-piece",
+          "cardinality": "many"
+        },
+        "generated-subcase": {
+          "predicate": "prov:generated",
+          "target": "subcase",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-ophalingsactiviteit"
+    },
+    "retrieved-pieces": {
+      "name": "retrieved-piece",
+      "class": "parl:OpgehaaldStuk",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "comment": {
+          "type": "string",
+          "predicate": "schema:comment"
+        },
+        "unsigned-file": {
+          "type": "uri",
+          "predicate": "parl:ongetekendBestand"
+        },
+        "word-file": {
+          "type": "uri",
+          "predicate": "parl:wordBestand"
+        },
+        "unsigned-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:ongetekendBestandId"
+        },
+        "word-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:wordBestandId"
+        }
+      },
+      "relationships": {
+        "parliamentary-retrieval-activity": {
+          "predicate": "parl:opgehaaldStuk",
+          "target": "parliamentary-retrieval-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "piece": {
+          "predicate": "parl:heeftOpgehaaldStuk",
+          "target": "piece",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementair-opgehaald-stuk/"
     }
   }
 }

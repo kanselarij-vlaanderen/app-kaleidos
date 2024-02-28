@@ -79,6 +79,9 @@
             (submission-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
+            (retrieved-piece            :via ,(s-prefix "parl:heeftOpgehaaldStuk")
+                                        :inverse t
+                                        :as "retrieved-piece")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t
