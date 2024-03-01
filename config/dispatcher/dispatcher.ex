@@ -578,6 +578,12 @@ defmodule Dispatcher do
   match "/submitted-pieces/*path", @json_service do
     Proxy.forward conn, path, "http://cache/submitted-pieces/"
   end
+  match "/parliament-retrieval-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-retrieval-activities/"
+  end
+  match "/retrieved-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/retrieved-pieces/"
+  end
   match "/vlaams-parlement-sync/*path", @json_service do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
