@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.10.3
+    image: kanselarij/frontend-kaleidos:6.10.12
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -111,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.13.0
+    image: kanselarij/cache-warmup-service:1.14.0
     logging: *default-logging
     restart: always
     labels:
@@ -456,7 +456,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.2.2
+    image: kanselarij/vlaams-parlement-sync-service:0.3.5
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
@@ -464,7 +464,7 @@ services:
       - ENABLE_SENDING_TO_VP_API=true
       - ENABLE_DEBUG_FILE_WRITING=false
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.0.2
+    image: kanselarij/agenda-submission-service:1.1.0
     labels:
       - "logging=true"
     restart: always

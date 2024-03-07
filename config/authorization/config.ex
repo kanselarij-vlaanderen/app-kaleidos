@@ -202,6 +202,8 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireOphalingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/parlement/IngediendStuk",
       "http://mu.semte.ch/vocabularies/ext/parlement/OpgehaaldStuk",
+      "http://mu.semte.ch/vocabularies/ext/SendToVpJob",
+      "http://mu.semte.ch/vocabularies/ext/SendToVpJobContext",
     ]
   end
 
