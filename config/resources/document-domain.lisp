@@ -107,6 +107,9 @@
               (submitted-piece          :via ,(s-prefix "parl:heeftStuk")
                                         :inverse t
                                         :as "submitted-pieces")
+              (retrieved-piece          :via ,(s-prefix "parl:heeftOpgehaaldStuk")
+                                        :inverse t
+                                        :as "retrieved-pieces")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)

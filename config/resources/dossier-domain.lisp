@@ -68,7 +68,10 @@
              (mandatee                :via ,(s-prefix "ext:indiener")
                                       :as "requested-by")
              (user                    :via ,(s-prefix "ext:modifiedBy")
-                                      :as "modified-by"))
+                                      :as "modified-by")
+             (parliament-retrieval-activity :via ,(s-prefix "prov:generated")
+                                            :inverse t
+                                            :as "parliament-retrieval-activity"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
