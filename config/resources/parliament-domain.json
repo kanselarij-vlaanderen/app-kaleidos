@@ -230,9 +230,9 @@
         }
       },
       "relationships": {
-        "parliamentary-retrieval-activity": {
+        "parliament-retrieval-activity": {
           "predicate": "parl:opgehaaldStuk",
-          "target": "parliamentary-retrieval-activity",
+          "target": "parliament-retrieval-activity",
           "cardinality": "one",
           "inverse": true
         },
