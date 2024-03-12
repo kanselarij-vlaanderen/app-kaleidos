@@ -464,7 +464,7 @@ services:
       - ENABLE_SENDING_TO_VP_API=true
       - ENABLE_DEBUG_FILE_WRITING=false
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.1.0
+    image: kanselarij/agenda-submission-service:1.1.1
     labels:
       - "logging=true"
     restart: always
