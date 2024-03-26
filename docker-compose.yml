@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.11.1
+    image: kanselarij/frontend-kaleidos:6.11.2
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -381,7 +381,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.0.0
+    image: kanselarij/digital-signing-service:2.1.0
     volumes:
       - ./data/files:/share
     restart: always
@@ -455,14 +455,28 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  pdf-signature-remover:
+    image: kanselarij/pdf-signature-remover:0.1.0
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'signature-removed-pdfs'
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.3.10
+    image: kanselarij/vlaams-parlement-sync-service:0.5.0
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
     environment:
       - ENABLE_SENDING_TO_VP_API=true
       - ENABLE_DEBUG_FILE_WRITING=false
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *extended-logging
   agenda-submission:
     image: kanselarij/agenda-submission-service:1.1.1
     labels:

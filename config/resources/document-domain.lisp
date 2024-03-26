@@ -79,6 +79,9 @@
             (submission-activity        :via ,(s-prefix "prov:generated")
                                         :inverse t
                                         :as "submission-activity")
+            (subcase                    :via ,(s-prefix "ext:heeftBekrachtiging")
+                                        :inverse t
+                                        :as "ratification-subcase")
   )
   :has-many `((case                     :via ,(s-prefix "dossier:Dossier.bestaatUit")
                                         :inverse t

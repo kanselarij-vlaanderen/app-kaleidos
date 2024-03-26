@@ -88,6 +88,10 @@
           "type": "datetime",
           "predicate": "dossier:Procedurestap.einddatum"
         },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
         "comment": {
           "type": "string",
           "predicate": "dct:description"
