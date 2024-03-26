@@ -455,6 +455,15 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  pdf-signature-remover:
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'signature-removed-pdfs'
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   vlaams-parlement-sync:
     image: kanselarij/vlaams-parlement-sync-service:0.4.0
     volumes:
