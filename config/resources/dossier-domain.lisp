@@ -71,9 +71,13 @@
                                       :as "modified-by")
              (parliament-retrieval-activity :via ,(s-prefix "prov:generated")
                                             :inverse t
-                                            :as "parliament-retrieval-activity"))
+                                            :as "parliament-retrieval-activity")
+             (piece                   :via ,(s-prefix "ext:heeftBekrachtiging")
+                                      :as "ratification"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
+              (mandatee               :via ,(s-prefix "ext:bekrachtigdDoor")
+                                      :as "ratified-by")
               (piece                  :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; NOTE: instead of dct:hasPart (mu-cl-resources relation type checking workaround)
                                       :as "linked-pieces")
               (agenda-activity        :via ,(s-prefix "besluitvorming:vindtPlaatsTijdens") ;; TODO: but others as wel. mu-cl-resources polymorphism limitation. Rename to agenderingVindtPlaatsTijdens ?

@@ -9,6 +9,9 @@
   :has-many `((subcase             :via ,(s-prefix "ext:heeftBevoegde")
                                   :inverse t
                                   :as "subcases")
+             (subcase             :via ,(s-prefix "ext:bekrachtigdDoor")
+                                  :inverse t
+                                  :as "ratified-subcases")
              (publication-flow    :via ,(s-prefix "ext:heeftBevoegdeVoorPublicatie")
                                   :inverse t
                                   :as "publication-flows")
