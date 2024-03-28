@@ -155,6 +155,12 @@
         }
       },
       "relationships": {
+        "parliament-submission-activity": {
+          "predicate": "parl:ingediendStuk",
+          "target": "parliament-submission-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
         "piece": {
           "predicate": "parl:heeftStuk",
           "target": "piece",
