@@ -1,0 +1,17 @@
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thParlFlowStatus: <http://themis.vlaanderen.be/id/parlementaireaangelegenheid-status/> .
+
+thParlFlowStatus:d30fdd4d-ba47-437d-b72e-4bff02e8c3fb
+    skos:altLabel "Onvolledig verstuurd"@nl .
+
+thParlFlowStatus:018fb31c-44ad-4bf5-b01b-76de2d48abf4
+    skos:altLabel "Volledig verstuurd"@nl .
+
+thParlFlowStatus:3905d9a1-c841-42fc-8a89-3b7d4ad61b4b
+    skos:altLabel "In behandeling"@nl .
+
+thParlFlowStatus:879aed2f-6efa-4d7b-ab1b-13cc406b1f92 
+    skos:altLabel "Ontvangen"@nl .
