@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.11.6
+    image: kanselarij/frontend-kaleidos:6.11.7
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -224,7 +224,7 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:1.0.0
+    image: kanselarij/docx-conversion-service:2.0.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -456,7 +456,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-signature-remover:
-    image: kanselarij/pdf-signature-remover:0.1.0
+    image: kanselarij/pdf-signature-remover:0.1.1
     volumes:
       - ./data/files:/share
     environment:
@@ -466,7 +466,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.5.0
+    image: kanselarij/vlaams-parlement-sync-service:0.5.4
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
