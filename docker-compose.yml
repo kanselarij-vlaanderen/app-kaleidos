@@ -196,7 +196,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.21.0
+    image: kanselarij/yggdrasil:5.22.0
     logging: *default-logging
     restart: always
     labels:
