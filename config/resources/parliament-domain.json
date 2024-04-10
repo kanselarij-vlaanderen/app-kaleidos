@@ -185,6 +185,10 @@
           "type": "datetime",
           "predicate": "dossier:Procedurestap.einddatum"
         },
+        "authority-domain": {
+          "type": "string",
+          "predicate": "ext:bevoegdheidsdomein"
+        },
         "themes": {
           "type": "string-set",
           "predicate": "dct:description"
