@@ -187,7 +187,7 @@
         },
         "authority-domain": {
           "type": "string",
-          "predicate": "ext:bevoegdheidsdomein"
+          "predicate": "parl:bevoegdheidsdomein"
         },
         "themes": {
           "type": "string-set",
