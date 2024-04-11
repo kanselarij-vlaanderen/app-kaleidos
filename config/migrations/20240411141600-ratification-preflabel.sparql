@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/procedurestap-type/bdba2bbc-7af6-490b-98a8-433955cfe869> skos:prefLabel ?l .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/procedurestap-type/bdba2bbc-7af6-490b-98a8-433955cfe869> skos:prefLabel "bekrachtiging en afkondiging" .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/concept/procedurestap-type/bdba2bbc-7af6-490b-98a8-433955cfe869> skos:prefLabel ?l .
+    }
+}
