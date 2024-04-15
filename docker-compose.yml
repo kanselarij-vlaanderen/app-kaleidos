@@ -483,3 +483,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  document-stamping:
+    image: kanselarij/document-stamping-service:1.0.0
+    volumes:
+      - ./data/files:/share
