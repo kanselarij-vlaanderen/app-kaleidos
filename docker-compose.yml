@@ -483,3 +483,9 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  document-naming:
+    image: kanselarij/document-naming-service:1.0.0
+    labels:
+      - logging=true
+    restart: always
+    logging: *default-logging
