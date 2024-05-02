@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:latest
+    image: sergiofenoll/sparql-parser:072bb76091fb5845b61c2cf5c4c8ffd02bb9469f
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
