@@ -103,7 +103,7 @@ services:
     labels:
       - "logging=true"
   delta-notifier:
-    image: semtech/mu-delta-notifier:0.1.0
+    image: semtech/mu-delta-notifier:0.3.1
     volumes:
       - ./config/delta:/config
     logging: *default-logging
