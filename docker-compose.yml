@@ -371,7 +371,7 @@ services:
     volumes:
       - ./data/files:/share
   shortlist:
-    image: kanselarij/shortlist-service:0.1.3
+    image: kanselarij/shortlist-service:0.1.4
     logging: *default-logging
     restart: always
     labels:
