@@ -123,6 +123,9 @@ services:
     links:
       - resource:backend
     logging: *default-logging
+    environment:
+      LOG_CACHE_KEYS: "true"
+      LOG_CLEAR_KEYS: "true"
     restart: always
     labels:
       - "logging=true"
