@@ -57,7 +57,8 @@
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk")) ;; This is seen as "Beperkte toegang" in frontend
                 (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:created             :datetime ,(s-prefix "dct:created"))
-                (:modified            :datetime ,(s-prefix "ext:modified")))
+                (:modified            :datetime ,(s-prefix "ext:modified"))
+                (:agenda-activity-number :integer ,(s-prefix "adms:identifier")))
   :has-one `((decisionmaking-flow     :via ,(s-prefix "dossier:doorloopt")
                                       :inverse t
                                       :as "decisionmaking-flow")
