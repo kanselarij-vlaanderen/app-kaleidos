@@ -12,7 +12,8 @@
   "when non-nil, all paginated listings will contain the number
    of responses in the result object's meta.")
 (defparameter *max-group-sorted-properties* nil)
-(defparameter sparql:*query-log-types* nil)
+;; (defparameter sparql:*query-log-types* nil)
+(defparameter sparql:*query-log-types* '(:default :update-group :update :query :ask))
 
 (in-package :sparql)
 (defparameter *experimental-no-application-graph-for-sudo-select-queries* t)
