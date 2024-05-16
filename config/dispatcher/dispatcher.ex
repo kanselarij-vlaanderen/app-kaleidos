@@ -587,11 +587,14 @@ defmodule Dispatcher do
   match "/vlaams-parlement-sync/*path", @json_service do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
+
+  ### Document Naming
   match "/document-naming/*path", @json_service do
     Proxy.forward conn, path, "http://document-naming/"
   end
 
-  match "/document-stamping/*path", %{ layer: :api } do
+  ### Document Stamping
+  match "/document-stamping/*path", @json_service do
     Proxy.forward conn, path, "http://document-stamping/"
   end
 
