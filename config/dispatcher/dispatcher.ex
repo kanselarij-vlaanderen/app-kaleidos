@@ -591,6 +591,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://document-naming/"
   end
 
+  match "/document-stamping/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://document-stamping/"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do
