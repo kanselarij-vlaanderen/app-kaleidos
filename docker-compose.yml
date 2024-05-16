@@ -377,7 +377,7 @@ services:
     labels:
       - "logging=true"
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.1.7
+    image: kanselarij/minutes-report-generation-service:0.1.8
     volumes:
       - ./data/files:/share
   digital-signing:
