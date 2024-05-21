@@ -483,3 +483,17 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  document-naming:
+    image: kanselarij/document-naming-service:1.0.2
+    labels:
+      - logging=true
+    restart: always
+    logging: *default-logging
+  document-stamping:
+    image: kanselarij/document-stamping-service:1.0.1
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'stamped-pdfs'
+    restart: always
+    logging: *default-logging
