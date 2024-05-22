@@ -172,3 +172,7 @@ services:
     restart: "no"
   agenda-submission:
     restart: "no"
+  document-naming:
+    restart: "no"
+  document-stamping:
+    restart: "no"
