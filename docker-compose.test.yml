@@ -64,3 +64,6 @@ services:
   digital-signing:
     volumes:
       - ./testdata/files:/share
+  document-stamping:
+    volumes:
+      - ./testdata/files:/share

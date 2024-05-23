@@ -404,6 +404,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  get "/jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/jobs/"
+  end
+
   # PUBLICATION-FLOW
   match "/publication-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/publication-flows/search/"
@@ -513,7 +517,7 @@ defmodule Dispatcher do
   delete "/signing-flows/:signing_flow_id", @json_service do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id
   end
-  
+
   get "/digital-signing/health-check", @json_service do
     Proxy.forward conn, [], "http://digital-signing/verify-credentials"
   end
@@ -586,6 +590,16 @@ defmodule Dispatcher do
   end
   match "/vlaams-parlement-sync/*path", @json_service do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
+  end
+
+  ### Document Naming
+  match "/document-naming/*path", @json_service do
+    Proxy.forward conn, path, "http://document-naming/"
+  end
+
+  ### Document Stamping
+  match "/document-stamping/*path", @json_service do
+    Proxy.forward conn, path, "http://document-stamping/"
   end
 
   ## Fallback
