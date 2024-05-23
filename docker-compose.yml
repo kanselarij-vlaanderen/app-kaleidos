@@ -490,7 +490,7 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:1.0.1
+    image: kanselarij/document-stamping-service:1.1.0
     volumes:
       - ./data/files:/share
     environment:
