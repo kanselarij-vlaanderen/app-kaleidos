@@ -404,6 +404,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  get "/jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/jobs/"
+  end
+
   # PUBLICATION-FLOW
   match "/publication-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/publication-flows/search/"
