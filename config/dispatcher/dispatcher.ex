@@ -592,6 +592,26 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
 
+  match "/submissions/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/subsmissions/"
+  end
+
+  match "/submission-status-change-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submission-status-change-activities/"
+  end
+
+  match "/draft-document-containers/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-document-containers/"
+  end
+
+  match "/draft-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-pieces/"
+  end
+
+  match "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-files/"
+  end
+
   ### Document Naming
   match "/document-naming/*path", @json_service do
     Proxy.forward conn, path, "http://document-naming/"

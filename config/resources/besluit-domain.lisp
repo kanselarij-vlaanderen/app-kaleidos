@@ -29,8 +29,8 @@
 (define-resource agendastatus ()
   :class (s-prefix "kans:AgendaStatus")
   :properties `((:label       :string ,(s-prefix "skos:prefLabel"))
-                  (:scope-note  :string ,(s-prefix "skos:scopeNote"))
-                  (:alt-label   :string ,(s-prefix "skos:altLabel")))
+                (:scope-note  :string ,(s-prefix "skos:scopeNote"))
+                (:alt-label   :string ,(s-prefix "skos:altLabel")))
   :has-many `((agenda     :via        ,(s-prefix "besluitvorming:agendaStatus")
                           :inverse t
                           :as "agendas")
@@ -93,19 +93,19 @@
   :class (s-prefix "besluit:BehandelingVanAgendapunt")
   :properties `(
                 (:created     :datetime   ,(s-prefix "dct:created"))
-                (:modified    :datetime   ,(s-prefix "dct:modified"))
-                )
+                (:modified    :datetime   ,(s-prefix "dct:modified")))
+                
   :has-one `((decision-activity     :via ,(s-prefix "besluitvorming:heeftBeslissing"),
                                     :as "decision-activity")
              (news-item             :via ,(s-prefix "prov:wasDerivedFrom")
                                     :inverse t
-                                    :as "news-item")
-            )
+                                    :as "news-item"))
+            
   :has-many `(
              ;; agenda-item-treatment has multiple agenda-items in the sense that there is one
              ;; agenda-item version per version of the agenda
-             (agendaitem            :via        ,(s-prefix "dct:subject")
-                                    :as "agendaitems"))
+              (agendaitem            :via        ,(s-prefix "dct:subject")
+                                     :as "agendaitems"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/behandeling-van-agendapunt/")
   :features '(include-uri)
   :on-path "agenda-item-treatments")
@@ -125,8 +125,8 @@
              (concept               :via        ,(s-prefix "besluitvorming:resultaat")
                                     :as "decision-result-code")
              (mandatee              :via        ,(s-prefix "prov:wasAssociatedWith")
-                                    :as "secretary")
-            )
+                                    :as "secretary"))
+            
   :has-many `(
               ; Omdat de mu-cl-resources configuratie momenteel onze meest accurate documentatie is over huidig model / huidige data, laat ik 'm er toch graag in. Dit predicaat is in-data veel aanwezig (en waardevolle data), en zal in de toekomst terug opgepikt worden
               ; (piece      :via ,(s-prefix "prov:used")
@@ -136,8 +136,8 @@
                                     :as "publication-flows")
               (sign-flow            :via ,(s-prefix "sign:heeftBeslissing"),
                                     :inverse t
-                                    :as "sign-flows")
-            )
+                                    :as "sign-flows"))
+            
   :resource-base (s-url "http://themis.vlaanderen.be/id/beslissingsactiviteit/")
   :features '(include-uri)
   :on-path "decision-activities")
@@ -194,7 +194,10 @@
                                         :as "sign-flows")
               (themis-publication-activity :via   ,(s-prefix "prov:used")
                                            :inverse t
-                                           :as "themis-publication-activities"))
+                                           :as "themis-publication-activities")
+              (submission                :via ,(s-prefix "subm:ingediendVoorVergadering")
+                                         :inverse t
+                                         :as "submissions"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt") ;; Final agenda version that is treatened during the meeting
                                         :as "agenda")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently
