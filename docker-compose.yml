@@ -497,3 +497,13 @@ services:
       MU_APPLICATION_FILE_STORAGE_PATH: 'stamped-pdfs'
     restart: always
     logging: *default-logging
+  draft-file:
+    image: kanselarij/draft-file-service:0.0.1
+    environment:
+      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

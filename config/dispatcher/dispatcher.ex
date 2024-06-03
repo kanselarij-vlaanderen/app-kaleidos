@@ -61,6 +61,18 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
+  get "/draft-files/:id/download", %{ layer: :api } do
+    Proxy.forward conn, [], "http://draft-file/files/" <> id <> "/download"
+  end
+
+  post "/draft-files/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
+  delete "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
   ### Mirror sync producer
 
   match "/sync/*path", %{} do
@@ -161,8 +173,16 @@ defmodule Dispatcher do
 
   ### Submission of subcases on meeting
 
-  match "/meetings/:meeting_id/submit", @json_service do
+  post "/meetings/:meeting_id/submit", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
+  end
+
+  post "/meetings/:meeting_id/submit-submission", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit-submission"
+  end
+
+  get "/meetings/open", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/open-meetings"
   end
 
   ### Themis export
@@ -593,7 +613,7 @@ defmodule Dispatcher do
   end
 
   match "/submissions/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/subsmissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
 
   match "/submission-status-change-activities/*path", @json_service do
@@ -606,10 +626,6 @@ defmodule Dispatcher do
 
   match "/draft-pieces/*path", @json_service do
     Proxy.forward conn, path, "http://cache/draft-pieces/"
-  end
-
-  match "/draft-files/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/draft-files/"
   end
 
   ### Document Naming
@@ -636,4 +652,4 @@ defmodule Dispatcher do
     send_resp( conn, 404, "Route not found. See config/dispatcher.ex" )
   end
 
-end
+ end
