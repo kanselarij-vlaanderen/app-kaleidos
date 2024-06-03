@@ -48,7 +48,7 @@
   ;; (:userroles "http://themis.vlaanderen.be/id/gebruikersrol/")
   ;; Generic ontologies
   :schema "http://schema.org/"
-  :foaf "http://xmlns.com/foaf/0.1./"
+  :foaf "http://xmlns.com/foaf/0.1/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :person "http://www.w3.org/ns/person#"
   :adms "http://www.w3.org/ns/adms#"
