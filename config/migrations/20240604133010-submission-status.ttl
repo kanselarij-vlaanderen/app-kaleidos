@@ -1,0 +1,37 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+
+thConceptScheme:ebfe253c-0537-11ee-bb35-ee395168dcf7 a skos:ConceptScheme ;
+  mu:uuid "9ee8c485-e750-4982-a2b7-3f17d390331d" ;
+  skos:prefLabel "Indiening statussen" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/b8a0cec4-60d5-431e-b27f-9696bde22552> a skos:Concept ;
+    mu:uuid "b8a0cec4-60d5-431e-b27f-9696bde22552" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "Ingediend" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/1fa83eac-e995-4d0f-8a02-6c6e66ade185> a skos:Concept ;
+    mu:uuid "1fa83eac-e995-4d0f-8a02-6c6e66ade185" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "In behandeling" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/b6e33771-665b-4af2-9f1d-41405d1a24d3> a skos:Concept ;
+    mu:uuid "b6e33771-665b-4af2-9f1d-41405d1a24d3" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "Teruggestuurd" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/b27cd825-72ae-44b0-b1ea-9dafdebe4e85> a skos:Concept ;
+    mu:uuid "b27cd825-72ae-44b0-b1ea-9dafdebe4e85" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "Opnieuw ingediend" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/11c6fd4b-c4d9-4cd4-9a8a-2fa2820e9353> a skos:Concept ;
+    mu:uuid "11c6fd4b-c4d9-4cd4-9a8a-2fa2820e9353" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "Update ingediend" .
+
+<http://themis.vlaanderen.be/id/indieningstatus/dd4f1819-a70d-453f-95cb-ab5ade98563e> a skos:Concept ;
+    mu:uuid "dd4f1819-a70d-453f-95cb-ab5ade98563e" ;
+    skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
+    skos:prefLabel "Aanvaard" .
