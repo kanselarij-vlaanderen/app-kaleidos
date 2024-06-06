@@ -404,6 +404,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  get "/document-naming-jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://resource/document-naming-jobs/"
+  end
+
   get "/jobs/*path", @json_service do
     Proxy.forward conn, path, "http://cache/jobs/"
   end

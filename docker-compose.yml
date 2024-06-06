@@ -166,7 +166,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.11.0
+    image: kanselarij/agenda-approve-service:5.11.1
     logging: *default-logging
     restart: always
     labels:
@@ -484,7 +484,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.0.6
+    image: kanselarij/document-naming-service:1.0.7
     labels:
       - logging=true
     restart: always
