@@ -578,6 +578,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
 
+  match "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-files/"
+  end
+
 
   ### Decision extraction
   match "/decision-extraction/*path", @json_service do
