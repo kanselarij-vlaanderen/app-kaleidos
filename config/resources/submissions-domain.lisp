@@ -43,7 +43,7 @@
   :features '(include-uri)
   :on-path "submissions")
 
-(define-resource submission-status-change-activity (activity)
+(define-resource submission-status-change-activity ()
   :class (s-prefix "subm:StatusVeranderingsActiviteit")
   :properties `((:started-at          :datetime,(s-prefix "prov:startedAtTime"))
                 (:comment             :string ,(s-prefix "schema:comment")))
