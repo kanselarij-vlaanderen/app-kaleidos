@@ -77,10 +77,7 @@
                                             :inverse t
                                             :as "parliament-retrieval-activity")
              (piece                   :via ,(s-prefix "ext:heeftBekrachtiging")
-                                      :as "ratification")
-             (submission              :via ,(s-prefix "subm:ingediendVoorProcedurestap")
-                                      :inverse t
-                                      :as "submission"))
+                                      :as "ratification"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (mandatee               :via ,(s-prefix "ext:bekrachtigdDoor")
@@ -101,7 +98,10 @@
                                       :inverse t
                                       :as "decision-activities")
               (concept                :via ,(s-prefix "besluitvorming:beleidsveld")
-                                      :as "government-areas"))
+                                      :as "government-areas")
+              (submission             :via ,(s-prefix "subm:ingediendVoorProcedurestap")
+                                      :inverse t
+                                      :as "submissions"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
