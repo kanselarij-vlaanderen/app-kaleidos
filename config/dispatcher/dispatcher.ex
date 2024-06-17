@@ -165,6 +165,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
   end
 
+  post "/agendas/:agenda_id/reorder", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/agendas/" <> agenda_id <> "/reorder"
+  end
+
   ### Themis export
 
   post "/meetings/:meeting_id/themis-export" do
