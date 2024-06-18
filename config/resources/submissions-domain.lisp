@@ -1,9 +1,8 @@
 (define-resource submission ()
   :class (s-prefix "subm:Indiening")
   :properties `((:short-title         :string ,(s-prefix "dct:alternative"))
-                (:title               :string ,(s-prefix "dct:title"))
+                (:title               :string ,(s-prefix "dct:title")) ;; This is used to set the title of the new decisionmaking flow
                 (:confidential        :boolean   ,(s-prefix "ext:vertrouwelijk"))
-                (:subcase-name        :string ,(s-prefix "ext:procedurestapNaam"))
                 (:planned-start       :datetime ,(s-prefix "subm:geplandeStart"))
                 (:created             :datetime ,(s-prefix "dct:created"))
                 (:modified            :datetime ,(s-prefix "ext:modified"))
@@ -20,7 +19,7 @@
              (concept                 :via ,(s-prefix "ext:agendapuntType")
                                       :as "agenda-item-type")
              (concept                 :via ,(s-prefix "adms:status")
-                                      :as "status")
+                                      :as "status") ;; Submission status - concept scheme: http://themis.vlaanderen.be/id/concept-scheme/ebfe253c-0537-11ee-bb35-ee395168dcf7
              (mandatee                :via ,(s-prefix "ext:indiener") ;; Opmerking: deze wordt automatisch ingesteld door te kijken wat de mandatee van de organisatie van de gebruiker is
                                       :as "requested-by")
              (user                    :via ,(s-prefix "ext:modifiedBy")

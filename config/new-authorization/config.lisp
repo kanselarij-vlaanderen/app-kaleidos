@@ -16,7 +16,7 @@
       ;;       "http://triplestore2:8890/sparql"
       ;;       "http://triplestore3:8890/sparql"
       ;;       )
-      
+
 
 (in-package :server)
 (setf *log-incoming-requests-p* t)
@@ -66,7 +66,7 @@
   ;; European ontologyies
   :eli "http://data.europa.eu/eli/ontology#"
   :euvoc "http://publications.europa.eu/ontology/euvoc#")
-  
+
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; Access queries
@@ -536,7 +536,7 @@
   ("subm:StatusVeranderingsActiviteit" -> _)
   ("subm:Serie" -> _)
   ("subm:VoorlopigStuk" -> _)
-  ("subm:VoorloopigBestand" -> _))
+  ("subm:VoorlopigBestand" -> _))
 
 (supply-allowed-group "submissions-read"
                       :query (query-for-roles

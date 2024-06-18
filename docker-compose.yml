@@ -500,7 +500,7 @@ services:
   draft-file:
     image: kanselarij/draft-file-service:0.0.1
     environment:
-      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
+      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
     volumes:
       - ./data/files:/share
     logging: *default-logging
