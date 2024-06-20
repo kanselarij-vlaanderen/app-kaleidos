@@ -5,7 +5,7 @@
 
 ## Development
 
-A supplementary `docker-compose.development.yml`-file is provided in order to tweak the stack-setup for development purposes. Among other changes, this configuration will for instance prevent crashed services from restarting automatically, in order to catch errors quicker.
+A supplementary `docker-compose.development.yml`-file is provided in order to tweak the stack-setup for development purposes. Among other changes, this configuration will for instance prevent crashed services from restarting automatically, in order to catch errors quicker. It also disables certain services that generally aren't required for development purposes. This is done by replacing 
 
 You can start the stack in development mode by running
 
@@ -13,16 +13,24 @@ You can start the stack in development mode by running
 docker-compose -f docker-compose.yml -f docker-compose.development.yml up
 ```
 
-*Pro tip: The stack consists of some services such as `mu-search` that can potentially consume a lot of resources and often aren't required for basic development-tasks. Adding the following snippet to your `docker-compose.override.yml`-file under `services`, will disable the most resource-consuming services.*
+*Pro tip: The stack consists of some services such as `mu-search` that can potentially consume a lot of resources and often aren't required for basic development-tasks. Adding the following snippet to your `docker-compose.override.yml`-file under `services` will replace the most resource-consuming services with "sink" services that accept all requests but do nothing. This saves on your resources and prevents certain errors from occurring due to the services being down.*
 ```yml
   search:
-    entrypoint: "echo 'service disabled'"
+    image: lblod/sink-service:1.0.0
   tika:
-    entrypoint: "echo 'service disabled'"
+    image: lblod/sink-service:1.0.0
   elasticsearch:
-    entrypoint: "echo 'service disabled'"
+    image: lblod/sink-service:1.0.0
   yggdrasil:
-    entrypoint: "echo 'service disabled'"
+    image: lblod/sink-service:1.0.0
+```
+
+If you need to re-enable a service that is disabled in `docker-compose.development.yml` you can do so by adding the the service to your `docker-compose.override.yml` with the image that's defined in `docker-compose.yml`.
+
+``` yml
+# e.g. delta-consumer is disabled but you want to re-enable it
+  delta-consumer:
+    image: kanselarij/delta-consumer:0.0.1
 ```
 
 ## Data

@@ -1,0 +1,137 @@
+version: '3.4'
+
+# -- LIVE BACKUP (MIRROR) --
+# You can use this example file on servers that will serve as mirrors.
+# Fill in the missing environment variables and either copy-paste the
+# contents into docker-compose.override.yml or start the stack using this file:
+# drc up -d -f docker-compose.yml -f docker-compose.mirror.example.yml
+#
+# This should only be used in mirror mode! When using the mirror server as the
+# LIVE fail-over a regular override file is needed.
+#
+# Make sure to use config/delta/mirror-rules.js instead of rules.js when in
+# mirror mode.
+services:
+  # Consumer extras
+  delta-consumer:
+    image: kanselarij/delta-consumer:0.0.1
+    environment:
+      DCR_SERVICE_NAME: 'consume-from-sync'
+      DCR_SYNC_BASE_URL: 'https://localhost' # replace with link the application hosting the producer server
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://delta-consumer.services.semantic.works/id/JobOperation/DeltaFileSyncing"
+      DCR_JOB_CREATOR_URI: "http://delta-consumer.services.semantic.works/me"
+      DCR_START_FROM_DELTA_TIMESTAMP: "2023-09-13T14:40:00Z"
+      DCR_WAIT_FOR_INITIAL_SYNC: "false"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_SECRET_KEY: "secret-sync-key"
+      DCR_CRON_PATTERN_DELTA_SYNC: "*/15 * * * * *"
+      DOWNLOAD_SHARE_LINKS: "true"
+    volumes:
+      - ./data/files:/share
+      - ./config/consumer/example-custom-dispatching:/config
+
+  # Required services -- database, auth, search, deltas
+  database:
+    environment:
+      QUERY_MAX_PROCESSING_TIME: "60000"
+      QUERY_MAX_EXECUTION_TIME: "45000"
+      DATABASE_OVERLOAD_RECOVERY: "on"
+      LOG_DATABASE_OVERLOAD_TICK: "on"
+      LOG_ACCESS_RIGHTS: "false"
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      LOG_OUTGOING_SPARQL_QUERY_ROUNDTRIP: "false"
+  triplestore:
+    volumes:
+      - ./config/db/virtuoso.production.ini:/data/virtuoso.ini
+  search:
+    environment:
+      NUMBER_OF_THREADS: 32
+  elasticsearch:
+    environment:
+      ES_JAVA_OPTS: "-Xms40g -Xmx40g"
+      http.max_content_length: 2000M
+
+  # Disable extraneous services
+  frontend:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  identifier:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  dispatcher:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  migrations:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  cache-warmup:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  cache:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  resource:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  file:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  agenda-comparison:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  agenda-approve:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  mocklogin:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  login:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  newsletter:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  yggdrasil:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  sink:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  file-bundling:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  file-bundling-job-creation:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  database-healthcheck:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  case-documents-sync:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  document-versions:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  document-release:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  mail-delivery:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  lod-sbmb:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  staatsblad-import:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  staatsblad-uuid-generation:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  staatsblad-linking:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
+  publication-report:
+    entrypoint: "echo 'service disabled; mirror'"
+    restart: "no"
