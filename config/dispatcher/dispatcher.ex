@@ -165,6 +165,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
   end
 
+  post "/agendas/:agenda_id/reorder", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/agendas/" <> agenda_id <> "/reorder"
+  end
+
   ### Themis export
 
   post "/meetings/:meeting_id/themis-export" do
@@ -402,6 +406,10 @@ defmodule Dispatcher do
 
   match "/file-bundling-jobs/*path", @json_service do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
+  end
+
+  get "/document-naming-jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://resource/document-naming-jobs/"
   end
 
   get "/jobs/*path", @json_service do
