@@ -355,7 +355,7 @@ services:
     environment:
       ALLOW_SUPER_CONSUMER: "true"
   impersonation:
-    image: kanselarij/impersonation-service:0.1.0
+    image: kanselarij/impersonation-service:0.2.0
     logging: *default-logging
     restart: always
     labels:

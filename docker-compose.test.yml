@@ -67,3 +67,9 @@ services:
   document-stamping:
     volumes:
       - ./testdata/files:/share
+  pdf-signature-remover:
+    volumes:
+      - ./testdata/files:/share
+  pdf-flattener:
+    volumes:
+      - ./testdata/files:/share
