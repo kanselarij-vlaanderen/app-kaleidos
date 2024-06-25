@@ -134,6 +134,9 @@
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("session:Session" -> _))
+  ;; (_ -> "ext:impersonatedRole"))
+  
+(type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
 
 (define-graph staatsblad ("http://mu.semte.ch/graphs/staatsblad"))
 
@@ -576,3 +579,23 @@
 ;; (grant (read write)
 ;;        :to everything
 ;;        :for-allowed-group "clean")
+
+
+;; For use with sparql-parser:0.0.5, obsolete from 0.0.6
+;; (in-package :delta-messenger)
+
+;; (defun delta-to-jsown (&key inserts deletes effective-inserts effective-deletes scope allowed-groups)
+;;   "Convert delta inserts and deletes message to jsown body for inserts and deletes."
+;;   (let ((delta
+;;           (jsown:new-js
+;;             ("insert" (mapcar #'quad-to-jsown-binding inserts))
+;;             ("delete" (mapcar #'quad-to-jsown-binding deletes))
+;;             ("effectiveInsert" (mapcar #'quad-to-jsown-binding effective-inserts))
+;;             ("effectiveDelete" (mapcar #'quad-to-jsown-binding effective-deletes)))))
+;;     (when allowed-groups
+;;       (setf (jsown:val delta "allowedGroups") (if (equal allowed-groups "sudo")
+;;                                                   "sudo"
+;;                                                   (jsown:to-json allowed-groups))))
+;;     (when (and scope (not (eq scope acl:_)))
+;;       (setf (jsown:val delta "scope") scope))
+;;     delta))
