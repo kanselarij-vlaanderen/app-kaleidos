@@ -49,14 +49,16 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/mu-authorization:0.6.0-beta.8
+    # image: semtech/mu-authorization:0.6.0-beta.8
+    image: semtech/sparql-parser:0.0.6
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       DATABASE_COMPATIBILITY: "Virtuoso"
       DATABASE_OVERLOAD_RECOVERY: "on"
       ERROR_ON_UNWRITTEN_DATA: "on"
     volumes:
-      - ./config/authorization:/config
+      # - ./config/authorization:/config
+      - ./config/new-authorization:/config
     logging: *extended-logging
     restart: always
     labels:
@@ -135,7 +137,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:1.24.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
