@@ -79,6 +79,6 @@
                                 ("errors" (jsown:new-js
                                            ("title" (description condition)))))))
     ;; not sure if we want to enable this again?
-    ;; (error (condition)
-    ;;   (respond-general-server-error))
+    (error (condition)
+      (respond-general-server-error))
       ))
