@@ -3,7 +3,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
 
-<http://themis.vlaanderen.be/id/concept-scheme/ebfe253c-0537-11ee-bb35-ee395168dcf7> a skos:ConceptScheme ;
+<http://themis.vlaanderen.be/id/concept-scheme/9ee8c485-e750-4982-a2b7-3f17d390331d> a skos:ConceptScheme ;
   mu:uuid "9ee8c485-e750-4982-a2b7-3f17d390331d" ;
   skos:prefLabel "Indiening statussen" .
 
