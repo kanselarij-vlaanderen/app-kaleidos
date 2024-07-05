@@ -3,7 +3,8 @@
   :properties `((:created       :datetime  ,(s-prefix "dct:created"))
                 (:status        :url       ,(s-prefix "ext:status"))
                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
-                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime")))
+                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
+                (:message       :string    ,(s-prefix "schema:error")))
 
   :resource-base (s-url "http://themis.vlaanderen.be/id/jobs/")
   :features '(include-uri)
