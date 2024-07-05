@@ -244,6 +244,8 @@ services:
     image: kanselarij/case-documents-sync-service:1.4.0
     logging: *default-logging
     restart: always
+    environment:
+      MAX_BODY_SIZE: "500kb"
     labels:
       - "logging=true"
   gov-field-sync:
