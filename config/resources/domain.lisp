@@ -78,5 +78,7 @@
       (respond-not-acceptable (jsown:new-js
                                 ("errors" (jsown:new-js
                                            ("title" (description condition)))))))
-    (error (condition)
-      (respond-general-server-error))))
+    ;; not sure if we want to enable this again?
+    ;; (error (condition)
+    ;;   (respond-general-server-error))
+      ))
