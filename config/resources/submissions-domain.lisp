@@ -22,6 +22,8 @@
                                       :as "status") ;; Submission status - concept scheme: http://themis.vlaanderen.be/id/concept-scheme/ebfe253c-0537-11ee-bb35-ee395168dcf7
              (mandatee                :via ,(s-prefix "ext:indiener") ;; Opmerking: deze wordt automatisch ingesteld door te kijken wat de mandatee van de organisatie van de gebruiker is
                                       :as "requested-by")
+             (user                    :via ,(s-prefix "dct:creator")
+                                      :as "creator")
              (user                    :via ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by")
              (user                    :via ,(s-prefix "subm:wordtBehandeldDoor")

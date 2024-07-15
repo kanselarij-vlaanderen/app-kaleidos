@@ -624,6 +624,7 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
 
+  ### Cabinet submissions
   match "/submissions/*path", @json_service do
     Proxy.forward conn, path, "http://cache/submissions/"
   end
