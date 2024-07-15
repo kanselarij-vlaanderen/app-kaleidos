@@ -49,7 +49,7 @@
   ;; (:userroles "http://themis.vlaanderen.be/id/gebruikersrol/")
   ;; Generic ontologies
   :schema "http://schema.org/"
-  :foaf "http://xmlns.com/foaf/0.1./"
+  :foaf "http://xmlns.com/foaf/0.1/"
   :skos "http://www.w3.org/2004/02/skos/core#"
   :person "http://www.w3.org/ns/person#"
   :adms "http://www.w3.org/ns/adms#"
@@ -135,6 +135,9 @@
 
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("session:Session" -> _))
+  ;; (_ -> "ext:impersonatedRole"))
+  
+(type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
 
 (define-graph staatsblad ("http://mu.semte.ch/graphs/staatsblad"))
 
@@ -201,6 +204,7 @@
 ;; Equivalent to "Intern secretarie" access level w.r.t. documents.
 ;; All the secretarie & OVRB roles read the same data, but OVRB can only write
 ;; a limited amount.
+;; TODO ("foaf:Document" -> _) and ("ext:DocumentVersie" -> _) should be already migrated away but data still exists
 
 (define-graph system/email ("http://mu.semte.ch/graphs/system/email")
   ("nfo:Folder" -> _)
@@ -254,6 +258,9 @@
   ("eli:LegalResource" -> _)
   ("ext:ReportGenerationJob" -> _))
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; TODO ext:notulen, ovrb should not edit those? came from old config
+
 (define-graph kanselarij-for-ovrb ("http://mu.semte.ch/graphs/organizations/kanselarij")
   ("dossier:Dossier" -> _)
   ("besluitvorming:Besluitvormingsaangelegenheid" -> _)
@@ -266,6 +273,9 @@
   ("dossier:Stukonderdeel" -> _)
   ("ext:Notulen" -> _)
   ("besluitvorming:Verslag" -> _)
+  ("prov:Collection" -> _)
+  ("cogs:Job" -> _)
+  ("ext:FileBundlingJob" -> _)
   ("pub:Publicatieaangelegenheid" -> _)
   ("pub:VertalingProcedurestap" -> _)
   ("pub:PublicatieProcedurestap" -> _)
@@ -273,6 +283,8 @@
   ("person:Person" -> _)
   ("schema:ContactPoint" -> _)
   ("org:Organization" -> _)
+  ("prov:Activity" -> _)
+  ("besluitvorming:Beslissingsactiviteit" -> _)
   ("pub:AanvraagActiviteit" -> _)
   ("pub:VertaalActiviteit" -> _)
   ("pub:DrukproefActiviteit" -> _)
@@ -282,6 +294,10 @@
   ("adms:Identifier" -> _)
   ("pub:PublicationMetricsExportJob" -> _)
   ("eli:LegalResource" -> _))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; TODO Why is there a second kanselarij? (exact copy)
+  ;;
 
 (define-graph kanselarij ("http://mu.semte.ch/graphs/organizations/kanselarij")
   ("ext:Nieuwsbericht" -> _)
@@ -329,6 +345,10 @@
   ("pub:PublicationMetricsExportJob" -> _)
   ("eli:LegalResource" -> _)
   ("ext:ReportGenerationJob" -> _))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; TODO does themis stuff need to be in here? ext:PublicExportJob, ext:TtlToDeltaTask
+  ;;
 
 (supply-allowed-group "kanselarij-read"
                       :query (query-for-roles
@@ -448,10 +468,11 @@
        :to intern-overheid
        :for-allowed-group "overheid-write")
 
-;; Sing flow metadata
+;; Sign flow metadata
+;; TODO verify if ext:PrepareSignFlowJob needs to be here
 
 (define-graph system/signing ("http://mu.semte.ch/graphs/system/signing")
-  ("sign:Handtekenaangelgenheid" -> _)
+  ("sign:Handtekenaangelegenheid" -> _)
   ("sign:HandtekenProcedurestap" -> _)
   ("sign:Markeringsactiviteit" -> _)
   ("sign:Voorbereidingsactiviteit" -> _)
@@ -460,6 +481,7 @@
   ("sign:Weigeractiviteit" -> _)
   ("sign:AnnulatieActiviteit" -> _)
   ("sign:Afrondingsactiviteit" -> _)
+  ("ext:PrepareSignFlowJob" -> _)
   ("sh:Document" -> _))
 
 (supply-allowed-group "sign-flow-read"
@@ -591,3 +613,23 @@
 ;; (grant (read write)
 ;;        :to everything
 ;;        :for-allowed-group "clean")
+
+
+;; For use with sparql-parser:0.0.5, obsolete from 0.0.6
+;; (in-package :delta-messenger)
+
+;; (defun delta-to-jsown (&key inserts deletes effective-inserts effective-deletes scope allowed-groups)
+;;   "Convert delta inserts and deletes message to jsown body for inserts and deletes."
+;;   (let ((delta
+;;           (jsown:new-js
+;;             ("insert" (mapcar #'quad-to-jsown-binding inserts))
+;;             ("delete" (mapcar #'quad-to-jsown-binding deletes))
+;;             ("effectiveInsert" (mapcar #'quad-to-jsown-binding effective-inserts))
+;;             ("effectiveDelete" (mapcar #'quad-to-jsown-binding effective-deletes)))))
+;;     (when allowed-groups
+;;       (setf (jsown:val delta "allowedGroups") (if (equal allowed-groups "sudo")
+;;                                                   "sudo"
+;;                                                   (jsown:to-json allowed-groups))))
+;;     (when (and scope (not (eq scope acl:_)))
+;;       (setf (jsown:val delta "scope") scope))
+;;     delta))
