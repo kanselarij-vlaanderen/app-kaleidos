@@ -507,3 +507,11 @@ services:
     restart: always
     labels:
       - "logging=true"
+  draft-file-mover:
+    image: kanselarij/draft-file-mover-service:0.0.1
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

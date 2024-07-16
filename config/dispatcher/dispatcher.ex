@@ -61,6 +61,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
+  post "/draft-files/:id/move", @json_service do
+    Proxy.forward conn, [], "http://draft-file-mover/draft-files/" <> id <> "/move"
+  end
+
   get "/draft-files/:id/download", %{ layer: :api } do
     Proxy.forward conn, [], "http://draft-file/files/" <> id <> "/download"
   end
