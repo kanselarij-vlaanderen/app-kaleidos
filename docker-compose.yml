@@ -224,7 +224,7 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:2.0.0
+    image: kanselarij/docx-conversion-service:2.1.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -478,7 +478,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.3.0
+    image: kanselarij/agenda-submission-service:1.4.0
     labels:
       - "logging=true"
     restart: always
@@ -497,3 +497,21 @@ services:
       MU_APPLICATION_FILE_STORAGE_PATH: 'stamped-pdfs'
     restart: always
     logging: *default-logging
+  draft-file:
+    image: kanselarij/draft-file-service:0.0.1
+    environment:
+      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  draft-file-mover:
+    image: kanselarij/draft-file-mover-service:0.0.1
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

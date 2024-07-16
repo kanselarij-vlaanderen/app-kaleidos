@@ -207,6 +207,16 @@ defmodule Acl.UserGroups.Config do
     ]
   end
 
+  defp submissions_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/submissions/Indiening",
+      "http://mu.semte.ch/vocabularies/ext/submissions/StatusVeranderingsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/submissions/Serie",
+      "http://mu.semte.ch/vocabularies/ext/submissions/VoorlopigStuk",
+      "http://mu.semte.ch/vocabularies/ext/submissions/VoorlopigBestand",
+    ]
+  end
+
   defp staatsblad_resource_types() do
     [
       "http://data.europa.eu/eli/ontology#LegalResource"
@@ -638,6 +648,44 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/parliament",
             constraint: %ResourceConstraint{
               resource_types: parliament_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "submissions-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/submissions",
+            constraint: %ResourceConstraint{
+              resource_types: submissions_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "submissions-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/submissions",
+            constraint: %ResourceConstraint{
+              resource_types: submissions_resource_types()
             }
           }
         ]

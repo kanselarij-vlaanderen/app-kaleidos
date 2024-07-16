@@ -78,6 +78,7 @@
 (add-prefix "email" "http://mu.semte.ch/vocabularies/ext/email/")
 (add-prefix "parl" "http://mu.semte.ch/vocabularies/ext/parlement/")
 (add-prefix "kans" "http://kanselarij.vo.data.gift/core/")
+(add-prefix "subm" "http://mu.semte.ch/vocabularies/ext/submissions/")
 
 ;;;;;
 ;; You can use the muext: prefix when you're still searching for

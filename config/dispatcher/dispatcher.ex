@@ -61,6 +61,22 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://file/files/"
   end
 
+  post "/draft-files/:id/move", @json_service do
+    Proxy.forward conn, [], "http://draft-file-mover/draft-files/" <> id <> "/move"
+  end
+
+  get "/draft-files/:id/download", %{ layer: :api } do
+    Proxy.forward conn, [], "http://draft-file/files/" <> id <> "/download"
+  end
+
+  post "/draft-files/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
+  delete "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
   ### Mirror sync producer
 
   match "/sync/*path", %{} do
@@ -161,8 +177,16 @@ defmodule Dispatcher do
 
   ### Submission of subcases on meeting
 
-  match "/meetings/:meeting_id/submit", @json_service do
+  post "/meetings/:meeting_id/submit", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
+  end
+
+  post "/meetings/:meeting_id/submit-submission", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit-submission"
+  end
+
+  get "/meetings/open", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/open-meetings"
   end
 
   post "/agendas/:agenda_id/reorder", @json_service do
@@ -566,6 +590,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
 
+  match "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-files/"
+  end
+
 
   ### Decision extraction
   match "/decision-extraction/*path", @json_service do
@@ -600,6 +628,23 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://vlaams-parlement-sync/"
   end
 
+  ### Cabinet submissions
+  match "/submissions/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submissions/"
+  end
+
+  match "/submission-status-change-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submission-status-change-activities/"
+  end
+
+  match "/draft-document-containers/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-document-containers/"
+  end
+
+  match "/draft-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-pieces/"
+  end
+
   ### Document Naming
   match "/document-naming/*path", @json_service do
     Proxy.forward conn, path, "http://document-naming/"
@@ -624,4 +669,4 @@ defmodule Dispatcher do
     send_resp( conn, 404, "Route not found. See config/dispatcher.ex" )
   end
 
-end
+ end
