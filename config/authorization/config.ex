@@ -662,7 +662,6 @@ defmodule Acl.UserGroups.Config do
         access: access_by_role(
           admin_roles()
           ++ secretarie_roles()
-          ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
         ),
         graphs: [
@@ -670,6 +669,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/submissions",
             constraint: %ResourceConstraint{
               resource_types: submissions_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
             }
           }
         ]
@@ -688,6 +693,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/submissions",
             constraint: %ResourceConstraint{
               resource_types: submissions_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
             }
           }
         ]
