@@ -19,6 +19,8 @@
     [ { "name": "sign-flow-write", "variables": [] } ],
     [ { "name": "parliament-flow-read", "variables": [] } ],
     [ { "name": "parliament-flow-write", "variables": [] } ],
+    [ { "name": "submissions-read", "variables": [] } ],
+    [ { "name": "submissions-write", "variables": [] } ],
 
     [
       { "name": "kanselarij-read", "variables": [] },
