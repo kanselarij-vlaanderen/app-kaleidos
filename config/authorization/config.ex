@@ -310,6 +310,8 @@ defmodule Acl.UserGroups.Config do
     # removed_source_quads, new_quads.  The quads may be calculated in
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
+    ### ! When adding new allowed groups or changing who may access
+    ### ! always update cache-warmup-service allowed groups config
     [
       %GroupSpec{
         name: "public",
@@ -591,6 +593,7 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+      ### *note: should KB be able to write sign-flow data?
       %GroupSpec{
         name: "sign-flow-write",
         useage: [:write, :read_for_write],
@@ -652,7 +655,7 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-
+      ### if kabinet_medewerker_roles should be able to read, update cache-warmup groups
       %GroupSpec{
         name: "submissions-read",
         useage: [:read],
@@ -671,14 +674,13 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-
+      ### minister and medewerker have read only
       %GroupSpec{
         name: "submissions-write",
         useage: [:write, :read_for_write],
         access: access_by_role(
           admin_roles()
           ++ secretarie_roles()
-          ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
         ),
         graphs: [
