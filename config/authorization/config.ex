@@ -664,6 +664,7 @@ defmodule Acl.UserGroups.Config do
           ++ secretarie_roles()
           ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
         ),
         graphs: [
           %GraphSpec{
