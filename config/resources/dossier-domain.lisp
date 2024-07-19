@@ -17,7 +17,7 @@
               (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
                                  :inverse t
                                  :as "sign-flows"))
-            
+
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
   :on-path "cases")
@@ -38,7 +38,7 @@
               (submission        :via ,(s-prefix "subm:ingediendVoor")
                                  :inverse t
                                  :as "submissions"))
-            
+
   :resource-base (s-url "http://themis.vlaanderen.be/id/besluitvormingsaangelegenheid/")
   :features '(include-uri)
   :on-path "decisionmaking-flows")
@@ -137,7 +137,6 @@
   :has-one `((subcase             :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
                                   :as "subcase")
              (submission          :via ,(s-prefix "subm:ingediendAls")
-                                  :inverse t
                                   :as "submission")
              (agenda-activity     :via ,(s-prefix "prov:wasInformedBy")
                                   :inverse t
