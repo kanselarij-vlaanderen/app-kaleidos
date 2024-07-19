@@ -671,6 +671,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: submissions_resource_types()
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
+            }
           }
         ]
       },
@@ -688,6 +694,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/submissions",
             constraint: %ResourceConstraint{
               resource_types: submissions_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
             }
           }
         ]
