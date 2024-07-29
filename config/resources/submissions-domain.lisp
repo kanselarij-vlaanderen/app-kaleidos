@@ -84,6 +84,9 @@
                                         :as "document-container")
              (piece                     :via      ,(s-prefix "subm:previousVersion")
                                         :as "previous-piece")
+             (piece                     :via      ,(s-prefix "subm:ingediendAlsVoorlopigStuk")
+                                        :inverse t
+                                        :as "accepted-piece")
              (submission                :via ,(s-prefix "subm:heeftStuk")
                                         :inverse t
                                         :as "submission"))
