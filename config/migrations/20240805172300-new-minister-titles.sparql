@@ -1,0 +1,46 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?mandatee ext:valvasTitel ?newsletterTitle.
+  }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?mandatee
+          a mandaat:Mandataris ;
+          mandaat:start ?start;
+          org:holds ?mandate;
+          mandaat:isBestuurlijkeAliasVan ?person .
+      FILTER NOT EXISTS { ?mandatee ext:valvasTitel [] } # Only those that don't have a valvas title yet
+      ?mandate org:role ?role .
+      ?person
+          a person:Person ;
+          persoon:gebruikteVoornaam	?firstName ;
+  	      foaf:familyName	?lastName .
+      OPTIONAL {
+          ?higherMandatee
+              a mandaat:Mandataris ;
+              mandaat:start ?start;
+              org:holds ?higherMandate ;
+              mandaat:isBestuurlijkeAliasVan ?person .
+          ?higherMandate org:role ?higherRole .
+          FILTER(?higherRole IN (
+              <http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03de>, # MP
+              <http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03df> #  VMP
+          ))
+      }
+      BIND(IF(BOUND(?higherRole), ?higherRole, ?role) AS ?highestRole )
+
+      VALUES (?highestRole ?newsletterTitlePrefix) {
+          (<http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03e0> "Vlaams minister")
+          (<http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03de> "minister-president")
+          (<http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03df> "viceminister-president")
+      }
+      BIND(CONCAT(?newsletterTitlePrefix, " ", ?firstName, " ", ?lastName) AS ?newsletterTitle)
+  }
+}
