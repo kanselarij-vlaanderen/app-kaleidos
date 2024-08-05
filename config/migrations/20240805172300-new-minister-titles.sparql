@@ -7,7 +7,7 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/public> {
-    ?mandatee ext:valvasTitel ?newsletterTitle.
+    ?mandatee ext:nieuwsbriefTitel ?newsletterTitle.
   }
 } WHERE {
     GRAPH <http://mu.semte.ch/graphs/public> {
@@ -16,7 +16,7 @@ INSERT {
           mandaat:start ?start;
           org:holds ?mandate;
           mandaat:isBestuurlijkeAliasVan ?person .
-      FILTER NOT EXISTS { ?mandatee ext:valvasTitel [] } # Only those that don't have a valvas title yet
+      FILTER NOT EXISTS { ?mandatee ext:nieuwsbriefTitel [] } # Only those that don't have a valvas title yet
       ?mandate org:role ?role .
       ?person
           a person:Person ;
