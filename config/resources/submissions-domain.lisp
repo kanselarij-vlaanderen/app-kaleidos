@@ -22,12 +22,8 @@
                                       :as "status") ;; Submission status - concept scheme: http://themis.vlaanderen.be/id/concept-scheme/ebfe253c-0537-11ee-bb35-ee395168dcf7
              (mandatee                :via ,(s-prefix "ext:indiener") ;; Opmerking: deze wordt automatisch ingesteld door te kijken wat de mandatee van de organisatie van de gebruiker is
                                       :as "requested-by")
-             (user                    :via ,(s-prefix "dct:creator")
-                                      :as "creator")
              (user                    :via ,(s-prefix "ext:modifiedBy")
                                       :as "modified-by")
-             (user                    :via ,(s-prefix "subm:wordtBehandeldDoor")
-                                      :as "being-treated-by")
              (meeting                 :via ,(s-prefix "subm:ingediendVoorVergadering")
                                       :as "meeting"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde")
@@ -53,7 +49,9 @@
                                       :inverse t
                                       :as "submission")
              (concept                 :via ,(s-prefix "generiek:bewerking")
-                                      :as "status"))
+                                      :as "status")
+             (user                    :via ,(s-prefix "prov:wasStartedBy")
+                                      :as "started-by"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/indiening-status-verandering/")
   :features '(include-uri)
   :on-path "submission-status-change-activities")
