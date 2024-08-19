@@ -1,15 +1,17 @@
 (define-resource submission ()
   :class (s-prefix "subm:Indiening")
-  :properties `((:short-title           :string ,(s-prefix "dct:alternative"))
-                (:title                 :string ,(s-prefix "dct:title")) ;; This is used to set the title of the new decisionmaking flow
-                (:confidential          :boolean   ,(s-prefix "ext:vertrouwelijk"))
-                (:planned-start         :datetime ,(s-prefix "subm:geplandeStart"))
-                (:created               :datetime ,(s-prefix "dct:created"))
-                (:modified              :datetime ,(s-prefix "ext:modified"))
-                (:approval-addresses    :uri-set ,(s-prefix "subm:goedkeuringsAdressen")) ;; mail adresses to secretarie
-                (:approval-comment      :string ,(s-prefix "subm:goedkeuringsOpmerking")) ;; comment for mail to secretarie
-                (:notification-addresses :uri-set ,(s-prefix "subm:notificatieAdressen")) ;; mail adresses to IKW or KC
-                (:notification-comment  :string ,(s-prefix "subm:notificatieOpmerking"))) ;; comment for mail to IKW or KC
+  :properties `((:short-title               :string ,(s-prefix "dct:alternative"))
+                (:title                     :string ,(s-prefix "dct:title"))
+                (:decisionmaking-flow-title :string ,(s-prefix "subm:dossierTitel")) ;; This is used to set the title of the new decisionmaking flow
+                (:confidential              :boolean   ,(s-prefix "ext:vertrouwelijk"))
+                (:subcase-name              :string ,(s-prefix "ext:procedurestapNaam"))
+                (:planned-start             :datetime ,(s-prefix "subm:geplandeStart"))
+                (:created                   :datetime ,(s-prefix "dct:created"))
+                (:modified                  :datetime ,(s-prefix "ext:modified"))
+                (:approval-addresses        :uri-set ,(s-prefix "subm:goedkeuringsAdressen")) ;; mail adresses to secretarie
+                (:approval-comment          :string ,(s-prefix "subm:goedkeuringsOpmerking")) ;; comment for mail to secretarie
+                (:notification-addresses    :uri-set ,(s-prefix "subm:notificatieAdressen")) ;; mail adresses to IKW or KC
+                (:notification-comment      :string ,(s-prefix "subm:notificatieOpmerking"))) ;; comment for mail to IKW or KC
   :has-one `((decisionmaking-flow     :via ,(s-prefix "subm:ingediendVoor")
                                       :as "decisionmaking-flow")
              (subcase                 :via ,(s-prefix "subm:ingediendVoorProcedurestap")
