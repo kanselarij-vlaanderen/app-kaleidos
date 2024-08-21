@@ -28,11 +28,11 @@ services:
   export-file:
     volumes:
       - ./testdata/files:/share
-  docx-conversion:
+  # docx-conversion:
   # old version that uses libreoffice for conversion instead of azure
-    image: kanselarij/docx-conversion-service:0.1.0
-    volumes:
-      - ./testdata/files:/share
+    # image: kanselarij/docx-conversion-service:0.1.0
+    # volumes:
+    #   - ./testdata/files:/share
   # kibana:
   #   entrypoint: "echo 'service disabled'"
   #   restart: "no"
