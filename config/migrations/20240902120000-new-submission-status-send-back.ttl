@@ -7,4 +7,4 @@
     mu:uuid "b40d5f2d-719d-42c8-bd1c-e05d07e3d1a9" ;
     skos:inScheme thConceptScheme:9ee8c485-e750-4982-a2b7-3f17d390331d ;
     schema:position 7 ;
-    skos:prefLabel "Terugsturing aangevraagd" .
+    skos:prefLabel "Aanpassing aangevraagd" .

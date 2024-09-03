@@ -66,7 +66,7 @@
                 (:publication-request-reply-to-email :string ,(s-prefix "ext:publicationRequestReplyToEmail"))
                 (:cabinet-submissions-secretary-email :string ,(s-prefix "ext:cabinetSubmissionsSecretaryEmail"))
                 (:cabinet-submissions-ikw-email :string ,(s-prefix "ext:cabinetSubmissionsIKWEmail"))
-                (:cabinet-submissions-ikw-confidential-email :string ,(s-prefix "ext:cabinetSubmissionsIKWConfidentialEmail"))
+                (:cabinet-submissions-ikw-confidential-email :string ,(s-prefix "ext:cabinetSubmissionsIKWConfidentialEmail")) ;; kc-group, not fully renamed
                 (:cabinet-submissions-reply-to-email :string ,(s-prefix "ext:cabinetSubmissionsReplyToEmail"))
               )
   :resource-base (s-url "http://themis.vlaanderen.be/id/email-notificatie-settings/")
