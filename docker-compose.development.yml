@@ -176,3 +176,11 @@ services:
     restart: "no"
   document-stamping:
     restart: "no"
+  draft-file:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
+  draft-file-mover:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
