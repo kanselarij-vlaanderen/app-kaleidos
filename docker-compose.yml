@@ -49,14 +49,10 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.6
-    environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      DATABASE_COMPATIBILITY: "Virtuoso"
-      DATABASE_OVERLOAD_RECOVERY: "on"
-      ERROR_ON_UNWRITTEN_DATA: "on"
+    image: semtech/sparql-parser:0.0.8
     volumes:
       - ./config/new-authorization:/config
+      - ./data/mu-cl-authorization:/data/
     logging: *extended-logging
     restart: always
     labels:
@@ -138,7 +134,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:feature-differently-stable-luckless
+    image: semtech/mu-cl-resources:1.25.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -169,7 +165,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.11.2
+    image: kanselarij/agenda-approve-service:feature-wait-on-busy-timeouts
     logging: *default-logging
     restart: always
     labels:
@@ -177,6 +173,8 @@ services:
   mocklogin:
     image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
+    labels:
+      - "logging=true"
   login:
     image: kanselarij/acmidm-login-service:2.4.1
     environment:
@@ -211,7 +209,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.3.0
+    image: kanselarij/file-bundling-service:feature-max-body-size
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -241,7 +239,7 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:1.4.0
+    image: kanselarij/case-documents-sync-service:feature-max-body-size
     logging: *default-logging
     restart: always
     environment:

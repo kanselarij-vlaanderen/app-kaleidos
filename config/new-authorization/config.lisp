@@ -5,21 +5,16 @@
 ;; (push (make-instance 'delta-logging-handler) *delta-handlers*)
 (add-delta-messenger "http://delta-notifier/")
 
+(setf *log-delta-messenger-message-bus-processing* nil)
 
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
 (in-package :client)
-(setf *log-sparql-query-roundtrip* t)
-(setf *backend* "http://triplestore:8890/sparql"
-      ;; (list "http://triplestore:8890/sparql"
-      ;;       "http://triplestore1:8890/sparql"
-      ;;       "http://triplestore2:8890/sparql"
-      ;;       "http://triplestore3:8890/sparql"
-      ;;       )
-      )
+(setf *log-sparql-query-roundtrip* nil)
+(setf *backend* "http://triplestore:8890/sparql")
 
 (in-package :server)
-(setf *log-incoming-requests-p* t)
+(setf *log-incoming-requests-p* nil)
 
 ;;;;;;;;;;;;;;;;;
 ;;; access rights
@@ -135,7 +130,7 @@
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("session:Session" -> _))
   ;; (_ -> "ext:impersonatedRole"))
-  
+
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
 
 (define-graph staatsblad ("http://mu.semte.ch/graphs/staatsblad"))
