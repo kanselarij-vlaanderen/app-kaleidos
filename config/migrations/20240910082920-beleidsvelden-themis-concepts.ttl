@@ -338,7 +338,7 @@
     skos:prefLabel "Waterinfrastructuur en beleid"@nl ;
     skos:topConceptOf <http://themis.vlaanderen.be/id/concept-scheme/0012aad8-d6e5-49e2-af94-b1bebd484d5b> .
 
-<http://themis.vlaanderen.be/id/beleidsveld/cb9a10be-77f6-4e9e-91f7-98ee76e90d0> a skos:Concept ;
+<http://themis.vlaanderen.be/id/beleidsveld/cb9a10be-77f6-4e9e-91f7-98ee76e90d07> a skos:Concept ;
     mu:uuid "cb9a10be-77f6-4e9e-91f7-98ee76e90d07" ;
     prov:generatedAtTime "2024-01-01T00:00:00"^^xsd:dateTime ;
     schema:position 1;
@@ -6885,7 +6885,7 @@
         <http://themis.vlaanderen.be/id/beleidsveld/d185e71b-2a6f-49e5-b710-3d9f58ddf11b>,
         <http://themis.vlaanderen.be/id/beleidsveld/d1b93810-6066-4b0e-ad31-130c7ae838ac>,
         <http://themis.vlaanderen.be/id/beleidsveld/ea4c45da-a07d-49c9-92ab-16d0a0d4e37e>,
-        <http://themis.vlaanderen.be/id/beleidsveld/cb9a10be-77f6-4e9e-91f7-98ee76e90d0>,
+        <http://themis.vlaanderen.be/id/beleidsveld/cb9a10be-77f6-4e9e-91f7-98ee76e90d07>,
         <http://themis.vlaanderen.be/id/beleidsveld/7ea8b04e-f2e4-4620-868d-e8b41f946282>,
         <http://themis.vlaanderen.be/id/beleidsveld/342eb9bf-9f60-449a-b932-219e3347bb4f>,
         <http://themis.vlaanderen.be/id/beleidsveld/0a86df18-bf47-403b-aa35-98c938679482>,
