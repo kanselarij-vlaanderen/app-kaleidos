@@ -166,8 +166,8 @@ services:
     restart: "no"
   digital-signing:
     environment:
-      - MODE=development
-      - SIGNINGHUB_API_URL=<PUT_API_URL_HERE>
+      NODE_ENV: "development"
+      SIGNINGHUB_API_URL: "https://fake.api.url"
   pdf-flattener:
     restart: "no"
   agenda-submission:
