@@ -649,6 +649,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/draft-pieces/"
   end
 
+  match "/submission-internal-reviews/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submission-internal-reviews/"
+  end
+
   ### Document Naming
   match "/document-naming/*path", @json_service do
     Proxy.forward conn, path, "http://document-naming/"
