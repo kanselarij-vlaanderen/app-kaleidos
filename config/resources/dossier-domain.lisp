@@ -16,8 +16,8 @@
                                  :as "publication-flows")
               (sign-flow         :via      ,(s-prefix "sign:behandeltDossier")
                                  :inverse t
-                                 :as "sign-flows")
-            )
+                                 :as "sign-flows"))
+
   :resource-base (s-url "http://themis.vlaanderen.be/id/dossier/")
   :features '(include-uri)
   :on-path "cases")
@@ -35,7 +35,10 @@
                                  :as "subcases")
               (concept           :via ,(s-prefix "besluitvorming:beleidsveld") ;; NOTE: Contains both Beleidsveld and Beleidsdomein, despite the predicate name. These are synced to the subcase government-areas
                                  :as "government-areas")
-            )
+              (submission        :via ,(s-prefix "subm:ingediendVoor")
+                                 :inverse t
+                                 :as "submissions"))
+
   :resource-base (s-url "http://themis.vlaanderen.be/id/besluitvormingsaangelegenheid/")
   :features '(include-uri)
   :on-path "decisionmaking-flows")
@@ -95,7 +98,10 @@
                                       :inverse t
                                       :as "decision-activities")
               (concept                :via ,(s-prefix "besluitvorming:beleidsveld")
-                                      :as "government-areas"))
+                                      :as "government-areas")
+              (submission             :via ,(s-prefix "subm:ingediendVoorProcedurestap")
+                                      :inverse t
+                                      :as "submissions"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/procedurestap/")
   :features '(include-uri)
   :on-path "subcases")
@@ -119,8 +125,8 @@
                                   :as "subcase"))
   :has-many `((agendaitem         :via ,(s-prefix "besluitvorming:genereertAgendapunt")
                                   :as "agendaitems")
-             (submission-activity :via ,(s-prefix "prov:wasInformedBy")
-                                  :as "submission-activities"))
+              (submission-activity :via ,(s-prefix "prov:wasInformedBy")
+                                   :as "submission-activities"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/agendering/")
   :features '(include-uri)
   :on-path "agenda-activities")
@@ -130,6 +136,8 @@
   :properties `((:start-date      :datetime ,(s-prefix "dossier:Activiteit.startdatum")))
   :has-one `((subcase             :via ,(s-prefix "ext:indieningVindtPlaatsTijdens") ;; subpredicate for besluitvorming:vindtPlaatsTijdens
                                   :as "subcase")
+             (submission          :via ,(s-prefix "subm:ingediendAls")
+                                  :as "submission")
              (agenda-activity     :via ,(s-prefix "prov:wasInformedBy")
                                   :inverse t
                                   :as "agenda-activity"))

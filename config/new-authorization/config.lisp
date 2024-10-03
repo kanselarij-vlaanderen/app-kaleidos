@@ -40,6 +40,7 @@
   :sign "http://mu.semte.ch/vocabularies/ext/handtekenen/"
   :sh "http://mu.semte.ch/vocabularies/ext/signinghub/"
   :parl "http://mu.semte.ch/vocabularies/ext/parlement/"
+  :subm "http://mu.semte.ch/vocabularies/ext/submissions/"
   ;; (:userroles "http://themis.vlaanderen.be/id/gebruikersrol/")
   ;; Generic ontologies
   :schema "http://schema.org/"
@@ -59,8 +60,8 @@
   :generiek "https://data.vlaanderen.be/ns/generiek#"
   ;; European ontologyies
   :eli "http://data.europa.eu/eli/ontology#"
-  :euvoc "http://publications.europa.eu/ontology/euvoc#"
-  )
+  :euvoc "http://publications.europa.eu/ontology/euvoc#")
+
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; Access queries
@@ -109,13 +110,13 @@
   '("http://themis.vlaanderen.be/id/gebruikersrol/ca20a872-7743-4998-b479-06b003f49daf")) ;; Kort Bestek
 
 (defvar *minister-roles*
-  '("http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d" )) ;; Minister
+  '("http://themis.vlaanderen.be/id/gebruikersrol/01ace9e0-f810-474e-b8e0-f578ff1e230d")) ;; Minister
 
 (defvar *kabinet-dossierbeheerder-roles*
   '("http://themis.vlaanderen.be/id/gebruikersrol/6bcebe59-0cb5-4c5e-ab40-ca98b65887a4")) ;; Kabinet dossierbeheerder
 
 (defvar *kabinet-medewerker-roles*
-  '("http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84" )) ;; Kabinet medewerker
+  '("http://themis.vlaanderen.be/id/gebruikersrol/33dbca4a-7e57-41d2-a26c-aedef422ff84")) ;; Kabinet medewerker
 
 (defvar *overheid-roles*
   '("http://themis.vlaanderen.be/id/gebruikersrol/06cfd67b-1637-47d3-811f-97aa23a83644"   ;; Overheidsorganisatie
@@ -544,6 +545,39 @@
 (grant (write)
        :to system/parliament
        :for-allowed-group "parliament-flow-write")
+
+;; Submissions data
+
+(define-graph system/submissions ("http://mu.semte.ch/graphs/system/submissions")
+  ("subm:Indiening" -> _)
+  ("subm:StatusVeranderingsActiviteit" -> _)
+  ("subm:Serie" -> _)
+  ("subm:VoorlopigStuk" -> _)
+  ("subm:VoorlopigBestand" -> _))
+
+(supply-allowed-group "submissions-read"
+                      :query (query-for-roles
+                              (concatenate 'list
+                                           *admin-roles*
+                                           *secretarie-roles*
+                                           *minister-roles*
+                                           *kabinet-dossierbeheerder-roles*)))
+
+(supply-allowed-group "submissions-write"
+                      :query (query-for-roles
+                              (concatenate 'list
+                                           *admin-roles*
+                                           *secretarie-roles*
+                                           *minister-roles*
+                                           *kabinet-dossierbeheerder-roles*)))
+
+(grant (read)
+       :to system/submissions
+       :for-allowed-group "submissions-read")
+
+(grant (write)
+       :to system/submissions
+       :for-allowed-group "submissions-write")
 
 ;; READ ACCESS FOR SYNC CONSUMER SERVICE FROM OTHER STACK
 

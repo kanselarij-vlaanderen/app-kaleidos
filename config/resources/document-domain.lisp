@@ -44,6 +44,8 @@
             (piece                      :via      ,(s-prefix "sign:getekendStukKopie")
                                         :inverse t
                                         :as "signed-piece-copy-of")
+            (draft-piece                :via      ,(s-prefix "subm:ingediendAlsVoorlopigStuk")
+                                        :as "draft-piece")
             (subcase                    :via ,(s-prefix "ext:bevatReedsBezorgdeDocumentversie") ;; should be hasMany, not used in frontend yet
                                         :inverse t
                                         :as "linked-subcase")

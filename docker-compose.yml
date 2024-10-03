@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:7.2.2
+    image: kanselarij/frontend-kaleidos:8.1.0
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -107,7 +107,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.14.0
+    image: kanselarij/cache-warmup-service:1.16.0
     logging: *default-logging
     restart: always
     labels:
@@ -189,7 +189,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:4.0.0
+    image: kanselarij/newsletter-service:4.0.1
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -225,7 +225,7 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:2.0.0
+    image: kanselarij/docx-conversion-service:2.2.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -374,7 +374,7 @@ services:
     volumes:
       - ./data/files:/share
   shortlist:
-    image: kanselarij/shortlist-service:0.1.4
+    image: kanselarij/shortlist-service:0.1.5
     logging: *default-logging
     restart: always
     labels:
@@ -481,7 +481,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.3.0
+    image: kanselarij/agenda-submission-service:1.5.0
     labels:
       - "logging=true"
     restart: always
@@ -493,10 +493,28 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:1.1.2
+    image: kanselarij/document-stamping-service:1.1.3
     volumes:
       - ./data/files:/share
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: 'stamped-pdfs'
     restart: always
     logging: *default-logging
+  draft-file:
+    image: kanselarij/draft-file-service:0.0.1
+    environment:
+      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  draft-file-mover:
+    image: kanselarij/draft-file-mover-service:0.0.1
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

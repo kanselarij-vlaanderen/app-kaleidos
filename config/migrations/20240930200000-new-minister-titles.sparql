@@ -1,12 +1,3 @@
-# A person carrying a special mandate, such a "minister-president" or "viceminister-president",
-# is modelled as 2 mandatees: 1 regular "minister" and 1 with the special title.
-# Most tasks (agenda-item relationships ...) are executed in the capacity of the regular minister.
-# When displaying the minister in relation to some subject however,
-# it is preferred to always show the special mandate's title rather than the regular "minister".
-#
-# Below query adds a Kaleidos/Valvas-specific predicate to mandatees that contains the title (including name)
-# of a mandatee in the way it is desired to show on the newsletter/valvas website.
-
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX person: <http://www.w3.org/ns/person#>
