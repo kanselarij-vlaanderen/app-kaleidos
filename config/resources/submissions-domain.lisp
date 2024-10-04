@@ -120,11 +120,11 @@
   :properties `((:created           :datetime ,(s-prefix "dct:created"))
                 (:modified          :datetime ,(s-prefix "ext:modified"))
                 (:private-comment   :string   ,(s-prefix "ext:privateComment")))
-  :has-one `((subcase               :via      ,(s-prefix "subm:isInterneBeoordelingVoor") ;; reuse the same when postponed/retracted and reproposed?
+  :has-one `((subcase               :via      ,(s-prefix "subm:isInterneBeoordelingVoor")
                                     :as "subcase")
              (user                  :via      ,(s-prefix "ext:modifiedBy")
                                     :as "modified-by"))
-  :has-many `((submission           :via      ,(s-prefix "subm:heeftInterneBeoordeling") ;; for BIS updates, can we just look at the subcase at that point?
+  :has-many `((submission           :via      ,(s-prefix "subm:heeftInterneBeoordeling")
                                     :inverse t
                                     :as "submissions"))
   :resource-base (s-url "http://themis.vlaanderen.be/id/interne-beoordeling/")
