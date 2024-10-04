@@ -77,6 +77,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://draft-file/files/"
   end
 
+  get "/ember-pdfjs-wrapper/*path", @frontend do
+    Proxy.forward conn, path, "http://frontend/ember-pdfjs-wrapper/"
+  end
+
   ### Mirror sync producer
 
   match "/sync/*path", %{} do
