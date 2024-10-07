@@ -77,7 +77,10 @@
                                             :inverse t
                                             :as "parliament-retrieval-activity")
              (piece                   :via ,(s-prefix "ext:heeftBekrachtiging")
-                                      :as "ratification"))
+                                      :as "ratification")
+             (submission-internal-review    :via ,(s-prefix "subm:isInterneBeoordelingVoor")
+                                            :inverse t
+                                            :as "internal-review"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde") ;; NOTE: used mandataris instead of agent
                                       :as "mandatees")
               (mandatee               :via ,(s-prefix "ext:bekrachtigdDoor")
