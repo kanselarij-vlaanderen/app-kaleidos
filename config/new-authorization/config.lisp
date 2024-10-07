@@ -561,7 +561,8 @@
                                            *admin-roles*
                                            *secretarie-roles*
                                            *minister-roles*
-                                           *kabinet-dossierbeheerder-roles*)))
+                                           *kabinet-dossierbeheerder-roles*
+                                           *kabinet-medewerker-roles*)))
 
 (supply-allowed-group "submissions-write"
                       :query (query-for-roles
@@ -577,6 +578,14 @@
 
 (grant (write)
        :to system/submissions
+       :for-allowed-group "submissions-write")
+
+(grant (read)
+       :to system/email
+       :for-allowed-group "submissions-read")
+
+(grant (write)
+       :to system/email
        :for-allowed-group "submissions-write")
 
 ;; READ ACCESS FOR SYNC CONSUMER SERVICE FROM OTHER STACK
