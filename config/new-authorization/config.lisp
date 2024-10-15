@@ -402,7 +402,7 @@
 (supply-allowed-group "overheid-read"
                       :query (query-for-roles *overheid-roles*))
 
-(supply-allowed-group "overeid-write"
+(supply-allowed-group "overheid-write"
                       :query (query-for-roles *overheid-roles*))
 
 (grant (read)
