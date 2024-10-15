@@ -41,6 +41,7 @@
           "cardinality": "one"
         }
       },
+      "features": ["include-uri"],
       "new-resource-base": "http://themis.vlaanderen.be/id/parlementaireaangelegenheid/"
     },
     "parliament-subcases": {
