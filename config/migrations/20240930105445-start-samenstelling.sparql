@@ -1,0 +1,27 @@
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/ba398a44-7f09-11ef-a2b2-0242ac110003> a besluit:Bestuursorgaan ;
+            mu:uuid """ba398a44-7f09-11ef-a2b2-0242ac110003""" ;
+            skos:prefLabel """Diependaele I""" ;
+            generiek:isTijdspecialisatieVan <http://themis.vlaanderen.be/id/bestuursorgaan/cfc37e6c-7f07-11ef-a9c1-0242ac110003> ;
+            prov:qualifiedGeneration <http://themis.vlaanderen.be/id/creatie/ba398c4c-7f09-11ef-a2b2-0242ac110003> .
+        <http://themis.vlaanderen.be/id/creatie/ba398c4c-7f09-11ef-a2b2-0242ac110003> a prov:Generation ;
+            mu:uuid """ba398c4c-7f09-11ef-a2b2-0242ac110003""" ;
+            prov:atTime "2024-09-30T00:00:00+02:00"^^xsd:dateTime .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/cfc37e6c-7f07-11ef-a9c1-0242ac110003> a besluit:Bestuursorgaan .
+    }
+}
+
