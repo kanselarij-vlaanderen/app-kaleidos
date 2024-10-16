@@ -90,5 +90,6 @@ WHERE {
     (<http://themis.vlaanderen.be/id/beleidsveld/b2cdd186-bced-41af-9533-7e234996f16e> <http://themis.vlaanderen.be/id/beleidsveld/88320309-6576-4033-979d-0d3ea057d28c>)
     (<http://themis.vlaanderen.be/id/beleidsveld/cd9b9d89-5757-448d-a887-10acfc67adfb> <http://themis.vlaanderen.be/id/beleidsveld/e8723667-560c-4449-8a2e-5e4d1a661a8b>)
     (<http://themis.vlaanderen.be/id/beleidsveld/148a2622-b159-4bf7-b6f2-0ec8a5ce2194> <http://themis.vlaanderen.be/id/beleidsveld/dd9b883e-2223-4416-b83f-f2bd2f8b791a>)
+    (<http://themis.vlaanderen.be/id/beleidsveld/bc15da36-a7a3-46eb-9af6-d6a8a12b0ad1> <http://themis.vlaanderen.be/id/beleidsveld/ce58f92f-7ed9-4ff3-9733-5f8eb1de5e39>)
   }
 }
