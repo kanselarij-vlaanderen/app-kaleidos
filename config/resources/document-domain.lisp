@@ -31,6 +31,8 @@
                                         :as "document-container")
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :as "previous-piece")
+            (user                       :via      ,(s-prefix "ext:modifiedBy")
+                                        :as "modified-by")
             (piece                      :via      ,(s-prefix "pav:previousVersion")
                                         :inverse t
                                         :as "next-piece")
