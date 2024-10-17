@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.8
+    image: semtech/sparql-parser:0.0.10
     volumes:
       - ./config/new-authorization:/config
       - ./data/mu-cl-authorization:/data/
