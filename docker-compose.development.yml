@@ -75,6 +75,8 @@ services:
     restart: "no"
   agenda-approve:
     restart: "no"
+    environment:
+      SERVER_BUSY_TIMEOUT: 1000
   mocklogin:
     restart: "no"
   login:
