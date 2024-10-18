@@ -5,21 +5,16 @@
 ;; (push (make-instance 'delta-logging-handler) *delta-handlers*)
 (add-delta-messenger "http://delta-notifier/")
 
+(setf *log-delta-messenger-message-bus-processing* nil)
 
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
 (in-package :client)
-(setf *log-sparql-query-roundtrip* t)
+(setf *log-sparql-query-roundtrip* nil)
 (setf *backend* "http://triplestore:8890/sparql")
-      ;; (list "http://triplestore:8890/sparql"
-      ;;       "http://triplestore1:8890/sparql"
-      ;;       "http://triplestore2:8890/sparql"
-      ;;       "http://triplestore3:8890/sparql"
-      ;;       )
-
 
 (in-package :server)
-(setf *log-incoming-requests-p* t)
+(setf *log-incoming-requests-p* nil)
 
 ;;;;;;;;;;;;;;;;;
 ;;; access rights
@@ -136,7 +131,7 @@
 (define-graph sessions ("http://mu.semte.ch/graphs/sessions")
   ("session:Session" -> _))
   ;; (_ -> "ext:impersonatedRole"))
-  
+
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
 
 (define-graph staatsblad ("http://mu.semte.ch/graphs/staatsblad"))
@@ -226,6 +221,7 @@
   ("besluitvorming:Agendering" -> _)
   ("ext:Indieningsactiviteit" -> _)
   ("ext:AgendaStatusActivity" -> _)
+  ("subm:InterneBeoordeling" -> _)
   ("dossier:Dossier" -> _)
   ("besluitvorming:Besluitvormingsaangelegenheid" -> _)
   ("dossier:Procedurestap" -> _)
@@ -256,7 +252,8 @@
   ("adms:Identifier" -> _)
   ("pub:PublicationMetricsExportJob" -> _)
   ("eli:LegalResource" -> _)
-  ("ext:ReportGenerationJob" -> _))
+  ("ext:ReportGenerationJob" -> _)
+  ("ext:DocumentNamingJob" -> _))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;
   ;; TODO ext:notulen, ovrb should not edit those? came from old config
@@ -294,57 +291,6 @@
   ("adms:Identifier" -> _)
   ("pub:PublicationMetricsExportJob" -> _)
   ("eli:LegalResource" -> _))
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; TODO Why is there a second kanselarij? (exact copy)
-  ;;
-
-(define-graph kanselarij ("http://mu.semte.ch/graphs/organizations/kanselarij")
-  ("ext:Nieuwsbericht" -> _)
-  ("ext:MailCampagne" -> _)
-  ("prov:Activity" -> _)
-  ("ext:InternalDecisionPublicationActivity" -> _)
-  ("ext:InternalDocumentPublicationActivity" -> _)
-  ("ext:ThemisPublicationActivity" -> _)
-  ("besluitvorming:Agenda" -> _)
-  ("besluit:Agendapunt" -> _)
-  ("besluit:BehandelingVanAgendapunt" -> _)
-  ("besluitvorming:Beslissingsactiviteit" -> _)
-  ("besluit:Vergaderactiviteit" -> _)
-  ("besluitvorming:Agendering" -> _)
-  ("ext:Indieningsactiviteit" -> _)
-  ("ext:AgendaStatusActivity" -> _)
-  ("dossier:Dossier" -> _)
-  ("besluitvorming:Besluitvormingsaangelegenheid" -> _)
-  ("dossier:Procedurestap" -> _)
-  ("nfo:FileDataObject" -> _)
-  ("foaf:Document" -> _)
-  ("dossier:Serie" -> _)
-  ("ext:DocumentVersie" -> _)
-  ("dossier:Stuk" -> _)
-  ("dossier:Stukonderdeel" -> _)
-  ("ext:Notulen" -> _)
-  ("besluitvorming:Verslag" -> _)
-  ("prov:Collection" -> _)
-  ("cogs:Job" -> _)
-  ("ext:FileBundlingJob" -> _)
-  ("pub:Publicatieaangelegenheid" -> _)
-  ("pub:VertalingProcedurestap" -> _)
-  ("pub:PublicatieProcedurestap" -> _)
-  ("pub:PublicatieStatusWijziging" -> _)
-  ("person:Person" -> _)
-  ("schema:ContactPoint" -> _)
-  ("org:Organization" -> _)
-  ("pub:AanvraagActiviteit" -> _)
-  ("pub:VertaalActiviteit" -> _)
-  ("pub:DrukproefActiviteit" -> _)
-  ("pub:PublicatieActiviteit" -> _)
-  ("pub:AnnulatieActiviteit" -> _)
-  ("generiek:GestructureerdeIdentificator" -> _)
-  ("adms:Identifier" -> _)
-  ("pub:PublicationMetricsExportJob" -> _)
-  ("eli:LegalResource" -> _)
-  ("ext:ReportGenerationJob" -> _))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;
   ;; TODO does themis stuff need to be in here? ext:PublicExportJob, ext:TtlToDeltaTask
@@ -457,7 +403,7 @@
 (supply-allowed-group "overheid-read"
                       :query (query-for-roles *overheid-roles*))
 
-(supply-allowed-group "overeid-write"
+(supply-allowed-group "overheid-write"
                       :query (query-for-roles *overheid-roles*))
 
 (grant (read)
@@ -566,7 +512,8 @@
                                            *admin-roles*
                                            *secretarie-roles*
                                            *minister-roles*
-                                           *kabinet-dossierbeheerder-roles*)))
+                                           *kabinet-dossierbeheerder-roles*
+                                           *kabinet-medewerker-roles*)))
 
 (supply-allowed-group "submissions-write"
                       :query (query-for-roles
@@ -582,6 +529,14 @@
 
 (grant (write)
        :to system/submissions
+       :for-allowed-group "submissions-write")
+
+(grant (read)
+       :to system/email
+       :for-allowed-group "submissions-read")
+
+(grant (write)
+       :to system/email
        :for-allowed-group "submissions-write")
 
 ;; READ ACCESS FOR SYNC CONSUMER SERVICE FROM OTHER STACK

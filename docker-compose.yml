@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:8.1.7
+    image: kanselarij/frontend-kaleidos:feature-KAS-4647
     environment:
       EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -49,14 +49,10 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/mu-authorization:0.6.0-beta.8
-    environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      DATABASE_COMPATIBILITY: "Virtuoso"
-      DATABASE_OVERLOAD_RECOVERY: "on"
-      ERROR_ON_UNWRITTEN_DATA: "on"
+    image: semtech/sparql-parser:0.0.10
     volumes:
-      - ./config/authorization:/config
+      - ./config/new-authorization:/config
+      - ./data/mu-cl-authorization:/data/
     logging: *extended-logging
     restart: always
     labels:
@@ -123,6 +119,9 @@ services:
     links:
       - resource:backend
     logging: *default-logging
+    environment:
+      LOG_CACHE_KEYS: "true"
+      LOG_CLEAR_KEYS: "true"
     restart: always
     labels:
       - "logging=true"
@@ -135,7 +134,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:1.25.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -174,6 +173,8 @@ services:
   mocklogin:
     image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
+    labels:
+      - "logging=true"
   login:
     image: kanselarij/acmidm-login-service:2.4.1
     environment:
@@ -208,7 +209,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.3.0
+    image: kanselarij/file-bundling-service:feature-max-body-size
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -238,9 +239,11 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:1.4.0
+    image: kanselarij/case-documents-sync-service:feature-max-body-size
     logging: *default-logging
     restart: always
+    environment:
+      MAX_BODY_SIZE: "500kb"
     labels:
       - "logging=true"
   gov-field-sync:
