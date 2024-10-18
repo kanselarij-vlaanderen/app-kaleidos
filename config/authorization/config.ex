@@ -689,6 +689,7 @@ defmodule Acl.UserGroups.Config do
         access: access_by_role(
           admin_roles()
           ++ secretarie_roles()
+          ++ minister_roles()
           ++ kabinet_dossierbeheerder_roles()
         ),
         graphs: [
