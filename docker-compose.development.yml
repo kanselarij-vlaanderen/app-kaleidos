@@ -1,3 +1,4 @@
+version: '3.4'
 x-logging:
   &default-logging
   driver: "json-file"
