@@ -484,13 +484,13 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.1.0
+    image: kanselarij/document-naming-service:1.2.0
     labels:
       - logging=true
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:1.1.3
+    image: kanselarij/document-stamping-service:1.2.0
     volumes:
       - ./data/files:/share
     environment:
