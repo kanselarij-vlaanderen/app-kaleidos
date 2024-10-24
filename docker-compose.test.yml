@@ -73,3 +73,9 @@ services:
   pdf-flattener:
     volumes:
       - ./testdata/files:/share
+  draft-file:
+    volumes:
+      - ./testdata/files:/share
+  draft-file-mover:
+    volumes:
+      - ./testdata/files:/share
