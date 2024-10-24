@@ -1,0 +1,12 @@
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thParlFlowStatus: <http://themis.vlaanderen.be/id/parlementaireaangelegenheid-status/> .
+
+thParlFlowStatus:df0870a3-ce07-481d-9dbd-e95f0fd73a8b a skos:Concept ;
+    mu:uuid "df0870a3-ce07-481d-9dbd-e95f0fd73a8b" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 6 ;
+    skos:prefLabel "Niet ingeschreven bij het Vlaams Parlement"@nl ;
+    skos:altLabel "Niet ingeschreven"@nl .
