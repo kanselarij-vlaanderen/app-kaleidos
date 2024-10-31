@@ -10,3 +10,5 @@ thParlFlowStatus:df0870a3-ce07-481d-9dbd-e95f0fd73a8b a skos:Concept ;
     schema:position 6 ;
     skos:prefLabel "Niet ingeschreven bij het Vlaams Parlement"@nl ;
     skos:altLabel "Niet ingeschreven"@nl .
+
+thParlFlowStatus:3d03c20e-0170-43f5-840e-a541d1fd22bd skos:altLabel "Error bij Vlaams Parlement"@nl .
