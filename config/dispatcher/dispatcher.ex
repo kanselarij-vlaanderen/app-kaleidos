@@ -24,10 +24,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://frontend/@appuniversum/"
   end
 
-  get "/authorization/callback", @frontend do
-    Proxy.forward conn, [], "http://frontend/torii/redirect.html"
-  end
-
   get "/handleiding", @frontend do
     Proxy.forward conn, [], "http://static-file/handleiding.pdf"
   end
