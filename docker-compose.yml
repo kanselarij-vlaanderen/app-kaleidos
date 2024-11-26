@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-endpoint-max-connections
+    image: semtech/sparql-parser:0.0.12
     volumes:
       - ./config/new-authorization:/config
       - ./data/mu-cl-authorization:/data/
