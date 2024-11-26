@@ -364,7 +364,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:1.0.2
+    image: kanselarij/decision-report-generation-service:2.0.0
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -380,7 +380,7 @@ services:
     labels:
       - "logging=true"
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.1.8
+    image: kanselarij/minutes-report-generation-service:1.0.0
     volumes:
       - ./data/files:/share
   digital-signing:
