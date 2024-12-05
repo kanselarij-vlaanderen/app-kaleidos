@@ -469,7 +469,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.7.3
+    image: kanselarij/vlaams-parlement-sync-service:0.7.4
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
