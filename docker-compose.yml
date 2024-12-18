@@ -27,7 +27,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:9.1.1
+    image: kanselarij/frontend-kaleidos:9.2.0
     environment:
       EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -49,7 +49,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.12
+    image: semtech/sparql-parser:0.0.13
     volumes:
       - ./config/new-authorization:/config
       - ./data/mu-cl-authorization:/data/
@@ -189,7 +189,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:4.0.1
+    image: kanselarij/newsletter-service:4.0.2
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -384,7 +384,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.1.5
+    image: kanselarij/digital-signing-service:2.1.6
     volumes:
       - ./data/files:/share
     restart: always
@@ -487,7 +487,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.3.0
+    image: kanselarij/document-naming-service:1.3.1
     labels:
       - logging=true
     restart: always
