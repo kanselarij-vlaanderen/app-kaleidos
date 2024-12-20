@@ -119,9 +119,6 @@ services:
     links:
       - resource:backend
     logging: *default-logging
-    environment:
-      LOG_CACHE_KEYS: "true"
-      LOG_CLEAR_KEYS: "true"
     restart: always
     labels:
       - "logging=true"
@@ -487,7 +484,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.3.1
+    image: kanselarij/document-naming-service:1.3.2
     labels:
       - logging=true
     restart: always
