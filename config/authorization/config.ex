@@ -131,7 +131,8 @@ defmodule Acl.UserGroups.Config do
       "http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit",
       "https://data.vlaanderen.be/ns/besluitvorming#Agendering",
       "http://mu.semte.ch/vocabularies/ext/Indieningsactiviteit",
-      "http://mu.semte.ch/vocabularies/ext/AgendaStatusActivity"
+      "http://mu.semte.ch/vocabularies/ext/AgendaStatusActivity",
+      "http://mu.semte.ch/vocabularies/ext/submissions/InterneBeoordeling",
     ]
   end
 
@@ -141,6 +142,18 @@ defmodule Acl.UserGroups.Config do
       "http://www.w3.org/ns/prov#Collection",
       "http://vocab.deri.ie/cogs#Job",
       "http://mu.semte.ch/vocabularies/ext/FileBundlingJob"
+    ]
+  end
+
+  defp report_generation_job_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/ReportGenerationJob",
+    ]
+  end
+
+  defp prepare_sign_flow_job_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/PrepareSignFlowJob",
     ]
   end
 
@@ -179,6 +192,29 @@ defmodule Acl.UserGroups.Config do
       "http://mu.semte.ch/vocabularies/ext/handtekenen/AnnulatieActiviteit",
       "http://mu.semte.ch/vocabularies/ext/handtekenen/Afrondingsactiviteit",
       "http://mu.semte.ch/vocabularies/ext/signinghub/Document"
+    ]
+  end
+
+  defp parliament_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/parlement/Parlementaireaangelegenheid",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireProcedurestap",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireIndieningsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/parlement/ParlementaireOphalingsactiviteit",
+      "http://mu.semte.ch/vocabularies/ext/parlement/IngediendStuk",
+      "http://mu.semte.ch/vocabularies/ext/parlement/OpgehaaldStuk",
+      "http://mu.semte.ch/vocabularies/ext/SendToVpJob",
+      "http://mu.semte.ch/vocabularies/ext/SendToVpJobContext",
+    ]
+  end
+
+  defp submissions_resource_types() do
+    [
+      "http://mu.semte.ch/vocabularies/ext/submissions/Indiening",
+      "http://mu.semte.ch/vocabularies/ext/submissions/StatusVeranderingsActiviteit",
+      "http://mu.semte.ch/vocabularies/ext/submissions/Serie",
+      "http://mu.semte.ch/vocabularies/ext/submissions/VoorlopigStuk",
+      "http://mu.semte.ch/vocabularies/ext/submissions/VoorlopigBestand",
     ]
   end
 
@@ -275,6 +311,8 @@ defmodule Acl.UserGroups.Config do
     # removed_source_quads, new_quads.  The quads may be calculated in
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
+    ### ! When adding new allowed groups or changing who may access
+    ### ! always update cache-warmup-service allowed groups config
     [
       %GroupSpec{
         name: "public",
@@ -370,7 +408,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
@@ -394,7 +433,8 @@ defmodule Acl.UserGroups.Config do
                 generic_besluitvorming_resource_types() ++
                 document_resource_types() ++
                 file_bundling_resource_types() ++
-                publication_resource_types()
+                publication_resource_types() ++
+                report_generation_job_types()
             }
           },
           %GraphSpec{
@@ -554,6 +594,7 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
+      ### *note: should KB be able to write sign-flow data?
       %GroupSpec{
         name: "sign-flow-write",
         useage: [:write, :read_for_write],
@@ -569,6 +610,99 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/system/signing",
             constraint: %ResourceConstraint{
               resource_types: sign_resource_types()
+              ++ prepare_sign_flow_job_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ ovrb_roles()
+          ++ kort_bestek_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+          ++ overheid_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
+            }
+          }
+        ]
+      },
+
+      %GroupSpec{
+        name: "parliament-flow-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/parliament",
+            constraint: %ResourceConstraint{
+              resource_types: parliament_resource_types()
+            }
+          }
+        ]
+      },
+      ### if kabinet_medewerker_roles should be able to read, update cache-warmup groups
+      %GroupSpec{
+        name: "submissions-read",
+        useage: [:read],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+          ++ kabinet_medewerker_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/submissions",
+            constraint: %ResourceConstraint{
+              resource_types: submissions_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
+            }
+          }
+        ]
+      },
+      ### minister and medewerker have read only
+      %GroupSpec{
+        name: "submissions-write",
+        useage: [:write, :read_for_write],
+        access: access_by_role(
+          admin_roles()
+          ++ secretarie_roles()
+          ++ minister_roles()
+          ++ kabinet_dossierbeheerder_roles()
+        ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/submissions",
+            constraint: %ResourceConstraint{
+              resource_types: submissions_resource_types()
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/system/email",
+            constraint: %ResourceConstraint{
+              resource_types: email_resource_types()
             }
           }
         ]

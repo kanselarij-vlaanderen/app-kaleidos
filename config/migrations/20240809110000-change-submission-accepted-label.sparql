@@ -1,0 +1,14 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://themis.vlaanderen.be/id/indieningstatus/dd4f1819-a70d-453f-95cb-ab5ade98563e> skos:prefLabel "Aanvaard" .
+
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://themis.vlaanderen.be/id/indieningstatus/dd4f1819-a70d-453f-95cb-ab5ade98563e> skos:prefLabel "Behandeld" .
+  }
+}

@@ -24,10 +24,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://frontend/@appuniversum/"
   end
 
-  get "/authorization/callback", @frontend do
-    Proxy.forward conn, [], "http://frontend/torii/redirect.html"
-  end
-
   get "/handleiding", @frontend do
     Proxy.forward conn, [], "http://static-file/handleiding.pdf"
   end
@@ -59,6 +55,26 @@ defmodule Dispatcher do
 
   delete "/files/*path", @json_service do
     Proxy.forward conn, path, "http://file/files/"
+  end
+
+  post "/draft-files/:id/move", @json_service do
+    Proxy.forward conn, [], "http://draft-file-mover/draft-files/" <> id <> "/move"
+  end
+
+  get "/draft-files/:id/download", %{ layer: :api } do
+    Proxy.forward conn, [], "http://draft-file/files/" <> id <> "/download"
+  end
+
+  post "/draft-files/*path", %{ layer: :api } do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
+  delete "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://draft-file/files/"
+  end
+
+  get "/ember-pdfjs-wrapper/*path", @frontend do
+    Proxy.forward conn, path, "http://frontend/ember-pdfjs-wrapper/"
   end
 
   ### Mirror sync producer
@@ -157,6 +173,28 @@ defmodule Dispatcher do
 
   delete "/agendas/:agenda_id", @json_service do
     Proxy.forward conn, [], "http://agenda-approve/agendas/" <> agenda_id
+  end
+
+  ### Submission of subcases on meeting
+
+  post "/meetings/:meeting_id/submit", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit"
+  end
+
+  post "/meetings/:meeting_id/submit-submission", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/meetings/" <> meeting_id <> "/submit-submission"
+  end
+
+  get "/meetings/open", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/open-meetings"
+  end
+
+  get "/submissions/:submission_id/for-meeting", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/submissions/" <> submission_id <> "/for-meeting"
+  end
+
+  post "/agendas/:agenda_id/reorder", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/agendas/" <> agenda_id <> "/reorder"
   end
 
   ### Themis export
@@ -398,6 +436,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  get "/document-naming-jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://resource/document-naming-jobs/"
+  end
+
+  get "/jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/jobs/"
+  end
+
   # PUBLICATION-FLOW
   match "/publication-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/publication-flows/search/"
@@ -504,6 +550,22 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id <> "/pieces/" <> piece_id <> "/signinghub-url"
   end
 
+  delete "/signing-flows/:signing_flow_id", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/" <> signing_flow_id
+  end
+
+  get "/digital-signing/health-check", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/verify-credentials"
+  end
+
+  post "/signing-flows/mark-pieces-for-signing", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/signing-flows/mark-pieces-for-signing"
+  end
+
+  get "/signing-flows/job/:id", @json_service do
+    Proxy.forward conn, [], "http://digital-signing/job/" <> id
+  end
+
   get "/mail-folders/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mail-folders/"
   end
@@ -532,6 +594,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
 
+  match "/draft-files/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-files/"
+  end
+
 
   ### Decision extraction
   match "/decision-extraction/*path", @json_service do
@@ -541,6 +607,60 @@ defmodule Dispatcher do
   ### Decision report generation
   match "/generate-decision-report/*path", @json_service do
     Proxy.forward conn, path, "http://decision-report-generation/"
+  end
+
+  ### Vlaams Parlement
+  match "/parliament-flows/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-flows/"
+  end
+  match "/parliament-subcases/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-subcases/"
+  end
+  match "/parliament-submission-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-submission-activities/"
+  end
+  match "/submitted-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submitted-pieces/"
+  end
+  match "/parliament-retrieval-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/parliament-retrieval-activities/"
+  end
+  match "/retrieved-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/retrieved-pieces/"
+  end
+  match "/vlaams-parlement-sync/*path", @json_service do
+    Proxy.forward conn, path, "http://vlaams-parlement-sync/"
+  end
+
+  ### Cabinet submissions
+  match "/submissions/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submissions/"
+  end
+
+  match "/submission-status-change-activities/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submission-status-change-activities/"
+  end
+
+  match "/draft-document-containers/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-document-containers/"
+  end
+
+  match "/draft-pieces/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/draft-pieces/"
+  end
+
+  match "/submission-internal-reviews/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/submission-internal-reviews/"
+  end
+
+  ### Document Naming
+  match "/document-naming/*path", @json_service do
+    Proxy.forward conn, path, "http://document-naming/"
+  end
+
+  ### Document Stamping
+  match "/document-stamping/*path", @json_service do
+    Proxy.forward conn, path, "http://document-stamping/"
   end
 
   ## Fallback
@@ -557,4 +677,4 @@ defmodule Dispatcher do
     send_resp( conn, 404, "Route not found. See config/dispatcher.ex" )
   end
 
-end
+ end

@@ -31,9 +31,9 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:6.5.1
+    image: kanselarij/frontend-kaleidos:9.2.0
     environment:
-      EMBER_OAUTH_API_KEY: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
+      EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
       EMBER_OAUTH_REDIRECT_URL: "https://kaleidos-dev.vlaanderen.be/authorization/callback"
       EMBER_OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
@@ -53,20 +53,16 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/mu-authorization:0.6.0-beta.8
-    environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      DATABASE_COMPATIBILITY: "Virtuoso"
-      DATABASE_OVERLOAD_RECOVERY: "on"
-      ERROR_ON_UNWRITTEN_DATA: "on"
+    image: semtech/sparql-parser:0.0.13
     volumes:
-      - ./config/authorization:/config
+      - ./config/new-authorization:/config
+      - ./data/mu-cl-authorization:/data/
     logging: *extended-logging
     restart: always
     labels:
       - "logging=true"
   triplestore:
-    image: redpencil/virtuoso:1.0.0
+    image: redpencil/virtuoso:1.2.1
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
@@ -79,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.9.0-beta.7
+    image: semtech/mu-search:0.9.3
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -107,7 +103,7 @@ services:
     labels:
       - "logging=true"
   delta-notifier:
-    image: semtech/mu-delta-notifier:0.1.0
+    image: semtech/mu-delta-notifier:0.3.1
     volumes:
       - ./config/delta:/config
     logging: *default-logging
@@ -115,7 +111,7 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.13.0
+    image: kanselarij/cache-warmup-service:1.16.0
     logging: *default-logging
     restart: always
     labels:
@@ -127,6 +123,9 @@ services:
     links:
       - resource:backend
     logging: *default-logging
+    environment:
+      LOG_CACHE_KEYS: "true"
+      LOG_CLEAR_KEYS: "true"
     restart: always
     labels:
       - "logging=true"
@@ -139,7 +138,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:1.25.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -170,7 +169,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:5.11.0
+    image: kanselarij/agenda-approve-service:5.11.2
     logging: *default-logging
     restart: always
     labels:
@@ -178,6 +177,8 @@ services:
   mocklogin:
     image: kanselarij/mock-login-service:2.2.0
     logging: *default-logging
+    labels:
+      - "logging=true"
   login:
     image: kanselarij/acmidm-login-service:2.4.1
     environment:
@@ -192,7 +193,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:3.9.0
+    image: kanselarij/newsletter-service:4.0.2
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -200,7 +201,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.17.2
+    image: kanselarij/yggdrasil:5.23.0
     logging: *default-logging
     restart: always
     labels:
@@ -212,7 +213,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:2.3.0
+    image: kanselarij/file-bundling-service:3.0.0
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -222,13 +223,13 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.6.0
+    image: kanselarij/file-bundling-job-creation-service:0.6.2
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:0.1.0
+    image: kanselarij/docx-conversion-service:2.2.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -242,9 +243,11 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:1.4.0
+    image: kanselarij/case-documents-sync-service:2.0.0
     logging: *default-logging
     restart: always
+    environment:
+      MAX_BODY_SIZE: "500kb"
     labels:
       - "logging=true"
   gov-field-sync:
@@ -260,7 +263,7 @@ services:
     labels:
       - "logging=true"
   document-release:
-    image: kanselarij/document-release-service:1.0.0
+    image: kanselarij/document-release-service:1.0.1
     logging: *default-logging
     restart: always
     labels:
@@ -336,7 +339,7 @@ services:
     labels:
       - "logging=true"
   decision-extraction:
-    image: kanselarij/decision-extraction-service:0.0.5
+    image: kanselarij/decision-extraction-service:0.0.8
     logging: *default-logging
     restart: always
     labels:
@@ -359,13 +362,15 @@ services:
     environment:
       ALLOW_SUPER_CONSUMER: "true"
   impersonation:
-    image: kanselarij/impersonation-service:0.1.0
+    image: kanselarij/impersonation-service:0.2.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:0.0.6
+    image: kanselarij/decision-report-generation-service:2.0.0
+    environment:
+      TZ: "Europe/Brussels"
     logging: *default-logging
     restart: always
     labels:
@@ -373,25 +378,17 @@ services:
     volumes:
       - ./data/files:/share
   shortlist:
-    image: kanselarij/shortlist-service:0.1.3
+    image: kanselarij/shortlist-service:0.1.5
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
-  chrome-browser:
-    image: kanselarij/chrome-browser-service:0.0.1
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-    security_opt:
-      - seccomp:./config/chrome-browser/chrome.json
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:0.0.2
+    image: kanselarij/minutes-report-generation-service:1.0.0
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:1.4.1
+    image: kanselarij/digital-signing-service:2.1.6
     volumes:
       - ./data/files:/share
     restart: always
@@ -411,7 +408,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.0.3
+    image: kanselarij/themis-export-service:3.2.1
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
@@ -455,3 +452,73 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  pdf-flattener:
+    image: kanselarij/pdf-flattener-service:0.0.2
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'flattened-pdfs'
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  pdf-signature-remover:
+    image: kanselarij/pdf-signature-remover:0.1.1
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'signature-removed-pdfs'
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  vlaams-parlement-sync:
+    image: kanselarij/vlaams-parlement-sync-service:0.7.4
+    volumes:
+      - ./data/files:/share
+      - ./data/debug:/debug
+    environment:
+      - ENABLE_SENDING_TO_VP_API=true
+      - ENABLE_DEBUG_FILE_WRITING=false
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *extended-logging
+  agenda-submission:
+    image: kanselarij/agenda-submission-service:1.6.1
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  document-naming:
+    image: kanselarij/document-naming-service:1.3.2
+    labels:
+      - logging=true
+    restart: always
+    logging: *default-logging
+  document-stamping:
+    image: kanselarij/document-stamping-service:1.2.0
+    volumes:
+      - ./data/files:/share
+    environment:
+      MU_APPLICATION_FILE_STORAGE_PATH: 'stamped-pdfs'
+    restart: always
+    logging: *default-logging
+  draft-file:
+    image: kanselarij/draft-file-service:0.0.1
+    environment:
+      FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+  draft-file-mover:
+    image: kanselarij/draft-file-mover-service:0.0.1
+    volumes:
+      - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"

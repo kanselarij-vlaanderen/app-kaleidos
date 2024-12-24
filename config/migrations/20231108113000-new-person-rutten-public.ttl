@@ -1,0 +1,4 @@
+<http://themis.vlaanderen.be/id/persoon/4341629b-40e6-4f37-aea3-62f0900a48dd> a <http://www.w3.org/ns/person#Person>;
+  <http://mu.semte.ch/vocabularies/core/uuid> "4341629b-40e6-4f37-aea3-62f0900a48dd";
+  <http://xmlns.com/foaf/0.1/familyName> "Rutten";
+  <https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> "Gwendolyn" .

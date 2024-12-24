@@ -1,0 +1,263 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "parl": "http://mu.semte.ch/vocabularies/ext/parlement/",
+    "dossier": "https://data.vlaanderen.be/ns/dossier#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "resources": {
+    "parliament-flows": {
+      "name": "parliament-flow",
+      "class": "parl:Parlementaireaangelegenheid",
+      "attributes": {
+        "opening-date": {
+          "type": "date",
+          "predicate": "dossier:openingsdatum"
+        },
+        "closing-date": {
+          "type": "date",
+          "predicate": "dossier:sluitingsdatum"
+        },
+        "parliament-id": {
+          "type": "string",
+          "predicate": "parl:id"
+        }
+      },
+      "relationships": {
+        "status": {
+          "predicate": "adms:status",
+          "target": "concept",
+          "cardinality": "one"
+        },
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireProcedurestap",
+          "target": "parliament-subcase",
+          "cardinality": "one"
+        },
+        "case": {
+          "predicate": "parl:behandeltDossier",
+          "target": "case",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementaireaangelegenheid/"
+    },
+    "parliament-subcases": {
+      "name": "parliament-subcase",
+      "class": "parl:ParlementaireProcedurestap",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        }
+      },
+      "relationships": {
+        "parliament-flow": {
+          "predicate": "parl:parlementaireProcedurestap",
+          "target": "parliament-flow",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "parliament-submission-activities": {
+          "predicate": "parl:parlementaireIndieningsactiviteiten",
+          "target": "parliament-submission-activity",
+          "cardinality": "many"
+        },
+        "parliament-retrieval-activities": {
+          "predicate": "parl:parlementaireOphalingsactiviteit",
+          "target": "parliament-retrieval-activity",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-procedurestap/"
+    },
+    "parliament-submission-activities": {
+      "name": "parliament-submission-activity",
+      "class": "parl:ParlementaireIndieningsactiviteit",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "comment": {
+          "type": "string",
+          "predicate": "dct:description"
+        }
+      },
+      "relationships": {
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireIndieningsactiviteiten",
+          "target": "parliament-subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "submitted-pieces": {
+          "predicate": "parl:ingediendStuk",
+          "target": "submitted-piece",
+          "cardinality": "many"
+        },
+        "submitter": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "user",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-indieningsactiviteit/"
+    },
+    "submitted-pieces": {
+      "name": "submitted-piece",
+      "class": "parl:IngediendStuk",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "subcase-name": {
+          "type": "string",
+          "predicate": "parl:procedurestapNaam"
+        },
+        "subcase-created": {
+          "type": "datetime",
+          "predicate": "parl:procedurestapAangemaaktOp"
+        },
+        "unsigned-file": {
+          "type": "uri",
+          "predicate": "parl:ongetekendBestand"
+        },
+        "signed-file": {
+          "type": "uri",
+          "predicate": "parl:getekendBestand"
+        },
+        "word-file": {
+          "type": "uri",
+          "predicate": "parl:wordBestand"
+        },
+        "unsigned-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:ongetekendBestandId"
+        },
+        "signed-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:getekendBestandId"
+        },
+        "word-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:wordBestandId"
+        }
+      },
+      "relationships": {
+        "parliament-submission-activity": {
+          "predicate": "parl:ingediendStuk",
+          "target": "parliament-submission-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "piece": {
+          "predicate": "parl:heeftStuk",
+          "target": "piece",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementair-ingediend-stuk/"
+    },
+    "parliament-retrieval-activities": {
+      "name": "parliament-retrieval-activity",
+      "class": "parl:ParlementaireOphalingsactiviteit",
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.startdatum"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "dossier:Procedurestap.einddatum"
+        },
+        "authority-domain": {
+          "type": "string",
+          "predicate": "parl:bevoegdheidsdomein"
+        },
+        "themes": {
+          "type": "string-set",
+          "predicate": "dct:description"
+        }
+      },
+      "relationships": {
+        "parliament-subcase": {
+          "predicate": "parl:parlementaireOphalingsactiviteit",
+          "target": "parliament-subcase",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "retrieved-pieces": {
+          "predicate": "parl:opgehaaldStuk",
+          "target": "retrieved-piece",
+          "cardinality": "many"
+        },
+        "generated-subcase": {
+          "predicate": "prov:generated",
+          "target": "subcase",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementaire-ophalingsactiviteit"
+    },
+    "retrieved-pieces": {
+      "name": "retrieved-piece",
+      "class": "parl:OpgehaaldStuk",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "comment": {
+          "type": "string",
+          "predicate": "schema:comment"
+        },
+        "unsigned-file": {
+          "type": "uri",
+          "predicate": "parl:ongetekendBestand"
+        },
+        "word-file": {
+          "type": "uri",
+          "predicate": "parl:wordBestand"
+        },
+        "unsigned-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:ongetekendBestandId"
+        },
+        "word-file-parliament-id": {
+          "type": "string",
+          "predicate": "parl:wordBestandId"
+        }
+      },
+      "relationships": {
+        "parliament-retrieval-activity": {
+          "predicate": "parl:opgehaaldStuk",
+          "target": "parliament-retrieval-activity",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "piece": {
+          "predicate": "parl:heeftOpgehaaldStuk",
+          "target": "piece",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://themis.vlaanderen.be/id/parlementair-opgehaald-stuk/"
+    }
+  }
+}

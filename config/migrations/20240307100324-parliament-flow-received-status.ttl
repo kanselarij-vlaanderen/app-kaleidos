@@ -1,0 +1,11 @@
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix thConceptScheme: <http://themis.vlaanderen.be/id/concept-scheme/> .
+@prefix thParlFlowStatus: <http://themis.vlaanderen.be/id/parlementaireaangelegenheid-status/> .
+
+thParlFlowStatus:879aed2f-6efa-4d7b-ab1b-13cc406b1f92 a skos:Concept ;
+    mu:uuid "879aed2f-6efa-4d7b-ab1b-13cc406b1f92" ;
+    skos:inScheme thConceptScheme:bfa3671b-68c1-4371-aa00-63840b7c9901 ;
+    schema:position 5 ;
+    skos:prefLabel "Ontvangen van Vlaams Parlement"@nl .

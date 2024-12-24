@@ -28,9 +28,11 @@ services:
   export-file:
     volumes:
       - ./testdata/files:/share
-  docx-conversion:
-    volumes:
-      - ./testdata/files:/share
+  # docx-conversion:
+  # old version that uses libreoffice for conversion instead of azure
+    # image: kanselarij/docx-conversion-service:0.1.0
+    # volumes:
+    #   - ./testdata/files:/share
   # kibana:
   #   entrypoint: "echo 'service disabled'"
   #   restart: "no"
@@ -50,9 +52,6 @@ services:
       NODE_ENV: "development"
       DEBUG: "true"
       DELTA_INTERVAL_MS: 10000
-  chrome-browser:
-    volumes:
-      - ./testdata/files:/share
   decision-report-generation:
     volumes:
       - ./testdata/files:/share
@@ -60,5 +59,23 @@ services:
     volumes:
       - ./testdata/files:/share
   minutes-report-generation:
+    volumes:
+      - ./testdata/files:/share
+  digital-signing:
+    volumes:
+      - ./testdata/files:/share
+  document-stamping:
+    volumes:
+      - ./testdata/files:/share
+  pdf-signature-remover:
+    volumes:
+      - ./testdata/files:/share
+  pdf-flattener:
+    volumes:
+      - ./testdata/files:/share
+  draft-file:
+    volumes:
+      - ./testdata/files:/share
+  draft-file-mover:
     volumes:
       - ./testdata/files:/share

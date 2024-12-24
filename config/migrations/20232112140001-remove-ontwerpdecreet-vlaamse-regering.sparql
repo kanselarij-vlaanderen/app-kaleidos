@@ -1,0 +1,8 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE WHERE {
+   GRAPH <http://mu.semte.ch/graphs/public> {
+     ?s mu:uuid "8a1e048a-4b55-4a19-b1c0-c85dba09a15c";
+        ?property ?value
+  }
+}

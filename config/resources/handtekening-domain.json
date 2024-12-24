@@ -62,6 +62,11 @@
           "target": "decision-activity",
           "cardinality": "one"
         },
+        "meeting": {
+          "predicate": "sign:heeftVergadering",
+          "target": "meeting",
+          "cardinality": "one"
+        },
         "creator": {
           "predicate": "dct:creator",
           "target": "user",

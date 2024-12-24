@@ -1,0 +1,17 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX sign: <http://mu.semte.ch/vocabularies/ext/handtekenen/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+
+INSERT { GRAPH ?g { ?s a prov:Activity } }
+WHERE {
+  VALUES (?type) {
+    (ext:Indieningsactiviteit)
+    (ext:AgendaStatusActivity)
+  }
+  GRAPH ?g {
+    ?s a ?type .
+    FILTER NOT EXISTS { ?s a prov:Activity }
+  }
+}

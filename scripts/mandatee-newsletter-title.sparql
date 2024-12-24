@@ -15,17 +15,17 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT {
-  GRAPH ?graph {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     ?mandatee ext:nieuwsbriefTitel ?newsletterTitle.
   }
 } WHERE {
-    GRAPH ?graph {
+    GRAPH <http://mu.semte.ch/graphs/public> {
       ?mandatee
           a mandaat:Mandataris ;
           mandaat:start ?start;
           org:holds ?mandate;
           mandaat:isBestuurlijkeAliasVan ?person .
-      FILTER NOT EXISTS { ?mandatee ext:nieuwsbriefTitel [] } # Only those that don't have a nwsl title yet
+      FILTER NOT EXISTS { ?mandatee ext:nieuwsbriefTitel [] } # Only those that don't have a valvas title yet
       ?mandate org:role ?role .
       ?person
           a person:Person ;
@@ -51,9 +51,5 @@ INSERT {
           (<http://themis.vlaanderen.be/id/bestuursfunctie/5fed907ce6670526694a03df> "viceminister-president")
       }
       BIND(CONCAT(?newsletterTitlePrefix, " ", ?firstName, " ", ?lastName) AS ?newsletterTitle)
-  }
-  VALUES ?graph {
-      <http://mu.semte.ch/graphs/public>
-      <http://data.kanselarij.vlaanderen.be/id/group/kanselarij>
   }
 }

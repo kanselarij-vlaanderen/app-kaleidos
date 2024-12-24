@@ -75,6 +75,8 @@ services:
     restart: "no"
   agenda-approve:
     restart: "no"
+    environment:
+      SERVER_BUSY_TIMEOUT: 1000
   mocklogin:
     restart: "no"
   login:
@@ -167,3 +169,23 @@ services:
       - NODE_ENV=development
   html-to-pdf:
     restart: "no"
+  digital-signing:
+    environment:
+      NODE_ENV: "development"
+      SIGNINGHUB_API_URL: "https://fake.api.url"
+  pdf-flattener:
+    restart: "no"
+  agenda-submission:
+    restart: "no"
+  document-naming:
+    restart: "no"
+  document-stamping:
+    restart: "no"
+  draft-file:
+    restart: "no"
+    environment:
+      - NODE_ENV=development
+  draft-file-mover:
+    restart: "no"
+    environment:
+      - NODE_ENV=development

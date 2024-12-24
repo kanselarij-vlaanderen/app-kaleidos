@@ -1,0 +1,38 @@
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0706> prov:qualifiedInvalidation <http://themis.vlaanderen.be/id/opheffing/a73fbcda-7f07-11ef-8291-0242ac110003> .
+        <http://themis.vlaanderen.be/id/opheffing/a73fbcda-7f07-11ef-8291-0242ac110003> a prov:Invalidation ;
+            mu:uuid """a73fbcda-7f07-11ef-8291-0242ac110003""" ;
+            prov:atTime "2024-09-30T00:00:00+02:00"^^xsd:dateTime .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0706> a besluit:Bestuursorgaan .
+    }
+}
+;
+
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        ?mandatee mandaat:einde "2024-09-30T00:00:00+02:00"^^xsd:dateTime .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0706> a besluit:Bestuursorgaan ;
+            prov:hadMember ?mandatee .
+        ?mandatee a mandaat:Mandataris .
+        FILTER NOT EXISTS { ?mandatee mandaat:einde ?mandatee_end . }
+    }
+}

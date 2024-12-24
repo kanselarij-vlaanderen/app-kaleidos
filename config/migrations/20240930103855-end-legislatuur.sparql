@@ -1,0 +1,39 @@
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0700> skos:prefLabel ?oldLabel .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0700> skos:prefLabel ?newLabel ;
+            prov:qualifiedInvalidation <http://themis.vlaanderen.be/id/opheffing/9a71df42-7f07-11ef-acc8-0242ac110003> .
+        <http://themis.vlaanderen.be/id/opheffing/9a71df42-7f07-11ef-acc8-0242ac110003> a prov:Invalidation ;
+            mu:uuid """9a71df42-7f07-11ef-acc8-0242ac110003""" ;
+            prov:atTime ?end_date .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0700> a besluit:Bestuursorgaan ;
+            prov:qualifiedGeneration / prov:atTime ?start_date .
+        <http://themis.vlaanderen.be/id/bestuursorgaan/5fed907ee6670526694a0700> skos:prefLabel ?oldLabel .
+        BIND(xsd:dateTime(?start_date) AS ?start_datetime)
+        BIND(CONCAT(STR(DAY(?start_datetime)), "/", STR(MONTH(?start_datetime)), "/", STR(YEAR(?start_datetime))) AS ?label_start_date)
+        BIND("2024-09-30T00:00:00+02:00"^^xsd:dateTime AS ?end_datetime)
+        BIND(xsd:dateTime(?end_datetime) AS ?end_date)
+        BIND(CONCAT(STR(DAY(?end_datetime)), "/", STR(MONTH(?end_datetime)), "/", STR(YEAR(?end_datetime))) AS ?label_end_date)
+        BIND(CONCAT("Vlaamse Regering ", ?label_start_date, " - ", ?label_end_date) AS ?newLabel)
+    }
+}
+
