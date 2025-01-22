@@ -194,7 +194,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:feature-simplified-distribution-subquery
+    image: kanselarij/yggdrasil:feature-stricter-typing
     logging: *default-logging
     restart: always
     labels:
