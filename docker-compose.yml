@@ -31,7 +31,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:9.2.0
+    image: kanselarij/frontend-kaleidos:9.3.3
     environment:
       EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -123,9 +123,6 @@ services:
     links:
       - resource:backend
     logging: *default-logging
-    environment:
-      LOG_CACHE_KEYS: "true"
-      LOG_CLEAR_KEYS: "true"
     restart: always
     labels:
       - "logging=true"
@@ -201,7 +198,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.23.0
+    image: kanselarij/yggdrasil:5.24.0
     logging: *default-logging
     restart: always
     labels:
@@ -485,13 +482,13 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.6.1
+    image: kanselarij/agenda-submission-service:1.8.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.3.2
+    image: kanselarij/document-naming-service:1.3.3
     labels:
       - logging=true
     restart: always

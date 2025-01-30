@@ -193,6 +193,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-submission/submissions/" <> submission_id <> "/for-meeting"
   end
 
+  get "/subcases/:subcase_id/agendas", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/subcases/" <> subcase_id <> "/agendas"
+  end
+
   post "/agendas/:agenda_id/reorder", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/agendas/" <> agenda_id <> "/reorder"
   end
