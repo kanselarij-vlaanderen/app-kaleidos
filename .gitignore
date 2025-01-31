@@ -16,6 +16,7 @@ data/*
 # Docker env
 .env
 docker-compose.override.yml
+docker-compose.live.override.yml
 docker-compose.mirror.override.yml
 
 # Migrations
