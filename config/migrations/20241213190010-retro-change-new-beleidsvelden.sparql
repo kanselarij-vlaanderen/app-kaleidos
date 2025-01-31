@@ -1,0 +1,42 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX subm: <http://mu.semte.ch/vocabularies/ext/submissions/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+DELETE {
+  GRAPH ?g {
+    ?resource ?veldPredicate ?oldVeld .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?resource ?veldPredicate ?newVeld .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?resource a ?type .
+    ?resource ?veldPredicate ?oldVeld .
+    ?resource ?createdPredicate ?created .
+  }
+
+  FILTER(?created >= "2024-06-21T00:00:00"^^xsd:dateTime)
+
+  VALUES
+    (?type                                        ?veldPredicate             ?createdPredicate)
+  {
+    (dossier:Dossier                              besluitvorming:beleidsveld dcterms:created)
+    (besluitvorming:Besluitvormingsaangelegenheid besluitvorming:beleidsveld besluitvorming:openingsdatum)
+    (dossier:Procedurestap                        besluitvorming:beleidsveld dcterms:created)
+    (subm:Indiening                               besluitvorming:beleidsveld dcterms:created)
+    (pub:Publicatieaangelegenheid                 pub:beleidsveld            dcterms:created)
+  }
+
+  VALUES (?oldVeld ?newVeld) {
+    (<http://themis.vlaanderen.be/id/beleidsveld/196e9d0e-1e85-492d-8a24-d31ed7d5e887> <http://themis.vlaanderen.be/id/beleidsveld/31adc08e-0806-4f72-9b3f-8d3ecbc65579>)
+    (<http://themis.vlaanderen.be/id/beleidsveld/9952d392-2a11-4af1-8362-ae1570c17e4a> <http://themis.vlaanderen.be/id/beleidsveld/a5cf604b-b612-4a40-9741-4f0b78e79253>)
+    (<http://themis.vlaanderen.be/id/beleidsveld/1b6c4206-b591-4a53-a27c-1c125784fc19> <http://themis.vlaanderen.be/id/beleidsveld/39ca6f6c-e7e2-4a74-9ba9-2cdc679d8237>)
+  }
+}
