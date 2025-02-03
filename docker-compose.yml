@@ -186,7 +186,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:4.0.2
+    image: kanselarij/newsletter-service:4.0.3
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -466,7 +466,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.7.5
+    image: kanselarij/vlaams-parlement-sync-service:0.7.6
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
@@ -478,7 +478,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.8.0
+    image: kanselarij/agenda-submission-service:1.8.1
     labels:
       - "logging=true"
     restart: always
