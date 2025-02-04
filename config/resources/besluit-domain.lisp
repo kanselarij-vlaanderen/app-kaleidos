@@ -49,7 +49,6 @@
                 (:for-press           :boolean  ,(s-prefix "ext:forPress"))
                 ;; (:title-press         :string   ,(s-prefix "besluitvorming:titelPersagenda")) NOTE: this property is unused, but data is still available in the database
                 (:comment             :string   ,(s-prefix "schema:comment"))
-                (:private-comment     :string   ,(s-prefix "ext:privateComment"))
                 ;; (:text-press          :string   ,(s-prefix "besluitvorming:tekstPersagenda")) NOTE: this property is unused, but data is still available in the database
                 ;; Added properties from subcases
                 (:short-title         :string   ,(s-prefix "besluitvorming:korteTitel"))
