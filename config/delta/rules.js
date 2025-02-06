@@ -207,6 +207,10 @@ export default [
     'http://mu.semte.ch/graphs/public',
     'http://mu.semte.ch/graphs/system/email',
     'http://mu.semte.ch/graphs/system/signing',
+    'http://mu.semte.ch/graphs/system/parliament',
+    'http://mu.semte.ch/graphs/system/submissions',
+    'http://mu.semte.ch/graphs/system/users',
+    'http://mu.semte.ch/graphs/staatsblad',
   ].map((graph) => {
     return {
       match: { graph: { value: graph } },
