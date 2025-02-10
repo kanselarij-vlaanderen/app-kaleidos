@@ -1,0 +1,47 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX subm: <http://mu.semte.ch/vocabularies/ext/submissions/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+     ?newInternalReview a subm:InterneBeoordeling ;
+                                              mu:uuid ?uuid ;
+                                              dct:created ?currentDateTime ;
+                                              ext:privateComment ?comment ;
+                                              subm:isInterneBeoordelingVoor ?subcase .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?agendapunt a besluit:Agendapunt;
+      ext:privateComment ?comment .
+    FILTER (STRLEN(?comment) > 2) # ignore empty properties and really short ones which are just whitespace
+    FILTER NOT EXISTS { [] prov:wasRevisionOf ?agendapunt } # final versions only so we make 1 model per subcase
+    ?agendapunt ^besluitvorming:genereertAgendapunt/besluitvorming:vindtPlaatsTijdens ?subcase .
+
+    FILTER NOT EXISTS { # where no model exists yet
+      ?internalReview a subm:InterneBeoordeling .
+      ?internalReview subm:isInterneBeoordelingVoor ?subcase .
+    }
+    BIND(STRUUID() AS ?uuid)
+    BIND(IRI(CONCAT('http://themis.vlaanderen.be/id/interne-beoordeling/', ?uuid)) AS ?newInternalReview)
+    BIND(NOW() AS ?currentDateTime)
+  }
+}
+;
+
+# remove all privateComment properties across all graphs to be sure
+DELETE {
+  GRAPH ?g {
+    ?agendapunt ext:privateComment ?comment .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?agendapunt a besluit:Agendapunt;
+      ext:privateComment ?comment .
+  }
+}
