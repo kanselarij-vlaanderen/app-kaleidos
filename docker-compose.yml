@@ -198,7 +198,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.24.0
+    image: kanselarij/yggdrasil:5.25.0
     logging: *default-logging
     restart: always
     labels:
@@ -482,7 +482,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.8.2
+    image: kanselarij/agenda-submission-service:1.9.0
     labels:
       - "logging=true"
     restart: always
