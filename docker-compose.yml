@@ -210,7 +210,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:3.0.0
+    image: kanselarij/file-bundling-service:feature-KAS-4930
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -220,7 +220,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.6.2
+    image: kanselarij/file-bundling-job-creation-service:feature-KAS-4930
     logging: *default-logging
     restart: always
     labels:
