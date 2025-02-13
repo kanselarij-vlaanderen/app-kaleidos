@@ -220,7 +220,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:0.6.2
+    image: kanselarij/file-bundling-job-creation-service:feature-KAS-4990-hide-retracted-docs-on-agendaitems
     logging: *default-logging
     restart: always
     labels:
