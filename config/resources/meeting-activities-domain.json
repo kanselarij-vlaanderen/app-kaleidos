@@ -4,7 +4,7 @@
     "prov": "http://www.w3.org/ns/prov#",
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "adms": "http://www.w3.org/ns/adms#",
-    "generiek": "http://data.vlaanderen.be/ns/generiek#"
+    "generiek": "https://data.vlaanderen.be/ns/generiek#"
   },
   "resources": {
     "internal-decision-publication-activities": {
