@@ -166,7 +166,7 @@ services:
     labels:
       - "logging=true"
   agenda-approve:
-    image: kanselarij/agenda-approve-service:feature-KAS-4737-generiek-https
+    image: kanselarij/agenda-approve-service:1.10.0
     logging: *default-logging
     restart: always
     labels:
@@ -488,7 +488,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:feature-KAS-4737-generiek-https
+    image: kanselarij/document-naming-service:5.12.0
     labels:
       - logging=true
     restart: always
