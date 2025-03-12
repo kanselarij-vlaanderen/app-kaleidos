@@ -1,0 +1,21 @@
+PREFIX oldGeneriek: <http://data.vlaanderen.be/ns/generiek#>
+PREFIX newGeneriek: <https://data.vlaanderen.be/ns/generiek#>
+
+
+DELETE {
+  GRAPH ?g {
+    ?s oldGeneriek:bewerking ?o .
+  }
+}
+
+INSERT {
+  GRAPH ?g {
+    ?s newGeneriek:bewerking ?o .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?s oldGeneriek:bewerking ?o .
+  }
+}
