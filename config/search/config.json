@@ -105,7 +105,7 @@
           "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/alternative"
-        ],     
+        ],
         "tempGovernmentAreaIds": [
           "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
@@ -460,6 +460,9 @@
             "type": "text"
           },
           "documentType": {
+            "type": "keyword"
+          },
+          "documentContainerId": {
             "type": "keyword"
           },
           "accessLevel": {
