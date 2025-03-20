@@ -105,7 +105,7 @@
           "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
           "http://purl.org/dc/terms/alternative"
-        ],     
+        ],
         "tempGovernmentAreaIds": [
           "^https://data.vlaanderen.be/ns/besluitvorming#genereertAgendapunt",
           "https://data.vlaanderen.be/ns/besluitvorming#vindtPlaatsTijdens",
@@ -372,6 +372,10 @@
           "http://purl.org/dc/terms/type",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "documentContainerId": [
+          "^https://data.vlaanderen.be/ns/dossier#Collectie.bestaatUit",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "accessLevel": [
           "https://data.vlaanderen.be/ns/besluitvorming#vertrouwelijkheidsniveau"
         ],
@@ -456,6 +460,9 @@
             "type": "text"
           },
           "documentType": {
+            "type": "keyword"
+          },
+          "documentContainerId": {
             "type": "keyword"
           },
           "accessLevel": {

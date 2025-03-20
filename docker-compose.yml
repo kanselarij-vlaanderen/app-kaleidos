@@ -31,7 +31,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:9.4.2
+    image: kanselarij/frontend-kaleidos:9.4.3
     environment:
       EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -198,7 +198,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.25.0
+    image: kanselarij/yggdrasil:5.25.1
     logging: *default-logging
     restart: always
     labels:
@@ -220,7 +220,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.0.0
+    image: kanselarij/file-bundling-job-creation-service:1.0.1
     logging: *default-logging
     restart: always
     labels:
@@ -460,7 +460,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-signature-remover:
-    image: kanselarij/pdf-signature-remover:0.1.1
+    image: kanselarij/pdf-signature-remover:0.1.2
     volumes:
       - ./data/files:/share
     environment:
@@ -470,7 +470,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.7.8
+    image: kanselarij/vlaams-parlement-sync-service:0.7.9
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
