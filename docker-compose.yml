@@ -385,7 +385,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.1.7
+    image: kanselarij/digital-signing-service:2.2.0
     volumes:
       - ./data/files:/share
     restart: always
