@@ -17,7 +17,7 @@ services:
     volumes:
       - ./config/project-scripts:/app/scripts
   identifier:
-    image: semtech/mu-identifier:1.10.0
+    image: semtech/mu-identifier:1.10.3
     logging: *default-logging
     restart: always
     labels:
@@ -42,7 +42,7 @@ services:
     labels:
       - "logging=true"
   migrations:
-    image: semtech/mu-migrations-service:0.7.0
+    image: semtech/mu-migrations-service:0.9.0
     volumes:
       - ./config/migrations:/data/migrations
     environment:
@@ -75,7 +75,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.9.3
+    image: semtech/mu-search:0.10.0
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -92,6 +92,7 @@ services:
     image: semtech/mu-search-elastic-backend:1.1.0
     environment:
       discovery.type: "single-node"
+      LOG_SCOPE_ELASTICSEARCH: "warn"
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
@@ -103,7 +104,7 @@ services:
     labels:
       - "logging=true"
   delta-notifier:
-    image: semtech/mu-delta-notifier:0.3.1
+    image: semtech/mu-delta-notifier:0.4.0
     volumes:
       - ./config/delta:/config
     logging: *default-logging
@@ -119,7 +120,7 @@ services:
     environment:
       CONCEPT_BACKEND_URL: "http://forever-cache/"
   cache:
-    image: semtech/mu-cache:2.0.1
+    image: semtech/mu-cache:2.0.2
     links:
       - resource:backend
     logging: *default-logging
@@ -127,7 +128,7 @@ services:
     labels:
       - "logging=true"
   forever-cache:
-    image: semtech/mu-cache:2.0.1
+    image: semtech/mu-cache:2.0.2
     links:
       - resource:backend
     logging: *default-logging
@@ -135,7 +136,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.25.0
+    image: semtech/mu-cl-resources:1.26.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -146,7 +147,7 @@ services:
     labels:
       - "logging=true"
   file:
-    image: semtech/mu-file-service:3.3.0
+    image: semtech/mu-file-service:3.4.0
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
     volumes:
@@ -172,7 +173,7 @@ services:
     labels:
       - "logging=true"
   mocklogin:
-    image: kanselarij/mock-login-service:2.2.0
+    image: kanselarij/mock-login-service:2.3.0
     logging: *default-logging
     labels:
       - "logging=true"
@@ -226,7 +227,7 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:2.2.0
+    image: kanselarij/docx-conversion-service:2.2.1
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -385,7 +386,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.1.7
+    image: kanselarij/digital-signing-service:2.2.0
     volumes:
       - ./data/files:/share
     restart: always
@@ -470,7 +471,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.7.9
+    image: kanselarij/vlaams-parlement-sync-service:0.8.0
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
@@ -482,7 +483,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.9.0
+    image: kanselarij/agenda-submission-service:1.11.0
     labels:
       - "logging=true"
     restart: always
@@ -494,7 +495,7 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:1.2.0
+    image: kanselarij/document-stamping-service:2.0.0
     volumes:
       - ./data/files:/share
     environment:
@@ -502,7 +503,7 @@ services:
     restart: always
     logging: *default-logging
   draft-file:
-    image: kanselarij/draft-file-service:0.0.1
+    image: kanselarij/draft-file-service:0.0.3
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
     volumes:
