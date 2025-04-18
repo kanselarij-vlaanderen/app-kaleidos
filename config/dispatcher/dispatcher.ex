@@ -668,7 +668,7 @@ defmodule Dispatcher do
   end
 
   ### PDF Signature Remover
-  match "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
+  post "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
   end
 
