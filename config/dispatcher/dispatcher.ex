@@ -667,6 +667,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://document-stamping/"
   end
 
+  ### PDF Signature Remover
+  post "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
+    Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do
