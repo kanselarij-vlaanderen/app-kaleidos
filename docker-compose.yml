@@ -191,7 +191,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:4.0.3
+    image: kanselarij/newsletter-service:4.0.4
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
