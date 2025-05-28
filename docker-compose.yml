@@ -227,7 +227,7 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:2.2.1
+    image: kanselarij/docx-conversion-service:2.3.0
     volumes:
       - ./data/files:/share
     logging: *default-logging
