@@ -451,7 +451,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-flattener:
-    image: kanselarij/pdf-flattener-service:0.0.3
+    image: kanselarij/pdf-flattener-service:1.0.0
     volumes:
       - ./data/files:/share
     environment:
