@@ -144,10 +144,25 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-comparison/agendas/" <> agenda_id <> "/compare/" <> compared_agenda_id <> "/agenda-item/" <> agenda_item_id <> "/documents"
   end
 
+  ### Agenda document download
+
   post "/agendas/:id/agendaitems/pieces/files/archive", @json_service do
     Proxy.forward conn, [], "http://file-bundling-job-creation/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
 
+  ### Document download
+  
+  post "/agendaitems/:id/pieces/files/archive", @json_service do
+    Proxy.forward conn, [], "http://file-bundling-job-creation/agendaitems/" <> id <> "/documents/files/archive"
+  end
+
+  post "/cases/:id/pieces/files/archive", @json_service do
+    Proxy.forward conn, [], "http://file-bundling-job-creation/cases/" <> id <> "/documents/files/archive"
+  end
+
+  post "/subcases/:id/pieces/files/archive", @json_service do
+    Proxy.forward conn, [], "http://file-bundling-job-creation/subcases/" <> id <> "/documents/files/archive"
+  end
 
   ### Agenda approval and meeting management
 
