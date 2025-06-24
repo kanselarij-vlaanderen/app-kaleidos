@@ -1,0 +1,44 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+
+INSERT {
+  GRAPH ?g {
+    ?case dossier:Dossier.bestaatUit ?subcaseDocuments .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?case a dossier:Dossier ;
+          dossier:Dossier.isNeerslagVan ?decisionmakingFlow .
+
+    ?decisionmakingFlow dossier:doorloopt / ^ext:indieningVindtPlaatsTijdens / prov:generated ?subcaseDocuments .
+
+    FILTER NOT EXISTS { ?case dossier:Dossier.bestaatUit ?subcaseDocuments . }
+  }
+}
+
+;
+
+INSERT {
+  GRAPH ?g {
+    ?case dossier:Dossier.bestaatUit ?agendaitemDocuments .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?case a dossier:Dossier ;
+          dossier:Dossier.isNeerslagVan ?decisionmakingFlow .
+
+    ?decisionmakingFlow dossier:doorloopt /
+    ^besluitvorming:vindtPlaatsTijdens /
+    besluitvorming:genereertAgendapunt /
+    besluitvorming:geagendeerdStuk  ?agendaitemDocuments .
+
+    FILTER NOT EXISTS { ?case dossier:Dossier.bestaatUit ?agendaitemDocuments . }
+  }
+}
