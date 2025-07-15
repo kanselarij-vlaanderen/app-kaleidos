@@ -366,7 +366,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.0.0
+    image: kanselarij/decision-report-generation-service:2.1.0
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
