@@ -199,7 +199,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:feature-KAS-4869-yggdrasil-improvement
+    image: kanselarij/yggdrasil:feature-KAS-4869-optimizations-no-sort-all-subjects
     logging: *default-logging
     restart: always
     labels:
