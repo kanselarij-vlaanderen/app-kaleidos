@@ -495,7 +495,7 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.0
+    image: kanselarij/document-stamping-service:feature-KAS-5077-retry-agenda-document-stamping
     volumes:
       - ./data/files:/share
     environment:
