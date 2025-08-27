@@ -117,7 +117,7 @@
                                         :as "retrieved-pieces")
               (submission-activity      :via ,(s-prefix "prov:generated")
                                         :inverse t
-                                        :as "submission-activity")
+                                        :as "submission-activities")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
