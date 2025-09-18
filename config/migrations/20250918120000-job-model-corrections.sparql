@@ -1,0 +1,109 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX subm: <http://mu.semte.ch/vocabularies/ext/submissions/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cogs: <http://vocab.deri.ie/cogs#>
+
+# document-naming-job, fix status and agenda predicate
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob ext:status ?status ;
+      prov:used ?agenda .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob adms:status ?status ;
+      dct:source ?agenda .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob a ext:DocumentNamingJob;
+      ext:status ?status ;
+      prov:used ?agenda .
+    ?agenda a besluitvorming:Agenda .
+  }
+}
+
+;
+
+# file-stamping-job, fix status
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob a ext:FileStampingJob ;
+      ext:status ?status .
+  }
+}
+
+;
+
+# send-to-vp-job, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob prov:endedAtTime ?created . # not really accurate, best we can do
+    ?sendToVpJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob a ext:SendToVpJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# for all jobs that had a cogs or unique status uri
+
+DELETE {
+  GRAPH ?g {
+    ?job adms:status ?oldStatusUri .      
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?job adms:status ?newStatusUri .      
+  }
+} WHERE {
+  GRAPH ?g {
+    ?job a ?type;
+      adms:status ?oldStatusUri .
+    VALUES (?type) {
+      (ext:DocumentNamingJob)
+      (ext:FileStampingJob)
+      # (ext:FileBundlingJob)
+      # (pub:PublicationMetricsExportJob)
+      # (ext:PublicExportJob)
+      # (ext:ReportGenerationJob)
+      # (ext:ReportBundleGenerationJob)
+    }
+    VALUES (?oldStatusUri ?newStatusUri) {
+      # (<http://vocab.deri.ie/cogs#Scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
+      # no jobs should be scheduled or busy during migrations, but just to be sure
+      (<http://vocab.deri.ie/cogs#Running> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://vocab.deri.ie/cogs#Success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://vocab.deri.ie/cogs#Fail> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+    }
+  }
+}
+
+
