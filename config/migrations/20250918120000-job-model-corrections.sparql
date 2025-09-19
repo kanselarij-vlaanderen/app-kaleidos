@@ -7,6 +7,7 @@ PREFIX subm: <http://mu.semte.ch/vocabularies/ext/submissions/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX cogs: <http://vocab.deri.ie/cogs#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
 
 # document-naming-job, fix status and agenda predicate
 DELETE {
@@ -22,7 +23,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-    ?documentNamingJob a ext:DocumentNamingJob;
+    ?documentNamingJob a ext:DocumentNamingJob ;
       ext:status ?status ;
       prov:used ?agenda .
     ?agenda a besluitvorming:Agenda .
@@ -65,6 +66,28 @@ INSERT {
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/system/parliament> {
     ?sendToVpJob a ext:SendToVpJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# themis-export-job, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob prov:endedAtTime ?created . # not really accurate, best we can do
+    ?publicExportJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob a ext:PublicExportJob ;
       dct:created ?created ;
       dct:modified ?modified .
   }

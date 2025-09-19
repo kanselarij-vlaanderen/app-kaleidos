@@ -406,7 +406,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.2.1
+    image: kanselarij/themis-export-service:feature-KAS-4883-job-model-refactor
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
@@ -471,7 +471,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.8.0
+    image: kanselarij/vlaams-parlement-sync-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
@@ -489,13 +489,13 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.4.0
+    image: kanselarij/document-naming-service:feature-KAS-4883-job-model-refactor
     labels:
       - logging=true
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.0
+    image: kanselarij/document-stamping-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
     environment:
