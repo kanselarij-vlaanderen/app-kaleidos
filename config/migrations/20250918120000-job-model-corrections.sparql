@@ -95,6 +95,23 @@ INSERT {
 
 ;
 
+# file-bundling-job, fix status in all graphs
+DELETE {
+  GRAPH ?g{
+    ?FileBundlingJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?FileBundlingJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?FileBundlingJob a ext:FileBundlingJob ;
+      ext:status ?status .
+  }
+}
+
 # for all jobs that had a cogs or unique status uri
 
 DELETE {
@@ -113,7 +130,7 @@ INSERT {
     VALUES (?type) {
       (ext:DocumentNamingJob)
       (ext:FileStampingJob)
-      # (ext:FileBundlingJob)
+      (ext:FileBundlingJob)
       # (pub:PublicationMetricsExportJob)
       # (ext:PublicExportJob)
       # (ext:ReportGenerationJob)

@@ -28,18 +28,29 @@
   :features '(include-uri)
   :on-path "jobs")
 
-(define-resource file-bundling-job ()
+(define-resource file-bundling-job (job)
   :class (s-prefix "ext:FileBundlingJob") ; "cogs:Job"
-  :properties `((:created       :datetime  ,(s-prefix "dct:created"))
-                (:status        :url       ,(s-prefix "ext:status"))
-                (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
-                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime")))
-
+  ;; :has-one `((collection     :via     ,(s-prefix "prov:used") ;; defined below
+  ;;                            :as "used"))
   :has-one `((file              :via     ,(s-prefix "prov:generated")
                                 :as "generated"))
-  ; :resource-base (s-url "http://themis.vlaanderen.be/id/file-bundling-jobs/")
+  ; :resource-base (s-url "http://mu.semte.ch/services/file-bundling-service/file-bundling-jobs/")
   :features '(include-uri)
   :on-path "file-bundling-jobs")
+
+;; (define-resource collection ()
+;;   :class (s-prefix "prov:Collection")
+;;   :properties `((:sha256        :string  ,(s-prefix "ext:sha256"))) ;; based on all the members, no duplicate collections with same members
+;;   ;; we only create a job and a collection after checking if a collection whith the same sha256 does not exist, so 1 job per collection
+;;   ;; if any of the members get removed we remove the job and the collection in file-bundling-service (through deltas)
+;;   :has-one `((file-bundling-job :via     ,(s-prefix "prov:used")
+;;                                 :inverse t
+;;                                 :as "file-bundling-job"))
+;;   :has-many `((file             :via     ,(s-prefix "prov:hadMember")
+;;                                 :as "members"))
+;;   ; :resource-base (s-url "http://mu.semte.ch/services/file-bundling-service/collections/")
+;;   :features '(include-uri)
+;;   :on-path "collections")
 
 (define-resource document-naming-job (job)
   :class (s-prefix "ext:DocumentNamingJob") ; "cogs:Job"
@@ -96,13 +107,14 @@
 
 ;; (define-resource send-to-vp-job () ;; also a "cogs:Job" in spirit
 ;;   :class (s-prefix "ext:SendToVpJob")
-;;   ;; shares properties with cogs:Job, but inheritance is not possible because of graph conflicts
+;;   ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliamentc>
 ;;   :properties `((:created       :datetime  ,(s-prefix "dct:created"))
 ;;                 (:status        :url       ,(s-prefix "adms:status"))
 ;;                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
 ;;                 (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime")) ;; when the job is finished with a "success" or "fail" status
 ;;                 (:message       :string    ,(s-prefix "schema:error"))) ;; message could also be set on partial success/fail
-;;   :has-one `((send-to-vp-job-context  :via       ,(s-prefix "prov:used")
+;;   :has-one `((send-to-vp-job-context  :via       ,(s-prefix "prov:used") ;; defined below
 ;;                                       :as "used"))
 ;;   ;; :has-many `((file                :via     ,(s-prefix "prov:used") ;; files that should be stamped
 ;;   ;;                                  :as "used")
@@ -114,6 +126,7 @@
 
 ;; (define-resource send-to-vp-job-context ()
 ;;   :class (s-prefix "ext:SendToVpJobContext")
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliamentc>
 ;;   :properties `((:is-complete     :boolean   ,(s-prefix "ext:isComplete"))
 ;;                 (:comment         :string    ,(s-prefix "ext:comment")))
 ;;   :has-one `((agendaitem          :via       ,(s-prefix "ext:agendaitem")
@@ -127,23 +140,48 @@
 ;;   :on-path "send-to-vp-job-contexts")
 
 
+;; (define-resource public-export-job() ;; also a "cogs:Job" in spirit
+;;   :class (s-prefix "ext:PublicExportJob")
+;;   ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/themis-public>
+;;   :properties `((:created           :datetime     ,(s-prefix "dct:created"))
+;;                 (:status            :url          ,(s-prefix "adms:status"))
+;;                 (:time-started      :datetime     ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
+;;                 (:time-ended        :datetime     ,(s-prefix "prov:endedAtTime")) ;; when the job is finished with a "success" or "fail" status
+;;                 (:message           :string       ,(s-prefix "schema:error"))  ;; message could also be set on partial success/fail
+;;                 (:retry-count       :integer      ,(s-prefix "ext:retryCount")) ;; retry several times before failing
+;;                 (:scope             :string-set   ,(s-prefix "ext:scope")) ;; ["newsitems"], ["newsitems", "documents"] or none / 
+;;                 )
+;;   :has-one `((meeting               :via          ,(s-prefix "prov:used")
+;;                                     :as "used")
+;;              (activity              :via          ,(s-prefix "prov:generated") ;; this does not a have subclass of activity
+;;                                     :as "generated")
+;;              (themis-publication-activity  :via   ,(s-prefix "dct:source")
+;;                                     :as "source"))
+;;   :resource-base (s-url "http://data.kaleidos.vlaanderen.be/public-export-jobs/")
+;;   :features '(include-uri)
+;;   :on-path "public-export-jobs")
+
+
 (define-resource public-export-job() ;; also a "cogs:Job" in spirit
   :class (s-prefix "ext:PublicExportJob")
-  ;; shares properties with cogs:Job, but inheritance is not possible because of graph conflicts
+  ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
+  ;; This model is persisted on <http://mu.semte.ch/graphs/themis-public>
   :properties `((:created           :datetime     ,(s-prefix "dct:created"))
                 (:status            :url          ,(s-prefix "adms:status"))
                 (:time-started      :datetime     ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
                 (:time-ended        :datetime     ,(s-prefix "prov:endedAtTime")) ;; when the job is finished with a "success" or "fail" status
                 (:message           :string       ,(s-prefix "schema:error"))  ;; message could also be set on partial success/fail
-                (:retry-count       :integer      ,(s-prefix "ext:retryCount")) ;; on error count is increased
+                (:retry-count       :integer      ,(s-prefix "ext:retryCount")) ;; retry several times before failing
                 (:scope             :string-set   ,(s-prefix "ext:scope")) ;; ["newsitems"], ["newsitems", "documents"] or none / 
                 )
   :has-one `((meeting               :via          ,(s-prefix "prov:used")
                                     :as "used")
-             (publication-activity  :via          ,(s-prefix "prov:generated") ;; this model is not defined in domain
+             (activity              :via          ,(s-prefix "prov:generated") ;; this does not a have subclass of activity
                                     :as "generated")
              (themis-publication-activity  :via   ,(s-prefix "dct:source")
                                     :as "source"))
   :resource-base (s-url "http://data.kaleidos.vlaanderen.be/public-export-jobs/")
   :features '(include-uri)
   :on-path "public-export-jobs")
+
