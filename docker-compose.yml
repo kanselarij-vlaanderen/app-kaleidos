@@ -18,6 +18,8 @@ services:
       - ./config/project-scripts:/app/scripts
   identifier:
     image: semtech/mu-identifier:1.10.3
+    environment:
+      SESSION_COOKIE_SECURE: "on"
     logging: *default-logging
     restart: always
     labels:
