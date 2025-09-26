@@ -8,6 +8,7 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX cogs: <http://vocab.deri.ie/cogs#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
 
 # document-naming-job, fix status and agenda predicate
 DELETE {
@@ -112,6 +113,26 @@ INSERT {
   }
 }
 
+;
+
+# publicationMetricsJob, fix status in all graphs
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob a pub:PublicationMetricsExportJob ;
+      ext:status ?status .
+  }
+}
+
+;
 # for all jobs that had a cogs or unique status uri
 
 DELETE {
@@ -130,18 +151,21 @@ INSERT {
     VALUES (?type) {
       (ext:DocumentNamingJob)
       (ext:FileStampingJob)
+      (ext:PublicExportJob)
       (ext:FileBundlingJob)
-      # (pub:PublicationMetricsExportJob)
-      # (ext:PublicExportJob)
+      (pub:PublicationMetricsExportJob)
       # (ext:ReportGenerationJob)
       # (ext:ReportBundleGenerationJob)
     }
     VALUES (?oldStatusUri ?newStatusUri) {
-      # (<http://vocab.deri.ie/cogs#Scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
       # no jobs should be scheduled or busy during migrations, but just to be sure
       (<http://vocab.deri.ie/cogs#Running> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
       (<http://vocab.deri.ie/cogs#Success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
       (<http://vocab.deri.ie/cogs#Fail> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/ongoing> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/failure> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
     }
   }
 }

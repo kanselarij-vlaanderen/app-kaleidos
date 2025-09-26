@@ -40,7 +40,7 @@
 
 ;; (define-resource collection ()
 ;;   :class (s-prefix "prov:Collection")
-;;   :properties `((:sha256        :string  ,(s-prefix "ext:sha256"))) ;; based on all the members, no duplicate collections with same members
+;;   :properties `((:sha256        :string  ,(s-prefix "ext:sha256"))) ;; based on all the members, no duplicate collections with same members (per profile graph)
 ;;   ;; we only create a job and a collection after checking if a collection whith the same sha256 does not exist, so 1 job per collection
 ;;   ;; if any of the members get removed we remove the job and the collection in file-bundling-service (through deltas)
 ;;   :has-one `((file-bundling-job :via     ,(s-prefix "prov:used")
@@ -74,17 +74,12 @@
   :features '(include-uri)
   :on-path "document-stamping-jobs")
 
-(define-resource publication-metrics-export-job ()
+(define-resource publication-metrics-export-job (job)
   :class (s-prefix "pub:PublicationMetricsExportJob") ; "cogs:Job"
-  :properties `((:created       :datetime  ,(s-prefix "dct:created"))
-                (:status        :url       ,(s-prefix "ext:status"))
-                (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
-                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
-                (:config        :string    ,(s-prefix "pub:exportJobConfig"))) ; JSON-blob allowing for extendable filter configuration
-
+  :properties `((:config        :string    ,(s-prefix "pub:exportJobConfig"))) ; JSON-blob allowing for extendable filter configuration
   :has-one `((publication-report-type
-                                :via     ,(s-prefix "dct:type")
-                                :as "report-type")
+                                :via     ,(s-prefix "dct:type") 
+                                :as "report-type") ;; could be used as a concept
              (file              :via     ,(s-prefix "prov:generated")
                                 :as "generated")
              (user              :via     ,(s-prefix "prov:wasStartedBy")
@@ -94,8 +89,8 @@
   :on-path "publication-metrics-export-jobs")
 
 
-(define-resource publication-report-type () ; two terms are in use for the same feature: publication-reports and publication-metrics-export. publication-reports is preferred.
-  :class (s-prefix "pub:Publicatierapporttype")
+(define-resource publication-report-type ()
+  :class (s-prefix "pub:Publicatierapporttype") ;; this is also a skos:concept
   :properties `((:label         :string ,(s-prefix "skos:prefLabel")))
 
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatierapporttype/")
@@ -163,25 +158,4 @@
 ;;   :on-path "public-export-jobs")
 
 
-(define-resource public-export-job() ;; also a "cogs:Job" in spirit
-  :class (s-prefix "ext:PublicExportJob")
-  ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
-  ;; This model is persisted on <http://mu.semte.ch/graphs/themis-public>
-  :properties `((:created           :datetime     ,(s-prefix "dct:created"))
-                (:status            :url          ,(s-prefix "adms:status"))
-                (:time-started      :datetime     ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
-                (:time-ended        :datetime     ,(s-prefix "prov:endedAtTime")) ;; when the job is finished with a "success" or "fail" status
-                (:message           :string       ,(s-prefix "schema:error"))  ;; message could also be set on partial success/fail
-                (:retry-count       :integer      ,(s-prefix "ext:retryCount")) ;; retry several times before failing
-                (:scope             :string-set   ,(s-prefix "ext:scope")) ;; ["newsitems"], ["newsitems", "documents"] or none / 
-                )
-  :has-one `((meeting               :via          ,(s-prefix "prov:used")
-                                    :as "used")
-             (activity              :via          ,(s-prefix "prov:generated") ;; this does not a have subclass of activity
-                                    :as "generated")
-             (themis-publication-activity  :via   ,(s-prefix "dct:source")
-                                    :as "source"))
-  :resource-base (s-url "http://data.kaleidos.vlaanderen.be/public-export-jobs/")
-  :features '(include-uri)
-  :on-path "public-export-jobs")
 
