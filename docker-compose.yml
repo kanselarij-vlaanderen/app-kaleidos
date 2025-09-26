@@ -55,7 +55,7 @@ services:
   database:
     image: semtech/sparql-parser:0.0.14
     volumes:
-      - ./config/new-authorization:/config
+      - ./config/authorization:/config
       - ./data/mu-cl-authorization:/data/
     logging: *extended-logging
     restart: always
