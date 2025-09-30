@@ -1,6 +1,6 @@
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
-PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX dct: <http://purl.org/dc/terms/>
@@ -9,38 +9,141 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX meetingID: <http://themis.vlaanderen.be/id/zitting/>
 
-# This query will insert a new publication activity for each meeting.
-# ! the "prov:startedAtTime" needs to be changed to a time in the near future to trigger themis/valvas publication
+# This query will insert a new publication activity for each meeting in values.
+# ! the "prov:startedAtTime" needs to be changed to a time in the near future to trigger themis/webplatform publication
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?newThemisPublicationURI a ext:ThemisPublicationActivity ;
       mu:uuid ?newThemisPublicationuuid ;
-      generiek:geplandeStart "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
-      prov:startedAtTime "2022-09-03T12:00:00+02:00"^^xsd:dateTime ;
+      generiek:geplandeStart ?plannedTime ;
+      prov:startedAtTime ?plannedTime ;
       adms:status <http://themis.vlaanderen.be/id/concept/vrijgave-status/27bd25d1-72b4-49b2-a0ba-236ca28373e5> ;
       ext:scope "newsitems" ;
       ext:scope "documents" ;
-      prov:used ?meeting .
+      prov:used ?meetingUri .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-    ?meeting a besluit:Vergaderactiviteit .
-    {
-      SELECT DISTINCT ?meeting (STRUUID() AS ?newThemisPublicationuuid) WHERE {
-        GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
-          ?document a dossier:Stuk .
-          ?document dct:title ?title .
-          ?document ext:toegangsniveauVoorDocumentVersie ?toegangsniveau .
-          ?document ^besluitvorming:geagendeerdStuk/^dct:hasPart/besluitvorming:isAgendaVoor ?meeting .
-          ?meeting besluit:geplandeStart ?plannedStart .
-          FILTER ( ?plannedStart > xsd:dateTime("2016-09-08T00:00:00Z"))
-          FILTER ( regex(?title, ".*DEC.") )
-          FILTER ( ?toegangsniveau != <http://themis.vlaanderen.be/id/concept/toegangsniveau/c3de9c70-391e-4031-a85e-4b03433d6266>)
-        }
-      } GROUP BY ?meeting ORDER BY ?plannedStart
-    }
+    ?meetingUri a besluit:Vergaderactiviteit .
+    BIND(STRUUID() AS ?newThemisPublicationuuid)
     BIND(IRI(CONCAT("http://themis.vlaanderen.be/id/themis-publicatie-activiteit/", ?newThemisPublicationuuid)) AS ?newThemisPublicationURI)
+
+    VALUES (?meetingUri ?plannedTime) {
+(meetingID:5b01037e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T04:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b01cdae-dec1-11e9-aa72-0242c0a80002 "2025-10-25T04:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b025918-dec1-11e9-aa72-0242c0a80002 "2025-10-25T04:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b02acba-dec1-11e9-aa72-0242c0a80002 "2025-10-25T05:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b030d40-dec1-11e9-aa72-0242c0a80002 "2025-10-25T05:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b03b5f6-dec1-11e9-aa72-0242c0a80002 "2025-10-25T05:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b043b3e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T06:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b053de0-dec1-11e9-aa72-0242c0a80002 "2025-10-25T06:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b066daa-dec1-11e9-aa72-0242c0a80002 "2025-10-25T06:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b075634-dec1-11e9-aa72-0242c0a80002 "2025-10-25T07:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b076c46-dec1-11e9-aa72-0242c0a80002 "2025-10-25T07:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b087ece-dec1-11e9-aa72-0242c0a80002 "2025-10-25T07:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b0976ee-dec1-11e9-aa72-0242c0a80002 "2025-10-25T08:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b0a2f4e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T08:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b0b7c3c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T08:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b0d8036-dec1-11e9-aa72-0242c0a80002 "2025-10-25T09:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b0e37ba-dec1-11e9-aa72-0242c0a80002 "2025-10-25T09:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b0ed346-dec1-11e9-aa72-0242c0a80002 "2025-10-25T09:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b0f5d0c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T10:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b1019b8-dec1-11e9-aa72-0242c0a80002 "2025-10-25T10:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b10bf6c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T10:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b1169e4-dec1-11e9-aa72-0242c0a80002 "2025-10-25T11:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b12122c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T11:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b12ccee-dec1-11e9-aa72-0242c0a80002 "2025-10-25T11:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b138364-dec1-11e9-aa72-0242c0a80002 "2025-10-25T12:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b143bec-dec1-11e9-aa72-0242c0a80002 "2025-10-25T12:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b156404-dec1-11e9-aa72-0242c0a80002 "2025-10-25T12:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b162a42-dec1-11e9-aa72-0242c0a80002 "2025-10-25T13:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b16e716-dec1-11e9-aa72-0242c0a80002 "2025-10-25T13:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b17639e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T13:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b1825c2-dec1-11e9-aa72-0242c0a80002 "2025-10-25T14:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b18cc2a-dec1-11e9-aa72-0242c0a80002 "2025-10-25T14:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b198c1e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T14:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b1a3eac-dec1-11e9-aa72-0242c0a80002 "2025-10-25T15:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b1b00d0-dec1-11e9-aa72-0242c0a80002 "2025-10-25T15:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b1c1e70-dec1-11e9-aa72-0242c0a80002 "2025-10-25T15:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b1d588a-dec1-11e9-aa72-0242c0a80002 "2025-10-25T16:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b1f1512-dec1-11e9-aa72-0242c0a80002 "2025-10-25T16:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b1fe668-dec1-11e9-aa72-0242c0a80002 "2025-10-25T16:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b20a954-dec1-11e9-aa72-0242c0a80002 "2025-10-25T17:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b210b38-dec1-11e9-aa72-0242c0a80002 "2025-10-25T17:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b21670e-dec1-11e9-aa72-0242c0a80002 "2025-10-25T17:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b21fad4-dec1-11e9-aa72-0242c0a80002 "2025-10-25T18:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b226e38-dec1-11e9-aa72-0242c0a80002 "2025-10-25T18:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b230ec4-dec1-11e9-aa72-0242c0a80002 "2025-10-25T18:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b24002c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T19:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b248c72-dec1-11e9-aa72-0242c0a80002 "2025-10-25T19:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b257204-dec1-11e9-aa72-0242c0a80002 "2025-10-25T19:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b2616b4-dec1-11e9-aa72-0242c0a80002 "2025-10-25T20:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b27153c-dec1-11e9-aa72-0242c0a80002 "2025-10-25T20:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b27d9fe-dec1-11e9-aa72-0242c0a80002 "2025-10-25T20:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b2938bc-dec1-11e9-aa72-0242c0a80002 "2025-10-25T21:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b2b4b34-dec1-11e9-aa72-0242c0a80002 "2025-10-25T21:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b2be62a-dec1-11e9-aa72-0242c0a80002 "2025-10-25T21:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b2c6dde-dec1-11e9-aa72-0242c0a80002 "2025-10-25T22:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b2cee76-dec1-11e9-aa72-0242c0a80002 "2025-10-25T22:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b2db716-dec1-11e9-aa72-0242c0a80002 "2025-10-25T22:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b2e636e-dec1-11e9-aa72-0242c0a80002 "2025-10-26T04:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b2f22f4-dec1-11e9-aa72-0242c0a80002 "2025-10-26T04:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b2fef0e-dec1-11e9-aa72-0242c0a80002 "2025-10-26T04:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b30b556-dec1-11e9-aa72-0242c0a80002 "2025-10-26T05:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b31480e-dec1-11e9-aa72-0242c0a80002 "2025-10-26T05:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b31c70c-dec1-11e9-aa72-0242c0a80002 "2025-10-26T05:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b32e092-dec1-11e9-aa72-0242c0a80002 "2025-10-26T06:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b340292-dec1-11e9-aa72-0242c0a80002 "2025-10-26T06:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b34beda-dec1-11e9-aa72-0242c0a80002 "2025-10-26T06:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b359774-dec1-11e9-aa72-0242c0a80002 "2025-10-26T07:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b36731a-dec1-11e9-aa72-0242c0a80002 "2025-10-26T07:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b376c16-dec1-11e9-aa72-0242c0a80002 "2025-10-26T07:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b380478-dec1-11e9-aa72-0242c0a80002 "2025-10-26T08:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b38d8d0-dec1-11e9-aa72-0242c0a80002 "2025-10-26T08:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b397a24-dec1-11e9-aa72-0242c0a80002 "2025-10-26T08:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b3a323e-dec1-11e9-aa72-0242c0a80002 "2025-10-26T09:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b3af25a-dec1-11e9-aa72-0242c0a80002 "2025-10-26T09:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b3c1360-dec1-11e9-aa72-0242c0a80002 "2025-10-26T09:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b3d6102-dec1-11e9-aa72-0242c0a80002 "2025-10-26T10:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b3fca00-dec1-11e9-aa72-0242c0a80002 "2025-10-26T10:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b40b23a-dec1-11e9-aa72-0242c0a80002 "2025-10-26T10:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b4134b2-dec1-11e9-aa72-0242c0a80002 "2025-10-26T11:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b41b8c4-dec1-11e9-aa72-0242c0a80002 "2025-10-26T11:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b42559a-dec1-11e9-aa72-0242c0a80002 "2025-10-26T11:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b42c78c-dec1-11e9-aa72-0242c0a80002 "2025-10-26T12:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b435fb2-dec1-11e9-aa72-0242c0a80002 "2025-10-26T12:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b43f738-dec1-11e9-aa72-0242c0a80002 "2025-10-26T12:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b44f412-dec1-11e9-aa72-0242c0a80002 "2025-10-26T13:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b45d0da-dec1-11e9-aa72-0242c0a80002 "2025-10-26T13:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b467170-dec1-11e9-aa72-0242c0a80002 "2025-10-26T13:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b471314-dec1-11e9-aa72-0242c0a80002 "2025-10-26T14:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b47cda4-dec1-11e9-aa72-0242c0a80002 "2025-10-26T14:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b49300e-dec1-11e9-aa72-0242c0a80002 "2025-10-26T14:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b4a8440-dec1-11e9-aa72-0242c0a80002 "2025-10-26T15:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b4d17b4-dec1-11e9-aa72-0242c0a80002 "2025-10-26T15:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b4db3f4-dec1-11e9-aa72-0242c0a80002 "2025-10-26T15:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b4e5c8c-dec1-11e9-aa72-0242c0a80002 "2025-10-26T16:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b4f3fd0-dec1-11e9-aa72-0242c0a80002 "2025-10-26T16:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b4ffcfe-dec1-11e9-aa72-0242c0a80002 "2025-10-26T16:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b501d56-dec1-11e9-aa72-0242c0a80002 "2025-10-26T17:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b50eaf6-dec1-11e9-aa72-0242c0a80002 "2025-10-26T17:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b51a8a6-dec1-11e9-aa72-0242c0a80002 "2025-10-26T17:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b527920-dec1-11e9-aa72-0242c0a80002 "2025-10-26T18:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b5370be-dec1-11e9-aa72-0242c0a80002 "2025-10-26T18:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b5463ca-dec1-11e9-aa72-0242c0a80002 "2025-10-26T18:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b5530de-dec1-11e9-aa72-0242c0a80002 "2025-10-26T19:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b563308-dec1-11e9-aa72-0242c0a80002 "2025-10-26T19:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b586cae-dec1-11e9-aa72-0242c0a80002 "2025-10-26T19:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b59acae-dec1-11e9-aa72-0242c0a80002 "2025-10-26T20:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b5aa640-dec1-11e9-aa72-0242c0a80002 "2025-10-26T20:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b5b9654-dec1-11e9-aa72-0242c0a80002 "2025-10-26T20:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b5d0c14-dec1-11e9-aa72-0242c0a80002 "2025-10-26T21:00:00+02:00"^^xsd:dateTime)
+(meetingID:5b5e44f8-dec1-11e9-aa72-0242c0a80002 "2025-10-26T21:20:00+02:00"^^xsd:dateTime)
+(meetingID:5b5f1036-dec1-11e9-aa72-0242c0a80002 "2025-10-26T21:40:00+02:00"^^xsd:dateTime)
+(meetingID:5b60f234-dec1-11e9-aa72-0242c0a80002 "2025-10-26T22:00:00+02:00"^^xsd:dateTime)
+    }
   }
 }
