@@ -6,7 +6,7 @@
     "schema": "http://schema.org/",
     "dct": "http://purl.org/dc/terms/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
-    "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "adms": "http://www.w3.org/ns/adms#",
     "dossier": "https://data.vlaanderen.be/ns/dossier#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
