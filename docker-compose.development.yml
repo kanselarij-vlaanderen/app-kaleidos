@@ -120,13 +120,9 @@ services:
   publication-report:
     restart: "no"
   decision-extraction:
-    environment:
-      - NODE_ENV=development
   delta-producer:
     image: lblod/sink-service:1.0.0
     restart: "no"
-  delta-consumer:
-    image: lblod/sink-service:1.0.0
     restart: "no"
   fileshare:
     image: lblod/sink-service:1.0.0
@@ -147,8 +143,6 @@ services:
     restart: "no"
   decision-report-generation:
     restart: "no"
-    environment:
-      - NODE_ENV=development
   shortlist:
     restart: "no"
   signflow-status-sync:
@@ -165,8 +159,6 @@ services:
     restart: "no"
   minutes-report-generation:
     restart: "no"
-    environment:
-      - NODE_ENV=development
   html-to-pdf:
     restart: "no"
   digital-signing:
@@ -183,9 +175,5 @@ services:
     restart: "no"
   draft-file:
     restart: "no"
-    environment:
-      - NODE_ENV=development
   draft-file-mover:
     restart: "no"
-    environment:
-      - NODE_ENV=development
