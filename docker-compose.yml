@@ -462,7 +462,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-signature-remover:
-    image: kanselarij/pdf-signature-remover:1.0.1
+    image: kanselarij/pdf-signature-remover:1.0.2
     volumes:
       - ./data/files:/share
     environment:
