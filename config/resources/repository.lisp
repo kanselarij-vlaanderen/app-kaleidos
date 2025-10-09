@@ -65,7 +65,7 @@
 (add-prefix "person" "http://www.w3.org/ns/person#")
 (add-prefix "prov" "http://www.w3.org/ns/prov#")
 (add-prefix "regorg" "https://www.w3.org/ns/regorg#")
-(add-prefix "rdfs" "https://www.w3.org/2000/01/rdf-schema#")
+(add-prefix "rdfs" "http://www.w3.org/2000/01/rdf-schema#")
 (add-prefix "schema" "http://schema.org/")
 (add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")
 (add-prefix "toezicht" "http://mu.semte.ch/vocabularies/ext/supervision/")
