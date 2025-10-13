@@ -101,6 +101,10 @@
         "deprecated": {
           "type": "boolean",
           "predicate": "owl:deprecated"
+        },
+        "mailchimp-id": {
+          "type": "string",
+          "predicate": "ext:mailchimpId"
         }
       },
       "relationships": {
