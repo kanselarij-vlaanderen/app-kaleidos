@@ -359,11 +359,12 @@ services:
     labels:
       - "logging=true"
   fileshare:
-    image: redpencil/file-share-sync:0.0.4
+    image: redpencil/file-share-sync:0.1.0
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      ALLOW_SUPER_CONSUMER: "true"
     volumes:
       - ./data/files:/share
-    environment:
-      ALLOW_SUPER_CONSUMER: "true"
     logging: *default-logging
     restart: always
     labels:
