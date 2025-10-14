@@ -119,6 +119,7 @@ services:
   publication-report:
     restart: "no"
   decision-extraction:
+    restart: "no"
   delta-producer:
     image: lblod/sink-service:1.0.0
     restart: "no"
@@ -160,10 +161,14 @@ services:
   html-to-pdf:
     restart: "no"
   digital-signing:
+    restart: "no"
     environment:
-      NODE_ENV: "development"
       SIGNINGHUB_API_URL: "https://fake.api.url"
   pdf-flattener:
+    restart: "no"
+  pdf-signature-remover:
+    restart: "no"
+  vlaams-parlement-sync:
     restart: "no"
   agenda-submission:
     restart: "no"
