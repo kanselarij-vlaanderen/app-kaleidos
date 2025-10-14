@@ -354,12 +354,20 @@ services:
       KEY: "secret-sync-key"
     volumes:
       - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   fileshare:
     image: redpencil/file-share-sync:0.0.4
     volumes:
       - ./data/files:/share
     environment:
       ALLOW_SUPER_CONSUMER: "true"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   impersonation:
     image: kanselarij/impersonation-service:0.2.0
     logging: *default-logging
