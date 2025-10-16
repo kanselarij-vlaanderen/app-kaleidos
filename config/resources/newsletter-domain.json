@@ -70,6 +70,12 @@
           "predicate": "prov:wasDerivedFrom",
           "cardinality": "one"
         },
+        "submission": {
+          "target": "submission",
+          "predicate": "subm:heeftVoorlopigNieuwsBericht",
+          "cardinality": "one",
+          "inverse": true
+        },
         "attachments": {
           "target": "piece",
           "predicate": "besluitvorming:heeftBijlage",
