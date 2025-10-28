@@ -90,10 +90,9 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.1.0
+    image: semtech/mu-search-elastic-backend:1.2.0
     environment:
       discovery.type: "single-node"
-      LOG_SCOPE_ELASTICSEARCH: "warn"
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
