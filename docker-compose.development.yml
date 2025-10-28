@@ -129,6 +129,9 @@ services:
   #   image: docker.elastic.co/kibana/kibana:7.17.0
   #   environment:
   #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
+  #   user: root
+  #   command: |
+  #     sh -c "/usr/local/bin/kibana-docker --allow-root;"
   #   logging: *default-logging
   #   ports:
   #     - "5601:5601"
