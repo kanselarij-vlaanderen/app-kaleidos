@@ -76,7 +76,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.10.0
+    image: semtech/mu-search:feature-tika-connection-pool
     volumes:
       - ./config/search:/config
       - ./data/files:/data
