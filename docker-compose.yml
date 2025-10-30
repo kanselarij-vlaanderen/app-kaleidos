@@ -54,7 +54,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.14
+    image: semtech/sparql-parser:0.0.15
     volumes:
       - ./config/authorization:/config
       - ./data/mu-cl-authorization:/data/
@@ -346,20 +346,29 @@ services:
     volumes:
       - ./data/files:/share
   delta-producer:
-    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.0
+    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.1
     environment:
+      ALLOW_MU_AUTH_SUDO: "true"
       PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
       PRETTY_PRINT_DIFF_JSON: "true"
-      FILES_GRAPH: "http://mu.semte.ch/graphs/delta-files"
       KEY: "secret-sync-key"
     volumes:
       - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   fileshare:
-    image: redpencil/file-share-sync:0.0.4
+    image: redpencil/file-share-sync:0.1.0
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      ALLOW_SUPER_CONSUMER: "true"
     volumes:
       - ./data/files:/share
-    environment:
-      ALLOW_SUPER_CONSUMER: "true"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   impersonation:
     image: kanselarij/impersonation-service:0.2.0
     logging: *default-logging
