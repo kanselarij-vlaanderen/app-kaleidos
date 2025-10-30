@@ -346,7 +346,7 @@ services:
     volumes:
       - ./data/files:/share
   delta-producer:
-    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.0
+    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.1
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
