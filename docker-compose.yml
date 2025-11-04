@@ -493,7 +493,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:feature-KAS-5079-stash-newsitem-and-decision-on-submission
+    image: kanselarij/agenda-submission-service:1.15.0
     labels:
       - "logging=true"
     restart: always
