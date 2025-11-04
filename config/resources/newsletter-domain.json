@@ -60,6 +60,11 @@
           "predicate": "ext:modifiedBy",
           "cardinality": "one"
         },
+        "is-being-edited-by": {
+          "target": "user",
+          "predicate": "ext:isBeingEditedBy",
+          "cardinality": "one"
+        },
         "themes": {
           "target": "theme",
           "predicate": "dct:subject",
