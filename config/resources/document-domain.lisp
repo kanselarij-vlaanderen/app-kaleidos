@@ -137,6 +137,9 @@
 
 (define-resource report (piece)
   :class (s-prefix "besluitvorming:Verslag")
+  :has-one `((submission                :via ,(s-prefix "subm:heeftVoorlopigeBeslissing")
+                                        :inverse t
+                                        :as "submission"))
   :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
                                         :inverse t
                                         :as "piece-parts")
