@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose pull frontend && docker-compose up -d frontend
+docker compose pull frontend && docker compose up -d frontend
