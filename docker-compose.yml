@@ -484,7 +484,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.13.0
+    image: kanselarij/agenda-submission-service:1.14.0
     labels:
       - "logging=true"
     restart: always
