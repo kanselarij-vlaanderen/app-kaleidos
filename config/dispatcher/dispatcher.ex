@@ -151,7 +151,7 @@ defmodule Dispatcher do
   end
 
   ### Document download
-  
+
   post "/agendaitems/:id/pieces/files/archive", @json_service do
     Proxy.forward conn, [], "http://file-bundling-job-creation/agendaitems/" <> id <> "/documents/files/archive"
   end
@@ -202,6 +202,10 @@ defmodule Dispatcher do
 
   get "/meetings/open", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/open-meetings"
+  end
+
+  get "/agendaitem/:agendaitem_id/preliminary-decision-result-code", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/agendaitem/" <> agendaitem_id <> "/preliminary-decision-result-code"
   end
 
   get "/submissions/:submission_id/for-meeting", @json_service do
