@@ -203,6 +203,8 @@
               ;;                           :as "notes") ;; note: is this a hasOne or hasMany ?
              (mail-campaign             :via      ,(s-prefix "ext:heeftMailCampagnes")
                                         :as "mail-campaign")
+             (belga-publication         :via      ,(s-prefix "ext:heeftBelgaPublicatie")
+                                        :as "belga-publication")
              (concept                   :via      ,(s-prefix "dct:type")
                                         :as "kind")
              (mandatee                  :via        ,(s-prefix "ext:secretarisVoorVergadering")
