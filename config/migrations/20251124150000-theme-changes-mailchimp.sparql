@@ -1,0 +1,44 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mulit: <http://mu.semte.ch/vocabularies/typed-literals/>
+PREFIX theme: <http://kanselarij.vo.data.gift/id/concept/thema-codes/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        theme:aa10b458-2646-4d8d-bc8b-6b0cb6354161 owl:deprecated "false"^^mulit:boolean . # overheidsinvesteringen
+    }
+}
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        theme:aa10b458-2646-4d8d-bc8b-6b0cb6354161 owl:deprecated "true"^^mulit:boolean . # overheidsinvesteringen
+
+        theme:d7a9756e-697a-46cf-a22d-ccba40e98ffb ext:mailchimpId "justitie en handhaving" .
+
+        theme:0594750d-eda2-40c3-918a-380f652d714a a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "0594750d-eda2-40c3-918a-380f652d714a" ;
+            skos:prefLabel "Digitalisering"@nl ;
+            ext:mailchimpId "digitalisering" ;
+            owl:deprecated "false"^^mulit:boolean .
+        
+        theme:459554df-cb44-4685-bb45-39d6f7e22642 a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "459554df-cb44-4685-bb45-39d6f7e22642" ;
+            skos:prefLabel "Klimaat"@nl ;
+            ext:mailchimpId "klimaat" ;
+            owl:deprecated "false"^^mulit:boolean .
+        
+        theme:55cd1692-66d8-462f-9ab8-82ea81709bdc a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "55cd1692-66d8-462f-9ab8-82ea81709bdc" ;
+            skos:prefLabel "Luchthaven"@nl ;
+            ext:mailchimpId "luchthaven" ;
+            owl:deprecated "false"^^mulit:boolean .
+        
+        theme:c3e0c998-4383-499c-a8ff-f75e87437d98 a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "c3e0c998-4383-499c-a8ff-f75e87437d98" ;
+            skos:prefLabel "Rampenschade"@nl ;
+            ext:mailchimpId "rampenschade" ;
+            owl:deprecated "false"^^mulit:boolean .
+    }
+}
