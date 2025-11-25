@@ -196,7 +196,9 @@
                                            :as "themis-publication-activities")
               (submission                :via ,(s-prefix "subm:ingediendVoorVergadering")
                                          :inverse t
-                                         :as "submissions"))
+                                         :as "submissions")
+              (belga-publication        :via      ,(s-prefix "ext:heeftBelgaPublicatie")
+                                        :as "belga-publications"))
   :has-one `((agenda                    :via      ,(s-prefix "besluitvorming:behandelt") ;; Final agenda version that is treatened during the meeting
                                         :as "agenda")
               ;; (piece                    :via ,(s-prefix "dossier:genereert") ;; this relation exists in legacy data, but we do not show this in the frontend currently

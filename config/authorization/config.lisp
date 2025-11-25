@@ -214,6 +214,7 @@
 (define-graph kanselarij ("http://mu.semte.ch/graphs/organizations/kanselarij")
   ("ext:Nieuwsbericht" -> _)
   ("ext:MailCampagne" -> _)
+  ("ext:BelgaPublicatie" -> _)
   ("prov:Activity" -> _)
   ("ext:InternalDecisionPublicationActivity" -> _)
   ("ext:InternalDocumentPublicationActivity" -> _)
