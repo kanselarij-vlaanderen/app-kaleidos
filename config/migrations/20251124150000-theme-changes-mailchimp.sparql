@@ -35,16 +35,17 @@ INSERT DATA {
             ext:mailchimpId "luchthaven" ;
             owl:deprecated "false"^^mulit:boolean .
         
+        theme:59f3131e-cf44-4ee2-8258-70e3ac6303b1 a ext:ThemaCode ; a skos:Concept ;
+            mu:uuid "59f3131e-cf44-4ee2-8258-70e3ac6303b1" ;
+            skos:prefLabel "Mededeling"@nl ;
+            ext:mailchimpId "mededeling" ;
+            owl:deprecated "false"^^mulit:boolean .
+
         theme:c3e0c998-4383-499c-a8ff-f75e87437d98 a ext:ThemaCode ; a skos:Concept ;
             mu:uuid "c3e0c998-4383-499c-a8ff-f75e87437d98" ;
             skos:prefLabel "Rampenschade"@nl ;
             ext:mailchimpId "rampenschade" ;
             owl:deprecated "false"^^mulit:boolean .
 
-        theme:59f3131e-cf44-4ee2-8258-70e3ac6303b1 a ext:ThemaCode ; a skos:Concept ;
-            mu:uuid "59f3131e-cf44-4ee2-8258-70e3ac6303b1" ;
-            skos:prefLabel "Mededeling"@nl ;
-            ext:mailchimpId "mededeling" ;
-            owl:deprecated "false"^^mulit:boolean .
     }
 }
