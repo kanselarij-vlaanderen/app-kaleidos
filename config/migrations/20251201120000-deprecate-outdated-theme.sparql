@@ -4,17 +4,17 @@ PREFIX tl: <http://mu.semte.ch/vocabularies/typed-literals/>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/public> {
-    ?beleidsdomein owl:deprecated "false"^^tl:boolean .
+    ?theme owl:deprecated "false"^^tl:boolean .
   }
 } INSERT { 
   GRAPH <http://mu.semte.ch/graphs/public> {
-    ?beleidsdomein owl:deprecated "true"^^tl:boolean .
+    ?theme owl:deprecated "true"^^tl:boolean .
   }
 } WHERE {
-  VALUES ?beleidsdomein {
+  VALUES ?theme {
     <http://themis.vlaanderen.be/id/concept/thema/49dbc623-7e91-4a52-8d98-13f8db271eb5>
   }
   GRAPH <http://mu.semte.ch/graphs/public> {
-    ?beleidsdomein a skos:Concept .
+    ?theme a skos:Concept .
   }
 } 
