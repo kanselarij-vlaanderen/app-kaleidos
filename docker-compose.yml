@@ -498,7 +498,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.4.0
+    image: kanselarij/document-naming-service:feature-KAS-5114-name-signed-flattened
     labels:
       - logging=true
     restart: always
