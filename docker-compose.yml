@@ -191,7 +191,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:5.0.0
+    image: kanselarij/newsletter-service:5.1.0
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -492,7 +492,7 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.15.0
+    image: kanselarij/agenda-submission-service:1.16.0
     labels:
       - "logging=true"
     restart: always

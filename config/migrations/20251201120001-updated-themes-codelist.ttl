@@ -1,0 +1,414 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+    <http://mu.semte.ch/vocabularies/core/uuid> "459cbdb0-86ff-4106-879c-6aecda7d3dcc" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thema's" .
+
+<http://themis.vlaanderen.be/id/concept/thema/49dbc623-7e91-4a52-8d98-13f8db271eb5> a skos:Concept ;
+    mu:uuid "49dbc623-7e91-4a52-8d98-13f8db271eb5" ;
+    skos:prefLabel "Overheidsinvesteringen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/97028dc8-9a4a-466f-a9b9-244bae08221e> a skos:Concept ;
+    mu:uuid "97028dc8-9a4a-466f-a9b9-244bae08221e" ;
+    skos:prefLabel "Natuurlijke Rijkdommen" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/da98cfcb-f30f-46ef-a7a6-c8aeb7bf4af7> a skos:Concept ;
+    mu:uuid "da98cfcb-f30f-46ef-a7a6-c8aeb7bf4af7" ;
+    skos:prefLabel "Haven" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/64b1d7a3-be0a-4f7e-8768-674182756c9e> a skos:Concept ;
+    mu:uuid "64b1d7a3-be0a-4f7e-8768-674182756c9e" ;
+    skos:prefLabel "Erfgoed" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/0cc58cdc-dcf4-4d6c-bc9e-27ea721baf25> a skos:Concept ;
+    mu:uuid "0cc58cdc-dcf4-4d6c-bc9e-27ea721baf25" ;
+    skos:prefLabel "Binnenlandse Aangelegenheden" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/724707d5-a6b5-4c3c-8dea-76422f2c0975> a skos:Concept ;
+    mu:uuid "724707d5-a6b5-4c3c-8dea-76422f2c0975" ;
+    skos:prefLabel "Zorg" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/fa4e010f-84e9-4d65-9675-1604ad41de56> a skos:Concept ;
+    mu:uuid "fa4e010f-84e9-4d65-9675-1604ad41de56" ;
+    skos:prefLabel "Wonen" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/ca626cb0-7f48-4e2f-8c09-2c77d34bef47> a skos:Concept ;
+    mu:uuid "ca626cb0-7f48-4e2f-8c09-2c77d34bef47" ;
+    skos:prefLabel "Wetenschap" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/610ed51e-6b20-4171-9a83-eedc6eabf7e6> a skos:Concept ;
+    mu:uuid "610ed51e-6b20-4171-9a83-eedc6eabf7e6" ;
+    skos:prefLabel "Werk" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/30354d68-91c8-47b0-b5ba-6418d261f642> a skos:Concept ;
+    mu:uuid "30354d68-91c8-47b0-b5ba-6418d261f642" ;
+    skos:prefLabel "Welzijn" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/b17cba58-4154-474e-ad39-c4bf2d8fbb91> a skos:Concept ;
+    mu:uuid "b17cba58-4154-474e-ad39-c4bf2d8fbb91" ;
+    skos:prefLabel "Vorming" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/5f16f346-a0da-484f-af7d-9fb54d4bd9d2> a skos:Concept ;
+    mu:uuid "5f16f346-a0da-484f-af7d-9fb54d4bd9d2" ;
+    skos:prefLabel "Volksgezondheid" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/03c150a0-0280-474c-be06-2d1bf46d7aa9> a skos:Concept ;
+    mu:uuid "03c150a0-0280-474c-be06-2d1bf46d7aa9" ;
+    skos:prefLabel "Vlaanderen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/197aa946-5676-4a39-8c7b-56256630711f> a skos:Concept ;
+    mu:uuid "197aa946-5676-4a39-8c7b-56256630711f" ;
+    skos:prefLabel "Visserij" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/233a8980-9982-445e-8542-8ef7f06797ff> a skos:Concept ;
+    mu:uuid "233a8980-9982-445e-8542-8ef7f06797ff" ;
+    skos:prefLabel "Toerisme" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/e40f54b0-17d2-4122-9886-73e8ff277069> a skos:Concept ;
+    mu:uuid "e40f54b0-17d2-4122-9886-73e8ff277069" ;
+    skos:prefLabel "Stedelijk Beleid" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/bde8cad4-6f3b-4c9b-a871-b92666b22994> a skos:Concept ;
+    mu:uuid "bde8cad4-6f3b-4c9b-a871-b92666b22994" ;
+    skos:prefLabel "Staatshervorming en Communautaire Aangelegenheden" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/a1fe00b2-9c52-40c1-8c37-3b68a78f4318> a skos:Concept ;
+    mu:uuid "a1fe00b2-9c52-40c1-8c37-3b68a78f4318" ;
+    skos:prefLabel "Sport" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/8fe54f8f-c83a-436d-8234-e683fccae582> a skos:Concept ;
+    mu:uuid "8fe54f8f-c83a-436d-8234-e683fccae582" ;
+    skos:prefLabel "Sociale Economie" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/91b7d388-3260-4444-90ca-9b08f612dfe4> a skos:Concept ;
+    mu:uuid "91b7d388-3260-4444-90ca-9b08f612dfe4" ;
+    skos:prefLabel "Ruimtelijke Ordening" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/abebd345-3650-400c-b317-9a8da2760f21> a skos:Concept ;
+    mu:uuid "abebd345-3650-400c-b317-9a8da2760f21" ;
+    skos:prefLabel "Overheid" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/63aa8960-a301-40b4-9bba-7cfed45f0494> a skos:Concept ;
+    mu:uuid "63aa8960-a301-40b4-9bba-7cfed45f0494" ;
+    skos:prefLabel "Openbare Werken" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/564568e3-aad3-4940-9640-6cf00a326a10> a skos:Concept ;
+    mu:uuid "564568e3-aad3-4940-9640-6cf00a326a10" ;
+    skos:prefLabel "Ontwikkelingssamenwerking" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/026d2ff8-27ac-4f37-9aaa-d0093ad7186b> a skos:Concept ;
+    mu:uuid "026d2ff8-27ac-4f37-9aaa-d0093ad7186b" ;
+    skos:prefLabel "Onroerend Erfgoed" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/b02eb8fb-4845-41a0-889e-cac83c5c07e7> a skos:Concept ;
+    mu:uuid "b02eb8fb-4845-41a0-889e-cac83c5c07e7" ;
+    skos:prefLabel "Onderwijs" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/17ddaff0-b2e3-4f02-9157-76a1cf593a5b> a skos:Concept ;
+    mu:uuid "17ddaff0-b2e3-4f02-9157-76a1cf593a5b" ;
+    skos:prefLabel "Mobiliteit" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/1229a139-cd06-4ba7-9998-da34bf46ed6d> a skos:Concept ;
+    mu:uuid "1229a139-cd06-4ba7-9998-da34bf46ed6d" ;
+    skos:prefLabel "Milieu" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/12f19487-9fc6-4c02-afc3-0015b1127144> a skos:Concept ;
+    mu:uuid "12f19487-9fc6-4c02-afc3-0015b1127144" ;
+    skos:prefLabel "Media" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/6c739358-33b7-4f18-9eb8-eb956580b4ae> a skos:Concept ;
+    mu:uuid "6c739358-33b7-4f18-9eb8-eb956580b4ae" ;
+    skos:prefLabel "Klimaat" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/1034e201-ba90-44db-bd6e-e99b21111dfe> a skos:Concept ;
+    mu:uuid "1034e201-ba90-44db-bd6e-e99b21111dfe" ;
+    skos:prefLabel "Landbouw" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/2de782cb-3c14-4e2d-9c2d-7d25428fa7d6> a skos:Concept ;
+    mu:uuid "2de782cb-3c14-4e2d-9c2d-7d25428fa7d6" ;
+    skos:prefLabel "Justitie" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/34654906-74bd-4a69-9f93-0971f263cca3> a skos:Concept ;
+    mu:uuid "34654906-74bd-4a69-9f93-0971f263cca3" ;
+    skos:prefLabel "Jeugd" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/0eea2c46-f75a-4148-9020-b10dd613b674> a skos:Concept ;
+    mu:uuid "0eea2c46-f75a-4148-9020-b10dd613b674" ;
+    skos:prefLabel "Internationaal Ondernemen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/c8a94efe-10a8-4f5f-a77a-2ca188dc7b51> a skos:Concept ;
+    mu:uuid "c8a94efe-10a8-4f5f-a77a-2ca188dc7b51" ;
+    skos:prefLabel "Innovatie" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/742ff0f0-1514-4b0b-a799-0248ba00fbb7> a skos:Concept ;
+    mu:uuid "742ff0f0-1514-4b0b-a799-0248ba00fbb7" ;
+    skos:prefLabel "Inburgering en Integratie" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/8520696c-6434-4361-b1c6-50f1498af60a> a skos:Concept ;
+    mu:uuid "8520696c-6434-4361-b1c6-50f1498af60a" ;
+    skos:prefLabel "Gezin" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/4dfb835d-ded2-4298-85bb-ff41f3563193> a skos:Concept ;
+    mu:uuid "4dfb835d-ded2-4298-85bb-ff41f3563193" ;
+    skos:prefLabel "Gelijke kansen" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/17fc23af-a51b-46eb-a299-3208ce2b3558> a skos:Concept ;
+    mu:uuid "17fc23af-a51b-46eb-a299-3208ce2b3558" ;
+    skos:prefLabel "Europese Instellingen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/45cfa0c9-82db-4487-8ad4-ca21fa6655ab> a skos:Concept ;
+    mu:uuid "45cfa0c9-82db-4487-8ad4-ca21fa6655ab" ;
+    skos:prefLabel "Energie" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/faf802ff-bca7-4419-acc0-d84937e5bcd4> a skos:Concept ;
+    mu:uuid "faf802ff-bca7-4419-acc0-d84937e5bcd4" ;
+    skos:prefLabel "Economie" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/97291d01-e7f3-46a2-86b1-4d5997b41de7> a skos:Concept ;
+    mu:uuid "97291d01-e7f3-46a2-86b1-4d5997b41de7" ;
+    skos:prefLabel "Digitale agenda" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/11f2a96c-f551-4edd-98d4-f55cbaa6e222> a skos:Concept ;
+    mu:uuid "11f2a96c-f551-4edd-98d4-f55cbaa6e222" ;
+    skos:prefLabel "Dierenwelzijn" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/5ae2b345-3a34-422c-9ee5-a90927fd2158> a skos:Concept ;
+    mu:uuid "5ae2b345-3a34-422c-9ee5-a90927fd2158" ;
+    skos:prefLabel "Cultuur" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/5a97037d-b260-4d32-827d-cb9c7360454d> a skos:Concept ;
+    mu:uuid "5a97037d-b260-4d32-827d-cb9c7360454d" ;
+    skos:prefLabel "Criminaliteit" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/9d82e85b-a02c-4bf0-b324-1eb0b5e81042> a skos:Concept ;
+    mu:uuid "9d82e85b-a02c-4bf0-b324-1eb0b5e81042" ;
+    skos:prefLabel "Buitenlands Beleid" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/ddf7a9b9-c7f2-4a67-9894-d46fd8ff47de> a skos:Concept ;
+    mu:uuid "ddf7a9b9-c7f2-4a67-9894-d46fd8ff47de" ;
+    skos:prefLabel "Brussel en Vlaamse rand" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/8b064325-83ad-4083-8781-4687fb8f7b15> a skos:Concept ;
+    mu:uuid "8b064325-83ad-4083-8781-4687fb8f7b15" ;
+    skos:prefLabel "Bouwen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/c4cc3f3f-f14a-49b2-bd0d-40f5ec04ff55> a skos:Concept ;
+    mu:uuid "c4cc3f3f-f14a-49b2-bd0d-40f5ec04ff55" ;
+    skos:prefLabel "Bodemgrond" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/ae7c673f-fa44-494e-b8d5-5912734fd1f1> a skos:Concept ;
+    mu:uuid "ae7c673f-fa44-494e-b8d5-5912734fd1f1" ;
+    skos:prefLabel "Bestuurszaken" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/0af76a98-8291-404f-b457-67cdecb9e2ab> a skos:Concept ;
+    mu:uuid "0af76a98-8291-404f-b457-67cdecb9e2ab" ;
+    skos:prefLabel "Belastingen" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/7fd362b0-4580-4f85-b046-4b62f212f4b6> a skos:Concept ;
+    mu:uuid "7fd362b0-4580-4f85-b046-4b62f212f4b6" ;
+    skos:prefLabel "Begroting en Financiën" ;
+    owl:deprecated "true"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/6af19df8-a1e9-43bc-85f4-3cf8ac151d7e> a skos:Concept ;
+    mu:uuid "6af19df8-a1e9-43bc-85f4-3cf8ac151d7e" ;
+    skos:prefLabel "Armoedebestrijding" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/4a0bb077-a416-4e4d-96ce-b2e89cec0a47> a skos:Concept ;
+    mu:uuid "4a0bb077-a416-4e4d-96ce-b2e89cec0a47" ;
+    skos:prefLabel "Welzijn en Gezondheid" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/6b4bf676-b4ef-474e-b650-1115ebd23376> a skos:Concept ;
+    mu:uuid "6b4bf676-b4ef-474e-b650-1115ebd23376" ;
+    skos:prefLabel "Vlaamse Rand" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/fd6c39f5-cf5c-4a74-aff2-2eb5b4999a51> a skos:Concept ;
+    mu:uuid "fd6c39f5-cf5c-4a74-aff2-2eb5b4999a51" ;
+    skos:prefLabel "Tewerkstelling" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/ee9bda4a-f54a-41d5-be2f-9d45781623be> a skos:Concept ;
+    mu:uuid "ee9bda4a-f54a-41d5-be2f-9d45781623be" ;
+    skos:prefLabel "Onderwijs en Vorming" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/758c3c7d-5b60-4eff-9320-2431a3120d19> a skos:Concept ;
+    mu:uuid "758c3c7d-5b60-4eff-9320-2431a3120d19" ;
+    skos:prefLabel "Leefmilieu en Natuur" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/872c910d-dd86-46b4-a3b0-0ff45df32702> a skos:Concept ;
+    mu:uuid "872c910d-dd86-46b4-a3b0-0ff45df32702" ;
+    skos:prefLabel "Landbouw en Visserij" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/34394a01-5c8c-44c9-aade-59087026f266> a skos:Concept ;
+    mu:uuid "34394a01-5c8c-44c9-aade-59087026f266" ;
+    skos:prefLabel "Inburgering" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/6053f77e-09d3-4d08-8b1e-1fc5f34f3667> a skos:Concept ;
+    mu:uuid "6053f77e-09d3-4d08-8b1e-1fc5f34f3667" ;
+    skos:prefLabel "Financiën" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/c99b383e-edfb-420b-b6fb-b4eb742f2899> a skos:Concept ;
+    mu:uuid "c99b383e-edfb-420b-b6fb-b4eb742f2899" ;
+    skos:prefLabel "Brussel" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/2ef1a01c-861b-449a-9c7b-e0efd324a7d2> a skos:Concept ;
+    mu:uuid "2ef1a01c-861b-449a-9c7b-e0efd324a7d2" ;
+    skos:prefLabel "Justitie en Handhaving" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+# new themes
+
+<http://themis.vlaanderen.be/id/concept/thema/91de07eb-6c28-443f-8a7f-50d5cbb19cee> a skos:Concept ;
+    mu:uuid "91de07eb-6c28-443f-8a7f-50d5cbb19cee" ;
+    skos:prefLabel "Digitalisering" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/f3e7fb08-8e44-432d-9058-367b8ca7281c> a skos:Concept ;
+    mu:uuid "f3e7fb08-8e44-432d-9058-367b8ca7281c" ;
+    skos:prefLabel "Klimaat" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/688e05da-0762-4645-91f2-8c53b23319c1> a skos:Concept ;
+    mu:uuid "688e05da-0762-4645-91f2-8c53b23319c1" ;
+    skos:prefLabel "Luchthaven" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/72daa766-569a-437f-bc73-fdcfe012665f> a skos:Concept ;
+    mu:uuid "72daa766-569a-437f-bc73-fdcfe012665f" ;
+    skos:prefLabel "Mededeling" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+<http://themis.vlaanderen.be/id/concept/thema/fa20590e-cbfb-4c3c-a5e4-68d480668a1a> a skos:Concept ;
+    mu:uuid "fa20590e-cbfb-4c3c-a5e4-68d480668a1a" ;
+    skos:prefLabel "Rampenschade" ;
+    owl:deprecated "false"^^xsd:boolean ;
+    skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/459cbdb0-86ff-4106-879c-6aecda7d3dcc> .
+
+

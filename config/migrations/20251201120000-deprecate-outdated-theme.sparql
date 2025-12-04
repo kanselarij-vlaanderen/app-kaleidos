@@ -1,0 +1,20 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX tl: <http://mu.semte.ch/vocabularies/typed-literals/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?theme owl:deprecated "false"^^tl:boolean .
+  }
+} INSERT { 
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?theme owl:deprecated "true"^^tl:boolean .
+  }
+} WHERE {
+  VALUES ?theme {
+    <http://themis.vlaanderen.be/id/concept/thema/49dbc623-7e91-4a52-8d98-13f8db271eb5>
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?theme a skos:Concept .
+  }
+} 
