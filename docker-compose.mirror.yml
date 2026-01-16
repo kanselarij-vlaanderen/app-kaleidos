@@ -35,6 +35,9 @@ services:
     volumes:
       - ./data/files:/share
       - ./data/delta-files:/delta-files
+    restart: always
+    labels:
+      - "logging=true"
   delta-notifier:
     volumes:
       - ./config/delta/mirror-rules.js:/config/rules.js
