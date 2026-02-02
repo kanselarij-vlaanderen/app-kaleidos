@@ -1,0 +1,43 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> 
+PREFIX schema: <http://schema.org/> 
+
+DELETE WHERE {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        # Intern Secretarie
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/66804c35-4652-4ff4-b927-16982a3b6de8> schema:position ?a1 .
+        # Vertrouwelijk
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17> schema:position ?a2 .
+        # Intern Regering
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/13ae94b0-6188-49df-8ecd-4c4a17511d6d> schema:position ?a3 .
+        # Intern Overheid
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/634f438e-0d62-4ae4-923a-b63460f6bc46> schema:position ?a4 .
+        # Publiek
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/c3de9c70-391e-4031-a85e-4b03433d6266> schema:position ?a5 .
+    }
+}
+
+;
+
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+        # TODO unsure where in the list the new concept should be. No decision was made about it.
+        # TODO having it at position 3 makes sense, but might not be desired
+        # Intern Secretarie
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/66804c35-4652-4ff4-b927-16982a3b6de8> schema:position 1 .
+        # Vertrouwelijk
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/9692ba4f-f59b-422b-9402-fcbd30a46d17> schema:position 2 .
+        # Intern Regering
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/13ae94b0-6188-49df-8ecd-4c4a17511d6d> schema:position 4 .
+        # Intern Overheid
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/634f438e-0d62-4ae4-923a-b63460f6bc46> schema:position 5 .
+        # Publiek
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/c3de9c70-391e-4031-a85e-4b03433d6266> schema:position 6 .
+
+        <http://themis.vlaanderen.be/id/concept/toegangsniveau/969a712a-b3d3-406f-ab08-5f665427185a> a skos:Concept ;
+            mu:uuid "969a712a-b3d3-406f-ab08-5f665427185a" ;
+            schema:position 3 ;
+            skos:prefLabel "Ingetrokken"@nl ;
+            skos:inScheme <http://themis.vlaanderen.be/id/concept-scheme/9b354d36-250b-43d7-887c-db28fe2fc6fb> .
+    }
+}
