@@ -504,7 +504,7 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.2
+    image: kanselarij/document-stamping-service:2.0.3
     volumes:
       - ./data/files:/share
     environment:
