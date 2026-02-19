@@ -21,8 +21,6 @@ DELETE WHERE {
 
 INSERT DATA {
     GRAPH <http://mu.semte.ch/graphs/public> {
-        # TODO unsure where in the list the new concept should be. No decision was made about it.
-        # TODO having it at position 3 makes sense, but might not be desired
         # Intern Secretarie
         <http://themis.vlaanderen.be/id/concept/toegangsniveau/66804c35-4652-4ff4-b927-16982a3b6de8> schema:position 1 .
         # Vertrouwelijk
