@@ -221,7 +221,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.5.0
+    image: kanselarij/file-bundling-job-creation-service:1.6.0
     logging: *default-logging
     restart: always
     labels:
@@ -375,7 +375,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.1.0
+    image: kanselarij/decision-report-generation-service:2.2.0
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -492,13 +492,13 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.16.0
+    image: kanselarij/agenda-submission-service:1.17.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.5.0
+    image: kanselarij/document-naming-service:1.6.0
     labels:
       - logging=true
     restart: always
