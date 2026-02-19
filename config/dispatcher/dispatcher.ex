@@ -8,7 +8,7 @@ defmodule Dispatcher do
     any: [ "*/*" ],
   ]
 
-  define_layers [ :frontend, :api, :not_found ]
+  define_layers [ :static, :frontend, :api, :not_found ]
 
   @frontend %{ accept: [ :any ], layer: :frontend }
   @json_service %{ accept: [ :json ], layer: :api }
@@ -697,6 +697,10 @@ defmodule Dispatcher do
   ### PDF Signature Remover
   post "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
+  end
+
+  get "/metrics", %{ layer: :static, accept: %{ any: true } } do
+    Proxy.forward conn, [], "http://metrics/metrics"
   end
 
   ## Fallback
