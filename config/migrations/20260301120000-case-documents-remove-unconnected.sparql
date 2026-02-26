@@ -17,14 +17,13 @@ WHERE {
           dossier:Dossier.bestaatUit ?currentDocuments .
 
     FILTER NOT EXISTS {
-      ?decisionmakingFlow dossier:doorloopt / ^ext:indieningVindtPlaatsTijdens /  prov:generated   ?currentDocuments .
-    } 
+      ?decisionmakingFlow dossier:doorloopt / ^ext:indieningVindtPlaatsTijdens /  prov:generated ?currentDocuments .
+    }
     FILTER NOT EXISTS {
       ?decisionmakingFlow dossier:doorloopt /
-      ^besluitvorming:vindtPlaatsTijdens / 
+      ^besluitvorming:vindtPlaatsTijdens /
       besluitvorming:genereertAgendapunt /
       besluitvorming:geagendeerdStuk  ?currentDocuments .
-    } 
-
+    }
   }
 }
