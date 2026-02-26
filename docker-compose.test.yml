@@ -1,4 +1,3 @@
-version: '3.4'
 services:
   triplestore:
     volumes:
@@ -8,8 +7,8 @@ services:
       - ./testdata/files:/data
     environment:
       UPDATE_WAIT_INTERVAL_MINUTES: 0
-      LOG_SCOPE_AUTHORIZATION: "debug"
-      LOG_SCOPE_SEARCH: "debug"
+      # LOG_SCOPE_AUTHORIZATION: "debug"
+      # LOG_SCOPE_SEARCH: "debug"
   elasticsearch:
     volumes:
       - ./testdata/elasticsearch/:/usr/share/elasticsearch/data

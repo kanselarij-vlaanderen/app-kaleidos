@@ -1,0 +1,21 @@
+PREFIX oldRdfs: <https://www.w3.org/2000/01/rdf-schema#>
+PREFIX newRdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+DELETE {
+  GRAPH ?g {
+    ?s oldRdfs:comment ?o .
+  }
+}
+
+INSERT {
+  GRAPH ?g {
+    ?s newRdfs:comment ?o .
+  }
+}
+
+WHERE {
+  GRAPH ?g {
+    ?s oldRdfs:comment ?o .
+  }
+}

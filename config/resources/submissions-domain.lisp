@@ -29,7 +29,11 @@
              (meeting                 :via ,(s-prefix "subm:ingediendVoorVergadering")
                                       :as "meeting")
              (submission-internal-review :via ,(s-prefix "subm:heeftInterneBeoordeling")
-                                      :as "internal-review"))
+                                      :as "internal-review")
+             (news-item               :via ,(s-prefix "subm:heeftVoorlopigNieuwsBericht") ;; keep news-item between sending back and resubmitting only
+                                      :as "draft-news-item")
+             (report                  :via ,(s-prefix "subm:heeftVoorlopigeBeslissing") ;; keep decision report between sending back and resubmitting only
+                                      :as "draft-decision"))
   :has-many `((mandatee               :via ,(s-prefix "ext:heeftBevoegde")
                                       :as "mandatees")
               (submission-activity    :via ,(s-prefix "subm:ingediendAls")
