@@ -459,6 +459,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/mail-campaigns/"
   end
 
+  match "/belga-publications/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/belga-publications/"
+  end
+
   match "/file-bundling-jobs/*path", @json_service do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end

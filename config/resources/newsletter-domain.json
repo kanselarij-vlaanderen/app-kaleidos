@@ -112,6 +112,10 @@
         "deprecated": {
           "type": "boolean",
           "predicate": "owl:deprecated"
+        },
+        "mailchimp-id": {
+          "type": "string",
+          "predicate": "ext:mailchimpId"
         }
       },
       "relationships": {
@@ -160,6 +164,28 @@
         "include-uri"
       ],
       "new-resource-base": "http://themis.vlaanderen.be/id/mailcampagne/"
+    },
+    "belga-publications": {
+      "name": "belga-publication",
+      "class": "ext:BelgaPublicatie",
+      "attributes": {
+        "sent-at": {
+          "type": "datetime",
+          "predicate": "ext:isVerstuurdOp"
+        }
+      },
+      "relationships": {
+        "meeting": {
+          "target": "meeting",
+          "predicate": "ext:heeftBelgaPublicatie",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "features": [
+        "include-uri"
+      ],
+      "new-resource-base": "http://themis.vlaanderen.be/id/belga-publicatie/"
     }
   }
 }
