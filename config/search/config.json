@@ -758,7 +758,7 @@
         "title": "http://purl.org/dc/terms/title",
         "shortTitle": "http://purl.org/dc/terms/alternative",
         "modified": "http://purl.org/dc/terms/modified",
-        "remark": "https://www.w3.org/2000/01/rdf-schema#comment",
+        "remark": "http://www.w3.org/2000/01/rdf-schema#comment",
         "identification": [
           "http://www.w3.org/ns/adms#identifier",
           "http://www.w3.org/2004/02/skos/core#notation"

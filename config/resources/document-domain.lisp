@@ -81,9 +81,6 @@
             (sign-marking-activity      :via ,(s-prefix "sign:gemarkeerdStuk")
                                         :inverse t
                                         :as "sign-marking-activity")
-            (submission-activity        :via ,(s-prefix "prov:generated")
-                                        :inverse t
-                                        :as "submission-activity")
             (subcase                    :via ,(s-prefix "ext:heeftBekrachtiging")
                                         :inverse t
                                         :as "ratification-subcase")
@@ -118,6 +115,9 @@
               (retrieved-piece          :via ,(s-prefix "parl:heeftOpgehaaldStuk")
                                         :inverse t
                                         :as "retrieved-pieces")
+              (submission-activity      :via ,(s-prefix "prov:generated")
+                                        :inverse t
+                                        :as "submission-activities")
   )
   :resource-base (s-url "http://themis.vlaanderen.be/id/stuk/")
   :features `(include-uri)
@@ -137,6 +137,9 @@
 
 (define-resource report (piece)
   :class (s-prefix "besluitvorming:Verslag")
+  :has-one `((submission                :via ,(s-prefix "subm:heeftVoorlopigeBeslissing")
+                                        :inverse t
+                                        :as "submission"))
   :has-many `((piece-part               :via ,(s-prefix "dct:isPartOf")
                                         :inverse t
                                         :as "piece-parts")

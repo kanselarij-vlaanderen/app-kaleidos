@@ -7,6 +7,11 @@
 
 (setf *log-delta-messenger-message-bus-processing* nil)
 
+;; Disable usage of CONSTRUCT queries on INSERT/DELETE
+;; since it cannot handle OPTIONAL in the WHERE clause
+(in-package #:handle-update-unit)
+(setf *allow-construct-query-p* nil)
+
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
 (in-package :client)
@@ -209,6 +214,7 @@
 (define-graph kanselarij ("http://mu.semte.ch/graphs/organizations/kanselarij")
   ("ext:Nieuwsbericht" -> _)
   ("ext:MailCampagne" -> _)
+  ("ext:BelgaPublicatie" -> _)
   ("prov:Activity" -> _)
   ("ext:InternalDecisionPublicationActivity" -> _)
   ("ext:InternalDocumentPublicationActivity" -> _)

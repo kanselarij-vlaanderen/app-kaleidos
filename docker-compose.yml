@@ -1,4 +1,3 @@
-version: '3.4'
 x-logging:
   &default-logging
   driver: "json-file"
@@ -18,6 +17,8 @@ services:
       - ./config/project-scripts:/app/scripts
   identifier:
     image: semtech/mu-identifier:1.10.3
+    environment:
+      SESSION_COOKIE_SECURE: "on"
     logging: *default-logging
     restart: always
     labels:
@@ -31,7 +32,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:9.7.0
+    image: kanselarij/frontend-kaleidos:10.0.0
     environment:
       EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -53,9 +54,9 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.14
+    image: semtech/sparql-parser:0.0.15
     volumes:
-      - ./config/new-authorization:/config
+      - ./config/authorization:/config
       - ./data/mu-cl-authorization:/data/
     logging: *extended-logging
     restart: always
@@ -75,7 +76,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:0.10.0
+    image: semtech/mu-search:0.11.0
     volumes:
       - ./config/search:/config
       - ./data/files:/data
@@ -89,16 +90,15 @@ services:
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.1.0
+    image: semtech/mu-search-elastic-backend:1.2.0
     environment:
       discovery.type: "single-node"
-      LOG_SCOPE_ELASTICSEARCH: "warn"
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     logging: *default-logging
     restart: always
   tika:
-    image: apache/tika:1.24-full
+    image: semtech/mu-search-tika-backend:1.0.0
     logging: *default-logging
     restart: always
     labels:
@@ -191,7 +191,7 @@ services:
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:4.0.4
+    image: kanselarij/newsletter-service:5.1.1
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -199,7 +199,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.25.1
+    image: kanselarij/yggdrasil:5.26.1
     logging: *default-logging
     restart: always
     labels:
@@ -221,7 +221,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.2.0
+    image: kanselarij/file-bundling-job-creation-service:1.6.0
     logging: *default-logging
     restart: always
     labels:
@@ -345,20 +345,29 @@ services:
     volumes:
       - ./data/files:/share
   delta-producer:
-    image: lblod/delta-producer-json-diff-file-publisher:0.5.0
+    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.1
     environment:
+      ALLOW_MU_AUTH_SUDO: "true"
       PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
       PRETTY_PRINT_DIFF_JSON: "true"
-      FILES_GRAPH: "http://mu.semte.ch/graphs/delta-files"
       KEY: "secret-sync-key"
     volumes:
       - ./data/files:/share
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   fileshare:
-    image: redpencil/file-share-sync:0.0.4
+    image: redpencil/file-share-sync:0.1.0
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      ALLOW_SUPER_CONSUMER: "true"
     volumes:
       - ./data/files:/share
-    environment:
-      ALLOW_SUPER_CONSUMER: "true"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   impersonation:
     image: kanselarij/impersonation-service:0.2.0
     logging: *default-logging
@@ -366,7 +375,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.1.0
+    image: kanselarij/decision-report-generation-service:2.2.2
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -382,11 +391,11 @@ services:
     labels:
       - "logging=true"
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:1.0.0
+    image: kanselarij/minutes-report-generation-service:1.1.0
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.2.3
+    image: kanselarij/digital-signing-service:2.3.0
     volumes:
       - ./data/files:/share
     restart: always
@@ -461,7 +470,7 @@ services:
     restart: always
     logging: *default-logging
   pdf-signature-remover:
-    image: kanselarij/pdf-signature-remover:1.0.0
+    image: kanselarij/pdf-signature-remover:1.0.2
     volumes:
       - ./data/files:/share
     environment:
@@ -483,19 +492,19 @@ services:
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.13.0
+    image: kanselarij/agenda-submission-service:1.17.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.4.0
+    image: kanselarij/document-naming-service:1.6.1
     labels:
       - logging=true
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.0
+    image: kanselarij/document-stamping-service:2.0.3
     volumes:
       - ./data/files:/share
     environment:
