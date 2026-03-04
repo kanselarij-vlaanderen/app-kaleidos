@@ -151,7 +151,7 @@ defmodule Dispatcher do
   end
 
   ### Document download
-  
+
   post "/agendaitems/:id/pieces/files/archive", @json_service do
     Proxy.forward conn, [], "http://file-bundling-job-creation/agendaitems/" <> id <> "/documents/files/archive"
   end
@@ -204,6 +204,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://agenda-submission/open-meetings"
   end
 
+  get "/agendaitem/:agendaitem_id/preliminary-decision-result-code", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/agendaitem/" <> agendaitem_id <> "/preliminary-decision-result-code"
+  end
+
   get "/submissions/:submission_id/for-meeting", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/submissions/" <> submission_id <> "/for-meeting"
   end
@@ -214,6 +218,10 @@ defmodule Dispatcher do
 
   post "/agendas/:agenda_id/reorder", @json_service do
     Proxy.forward conn, [], "http://agenda-submission/agendas/" <> agenda_id <> "/reorder"
+  end
+
+  post "/submissions/:submission_id/keep-draft-decision-and-news-item", @json_service do
+    Proxy.forward conn, [], "http://agenda-submission/submissions/" <> submission_id <> "/keep-draft-decision-and-news-item"
   end
 
   ### Themis export
@@ -449,6 +457,10 @@ defmodule Dispatcher do
 
   match "/mail-campaigns/*path", @json_service do
     Proxy.forward conn, path, "http://cache/mail-campaigns/"
+  end
+
+  match "/belga-publications/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/belga-publications/"
   end
 
   get "/file-bundling-jobs/*path", @json_service do

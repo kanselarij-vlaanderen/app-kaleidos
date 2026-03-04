@@ -1,0 +1,155 @@
+###
+# This file can be used to setup a mirror for Kaleidos.
+#
+# In mirror mode only a selection of services is active.
+# Secrets still needs to be configured in this file.
+###
+
+x-disabled-for-mirror:
+  &disabled-for-mirror
+  entrypoint: "echo 'service disabled; mirror'"
+  restart: "no"
+
+# -- LIVE BACKUP (MIRROR) --
+
+  # Required services:
+  # - delta-consumer
+  # - database
+  # - triplestore
+  # - search
+  # - elasticsearch
+  # - tika
+  # - delta-notifier
+services:
+  delta-consumer:
+    image: kanselarij/delta-consumer:0.1.1
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      DCR_SYNC_BASE_URL: "https://kaleidos.vlaanderen.be"
+      DCR_SECRET_KEY: "my-secret-sync-key"
+      DCR_SERVICE_NAME: "consume-from-sync"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://delta-consumer.services.semantic.works/id/JobOperation/DeltaFileSyncing"
+      DCR_JOB_CREATOR_URI: "http://delta-consumer.services.semantic.works/me"
+      DCR_START_FROM_DELTA_TIMESTAMP: "2025-08-29T15:48:00Z"
+      DCR_CRON_PATTERN_DELTA_SYNC: "*/15 * * * * *"
+    volumes:
+      - ./data/files:/share
+      - ./data/delta-files:/delta-files
+    restart: always
+    labels:
+      - "logging=true"
+  delta-notifier:
+    volumes:
+      - ./config/delta/mirror-rules.js:/config/rules.js
+
+  # Disable extraneous services
+  identifier:
+    <<: *disabled-for-mirror
+  dispatcher:
+    <<: *disabled-for-mirror
+  frontend:
+    <<: *disabled-for-mirror
+  migrations:
+    <<: *disabled-for-mirror
+  cache-warmup:
+    <<: *disabled-for-mirror
+  cache:
+    <<: *disabled-for-mirror
+  forever-cache:
+    <<: *disabled-for-mirror
+  resource:
+    <<: *disabled-for-mirror
+  file:
+    <<: *disabled-for-mirror
+  static-file:
+    <<: *disabled-for-mirror
+  agenda-comparison:
+    <<: *disabled-for-mirror
+  agenda-approve:
+    <<: *disabled-for-mirror
+  mocklogin:
+    <<: *disabled-for-mirror
+  login:
+    <<: *disabled-for-mirror
+  newsletter:
+    <<: *disabled-for-mirror
+  yggdrasil:
+    <<: *disabled-for-mirror
+  sink:
+    <<: *disabled-for-mirror
+  file-bundling:
+    <<: *disabled-for-mirror
+  file-bundling-job-creation:
+    <<: *disabled-for-mirror
+  docx-conversion:
+    <<: *disabled-for-mirror
+  database-healthcheck:
+    <<: *disabled-for-mirror
+  case-documents-sync:
+    <<: *disabled-for-mirror
+  gov-field-sync:
+    <<: *disabled-for-mirror
+  document-versions:
+    <<: *disabled-for-mirror
+  document-release:
+    <<: *disabled-for-mirror
+  mail-delivery:
+    <<: *disabled-for-mirror
+  lod-sbmb:
+    <<: *disabled-for-mirror
+  staatsblad-scraping:
+    <<: *disabled-for-mirror
+  staatsblad-import:
+    <<: *disabled-for-mirror
+  staatsblad-uuid-generation:
+    <<: *disabled-for-mirror
+  staatsblad-linking:
+    <<: *disabled-for-mirror
+  publication-report:
+    <<: *disabled-for-mirror
+  decision-extraction:
+    <<: *disabled-for-mirror
+  delta-producer:
+    <<: *disabled-for-mirror
+  fileshare:
+    <<: *disabled-for-mirror
+  impersonation:
+    <<: *disabled-for-mirror
+  decision-report-generation:
+    <<: *disabled-for-mirror
+  shortlist:
+    <<: *disabled-for-mirror
+  minutes-report-generation:
+    <<: *disabled-for-mirror
+  digital-signing:
+    <<: *disabled-for-mirror
+  signflow-status-sync:
+    <<: *disabled-for-mirror
+  public-file:
+    <<: *disabled-for-mirror
+  themis-export:
+    <<: *disabled-for-mirror
+  ttl-to-delta:
+    <<: *disabled-for-mirror
+  publication-producer:
+    <<: *disabled-for-mirror
+  export-file:
+    <<: *disabled-for-mirror
+  html-to-pdf:
+    <<: *disabled-for-mirror
+  pdf-flattener:
+    <<: *disabled-for-mirror
+  pdf-signature-remover:
+    <<: *disabled-for-mirror
+  vlaams-parlement-sync:
+    <<: *disabled-for-mirror
+  agenda-submission:
+    <<: *disabled-for-mirror
+  document-naming:
+    <<: *disabled-for-mirror
+  document-stamping:
+    <<: *disabled-for-mirror
+  draft-file:
+    <<: *disabled-for-mirror
+  draft-file-mover:
+    <<: *disabled-for-mirror
