@@ -529,3 +529,10 @@ services:
     restart: always
     labels:
       - "logging=true"
+  metrics:
+    image: lblod/metrics-service:0.2.0
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+    volumes:
+      - ./config/metrics:/config
+      - ./data/metrics:/external-metrics

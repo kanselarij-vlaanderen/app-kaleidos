@@ -37,6 +37,10 @@ defmodule Dispatcher do
     forward conn, [], "http://resource/health-checks/"
   end
 
+  get "/metrics", %{ layer: :api } do
+    Proxy.forward conn, [], "http://metrics/metrics"
+  end
+
   ### File conversion
 
   post "/files/:id/convert", @json_service do
