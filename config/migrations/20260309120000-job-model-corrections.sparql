@@ -61,7 +61,7 @@ DELETE {
 # this makes a bold assumption that all jobs are finished
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/system/parliament> {
-    ?sendToVpJob prov:endedAtTime ?created . # not really accurate, best we can do
+    ?sendToVpJob prov:startedAtTime ?created . # not really accurate, best we can do
     ?sendToVpJob prov:endedAtTime ?modified .
   }
 } WHERE {
@@ -83,7 +83,7 @@ DELETE {
 # this makes a bold assumption that all jobs are finished
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
-    ?publicExportJob prov:endedAtTime ?created . # not really accurate, best we can do
+    ?publicExportJob prov:startedAtTime ?created . # not really accurate, best we can do
     ?publicExportJob prov:endedAtTime ?modified .
   }
 } WHERE {
@@ -98,7 +98,7 @@ INSERT {
 
 # file-bundling-job, fix status in all graphs
 DELETE {
-  GRAPH ?g{
+  GRAPH ?g {
     ?FileBundlingJob ext:status ?status .
   }
 }
@@ -115,7 +115,7 @@ INSERT {
 
 ;
 
-# publicationMetricsJob, fix status in all graphs
+# publicationMetricsJob, fix status
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?publicationMetricsJob ext:status ?status .
@@ -129,6 +129,43 @@ INSERT {
   GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
     ?publicationMetricsJob a pub:PublicationMetricsExportJob ;
       ext:status ?status .
+  }
+}
+
+;
+
+# reportGenerationJob, add cogs:Job
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a cogs:Job .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a ext:ReportGenerationJob .
+    FILTER NOT EXISTS {?reportGenerationJob a cogs:Job}
+    # all ReportBundleGenerationJob jobs are/should be a ReportGenerationJob
+  }
+}
+
+;
+
+# reportGenerationJob, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?reportGenerationJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a ext:ReportGenerationJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
   }
 }
 
@@ -154,8 +191,8 @@ INSERT {
       (ext:PublicExportJob)
       (ext:FileBundlingJob)
       (pub:PublicationMetricsExportJob)
-      # (ext:ReportGenerationJob)
-      # (ext:ReportBundleGenerationJob)
+      (ext:ReportGenerationJob)
+      # (ext:ReportBundleGenerationJob) # all bundle jobs are/should be a ReportGenerationJob
     }
     VALUES (?oldStatusUri ?newStatusUri) {
       # no jobs should be scheduled or busy during migrations, but just to be sure
@@ -166,6 +203,10 @@ INSERT {
       (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/ongoing> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
       (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
       (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/failure> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/ongoing> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/failure> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
     }
   }
 }
