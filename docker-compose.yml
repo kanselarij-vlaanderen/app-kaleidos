@@ -375,7 +375,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.2.2
+    image: kanselarij/decision-report-generation-service:feature-KAS-4883-job-model-refactor
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
