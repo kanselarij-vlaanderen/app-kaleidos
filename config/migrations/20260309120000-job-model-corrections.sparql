@@ -9,6 +9,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX cogs: <http://vocab.deri.ie/cogs#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX schema: <http://schema.org/>
 
 # document-naming-job, fix status and agenda predicate
 DELETE {
@@ -170,7 +171,49 @@ INSERT {
 }
 
 ;
+
+# prepareSignFlowJob, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?prepareSignFlowJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob a ext:PrepareSignFlowJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# prepareSignFlowJob, refactor error message
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob ext:errorMessage ?errorMessage .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob schema:error ?errorMessage .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob a ext:PrepareSignFlowJob ;
+      ext:errorMessage ?errorMessage .
+  }
+}
+
+;
 # for all jobs that had a cogs or unique status uri
+# this could be a lot of jobs, does this batch correctly?
 
 DELETE {
   GRAPH ?g {

@@ -100,10 +100,10 @@
 
 ;; for future reference, these models are not used in frontend
 
-;; (define-resource send-to-vp-job () ;; also a "cogs:Job" in spirit
+;; (define-resource send-to-vp-job () ;; also a "cogs:Job" in spirit but not possible with graph constraints
 ;;   :class (s-prefix "ext:SendToVpJob")
 ;;   ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
-;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliamentc>
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliament>
 ;;   :properties `((:created       :datetime  ,(s-prefix "dct:created"))
 ;;                 (:status        :url       ,(s-prefix "adms:status"))
 ;;                 (:time-started  :datetime  ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
@@ -121,7 +121,7 @@
 
 ;; (define-resource send-to-vp-job-context ()
 ;;   :class (s-prefix "ext:SendToVpJobContext")
-;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliamentc>
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/parliament>
 ;;   :properties `((:is-complete     :boolean   ,(s-prefix "ext:isComplete"))
 ;;                 (:comment         :string    ,(s-prefix "ext:comment")))
 ;;   :has-one `((agendaitem          :via       ,(s-prefix "ext:agendaitem")
@@ -135,7 +135,7 @@
 ;;   :on-path "send-to-vp-job-contexts")
 
 
-;; (define-resource public-export-job() ;; also a "cogs:Job" in spirit
+;; (define-resource public-export-job() ;; also a "cogs:Job" in spirit but not possible with graph constraints
 ;;   :class (s-prefix "ext:PublicExportJob")
 ;;   ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
 ;;   ;; This model is persisted on <http://mu.semte.ch/graphs/themis-public>
@@ -156,6 +156,41 @@
 ;;   :resource-base (s-url "http://data.kaleidos.vlaanderen.be/public-export-jobs/")
 ;;   :features '(include-uri)
 ;;   :on-path "public-export-jobs")
+
+
+;; (define-resource report-generation-job(job)
+;;   :class (s-prefix "ext:ReportGenerationJob")
+;;   :properties `((:should-regenerate-concerns      :boolean      ,(s-prefix "ext:shouldRegenerateConcerns")))
+;;   ;; :has-many `((piece                :via       ,(s-prefix "prov:used")
+;;   ;;                               :as "used"))
+;;   :resource-base (s-url "http://data.kaleidos.vlaanderen.be/report-generation-jobs/")
+;;   :features '(include-uri)
+;;   :on-path "report-generation-jobs")
+
+;; ;; this class is the same as report-generation-job but with an additional type. the rdf:type determines what needs to be done in the service
+;; (define-resource report-bundle-generation-job(report-generation-job)
+;;   :class (s-prefix "ext:ReportBundleGenerationJob")
+;;   :resource-base (s-url "http://data.kaleidos.vlaanderen.be/report-generation-jobs/")
+;;   :features '(include-uri)
+;;   :on-path "report-bundle-generation-jobs")
+
+
+;; (define-resource prepare-sign-flow-job() ;; also a "cogs:Job" in spirit but not possible with graph constraints
+;;   :class (s-prefix "ext:PrepareSignFlowJob")
+;;   ;; shares properties with cogs:Job but inheritance is not possible because of graph conflicts
+;;   ;; This model is persisted on <http://mu.semte.ch/graphs/system/signing>
+;;   :properties `((:created           :datetime     ,(s-prefix "dct:created"))
+;;                 (:status            :url          ,(s-prefix "adms:status"))
+;;                 (:time-started      :datetime     ,(s-prefix "prov:startedAtTime")) ;; when the job got the "ongoing" status (immediately or updating from "scheduled")
+;;                 (:time-ended        :datetime     ,(s-prefix "prov:endedAtTime")) ;; when the job is finished with a "success" or "fail" status
+;;                 (:message           :string       ,(s-prefix "schema:error"))  ;; message could also be set on partial success/fail
+;;                 (:creator           :string       ,(s-prefix "dct:creator")) ;; Mu_session from the job creator to determine the correct technical user
+;;                 )
+;;   :has-many `((sign-flow            :via          ,(s-prefix "prov:used")
+;;                                     :as "used"))
+;;   :resource-base (s-url "http://mu.semte.ch/services/digital-signing/prepare-signing-flow-job/")
+;;   :features '(include-uri)
+;;   :on-path "prepare-signing-flow-jobs")
 
 
 
