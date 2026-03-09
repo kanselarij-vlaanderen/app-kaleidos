@@ -395,7 +395,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.3.0
+    image: kanselarij/digital-signing-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
     restart: always
