@@ -1,0 +1,257 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX subm: <http://mu.semte.ch/vocabularies/ext/submissions/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cogs: <http://vocab.deri.ie/cogs#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX pub: <http://mu.semte.ch/vocabularies/ext/publicatie/>
+PREFIX schema: <http://schema.org/>
+
+# document-naming-job, fix status and agenda predicate
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob ext:status ?status ;
+      prov:used ?agenda .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob adms:status ?status ;
+      dct:source ?agenda .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?documentNamingJob a ext:DocumentNamingJob ;
+      ext:status ?status ;
+      prov:used ?agenda .
+    ?agenda a besluitvorming:Agenda .
+  }
+}
+
+;
+
+# file-stamping-job, fix status
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?fileStampingJob a ext:FileStampingJob ;
+      ext:status ?status .
+  }
+}
+
+;
+
+# send-to-vp-job, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?sendToVpJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/parliament> {
+    ?sendToVpJob a ext:SendToVpJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# themis-export-job, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?publicExportJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/kaleidos-export> {
+    ?publicExportJob a ext:PublicExportJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# file-bundling-job, fix status in all graphs
+DELETE {
+  GRAPH ?g {
+    ?FileBundlingJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?FileBundlingJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?FileBundlingJob a ext:FileBundlingJob ;
+      ext:status ?status .
+  }
+}
+
+;
+
+# publicationMetricsJob, fix status
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob ext:status ?status .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob adms:status ?status .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?publicationMetricsJob a pub:PublicationMetricsExportJob ;
+      ext:status ?status .
+  }
+}
+
+;
+
+# reportGenerationJob, add cogs:Job
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a cogs:Job .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a ext:ReportGenerationJob .
+    FILTER NOT EXISTS {?reportGenerationJob a cogs:Job}
+    # all ReportBundleGenerationJob jobs are/should be a ReportGenerationJob
+  }
+}
+
+;
+
+# reportGenerationJob, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?reportGenerationJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organizations/kanselarij> {
+    ?reportGenerationJob a ext:ReportGenerationJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# prepareSignFlowJob, refactor modified to started and ended
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob dct:modified ?modified .
+  }
+}
+# this makes a bold assumption that all jobs are finished
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob prov:startedAtTime ?created . # not really accurate, best we can do
+    ?prepareSignFlowJob prov:endedAtTime ?modified .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob a ext:PrepareSignFlowJob ;
+      dct:created ?created ;
+      dct:modified ?modified .
+  }
+}
+
+;
+
+# prepareSignFlowJob, refactor error message
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob ext:errorMessage ?errorMessage .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob schema:error ?errorMessage .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/system/signing> {
+    ?prepareSignFlowJob a ext:PrepareSignFlowJob ;
+      ext:errorMessage ?errorMessage .
+  }
+}
+
+;
+# for all jobs that had a cogs or unique status uri
+# this could be a lot of jobs, does this batch correctly?
+
+DELETE {
+  GRAPH ?g {
+    ?job adms:status ?oldStatusUri .      
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?job adms:status ?newStatusUri .      
+  }
+} WHERE {
+  GRAPH ?g {
+    ?job a ?type;
+      adms:status ?oldStatusUri .
+    VALUES (?type) {
+      (ext:DocumentNamingJob)
+      (ext:FileStampingJob)
+      (ext:PublicExportJob)
+      (ext:FileBundlingJob)
+      (pub:PublicationMetricsExportJob)
+      (ext:ReportGenerationJob)
+      # (ext:ReportBundleGenerationJob) # all bundle jobs are/should be a ReportGenerationJob
+    }
+    VALUES (?oldStatusUri ?newStatusUri) {
+      # no jobs should be scheduled or busy during migrations, but just to be sure
+      (<http://vocab.deri.ie/cogs#Running> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://vocab.deri.ie/cogs#Success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://vocab.deri.ie/cogs#Fail> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/ongoing> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://data.kaleidos.vlaanderen.be/public-export-job-statuses/failure> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/scheduled> <http://redpencil.data.gift/id/concept/JobStatus/scheduled>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/ongoing> <http://redpencil.data.gift/id/concept/JobStatus/busy>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/success> <http://redpencil.data.gift/id/concept/JobStatus/success>)
+      (<http://data.kaleidos.vlaanderen.be/report-generation-job-statuses/failure> <http://redpencil.data.gift/id/concept/JobStatus/failed>)
+    }
+  }
+}
+
+

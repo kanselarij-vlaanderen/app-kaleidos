@@ -259,7 +259,8 @@
   ("pub:PublicationMetricsExportJob" -> _)
   ("eli:LegalResource" -> _)
   ("ext:ReportGenerationJob" -> _)
-  ("ext:DocumentNamingJob" -> _))
+  ("ext:DocumentNamingJob" -> _)
+  ("ext:FileStampingJob" -> _))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;
   ;; TODO ext:notulen, ovrb should not edit those? came from old config

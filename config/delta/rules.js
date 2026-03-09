@@ -72,7 +72,7 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://mu.semte.ch/vocabularies/ext/status'
+        value: 'http://www.w3.org/ns/adms#status'
       },
       object: {
         type: 'uri'

@@ -211,7 +211,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:3.1.0
+    image: kanselarij/file-bundling-service:feature-KAS-4883-job-model-refactor
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -221,7 +221,7 @@ services:
     labels:
       - "logging=true"
   file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.6.0
+    image: kanselarij/file-bundling-job-creation-service:feature-KAS-4883-job-model-refactor
     logging: *default-logging
     restart: always
     labels:
@@ -326,7 +326,7 @@ services:
     labels:
       - "logging=true"
   publication-report:
-    image: kanselarij/publication-report-service:0.5.0
+    image: kanselarij/publication-report-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
     environment:
@@ -375,7 +375,7 @@ services:
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.2.2
+    image: kanselarij/decision-report-generation-service:feature-KAS-4883-job-model-refactor
     environment:
       TZ: "Europe/Brussels"
     logging: *default-logging
@@ -395,7 +395,7 @@ services:
     volumes:
       - ./data/files:/share
   digital-signing:
-    image: kanselarij/digital-signing-service:2.3.0
+    image: kanselarij/digital-signing-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
     restart: always
@@ -415,7 +415,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.2.1
+    image: kanselarij/themis-export-service:feature-KAS-4883-job-model-refactor
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
@@ -480,7 +480,7 @@ services:
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.8.0
+    image: kanselarij/vlaams-parlement-sync-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
@@ -498,13 +498,13 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.6.1
+    image: kanselarij/document-naming-service:feature-KAS-4883-job-model-refactor
     labels:
       - logging=true
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.3
+    image: kanselarij/document-stamping-service:feature-KAS-4883-job-model-refactor
     volumes:
       - ./data/files:/share
     environment:
