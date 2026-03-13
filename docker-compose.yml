@@ -211,7 +211,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:3.1.0
+    image: kanselarij/file-bundling-service:3.1.1
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
@@ -241,7 +241,7 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:2.0.0
+    image: kanselarij/case-documents-sync-service:2.0.1
     logging: *default-logging
     restart: always
     environment:
@@ -249,7 +249,7 @@ services:
     labels:
       - "logging=true"
   gov-field-sync:
-    image: kanselarij/gov-field-sync-service:0.3.0
+    image: kanselarij/gov-field-sync-service:0.3.1
     logging: *default-logging
     restart: always
     labels:
@@ -311,16 +311,17 @@ services:
     labels:
       - "logging=true"
   staatsblad-uuid-generation:
-    image: kanselarij/uuid-generation-service:0.1.0
+    image: redpencil/uuid-generation:0.4.1
     environment:
-      RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
-      GRAPH: "http://mu.semte.ch/graphs/staatsblad"
+      RUN_CRON_JOBS: "true"
+    volumes:
+      - ./config/uuid-generation/:/config
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   staatsblad-linking:
-    image: kanselarij/staatsblad-linking-service:0.6.0
+    image: kanselarij/staatsblad-linking-service:0.6.1
     logging: *default-logging
     restart: always
     labels:
@@ -400,7 +401,7 @@ services:
       - ./data/files:/share
     restart: always
   signflow-status-sync:
-    image: kanselarij/signflow-status-sync-service:0.0.4
+    image: kanselarij/signflow-status-sync-service:0.0.5
     restart: always
   #themis
   public-file:
