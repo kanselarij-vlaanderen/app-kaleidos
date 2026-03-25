@@ -530,3 +530,16 @@ services:
     restart: always
     labels:
       - "logging=true"
+  data-monitoring:
+    image: kanselarij/data-monitoring-service:feature-KAS-5210-data-monitoring-kaleidos-themis
+    environment:
+      KALEIDOS_HOST_URL: "https://kaleidos-dev.vlaanderen.be/" # how to know what server or host sent the email
+      POLLING_CRON_PATTERN: "0 * 4-22 * * *" # how often we poll for issues
+      EMAIL_TO_ADDRESS_ON_FAILURE: "" # recipients of the emails. If left blank no emails will be created
+      THEMIS_ENDPOINT_URL: "https://themis-dev.vlaanderen.be"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
+
+# if a new service is added, update the docker-compose.mirror.yml

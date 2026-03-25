@@ -699,6 +699,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
   end
 
+  ### Data Monitoring
+  get "/data-monitoring/*path", @json_service do
+    Proxy.forward conn, path, "http://data-monitoring/"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do

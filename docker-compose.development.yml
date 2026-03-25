@@ -183,3 +183,6 @@ services:
     restart: "no"
   draft-file-mover:
     restart: "no"
+  data-monitoring:
+    entrypoint: "echo 'service disabled'"
+    restart: "no"
