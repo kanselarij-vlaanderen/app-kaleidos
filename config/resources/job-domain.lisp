@@ -60,3 +60,22 @@
   :resource-base (s-url "http://themis.vlaanderen.be/id/concept/publicatierapporttype/")
   :features '(include-uri)
   :on-path "publication-report-types")
+
+
+
+
+;; TODO KAS-4883 this will conflict
+(define-resource distributor-job () ;; cogs:Job only in spirit, using inheritance may cause isses on prov:used
+  :class (s-prefix "ext:DistributorJob")
+  :properties `((:created       :datetime  ,(s-prefix "dct:created"))
+                (:status        :url       ,(s-prefix "adms:status"))
+                (:time-started  :datetime  ,(s-prefix "prov:startedAtTime"))
+                (:time-ended    :datetime  ,(s-prefix "prov:endedAtTime"))
+                (:message       :string    ,(s-prefix "schema:error"))
+                (:target-graph  :url       ,(s-prefix "ext:targetGraph")))
+  :has-many `((agenda           :via       ,(s-prefix "prov:used") ;; prov:used may cause inheritance issues
+                                :as "agendas"))
+
+  :resource-base (s-url "http://mu.semte.ch/services/yggdrasil/distributor-jobs")
+  :features '(include-uri)
+  :on-path "distributor-jobs")
