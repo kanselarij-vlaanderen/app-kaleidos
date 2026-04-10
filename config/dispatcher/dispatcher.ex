@@ -467,6 +467,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  post "/restart-unfinished-tasks", @json_service do
+    Proxy.forward conn, [], "http://file-bundling/restart-unfinished-tasks"
+  end
+
   get "/document-naming-jobs/*path", @json_service do
     Proxy.forward conn, path, "http://resource/document-naming-jobs/"
   end
