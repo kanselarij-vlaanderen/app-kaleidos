@@ -703,6 +703,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
   end
 
+  ### Case documents sync
+  post "/case-documents-sync/cases/:case_id/sync", @json_service do
+    Proxy.forward conn, [], "http://case-documents-sync/cases/" <> case_id <> "/sync"
+  end
+
   ## Fallback
 
   get "/*_path", %{ layer: :api, accept: %{ html: true } } do
