@@ -416,7 +416,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:feature-KAS-5210-data-monitoring-kaleidos-themis
+    image: kanselarij/themis-export-service:3.3.0
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
@@ -427,7 +427,7 @@ services:
     restart: always
     logging: *default-logging
   ttl-to-delta:
-    image: kanselarij/ttl-to-delta-service:feature-KAS-5210-data-monitoring-kaleidos-themis
+    image: kanselarij/ttl-to-delta-service:1.1.0
     environment:
       TASK_GRAPH: "http://mu.semte.ch/graphs/themis-public"
       FILE_GRAPH: "http://mu.semte.ch/graphs/themis-public"
@@ -438,7 +438,7 @@ services:
     restart: always
     logging: *default-logging
   publication-producer:
-    image: kanselarij/themis-publication-producer:feature-KAS-5210-data-monitoring-kaleidos-themis
+    image: kanselarij/themis-publication-producer:1.2.0
     labels:
       - "logging=true"
     restart: always
@@ -531,7 +531,7 @@ services:
     labels:
       - "logging=true"
   data-monitoring:
-    image: kanselarij/data-monitoring-service:feature-KAS-5210-data-monitoring-kaleidos-themis
+    image: kanselarij/data-monitoring-service:1.0.0
     environment:
       KALEIDOS_HOST_URL: "https://kaleidos-dev.vlaanderen.be/" # how to know what server or host sent the email
       POLLING_CRON_PATTERN: "0 * 4-22 * * *" # how often we poll for issues
