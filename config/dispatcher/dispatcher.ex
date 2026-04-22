@@ -479,6 +479,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/jobs/"
   end
 
+  get "/distributor-jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/distributor-jobs/"
+  end
+
   # PUBLICATION-FLOW
   match "/publication-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/publication-flows/search/"
@@ -701,6 +705,11 @@ defmodule Dispatcher do
   ### PDF Signature Remover
   post "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
+  end
+
+  ### Data Monitoring
+  get "/data-monitoring/*path", @json_service do
+    Proxy.forward conn, path, "http://data-monitoring/"
   end
 
   ## Fallback

@@ -153,3 +153,5 @@ services:
     <<: *disabled-for-mirror
   draft-file-mover:
     <<: *disabled-for-mirror
+  data-monitoring:
+    <<: *disabled-for-mirror
