@@ -9,8 +9,8 @@
 
 ;; Disable usage of CONSTRUCT queries on INSERT/DELETE
 ;; since it cannot handle OPTIONAL in the WHERE clause
-(in-package #:handle-update-unit)
-(setf *allow-construct-query-p* nil)
+;; (in-package #:handle-update-unit)
+;; (setf *allow-construct-query-p* nil)
 
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
