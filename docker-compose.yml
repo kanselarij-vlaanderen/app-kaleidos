@@ -63,7 +63,7 @@ services:
     labels:
       - "logging=true"
   triplestore:
-    image: redpencil/virtuoso:1.2.1
+    image: redpencil/virtuoso:1.2.2
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
@@ -199,7 +199,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.27.0
+    image: kanselarij/yggdrasil:5.28.0
     logging: *default-logging
     restart: always
     labels:

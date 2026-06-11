@@ -613,10 +613,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/emails/"
   end
 
-  get "/recovery-status/*_path", @json_service do
-    Proxy.forward conn, [], "http://database:8890/recovery-status/"
-  end
-
   match "/email-notification-settings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/email-notification-settings/"
   end
