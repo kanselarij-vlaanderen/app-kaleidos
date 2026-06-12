@@ -16,7 +16,7 @@ services:
     volumes:
       - ./config/project-scripts:/app/scripts
   identifier:
-    image: semtech/mu-identifier:1.10.3
+    image: semtech/mu-identifier:feature-version-upgrades-and-logging
     environment:
       SESSION_COOKIE_SECURE: "on"
     logging: *default-logging
