@@ -79,8 +79,6 @@ services:
     <<: *disabled-for-mirror
   file-bundling:
     <<: *disabled-for-mirror
-  file-bundling-job-creation:
-    <<: *disabled-for-mirror
   docx-conversion:
     <<: *disabled-for-mirror
   database-healthcheck:
