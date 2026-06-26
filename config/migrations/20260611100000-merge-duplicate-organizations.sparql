@@ -1,0 +1,67 @@
+# KAS-3389
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu:   <http://mu.semte.ch/vocabularies/core/>
+
+# redirect outgoing triples from duplicates to canonicals.
+DELETE {
+  GRAPH ?graph { ?dup ?predicate ?object . }
+}
+INSERT {
+  GRAPH ?graph { ?canonical ?predicate ?object . }
+}
+WHERE {
+  {
+    SELECT ?name ?identifier (MIN(STR(?org)) AS ?canonicalStr)
+    WHERE {
+      ?org a org:Organization ; skos:prefLabel ?name .
+      OPTIONAL { ?org org:identifier ?identifierOpt }
+      BIND(COALESCE(?identifierOpt, "") AS ?identifier)
+    }
+    GROUP BY ?name ?identifier
+    HAVING (COUNT(?org) > 1)
+  }
+  BIND(IRI(?canonicalStr) AS ?canonical)
+  ?dup a org:Organization ; skos:prefLabel ?name .
+  OPTIONAL { ?dup org:identifier ?dupIdentifierOpt }
+  BIND(COALESCE(?dupIdentifierOpt, "") AS ?dupIdentifier)
+  FILTER (?dupIdentifier = ?identifier)
+  FILTER (?dup != ?canonical)
+  GRAPH ?graph {
+    ?dup ?predicate ?object .
+    FILTER (?predicate NOT IN (
+      rdf:type,
+      mu:uuid,
+      skos:prefLabel,
+      org:identifier
+    ))
+  }
+};
+
+# delete each duplicate's remaining (identity) triples.
+DELETE {
+  GRAPH ?graph { ?dup ?predicate ?object . }
+}
+WHERE {
+  {
+    SELECT ?name ?identifier (MIN(STR(?org)) AS ?canonicalStr)
+    WHERE {
+      ?org a org:Organization ; skos:prefLabel ?name .
+      OPTIONAL { ?org org:identifier ?identifierOpt }
+      BIND(COALESCE(?identifierOpt, "") AS ?identifier)
+    }
+    GROUP BY ?name ?identifier
+    HAVING (COUNT(?org) > 1)
+  }
+  BIND(IRI(?canonicalStr) AS ?canonical)
+  ?dup a org:Organization ; skos:prefLabel ?name .
+  OPTIONAL { ?dup org:identifier ?dupIdentifierOpt }
+  BIND(COALESCE(?dupIdentifierOpt, "") AS ?dupIdentifier)
+  FILTER (?dupIdentifier = ?identifier)
+  FILTER (?dup != ?canonical)
+  GRAPH ?graph {
+    ?dup ?predicate ?object .
+  }
+};
