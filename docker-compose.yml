@@ -211,17 +211,11 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:3.1.2
+    image: kanselarij/file-bundling-service:4.0.0
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
       - ./data/files:/share
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.6.0
     logging: *default-logging
     restart: always
     labels:

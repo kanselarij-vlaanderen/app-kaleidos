@@ -90,8 +90,6 @@ services:
     restart: "no"
   file-bundling:
     restart: "no"
-  file-bundling-job-creation:
-    restart: "no"
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
     restart: "no"
