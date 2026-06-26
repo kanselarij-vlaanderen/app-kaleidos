@@ -32,7 +32,7 @@ services:
     labels:
       - "logging=true"
   frontend:
-    image: kanselarij/frontend-kaleidos:10.0.0
+    image: kanselarij/frontend-kaleidos:10.1.2
     environment:
       EMBER_OAUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
       EMBER_OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -63,7 +63,7 @@ services:
     labels:
       - "logging=true"
   triplestore:
-    image: redpencil/virtuoso:1.2.1
+    image: redpencil/virtuoso:1.2.2
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
@@ -199,7 +199,7 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.26.1
+    image: kanselarij/yggdrasil:5.28.0
     logging: *default-logging
     restart: always
     labels:
@@ -211,17 +211,11 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:3.1.0
+    image: kanselarij/file-bundling-service:4.0.0
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
       - ./data/files:/share
-    logging: *default-logging
-    restart: always
-    labels:
-      - "logging=true"
-  file-bundling-job-creation:
-    image: kanselarij/file-bundling-job-creation-service:1.6.0
     logging: *default-logging
     restart: always
     labels:
@@ -241,7 +235,7 @@ services:
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:2.0.0
+    image: kanselarij/case-documents-sync-service:2.0.1
     logging: *default-logging
     restart: always
     environment:
@@ -249,7 +243,7 @@ services:
     labels:
       - "logging=true"
   gov-field-sync:
-    image: kanselarij/gov-field-sync-service:0.3.0
+    image: kanselarij/gov-field-sync-service:0.3.1
     logging: *default-logging
     restart: always
     labels:
@@ -311,16 +305,17 @@ services:
     labels:
       - "logging=true"
   staatsblad-uuid-generation:
-    image: kanselarij/uuid-generation-service:0.1.0
+    image: redpencil/uuid-generation:0.4.1
     environment:
-      RDF_TYPE: "http://data.europa.eu/eli/ontology#LegalResource"
-      GRAPH: "http://mu.semte.ch/graphs/staatsblad"
+      RUN_CRON_JOBS: "true"
+    volumes:
+      - ./config/uuid-generation/:/config
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   staatsblad-linking:
-    image: kanselarij/staatsblad-linking-service:0.6.0
+    image: kanselarij/staatsblad-linking-service:0.6.1
     logging: *default-logging
     restart: always
     labels:
@@ -400,7 +395,7 @@ services:
       - ./data/files:/share
     restart: always
   signflow-status-sync:
-    image: kanselarij/signflow-status-sync-service:0.0.4
+    image: kanselarij/signflow-status-sync-service:0.0.5
     restart: always
   #themis
   public-file:
@@ -415,7 +410,7 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.2.1
+    image: kanselarij/themis-export-service:3.3.0
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
@@ -426,7 +421,7 @@ services:
     restart: always
     logging: *default-logging
   ttl-to-delta:
-    image: redpencil/ttl-to-delta:1.0.1
+    image: kanselarij/ttl-to-delta-service:1.1.0
     environment:
       TASK_GRAPH: "http://mu.semte.ch/graphs/themis-public"
       FILE_GRAPH: "http://mu.semte.ch/graphs/themis-public"
@@ -437,7 +432,7 @@ services:
     restart: always
     logging: *default-logging
   publication-producer:
-    image: kanselarij/themis-publication-producer:1.1.2
+    image: kanselarij/themis-publication-producer:1.2.0
     labels:
       - "logging=true"
     restart: always
@@ -529,6 +524,17 @@ services:
     restart: always
     labels:
       - "logging=true"
+  data-monitoring:
+    image: kanselarij/data-monitoring-service:1.0.0
+    environment:
+      KALEIDOS_HOST_URL: "https://kaleidos-dev.vlaanderen.be/" # how to know what server or host sent the email
+      POLLING_CRON_PATTERN: "0 * 4-22 * * *" # how often we poll for issues
+      EMAIL_TO_ADDRESS_ON_FAILURE: "" # recipients of the emails. If left blank no emails will be created
+      THEMIS_ENDPOINT_URL: "https://themis-dev.kanselarij.org/"
+    logging: *default-logging
+    restart: always
+    labels:
+      - "logging=true"
   metrics:
     image: lblod/metrics-service:0.2.0
     environment:
@@ -536,3 +542,5 @@ services:
     volumes:
       - ./config/metrics:/config
       - ./data/metrics:/external-metrics
+
+# if a new service is added, update the docker-compose.mirror.yml

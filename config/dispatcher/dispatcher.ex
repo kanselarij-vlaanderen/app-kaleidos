@@ -151,21 +151,21 @@ defmodule Dispatcher do
   ### Agenda document download
 
   post "/agendas/:id/agendaitems/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/agendas/" <> id <> "/agendaitems/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
 
   ### Document download
 
   post "/agendaitems/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/agendaitems/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/agendaitems/" <> id <> "/documents/files/archive"
   end
 
   post "/cases/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/cases/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/cases/" <> id <> "/documents/files/archive"
   end
 
   post "/subcases/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/subcases/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/subcases/" <> id <> "/documents/files/archive"
   end
 
   ### Agenda approval and meeting management
@@ -471,12 +471,20 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/file-bundling-jobs/"
   end
 
+  post "/file-bundling/restart-unfinished-tasks", @json_service do
+    Proxy.forward conn, [], "http://file-bundling/restart-unfinished-tasks"
+  end
+
   get "/document-naming-jobs/*path", @json_service do
     Proxy.forward conn, path, "http://resource/document-naming-jobs/"
   end
 
   get "/jobs/*path", @json_service do
     Proxy.forward conn, path, "http://cache/jobs/"
+  end
+
+  get "/distributor-jobs/*path", @json_service do
+    Proxy.forward conn, path, "http://cache/distributor-jobs/"
   end
 
   # PUBLICATION-FLOW
@@ -609,10 +617,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/emails/"
   end
 
-  get "/recovery-status/*_path", @json_service do
-    Proxy.forward conn, [], "http://database:8890/recovery-status/"
-  end
-
   match "/email-notification-settings/*path", @json_service do
     Proxy.forward conn, path, "http://cache/email-notification-settings/"
   end
@@ -701,6 +705,11 @@ defmodule Dispatcher do
   ### PDF Signature Remover
   post "/pdf-signature-remover/pieces/:piece_id/strip", @json_service do
     Proxy.forward conn, [], "http://pdf-signature-remover/pieces/" <> piece_id <> "/strip"
+  end
+
+  ### Data Monitoring
+  get "/data-monitoring/*path", @json_service do
+    Proxy.forward conn, path, "http://data-monitoring/"
   end
 
   ## Fallback
