@@ -153,3 +153,5 @@ services:
     <<: *disabled-for-mirror
   data-monitoring:
     <<: *disabled-for-mirror
+  metrics:
+    <<: *disabled-for-mirror

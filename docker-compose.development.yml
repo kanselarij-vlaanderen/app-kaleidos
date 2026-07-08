@@ -184,3 +184,5 @@ services:
   data-monitoring:
     entrypoint: "echo 'service disabled'"
     restart: "no"
+  metrics:
+    restart: "no"
