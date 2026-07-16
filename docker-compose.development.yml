@@ -16,8 +16,6 @@ services:
   #     - "443:443"
   frontend:
     restart: "no"
-    environment:
-      EMBER_ENABLE_SIGNATURES: "true"
   identifier:
     restart: "no"
     ports:
