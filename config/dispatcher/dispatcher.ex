@@ -37,6 +37,10 @@ defmodule Dispatcher do
     forward conn, [], "http://resource/health-checks/"
   end
 
+  get "/metrics", %{ layer: :api } do
+    Proxy.forward conn, [], "http://metrics/metrics"
+  end
+
   ### File conversion
 
   post "/files/:id/convert", @json_service do
@@ -147,21 +151,21 @@ defmodule Dispatcher do
   ### Agenda document download
 
   post "/agendas/:id/agendaitems/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/agendas/" <> id <> "/agendaitems/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/agendas/" <> id <> "/agendaitems/documents/files/archive"
   end
 
   ### Document download
 
   post "/agendaitems/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/agendaitems/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/agendaitems/" <> id <> "/documents/files/archive"
   end
 
   post "/cases/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/cases/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/cases/" <> id <> "/documents/files/archive"
   end
 
   post "/subcases/:id/pieces/files/archive", @json_service do
-    Proxy.forward conn, [], "http://file-bundling-job-creation/subcases/" <> id <> "/documents/files/archive"
+    Proxy.forward conn, [], "http://file-bundling/subcases/" <> id <> "/documents/files/archive"
   end
 
   ### Agenda approval and meeting management

@@ -90,8 +90,6 @@ services:
     restart: "no"
   file-bundling:
     restart: "no"
-  file-bundling-job-creation:
-    restart: "no"
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
     restart: "no"
@@ -185,4 +183,6 @@ services:
     restart: "no"
   data-monitoring:
     entrypoint: "echo 'service disabled'"
+    restart: "no"
+  metrics:
     restart: "no"
