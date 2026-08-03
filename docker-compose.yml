@@ -54,7 +54,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-pre-release
+    image: semtech/sparql-parser:feature-improved-type-comparison
     volumes:
       - ./config/authorization:/config
       - ./data/mu-cl-authorization:/data/
