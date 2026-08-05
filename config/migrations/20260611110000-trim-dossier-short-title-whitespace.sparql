@@ -1,0 +1,19 @@
+# Strip leading/trailing whitespace from dossier short titles.
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?graph { ?case dct:alternative ?title . }
+}
+INSERT {
+  GRAPH ?graph { ?case dct:alternative ?trimmedTitle . }
+}
+WHERE {
+  GRAPH ?graph {
+    ?case a dossier:Dossier ;
+          dct:alternative ?title .
+  }
+
+  BIND(REPLACE(?title, "^\\s+|\\s+$", "") AS ?trimmedTitle)
+  FILTER(STR(?title) != STR(?trimmedTitle))
+};

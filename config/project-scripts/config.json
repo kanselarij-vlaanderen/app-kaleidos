@@ -8,7 +8,7 @@
         "arguments": ["config"]
       },
       "environment": {
-        "image": "ubuntu",
+        "image": "ubuntu:24.04",
         "interactive": false,
         "script": "virtuoso/data-diff.sh",
         "join_networks": true
@@ -20,7 +20,7 @@
     {
       "documentation": {
         "command": "dump-database",
-        "description": "A virtuoso dump will be created db/dumps.\n Parameters:\n  hostname: default triplestore\n  username: default dba\n  password: default dba",
+        "description": "A virtuoso dump will be in created db/dumps.\n Parameters:\n  hostname: default triplestore\n  username: default dba\n  password: default dba",
         "arguments": ["hostname", "username", "password"]
       },
       "environment": {
@@ -28,6 +28,21 @@
         "interactive": false,
         "script": "virtuoso/dump-database.sh",
         "join_networks": true
+      },
+      "mounts": {
+          "app": "/project/"
+        }
+    },
+    {
+      "documentation": {
+        "command": "local-db-copy",
+        "description": "Create a local copy of the data/db folder. A name for the backup folder can be optionally passed.",
+        "arguments": ["folder-name"]
+      },
+      "environment": {
+        "image": "ubuntu:24.04",
+        "interactive": false,
+        "script": "local-db-copy.sh"
       },
       "mounts": {
           "app": "/project/"
