@@ -16,8 +16,6 @@ services:
   #     - "443:443"
   frontend:
     restart: "no"
-    environment:
-      EMBER_ENABLE_SIGNATURES: "true"
   identifier:
     restart: "no"
     ports:
@@ -89,8 +87,6 @@ services:
   sink:
     restart: "no"
   file-bundling:
-    restart: "no"
-  file-bundling-job-creation:
     restart: "no"
   database-healthcheck:
     entrypoint: "echo 'service disabled'"
@@ -185,4 +181,6 @@ services:
     restart: "no"
   data-monitoring:
     entrypoint: "echo 'service disabled'"
+    restart: "no"
+  metrics:
     restart: "no"
