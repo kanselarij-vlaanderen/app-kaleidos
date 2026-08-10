@@ -211,7 +211,7 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:4.0.0
+    image: kanselarij/file-bundling-service:feature-KAS-5256-remove-notulen
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
     volumes:
