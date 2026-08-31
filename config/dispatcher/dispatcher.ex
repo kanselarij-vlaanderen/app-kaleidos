@@ -475,6 +475,18 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://file-bundling/restart-unfinished-tasks"
   end
 
+  post "/case-documents-sync/run", @json_service do
+    Proxy.forward conn, [], "http://case-documents-sync/run"
+  end
+
+  post "/gov-field-sync/run", @json_service do
+    Proxy.forward conn, [], "http://gov-field-sync/run"
+  end
+
+  post "/signflow-status-sync/run", @json_service do
+    Proxy.forward conn, [], "http://signflow-status-sync/run"
+  end
+
   get "/document-naming-jobs/*path", @json_service do
     Proxy.forward conn, path, "http://resource/document-naming-jobs/"
   end
