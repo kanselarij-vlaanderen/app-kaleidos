@@ -18,6 +18,7 @@
 (in-package :sparql)
 (defparameter *experimental-no-application-graph-for-sudo-select-queries* t)
 (defparameter *no-application-graph-for-sudo-select-queries* t)
+(defparameter *assume-sudo-for-missing-mu-auth-allowed-groups-in-delta-p* t)
 
 (in-package :mu-cl-resources)
 (read-domain-file "activity-domain.lisp")
