@@ -16,6 +16,9 @@
 (in-package :server)
 (setf *log-incoming-requests-p* nil)
 
+(in-package :handle-update-unit)
+(setf *allow-construct-query-p* nil)
+
 ;;;;;;;;;;;;;;;;;
 ;;; access rights
 
