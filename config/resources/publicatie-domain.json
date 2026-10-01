@@ -668,10 +668,10 @@
           "cardinality": "one",
           "inverse": true
         },
-        "publication-flow": {
+        "publication-flows": {
           "predicate": "prov:qualifiedDelegation",
           "target": "publication-flow",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         }
       },
