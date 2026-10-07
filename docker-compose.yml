@@ -240,12 +240,15 @@ services:
     restart: always
     environment:
       MAX_BODY_SIZE: "500kb"
+      CRON_PATTERN: "0 0 * * *"
     labels:
       - "logging=true"
   gov-field-sync:
     image: kanselarij/gov-field-sync-service:0.3.1
     logging: *default-logging
     restart: always
+    environment:
+      CRON_PATTERN: "0 0 * * *"
     labels:
       - "logging=true"
   document-versions:
@@ -397,6 +400,8 @@ services:
   signflow-status-sync:
     image: kanselarij/signflow-status-sync-service:0.0.5
     restart: always
+    environment:
+      CRON_PATTERN: "0 0 * * *"
   #themis
   public-file:
     image: kanselarij/public-file-service:4.3.0
