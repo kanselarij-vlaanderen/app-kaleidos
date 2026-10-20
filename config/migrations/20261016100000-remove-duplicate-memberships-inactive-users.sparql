@@ -1,0 +1,43 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext:  <http://mu.semte.ch/vocabularies/ext/>
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/system/users> {
+    ?membership ?p ?o .
+  }
+}
+WHERE {
+  {
+    SELECT ?user ?organization
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/system/users> {
+        ?m a org:Membership ;
+          org:member ?user ;
+          org:organization ?organization .
+      }
+    }
+    GROUP BY ?user ?organization
+    HAVING (COUNT(DISTINCT ?m) > 1)
+  }
+  GRAPH <http://mu.semte.ch/graphs/system/users> {
+    ?membership a org:Membership ;
+      org:member ?user ;
+      org:organization ?organization ;
+      ?p ?o .
+    FILTER NOT EXISTS {
+      ?activity a ext:LoginActivity ;
+        prov:wasAssociatedWith ?user ;
+        prov:startedAtTime ?t .
+      FILTER (?t >= "2025-10-16T00:00:00Z"^^xsd:dateTime)
+    }
+    FILTER NOT EXISTS {
+      ?blockedMembership a org:Membership ;
+        org:member ?user ;
+        org:organization ?organization ;
+        adms:status <http://themis.vlaanderen.be/id/concept/ffd0d21a-3beb-44c4-b3ff-06fe9561282a> .
+    }
+  }
+}
