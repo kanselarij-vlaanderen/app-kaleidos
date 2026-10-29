@@ -214,10 +214,6 @@ defmodule Dispatcher do
 
   ### Themis export
 
-  post "/meetings/:meeting_id/themis-export" do
-    Proxy.forward conn, [], "http://themis-export/meetings/" <> meeting_id <> "/publication-activities"
-  end
-
   get "/public-export-jobs/*path" do
     Proxy.forward conn, path, "http://themis-export/public-export-jobs/"
   end
