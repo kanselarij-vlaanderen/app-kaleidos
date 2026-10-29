@@ -97,24 +97,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://search/agendaitems/search/"
   end
 
-  match "/agendaitems/index/*path", @json_service do
-    Proxy.forward conn, path, "http://search/agendaitems/search/"
-  end
-
-  match "/agendaitems/invalidate/*path", @json_service do
-    Proxy.forward conn, path, "http://search/agendaitems/invalidate/"
-  end
-
   match "/decisionmaking-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
-  end
-
-  match "/decisionmaking-flows/index/*path", @json_service do
-    Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
-  end
-
-  match "/decisionmaking-flows/invalidate/*path", @json_service do
-    Proxy.forward conn, path, "http://search/decisionmaking-flows/invalidate/"
   end
 
   match "/pieces/search/*path", @json_service do
