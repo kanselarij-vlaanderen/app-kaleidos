@@ -101,24 +101,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://search/agendaitems/search/"
   end
 
-  match "/agendaitems/index/*path", @json_service do
-    Proxy.forward conn, path, "http://search/agendaitems/search/"
-  end
-
-  match "/agendaitems/invalidate/*path", @json_service do
-    Proxy.forward conn, path, "http://search/agendaitems/invalidate/"
-  end
-
   match "/decisionmaking-flows/search/*path", @json_service do
     Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
-  end
-
-  match "/decisionmaking-flows/index/*path", @json_service do
-    Proxy.forward conn, path, "http://search/decisionmaking-flows/search/"
-  end
-
-  match "/decisionmaking-flows/invalidate/*path", @json_service do
-    Proxy.forward conn, path, "http://search/decisionmaking-flows/invalidate/"
   end
 
   match "/pieces/search/*path", @json_service do
@@ -233,10 +217,6 @@ defmodule Dispatcher do
   end
 
   ### Themis export
-
-  post "/meetings/:meeting_id/themis-export" do
-    Proxy.forward conn, [], "http://themis-export/meetings/" <> meeting_id <> "/publication-activities"
-  end
 
   get "/public-export-jobs/*path" do
     Proxy.forward conn, path, "http://themis-export/public-export-jobs/"
