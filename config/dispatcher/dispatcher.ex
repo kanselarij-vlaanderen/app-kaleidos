@@ -213,10 +213,6 @@ defmodule Dispatcher do
 
   ### Themis export
 
-  get "/public-export-jobs/*path" do
-    Proxy.forward conn, path, "http://themis-export/public-export-jobs/"
-  end
-
   get "/publications/*path" do
     Proxy.forward conn, path, "http://publication-producer/files/"
   end
@@ -239,10 +235,6 @@ defmodule Dispatcher do
 
   get "/publication-flows/shortlist/*path", @json_service do
     Proxy.forward conn, path, "http://shortlist/publication-flows/"
-  end
-
-  get "/sign-flows/shortlist/*path", @json_service do
-    Proxy.forward conn, path, "http://shortlist/sign-flows/"
   end
 
   ### Authentication
@@ -427,7 +419,7 @@ defmodule Dispatcher do
   end
 
   match "/alert-types/*path", @json_service do
-    Proxy.forward conn, path, "http://cache/alert-types"
+    Proxy.forward conn, path, "http://cache/alert-types/"
   end
 
   match "/shortcuts/*path", @json_service do
@@ -452,10 +444,6 @@ defmodule Dispatcher do
 
   post "/file-bundling/restart-unfinished-tasks", @json_service do
     Proxy.forward conn, [], "http://file-bundling/restart-unfinished-tasks"
-  end
-
-  get "/document-naming-jobs/*path", @json_service do
-    Proxy.forward conn, path, "http://resource/document-naming-jobs/"
   end
 
   get "/jobs/*path", @json_service do
