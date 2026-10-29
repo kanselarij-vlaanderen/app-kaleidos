@@ -83,7 +83,11 @@ defmodule Dispatcher do
 
   ### Mirror sync producer
 
-  match "/sync/*path", %{} do
+  post "/sync/login", %{} do
+    Proxy.forward conn, [], "http://delta-producer/login"
+  end
+
+  get "/sync/*path", %{} do
     Proxy.forward conn, path, "http://delta-producer/"
   end
 
