@@ -106,11 +106,6 @@ defmodule Dispatcher do
   end
 
 
-  match "/search/settings/*path", @json_service do
-    Proxy.forward conn, path, "http://search/settings/"
-  end
-
-
   ### Document version management
 
   put "/agendaitems/:id/pieces", @json_service do
