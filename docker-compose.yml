@@ -16,7 +16,7 @@ services:
     volumes:
       - ./config/project-scripts:/app/scripts
   identifier:
-    image: semtech/mu-identifier:1.10.3
+    image: semtech/mu-identifier:1.11.0
     environment:
       SESSION_COOKIE_SECURE: "on"
     logging: *default-logging
@@ -24,7 +24,7 @@ services:
     labels:
       - "logging=true"
   dispatcher:
-    image: semtech/mu-dispatcher:2.1.0-beta.2
+    image: semtech/mu-dispatcher:2.1.1
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
@@ -120,7 +120,7 @@ services:
     environment:
       CONCEPT_BACKEND_URL: "http://forever-cache/"
   cache:
-    image: semtech/mu-cache:2.0.2
+    image: semtech/mu-cache:2.3.0
     links:
       - resource:backend
     logging: *default-logging
@@ -128,7 +128,7 @@ services:
     labels:
       - "logging=true"
   forever-cache:
-    image: semtech/mu-cache:2.0.2
+    image: semtech/mu-cache:2.3.0
     links:
       - resource:backend
     logging: *default-logging
@@ -136,7 +136,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.26.0
+    image: semtech/mu-cl-resources:1.27.2
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
       LISP_DYNAMIC_SPACE_SIZE: "1024" # 1GB by default, increase to 8GB on systems with a lot of data
@@ -147,7 +147,7 @@ services:
     labels:
       - "logging=true"
   file:
-    image: semtech/mu-file-service:3.4.0
+    image: semtech/mu-file-service:3.5.2
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
     volumes:
@@ -157,7 +157,7 @@ services:
     labels:
       - "logging=true"
   static-file:
-    image: semtech/static-file-service:0.2.0
+    image: semtech/static-file-service:0.3.0
     volumes:
       - ./data/static-files:/data
   agenda-comparison:
@@ -255,7 +255,7 @@ services:
     labels:
       - "logging=true"
   document-release:
-    image: kanselarij/document-release-service:1.0.1
+    image: kanselarij/document-release-service:1.0.2
     logging: *default-logging
     restart: always
     labels:
@@ -399,7 +399,7 @@ services:
     restart: always
   #themis
   public-file:
-    image: kanselarij/public-file-service:4.3.0
+    image: kanselarij/public-file-service:4.3.2
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
