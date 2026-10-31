@@ -1,22 +1,24 @@
 services:
-  debug-frontend:
-    image: kanselarij/frontend-kaleidos:9.9.2
-    environment:
-      - EMBER_OAUTH_LOGOUT_URL=https://kaleidos-test.vlaanderen.be/mock-login
+  debug-identifier:
+    image: semtech/mu-identifier:1.10.3
     ports:
       - "127.0.0.1:8687:80"
     networks:
       debug:
-  debug-identifier:
-    image: semtech/mu-identifier:1.10.3
+        aliases:
+          - identifier
+  debug-frontend:
+    image: kanselarij/frontend-kaleidos:9.9.2
+    environment:
+      - EMBER_OAUTH_LOGOUT_URL=https://kaleidos-test.vlaanderen.be/mock-login
     networks:
       debug:
         aliases:
-          - backend
+          - frontend
   debug-dispatcher:
     image: semtech/mu-dispatcher:2.1.0-beta.2
     volumes:
-      - ./config/dispatcher:/config
+      - ./config/dispatcher-mock:/config
     networks:
       default:
       debug:
