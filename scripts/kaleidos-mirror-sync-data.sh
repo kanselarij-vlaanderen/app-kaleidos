@@ -12,6 +12,12 @@
 
 set -uo pipefail
 
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+[[ -f "$SCRIPT_DIR/kaleidos-sync-lib.sh" ]] \
+    || { echo "ERROR: kaleidos-sync-lib.sh not found in $SCRIPT_DIR" >&2; exit 1; }
+# shellcheck source=kaleidos-sync-lib.sh
+. "$SCRIPT_DIR/kaleidos-sync-lib.sh"
+
 IDENTITY_FILE="/root/.ssh/id_rsa_mirror_sync"
 
 # Seconds between rsync attempts when files change while it runs.
@@ -31,56 +37,11 @@ usage() {
     echo "(default ${RSYNC_RETRY_DELAY}s)."
 }
 
-fail() {
-    echo ""
-    echo "ERROR: $*" >&2
-    exit 1
-}
-
-# Print $1 and run the rest, stopping the script if the command fails.
-step() {
-    local description=$1
-    shift
-    echo -n "$description ... "
-    if "$@" > /dev/null 2>&1; then
-        echo "success"
-    else
-        echo "failed"
-        fail "'$*' returned a non-zero exit code"
-    fi
-}
-
-# Like step, but keeps the command's output so failures can be explained
-# properly instead of being hidden.
-step_verbose() {
-    local description=$1
-    shift
-    echo -n "$description ... "
-    local output
-    if output=$("$@" 2>&1); then
-        echo "success"
-        return 0
-    fi
-    echo "failed"
-    echo ""
-    echo "$output"
-    fail "'$*' returned a non-zero exit code"
-}
-
-# Ask a yes/no question. The answer defaults to no.
-confirm() {
-    local question=$1
-    local answer
-    read -r -p "$question [y/N]: " answer
-    [[ "$answer" =~ ^[Yy]([Ee][Ss])?$ ]]
-}
-
 # ---------------------------------------------------------------------------
 # Determine source and mirror from the hostname
 # ---------------------------------------------------------------------------
 
-HOSTNAME_SHORT=$(hostname -s 2>/dev/null || hostname)
-HOSTNAME_SHORT=${HOSTNAME_SHORT%%.*}
+HOSTNAME_SHORT=$(short_hostname)
 
 case "$HOSTNAME_SHORT" in
     kal-clio)
@@ -148,10 +109,6 @@ COPY_START=$(date +%Y-%m-%dT%H:%M:%S)
 check_local_source() { [[ -d "$LOCAL_DIR/data" ]]; }
 check_remote_mirror() { ssh -o BatchMode=yes -i "$IDENTITY_FILE" "$REMOTE" "test -d '$REMOTE_DIR'"; }
 
-remote() {
-    ssh -i "$IDENTITY_FILE" "$REMOTE" "$1"
-}
-
 check_remote_mu() {
     remote "command -v mu" > /dev/null
 }
@@ -171,15 +128,18 @@ fi
 
 echo ""
 echo "1. testing remote connection"
-step_verbose "1. reaching $REMOTE" ssh -o BatchMode=yes -i "$IDENTITY_FILE" "$REMOTE" "true"
-step_verbose "   checking mirror folder" check_remote_mirror
+step_verbose "1. reaching $REMOTE" \
+    ssh -o BatchMode=yes -i "$IDENTITY_FILE" "$REMOTE" "true"
+step_verbose "   checking mirror folder" \
+    check_remote_mirror
 if ! check_remote_mu; then
     echo ""
     fail "mu is not on the PATH on $REMOTE_TARGET."
 fi
 
 echo "2. stopping the mirror stack"
-step_verbose "   docker compose down" remote "cd '$REMOTE_DIR' && docker compose down"
+step_verbose "   docker compose down" \
+    remote "cd '$REMOTE_DIR' && docker compose down"
 
 echo "3. creating db backup on the mirror"
 step_verbose "   mu script project-scripts local-db-copy $BACKUP_NAME" \
@@ -190,20 +150,7 @@ step_verbose "   checking the backup exists" \
 echo "4. syncing data, overwriting data on $REMOTE"
 # Every file that comes from the source this way is excluded, so a failed
 # rsync cannot have deleted the backup on its retry.
-attempt=0
-while true; do
-    attempt=$((attempt + 1))
-    echo -n "   rsync (attempt $attempt) ... "
-    if rsync -azPh --delete --exclude "/$BACKUP_NAME/" \
-            -e "ssh -i $IDENTITY_FILE" \
-            "$LOCAL_DIR/data" "$REMOTE:$REMOTE_DIR/"; then
-        echo "success"
-        break
-    fi
-    echo "failed; files probably changed during the copy"
-    echo "   retrying in ${RSYNC_RETRY_DELAY}s (ctrl-c to stop)"
-    sleep "$RSYNC_RETRY_DELAY"
-done
+sync_data "$LOCAL_DIR/data" "$REMOTE:$REMOTE_DIR/" --exclude "/$BACKUP_NAME/"
 
 echo ""
 echo "## data sync to $REMOTE completed, the mirror stack is still down."
