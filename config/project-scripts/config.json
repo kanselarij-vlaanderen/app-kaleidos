@@ -36,6 +36,23 @@
       "mounts": {
         "app": "/project/"
       }
+    },
+    {
+      "documentation": {
+        "command": "mirror",
+        "description": "Switch a mirror server between live and mirror mode, or report which mode it is in.\n Parameters:\n  mu script project-scripts mirror status\n  mu script project-scripts mirror enable-mirror\n  mu script project-scripts mirror enable-live",
+        "arguments": [
+          "status|enable-mirror|enable-live"
+        ]
+      },
+      "environment": {
+        "image": "ubuntu:24.04",
+        "interactive": false,
+        "script": "mirror/run.sh"
+      },
+      "mounts": {
+        "app": "/project/"
+      }
     }
   ]
 }
