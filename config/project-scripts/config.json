@@ -3,44 +3,6 @@
   "scripts": [
     {
       "documentation": {
-        "command": "data-diff",
-        "description": "A data diff will be taken of the data resulting from a grep on each file. Parameters:\n  config: the config file to use\n",
-        "arguments": [
-          "config"
-        ]
-      },
-      "environment": {
-        "image": "ubuntu:24.04",
-        "interactive": false,
-        "script": "virtuoso/data-diff.sh",
-        "join_networks": true
-      },
-      "mounts": {
-        "app": "/project/"
-      }
-    },
-    {
-      "documentation": {
-        "command": "dump-database",
-        "description": "A virtuoso dump will be in created db/dumps.\n Parameters:\n  hostname: default triplestore\n  username: default dba\n  password: default dba",
-        "arguments": [
-          "hostname",
-          "username",
-          "password"
-        ]
-      },
-      "environment": {
-        "image": "redpencil/virtuoso",
-        "interactive": false,
-        "script": "virtuoso/dump-database.sh",
-        "join_networks": true
-      },
-      "mounts": {
-        "app": "/project/"
-      }
-    },
-    {
-      "documentation": {
         "command": "data-sync",
         "description": "Manage data that has to be kept in sync across environments.\n  backup-users               Write the users graph to a file.\n  restore-users              Replace the users graph with the contents of a file. Destructive.\n  update-notification-email  Point every notification address at one address.\n Parameters:\n  mu script project-scripts data-sync backup-users [output-file] [endpoint]\n  mu script project-scripts data-sync restore-users [input-file] [endpoint] [batch-size]\n  mu script project-scripts data-sync update-notification-email <email-address> [endpoint]",
         "arguments": [
