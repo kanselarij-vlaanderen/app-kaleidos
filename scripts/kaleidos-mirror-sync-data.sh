@@ -148,6 +148,14 @@ COPY_START=$(date +%Y-%m-%dT%H:%M:%S)
 check_local_source() { [[ -d "$LOCAL_DIR/data" ]]; }
 check_remote_mirror() { ssh -o BatchMode=yes -i "$IDENTITY_FILE" "$REMOTE" "test -d '$REMOTE_DIR'"; }
 
+remote() {
+    ssh -i "$IDENTITY_FILE" "$REMOTE" "$1"
+}
+
+check_remote_mu() {
+    remote "command -v mu" > /dev/null
+}
+
 echo "## Data sync $HOSTNAME_SHORT -> $REMOTE_TARGET"
 echo ""
 echo "  source:   $LOCAL_DIR/data"
@@ -165,14 +173,17 @@ echo ""
 echo "1. testing remote connection"
 step_verbose "1. reaching $REMOTE" ssh -o BatchMode=yes -i "$IDENTITY_FILE" "$REMOTE" "true"
 step_verbose "   checking mirror folder" check_remote_mirror
+if ! check_remote_mu; then
+    echo ""
+    fail "mu is not on the PATH on $REMOTE_TARGET."
+fi
 
 echo "2. stopping the mirror stack"
-step_verbose "   docker compose down" \
-    ssh -i "$IDENTITY_FILE" "$REMOTE" "cd '$REMOTE_DIR' && docker compose down"
+step_verbose "   docker compose down" remote "cd '$REMOTE_DIR' && docker compose down"
 
 echo "3. creating db backup on the mirror"
 step_verbose "   mu script project-scripts local-db-copy $BACKUP_NAME" \
-    ssh -i "$IDENTITY_FILE" "$REMOTE" "cd '$REMOTE_DIR' && mu script project-scripts local-db-copy '$BACKUP_NAME'"
+    remote "cd '$REMOTE_DIR' && mu script project-scripts local-db-copy '$BACKUP_NAME'"
 step_verbose "   checking the backup exists" \
     ssh -i "$IDENTITY_FILE" "$REMOTE" "test -d '$BACKUP_DIR'"
 
