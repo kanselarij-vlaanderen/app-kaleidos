@@ -111,10 +111,8 @@ remote_mu() {
     remote "cd '$REMOTE_DIR' && mu script project-scripts data-sync $args"
 }
 
-check_local_triplestore() {
-    local running
-    running=$(docker compose ps --status running --services 2>/dev/null) || return 1
-    grep -qx triplestore <<< "$running"
+wait_for_remote_triplestore() {
+    remote "cd '$REMOTE_DIR' && $(triplestore_wait_command 'docker compose exec -T triplestore')"
 }
 
 check_remote_target() {
@@ -132,11 +130,6 @@ echo "  notifications to: $NOTIFICATION_EMAIL"
 echo ""
 echo "The target's stack is stopped and its data replaced."
 echo "The target's users are backed up and put back afterwards."
-if ! check_local_triplestore; then
-    echo ""
-    echo "WARNING: the triplestore here does not seem to be running; the"
-    echo "source data may be stale. Its users are not needed for this sync."
-fi
 if ! confirm "Continue?"; then
     echo "Aborted, nothing was changed."
     exit 1
@@ -150,10 +143,14 @@ step "   checking target folder and mu" \
     check_remote_target
 
 echo "2. creating users backup on the target"
+step "   docker compose up -d project-scripts" \
+    remote "cd '$REMOTE_DIR' && docker compose up -d project-scripts"
 # The triplestore has to be up to read the users graph; this runs before the
 # stack is stopped so this is the only start it needs.
 step "   docker compose up -d triplestore" \
     remote "cd '$REMOTE_DIR' && docker compose up -d triplestore"
+step_verbose "   waiting for the triplestore to accept queries" \
+    wait_for_remote_triplestore
 step_verbose "   mu script project-scripts data-sync backup-users $USERS_BACKUP_NAME" \
     remote_mu backup-users "$USERS_BACKUP_NAME"
 
@@ -162,6 +159,8 @@ step "   docker compose down" \
     remote "cd '$REMOTE_DIR' && docker compose down"
 
 echo "4. creating db backup on the target"
+step "   docker compose up -d project-scripts" \
+    remote "cd '$REMOTE_DIR' && docker compose up -d project-scripts"
 step "   mu script project-scripts local-db-copy $BACKUP_NAME" \
     remote "cd '$REMOTE_DIR' && mu script project-scripts local-db-copy '$BACKUP_NAME'"
 step "   checking the backup exists" \
@@ -175,6 +174,8 @@ sync_data "$LOCAL_DIR/data" "$REMOTE:$REMOTE_DIR/" \
 echo "6. removing copied users on the target"
 step "   starting the triplestore" \
     remote "cd '$REMOTE_DIR' && docker compose up -d triplestore"
+step_verbose "   waiting for the triplestore to accept queries" \
+    wait_for_remote_triplestore
 step_verbose "   mu script project-scripts data-sync restore-users $USERS_BACKUP_NAME" \
     remote_mu restore-users "$USERS_BACKUP_NAME"
 

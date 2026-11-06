@@ -142,6 +142,8 @@ step_verbose "   docker compose down" \
     remote "cd '$REMOTE_DIR' && docker compose down"
 
 echo "3. creating db backup on the mirror"
+step_verbose "   docker compose up -d project-scripts" \
+    remote "cd '$REMOTE_DIR' && docker compose up -d project-scripts"
 step_verbose "   mu script project-scripts local-db-copy $BACKUP_NAME" \
     remote "cd '$REMOTE_DIR' && mu script project-scripts local-db-copy '$BACKUP_NAME'"
 step_verbose "   checking the backup exists" \
