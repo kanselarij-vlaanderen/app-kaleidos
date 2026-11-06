@@ -54,11 +54,6 @@ clear_graph() {
         --data-urlencode "update=DELETE WHERE { GRAPH <$1> { ?s ?p ?o } }"
 }
 
-ensure_curl() {
-    command -v curl > /dev/null && return 0
-    apt-get update -qq && apt-get install -y -qq --no-install-recommends curl
-}
-
 echo ""
 echo "## Resetting the search index"
 echo ""
@@ -69,9 +64,6 @@ echo "  - clear <$SEARCH_INDEXES_GRAPH>"
 echo "  - start the stack again"
 echo ""
 confirm "Continue?" || { echo "Aborted, nothing was changed."; exit 1; }
-
-echo ""
-step "installing curl" ensure_curl
 
 echo ""
 echo "1. stopping elasticsearch and search"

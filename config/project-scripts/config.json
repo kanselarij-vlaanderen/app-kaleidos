@@ -61,7 +61,7 @@
         "arguments": []
       },
       "environment": {
-        "image": "ubuntu:24.04",
+        "image": "ensignprojects/ubuntu-curl:latest",
         "interactive": true,
         "script": "reset-search/run.sh",
         "join_networks": true
