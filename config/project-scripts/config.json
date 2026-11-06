@@ -3,41 +3,30 @@
   "scripts": [
     {
       "documentation": {
-        "command": "data-diff",
-        "description": "A data diff will be taken of the data resulting from a grep on each file. Parameters:\n  config: the config file to use\n",
-        "arguments": ["config"]
+        "command": "data-sync",
+        "description": "Manage data that has to be kept in sync across environments.\n  backup-users               Write the users graph to a file.\n  restore-users              Replace the users graph with the contents of a file. Destructive.\n  update-notification-email  Point every notification address at one address.\n Parameters:\n  mu script project-scripts data-sync backup-users [output-file] [endpoint]\n  mu script project-scripts data-sync restore-users [input-file] [endpoint] [batch-size]\n  mu script project-scripts data-sync update-notification-email <email-address> [endpoint]",
+        "arguments": [
+          "command",
+          "arguments..."
+        ]
       },
       "environment": {
-        "image": "ubuntu:24.04",
+        "image": "python:3.12-slim",
         "interactive": false,
-        "script": "virtuoso/data-diff.sh",
+        "script": "data-sync/run.py",
         "join_networks": true
       },
       "mounts": {
-          "app": "/project/"
-        }
-    },
-    {
-      "documentation": {
-        "command": "dump-database",
-        "description": "A virtuoso dump will be in created db/dumps.\n Parameters:\n  hostname: default triplestore\n  username: default dba\n  password: default dba",
-        "arguments": ["hostname", "username", "password"]
-      },
-      "environment": {
-        "image": "redpencil/virtuoso",
-        "interactive": false,
-        "script": "virtuoso/dump-database.sh",
-        "join_networks": true
-      },
-      "mounts": {
-          "app": "/project/"
-        }
+        "app": "/project/"
+      }
     },
     {
       "documentation": {
         "command": "local-db-copy",
         "description": "Create a local copy of the data/db folder. A name for the backup folder can be optionally passed.",
-        "arguments": ["folder-name"]
+        "arguments": [
+          "folder-name"
+        ]
       },
       "environment": {
         "image": "ubuntu:24.04",
@@ -45,8 +34,25 @@
         "script": "local-db-copy.sh"
       },
       "mounts": {
-          "app": "/project/"
-        }
+        "app": "/project/"
+      }
+    },
+    {
+      "documentation": {
+        "command": "mirror",
+        "description": "Switch a mirror server between live and mirror mode, or report which mode it is in.\n Parameters:\n  mu script project-scripts mirror status\n  mu script project-scripts mirror enable-mirror\n  mu script project-scripts mirror enable-live",
+        "arguments": [
+          "status|enable-mirror|enable-live"
+        ]
+      },
+      "environment": {
+        "image": "ubuntu:24.04",
+        "interactive": false,
+        "script": "mirror/run.sh"
+      },
+      "mounts": {
+        "app": "/project/"
+      }
     }
   ]
 }
