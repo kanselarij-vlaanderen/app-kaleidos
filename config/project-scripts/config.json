@@ -53,6 +53,42 @@
       "mounts": {
         "app": "/project/"
       }
+    },
+    {
+      "documentation": {
+        "command": "reset-search",
+        "description": "Clear the search index and rebuild it.",
+        "arguments": []
+      },
+      "environment": {
+        "image": "ubuntu:24.04",
+        "interactive": true,
+        "script": "reset-search/run.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/project/",
+        "host": "/usr/local/bin/host"
+      },
+      "permissions": {
+        "host": [
+          {
+            "name": "compose-remove-elasticsearch",
+            "comment": "Remove the elasticsearch, search and kibana containers",
+            "command": "^docker compose rm -fs elasticsearch search kibana$"
+          },
+          {
+            "name": "compose-remove-elasticsearch-no-kibana",
+            "comment": "Remove the elasticsearch and search containers when there is no kibana service",
+            "command": "^docker compose rm -fs elasticsearch search$"
+          },
+          {
+            "name": "compose-up",
+            "comment": "Start the stack again",
+            "command": "^docker compose up -d --remove-orphans$"
+          }
+        ]
+      }
     }
   ]
 }
