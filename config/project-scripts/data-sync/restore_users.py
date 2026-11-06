@@ -70,10 +70,10 @@ def run(options):
     batch_size = options["batch_size"]
 
     if not os.path.isfile(input_path):
-        warn(f"ERROR: input file {input_path} not found.")
+        warn(f"ERROR: input file {options['input']} not found.")
         return 1
     if os.path.getsize(input_path) == 0:
-        warn(f"ERROR: input file {input_path} is empty.")
+        warn(f"ERROR: input file {options['input']} is empty.")
         return 1
 
     with open(input_path, encoding="utf-8", errors="replace") as handle:
@@ -87,11 +87,11 @@ def run(options):
 
     total = len(quads)
     if total == 0:
-        warn(f"ERROR: no quads for <{GRAPH}> found in {input_path}.")
+        warn(f"ERROR: no quads for <{GRAPH}> found in {options['input']}.")
         return 1
 
     print(f"About to REPLACE the contents of <{GRAPH}> at {endpoint}")
-    print(f"with {total} quads from {input_path}  (batches of {batch_size})")
+    print(f"with {total} quads from {options['input']}  (batches of {batch_size})")
     print()
 
     print(f"Clearing <{GRAPH}>")

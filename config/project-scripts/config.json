@@ -23,7 +23,7 @@
     {
       "documentation": {
         "command": "local-db-copy",
-        "description": "Create a local copy of the data/db folder. A name for the backup folder can be optionally passed.",
+        "description": "Create a local copy of the database.",
         "arguments": [
           "folder-name"
         ]
@@ -31,7 +31,7 @@
       "environment": {
         "image": "ubuntu:24.04",
         "interactive": false,
-        "script": "local-db-copy.sh"
+        "script": "local-db-copy/run.sh"
       },
       "mounts": {
         "app": "/project/"

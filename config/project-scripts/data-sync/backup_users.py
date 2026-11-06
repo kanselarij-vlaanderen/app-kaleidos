@@ -70,7 +70,7 @@ def main(argv):
 
     output_path = os.path.join(PROJECT_DIR, output)
     if os.path.exists(output_path):
-        warn(f"ERROR: {output_path} already exists. Remove it or pass another name.")
+        warn(f"ERROR: {output} already exists. Remove it or pass another name.")
         return 1
 
     print(f"Backing up <{GRAPH}> from {endpoint}")
@@ -101,7 +101,7 @@ def main(argv):
     with open(output_path, "w", encoding="utf-8") as handle:
         handle.write("\n".join(quads) + "\n")
 
-    print(f"Wrote {len(quads)} quads to {output_path}")
+    print(f"Wrote {len(quads)} quads to {output}")
 
     if total and len(quads) != total:
         warn(

@@ -86,8 +86,8 @@ switch_to() {
     local description=$1
     local target=$2
 
-    cd "$PROJECT_DIR" || fail "cannot enter $PROJECT_DIR"
-    [[ -f "$target" ]] || fail "$PROJECT_DIR/$target does not exist; cannot enable $description mode"
+    cd "$PROJECT_DIR" || fail "cannot enter the project folder"
+    [[ -f "$target" ]] || fail "$target does not exist; cannot enable $description mode"
 
     if [[ -e "$OVERRIDE" || -L "$OVERRIDE" ]]; then
         current=$(detect_mode)
@@ -96,7 +96,7 @@ switch_to() {
             echo "Already in $description mode ($OVERRIDE -> $target)."
             return 0
         fi
-        rm -f "$OVERRIDE" || fail "cannot remove $PROJECT_DIR/$OVERRIDE"
+        rm -f "$OVERRIDE" || fail "cannot remove $OVERRIDE"
     fi
 
     ln -s "$target" "$OVERRIDE" || fail "cannot create symlink $OVERRIDE -> $target"
