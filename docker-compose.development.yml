@@ -88,9 +88,6 @@ services:
     restart: "no"
   file-bundling:
     restart: "no"
-  database-healthcheck:
-    entrypoint: "echo 'service disabled'"
-    restart: "no"
   case-documents-sync:
     restart: "no"
   document-versions:
