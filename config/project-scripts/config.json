@@ -89,6 +89,42 @@
           }
         ]
       }
+    },
+    {
+      "documentation": {
+        "command": "reset-test",
+        "description": "Replace the data with the test data and restart the stack. Destructive.",
+        "arguments": []
+      },
+      "environment": {
+        "image": "ensignprojects/ubuntu-curl:latest",
+        "interactive": true,
+        "script": "reset-test/run.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/project/",
+        "host": "/usr/local/bin/host"
+      },
+      "permissions": {
+        "host": [
+          {
+            "name": "compose-remove-test-services",
+            "comment": "Stop the services that use the database, the files or the search index",
+            "command": "^docker compose rm -fs [a-z0-9][a-z0-9 -]*$"
+          },
+          {
+            "name": "compose-up-services",
+            "comment": "Start the given services",
+            "command": "^docker compose up -d [a-z0-9][a-z0-9 -]*$"
+          },
+          {
+            "name": "compose-up",
+            "comment": "Start the stack again",
+            "command": "^docker compose up -d --remove-orphans$"
+          }
+        ]
+      }
     }
   ]
 }
