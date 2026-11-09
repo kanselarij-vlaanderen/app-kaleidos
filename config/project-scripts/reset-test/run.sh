@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Reset the test data: download testdata.zip and testdata-elasticsearch.zip
-# from the GitHub release, stop the services that read the data, replace data
-# with their contents and start the stack again.
+# Reset the test data: download testdata.zip from the GitHub release, stop the
+# services that read the data, replace data with its contents and start the
+# stack again.
 #
 # Usage:
 #   mu script project-scripts reset-test
@@ -14,8 +14,7 @@ set -uo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-/project}
 TEST_DATA="testdata.zip"
-SEARCH_DATA="testdata-elasticsearch.zip"
-RELEASE="https://github.com/kanselarij-vlaanderen/app-kaleidos/releases/download/testdata-v1.0.0"
+RELEASE="https://github.com/kanselarij-vlaanderen/app-kaleidos/releases/download/testdata-v1.1.0"
 
 STOPPED_SERVICES=(
     yggdrasil triplestore elasticsearch search
@@ -111,10 +110,10 @@ echo ""
 echo "## Resetting the test data"
 echo ""
 echo "This will:"
-echo "  - download $TEST_DATA and $SEARCH_DATA from $RELEASE"
+echo "  - download $TEST_DATA from $RELEASE"
 echo "  - stop the services that use the database, the files and the search index"
 echo "  - replace data/db, data/files and data/elasticsearch with the contents of"
-echo "    $TEST_DATA and $SEARCH_DATA"
+echo "    $TEST_DATA"
 echo "  - start the stack again"
 echo ""
 confirm "Continue?" || { echo "Aborted, nothing was changed."; exit 1; }
@@ -129,12 +128,10 @@ fi
 
 echo ""
 echo "1. downloading the test data"
-for archive in "$TEST_DATA" "$SEARCH_DATA"; do
-    rm -f "$PROJECT_DIR/$archive"
-    step "   downloading $archive" \
-        curl -fsSL -o "$PROJECT_DIR/$archive" "$RELEASE/$archive" ||
-        fail "could not download $archive"
-done
+rm -f "$PROJECT_DIR/$TEST_DATA"
+step "   downloading $TEST_DATA" \
+    curl -fsSL -o "$PROJECT_DIR/$TEST_DATA" "$RELEASE/$TEST_DATA" ||
+    fail "could not download $TEST_DATA"
 
 echo ""
 echo "2. stopping the services that use the data"
@@ -149,26 +146,22 @@ step "3. deleting data/db, data/files, data/tika and data/elasticsearch" \
 step "4. unpacking $TEST_DATA" unzip -q -o "$PROJECT_DIR/$TEST_DATA" -d "$PROJECT_DIR"
 replace_with_unpacked "$PROJECT_DIR/testdata/db" "$PROJECT_DIR/data/db"
 replace_with_unpacked "$PROJECT_DIR/testdata/files" "$PROJECT_DIR/data/files"
-
-step "5. unpacking $SEARCH_DATA" \
-    unzip -q -o "$PROJECT_DIR/$SEARCH_DATA" -d "$PROJECT_DIR"
-replace_with_unpacked "$PROJECT_DIR/testdata-elasticsearch/elasticsearch" \
+replace_with_unpacked "$PROJECT_DIR/testdata/elasticsearch" \
     "$PROJECT_DIR/data/elasticsearch"
 step "   creating data/tika/cache" mkdir -p "$PROJECT_DIR/data/tika/cache"
 step "   copying testdata/tika/cache" \
     cp -a "$PROJECT_DIR/testdata/tika/cache/." "$PROJECT_DIR/data/tika/cache/"
-step "   deleting the unpacked test data" \
-    rm -rf "$PROJECT_DIR/testdata" "$PROJECT_DIR/testdata-elasticsearch"
+step "   deleting the unpacked test data" rm -rf "$PROJECT_DIR/testdata"
 
-step "6. starting triplestore and database" \
+step "5. starting triplestore and database" \
     host docker compose up -d "${STARTED_SERVICES[@]}"
 echo "   waiting for the triplestore to accept queries"
 if poll_triplestore; then
-    step "7. starting the stack" \
+    step "6. starting the stack" \
         host docker compose up -d --remove-orphans
 else
     echo "   the triplestore is not answering yet, starting the stack without waiting"
-    host_step "7. starting the stack" \
+    host_step "6. starting the stack" \
         host docker compose up -d --remove-orphans ||
         fail "could not start the stack"
 fi
