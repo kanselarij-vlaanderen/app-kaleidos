@@ -81,8 +81,6 @@ services:
     <<: *disabled-for-mirror
   docx-conversion:
     <<: *disabled-for-mirror
-  database-healthcheck:
-    <<: *disabled-for-mirror
   case-documents-sync:
     <<: *disabled-for-mirror
   gov-field-sync:

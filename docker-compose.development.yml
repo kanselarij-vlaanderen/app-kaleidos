@@ -68,6 +68,8 @@ services:
     restart: "no"
   file:
     restart: "no"
+  static-file:
+    restart: "no"
   agenda-comparison:
     restart: "no"
   agenda-approve:
@@ -87,9 +89,6 @@ services:
   sink:
     restart: "no"
   file-bundling:
-    restart: "no"
-  database-healthcheck:
-    entrypoint: "echo 'service disabled'"
     restart: "no"
   case-documents-sync:
     restart: "no"
@@ -111,6 +110,8 @@ services:
     restart: "no"
   staatsblad-linking:
     image: lblod/sink-service:1.0.0
+    restart: "no"
+  lod-sbmb:
     restart: "no"
   publication-report:
     restart: "no"
@@ -183,4 +184,6 @@ services:
     entrypoint: "echo 'service disabled'"
     restart: "no"
   metrics:
+    restart: "no"
+  project-scripts:
     restart: "no"
