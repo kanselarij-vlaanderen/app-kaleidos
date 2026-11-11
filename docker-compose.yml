@@ -16,7 +16,7 @@ services:
     volumes:
       - ./config/project-scripts:/app/scripts
   identifier:
-    image: semtech/mu-identifier:1.10.3
+    image: semtech/mu-identifier:feature-custom-session-handling
     environment:
       SESSION_COOKIE_SECURE: "on"
     logging: *default-logging
@@ -24,7 +24,7 @@ services:
     labels:
       - "logging=true"
   dispatcher:
-    image: semtech/mu-dispatcher:2.1.0-beta.2
+    image: semtech/mu-dispatcher:feature-big-chunks
     volumes:
       - ./config/dispatcher:/config
     logging: *default-logging
@@ -104,7 +104,7 @@ services:
     labels:
       - "logging=true"
   delta-notifier:
-    image: semtech/mu-delta-notifier:latest
+    image: semtech/mu-delta-notifier:feature-node26
     volumes:
       - ./config/delta:/config
     logging: *default-logging
@@ -112,13 +112,15 @@ services:
     labels:
       - "logging=true"
   cache-warmup:
-    image: kanselarij/cache-warmup-service:1.16.0
+    image: kanselarij/cache-warmup-service:feature-node26
+    # image: kanselarij/cache-warmup-service:1.16.0
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
     environment:
       CONCEPT_BACKEND_URL: "http://forever-cache/"
+      ALLOW_MU_AUTH_SUDO: "true"
   cache:
     image: semtech/mu-cache:2.2.0
     links:
@@ -161,7 +163,8 @@ services:
     volumes:
       - ./data/static-files:/data
   agenda-comparison:
-    image: kanselarij/agenda-comparison-service:3.2.0
+    # image: kanselarij/agenda-comparison-service:3.2.0
+    image: kanselarij/agenda-comparison-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
@@ -178,7 +181,8 @@ services:
     labels:
       - "logging=true"
   login:
-    image: kanselarij/acmidm-login-service:2.4.3
+    # image: kanselarij/acmidm-login-service:2.4.3
+    image: kanselarij/acmidm-login-service:feature-node26
     environment:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "b1c78c1e-3c88-44f4-90fa-bebc5c5dc28d"
@@ -186,12 +190,13 @@ services:
       MU_APPLICATION_AUTH_CLIENT_SECRET: "THIS IS OUR SECRET"
       DEBUG_LOG_TOKENSETS: "true"
       LOG_SINK_URL: "http://sink"
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   newsletter:
-    image: kanselarij/newsletter-service:5.1.1
+    image: kanselarij/newsletter-service:feature-node26
     volumes:
       - ./data/generated-xmls:/data
     logging: *default-logging
@@ -199,9 +204,11 @@ services:
     labels:
       - "logging=true"
   yggdrasil:
-    image: kanselarij/yggdrasil:5.29.0
+    image: kanselarij/yggdrasil:feature-node26
     logging: *default-logging
     restart: always
+    environment:
+      ALLOW_SPARQL_CLIENT_2: "true"
     labels:
       - "logging=true"
   sink:
@@ -211,9 +218,10 @@ services:
     labels:
       - "logging=true"
   file-bundling:
-    image: kanselarij/file-bundling-service:4.0.1
+    image: kanselarij/file-bundling-service:feature-node26
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: "generated-archives/"
+      ALLOW_MU_AUTH_SUDO: "true"
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -221,47 +229,54 @@ services:
     labels:
       - "logging=true"
   docx-conversion:
-    image: kanselarij/docx-conversion-service:2.3.0
+    image: kanselarij/docx-conversion-service:feature-node26
     volumes:
       - ./data/files:/share
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   database-healthcheck:
-    image: kanselarij/database-healthcheck:1.0.2
+    image: kanselarij/database-healthcheck:feature-node26
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   case-documents-sync:
-    image: kanselarij/case-documents-sync-service:2.0.1
+    image: kanselarij/case-documents-sync-service:feature-node26
     logging: *default-logging
     restart: always
     environment:
       MAX_BODY_SIZE: "500kb"
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
   gov-field-sync:
-    image: kanselarij/gov-field-sync-service:0.3.1
+    image: kanselarij/gov-field-sync-service:feature-node26
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   document-versions:
-    image: kanselarij/document-versions-service:0.4.0
+    image: kanselarij/document-versions-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   document-release:
-    image: kanselarij/document-release-service:1.0.1
+    image: kanselarij/document-release-service:feature-node26
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   mail-delivery:
-    image: redpencil/deliver-email-service:0.3.3
+    image: redpencil/deliver-email-service:feature-node26
     environment:
       MAILBOX_URI: "http://themis.vlaanderen.be/id/mailboxes/e8364a49-2696-48cc-aef1-e1e396a0cd34"
       WELL_KNOWN_SERVICE: "test"
@@ -271,6 +286,7 @@ services:
       MS_GRAPH_API_CLIENT_ID: "51148b88-fd95-43ea-aefc-442af419f11e"
       MS_GRAPH_API_TENANT_ID: "0c0338a6-9561-4ee8-b8d6-4e89cbd520a0"
       MS_GRAPH_API_CLIENT_SECRET: "OUR SECRET"
+      ALLOW_MU_AUTH_SUDO: "true"
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -295,19 +311,21 @@ services:
     labels:
       - "logging=true"
   staatsblad-import:
-    image: kanselarij/ttl-import-service:0.2.0
+    image: kanselarij/ttl-import-service:feature-node26
     volumes:
       - ./data/staatsblad/nl:/data/imports
     environment:
       GRAPH: "http://mu.semte.ch/graphs/staatsblad"
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   staatsblad-uuid-generation:
-    image: redpencil/uuid-generation:0.4.1
+    image: redpencil/uuid-generation:feature-node26
     environment:
       RUN_CRON_JOBS: "true"
+      ALLOW_MU_AUTH_SUDO: "true"
     volumes:
       - ./config/uuid-generation/:/config
     logging: *default-logging
@@ -315,24 +333,27 @@ services:
     labels:
       - "logging=true"
   staatsblad-linking:
-    image: kanselarij/staatsblad-linking-service:0.6.1
+    image: kanselarij/staatsblad-linking-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
   publication-report:
-    image: kanselarij/publication-report-service:0.5.0
+    image: kanselarij/publication-report-service:feature-node26
     volumes:
       - ./data/files:/share
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql"
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   decision-extraction:
-    image: kanselarij/decision-extraction-service:1.0.0
+    image: kanselarij/decision-extraction-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
@@ -340,7 +361,7 @@ services:
     volumes:
       - ./data/files:/share
   delta-producer:
-    image: kanselarij/delta-producer-json-diff-file-publisher:1.0.1
+    image: kanselarij/delta-producer-json-diff-file-publisher:feature-node26
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       PUBLISHER_URI: "http://delta-producer-json-diff-file-publisher.services.semantic.works/me"
@@ -353,7 +374,7 @@ services:
     labels:
       - "logging=true"
   fileshare:
-    image: redpencil/file-share-sync:0.1.0
+    image: redpencil/file-share-sync:feature-node26
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       ALLOW_SUPER_CONSUMER: "true"
@@ -364,15 +385,16 @@ services:
     labels:
       - "logging=true"
   impersonation:
-    image: kanselarij/impersonation-service:0.2.0
+    image: kanselarij/impersonation-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   decision-report-generation:
-    image: kanselarij/decision-report-generation-service:2.2.2
+    image: kanselarij/decision-report-generation-service:feature-node26
     environment:
       TZ: "Europe/Brussels"
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
@@ -380,13 +402,13 @@ services:
     volumes:
       - ./data/files:/share
   shortlist:
-    image: kanselarij/shortlist-service:0.1.5
+    image: kanselarij/shortlist-service:feature-node26
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   minutes-report-generation:
-    image: kanselarij/minutes-report-generation-service:1.1.0
+    image: kanselarij/minutes-report-generation-service:feature-node26
     volumes:
       - ./data/files:/share
   digital-signing:
@@ -395,8 +417,10 @@ services:
       - ./data/files:/share
     restart: always
   signflow-status-sync:
-    image: kanselarij/signflow-status-sync-service:0.0.5
+    image: kanselarij/signflow-status-sync-service:feature-node26
     restart: always
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
   #themis
   public-file:
     image: kanselarij/public-file-service:4.3.0
@@ -410,10 +434,12 @@ services:
     restart: always
     logging: *default-logging
   themis-export:
-    image: kanselarij/themis-export-service:3.3.0
+    image: kanselarij/themis-export-service:feature-node26
     environment:
       MU_SPARQL_ENDPOINT: "http://database:8890/sparql" # database for results for which delta's must be generated
       VIRTUOSO_SPARQL_ENDPOINT: "http://triplestore:8890/sparql" # database for intermediate results and to export data from
+      ALLOW_MU_AUTH_SUDO: "true"
+      ALLOW_SPARQL_CLIENT_2: "true"
     volumes:
       - ./data/exports:/share
     labels:
@@ -421,7 +447,7 @@ services:
     restart: always
     logging: *default-logging
   ttl-to-delta:
-    image: kanselarij/ttl-to-delta-service:1.1.0
+    image: kanselarij/ttl-to-delta-service:feature-node26
     environment:
       TASK_GRAPH: "http://mu.semte.ch/graphs/themis-public"
       FILE_GRAPH: "http://mu.semte.ch/graphs/themis-public"
@@ -432,7 +458,9 @@ services:
     restart: always
     logging: *default-logging
   publication-producer:
-    image: kanselarij/themis-publication-producer:1.2.0
+    image: kanselarij/themis-publication-producer:feature-node26
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
@@ -455,39 +483,44 @@ services:
     restart: always
     logging: *default-logging
   pdf-flattener:
-    image: kanselarij/pdf-flattener-service:1.1.0
+    image: kanselarij/pdf-flattener-service:feature-node26
     volumes:
       - ./data/files:/share
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: 'flattened-pdfs'
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   pdf-signature-remover:
-    image: kanselarij/pdf-signature-remover:1.0.2
+    image: kanselarij/pdf-signature-remover:feature-node26
     volumes:
       - ./data/files:/share
     environment:
       MU_APPLICATION_FILE_STORAGE_PATH: 'signature-removed-pdfs'
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   vlaams-parlement-sync:
-    image: kanselarij/vlaams-parlement-sync-service:0.8.0
+    image: kanselarij/vlaams-parlement-sync-service:feature-node26
     volumes:
       - ./data/files:/share
       - ./data/debug:/debug
     environment:
       - ENABLE_SENDING_TO_VP_API=true
       - ENABLE_DEBUG_FILE_WRITING=false
+      - ALLOW_MU_AUTH_SUDO=true
     labels:
       - "logging=true"
     restart: always
     logging: *extended-logging
   agenda-submission:
-    image: kanselarij/agenda-submission-service:1.17.0
+    image: kanselarij/agenda-submission-service:feature-node26
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
@@ -499,7 +532,7 @@ services:
     restart: always
     logging: *default-logging
   document-stamping:
-    image: kanselarij/document-stamping-service:2.0.3
+    image: kanselarij/document-stamping-service:feature-node26
     volumes:
       - ./data/files:/share
     environment:
@@ -517,7 +550,7 @@ services:
     labels:
       - "logging=true"
   draft-file-mover:
-    image: kanselarij/draft-file-mover-service:0.0.1
+    image: kanselarij/draft-file-mover-service:feature-node26
     volumes:
       - ./data/files:/share
     logging: *default-logging
@@ -525,15 +558,16 @@ services:
     labels:
       - "logging=true"
   data-monitoring:
-    image: kanselarij/data-monitoring-service:1.0.1
+    image: kanselarij/data-monitoring-service:feature-node26
     environment:
       THEMIS_ENDPOINT_URL: "https://themis-dev.kanselarij.org/"
+      ALLOW_MU_AUTH_SUDO: "true"
     logging: *default-logging
     restart: always
     labels:
       - "logging=true"
   metrics:
-    image: lblod/metrics-service:0.2.0
+    image: lblod/metrics-service:feature-node26
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
     volumes:
