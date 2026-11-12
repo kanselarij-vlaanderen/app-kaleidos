@@ -212,7 +212,7 @@ services:
     labels:
       - "logging=true"
   sink:
-    image: lblod/sink-service:1.0.0
+    image: lblod/sink-service:1.1.0
     logging: *default-logging
     restart: always
     labels:
@@ -526,7 +526,7 @@ services:
     restart: always
     logging: *default-logging
   document-naming:
-    image: kanselarij/document-naming-service:1.6.1
+    image: kanselarij/document-naming-service:feature-node26
     labels:
       - logging=true
     restart: always
@@ -543,6 +543,7 @@ services:
     image: kanselarij/draft-file-service:0.0.3
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/voorlopig-bestand/"
+      LOG_LEVEL: warn
     volumes:
       - ./data/files:/share
     logging: *default-logging
