@@ -401,8 +401,8 @@ services:
   public-file:
     image: kanselarij/public-file-service:feature-rebase-on-3.5.3
     environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
+      ALLOW_MU_AUTH_SUDO: "true"
+      SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
     volumes:
       - ./data/files:/share
     labels:
@@ -440,6 +440,7 @@ services:
   export-file:
     image: kanselarij/public-file-service:feature-rebase-on-3.5.3
     environment:
+      ALLOW_MU_AUTH_SUDO: "true"
       SKIP_CONFIDENTIALITY: "true"
       SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/themis-public"
     volumes:
