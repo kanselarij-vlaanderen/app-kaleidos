@@ -399,10 +399,9 @@ services:
     restart: always
   #themis
   public-file:
-    image: kanselarij/public-file-service:feature-rebase-on-3.5.3
+    image: kanselarij/public-file-service:4.4.0
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
-      SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
     volumes:
       - ./data/files:/share
     labels:
@@ -438,7 +437,7 @@ services:
     restart: always
     logging: *default-logging
   export-file:
-    image: kanselarij/public-file-service:feature-rebase-on-3.5.3
+    image: kanselarij/public-file-service:4.4.0
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       SKIP_CONFIDENTIALITY: "true"
