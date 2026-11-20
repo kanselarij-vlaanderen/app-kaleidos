@@ -153,7 +153,7 @@ services:
     labels:
       - "logging=true"
   file:
-    image: semtech/mu-file-service:3.5.2
+    image: semtech/mu-file-service:3.5.3
     environment:
       FILE_RESOURCE_BASE: "http://themis.vlaanderen.be/id/bestand/"
     volumes:
@@ -416,10 +416,9 @@ services:
       - "logging=true"
   #themis
   public-file:
-    image: kanselarij/public-file-service:4.3.2
+    image: kanselarij/public-file-service:4.4.0
     environment:
-      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/organizations/kanselarij"
+      ALLOW_MU_AUTH_SUDO: "true"
     volumes:
       - ./data/files:/share
     labels:
@@ -455,8 +454,9 @@ services:
     restart: always
     logging: *default-logging
   export-file:
-    image: kanselarij/public-file-service:4.3.2
+    image: kanselarij/public-file-service:4.4.0
     environment:
+      ALLOW_MU_AUTH_SUDO: "true"
       SKIP_CONFIDENTIALITY: "true"
       SPECIFIED_GRAPH: "http://mu.semte.ch/graphs/themis-public"
     volumes:
